@@ -37,8 +37,13 @@ happening for the back ground of the web page
 -> To cover the "Cosmos" aspect of the design we watched Mad Zach – No Past
 Lives
 
+FOR TESTING
+oh yeah, and this one.
+
+
 ### Hatem
 
 1. Built the first chat function.
 2. Investigation into emojis and react-emoji library on npm.
 3. Make a look at twitch chat for how the emojis work there.
+
