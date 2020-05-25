@@ -16,17 +16,28 @@ A new host is about to start his first show on etikett radio when he reviews his
 
 It's about the end of the month and the admin has to update the data base with the schedule of the upcoming month. He/she also added a new host account and while reviewing the artist description, the admin realizes a typo which is quickly fixed. While he was thinking about the blog post he/she still has to write, the admin also thinks about to ask a trustworthy host to help him with all the data they have to implement or to update and after a quick call, the admin gives this host the right to edit the schedule.
 
-### Plan for this week
+## Weekly tasks
 
-1. Make a test repo.
-2. Design and sketch wire-frames with Figma.
-3. setup roles for project manager.
-4. Meet on Wednesday before presenting our work.
-5. Make a Kanaban board.
-6. Write users stories.
-7. You can add anything that I forget it to add.
+### Getting started (25th to 31st of May)
 
-### Hatem's Task
+1. Make a test repo
+2. Design and sketch wire-frames with Figma
+3. setup roles for project members
+4. Meet on Wednesday before presenting our work
+5. Make a canban board
+6. Write users stories
+
+
+## Tasks 
+
+### Adrienn
+
+Researching for the visuals of the page, learning about three.js and wants to investigate more into making some artsy stuff
+happening for the back ground of the web page
+-> To cover the "Cosmos" aspect of the design we watched Mad Zach – No Past
+Lives
+
+### Hatem
 
 1. Built the first chat function.
 2. Investigation into emojis and react-emoji library on npm.
