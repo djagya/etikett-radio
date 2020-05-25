@@ -15,3 +15,12 @@ A new host is about to start his first show on etikett radio when he reviews his
 ### Admin
 
 It's about the end of the month and the admin has to update the data base with the schedule of the upcoming month. He/she also added a new host account and while reviewing the artist description, the admin realizes a typo which is quickly fixed. While he was thinking about the blog post he/she still has to write, the admin also thinks about to ask a trustworthy host to help him with all the data they have to implement or to update and after a quick call, the admin gives this host the right to edit the schedule.
+
+## Tasks 
+
+### Adrienn
+
+Researching for the visuals of the page, learning about three.js and wants to investigate more into making some artsy stuff
+happening for the back ground of the web page
+-> To cover the "Cosmos" aspect of the design we watched Mad Zach – No Past
+Lives
