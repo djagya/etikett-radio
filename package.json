@@ -1,0 +1,25 @@
+{
+  "name": "2-own-server-from-scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "http-errors": "^1.7.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.10",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "nodemon": "^2.0.3"
+  }
+}
