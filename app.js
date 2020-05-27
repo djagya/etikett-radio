@@ -3,9 +3,12 @@ const app = express();
 const createError = require("http-errors");
 const mongoose = require("mongoose");
 const { setCors } = require("./middleware/security");
+const dot = require("dotenv");
+dot.config();
+const env = require("./config/config")
 
 const indexRoute = require("./routes/indexRoute");
-const musicRoute = require("./routes/archiveRoute");
+const archiveRoute = require("./routes/archiveRoute");
 const usersRoute = require("./routes/usersRoute");
 
 const port = process.env.PORT || 3000;
