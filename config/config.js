@@ -1,7 +1,7 @@
 const {env} = process;
 
 const config = {
-    env: emv.NODE_ENV || "development"
+    env: env.NODE_ENV || "development"
 };
 
 const devConfig = {
