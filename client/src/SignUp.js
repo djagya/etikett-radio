@@ -7,9 +7,6 @@ export default function SignUp() {
     const [email, setEmail] = useState("");
     const [pw, setPW] = useState("");
     const [role, setRole] = useState("User");
-    const [street, setStreet] = useState("");
-    const [city, setCity] = useState("");
-    const [country, setCountry] = useState("");
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -21,10 +18,7 @@ export default function SignUp() {
             "userName": userName,
             "email": email,
             "pw": pw,
-            "role": role,
-            "street": street,
-            "city": city,
-            "country": country
+            "role": role
         };
 
         const postData = async (url, data) => {
@@ -52,9 +46,6 @@ export default function SignUp() {
                 setEmail("");
                 setPW("");
                 setRole("User");
-                setStreet("");
-                setCity("");
-                setCountry("");
                 alert("You successfully signed up!")
             } else {
                 alert("Please fill out all *Required fields and make sure your password is at least 8 signs long.")
@@ -87,15 +78,6 @@ export default function SignUp() {
                 break;
             case "role":
                 setRole(input)
-                break;
-            case "street":
-                setStreet(input)
-                break;
-            case "city":
-                setCity(input)
-                break;
-            case "country":
-                setCountry(input)
                 break;
             default: console.log("Sign up Input in SignUp.js ran through without effect")
         }
@@ -130,18 +112,6 @@ export default function SignUp() {
                     <label htmlFor="role">
                         <span className="required">*</span>Role
                     <input type="text" id="role" placeholder="Role" value={role} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="street">
-                        Street
-                    <input type="text" id="street" placeholder="Street" value={street} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="city">
-                        City
-                    <input type="text" id="city" placeholder="City" value={city} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="country">
-                        Country
-                    <input type="text" id="country" placeholder="Country" value={country} onChange={handleFormInput} />
                     </label>
 
 
