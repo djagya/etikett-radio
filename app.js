@@ -5,8 +5,7 @@ const mongoose = require("mongoose");
 const { setCors } = require("./middleware/security");
 
 const indexRoute = require("./routes/indexRoute");
-const musicRoute = require("./routes/musicRoute");
-const ordersRoute = require("./routes/ordersRoute");
+const musicRoute = require("./routes/archiveRoute");
 const usersRoute = require("./routes/usersRoute");
 
 const port = process.env.PORT || 3000;
@@ -21,11 +20,10 @@ mongoose.connection.on("error", (err) => console.log(err));
 mongoose.connection.on("open", () => console.log("db connected"));
 
 app.use(express.json());
-app.use(setCors);
+app.use(setCors); //middleware to use setCors on all routes
 
 app.use("/", indexRoute);
-app.use("/music", musicRoute);
-app.use("/orders", ordersRoute);
+app.use("/archive", archiveRoute);
 app.use("/users", usersRoute);
 
 
