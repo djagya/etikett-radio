@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const { encrypt, compare } = require("../lib/encrypt");
 const { Schema } = mongoose;
-const AddressSchema = require("./addressSchema");
 
 const UserSchema = new Schema(
     {
@@ -19,8 +18,7 @@ const UserSchema = new Schema(
         },
         tokens: [{
             token: { type: String, required: true }
-        }],
-        address: AddressSchema
+        }]
     }
 );
 

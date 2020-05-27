@@ -10,8 +10,7 @@ const usersRoute = require("./routes/usersRoute");
 
 const port = process.env.PORT || 3000;
 
-
-mongoose.connect("mongodb://127.0.0.1:27017/music-collection", {
+mongoose.connect(env.db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
