@@ -82,35 +82,34 @@ export default function ArchiveInputForm() {
             default: console.log("Archive Input HandleFormInput ran through without effect")
         }
     };
-
+    const repetitiveInputFields = () => {
+        const fields = ["show", "host", "genre"];
+        const value = [show, host, genre];
+        return fields.map((field, i) => (
+                <label key={i} htmlFor={field}>
+                    <span className="required">*</span>{field}
+                    <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
+                </label>
+            ));
+    };
     return (
         <div className="input-form">
             <h2>Archive Show</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
-                    <label htmlFor="host">
-                        <span className="required">*</span>host
-                    <input type="text" id="host" placeholder="Host" value={host} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="show">
-                        <span className="required">*</span>show
-                    <input type="text" id="show" placeholder="Show" value={show} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="genre">
-                        Genre
-                    <input type="text" id="genre" placeholder="Genre" value={genre} onChange={handleFormInput} />
-                    </label>
+                    
+                    {repetitiveInputFields()}
                     <label htmlFor="date">
                         <span className="required">*</span>date
                     <input type="date" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
-                    </label>
+                    </label> 
                     <label htmlFor="link">
                         <span className="required">*</span>soundcloud/mixcloud
                     <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="description">
                         description
-                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} >{description}</textarea>
+                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} defaultValue={description} />
                     </label>
                 </div>
                 <div className="submit-button">

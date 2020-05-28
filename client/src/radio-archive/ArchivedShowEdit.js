@@ -115,7 +115,7 @@ export default function MusicEdit(props) {
                     </label>
                     <label htmlFor="description">
                         description
-                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} defaultValue= {description}></textarea>
+                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} defaultValue= {description}/>
                     </label>
                     {/* <label htmlFor="img">
                         Image Link
