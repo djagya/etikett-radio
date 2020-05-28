@@ -4,13 +4,11 @@ export default function MusicEdit(props) {
 
     const [archiveData, setArchiveData] = useState({})
     const id = props.match.params.id
-    const [title, setTitle] = useState("");
-    const [artist, setArtist] = useState("");
-    const [album, setAlbum] = useState("");
-    const [label, setLabel] = useState("");
-    const [release, setRelease] = useState("");
+    const [host, setHost] = useState("");
+    const [show, setShow] = useState("");
+    const [genre, setGenre] = useState("");
+    const [date, setDate] = useState("");
     const [link, setLink] = useState("");
-    const [img, setImg] = useState("");
 
 
     //Get archive by id to pre-fill the form
@@ -19,13 +17,11 @@ export default function MusicEdit(props) {
             .then(res => res.json())
             .then(data => {
                 setArchiveData(data.archive);
-                setArtist(data.archive.artist);
-                setTitle(data.archive.title);
-                setAlbum(data.archive.album);
-                setLabel(data.archive.label);
-                setRelease(data.archive.release);
+                setHost(data.archive.host);
+                setShow(data.archive.show);
+                setGenre(data.archive.genre);
+                setDate(data.archive.date);
                 setLink(data.archive.link);
-                setImg(data.archive.img);
             })
     }, [])
 
@@ -33,21 +29,18 @@ export default function MusicEdit(props) {
         event.preventDefault()
         //POST request
         const body = {
-            "title": title,
-            "artist": artist,
-            "album": album,
-            "label": label,
-            "release": release,
-            "link": link,
-            "img": img
+            "host": host,
+            "show": show,
+            "genre": genre,
+            "date": date,
+            "link": link
         };
         //Put request
         const putData = async (url, data) => {
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json",
-                    "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
             })
@@ -68,26 +61,20 @@ export default function MusicEdit(props) {
         const id = event.target.id;
         const input = event.target.value;
         switch (id) {
-            case "title":
-                setTitle(input)
+            case "host":
+                setHost(input)
                 break;
-            case "artist":
-                setArtist(input)
+            case "show":
+                setShow(input)
                 break;
-            case "album":
-                setAlbum(input)
+            case "genre":
+                setGenre(input)
                 break;
-            case "label":
-                setLabel(input)
-                break;
-            case "release":
-                setRelease(input)
+            case "date":
+                setDate(input)
                 break;
             case "link":
                 setLink(input)
-                break;
-            case "img":
-                setImg(input)
                 break;
             default: console.log("Archive Input HandleFormInput ran through without effect")
         }
@@ -98,34 +85,32 @@ export default function MusicEdit(props) {
             <h2>This is Archive Edit</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
-                    <label htmlFor="title">
-                        <span className="required">*</span>Title
-                    <input type="text" id="title" placeholder="Title" value={title} onChange={handleFormInput} />
+                    <label htmlFor="show">
+                        <span className="required">*</span>Show
+                        <input type="text" id="show" placeholder="Show" value={show} onChange={handleFormInput} />
                     </label>
-                    <label htmlFor="artist">
-                        <span className="required">*</span>Artist
-                    <input type="text" id="artist" placeholder="Artist" value={artist} onChange={handleFormInput} />
+                    <label htmlFor="host">
+                        <span className="required">*</span>Host
+                        <input type="text" id="host" placeholder="Host" value={host} onChange={handleFormInput} />
                     </label>
-                    <label htmlFor="album">
-                        Album
-                    <input type="text" id="album" placeholder="Album" value={album} onChange={handleFormInput} />
+                    
+                    <label htmlFor="genre">
+                        <span className="required">*</span>Genre
+                        <input type="text" id="genre" placeholder="Genre" value={genre} onChange={handleFormInput} />
                     </label>
-                    <label htmlFor="label">
-                        <span className="required">*</span>Label
-                    <input type="text" id="label" placeholder="Label" value={label} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="release">
-                        <span className="required">*</span>Release Date
-                    <input type="text" id="release" placeholder="yyyy-mm-dd" value={release} onChange={handleFormInput} />
+                    
+                    <label htmlFor="date">
+                        <span className="required">*</span>Date
+                        <input type="text" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="link">
-                        <span className="required">*</span>Purchase/Download Link
-                    <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
+                        <span className="required">*</span>SoundCloud/MixCloud
+                        <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
-                    <label htmlFor="img">
+                    {/* <label htmlFor="img">
                         Image Link
                     <input type="text" id="img" placeholder="Link to artwork" value={img} onChange={handleFormInput} />
-                    </label>
+                    </label> */}
                 </div>
                 <div className="submit-button">
                     <input type="submit" value="Update" /><span className="required">* Required</span>

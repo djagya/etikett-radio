@@ -16,9 +16,9 @@ export default function ArchiveDetail(props) {
         if (archiveData.length === 0) return null;
         return (
             <ul className="list-right">
-                <li>{archiveData.album}</li>
-                <li>{archiveData.label}</li>
-                <li>{archiveData.release.substring(0, 10)}</li>
+                <li>{archiveData.show}</li>
+                <li>{archiveData.host}</li>
+                <li>{archiveData.date.substring(0, 10)}</li>
             </ul>
         )
 
@@ -31,14 +31,14 @@ export default function ArchiveDetail(props) {
             <h2>{archiveData.title} by {archiveData.artist}</h2>
             <div className="archive-details">
                 <ul>
-                    <li>Album/EP: </li>
-                    <li>Released on: </li>
-                    <li>Released at: </li>
+                    <li>Show: </li>
+                    <li>Host: </li>
+                    <li>Was live at: </li>
                 </ul>
                 {renderLi(archiveData)}
             </div>
-            <a target="_blank" href={archiveData.link}>Purchase/Download </a>
-            <img src={archiveData.img} />
+            <a target="_blank" href={archiveData.link}>listen back </a>
+            <img src={archiveData.img} alt="Show Image Here" />
             <Link to={`/${param}/edit`}>Edit</Link>
         </div>
     )

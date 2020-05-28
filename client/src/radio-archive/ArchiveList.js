@@ -21,9 +21,8 @@ export default function ArchiveList() {
 
             <li key={i}>
                 <ul className="archive-list">
-                    <li><Link to={`archive/${el._id}`}>{el.title}</Link></li>
+                    <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
-                    <li>{el.show}</li>
                     <li>{el.genre}</li>
                     <li>{el.date.substring(0, 10)}</li>
                     <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
@@ -74,8 +73,8 @@ export default function ArchiveList() {
                     <Link to="/archive/post"> Add New Track </Link>
                 </div>
                 <ul className="list-header">
-                    <li><h3>Host</h3></li>
                     <li><h3>Show</h3></li>
+                    <li><h3>Host</h3></li>
                     <li><h3>Genre</h3></li>
                     <li><h3>Date</h3></li>
                 </ul>
