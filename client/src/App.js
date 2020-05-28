@@ -23,12 +23,15 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <h1>etikett radio</h1>
           <nav>
-            <NavLink className="nav-link" to="/">Home</NavLink>
-            <NavLink className="nav-link" to="/archive">Archive</NavLink>
-            <NavLink className="nav-link" to="/user">Staff Only</NavLink>
+            <NavLink className="nav-link" to="/">home.</NavLink>
+            <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
+            <NavLink className="nav-link" to="/archive">archive.</NavLink>
+            <NavLink className="nav-link" to="/blog">blog.</NavLink>
+            <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+            <NavLink className="nav-link" to="/user">staff only.</NavLink>
           </nav>
+          <h1>etikett radio</h1>
         </header>
 
       </div>

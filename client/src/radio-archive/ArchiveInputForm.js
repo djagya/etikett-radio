@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 // const createError = require("http-errors");
 
-export default function MusicInputForm() {
+export default function ArchiveInputForm() {
     const [host, setHost] = useState("");
     const [show, setShow] = useState("");
     const [genre, setGenre] = useState("");
@@ -72,7 +72,7 @@ export default function MusicInputForm() {
             case "link":
                 setLink(input)
                 break;
-            default: console.log("Music Input HandleFormInput ran through without effect")
+            default: console.log("Archive Input HandleFormInput ran through without effect")
         }
     };
 

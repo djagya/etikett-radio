@@ -1,7 +1,6 @@
-export default function Delete(checkedIDs) {
+export default function Delete(checkedIDs, route) {
 
     checkedIDs.map(id => {
-
         const deleteData = async (url) => {
             const response = await fetch(url, {
                 method: "DELETE",
@@ -12,7 +11,7 @@ export default function Delete(checkedIDs) {
             })
             return response.json()
         }
-        deleteData(`http://localhost:3000/archive/${id}`)
+        deleteData(`http://localhost:3000/${route}/${id}`)
             .then(data => {
                 if (!data.success) console.log(data)
             })

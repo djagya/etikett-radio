@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import MusicInputForm from "./ArchiveInputForm"
 import Delete from "../Delete"
 
 export default function ArchiveList() {
@@ -58,12 +59,11 @@ export default function ArchiveList() {
         }
         setArchiveData(filteredArchiveData)
         //delete from db
-        Delete(checkedIDs)
+        Delete(checkedIDs, "archive")
 
         //reset Array of checkedID's
         setCheckedIDs([]);
     }
-    console.log("test");
 
     return (
         <div className="archive-list-page">
