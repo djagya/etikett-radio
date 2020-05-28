@@ -7,6 +7,7 @@ export default function ArchiveList() {
 
     const [checkedIDs, setCheckedIDs] = useState([]);
     const [archiveData, setArchiveData] = useState([]);
+    const [showForm, setShowForm] = useState(false)
 
     useEffect(() => {
         fetch("http://localhost:3000/archive")
@@ -42,8 +43,11 @@ export default function ArchiveList() {
             const filteredIDs = checkedIDs.filter(el => el !== id);
             setCheckedIDs(filteredIDs)
         }
-    }
+    };
 
+    const handleAdd = () => {
+        setShowForm(true)
+    };
     //Delete the deleted Item from archiveData to make it disappear without refreshing the page
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
@@ -70,19 +74,20 @@ export default function ArchiveList() {
             <div>
                 <h2>Archive</h2>
                 <div className="archive-menu">
-                    <Link to="/archive/post"> Add New Track </Link>
+                <button type="button" onClick={() => handleAdd(checkedIDs)}>add to archive</button>
                 </div>
+                {showForm ? <MusicInputForm /> : null}
                 <ul className="list-header">
-                    <li><h3>Show</h3></li>
-                    <li><h3>Host</h3></li>
-                    <li><h3>Genre</h3></li>
-                    <li><h3>Date</h3></li>
+                    <li><h3>show</h3></li>
+                    <li><h3>host</h3></li>
+                    <li><h3>genre</h3></li>
+                    <li><h3>date</h3></li>
                 </ul>
                 <ul>
                     {renderLi(archiveData)}
                 </ul>
                 <div className="delete-btn">
-                    <button type="button" onClick={() => handleDelete(checkedIDs)}>Delete Checked</button>
+                    <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                 </div>
             </div>
         </div>
