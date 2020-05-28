@@ -40,7 +40,8 @@ export default function MusicEdit(props) {
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNmODU2MzZiMzg2ZTFkYmM3MjNkMDEiLCJpYXQiOjE1OTA2NTg0MDN9.3EV5TvniP9UCJ1eOZ3ebnrZmH39YWp3PGYSWTAMegro"
                 },
                 body: JSON.stringify(data)
             })

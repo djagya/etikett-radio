@@ -44,7 +44,6 @@ function App() {
         <Route exact path="/user/createuser" component={CreateUser} />
         {/* Archive Related */}
         <Route exact path="/archive" component={ArchiveList} />
-        <Route exact path="/archive/post" component={ArchiveInputForm} />
         <Route exact path="/archive/:id" component={ArchiveDetail} />
         <Route exact path="/:id/edit" component={ArchiveEdit} />
         {/* Fallback to Error Page */}

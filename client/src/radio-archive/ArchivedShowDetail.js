@@ -39,7 +39,8 @@ export default function ArchiveDetail(props) {
             </div>
             <a target="_blank" href={archiveData.link}>listen back </a>
             <img src={archiveData.img} alt="Show Image Here" />
-            <Link to={`/${param}/edit`}>Edit</Link>
+            <Link to={`/${param}/edit`}>edit</Link>
+            <Link to={`/archive`}>back to archive</Link>
         </div>
     )
 }

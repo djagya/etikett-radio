@@ -45,8 +45,8 @@ export default function ArchiveList() {
         }
     };
 
-    const handleAdd = () => {
-        setShowForm(true)
+    const handleAdd = boolean => {
+        setShowForm(boolean)
     };
     //Delete the deleted Item from archiveData to make it disappear without refreshing the page
     const handleDelete = (checkedIDs) => {
@@ -72,9 +72,12 @@ export default function ArchiveList() {
     return (
         <div className="archive-list-page">
             <div>
-                <h2>Archive</h2>
+                <h2>archive</h2>
                 <div className="archive-menu">
-                <button type="button" onClick={() => handleAdd(checkedIDs)}>add to archive</button>
+                {showForm ? 
+                <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
+                <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                }
                 </div>
                 {showForm ? <MusicInputForm /> : null}
                 <ul className="list-header">

@@ -25,7 +25,7 @@ export default function ArchiveInputForm() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
+                    // "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
                 },
                 body: JSON.stringify(data)
             })
@@ -41,7 +41,7 @@ export default function ArchiveInputForm() {
                 setGenre("");
                 setDate("");
                 setLink("");
-                alert("Item was successfully added to database")
+                window.location.reload()
             } else {
                 alert(data.err)
             }
