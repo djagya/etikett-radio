@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const MusicSchema = new Schema(
+const ArchiveSchema = new Schema(
     {
         host: { type: String, required: true },
         show: { type: String, required: true },
@@ -10,4 +10,4 @@ const MusicSchema = new Schema(
         link: { type: String, required: true },
     }
 );
-module.exports = mongoose.model("Music", MusicSchema);
+module.exports = mongoose.model("Archive", ArchiveSchema);
