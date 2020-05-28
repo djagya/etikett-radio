@@ -4,8 +4,8 @@ export default function MusicEdit(props) {
 
     const [archiveData, setArchiveData] = useState({})
     const id = props.match.params.id
-    const [host, setHost] = useState("");
     const [show, setShow] = useState("");
+    const [host, setHost] = useState("");
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [link, setLink] = useState("");
@@ -17,8 +17,8 @@ export default function MusicEdit(props) {
             .then(res => res.json())
             .then(data => {
                 setArchiveData(data.archive);
-                setHost(data.archive.host);
                 setShow(data.archive.show);
+                setHost(data.archive.host);
                 setGenre(data.archive.genre);
                 setDate(data.archive.date);
                 setLink(data.archive.link);
@@ -29,8 +29,8 @@ export default function MusicEdit(props) {
         event.preventDefault()
         //POST request
         const body = {
-            "host": host,
             "show": show,
+            "host": host,
             "genre": genre,
             "date": date,
             "link": link
@@ -41,7 +41,6 @@ export default function MusicEdit(props) {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNmODU2MzZiMzg2ZTFkYmM3MjNkMDEiLCJpYXQiOjE1OTA2NTg0MDN9.3EV5TvniP9UCJ1eOZ3ebnrZmH39YWp3PGYSWTAMegro"
                 },
                 body: JSON.stringify(data)
             })
@@ -56,7 +55,7 @@ export default function MusicEdit(props) {
     const redirect = () => {
         console.log("update done")
         props.history.push(`/archive/${id}`)
-    }
+    };
 
     const handleFormInput = event => {
         const id = event.target.id;
@@ -81,31 +80,31 @@ export default function MusicEdit(props) {
         }
     };
 
+
+    const repetitiveInputFields = () => {
+        const fields = ["show", "host", "genre"];
+        const value = [show, host, genre]
+        return fields.map((field, i) => (
+                <label key={i} htmlFor={field}>
+                    <span className="required">*</span>{field}
+                    <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
+                </label>
+            ));
+    };
+
     return (
         <div className="input-form">
             <h2>This is Archive Edit</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
-                    <label htmlFor="show">
-                        <span className="required">*</span>Show
-                        <input type="text" id="show" placeholder="Show" value={show} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="host">
-                        <span className="required">*</span>Host
-                        <input type="text" id="host" placeholder="Host" value={host} onChange={handleFormInput} />
-                    </label>
-                    
-                    <label htmlFor="genre">
-                        <span className="required">*</span>Genre
-                        <input type="text" id="genre" placeholder="Genre" value={genre} onChange={handleFormInput} />
-                    </label>
-                    
+                   
+                    {repetitiveInputFields()}
                     <label htmlFor="date">
-                        <span className="required">*</span>Date
+                        <span className="required">*</span>date
                         <input type="text" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="link">
-                        <span className="required">*</span>SoundCloud/MixCloud
+                        <span className="required">*</span>soundcloud/mixcloud
                         <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
                     {/* <label htmlFor="img">
