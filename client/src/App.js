@@ -31,7 +31,8 @@ function App() {
             <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
             <NavLink className="nav-link" to="/user">staff only.</NavLink>
           </nav>
-          <h1>etikett radio</h1>
+          <h1>etikett<br/>
+          ~radio</h1>
         </header>
 
       </div>

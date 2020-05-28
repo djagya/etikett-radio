@@ -7,6 +7,7 @@ export default function ArchiveInputForm() {
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [link, setLink] = useState("");
+    const [description, setDescription] = useState("");
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -18,6 +19,7 @@ export default function ArchiveInputForm() {
             "genre": genre,
             "date": date,
             "link": link,
+            "description": description,
         };
 
         const postData = async (url, data) => {
@@ -41,6 +43,7 @@ export default function ArchiveInputForm() {
                 setGenre("");
                 setDate("");
                 setLink("");
+                setDescription("");
                 window.location.reload()
             } else {
                 alert(data.err)
@@ -56,6 +59,7 @@ export default function ArchiveInputForm() {
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
+        console.log(input);
         switch (id) {
             case "host":
                 setHost(input)
@@ -72,6 +76,9 @@ export default function ArchiveInputForm() {
             case "link":
                 setLink(input)
                 break;
+                case "description":
+                setDescription(input)
+                break;
             default: console.log("Archive Input HandleFormInput ran through without effect")
         }
     };
@@ -82,11 +89,11 @@ export default function ArchiveInputForm() {
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
                     <label htmlFor="host">
-                        <span className="required">*</span>Host
+                        <span className="required">*</span>host
                     <input type="text" id="host" placeholder="Host" value={host} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="show">
-                        <span className="required">*</span>Show
+                        <span className="required">*</span>show
                     <input type="text" id="show" placeholder="Show" value={show} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="genre">
@@ -94,16 +101,20 @@ export default function ArchiveInputForm() {
                     <input type="text" id="genre" placeholder="Genre" value={genre} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="date">
-                        <span className="required">*</span>Date
-                    <input type="text" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
+                        <span className="required">*</span>date
+                    <input type="date" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="link">
-                        <span className="required">*</span>SoundCloud/MixCloud
+                        <span className="required">*</span>soundcloud/mixcloud
                     <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
+                    </label>
+                    <label htmlFor="description">
+                        description
+                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} >{description}</textarea>
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" /><span className="required">* Required</span>
+                    <input type="submit" value="Save" /><span className="required">* required</span>
                 </div>
             </form>
         </div>

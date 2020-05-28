@@ -9,6 +9,7 @@ export default function MusicEdit(props) {
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [link, setLink] = useState("");
+    const [description, setDescription] = useState("");
 
 
     //Get archive by id to pre-fill the form
@@ -22,6 +23,7 @@ export default function MusicEdit(props) {
                 setGenre(data.archive.genre);
                 setDate(data.archive.date);
                 setLink(data.archive.link);
+                setDescription(data.archive.description);
             })
     }, [])
 
@@ -33,7 +35,8 @@ export default function MusicEdit(props) {
             "host": host,
             "genre": genre,
             "date": date,
-            "link": link
+            "link": link,
+            "description": description
         };
         //Put request
         const putData = async (url, data) => {
@@ -76,6 +79,9 @@ export default function MusicEdit(props) {
             case "link":
                 setLink(input)
                 break;
+                case "description":
+                setDescription(input)
+                break;
             default: console.log("Archive Input HandleFormInput ran through without effect")
         }
     };
@@ -101,11 +107,15 @@ export default function MusicEdit(props) {
                     {repetitiveInputFields()}
                     <label htmlFor="date">
                         <span className="required">*</span>date
-                        <input type="text" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
+                        <input type="date" id="date" placeholder="yyyy-mm-dd" value={date.substring(0, 10)} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="link">
                         <span className="required">*</span>soundcloud/mixcloud
                         <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
+                    </label>
+                    <label htmlFor="description">
+                        description
+                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} defaultValue= {description}></textarea>
                     </label>
                     {/* <label htmlFor="img">
                         Image Link
