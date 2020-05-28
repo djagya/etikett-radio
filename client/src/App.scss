@@ -2,7 +2,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: white;
+  background-color: black;
 }
+@font-face{
+  font-family: "GaramondPro";
+  src: url("./font/AGaramondPro-Regular.otf");
+}
+
+
+
 h1 {
   margin: 3rem 0;
 }
@@ -136,8 +145,7 @@ img {
 //---------------------------------------------//
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: "GaramondPro",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -158,12 +166,10 @@ code {
 
 
 .App-header {
-  background-color: #282c34;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
