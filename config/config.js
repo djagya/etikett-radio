@@ -10,7 +10,7 @@ const devConfig = {
 };
 
 const prodConfig = {
-    db: env.MoNGO_PROD,
+    db: env.MONGO_PROD,
     jwt_key: env.S_KEY
 }
 

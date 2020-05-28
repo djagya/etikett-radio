@@ -40,5 +40,6 @@ app.use((err, req, res, next) => {
         err: err.message
     })
 })
+console.log(port);
 
 app.listen(port, () => console.log(`Server ist am been`));
