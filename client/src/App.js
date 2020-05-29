@@ -32,13 +32,13 @@ function App() {
             </nav>
           </header>
           
-          <div className="twitch">
+          {/* <div className="twitch">
             <h1>etikett<br/>~radio</h1>
             <p>twitch stream window</p>
           </div>
           <div className="info-bar">
             <h2> >>|| player controls and info bar</h2>
-          </div>
+          </div> */}
         </div>
         
         
