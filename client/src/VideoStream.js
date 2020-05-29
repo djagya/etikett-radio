@@ -61,8 +61,6 @@ export default function VideoStream(props) {
         }
     }
 
-    
-
     return (
         <section className="playerContrainer">
             <div className="embededVideo">
@@ -78,6 +76,7 @@ export default function VideoStream(props) {
                 />
                 <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div>
             </div>
+
             <section className="streamControls" ref={streamControls}>
                 <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
                 <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
