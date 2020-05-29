@@ -10,6 +10,7 @@
 .coverControls {
     background-color: transparent;
     position: absolute;
+    // Must be the same as header
     top: 6vh;
 }
 
@@ -18,13 +19,7 @@
     top: 7vh;
     left: 10px;
     transition: all 300ms ease;
-    // animation: slide 400ms ease-out;
 }
-
-// @keyframes slide {
-//     0% {left: -300px}
-//     100% {left: 10px}
-// }
 
 .streamControls {
     display: flex;
@@ -37,21 +32,7 @@
     bottom: 0;
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    bottom: calc(100vh - var(--player-height));
-}
-
-
-/* .block {
-    width: 80px;
-    background-color: var(--black);
-    z-index: 2;
-    height: 18px;
-} */
-
-.button {
+.playPauseBtn {
     border: 0;
     background: transparent;
     height: 18px;
@@ -62,15 +43,15 @@
     /* play state */
     border-style: solid;
     border-width: 9px 0 9px 18px;
-}
 
-.button.paused {
-    border-style: double;
-    border-width: 0px 0 0px 18px;
-}
+    &.paused {
+        border-style: double;
+        border-width: 0px 0 0px 18px;
+    }
 
-.button:hover {
-    border-color: transparent transparent transparent #707070;
+    &:hover {
+        border-color: transparent transparent transparent #707070;
+    }
 }
 
 .audioIcon {
@@ -87,37 +68,35 @@
     height: 4px;
     border-radius: 5px;
     width: 100px;
-}
 
-.volumeControl::-webkit-volumeControl-thumb {
-    width: 9px; 
-    height: 9px; 
-    background: #fff; 
-    border: 5px solid #313131;
-    border-radius: 50%;
-    cursor: pointer; 
-}
+    &::-webkit-volumeControl-thumb {
+        width: 9px; 
+        height: 9px; 
+        background: #fff; 
+        border: 5px solid #313131;
+        border-radius: 50%;
+        cursor: pointer; 
+    }
   
-.volumeControl::-moz-range-thumb {
-    width: 9px; 
-    height: 9px; 
-    background: #fff; 
-    border: 5px solid #313131;
-    border-radius: 50%;
-    cursor: pointer; 
+    &::-moz-range-thumb {
+        width: 9px; 
+        height: 9px; 
+        background: #fff; 
+        border: 5px solid #313131;
+        border-radius: 50%;
+        cursor: pointer; 
+    }
 }
 
+// Might use it later to display a message
+/* .block {
+    width: 80px;
+    background-color: var(--black);
+    z-index: 2;
+    height: 18px;
+} */
 /* span {
     color: #fff;
     font-size: 0.8rem;
     margin-left: 1.5rem;
 } */
-
-/* Notes:
-There is a 35px white space under the player.
-It belongs to the playerContainer. 
-*/
-
-.whiteSpace {
-    height: 2000px;
-}
