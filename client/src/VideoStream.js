@@ -10,37 +10,11 @@ export default function VideoStream() {
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audio);
-    // const [sticky, setSticky] = useState(null);
     const [width, setWidth] = useState(100);
     const [height, setHeight] = useState(94);
     const streamControls = useRef();
     const videoPlayer = useRef();
     const coverControls = useRef();
-
-    // useEffect(() => {
-    //     setSticky(streamControls.current.offsetTop);
-    //     ReactPlayer.removeCustomPlayers();
-    // }, [])
-
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll)
-    // })
-
-    // const handleScroll = () => {
-    //     if (window.pageYOffset > sticky) {
-    //         streamControls.current.classList.add('sticky');
-    //         videoPlayer.current.wrapper.classList.add('rePosition');
-    //         coverControls.current.classList.add('rePosition');
-    //         setWidth(30);
-    //         setHeight(30);
-    //     } else {
-    //         streamControls.current.classList.remove('sticky');
-    //         videoPlayer.current.wrapper.classList.remove('rePosition');
-    //         coverControls.current.classList.remove('rePosition');
-    //         setWidth(100);
-    //         setHeight(100);
-    //     }
-    // }
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -84,7 +58,7 @@ export default function VideoStream() {
                     width={`${width}%`}
                     height={`${height}vh`}
                 />
-                {/* <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div> */}
+                <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div>
             </div>
             <section className="streamControls" ref={streamControls}>
                 <button className="button paused" onClick={handlePlayBtn}></button>
