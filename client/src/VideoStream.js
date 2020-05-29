@@ -13,7 +13,7 @@ export default function VideoStream() {
     // const [sticky, setSticky] = useState(null);
     const [width, setWidth] = useState(100);
     const [height, setHeight] = useState(100);
-    // const streamControls = useRef();
+    const streamControls = useRef();
     const videoPlayer = useRef();
     const coverControls = useRef();
 

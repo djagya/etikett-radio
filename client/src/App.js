@@ -11,6 +11,7 @@ import CreateUser from './CreateUser';
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
+import VideoStream from './VideoStream';
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
               <NavLink className="nav-link" to="/user">staff only.</NavLink>
             </nav>
           </header>
+
+          <VideoStream />
           
           {/* <div className="twitch">
             <h1>etikett<br/>~radio</h1>
