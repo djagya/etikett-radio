@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactPlayer from 'react-player';
-import './videoStream.css'
+import './videoStream.scss'
 import audio from './icons/audio.png';
 import mute from './icons/mute.png';
 

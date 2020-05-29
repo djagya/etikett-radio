@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #1a1a1a;
+    --player-height: 34px;
+}
+
+.playerContainer {
+    height: calc(100vh - 34px);
+}
+
+.embededVideo {
+    position: relative;
+}
+
+.coverControls {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+}
+
+.rePosition {
+    position: fixed;
+    top: 40px;
+    left: 10px;
+    animation: slide 400ms ease-out;
+}
+
+@keyframes slide {
+    0% {left: -300px}
+    100% {left: 10px}
+}
+
+.streamControls {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--black);
+    position: absolute;
+    bottom: 0;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    bottom: calc(100vh - var(--player-height));
+}
+
+
+/* .block {
+    width: 80px;
+    background-color: var(--black);
+    z-index: 2;
+    height: 18px;
+} */
+
+.button {
+    border: 0;
+    background: transparent;
+    height: 18px;
+    border-color: transparent transparent transparent #fff;
+    transition: 100ms all ease;
+    cursor: pointer;
+  
+    /* play state */
+    border-style: solid;
+    border-width: 9px 0 9px 18px;
+}
+
+.button.paused {
+    border-style: double;
+    border-width: 0px 0 0px 18px;
+}
+
+.button:hover {
+    border-color: transparent transparent transparent #707070;
+}
+
+.audioIcon {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.volumeControl {
+    /* overwrite default look */
+    -webkit-appearance: none;
+    appearance: none;
+
+    margin-left: 1rem;
+    height: 4px;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.volumeControl::-webkit-volumeControl-thumb {
+    width: 9px; 
+    height: 9px; 
+    background: #fff; 
+    border: 5px solid #313131;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+  
+.volumeControl::-moz-range-thumb {
+    width: 9px; 
+    height: 9px; 
+    background: #fff; 
+    border: 5px solid #313131;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+
+/* span {
+    color: #fff;
+    font-size: 0.8rem;
+    margin-left: 1.5rem;
+} */
+
+/* Notes:
+There is a 35px white space under the player.
+It belongs to the playerContainer. 
+*/
+
+.whiteSpace {
+    height: 2000px;
+}
