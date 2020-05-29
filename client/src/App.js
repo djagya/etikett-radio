@@ -10,9 +10,8 @@ import LogIn from './LogIn';
 import CreateUser from './CreateUser';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
-import ArchiveInputForm from './radio-archive/ArchiveInputForm';
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
-import ArchiveEdit from './radio-archive/ArchivedShowEdit';
+import ArchiveEdit from './radio-archive/ArchiveEditForm';
 
 function App() {
 

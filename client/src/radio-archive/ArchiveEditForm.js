@@ -9,6 +9,7 @@ export default function MusicEdit(props) {
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [link, setLink] = useState("");
+    const [img, setImg] = useState("");
     const [description, setDescription] = useState("");
 
 
@@ -23,6 +24,7 @@ export default function MusicEdit(props) {
                 setGenre(data.archive.genre);
                 setDate(data.archive.date);
                 setLink(data.archive.link);
+                setImg(data.archive.img);
                 setDescription(data.archive.description);
             })
     }, [])
@@ -36,6 +38,7 @@ export default function MusicEdit(props) {
             "genre": genre,
             "date": date,
             "link": link,
+            "img": img,
             "description": description
         };
         //Put request
@@ -79,10 +82,13 @@ export default function MusicEdit(props) {
             case "link":
                 setLink(input)
                 break;
+                case "img":
+                    setImg(input)
+                    break;
                 case "description":
                 setDescription(input)
                 break;
-            default: console.log("Archive Input HandleFormInput ran through without effect")
+            default: console.log("Archive Edit HandleFormInput ran through without effect")
         }
     };
 
@@ -100,7 +106,7 @@ export default function MusicEdit(props) {
 
     return (
         <div className="input-form">
-            <h2>This is Archive Edit</h2>
+        
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
                    
@@ -113,18 +119,19 @@ export default function MusicEdit(props) {
                         <span className="required">*</span>soundcloud/mixcloud
                         <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
-                    <label htmlFor="description">
-                        description
-                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} defaultValue= {description}/>
+                    <label htmlFor="img">
+                        <span className="required">*</span>artwork
+                    <input type="text" id="img" placeholder="link" value={img} onChange={handleFormInput} />
                     </label>
-                    {/* <label htmlFor="img">
-                        Image Link
-                    <input type="text" id="img" placeholder="Link to artwork" value={img} onChange={handleFormInput} />
-                    </label> */}
+                    <label className="describe" htmlFor="description">
+                        description
+                    <textarea type="text" id="description" placeholder="Describe the show (e.g. discussed topics, featured artists, track list etc.)" onChange={handleFormInput} defaultValue={description} />
+                    </label>
                 </div>
                 <div className="submit-button">
                     <input type="submit" value="Update" /><span className="required">* Required</span>
                 </div>
+                <button type="button" onClick={() => redirect()}>cancel</button>
             </form>
         </div>
     )

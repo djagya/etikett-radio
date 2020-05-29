@@ -6,7 +6,7 @@ export default function Delete(checkedIDs, route) {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
+                    // "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNmODU2MzZiMzg2ZTFkYmM3MjNkMDEiLCJpYXQiOjE1OTA2NTg0MDN9.3EV5TvniP9UCJ1eOZ3ebnrZmH39YWp3PGYSWTAMegro"
                 },
             })
             return response.json()

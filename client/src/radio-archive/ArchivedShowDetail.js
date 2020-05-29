@@ -18,7 +18,6 @@ export default function ArchiveDetail(props) {
             <ul className="list-right">
                 <li>{archiveData.genre}</li>
                 <li>{archiveData.date.substring(0, 10)}</li>
-                <li><q>{archiveData.description}</q></li>
             </ul>
         )
 
@@ -28,7 +27,9 @@ export default function ArchiveDetail(props) {
 
     return (
         <div className="archive-details-page">
+            <Link to={`/archive`}>back to archive</Link>
             <h2>{archiveData.show} by {archiveData.host}</h2>
+            <q>{archiveData.description}</q>
             <div className="archive-details">
                 <ul>
                     <li>genre: </li>
@@ -39,7 +40,6 @@ export default function ArchiveDetail(props) {
             <a target="_blank" href={archiveData.link}>listen back </a>
             <img src="https://i1.sndcdn.com/artworks-000628067209-ok0ojf-t500x500.jpg" alt="Show Image Here" />
             <Link to={`/${param}/edit`}>edit</Link>
-            <Link to={`/archive`}>back to archive</Link>
         </div>
     )
 }

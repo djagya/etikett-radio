@@ -7,6 +7,7 @@ export default function ArchiveInputForm() {
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [link, setLink] = useState("");
+    const [img, setImg] = useState("");
     const [description, setDescription] = useState("");
 
     const handleSubmit = event => {
@@ -19,6 +20,7 @@ export default function ArchiveInputForm() {
             "genre": genre,
             "date": date,
             "link": link,
+            "img": img,
             "description": description,
         };
 
@@ -43,6 +45,7 @@ export default function ArchiveInputForm() {
                 setGenre("");
                 setDate("");
                 setLink("");
+                setImg("");
                 setDescription("");
                 window.location.reload()
             } else {
@@ -76,6 +79,9 @@ export default function ArchiveInputForm() {
             case "link":
                 setLink(input)
                 break;
+                case "img":
+                    setImg(input)
+                    break;
                 case "description":
                 setDescription(input)
                 break;
@@ -107,9 +113,13 @@ export default function ArchiveInputForm() {
                         <span className="required">*</span>soundcloud/mixcloud
                     <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
-                    <label htmlFor="description">
+                    <label htmlFor="img">
+                        <span className="required">*</span>artwork
+                    <input type="text" id="img" placeholder="link" value={img} onChange={handleFormInput} />
+                    </label>
+                    <label className="describe" htmlFor="description">
                         description
-                    <textarea type="text" id="description" placeholder="Describe the show" onChange={handleFormInput} defaultValue={description} />
+                    <textarea type="text" id="description" placeholder="Describe the show (e.g. discussed topics, featured artists, track list etc.)" onChange={handleFormInput} defaultValue={description} />
                     </label>
                 </div>
                 <div className="submit-button">
