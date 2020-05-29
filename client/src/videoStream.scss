@@ -1,27 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
     --black: #1a1a1a;
     --player-height: 34px;
 }
 
 .playerContainer {
-    height: calc(100vh - 34px);
-}
-
-.embededVideo {
-    position: relative;
-}
-
-.coverControls {
-    background-color: transparent;
+    height: calc(100vh - 34px - 29px);
     position: absolute;
-    top: 0;
+    top: -500px;
 }
+
+
+// .coverControls {
+//     background-color: transparent;
+//     position: absolute;
+//     top: 0;
+// }
 
 .rePosition {
     position: fixed;
@@ -38,6 +31,7 @@
 .streamControls {
     display: flex;
     width: 100%;
+    height: 34px;
     align-items: center;
     padding: 0.5rem;
     background-color: var(--black);

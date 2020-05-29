@@ -12,7 +12,7 @@ export default function VideoStream() {
     const [icon, setIcon] = useState(audio);
     // const [sticky, setSticky] = useState(null);
     const [width, setWidth] = useState(100);
-    const [height, setHeight] = useState(100);
+    const [height, setHeight] = useState(94);
     const streamControls = useRef();
     const videoPlayer = useRef();
     const coverControls = useRef();
@@ -77,8 +77,6 @@ export default function VideoStream() {
             <div className="embededVideo">
                 <ReactPlayer 
                     url="https://www.twitch.tv/chillhopmusic"
-                    // url="http://localhost:8888/live/123/index.m3u8"
-                    // url="https://protected-scrubland-25632.herokuapp.com/"
                     playing={playing} 
                     volume={parseFloat(volume)} 
                     muted={muted}
@@ -86,7 +84,7 @@ export default function VideoStream() {
                     width={`${width}%`}
                     height={`${height}vh`}
                 />
-                <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div>
+                {/* <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div> */}
             </div>
             <section className="streamControls" ref={streamControls}>
                 <button className="button paused" onClick={handlePlayBtn}></button>
