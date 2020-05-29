@@ -2,7 +2,6 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 //Page General Related
-import Home from "./Home";
 import Error from "./Error404";
 //User Account Related
 import AccountManager from "./AccountManager";
@@ -21,23 +20,29 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header className="App-header">
-          <nav>
-            <NavLink className="nav-link" to="/">home.</NavLink>
-            <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
-            <NavLink className="nav-link" to="/archive">archive.</NavLink>
-            <NavLink className="nav-link" to="/blog">blog.</NavLink>
-            <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
-            <NavLink className="nav-link" to="/user">staff only.</NavLink>
-          </nav>
-          <h1>etikett<br/>
-          ~radio</h1>
-        </header>
-
-      </div>
-      <Switch>
-        {/* General Page Related */}
-        <Route exact path="/" component={Home} />
+        <div className="stream-page">
+          <header className="App-header">
+            <nav>
+              <NavLink className="nav-link" to="/">home.</NavLink>
+              <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
+              <NavLink className="nav-link" to="/archive">archive.</NavLink>
+              <NavLink className="nav-link" to="/blog">blog.</NavLink>
+              <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+              <NavLink className="nav-link" to="/user">staff only.</NavLink>
+            </nav>
+          </header>
+          
+          <div className="twitch">
+            <h1>etikett<br/>~radio</h1>
+            <p>twitch stream window</p>
+          </div>
+          <div className="info-bar">
+            <h2> >>|| player controls and info bar</h2>
+          </div>
+        </div>
+        
+        
+        <Switch>
         {/* User Related */}
         <Route exact path="/user" component={AccountManager} />
         <Route exact path="/user/login" component={LogIn} />
@@ -48,7 +53,13 @@ function App() {
         <Route exact path="/:id/edit" component={ArchiveEdit} />
         {/* Fallback to Error Page */}
         <Route component={Error} />
-      </Switch>
+        </Switch>
+        <footer>
+          Footer
+        </footer>
+
+      </div>
+      
 
     </BrowserRouter>
   );
