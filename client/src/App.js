@@ -46,16 +46,16 @@ function App() {
         
         
         <Switch>
-        {/* User Related */}
-        <Route exact path="/user" component={AccountManager} />
-        <Route exact path="/user/login" component={LogIn} />
-        <Route exact path="/user/createuser" component={CreateUser} />
-        {/* Archive Related */}
-        <Route exact path="/archive" component={ArchiveList} />
-        <Route exact path="/archive/:id" component={ArchiveDetail} />
-        <Route exact path="/:id/edit" component={ArchiveEdit} />
-        {/* Fallback to Error Page */}
-        <Route component={Error} />
+          {/* User Related */}
+          <Route exact path="/user" component={AccountManager} />
+          <Route exact path="/user/login" component={LogIn} />
+          <Route exact path="/user/createuser" component={CreateUser} />
+          {/* Archive Related */}
+          <Route exact path="/archive" component={ArchiveList} />
+          <Route exact path="/archive/:id" component={ArchiveDetail} />
+          <Route exact path="/:id/edit" component={ArchiveEdit} />
+          {/* Fallback to Error Page */}
+          <Route component={Error} />
         </Switch>
         <footer>
           Footer

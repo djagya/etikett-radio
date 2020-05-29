@@ -4,7 +4,7 @@ import './videoStream.scss'
 import audio from './icons/audio.png';
 import mute from './icons/mute.png';
 
-export default function VideoStream() {
+export default function VideoStream(props) {
 
     const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
