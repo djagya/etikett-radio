@@ -3,12 +3,9 @@
     --player-height: 34px;
 }
 
-.playerContainer {
-    height: calc(100vh - 34px - 29px);
-    position: absolute;
-    top: -500px;
+.ReactPlayer {
+    transition: all 300ms ease;
 }
-
 
 .coverControls {
     background-color: transparent;
@@ -18,15 +15,16 @@
 
 .rePosition {
     position: fixed;
-    top: 40px;
+    top: 7vh;
     left: 10px;
-    animation: slide 400ms ease-out;
+    transition: all 300ms ease;
+    // animation: slide 400ms ease-out;
 }
 
-@keyframes slide {
-    0% {left: -300px}
-    100% {left: 10px}
-}
+// @keyframes slide {
+//     0% {left: -300px}
+//     100% {left: 10px}
+// }
 
 .streamControls {
     display: flex;

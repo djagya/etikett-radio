@@ -13,10 +13,7 @@ import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
 import VideoStream from './VideoStream';
 
-function App() {
-
-
-
+function App(props) {
 
   return (
     <BrowserRouter>
@@ -33,7 +30,7 @@ function App() {
             </nav>
           </header>
 
-          <VideoStream />
+          
           
           {/* <div className="twitch">
             <h1>etikett<br/>~radio</h1>
@@ -46,6 +43,7 @@ function App() {
         
         
         <Switch>
+          <VideoStream />
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
           <Route exact path="/user/login" component={LogIn} />

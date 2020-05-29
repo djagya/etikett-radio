@@ -6,6 +6,21 @@ import mute from './icons/mute.png';
 
 export default function VideoStream(props) {
 
+    useEffect(() => {
+        if (window.location.pathname !== '/') {
+            videoPlayer.current.wrapper.classList.add('rePosition');
+            coverControls.current.classList.add('rePosition');
+            setWidth(20);
+            setHeight(20);
+        } else {
+            videoPlayer.current.wrapper.classList.remove('rePosition');
+            coverControls.current.classList.remove('rePosition');
+            setWidth(100);
+            setHeight(94);
+        }
+
+    }, [window.location.pathname])
+
     const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
@@ -46,10 +61,13 @@ export default function VideoStream(props) {
         }
     }
 
+    
+
     return (
         <section className="playerContrainer">
             <div className="embededVideo">
                 <ReactPlayer 
+                    className="ReactPlayer"
                     url="https://www.twitch.tv/chillhopmusic"
                     playing={playing} 
                     volume={parseFloat(volume)} 
