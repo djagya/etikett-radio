@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const { encrypt, compare } = require("../lib/encrypt");
 const { Schema } = mongoose;
-const AddressSchema = require("./addressSchema");
 
 const UserSchema = new Schema(
     {
@@ -13,14 +12,13 @@ const UserSchema = new Schema(
         pw: { type: String, required: true },
         role: {
             type: String,
-            enum: ["Admin", "Artist", "User"],
+            enum: ["Admin", "Host"],
             default: "User",
             required: true
         },
         tokens: [{
             token: { type: String, required: true }
-        }],
-        address: AddressSchema
+        }]
     }
 );
 

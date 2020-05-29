@@ -5,7 +5,7 @@ const auth = require("../middleware/tokenAuthenticator");
 const isAdmin = require("../middleware/rolesAuthenticator");
 
 Route.get("/", auth, isAdmin, getUser);
-Route.post("/signup", validUserInputs(), postUser);
+Route.post("/createuser", validUserInputs(), postUser);
 Route.post("/login", auth, login)
 //Alternative syntax for practice purposes
 Route.route("/:id")

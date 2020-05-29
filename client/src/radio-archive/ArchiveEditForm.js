@@ -1,68 +1,71 @@
-import React, { useState } from 'react'
-// const createError = require("http-errors");
+import React, { useState, useEffect } from 'react';
 
-export default function ArchiveInputForm() {
-    const [host, setHost] = useState("");
+export default function MusicEdit(props) {
+
+    const [archiveData, setArchiveData] = useState({})
+    const id = props.match.params.id
     const [show, setShow] = useState("");
+    const [host, setHost] = useState("");
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [link, setLink] = useState("");
     const [img, setImg] = useState("");
     const [description, setDescription] = useState("");
 
+
+    //Get archive by id to pre-fill the form
+    useEffect(() => {
+        fetch(`http://localhost:3000/archive/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setArchiveData(data.archive);
+                setShow(data.archive.show);
+                setHost(data.archive.host);
+                setGenre(data.archive.genre);
+                setDate(data.archive.date);
+                setLink(data.archive.link);
+                setImg(data.archive.img);
+                setDescription(data.archive.description);
+            })
+    }, [])
+
     const handleSubmit = event => {
         event.preventDefault()
-
         //POST request
         const body = {
-            "host": host,
             "show": show,
+            "host": host,
             "genre": genre,
             "date": date,
             "link": link,
             "img": img,
-            "description": description,
+            "description": description
         };
-
-        const postData = async (url, data) => {
+        //Put request
+        const putData = async (url, data) => {
             const response = await fetch(url, {
-                method: "POST",
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    // "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
                 },
                 body: JSON.stringify(data)
             })
             return response.json()
         }
-        postData("http://localhost:3000/archive/post", body)
-            .then(data => { resetForm(data) })
+        putData(`http://localhost:3000/archive/${id}`, body)
+            .then(data => { if (!data.success) { console.log(data) } })
+            .then(redirect())
 
-        const resetForm = (data) => {
-            if (data.success) {
-                setHost("");
-                setShow("");
-                setGenre("");
-                setDate("");
-                setLink("");
-                setImg("");
-                setDescription("");
-                window.location.reload()
-            } else {
-                alert(data.err)
-            }
-            console.log(data)
-        }
     }
 
-
-
-
+    const redirect = () => {
+        console.log("update done")
+        props.history.push(`/archive/${id}`)
+    };
 
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
-        console.log(input);
         switch (id) {
             case "host":
                 setHost(input)
@@ -85,12 +88,14 @@ export default function ArchiveInputForm() {
                 case "description":
                 setDescription(input)
                 break;
-            default: console.log("Archive Input HandleFormInput ran through without effect")
+            default: console.log("Archive Edit HandleFormInput ran through without effect")
         }
     };
+
+
     const repetitiveInputFields = () => {
         const fields = ["show", "host", "genre"];
-        const value = [show, host, genre];
+        const value = [show, host, genre]
         return fields.map((field, i) => (
                 <label key={i} htmlFor={field}>
                     <span className="required">*</span>{field}
@@ -98,20 +103,21 @@ export default function ArchiveInputForm() {
                 </label>
             ));
     };
+
     return (
         <div className="input-form">
-            <h2>Archive Show</h2>
+        
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
-                    
+                   
                     {repetitiveInputFields()}
                     <label htmlFor="date">
                         <span className="required">*</span>date
-                    <input type="date" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
-                    </label> 
+                        <input type="date" id="date" placeholder="yyyy-mm-dd" value={date.substring(0, 10)} onChange={handleFormInput} />
+                    </label>
                     <label htmlFor="link">
                         <span className="required">*</span>soundcloud/mixcloud
-                    <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
+                        <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="img">
                         <span className="required">*</span>artwork
@@ -123,8 +129,9 @@ export default function ArchiveInputForm() {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" /><span className="required">* required</span>
+                    <input type="submit" value="Update" /><span className="required">* Required</span>
                 </div>
+                <button type="button" onClick={() => redirect()}>cancel</button>
             </form>
         </div>
     )

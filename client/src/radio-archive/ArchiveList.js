@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import MusicInputForm from "./ArchiveInputForm"
 import Delete from "../Delete"
 
 export default function ArchiveList() {
 
     const [checkedIDs, setCheckedIDs] = useState([]);
     const [archiveData, setArchiveData] = useState([]);
+    const [showForm, setShowForm] = useState(false)
 
     useEffect(() => {
         fetch("http://localhost:3000/archive")
@@ -21,9 +23,9 @@ export default function ArchiveList() {
 
             <li key={i}>
                 <ul className="archive-list">
-                    <li><Link to={`archive/${el._id}`}>{el.title}</Link></li>
+                <li className="img-container"><img src="//static1.squarespace.com/static/5874cd56b3db2b6aef0ec2aa/t/5db216f523792f1e968351b5/1590509650732/?format=1500w" alt="Show Artwork"/></li>
+                    <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
-                    <li>{el.show}</li>
                     <li>{el.genre}</li>
                     <li>{el.date.substring(0, 10)}</li>
                     <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
@@ -42,8 +44,11 @@ export default function ArchiveList() {
             const filteredIDs = checkedIDs.filter(el => el !== id);
             setCheckedIDs(filteredIDs)
         }
-    }
+    };
 
+    const handleAdd = boolean => {
+        setShowForm(boolean)
+    };
     //Delete the deleted Item from archiveData to make it disappear without refreshing the page
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
@@ -59,31 +64,36 @@ export default function ArchiveList() {
         }
         setArchiveData(filteredArchiveData)
         //delete from db
-        Delete(checkedIDs)
+        Delete(checkedIDs, "archive")
 
         //reset Array of checkedID's
         setCheckedIDs([]);
     }
-    console.log("test");
 
     return (
         <div className="archive-list-page">
             <div>
-                <h2>Archive</h2>
+                <h2>archive</h2>
                 <div className="archive-menu">
-                    <Link to="/archive/post"> Add New Track </Link>
+                {showForm ? 
+                <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
+                <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                }
                 </div>
+                {showForm ? <MusicInputForm /> : null}
                 <ul className="list-header">
-                    <li><h3>Host</h3></li>
-                    <li><h3>Show</h3></li>
-                    <li><h3>Genre</h3></li>
-                    <li><h3>Date</h3></li>
+                    {/* <li></li> Placeholder item for show artwork */}
+                    <li>sorted by:</li>
+                    <li>show</li>
+                    <li>host</li>
+                    <li>genre</li>
+                    <li>date</li>
                 </ul>
                 <ul>
                     {renderLi(archiveData)}
                 </ul>
                 <div className="delete-btn">
-                    <button type="button" onClick={() => handleDelete(checkedIDs)}>Delete Checked</button>
+                    <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                 </div>
             </div>
         </div>

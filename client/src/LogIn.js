@@ -19,9 +19,7 @@ export default function LogIn() {
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
-                    // "Accept": "application/json",
-                    "Content-Type": "application/json",
-                    "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
             })
@@ -34,6 +32,7 @@ export default function LogIn() {
 
     const resetForm = (data) => {
         if (data.success) {
+            // window.localStorage.setItem("x-auth", value);
             setEmail("");
             setPw("");
             alert("Log In successful, you might want to redirect your user to the music DB tho")
@@ -65,16 +64,16 @@ export default function LogIn() {
             <form onSubmit={handleSubmit}>
                 <div className="grid-container">
                     <label htmlFor="email">
-                        <span className="required">*</span>Email
+                        <span className="required">*</span>email
                     <input type="text" id="email" placeholder="Email" value={email} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="pw">
-                        <span className="required">*</span>Password
+                        <span className="required">*</span>password
                     <input type="text" id="pw" placeholder="Password" value={pw} onChange={handleFormInput} />
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Log In" /><span className="required">* Required</span>
+                    <input type="submit" value="Log In" /><span className="required">* required</span>
                 </div>
             </form>
         </div>

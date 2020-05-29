@@ -3,16 +3,17 @@ const app = express();
 const createError = require("http-errors");
 const mongoose = require("mongoose");
 const { setCors } = require("./middleware/security");
+const dot = require("dotenv");
+dot.config();
+const env = require("./config/config")
 
 const indexRoute = require("./routes/indexRoute");
-const musicRoute = require("./routes/musicRoute");
-const ordersRoute = require("./routes/ordersRoute");
+const archiveRoute = require("./routes/archiveRoute");
 const usersRoute = require("./routes/usersRoute");
 
 const port = process.env.PORT || 3000;
 
-
-mongoose.connect("mongodb://127.0.0.1:27017/music-collection", {
+mongoose.connect(env.db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -21,11 +22,10 @@ mongoose.connection.on("error", (err) => console.log(err));
 mongoose.connection.on("open", () => console.log("db connected"));
 
 app.use(express.json());
-app.use(setCors);
+app.use(setCors); //middleware to use setCors on all routes
 
 app.use("/", indexRoute);
-app.use("/music", musicRoute);
-app.use("/orders", ordersRoute);
+app.use("/archive", archiveRoute);
 app.use("/users", usersRoute);
 
 
@@ -40,5 +40,6 @@ app.use((err, req, res, next) => {
         err: err.message
     })
 })
+console.log(port);
 
 app.listen(port, () => console.log(`Server ist am been`));
