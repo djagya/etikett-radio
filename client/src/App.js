@@ -31,6 +31,7 @@ function App(props) {
           </header>
 
           
+          <VideoStream />
           
           {/* <div className="twitch">
             <h1>etikett<br/>~radio</h1>
@@ -43,7 +44,6 @@ function App(props) {
         
         
         <Switch>
-          <VideoStream />
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
           <Route exact path="/user/login" component={LogIn} />
