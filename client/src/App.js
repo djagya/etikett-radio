@@ -11,11 +11,9 @@ import CreateUser from './CreateUser';
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
+import VideoStream from './VideoStream';
 
-function App() {
-
-
-
+function App(props) {
 
   return (
     <BrowserRouter>
@@ -31,28 +29,31 @@ function App() {
               <NavLink className="nav-link" to="/user">staff only.</NavLink>
             </nav>
           </header>
+
           
-          <div className="twitch">
+          
+          {/* <div className="twitch">
             <h1>etikett<br/>~radio</h1>
             <p>twitch stream window</p>
           </div>
           <div className="info-bar">
             <h2> >>|| player controls and info bar</h2>
-          </div>
+          </div> */}
         </div>
         
         
         <Switch>
-        {/* User Related */}
-        <Route exact path="/user" component={AccountManager} />
-        <Route exact path="/user/login" component={LogIn} />
-        <Route exact path="/user/createuser" component={CreateUser} />
-        {/* Archive Related */}
-        <Route exact path="/archive" component={ArchiveList} />
-        <Route exact path="/archive/:id" component={ArchiveDetail} />
-        <Route exact path="/:id/edit" component={ArchiveEdit} />
-        {/* Fallback to Error Page */}
-        <Route component={Error} />
+          <VideoStream />
+          {/* User Related */}
+          <Route exact path="/user" component={AccountManager} />
+          <Route exact path="/user/login" component={LogIn} />
+          <Route exact path="/user/createuser" component={CreateUser} />
+          {/* Archive Related */}
+          <Route exact path="/archive" component={ArchiveList} />
+          <Route exact path="/archive/:id" component={ArchiveDetail} />
+          <Route exact path="/:id/edit" component={ArchiveEdit} />
+          {/* Fallback to Error Page */}
+          <Route component={Error} />
         </Switch>
         <footer>
           Footer

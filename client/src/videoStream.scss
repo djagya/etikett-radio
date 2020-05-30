@@ -1,0 +1,102 @@
+:root {
+    --black: #1a1a1a;
+    --player-height: 34px;
+}
+
+.ReactPlayer {
+    transition: all 300ms ease;
+}
+
+.coverControls {
+    background-color: transparent;
+    position: absolute;
+    // Must be the same as header
+    top: 6vh;
+}
+
+.rePosition {
+    position: fixed;
+    top: 7vh;
+    left: 10px;
+    transition: all 300ms ease;
+}
+
+.streamControls {
+    display: flex;
+    width: 100%;
+    height: 34px;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--black);
+    position: absolute;
+    bottom: 0;
+}
+
+.playPauseBtn {
+    border: 0;
+    background: transparent;
+    height: 18px;
+    border-color: transparent transparent transparent #fff;
+    transition: 100ms all ease;
+    cursor: pointer;
+  
+    /* play state */
+    border-style: solid;
+    border-width: 9px 0 9px 18px;
+
+    &.paused {
+        border-style: double;
+        border-width: 0px 0 0px 18px;
+    }
+
+    &:hover {
+        border-color: transparent transparent transparent #707070;
+    }
+}
+
+.audioIcon {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.volumeControl {
+    /* overwrite default look */
+    -webkit-appearance: none;
+    appearance: none;
+
+    margin-left: 1rem;
+    height: 4px;
+    border-radius: 5px;
+    width: 100px;
+
+    &::-webkit-volumeControl-thumb {
+        width: 9px; 
+        height: 9px; 
+        background: #fff; 
+        border: 5px solid #313131;
+        border-radius: 50%;
+        cursor: pointer; 
+    }
+  
+    &::-moz-range-thumb {
+        width: 9px; 
+        height: 9px; 
+        background: #fff; 
+        border: 5px solid #313131;
+        border-radius: 50%;
+        cursor: pointer; 
+    }
+}
+
+// Might use it later to display a message
+/* .block {
+    width: 80px;
+    background-color: var(--black);
+    z-index: 2;
+    height: 18px;
+} */
+/* span {
+    color: #fff;
+    font-size: 0.8rem;
+    margin-left: 1.5rem;
+} */
