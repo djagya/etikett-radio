@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import './videoStream.scss'
 import audio from './icons/audio.png';
 import mute from './icons/mute.png';
+import { NavLink } from 'react-router-dom';
 
 export default function VideoStream(props) {
 
@@ -63,13 +64,21 @@ export default function VideoStream(props) {
 
     return (
         <section className="playerContrainer">
+            <nav>
+              <NavLink className="nav-link" to="/">home.</NavLink>
+              <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
+              <NavLink className="nav-link" to="/archive">archive.</NavLink>
+              <NavLink className="nav-link" to="/blog">blog.</NavLink>
+              <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+              <NavLink className="nav-link" to="/user">staff only.</NavLink>
+            </nav>
             <div className="embededVideo">
                 <ReactPlayer 
                     className="ReactPlayer"
                     url="https://www.twitch.tv/chillhopmusic"
                     playing={playing} 
                     volume={parseFloat(volume)} 
-                    muted={muted}
+                    muted={false}
                     ref={videoPlayer}
                     width={`${width}%`}
                     height={`${height}vh`}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //Page General Related
 import Error from "./Error404";
 //User Account Related
@@ -19,20 +19,9 @@ function App(props) {
     <BrowserRouter>
       <div className="App">
         <div className="stream-page">
-          <header className="App-header">
-            <nav>
-              <NavLink className="nav-link" to="/">home.</NavLink>
-              <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
-              <NavLink className="nav-link" to="/archive">archive.</NavLink>
-              <NavLink className="nav-link" to="/blog">blog.</NavLink>
-              <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
-              <NavLink className="nav-link" to="/user">staff only.</NavLink>
-            </nav>
-          </header>
-
-          
+        <header>
           <VideoStream />
-          
+        </header>
           {/* <div className="twitch">
             <h1>etikett<br/>~radio</h1>
             <p>twitch stream window</p>
