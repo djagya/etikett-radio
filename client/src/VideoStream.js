@@ -83,13 +83,13 @@ function VideoStream(props) {
             </section>
 
             <section className="stream-controls">
-                <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
-                <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
-                <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
+                {/* <button className="playPauseBtn paused" onClick={handlePlayBtn}></button> */}
+                {/* <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} /> */}
+                {/* <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} /> */}
+                <span>etikett radio - stream description</span>
                 
                 {/* Options */}
                 {/* Message with stream title and description: */}
-                {/* <span>etikett radio - stream description</span> */}
                 {/* Show news like feed/updates */}
                 {/* <div className="block"></div> */}
 
