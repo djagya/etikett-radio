@@ -3,8 +3,9 @@ import ReactPlayer from 'react-player';
 import './videoStream.scss'
 import audio from './icons/audio.png';
 import mute from './icons/mute.png';
+import {withRouter} from 'react-router-dom';
 
-export default function VideoStream(props) {
+function VideoStream(props) {
 
     useEffect(() => {
         if (window.location.pathname !== '/') {
@@ -92,3 +93,5 @@ export default function VideoStream(props) {
         </section>
     )
 }
+
+export default withRouter(VideoStream);
