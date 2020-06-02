@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
-// import './videoStream.scss';
 import './App.scss'
 import audio from './icons/audio.png';
 import mute from './icons/mute.png';
@@ -10,9 +9,9 @@ function VideoStream(props) {
 
     useEffect(() => {
         if (props.location.pathname !== '/') {
-            setHeaderSize('small-header')
+            setHeaderSize('small-header');
         } else {
-            setHeaderSize('full-header')
+            setHeaderSize('full-header');
         }
 
     }, [props.location.pathname])
@@ -22,9 +21,8 @@ function VideoStream(props) {
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audio);
     const [headerSize, setHeaderSize] = useState('');
-    // const streamControls = useRef();
-    // const videoPlayer = useRef();
-    // const coverControls = useRef();
+    const [streamUrl, setStreamUrl] = useState('');
+    const videoPlayer = useRef();
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -75,23 +73,21 @@ function VideoStream(props) {
                     playing={playing} 
                     volume={parseFloat(volume)} 
                     muted={muted}
-                    // ref={videoPlayer}
+                    ref={videoPlayer}
                     width="100%"
                     height="100%"
                 />
-                {/* <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div> */}
             </section>
 
-            <section className="stream-controls">
-                {/* <button className="playPauseBtn paused" onClick={handlePlayBtn}></button> */}
-                {/* <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} /> */}
-                {/* <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} /> */}
-                <span>etikett radio - stream description</span>
-                
-                {/* Options */}
-                {/* Message with stream title and description: */}
-                {/* Show news like feed/updates */}
-                {/* <div className="block"></div> */}
+            <section className="message-controls-container">
+                <div className="controls">
+                    <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
+                    <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
+                    <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
+                </div>
+                <div className="message">
+                    <span>etikett radio - stream description</span>
+                </div>
 
             </section>
         </header>
