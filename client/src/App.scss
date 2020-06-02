@@ -61,10 +61,11 @@ footer {
   align-items: center;
   .grid-container {
   display: grid;
+  text-align: left;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 1rem;
-  width: 800px;
+  width: 600px;
 
     label {
       input {
@@ -187,6 +188,16 @@ a {
   display: flex;
   justify-content: center;
   
+  .blog-content {
+    max-width: 600px;
+    
+    text-align: left;
+  }
+  .blog-list {
+    h2 {
+      text-align: left;
+    }
+  }
     li {
       align-self: center;
     }
