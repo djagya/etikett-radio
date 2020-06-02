@@ -33,7 +33,7 @@ export default function ArchiveList() {
             </li>
         ));
     };
-    //Add ID's to array which will get passed to DeleteArchive by the Delete Checked button
+    
     const handleIDs = (event) => {
         const checked = event.target.checked
         const id = event.target.name
@@ -74,7 +74,7 @@ export default function ArchiveList() {
         <div className="archive-list-page">
             <div>
                 <h2>archive</h2>
-                <div className="archive-menu">
+                <div className="add-button">
                 {showForm ? 
                 <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
                 <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 

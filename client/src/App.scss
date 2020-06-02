@@ -53,7 +53,7 @@ footer {
 }
 
 ///////////////////////////////////
-//      Archive Input Form
+//          Input Forms
 ///////////////////////////////////
 .input-form {
   display: flex;
@@ -100,31 +100,31 @@ footer {
     }
 }
 
-///////////////////////////////////
-//      Blog Input Form
-///////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////
-//          Archive List
-///////////////////////////////////
-.archive-menu {
+.add-button {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
 }
+
+.delete-btn {
+  display: flex;
+  justify-content: flex-end;
+  height: 2rem;
+  button {
+    height: 100%;
+    padding: 0 5px;
+    font-size: 1rem;
+  }
+}
+
+.check-delete {
+  width: 20px;
+  height: 20px;
+}
+///////////////////////////////////
+//          Archive Page
+///////////////////////////////////
+
 
 
 .archive-list-page {
@@ -173,23 +173,28 @@ li {
   margin-bottom: 5px;
   font-size: 1.1rem;
 }
-.check-delete {
-  width: 20px;
-  height: 20px;
-}
-.delete-btn {
-  display: flex;
-  justify-content: flex-end;
-  height: 2rem;
-  button {
-    height: 100%;
-    padding: 0 5px;
-    font-size: 1rem;
-  }
-}
+
+
 a {
   margin: 1rem 0;
 }
+
+///////////////////////////////////
+//          Blog Page
+///////////////////////////////////
+
+.blog-page {
+  display: flex;
+  justify-content: center;
+  
+    li {
+      align-self: center;
+    }
+  
+}
+
+
+
 
 // Fran: This was making all images 500px wide
 // img {
