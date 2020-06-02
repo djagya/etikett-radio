@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {Alert} from "react-native"
 import BlogInputForm from './BlogInputForm';
 import Delete from "../Delete"
 
@@ -11,7 +10,7 @@ export default function Blog() {
     useEffect(() => {
         fetch("http://localhost:3000/blog")
             .then(res => res.json())
-            .then(data => setBlogData(data.blog))
+            .then(data => setBlogData(data.blog)) 
     }, [])
     //list item construction
     const renderLi = (blogData) => {
@@ -50,12 +49,17 @@ export default function Blog() {
     const handleEdit = boolean => {
         setShowEdit(boolean)
     };
+
+    
+    
+
     const handleDelete = (id, heading) => {
         console.log(id)
 
-        
-            
-            //filter copy of blog data based on checkedID and set the new state
+        const check = window.confirm(`You really want to delete "${heading}"?`);
+
+        if (check) {
+           //filter copy of blog data based on checkedID and set the new state
             let filteredBlogData = [...blogData].filter(el => el._id !== id);
 
             setBlogData(filteredBlogData)
@@ -63,12 +67,13 @@ export default function Blog() {
             console.log(blogData)
             //delete from db
             Delete([id], "blog")
-       
-
-
+            } else {
+                return null
+            }
+    }
 
         
-    }
+    
         return (
 
             <div className="blog-page">
