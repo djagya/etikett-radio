@@ -10,15 +10,9 @@ function VideoStream(props) {
 
     useEffect(() => {
         if (props.location.pathname !== '/') {
-            videoPlayer.current.wrapper.classList.add('rePosition');
-            // coverControls.current.classList.add('rePosition');
-            setWidth(20);
-            setHeight(20);
+            setHeaderSize('small-header')
         } else {
-            videoPlayer.current.wrapper.classList.remove('rePosition');
-            // coverControls.current.classList.remove('rePosition');
-            setWidth(100);
-            setHeight(94);
+            setHeaderSize('full-header')
         }
 
     }, [props.location.pathname])
@@ -27,10 +21,9 @@ function VideoStream(props) {
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audio);
-    const [width, setWidth] = useState(100);
-    const [height, setHeight] = useState(94);
-    const streamControls = useRef();
-    const videoPlayer = useRef();
+    const [headerSize, setHeaderSize] = useState('');
+    // const streamControls = useRef();
+    // const videoPlayer = useRef();
     // const coverControls = useRef();
 
     const handlePlayBtn = e => {
@@ -64,7 +57,8 @@ function VideoStream(props) {
     }
 
     return (
-        <header className="App-header full-size">
+        <header className={`App-header ${headerSize}`}>
+
             <nav>
                 <NavLink className="nav-link" to="/">home.</NavLink>
                 <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
@@ -74,21 +68,21 @@ function VideoStream(props) {
                 <NavLink className="nav-link" to="/user">staff only.</NavLink>
             </nav>
 
-            <section className="embededVideo">
+            <section className="embeded-video">
                 <ReactPlayer 
                     className="ReactPlayer"
                     url="https://www.twitch.tv/chillhopmusic"
                     playing={playing} 
                     volume={parseFloat(volume)} 
                     muted={muted}
-                    ref={videoPlayer}
-                    width={`${width}%`}
-                    height={`${height}vh`}
+                    // ref={videoPlayer}
+                    width="100%"
+                    height="100%"
                 />
                 {/* <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div> */}
             </section>
 
-            <section className="streamControls" ref={streamControls}>
+            <section className="stream-controls">
                 <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
                 <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                 <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
@@ -100,7 +94,6 @@ function VideoStream(props) {
                 {/* <div className="block"></div> */}
 
             </section>
-
         </header>
     )
 }
