@@ -16,8 +16,9 @@ export default function Blog() {
     const renderLi = (blogData) => {
         if (blogData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (blogData.length === 0) return null; 
+        const reversedData = blogData.reverse();
 
-        return blogData.map((el, i) => (
+        return reversedData.map((el, i) => (
             <li key={i} className="blog-list">
 
                 <div className="button-container archive-controls">

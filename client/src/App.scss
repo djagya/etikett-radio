@@ -193,10 +193,13 @@ a {
     h2 {
       text-align: left;
     }
-  }
-    li {
-      align-self: center;
+    .article-header {
+      display: flex;
+      justify-content: space-between;
     }
+  }
+    
+  
   
 }
 
