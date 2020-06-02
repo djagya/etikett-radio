@@ -52,10 +52,8 @@ footer {
   
 }
 
-
-
 ///////////////////////////////////
-//          Input Form
+//      Archive Input Form
 ///////////////////////////////////
 .input-form {
   display: flex;
@@ -73,16 +71,13 @@ footer {
         width: 100%;
         height: 2rem;
       }
-
-      
-      
     }
     .describe {
-
         grid-column-start: 1;
         grid-column-end: 3;
         textarea {
           width: 100%;
+          min-height: 5rem;
         }
     }
   
@@ -104,6 +99,24 @@ footer {
       color: red;
     }
 }
+
+///////////////////////////////////
+//      Blog Input Form
+///////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////
 //          Archive List
 ///////////////////////////////////

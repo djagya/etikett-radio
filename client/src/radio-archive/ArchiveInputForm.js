@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// const createError = require("http-errors");
 
 export default function ArchiveInputForm() {
     const [host, setHost] = useState("");
@@ -51,7 +50,6 @@ export default function ArchiveInputForm() {
             } else {
                 alert(data.err)
             }
-            console.log(data)
         }
     }
 
@@ -111,11 +109,11 @@ export default function ArchiveInputForm() {
                     </label> 
                     <label htmlFor="link">
                         <span className="required">*</span>soundcloud/mixcloud
-                    <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
+                    <input type="url" id="link" placeholder="link" value={link} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="img">
                         <span className="required">*</span>artwork
-                    <input type="text" id="img" placeholder="link" value={img} onChange={handleFormInput} />
+                    <input type="url" id="img" placeholder="link" value={img} onChange={handleFormInput} />
                     </label>
                     <label className="describe" htmlFor="description">
                         description

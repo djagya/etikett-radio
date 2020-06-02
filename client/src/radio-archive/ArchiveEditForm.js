@@ -117,11 +117,11 @@ export default function MusicEdit(props) {
                     </label>
                     <label htmlFor="link">
                         <span className="required">*</span>soundcloud/mixcloud
-                        <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
+                        <input type="url" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="img">
                         <span className="required">*</span>artwork
-                    <input type="text" id="img" placeholder="link" value={img} onChange={handleFormInput} />
+                    <input type="url" id="img" placeholder="link" value={img} onChange={handleFormInput} />
                     </label>
                     <label className="describe" htmlFor="description">
                         description
