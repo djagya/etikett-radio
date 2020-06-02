@@ -3,24 +3,24 @@ import ReactPlayer from 'react-player';
 import './videoStream.scss'
 import audio from './icons/audio.png';
 import mute from './icons/mute.png';
-import {withRouter} from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 function VideoStream(props) {
 
     useEffect(() => {
-        if (window.location.pathname !== '/') {
+        if (props.location.pathname !== '/') {
             videoPlayer.current.wrapper.classList.add('rePosition');
-            coverControls.current.classList.add('rePosition');
+            // coverControls.current.classList.add('rePosition');
             setWidth(20);
             setHeight(20);
         } else {
             videoPlayer.current.wrapper.classList.remove('rePosition');
-            coverControls.current.classList.remove('rePosition');
+            // coverControls.current.classList.remove('rePosition');
             setWidth(100);
             setHeight(94);
         }
 
-    }, [window.location.pathname])
+    }, [props.location.pathname])
 
     const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
@@ -30,7 +30,7 @@ function VideoStream(props) {
     const [height, setHeight] = useState(94);
     const streamControls = useRef();
     const videoPlayer = useRef();
-    const coverControls = useRef();
+    // const coverControls = useRef();
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -63,8 +63,17 @@ function VideoStream(props) {
     }
 
     return (
-        <section className="playerContrainer">
-            <div className="embededVideo">
+        <header className="App-header">
+            <nav>
+                <NavLink className="nav-link" to="/">home.</NavLink>
+                <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
+                <NavLink className="nav-link" to="/archive">archive.</NavLink>
+                <NavLink className="nav-link" to="/blog">blog.</NavLink>
+                <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+                <NavLink className="nav-link" to="/user">staff only.</NavLink>
+            </nav>
+
+            <section className="embededVideo">
                 <ReactPlayer 
                     className="ReactPlayer"
                     url="https://www.twitch.tv/chillhopmusic"
@@ -75,8 +84,8 @@ function VideoStream(props) {
                     width={`${width}%`}
                     height={`${height}vh`}
                 />
-                <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div>
-            </div>
+                {/* <div className="coverControls" ref={coverControls} style={{width: `${width}%`, height: `${height}vh`}}></div> */}
+            </section>
 
             <section className="streamControls" ref={streamControls}>
                 <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
@@ -90,7 +99,8 @@ function VideoStream(props) {
                 {/* <div className="block"></div> */}
 
             </section>
-        </section>
+
+        </header>
     )
 }
 
