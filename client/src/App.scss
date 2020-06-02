@@ -217,12 +217,21 @@ body {
   // Fran: I think this is extra
   // flex-direction: column;
 
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-
-  // This hight must add 100vh with ReactPlayer height
   height: 6vh;
 }
 
+.full-size {
+  display: flex;
+  flex-direction: column;
+}

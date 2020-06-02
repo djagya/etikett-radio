@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactPlayer from 'react-player';
-import './videoStream.scss'
+// import './videoStream.scss';
+import './App.scss'
 import audio from './icons/audio.png';
 import mute from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
@@ -63,7 +64,7 @@ function VideoStream(props) {
     }
 
     return (
-        <header className="App-header">
+        <header className="App-header full-size">
             <nav>
                 <NavLink className="nav-link" to="/">home.</NavLink>
                 <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
