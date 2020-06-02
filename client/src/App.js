@@ -12,6 +12,7 @@ import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
 import VideoStream from './VideoStream';
+import Blog from './blog/Blog';
 
 function App(props) {
 
@@ -52,6 +53,7 @@ function App(props) {
           <Route exact path="/archive" component={ArchiveList} />
           <Route exact path="/archive/:id" component={ArchiveDetail} />
           <Route exact path="/:id/edit" component={ArchiveEdit} />
+          <Route exact path="/blog" component={Blog} />
           {/* Fallback to Error Page */}
           <Route component={Error} />
         </Switch>
