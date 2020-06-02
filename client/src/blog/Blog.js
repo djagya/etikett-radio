@@ -20,14 +20,12 @@ export default function Blog() {
         return blogData.map((el, i) => (
             <li key={i} className="blog-list">
 
-                <div className="article-controls">
-                {showEdit ? 
-                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
-                }
-                <div className="delete-btn">
-                    <button type="button" onClick={() => handleDelete(el._id, el.heading)}>delete checked</button>
-                </div>
+                <div className="button-container archive-controls">
+                    {showEdit ? 
+                    <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
+                    <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                    }
+                    <button type="button" onClick={() => handleDelete(el._id, el.heading)}>delete</button>
                 </div>
 
 
@@ -79,7 +77,7 @@ export default function Blog() {
             <div className="blog-page">
             <div className="blog-content">
                 <h2>blog</h2>
-                <div className="add-button">
+                <div className="button-container">
                 {showForm ? 
                 <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
                 <button type="button" onClick={() => handleAdd(true)}>add to blog</button> 

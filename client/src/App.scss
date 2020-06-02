@@ -101,33 +101,25 @@ footer {
     }
 }
 
-.add-button {
+/////////////
+// Button
+/////////////
+.button-container {
   display: flex;
+  height: 2rem; 
+}
+button {
+  height: 100%;
+  padding: 0 5px;
+  font-size: 1rem;
+}
+.archive-controls {
   justify-content: space-between;
   margin: 1rem 0;
-}
-
-.delete-btn {
-  display: flex;
-  justify-content: flex-end;
-  height: 2rem;
-  button {
-    height: 100%;
-    padding: 0 5px;
-    font-size: 1rem;
-  }
-}
-
-.check-delete {
-  width: 20px;
-  height: 20px;
 }
 ///////////////////////////////////
 //          Archive Page
 ///////////////////////////////////
-
-
-
 .archive-list-page {
   display: flex;
   justify-content: center;
@@ -145,6 +137,10 @@ footer {
   
 }
 
+.check-delete {
+  width: 20px;
+  height: 20px;
+}
 
 .archive-details-page {
   display: flex;

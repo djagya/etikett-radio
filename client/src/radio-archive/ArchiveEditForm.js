@@ -106,8 +106,11 @@ export default function MusicEdit(props) {
 
     return (
         <div className="input-form">
-        
+            
             <form className="post-archive" onSubmit={handleSubmit}>
+            <div className="button-container">
+            <button type="button" onClick={() => redirect()}>cancel</button>
+            </div>
                 <div className="grid-container">
                    
                     {repetitiveInputFields()}
@@ -131,7 +134,6 @@ export default function MusicEdit(props) {
                 <div className="submit-button">
                     <input type="submit" value="Update" /><span className="required">* Required</span>
                 </div>
-                <button type="button" onClick={() => redirect()}>cancel</button>
             </form>
         </div>
     )
