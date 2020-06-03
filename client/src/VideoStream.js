@@ -90,11 +90,13 @@ function VideoStream(props) {
             </section>
 
             <section className="message-controls-container">
+                {source ?
                     <div className="controls">
                         <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
                         <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                         <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
                     </div>
+                : null }
                 <div className="message">
                     <span>etikett radio - stream description</span>
                 </div>
