@@ -23,7 +23,7 @@ function VideoStream(props) {
         }
     }, [props.location.pathname])
 
-    const [playing, setPlaying] = useState(false);
+    const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
