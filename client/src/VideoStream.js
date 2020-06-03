@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import './App.scss'
-import audio from './icons/audio.png';
-import mute from './icons/mute.png';
+import audioIcon from './icons/audio.png';
+import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
 
 function VideoStream(props) {
 
     useEffect(() => {
-        if (ReactPlayer.canPlay(videoStream)) {
-            setSource(videoStream);
-        } else {
-            setSource(audioStream);
+        // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
+        const video = 'https://www.twitch.tv/chillhopmusic';
+        if (ReactPlayer.canPlay(video)) {
+            setSource(video);
         }
     }, [])
 
@@ -23,15 +23,12 @@ function VideoStream(props) {
         }
     }, [props.location.pathname])
 
-    // https://www.twitch.tv/austinjohnplays/
-    const videoStream = 'https://www.twitch.tv/austinjohnplays/';
-    const audioStream = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
-    const [icon, setIcon] = useState(audio);
+    const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
-    const [source, setSource] = useState('');
+    const [source, setSource] = useState('http://s9.myradiostream.com:44782/listen.mp3');
     const videoPlayer = useRef();
 
     const handlePlayBtn = e => {
@@ -45,10 +42,10 @@ function VideoStream(props) {
 
         // Change icon
         if (muted) {
-            setIcon(audio);
+            setIcon(audioIcon);
             setVolume(0.5);
         } else {
-            setIcon(mute);
+            setIcon(muteIcon);
             setVolume(0);
         }        
     }
@@ -57,10 +54,10 @@ function VideoStream(props) {
         setVolume(e.target.value);
         if(parseFloat(volume) < 0.15) {
             setMuted(true);
-            setIcon(mute);
+            setIcon(muteIcon);
         } else {
             setMuted(false);
-            setIcon(audio);
+            setIcon(audioIcon);
         }
     }
 
@@ -90,7 +87,7 @@ function VideoStream(props) {
             </section>
 
             <section className="message-controls-container">
-                {source === audioStream ?
+                {source === 'http://s9.myradiostream.com:44782/listen.mp3' ?
                     <div className="controls">
                         <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
                         <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
