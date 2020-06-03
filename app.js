@@ -10,6 +10,7 @@ const env = require("./config/config")
 const indexRoute = require("./routes/indexRoute");
 const archiveRoute = require("./routes/archiveRoute");
 const usersRoute = require("./routes/usersRoute");
+const blogRoute = require("./routes/blogRoute");
 
 const port = process.env.PORT || 3000;
 
@@ -27,6 +28,7 @@ app.use(setCors); //middleware to use setCors on all routes
 app.use("/", indexRoute);
 app.use("/archive", archiveRoute);
 app.use("/users", usersRoute);
+app.use("/blog", blogRoute);
 
 
 //Error Handler

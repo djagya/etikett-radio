@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default function UserList(props) {
 
-    const [userData, setMusicData] = useState([])
+    const [userData, setUserData] = useState([])
     useEffect(() => {
         fetch("http://localhost:3000/users")
             .then(res => res.json())
-            .then(data => setMusicData(data))
+            .then(data => setUserData(data))
     }, [])
 
 
@@ -16,11 +16,7 @@ export default function UserList(props) {
         if (userData.status === 403) return (<h2> <Link to="/user/createuser">Create New Account</Link>  || <Link to="/user/login">Log In</Link></h2>)
         if (!userData.users) return null; //Because first time the code is running, userData will be an empty array
 
-
-
         return userData.users.map((el, i) => (
-
-
             <li key={i}>
                 <ul>
                     <li>First Name: {el.firstName}</li>
@@ -30,13 +26,11 @@ export default function UserList(props) {
                     <li>Role: {el.role}</li>
                 </ul>
             </li>
-
-
         ));
 
     };
     return (
-        <div>
+        <div className="not-stream-component">
             <ul>
                 {renderLi(userData)}
             </ul>
