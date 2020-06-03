@@ -31,7 +31,6 @@ export default function ArchiveEdit(props) {
 
     const handleSubmit = event => {
         event.preventDefault()
-        //POST request
         const body = {
             "show": show,
             "host": host,

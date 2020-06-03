@@ -1,50 +1,44 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react'
 
-export default function BlogInput() {
+export default function BlogEditForm(param) {
 
-    const [heading, setHeading] = useState("");
-    const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
-    const [text, setText] = useState("");
+    const data = param.data
+    const [heading, setHeading] = useState(data.heading);
+    const [date, setDate] = useState(data.date);
+    const [text, setText] = useState(data.text);
+    const [id, setId] = useState(data._id)
 
+   
     const handleSubmit = event => {
         event.preventDefault()
 
-        //POST request
+        //PUT request
         const body = {
             "heading": heading,
             "date": date,
             "text": text,
         };
 
-        const postData = async (url, data) => {
+        const putData = async (url, data) => {
             const response = await fetch(url, {
-                method: "POST",
+                method: "PUT",
                 headers: {
-                    "Content-Type": "application/json",
-                    // "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
+                    "Content-Type": "application/json",// "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
                 },
                 body: JSON.stringify(data)
             })
             return response.json()
         }
-        postData("http://localhost:3000/blog/post", body)
-            .then(data => { resetForm(data) })
+        putData(`http://localhost:3000/blog/${id}`, body)
+            .then(data => {  if (!data.success) { console.log(data) } })
+            .then(window.location.reload())
 
-        const resetForm = (data) => {
-            if (data.success) {
-                setHeading("");
-                setDate("");
-                setText("");
-                window.location.reload()
-            } else {
-                alert(data.err)
-            }
-        }
+        
     };
+    
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
-        console.log(input);
         switch (id) {
             case "heading":
                 setHeading(input)
@@ -58,15 +52,11 @@ export default function BlogInput() {
             default: console.log("Archive Input HandleFormInput ran through without effect")
         }
     };
-
-
-
-
-
-
-
+    
     return (
         <div className="input-form">
+        <button type="button" onClick={()=> console.log(data.data)}/>
+        <h2>Edit {data.heading}</h2>
             <form className="post-blog" onSubmit={handleSubmit}>
             <div className="grid-container">
                 
@@ -90,6 +80,5 @@ export default function BlogInput() {
         </form>
 
         </div>
-    );
-    
+    )
 }

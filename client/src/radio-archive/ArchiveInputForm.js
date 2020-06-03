@@ -4,7 +4,7 @@ export default function ArchiveInputForm() {
     const [host, setHost] = useState("");
     const [show, setShow] = useState("");
     const [genre, setGenre] = useState("");
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
     const [link, setLink] = useState("");
     const [img, setImg] = useState("");
     const [description, setDescription] = useState("");

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BlogInputForm from './BlogInputForm';
 import Delete from "../Delete"
+import BlogEditForm from './BlogEditForm';
 
 export default function Blog() {
     const [blogData, setBlogData] = useState([]);
@@ -30,7 +31,8 @@ export default function Blog() {
                 </div>
 
 
-
+                {showEdit?
+                <BlogEditForm data={el}/>:
                 <article>
                 <div className="article-header">
                     <h2>{el.heading}</h2>
@@ -38,6 +40,8 @@ export default function Blog() {
                 </div>
                 <p>{el.text}</p>
                 </article>
+                }
+                
             </li>
         ));
     };
