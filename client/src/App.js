@@ -19,19 +19,8 @@ function App(props) {
     <BrowserRouter>
       <div className="App">
         <div className="stream-page">
-          <header className="App-header">
-            <nav>
-              <NavLink className="nav-link" to="/">home.</NavLink>
-              <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
-              <NavLink className="nav-link" to="/archive">archive.</NavLink>
-              <NavLink className="nav-link" to="/blog">blog.</NavLink>
-              <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
-              <NavLink className="nav-link" to="/user">staff only.</NavLink>
-            </nav>
-          </header>
-
           
-          <VideoStream />
+            <VideoStream />  
           
           {/* <div className="twitch">
             <h1>etikett<br/>~radio</h1>
