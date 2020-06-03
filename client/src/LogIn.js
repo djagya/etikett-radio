@@ -59,7 +59,7 @@ export default function LogIn() {
     };
 
     return (
-        <div className="input-form">
+        <div className="input-form not-stream-component">
             <h2>Log In</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid-container">

@@ -26,7 +26,7 @@ export default function ArchiveDetail(props) {
 
 
     return (
-        <div className="archive-details-page">
+        <div className="archive-details-page not-stream-component">
             <Link to={`/archive`}>back to archive</Link>
             <h2>{archiveData.show} by {archiveData.host}</h2>
             <q>{archiveData.description}</q>

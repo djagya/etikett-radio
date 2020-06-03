@@ -71,7 +71,7 @@ export default function ArchiveList() {
     }
 
     return (
-        <div className="archive-list-page">
+        <div className="archive-list-page not-stream-component">
             <div>
                 <h2>archive</h2>
                 <div className="button-container archive-controls">

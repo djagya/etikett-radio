@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function MusicEdit(props) {
+export default function ArchiveEdit(props) {
 
     const [archiveData, setArchiveData] = useState({})
     const id = props.match.params.id
@@ -105,7 +105,7 @@ export default function MusicEdit(props) {
     };
 
     return (
-        <div className="input-form">
+        <div className="input-form not-stream-component">
             
             <form className="post-archive" onSubmit={handleSubmit}>
             <div className="button-container">

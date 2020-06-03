@@ -1,3 +1,6 @@
+$header-height: 20vh;
+
+
 * {
   padding: 0;
   margin: 0;
@@ -23,8 +26,8 @@ h3 {
   padding: 0 2vw;
 }
 
-.not-stream-components {
-  margin-top: 30vh;
+.not-stream-component {
+  margin-top: $header-height;
 }
 
 ///////////////////////////////////
@@ -274,7 +277,7 @@ nav {
 .small-header {
   position: fixed;
   top: 0;
-  height: 30vh;
+  height: $header-height;
   width: 100%;
   display: grid;
   grid-template: 1fr 1fr / repeat(12, 1fr);

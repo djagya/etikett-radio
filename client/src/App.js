@@ -28,7 +28,7 @@ function App(props) {
         <Switch>
           {/*Placeholder for / route so we don't land on Error component*/}
           <Route exact path="/" component={Home}/> 
-          <div className="not-stream-components">
+       
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
           <Route exact path="/user/login" component={LogIn} />
@@ -39,8 +39,8 @@ function App(props) {
           <Route exact path="/:id/edit" component={ArchiveEdit} />
           <Route exact path="/blog" component={Blog} />
           {/* Fallback to Error Page */}
-          </div>
           <Route component={Error} />
+          
         </Switch>
         
         <footer>
