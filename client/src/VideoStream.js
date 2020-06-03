@@ -8,12 +8,10 @@ import { withRouter, NavLink } from 'react-router-dom';
 function VideoStream(props) {
 
     useEffect(() => {
-        const video = 'https://www.twitch.tv/austinjohnplays/';
-        const audio = 'http://s9.myradiostream.com:44782/listen.mp3';
-        if (ReactPlayer.canPlay(video)) {
-            setSource(video);
+        if (ReactPlayer.canPlay(videoStream)) {
+            setSource(videoStream);
         } else {
-            setSource(audio);
+            setSource(audioStream);
         }
     }, [])
 
@@ -23,9 +21,11 @@ function VideoStream(props) {
         } else {
             setHeaderSize('full-header');
         }
-        console.log(ReactPlayer.canPlay("https://www.twitch.tv/austinjohnplays/"));
     }, [props.location.pathname])
 
+    // https://www.twitch.tv/austinjohnplays/
+    const videoStream = 'https://www.twitch.tv/austinjohnplays/';
+    const audioStream = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
@@ -79,7 +79,7 @@ function VideoStream(props) {
             <section className="embeded-video">
                 <ReactPlayer 
                     className="ReactPlayer"
-                    url="http://s9.myradiostream.com:44782/listen.mp3"
+                    url={source}
                     playing={playing} 
                     volume={parseFloat(volume)} 
                     muted={muted}
@@ -90,7 +90,7 @@ function VideoStream(props) {
             </section>
 
             <section className="message-controls-container">
-                {source ?
+                {source === audioStream ?
                     <div className="controls">
                         <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
                         <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
