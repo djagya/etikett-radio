@@ -8,12 +8,22 @@ import { withRouter, NavLink } from 'react-router-dom';
 function VideoStream(props) {
 
     useEffect(() => {
+        const video = 'https://www.twitch.tv/austinjohnplays/';
+        const audio = 'http://s9.myradiostream.com:44782/listen.mp3';
+        if (ReactPlayer.canPlay(video)) {
+            setSource(video);
+        } else {
+            setSource(audio);
+        }
+    }, [])
+
+    useEffect(() => {
         if (props.location.pathname !== '/') {
             setHeaderSize('small-header');
         } else {
             setHeaderSize('full-header');
         }
-
+        console.log(ReactPlayer.canPlay("https://www.twitch.tv/austinjohnplays/"));
     }, [props.location.pathname])
 
     const [playing, setPlaying] = useState(true);
@@ -21,7 +31,7 @@ function VideoStream(props) {
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audio);
     const [headerSize, setHeaderSize] = useState('');
-    const [streamUrl, setStreamUrl] = useState('');
+    const [source, setSource] = useState('');
     const videoPlayer = useRef();
 
     const handlePlayBtn = e => {
@@ -69,7 +79,7 @@ function VideoStream(props) {
             <section className="embeded-video">
                 <ReactPlayer 
                     className="ReactPlayer"
-                    url="https://www.twitch.tv/chillhopmusic"
+                    url="http://s9.myradiostream.com:44782/listen.mp3"
                     playing={playing} 
                     volume={parseFloat(volume)} 
                     muted={muted}
@@ -80,11 +90,11 @@ function VideoStream(props) {
             </section>
 
             <section className="message-controls-container">
-                <div className="controls">
-                    <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
-                    <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
-                    <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
-                </div>
+                    <div className="controls">
+                        <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
+                        <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
+                        <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
+                    </div>
                 <div className="message">
                     <span>etikett radio - stream description</span>
                 </div>
