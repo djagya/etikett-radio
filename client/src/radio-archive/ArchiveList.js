@@ -12,7 +12,7 @@ export default function ArchiveList() {
     useEffect(() => {
         fetch("http://localhost:3000/archive")
             .then(res => res.json())
-            .then(data => setArchiveData(data.archive))
+            .then(data => setArchiveData(data.archive.reverse()))
     }, [])
     //list item construction
     const renderLi = (archiveData) => {

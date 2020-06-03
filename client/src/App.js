@@ -14,6 +14,7 @@ import ArchiveEdit from './radio-archive/ArchiveEditForm';
 import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
+import Schedule from './schedule/Schedule';
 
 function App(props) {
 
@@ -37,7 +38,10 @@ function App(props) {
           <Route exact path="/archive" component={ArchiveList} />
           <Route exact path="/archive/:id" component={ArchiveDetail} />
           <Route exact path="/:id/edit" component={ArchiveEdit} />
+          {/* Blog Related */}
           <Route exact path="/blog" component={Blog} />
+          {/* Schedule Related */}
+          <Route exact path="/schedule" component={Schedule} />
           {/* Fallback to Error Page */}
           <Route component={Error} />
           
