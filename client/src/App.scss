@@ -263,7 +263,7 @@ nav {
 
 .full-header {
   flex-direction: column;
-  // animation: appear 4000ms ease;
+  
 
   .embeded-video {
     width: 100%;
@@ -285,7 +285,6 @@ nav {
   width: 100%;
   display: grid;
   grid-template: 1fr 1fr / repeat(12, 1fr);
-  animation: appear 400ms ease;
 
   nav {
     grid-column: 5 / -1;
@@ -368,11 +367,6 @@ nav {
       border-radius: 50%;
       cursor: pointer; 
   }
-}
-
-@keyframes appear {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
 }
 
 
