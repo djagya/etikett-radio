@@ -197,10 +197,13 @@ a {
     text-align: left;
   }
   .blog-list {
+    margin: 4rem 0;
     h2 {
+      margin: 0;
       text-align: left;
     }
     .article-header {
+      margin: 2rem 0;
       display: flex;
       justify-content: space-between;
     }

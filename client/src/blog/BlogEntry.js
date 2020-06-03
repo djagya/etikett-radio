@@ -17,7 +17,7 @@ export default function BlogEntry(el, i) {
            //filter copy of blog data based on checkedID and set the new state
             let filteredBlogData = [...contextData.blogData].filter(el => el._id !== id);
 
-            contextData.setBlogData(filteredBlogData.reverse())
+            contextData.setBlogData(filteredBlogData)
 
             //delete from db
             Delete([id], "blog")
