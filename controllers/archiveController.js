@@ -4,7 +4,6 @@ const Archive = require("../models/archiveSchema");
 exports.getArchive = async (req, res, next) => {
     try {
         const archive = await Archive.find()
-        console.log(req.user)
         res.json({ success: true, archive: archive });
     }
     catch (err) {

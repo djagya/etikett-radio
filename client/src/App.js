@@ -12,6 +12,8 @@ import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
 import VideoStream from './VideoStream';
+import Blog from './blog/Blog';
+import Home from './Home';
 
 function App(props) {
 
@@ -19,20 +21,14 @@ function App(props) {
     <BrowserRouter>
       <div className="App">
         <div className="stream-page">
-          
             <VideoStream />  
-          
-          {/* <div className="twitch">
-            <h1>etikett<br/>~radio</h1>
-            <p>twitch stream window</p>
-          </div>
-          <div className="info-bar">
-            <h2> >>|| player controls and info bar</h2>
-          </div> */}
         </div>
         
         
         <Switch>
+          {/*Placeholder for / route so we don't land on Error component*/}
+          <Route exact path="/" component={Home}/> 
+       
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
           <Route exact path="/user/login" component={LogIn} />
@@ -41,9 +37,12 @@ function App(props) {
           <Route exact path="/archive" component={ArchiveList} />
           <Route exact path="/archive/:id" component={ArchiveDetail} />
           <Route exact path="/:id/edit" component={ArchiveEdit} />
+          <Route exact path="/blog" component={Blog} />
           {/* Fallback to Error Page */}
           <Route component={Error} />
+          
         </Switch>
+        
         <footer>
           Footer
         </footer>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function MusicEdit(props) {
+export default function ArchiveEdit(props) {
 
     const [archiveData, setArchiveData] = useState({})
     const id = props.match.params.id
@@ -31,7 +31,6 @@ export default function MusicEdit(props) {
 
     const handleSubmit = event => {
         event.preventDefault()
-        //POST request
         const body = {
             "show": show,
             "host": host,
@@ -105,9 +104,12 @@ export default function MusicEdit(props) {
     };
 
     return (
-        <div className="input-form">
-        
+        <div className="input-form not-stream-component">
+            
             <form className="post-archive" onSubmit={handleSubmit}>
+            <div className="button-container">
+            <button type="button" onClick={() => redirect()}>cancel</button>
+            </div>
                 <div className="grid-container">
                    
                     {repetitiveInputFields()}
@@ -117,11 +119,11 @@ export default function MusicEdit(props) {
                     </label>
                     <label htmlFor="link">
                         <span className="required">*</span>soundcloud/mixcloud
-                        <input type="text" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
+                        <input type="url" id="link" placeholder="Link" value={link} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="img">
                         <span className="required">*</span>artwork
-                    <input type="text" id="img" placeholder="link" value={img} onChange={handleFormInput} />
+                    <input type="url" id="img" placeholder="link" value={img} onChange={handleFormInput} />
                     </label>
                     <label className="describe" htmlFor="description">
                         description
@@ -131,7 +133,6 @@ export default function MusicEdit(props) {
                 <div className="submit-button">
                     <input type="submit" value="Update" /><span className="required">* Required</span>
                 </div>
-                <button type="button" onClick={() => redirect()}>cancel</button>
             </form>
         </div>
     )

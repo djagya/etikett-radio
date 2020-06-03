@@ -1,9 +1,13 @@
+$header-height: 20vh;
+
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   color: white;
   background-color: black;
+  white-space: pre-wrap; //respects \n as new lines
 }
 @font-face{
   font-family: "GaramondPro";
@@ -21,6 +25,10 @@ h3 {
 }
 .nav-link {
   padding: 0 2vw;
+}
+
+.not-stream-component {
+  margin-top: $header-height;
 }
 
 ///////////////////////////////////
@@ -48,14 +56,11 @@ h3 {
 }
 footer {
   height: 100vh;
-  background-color: rgba(128, 128, 128, 0.322);
-  
+  background-color: rgba(128, 128, 128, 0.322); 
 }
 
-
-
 ///////////////////////////////////
-//          Input Form
+//          Input Forms
 ///////////////////////////////////
 .input-form {
   display: flex;
@@ -63,26 +68,24 @@ footer {
   align-items: center;
   .grid-container {
   display: grid;
+  text-align: left;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 1rem;
-  width: 800px;
+  width: 600px;
 
     label {
       input {
         width: 100%;
         height: 2rem;
       }
-
-      
-      
     }
     .describe {
-
         grid-column-start: 1;
         grid-column-end: 3;
         textarea {
           width: 100%;
+          min-height: 5rem;
         }
     }
   
@@ -104,16 +107,26 @@ footer {
       color: red;
     }
 }
-///////////////////////////////////
-//          Archive List
-///////////////////////////////////
-.archive-menu {
+
+/////////////
+// Button
+/////////////
+.button-container {
   display: flex;
+  height: 2rem; 
+}
+button {
+  height: 100%;
+  padding: 0 5px;
+  font-size: 1rem;
+}
+.archive-controls {
   justify-content: space-between;
   margin: 1rem 0;
 }
-
-
+///////////////////////////////////
+//          Archive Page
+///////////////////////////////////
 .archive-list-page {
   display: flex;
   justify-content: center;
@@ -131,6 +144,10 @@ footer {
   
 }
 
+.check-delete {
+  width: 20px;
+  height: 20px;
+}
 
 .archive-details-page {
   display: flex;
@@ -160,28 +177,45 @@ li {
   margin-bottom: 5px;
   font-size: 1.1rem;
 }
-.check-delete {
-  width: 20px;
-  height: 20px;
-}
-.delete-btn {
-  display: flex;
-  justify-content: flex-end;
-  height: 2rem;
-  button {
-    height: 100%;
-    padding: 0 5px;
-    font-size: 1rem;
-  }
-}
+
+
 a {
   margin: 1rem 0;
 }
 
-// Fran: This was making all images 500px wide
-// img {
-//   width: 300px;
-// }
+///////////////////////////////////
+//          Blog Page
+///////////////////////////////////
+
+.blog-page {
+  display: flex;
+  justify-content: center;
+  
+  .blog-content {
+    max-width: 600px;
+    
+    text-align: left;
+  }
+  .blog-list {
+    margin: 4rem 0;
+    h2 {
+      margin: 0;
+      text-align: left;
+    }
+    .article-header {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+    
+  
+  
+}
+
+
+
+
 
 q {
   max-width: 300px;
@@ -213,13 +247,10 @@ body {
 
 
 .App-header {
-  // Fran: I think this is extra
-  // flex-direction: column;
+
 
   display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
+
   font-size: calc(10px + 2vmin);
 }
 
@@ -250,7 +281,7 @@ nav {
 .small-header {
   position: fixed;
   top: 0;
-  height: 30vh;
+  height: $header-height;
   width: 100%;
   display: grid;
   grid-template: 1fr 1fr / repeat(12, 1fr);

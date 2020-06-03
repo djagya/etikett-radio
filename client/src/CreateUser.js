@@ -81,32 +81,32 @@ export default function CreateUser() {
 
 
     return (
-        <div className="input-form">
-            <h2>New User:</h2>
+        <div className="input-form not-stream-component">
+            <h2>create:</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid-container">
                     <label htmlFor="firstName">
-                        <span className="required">*</span>First Name
+                        <span className="required">*</span>first name
                     <input type="text" id="firstName" placeholder="First Name" value={firstName} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="lastName">
-                        <span className="required">*</span>Last Name
+                        <span className="required">*</span>last name
                     <input type="text" id="lastName" placeholder="Last Name" value={lastName} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="userName">
-                        <span className="required">*</span>User Name
+                        <span className="required">*</span>user name
                     <input type="text" id="userName" placeholder="User Name" value={userName} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="email">
-                        <span className="required">*</span>Email
+                        <span className="required">*</span>email
                     <input type="text" id="email" placeholder="Email" value={email} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="pw">
-                        <span className="required">*</span>Password
+                        <span className="required">*</span>password
                     <input type="text" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="role">
-                        <span className="required">*</span>Role
+                        <span className="required">*</span>role
                     <select id="role" value={role} onChange={handleFormInput}>
                         <option>Admin</option>
                         <option>Host</option>

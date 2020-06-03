@@ -33,7 +33,7 @@ export default function ArchiveList() {
             </li>
         ));
     };
-    //Add ID's to array which will get passed to DeleteArchive by the Delete Checked button
+    
     const handleIDs = (event) => {
         const checked = event.target.checked
         const id = event.target.name
@@ -71,14 +71,15 @@ export default function ArchiveList() {
     }
 
     return (
-        <div className="archive-list-page">
+        <div className="archive-list-page not-stream-component">
             <div>
                 <h2>archive</h2>
-                <div className="archive-menu">
+                <div className="button-container archive-controls">
                 {showForm ? 
                 <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
                 <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
                 }
+                <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                 </div>
                 {showForm ? <MusicInputForm /> : null}
                 <ul className="list-header">
@@ -92,9 +93,6 @@ export default function ArchiveList() {
                 <ul>
                     {renderLi(archiveData)}
                 </ul>
-                <div className="delete-btn">
-                    <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
-                </div>
             </div>
         </div>
 

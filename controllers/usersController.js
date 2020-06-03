@@ -4,6 +4,7 @@ const { encrypt } = require("../lib/encrypt");
 
 exports.getUser = async (req, res, next) => {
     try {
+        console.log("getUser us runnin")
         const users = await User.find()
         res.json({ success: true, users: users });
     }
