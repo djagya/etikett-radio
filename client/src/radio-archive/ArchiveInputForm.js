@@ -60,7 +60,6 @@ export default function ArchiveInputForm() {
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
-        console.log(input);
         switch (id) {
             case "host":
                 setHost(input)
@@ -98,7 +97,7 @@ export default function ArchiveInputForm() {
     };
     return (
         <div className="input-form">
-            <h2>Archive Show</h2>
+            <h2>archive show</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
                     
