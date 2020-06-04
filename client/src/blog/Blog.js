@@ -28,30 +28,24 @@ export default function Blog() {
         setShowForm(boolean)
     };
     
-    
-    
-
-   
-        
-    
-        return (
-            <Context.Provider value={{blogData,setBlogData}}>
-                <div className="blog-page not-stream-component">
-                    <div className="blog-content">
-                        <h2>blog</h2>
-                        <div className="button-container">
-                        {showForm ? 
-                        <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                        <button type="button" onClick={() => handleAdd(true)}>add to blog</button> 
-                        }
-                        </div>
-                        {showForm ? <BlogInputForm /> : null}
-                        <ul>
-                            {renderLi(blogData)}
-                        </ul>
+    return (
+        <Context.Provider value={{blogData,setBlogData}}>
+            <div className="blog-page not-stream-component">
+                <div className="blog-content">
+                    <h2>blog</h2>
+                    <div className="button-container">
+                    {showForm ? 
+                    <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
+                    <button type="button" onClick={() => handleAdd(true)}>add to blog</button> 
+                    }
                     </div>
+                    {showForm ? <BlogInputForm /> : null}
+                    <ul>
+                        {renderLi(blogData)}
+                    </ul>
                 </div>
-            </Context.Provider>
-        );
-    
+            </div>
+        </Context.Provider>
+    );
+
 }

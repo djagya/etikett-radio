@@ -1,34 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import ScheduleInputForm from './ScheduleInputForm';
 import Delete from "../Delete";
+import moment from "moment"
+import ScheduleWeek from './ScheduleWeek';
 
 export default function Schedule() {
-
-    const [checkedIDs, setCheckedIDs] = useState([]);
-    const [scheduleData, setScheduleData] = useState([]);
     const [showForm, setShowForm] = useState(false)
+    const [checkedIDs, setCheckedIDs] = useState([]);
+
+    const [scheduleData, setScheduleData] = useState([]);
+    const [weekNum, setWeekNum] = useState([])
+    let weeklySchedule = [];
 
     useEffect(() => {
         fetch("http://localhost:3000/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
             .then(data => setScheduleData(data.schedule.sort((fromA, fromB)=>new Date(fromA.from) - new Date(fromB.from))))
-    }, [])
-    //list item construction
+        }, [])
+
+
+    ///////////////////////////////
+    //split up schedule into weeks
+    ///////////////////////////////
+    //Find out Week Numbers
+    scheduleData.map(el => {
+        const num = moment(el.from).format("w")  
+        return weekNum.includes(num) ? null : setWeekNum([num, ...weekNum])
+    })
+
+    
+    weekNum.map(weekNum =>{
+        //filter inputData by week number and add array to weeklySchedule
+        const week = scheduleData.filter(data => moment(data.from).format("w") === weekNum);
+        weeklySchedule = [week, ...weeklySchedule]
+        
+    })
+  
+
+
     const renderLi = (scheduleData) => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (scheduleData.length === 0) return null; //Because first time the code is running, scheduleData will be an empty array
-        return scheduleData.map((el, i) => (
+        
 
-
-            <li key={i}>
-                <ul className="schedule-list">
-                    <li>{el.show}</li>
-                    <li>{el.from}</li>
-                    <li>{el.to}</li>
-                    <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
-                </ul>
-            </li>
+        return weeklySchedule.map((el, i) => (
+            //Check if day exists, if not, push it to existing array
+            // existingDays.includes(moment(el.from).format("dddd")) ?
+            
+            <ScheduleWeek week={el} i={i} />
         ));
     };
 
