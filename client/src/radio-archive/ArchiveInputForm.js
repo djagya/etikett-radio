@@ -35,17 +35,10 @@ export default function ArchiveInputForm() {
             return response.json()
         }
         postData("http://localhost:3000/archive/post", body)
-            .then(data => { resetForm(data) })
+            .then(data => { reload(data) })
 
-        const resetForm = (data) => {
+        const reload = (data) => {
             if (data.success) {
-                setHost("");
-                setShow("");
-                setGenre("");
-                setDate("");
-                setLink("");
-                setImg("");
-                setDescription("");
                 window.location.reload()
             } else {
                 alert(data.err)
