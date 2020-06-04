@@ -5,7 +5,7 @@ export default function ScheduleInputForm() {
     // Constructor for initial value/kind of a placeholder
     const newDate = new Date();
     const currentDate = newDate.toISOString().substring(0 ,10)
-    const currentTime = (newDate.toLocaleTimeString().substring(0,5))
+    const currentTime = (newDate.toString().substring(16 ,21))
     const time = currentDate+"T"+currentTime;
     
     const [host, setHost] = useState("");
@@ -13,10 +13,7 @@ export default function ScheduleInputForm() {
     const [from, setFrom] = useState(time);
     const [to, setTo] = useState(time);
 
-
-    const getTime = () => { 
-        console.log(new Date(from))
-    }
+  
 
 
     const handleSubmit = event => {
@@ -66,19 +63,18 @@ export default function ScheduleInputForm() {
                 setShow(input)
                 break;
             case "from":
-                console.log(input)
                 setFrom(input)
                 setTo(input)
                 break;
                 case "to":
                 setTo(input)
                 break;
-            default: console.log("Archive Input HandleFormInput ran through without effect")
+            default: console.log("Schedule Input HandleFormInput ran through without effect")
         }
     };
 
     const repetitiveInputFields = () => {
-        const fields = ["show", "host"];
+        const fields = ["host", "show"];
         const value = [host, show];
         return fields.map((field, i) => (
                 <label key={i} htmlFor={field}>
