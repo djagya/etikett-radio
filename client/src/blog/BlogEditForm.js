@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 export default function BlogEditForm(param) {
 
@@ -6,7 +6,7 @@ export default function BlogEditForm(param) {
     const [heading, setHeading] = useState(data.heading);
     const [date, setDate] = useState(data.date);
     const [text, setText] = useState(data.text);
-    const [id, setId] = useState(data._id)
+    const id = data._id
 
    
     const handleSubmit = event => {

@@ -37,7 +37,7 @@ export default function ArchiveDetail(props) {
                 </ul>
                 {renderLi(archiveData)}
             </div>
-            <a target="_blank" href={archiveData.link}>listen back </a>
+            <a target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
             <img src="https://i1.sndcdn.com/artworks-000628067209-ok0ojf-t500x500.jpg" alt="Show Image Here" />
             <Link to={`/${param}/edit`}>edit</Link>
         </div>

@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 export default function ScheduleInputForm() {
 
     // Constructor for initial value/kind of a placeholder
-    const newDate = new Date;
+    const newDate = new Date();
     const currentDate = newDate.toISOString().substring(0 ,10)
     const currentTime = (newDate.toLocaleTimeString().substring(0,5))
-    const [time, setTime] = useState(currentDate+"T"+currentTime);
+    const time = currentDate+"T"+currentTime;
     
     const [host, setHost] = useState("");
     const [show, setShow] = useState("");
@@ -14,7 +14,7 @@ export default function ScheduleInputForm() {
     const [to, setTo] = useState(time);
 
 
-    const getTime = () => {
+    const getTime = () => { 
         console.log(new Date(from))
     }
 
@@ -26,8 +26,8 @@ export default function ScheduleInputForm() {
         const body = {
             "host": host,
             "show": show,
-            "from": from,
-            "to": to,
+            "from": new Date(from),
+            "to": new Date(to),
         };
 
         const postData = async (url, data) => {
@@ -68,11 +68,11 @@ export default function ScheduleInputForm() {
             case "from":
                 console.log(input)
                 setFrom(input)
+                setTo(input)
                 break;
                 case "to":
-                    console.log(input)
-                    setTo(input)
-                    break;
+                setTo(input)
+                break;
             default: console.log("Archive Input HandleFormInput ran through without effect")
         }
     };
