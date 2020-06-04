@@ -11,7 +11,8 @@ export default function Schedule() {
     useEffect(() => {
         fetch("http://localhost:3000/schedule")
             .then(res => res.json())
-            .then(data => setScheduleData(data.schedule.reverse()))
+            //sorts the incoming data by date
+            .then(data => setScheduleData(data.schedule.sort((fromA, fromB)=>new Date(fromA.from) - new Date(fromB.from))))
     }, [])
     //list item construction
     const renderLi = (scheduleData) => {
