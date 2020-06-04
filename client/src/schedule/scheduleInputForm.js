@@ -91,7 +91,15 @@ export default function ScheduleInputForm() {
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
                     
-                    {repetitiveInputFields()}
+                <label htmlFor="host">
+                    host
+                    <input type="text" id="host" placeholder="host" value={host} onChange={handleFormInput} />
+                </label>
+                <label htmlFor="show">
+                    <span className="required">*</span>show
+                    <input type="text" id="show" placeholder="show" value={show} onChange={handleFormInput} />
+                </label>
+
                     <label htmlFor="from">
                         <span className="required">*</span>from
                     <input type="datetime-local" id="from"  value={from} onChange={handleFormInput} />
