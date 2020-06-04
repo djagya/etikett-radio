@@ -9,7 +9,6 @@ const auth = async (req, res, next) => {
         if (!user) throw createError(403);
         req.user = user;
         req.token = token;
-        console.log(user)
         next();
     }
     catch (err) {
