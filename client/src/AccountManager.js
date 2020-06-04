@@ -5,7 +5,7 @@ export default function UserList(props) {
 
     const [userData, setUserData] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/users")
+        fetch("http://localhost:3000/users", {credentials: 'include'})
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
