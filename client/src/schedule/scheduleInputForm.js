@@ -77,18 +77,32 @@ export default function ScheduleInputForm() {
         }
     };
 
+    const repetitiveInputFields = () => {
+        const fields = ["show", "host"];
+        const value = [host, show];
+        return fields.map((field, i) => (
+                <label key={i} htmlFor={field}>
+                    <span className="required">*</span>{field}
+                    <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
+                </label>
+            ));
+    };
+
     return (
-        <div>
-        <button type="button" value="get time" onClick={() => getTime()}>get time </button>
+        
         <div className="input-form">
             <h2>add to schedule</h2>
-            <form className="post-archive">
+            <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
                     
-                    
+                    {repetitiveInputFields()}
                     <label htmlFor="from">
                         <span className="required">*</span>from
                     <input type="datetime-local" id="from"  value={from} onChange={handleFormInput} />
+                    </label> 
+                    <label htmlFor="to">
+                        <span className="required">*</span>to
+                    <input type="datetime-local" id="to"  value={to} onChange={handleFormInput} />
                     </label> 
                 </div>
                 <div className="submit-button">
@@ -97,6 +111,6 @@ export default function ScheduleInputForm() {
             </form>
         </div>
             
-        </div>
+        
     )
 }
