@@ -1,28 +1,29 @@
 $header-height: 20vh;
 
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   color: white;
   background-color: black;
-  white-space: pre-wrap; //respects \n as new lines
+  //respects \n as new lines
+  // white-space: pre-wrap; <-- it's whats causing the top space on homepacge
 }
+
 @font-face{
   font-family: "GaramondPro";
   src: url("./font/AGaramondPro-Regular.otf");
 }
 
-
-
 h2 {
   text-align: center;
   margin: 1rem 0;
 }
+
 h3 {
   margin-top: 1.5rem;
 }
+
 .nav-link {
   padding: 0 2vw;
 }
