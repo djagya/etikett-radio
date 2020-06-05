@@ -1,8 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState, useContext} from 'react';
 import moment from "moment";
+import {Context} from "../Context";
 
 export default function ScheduleWeek(data) {
     const week = data.data
+    const [showEdit, setShowEdit] =useState(false);
+    const context = useContext(Context)
+
     const mon = week.filter(data => moment(data.from).format("dddd") === "Monday");
     const tue = week.filter(data => moment(data.from).format("dddd") === "Tuesday");
     const wed = week.filter(data => moment(data.from).format("dddd") === "Wednesday");
@@ -11,9 +15,22 @@ export default function ScheduleWeek(data) {
     const sat = week.filter(data => moment(data.from).format("dddd") === "Saturday");
     const sun = week.filter(data => moment(data.from).format("dddd") === "Sunday");
   
-    
+    console.log(data.data)
     // const days =[mon, tue, wed, thu, fri, sat, sun];
     
+    const handleIDs = (event) => {
+        const checked = event.target.checked
+        const id = event.target.name
+        if (checked) {
+            context.setCheckedIDs([...context.checkedIDs, id])
+        }
+        if (!checked) {
+            const filteredIDs = context.checkedIDs.filter(el => el !== id);
+            context.setCheckedIDs(filteredIDs)
+        }
+    };
+
+
     const dates = day => day.map((data, i) =>{
         ///////For interactivity//////////
         let isLive = "";
@@ -29,14 +46,30 @@ export default function ScheduleWeek(data) {
         }
         ///////For interactivity//////////
         return (
-        
-            <ul key={i} className="day-details">   
+        <div>
+            <ul key={i} className="day-details">  
             <li className={`${isLive}`}>{data.show}</li>
-            <li className={`${isLive}`}>{showStart.format("H:mm")} - {showEnd.format("H:mm")}</li>
+            <li className={`${isLive}`}>
+                {showStart.format("H:mm")} - {showEnd.format("H:mm")}
+            </li>
             </ul>
+
+            <div className="button-container archive-controls">
+                {showEdit ? 
+                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
+                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                }
+                <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
+            </div>
+            
+        </div>
         )
     })
-    console.log(parseInt(moment().startOf('day').fromNow().substring(0,2)))
+
+    const handleEdit = boolean => {
+        setShowEdit(boolean)
+    };
+
     const renderDate = day =>{
         if (day.length === 0 ) return null
         ///////For interactivity//////////

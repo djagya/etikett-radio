@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import moment from "moment";
 import ScheduleInputForm from './ScheduleInputForm';
 import Delete from "../Delete";
-import moment from "moment";
 import ScheduleWeek from './ScheduleWeek';
+import {Context} from "../Context";
+
 
 export default function Schedule() {
     const [showForm, setShowForm] = useState(false)
@@ -11,12 +13,10 @@ export default function Schedule() {
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
     let weeklySchedule = [];
-
     useEffect(() => {
         fetch("http://localhost:3000/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
-            // .then(data => setScheduleData(data))
             .then(data => setScheduleData(data.schedule.sort((fromA, fromB)=>new Date(fromA.from) - new Date(fromB.from))))
         }, [])
 
@@ -37,7 +37,7 @@ export default function Schedule() {
         weeklySchedule = [week, ...weeklySchedule]
         
     })
-
+    ///////////////////////////////
 
     const renderLi = (scheduleData) => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
@@ -51,21 +51,12 @@ export default function Schedule() {
         ));
     };
 
-    const handleIDs = (event) => {
-        const checked = event.target.checked
-        const id = event.target.name
-        if (checked) {
-            setCheckedIDs([...checkedIDs, id])
-        }
-        if (!checked) {
-            const filteredIDs = checkedIDs.filter(el => el !== id);
-            setCheckedIDs(filteredIDs)
-        }
-    };
+    
 
     const handleAdd = boolean => {
         setShowForm(boolean)
     };
+
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
         if (checkedIDs.length === 0) {
@@ -85,7 +76,9 @@ export default function Schedule() {
         //reset Array of checkedID's
         setCheckedIDs([]);
     }
+    console.log(checkedIDs)
     return (
+        <Context.Provider value={{checkedIDs,setCheckedIDs}}>
         <div className="schedule-page not-stream-component">
             <div className="schedule-content">
                 <h2>schedule</h2>
@@ -102,5 +95,7 @@ export default function Schedule() {
                 </ul>
             </div>
         </div>
+        </Context.Provider>
+        
     )
 }
