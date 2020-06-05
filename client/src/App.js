@@ -46,7 +46,7 @@ function App(props) {
           <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} /> } />
           <Route exact path="/archive/:id" component={ArchiveDetail} />
           <Route exact path="/:id/edit" component={ArchiveEdit} />
-          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} /> } />
           {/* Fallback to Error Page */}
           <Route component={Error} />
           
