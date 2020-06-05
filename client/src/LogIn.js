@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function LogIn() {
+export default function LogIn(props) {
 
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
@@ -29,7 +29,7 @@ export default function LogIn() {
         postData("http://localhost:3000/users/login", body)
             .then(data => { 
                 resetForm(data)
-                console.log(data)
+                props.setCookie('user', data.user, {path: '/'})
             })
 
     }

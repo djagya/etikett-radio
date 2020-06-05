@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 //Page General Related
 import Error from "./Error404";
 //User Account Related
@@ -17,7 +18,8 @@ import Home from './Home';
 
 function App(props) {
 
-  const [userData, setUserData] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
+  console.log(cookies)
 
   useEffect(() => {
     console.log('[useEffect App]')
@@ -38,7 +40,7 @@ function App(props) {
        
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
-          <Route exact path="/user/login" component={LogIn} />
+          <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} /> } />
           <Route exact path="/user/createuser" component={CreateUser} />
           {/* Archive Related */}
           <Route exact path="/archive" component={ArchiveList} />
