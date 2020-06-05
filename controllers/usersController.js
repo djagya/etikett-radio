@@ -16,9 +16,9 @@ exports.getUsers = async (req, res, next) => {
 exports.getUserById = async (req, res, next) => {
     const { id } = req.params;
     try {
-        const users = await User.findById(id);
+        const user = await User.findById(id);
         if (!user) throw createError(404);
-        res.json({ success: true, users: users });
+        res.json({ success: true, user: user });
     }
     catch (err) {
         next(err)
