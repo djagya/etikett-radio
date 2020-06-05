@@ -21,6 +21,7 @@ export default function LogIn() {
                 headers: {
                     "Content-Type": "application/json"
                 },
+                credentials: 'include',
                 body: JSON.stringify(data)
             })
             return response.json()
