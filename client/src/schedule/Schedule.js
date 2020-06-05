@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ScheduleInputForm from './ScheduleInputForm';
 import Delete from "../Delete";
-import moment from "moment"
+import moment from "moment";
 import ScheduleWeek from './ScheduleWeek';
 
 export default function Schedule() {
@@ -45,10 +45,9 @@ export default function Schedule() {
         
 
         return weeklySchedule.map((el, i) => (
-            //Check if day exists, if not, push it to existing array
-            // existingDays.includes(moment(el.from).format("dddd")) ?
-            
-            <ScheduleWeek week={el} i={i} />
+            <ul key={i} className="weekly-schedule">
+            <ScheduleWeek data={el}/>
+            </ul>
         ));
     };
 
@@ -88,18 +87,20 @@ export default function Schedule() {
     }
     return (
         <div className="schedule-page not-stream-component">
-            <h2>schedule</h2>
-            <div className="button-container archive-controls">
-                {showForm ? 
-                <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
-                }
-                <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+            <div className="schedule-content">
+                <h2>schedule</h2>
+                <div className="button-container archive-controls">
+                    {showForm ? 
+                    <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
+                    <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                    }
+                    <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                </div>
+                {showForm ? <ScheduleInputForm /> : null} 
+                <ul className="monthly-schedule">
+                    {renderLi(scheduleData)}
+                </ul>
             </div>
-            {showForm ? <ScheduleInputForm /> : null}
-            <ul>
-                {renderLi(scheduleData)}
-            </ul>
         </div>
     )
 }

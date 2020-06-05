@@ -73,17 +73,7 @@ export default function ScheduleInputForm() {
         }
     };
 
-    const repetitiveInputFields = () => {
-        const fields = ["host", "show"];
-        const value = [host, show];
-        return fields.map((field, i) => (
-                <label key={i} htmlFor={field}>
-                    <span className="required">*</span>{field}
-                    <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
-                </label>
-            ));
-    };
-
+    
     return (
         
         <div className="input-form">

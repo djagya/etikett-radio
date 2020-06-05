@@ -182,6 +182,12 @@ a {
   margin: 1rem 0;
 }
 
+q {
+  max-width: 300px;
+  text-align: center;
+  margin: 16px 0;
+}
+
 ///////////////////////////////////
 //          Blog Page
 ///////////////////////////////////
@@ -212,15 +218,44 @@ a {
   
 }
 
+///////////////////////////////////
+//          Schedule Page
+///////////////////////////////////
+.schedule-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  .monthly-schedule {
+    display: flex;
+    .weekly-schedule {
+      margin: 0 2rem;
+      .day-dates {
+        text-align: left;
+        .day-head {
+          display: flex;
+          justify-content: space-between;
+          margin: 2rem 0 0.5rem;
+          font-size: 1.5rem;
+          text-transform: lowercase;
+        }
+        .day-details {
+          margin: 0.25rem 0;
+          display: flex;
+          justify-content: space-between;
+          li:nth-child(1) {
+            max-width: 150px;
+            margin-right: 1rem;
+          }
+        
+        }
+      }
 
+    }
+  }
 
-
-q {
-  max-width: 300px;
-  text-align: center;
-  margin: 16px 0;
 }
+
 //---------------------------------------------//
 //            From the base react              //
 //---------------------------------------------//
