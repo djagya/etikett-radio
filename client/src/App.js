@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 //Page General Related
@@ -17,8 +17,15 @@ import Home from './Home';
 
 function App(props) {
 
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    console.log('[useEffect App]')
+  }, []);
+
   return (
     <BrowserRouter>
+    
       <div className="App">
         <div className="stream-page">
             <VideoStream />  
@@ -49,7 +56,6 @@ function App(props) {
 
       </div>
       
-
     </BrowserRouter>
   );
 }

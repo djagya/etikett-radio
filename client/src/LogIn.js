@@ -27,7 +27,10 @@ export default function LogIn() {
             return response.json()
         }
         postData("http://localhost:3000/users/login", body)
-            .then(data => { resetForm(data) })
+            .then(data => { 
+                resetForm(data)
+                console.log(data)
+            })
 
     }
 
