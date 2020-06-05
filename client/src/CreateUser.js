@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function CreateUser() {
+export default function CreateUser(props) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [userName, setUserName] = useState("");
@@ -31,7 +31,25 @@ export default function CreateUser() {
             return response.json()
         }
         postData("http://localhost:3000/users/createuser", body)
-            .then(data => { resetForm(data) })
+            .then(data => { 
+                resetForm(data);
+                
+                // Set request options
+                const options = {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    credentials: "include",
+                    body: JSON.stringify({ email, pw })
+                };
+
+                // Login user
+                fetch("http://localhost:3000/users/login", options)
+                    .then(res => res.json())
+                    .then(resData => {
+                        props.setCookie('user', resData.user, {path: '/'})
+                    });
+
+            })
 
 
         const resetForm = (data) => {
