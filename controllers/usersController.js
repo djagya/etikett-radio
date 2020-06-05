@@ -2,9 +2,9 @@ const createError = require("http-errors");
 const User = require("../models/usersSchema");
 const { encrypt } = require("../lib/encrypt");
 
-exports.getUser = async (req, res, next) => {
+exports.getUsers = async (req, res, next) => {
     try {
-        console.log("getUser us runnin")
+        console.log("getUsers us runnins")
         const users = await User.find()
         res.json({ success: true, users: users });
     }
