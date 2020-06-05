@@ -6,7 +6,7 @@ const isAdmin = require("../middleware/rolesAuthenticator");
 
 Route.get("/", auth, isAdmin, getUsers);
 Route.post("/createuser", validUserInputs(), postUser);
-Route.post("/login", auth, login)
+Route.post("/login", auth, login);
 //Alternative syntax for practice purposes
 Route.route("/:id")
     .get(auth, getUserById)
