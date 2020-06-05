@@ -56,8 +56,10 @@ exports.putUser = async (req, res, next) => {
     const { id } = req.params;
     const user = req.body;
     try {
-        // const updatedPW = await encrypt(user.pw);
-        // user.pw = updatedPW;
+        if (user.pw) {
+            const updatedPW = await encrypt(user.pw);
+            user.pw = updatedPW;
+        }
         const updateUser = await User.findByIdAndUpdate(id, user, { new: true });
         if (!updateUser) throw createError(500);
         res.json({ success: true, user: updateUser });
