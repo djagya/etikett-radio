@@ -19,10 +19,10 @@ import Home from './Home';
 function App(props) {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user'])
-  console.log(cookies)
 
   useEffect(() => {
     console.log('[useEffect App]')
+    console.log(cookies)
   }, []);
 
   return (
