@@ -13,7 +13,7 @@ const UserSchema = new Schema(
         role: {
             type: String,
             enum: ["Admin", "Host"],
-            default: "User",
+            default: "Host",
             required: true
         },
         tokens: [{
