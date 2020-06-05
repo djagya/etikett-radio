@@ -37,7 +37,6 @@ export default function Schedule() {
         weeklySchedule = [week, ...weeklySchedule]
         
     })
-//   console.log("weekly schedule: " +weeklySchedule)
 
 
     const renderLi = (scheduleData) => {
@@ -45,7 +44,7 @@ export default function Schedule() {
         if (scheduleData.length === 0) return null; //Because first time the code is running, scheduleData will be an empty array
         
 
-        return weeklySchedule.map((el, i) => (
+        return weeklySchedule.reverse().map((el, i) => (
             <ul key={i} className="weekly-schedule">
             <ScheduleWeek data={el}/>
             </ul>
@@ -93,7 +92,7 @@ export default function Schedule() {
                 <div className="button-container archive-controls">
                     {showForm ? 
                     <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                    <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                    <button type="button" onClick={() => handleAdd(true)}>add schedule</button> 
                     }
                     <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                 </div>

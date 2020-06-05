@@ -226,6 +226,13 @@ q {
   flex-direction: column;
   align-items: center;
 
+  .was-live {
+    opacity: .5;
+  }
+  .is-live {
+    color: red;
+  }
+
   .monthly-schedule {
     display: flex;
     .weekly-schedule {
@@ -238,6 +245,9 @@ q {
           margin: 3rem 0 1rem;
           font-size: 1.5rem;
           text-transform: lowercase;
+          div:nth-child(1) {
+            margin-right: 1rem;
+          }
         }
         .day-details {
           margin: 0.25rem 0;
