@@ -4,11 +4,11 @@ const auth = require("../middleware/tokenAuthenticator");
 const isAdmin = require("../middleware/rolesAuthenticator");
 
 Route.get("/", auth, getBlog);
-Route.post("/post", auth, postBlog); //isAdmin
+Route.post("/post", auth, isAdmin, postBlog); 
 //Alternative syntax for practice purposes
 Route.route("/:id")
     .get(auth, getBlogById)
-    .put(auth, putBlog)//isAdmin
-    .delete(auth, deleteBlog);//isAdmin
+    .put(auth, isAdmin, putBlog)
+    .delete(auth, isAdmin, deleteBlog);
 
 module.exports = Route;

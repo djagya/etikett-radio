@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
-export default function LogIn() {
+export default function LogIn(props) {
 
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
-
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -27,7 +26,10 @@ export default function LogIn() {
             return response.json()
         }
         postData("http://localhost:3000/users/login", body)
-            .then(data => { resetForm(data) })
+            .then(data => { 
+                resetForm(data)
+                props.setCookie('user', data.user, {path: '/'})
+            })
 
     }
 
