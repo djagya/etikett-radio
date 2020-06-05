@@ -11,6 +11,6 @@ Route.post("/login", auth, login)
 Route.route("/:id")
     .get(auth, getUserById)
     .put(auth, putUser)
-    .delete(auth, deleteUser);
+    .delete(auth, isAdmin, deleteUser);
 
 module.exports = Route;
