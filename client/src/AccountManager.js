@@ -10,8 +10,6 @@ export default function UserList(props) {
             .then(data => setUserData(data))
     }, [])
 
-
-
     const renderLi = (userData) => {
         if (userData.status === 403) return (<h2> <Link to="/user/createuser">Create New Account</Link>  || <Link to="/user/login">Log In</Link></h2>)
         if (!userData.users) return null; //Because first time the code is running, userData will be an empty array

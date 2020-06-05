@@ -28,18 +28,12 @@ export default function Blog(props) {
         setShowForm(boolean)
     };
     
-    
-    
-
-   
-        
-    
         return (
             <Context.Provider value={{blogData,setBlogData}}>
                 <div className="blog-page not-stream-component">
                     <div className="blog-content">
                         <h2>blog</h2>
-                        
+
                         {props.cookies.user.role === 'Admin' ?
                             <div className="button-container">
                                 {showForm ? 
