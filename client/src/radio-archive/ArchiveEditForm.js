@@ -27,7 +27,7 @@ export default function ArchiveEdit(props) {
                 setImg(data.archive.img);
                 setDescription(data.archive.description);
             })
-    }, [])
+    })
 
     const handleSubmit = event => {
         event.preventDefault()

@@ -48,8 +48,13 @@ export default function Blog(props) {
                             {renderLi(blogData)}
                         </ul>
                     </div>
+                    {showForm ? <BlogInputForm /> : null}
+                    <ul>
+                        {renderLi(blogData)}
+                    </ul>
                 </div>
-            </Context.Provider>
-        );
-    
+            </div>
+        </Context.Provider>
+    );
+
 }

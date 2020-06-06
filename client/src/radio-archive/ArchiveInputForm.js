@@ -35,17 +35,10 @@ export default function ArchiveInputForm() {
             return response.json()
         }
         postData("http://localhost:3000/archive/post", body)
-            .then(data => { resetForm(data) })
+            .then(data => { reload(data) })
 
-        const resetForm = (data) => {
+        const reload = (data) => {
             if (data.success) {
-                setHost("");
-                setShow("");
-                setGenre("");
-                setDate("");
-                setLink("");
-                setImg("");
-                setDescription("");
                 window.location.reload()
             } else {
                 alert(data.err)
@@ -60,7 +53,6 @@ export default function ArchiveInputForm() {
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
-        console.log(input);
         switch (id) {
             case "host":
                 setHost(input)
@@ -98,7 +90,7 @@ export default function ArchiveInputForm() {
     };
     return (
         <div className="input-form">
-            <h2>Archive Show</h2>
+            <h2>archive show</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
                     

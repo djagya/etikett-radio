@@ -6,7 +6,6 @@ import {Context} from "../Context";
 export default function BlogEntry(el, i) {
     const [showEdit, setShowEdit] =useState(false);
     const contextData = useContext(Context)
-    console.log(contextData) 
     
     const entry= el.el;
     const handleDelete = (id, heading) => {
