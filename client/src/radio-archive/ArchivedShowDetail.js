@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export default function ArchiveDetail(props) {
     const [archiveData, setArchiveData] = useState([]);
     const param = props.match.params.id
-
     useEffect(() => {
         fetch(`http://localhost:3000/archive/${param}`)
             .then(res => res.json())
@@ -38,7 +37,7 @@ export default function ArchiveDetail(props) {
                 {renderLi(archiveData)}
             </div>
             <a target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
-            <img src="https://i1.sndcdn.com/artworks-000628067209-ok0ojf-t500x500.jpg" alt="Show Image Here" />
+            <img src={archiveData.img} alt="Show Image Here" />
             <Link to={`/${param}/edit`}>edit</Link>
         </div>
     )

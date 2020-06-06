@@ -44,6 +44,7 @@ export default function ArchiveEdit(props) {
         const putData = async (url, data) => {
             const response = await fetch(url, {
                 method: "PUT",
+                credentials:"include",
                 headers: {
                     "Content-Type": "application/json",
                 },

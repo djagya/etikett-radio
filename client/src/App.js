@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 //Page General Related
@@ -14,6 +14,7 @@ import CreateUser from './CreateUser';
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
+
 import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
@@ -24,8 +25,6 @@ function App(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
   useEffect(() => {
-    console.log('[useEffect App]')
-    console.log(cookies)
   }, []);
 
   return (

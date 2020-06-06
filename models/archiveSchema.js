@@ -8,6 +8,7 @@ const ArchiveSchema = new Schema(
         genre: { type: String, required: true },
         date: { type: Date, default: Date.now, required: true },
         link: { type: String, required: true },
+        img: {type: String, required: true},
         description: {type: String, default:"N/A"}
     }
 );
