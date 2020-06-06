@@ -1,6 +1,7 @@
 import React, { useState, useContext} from 'react';
 import moment from "moment";
 import {Context} from "../Context";
+import ScheduleEdit from './ScheduleEdit';
 
 export default function ScheduleWeek(data) {
     const week = data.data
@@ -56,13 +57,15 @@ export default function ScheduleWeek(data) {
 
         return (
             <div key={i}>
-                <ul className="day-details">  
-                <li className={`${isLive}`}>{data.show}</li>
-                <li className={`${isLive}`}>
-                    {showStart.format("H:mm")} - {showEnd.format("H:mm")}
-                </li>
-                </ul>
-
+                {showEdit? 
+                    <ScheduleEdit data={data} /> :
+                    <ul className="day-details">  
+                        <li className={`${isLive}`}>{data.show}</li>
+                        <li className={`${isLive}`}>
+                            {showStart.format("H:mm")} - {showEnd.format("H:mm")}
+                        </li>
+                    </ul>
+                }
                 <div className="button-container archive-controls">
                     {showEdit ? 
                     <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
