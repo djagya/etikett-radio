@@ -40,6 +40,13 @@ export default function ScheduleEntry(props) {
      ///////For interactivity//////////
     return (
         <div >
+        <div className="button-container archive-controls">
+            {showEdit ? 
+            <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
+            <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+            }
+            <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
+        </div>
             {showEdit? 
                 <ScheduleEditForm data={data} /> :
                 <ul className="day-details">  
@@ -49,13 +56,6 @@ export default function ScheduleEntry(props) {
                     </li>
                 </ul>
             }
-            <div className="button-container archive-controls">
-                {showEdit ? 
-                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
-                }
-                <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
-            </div>
             
         </div>
     )

@@ -23,8 +23,7 @@ export default function BlogEditForm(param) {
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json",// "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
-                },
+                    "Content-Type": "application/json",},
                 body: JSON.stringify(data)
             })
             return response.json()

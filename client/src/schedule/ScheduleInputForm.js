@@ -5,7 +5,7 @@ export default function ScheduleInputForm() {
     // Constructor for initial value/kind of a placeholder
     const newDate = new Date();
     const currentDate = newDate.toISOString().substring(0 ,10)
-    const currentTime = (newDate.toString().substring(16 ,21))
+    const currentTime = newDate.toString().substring(16 ,21)
     const time = currentDate+"T"+currentTime;
     
     const [host, setHost] = useState("");
@@ -13,7 +13,7 @@ export default function ScheduleInputForm() {
     const [from, setFrom] = useState(time);
     const [to, setTo] = useState(time);
 
-  
+  console.log(time)
 
 
     const handleSubmit = event => {
@@ -69,7 +69,7 @@ export default function ScheduleInputForm() {
                 case "to":
                 setTo(input)
                 break;
-            default: console.log("Schedule Input HandleFormInput ran through without effect")
+            default: console.log("Schedule Input ran through without effect")
         }
     };
 

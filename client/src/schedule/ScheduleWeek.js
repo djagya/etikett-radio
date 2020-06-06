@@ -3,7 +3,7 @@ import moment from "moment";
 import ScheduleEntry from './ScheduleEntry';
 
 export default function ScheduleWeek(data) {
-console.log(data)
+    const week = data.data
     const mon = week.filter(data => moment(data.from).format("dddd") === "Monday");
     const tue = week.filter(data => moment(data.from).format("dddd") === "Tuesday");
     const wed = week.filter(data => moment(data.from).format("dddd") === "Wednesday");
