@@ -2,11 +2,14 @@ import React, { useState, useContext}  from 'react';
 import moment from "moment";
 import {Context} from "../Context";
 import ScheduleEditForm from './ScheduleEditForm';
+import { useCookies } from 'react-cookie';
+
 
 export default function ScheduleEntry(props) {
     const [showEdit, setShowEdit] =useState(false);
     const context = useContext(Context)
     const data = props.data
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
 
 
@@ -40,13 +43,15 @@ export default function ScheduleEntry(props) {
      ///////For interactivity//////////
     return (
         <div >
-        <div className="button-container archive-controls">
-            {showEdit ? 
-            <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-            <button type="button" onClick={() => handleEdit(true)}>edit</button> 
-            }
-            <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
-        </div>
+         {cookies.user && cookies.user.role === 'Admin' ?
+            <div className="button-container archive-controls">
+                {showEdit ? 
+                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
+                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                }
+                <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
+            </div>
+        : null }
             {showEdit? 
                 <ScheduleEditForm data={data} /> :
                 <ul className="day-details">  

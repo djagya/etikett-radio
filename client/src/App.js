@@ -53,7 +53,7 @@ function App(props) {
           {/* Blog Related */}
           <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} /> } />
           {/* Schedule Related */}
-          <Route exact path="/schedule" component={Schedule} />
+          <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
 
           {/* Fallback to Error Page */}
           <Route component={Error} />

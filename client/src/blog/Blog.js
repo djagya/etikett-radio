@@ -34,7 +34,7 @@ export default function Blog(props) {
                     <div className="blog-content">
                         <h2>blog</h2>
 
-                        {props.cookies.user.role === 'Admin' ?
+                        {props.cookies.user && props.cookies.user.role === 'Admin' ?
                             <div className="button-container">
                                 {showForm ? 
                                     <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
@@ -53,7 +53,6 @@ export default function Blog(props) {
                         {renderLi(blogData)}
                     </ul>
                 </div>
-            </div>
         </Context.Provider>
     );
 
