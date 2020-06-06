@@ -46,8 +46,8 @@ export default function ScheduleWeek(data) {
         }
         ///////For interactivity//////////
         return (
-        <div>
-            <ul key={i} className="day-details">  
+        <div key={i}>
+            <ul className="day-details">  
             <li className={`${isLive}`}>{data.show}</li>
             <li className={`${isLive}`}>
                 {showStart.format("H:mm")} - {showEnd.format("H:mm")}
