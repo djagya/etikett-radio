@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import MusicInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
 
-export default function ArchiveList() {
+export default function ArchiveList(props) {
 
     const [checkedIDs, setCheckedIDs] = useState([]);
     const [archiveData, setArchiveData] = useState([]);
@@ -73,13 +73,17 @@ export default function ArchiveList() {
         <div className="archive-list-page not-stream-component">
             <div>
                 <h2>archive</h2>
-                <div className="button-container archive-controls">
-                {showForm ? 
-                <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
-                }
-                <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
-                </div>
+
+                {props.cookies.user.role === 'Admin' ?
+                    <div className="button-container archive-controls">
+                        {showForm ? 
+                            <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
+                            <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                        }
+                        <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                    </div>
+                : null }
+                
                 {showForm ? <MusicInputForm /> : null}
                 <ul className="list-header">
                     {/* <li></li> Placeholder item for show artwork */}

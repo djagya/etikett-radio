@@ -3,7 +3,7 @@ import BlogInputForm from './BlogInputForm';
 import BlogEntry from './BlogEntry';
 import {Context} from "../Context";
 
-export default function Blog() {
+export default function Blog(props) {
     const [blogData, setBlogData] = useState([]);
     const [showForm, setShowForm] = useState(false);
 
@@ -28,16 +28,25 @@ export default function Blog() {
         setShowForm(boolean)
     };
     
-    return (
-        <Context.Provider value={{blogData,setBlogData}}>
-            <div className="blog-page not-stream-component">
-                <div className="blog-content">
-                    <h2>blog</h2>
-                    <div className="button-container">
-                    {showForm ? 
-                    <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                    <button type="button" onClick={() => handleAdd(true)}>add to blog</button> 
-                    }
+        return (
+            <Context.Provider value={{blogData,setBlogData}}>
+                <div className="blog-page not-stream-component">
+                    <div className="blog-content">
+                        <h2>blog</h2>
+
+                        {props.cookies.user.role === 'Admin' ?
+                            <div className="button-container">
+                                {showForm ? 
+                                    <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
+                                    <button type="button" onClick={() => handleAdd(true)}>add to blog</button> 
+                                }
+                            </div>
+                        : null }
+                        
+                        {showForm ? <BlogInputForm /> : null}
+                        <ul>
+                            {renderLi(blogData)}
+                        </ul>
                     </div>
                     {showForm ? <BlogInputForm /> : null}
                     <ul>

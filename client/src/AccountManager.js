@@ -5,12 +5,10 @@ export default function UserList(props) {
 
     const [userData, setUserData] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/users")
+        fetch("http://localhost:3000/users", {credentials: 'include'})
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
-
-
 
     const renderLi = (userData) => {
         if (userData.status === 403) return (<h2> <Link to="/user/createuser">Create New Account</Link>  || <Link to="/user/login">Log In</Link></h2>)

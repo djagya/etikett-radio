@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+
 //Page General Related
 import Error from "./Error404";
 //User Account Related
@@ -18,8 +21,16 @@ import Schedule from './schedule/Schedule';
 
 function App(props) {
 
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
+
+  useEffect(() => {
+    console.log('[useEffect App]')
+    console.log(cookies)
+  }, []);
+
   return (
     <BrowserRouter>
+    
       <div className="App">
         <div className="stream-page">
             <VideoStream />  
@@ -32,16 +43,18 @@ function App(props) {
        
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
-          <Route exact path="/user/login" component={LogIn} />
-          <Route exact path="/user/createuser" component={CreateUser} />
+          <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} /> } />
+          <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} /> } />
           {/* Archive Related */}
-          <Route exact path="/archive" component={ArchiveList} />
+          <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} /> } />
           <Route exact path="/archive/:id" component={ArchiveDetail} />
           <Route exact path="/:id/edit" component={ArchiveEdit} />
+
           {/* Blog Related */}
-          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} /> } />
           {/* Schedule Related */}
           <Route exact path="/schedule" component={Schedule} />
+
           {/* Fallback to Error Page */}
           <Route component={Error} />
           
@@ -53,7 +66,6 @@ function App(props) {
 
       </div>
       
-
     </BrowserRouter>
   );
 }
