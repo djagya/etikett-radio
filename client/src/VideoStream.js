@@ -9,7 +9,7 @@ function VideoStream(props) {
 
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
-        const video = 'https://www.twitch.tv/chillhopmusic';
+        const video = 'https://www.twitch.tv/truthmusic';
         if (ReactPlayer.canPlay(video)) {
             setSource(video);
         }

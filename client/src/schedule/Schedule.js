@@ -17,8 +17,7 @@ export default function Schedule() {
         fetch("http://localhost:3000/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
-            .then(data => setScheduleData(data.schedule)) 
-            // .then(data => setScheduleData(data.schedule.sort((fromA, fromB)=>new Date(fromA.from) - new Date(fromB.from))))
+            .then(data => setScheduleData(data.schedule.sort((fromA, fromB)=>new Date(fromA.from) - new Date(fromB.from))))
         }, [])
 
 
