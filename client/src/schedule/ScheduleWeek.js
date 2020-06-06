@@ -15,7 +15,6 @@ export default function ScheduleWeek(data) {
     const sat = week.filter(data => moment(data.from).format("dddd") === "Saturday");
     const sun = week.filter(data => moment(data.from).format("dddd") === "Sunday");
   
-    console.log(data.data)
     // const days =[mon, tue, wed, thu, fri, sat, sun];
     
     const handleIDs = (event) => {
@@ -95,6 +94,7 @@ export default function ScheduleWeek(data) {
     const determineWeek=() => {
         const dataWeek = moment(week[0].from).format("W");
         const currWeek = moment().format("W");
+        console.log(week)
 
         return dataWeek === currWeek ? "this week" : `week ${dataWeek}`
 
@@ -113,13 +113,13 @@ export default function ScheduleWeek(data) {
         <li>
             <h3>{determineWeek()}</h3>
             {/* { renderWeek(days)} <-- In theory, could make all the lines below obsolete but for some reason it's not working */}
-            { mon.length === 0 ? null : renderDate(mon)}
-            { tue.length === 0 ? null :renderDate(tue)}
-            { mon.length === 0 ? null : renderDate(wed)}
-            { tue.length === 0 ? null :renderDate(thu)}
-            { mon.length === 0 ? null : renderDate(fri)}
-            { tue.length === 0 ? null :renderDate(sat)}
-            { mon.length === 0 ? null : renderDate(sun)}
+            {renderDate(mon)}
+            {renderDate(tue)}
+            {renderDate(wed)}
+            {renderDate(thu)}
+            {renderDate(fri)}
+            {renderDate(sat)}
+            {renderDate(sun)}
         </li>
     )
 }

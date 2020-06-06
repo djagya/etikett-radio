@@ -242,12 +242,6 @@ q {
       margin: 0 2rem;
       .day-dates {
         text-align: left;
-
-        &>div {
-          // display: flex;
-          // justify-content: space-between;
-        }
-        
         .day-head {
           display: flex;
           justify-content: space-between;

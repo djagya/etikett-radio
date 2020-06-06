@@ -33,10 +33,31 @@ export default function Schedule() {
     
     weekNum.map(weekNum =>{
         //filter inputData by week number and add array to weeklySchedule
-        const week = scheduleData.filter(data => moment(data.from).format("w") === weekNum);
+        const week = scheduleData.filter(data => {
+            
+            const num = () =>{ 
+
+                let number = moment(data.from).format("w");
+                if (moment(data.from).format("dddd") === "Sunday") {
+                    return (parseInt(number) -1).toString()
+                } else {
+                    return number
+                }
+            }
+
+            return num() === weekNum
+        });
         weeklySchedule = [week, ...weeklySchedule]
         
     })
+
+
+    // weekNum.map(weekNum =>{
+    //     //filter inputData by week number and add array to weeklySchedule
+    //     const week = scheduleData.filter(data => moment(data.from).format("w") === weekNum);
+    //     weeklySchedule = [week, ...weeklySchedule]
+        
+    // })
     ///////////////////////////////
 
     const renderLi = (scheduleData) => {
@@ -76,7 +97,6 @@ export default function Schedule() {
         //reset Array of checkedID's
         setCheckedIDs([]);
     }
-    console.log(checkedIDs)
     return (
         <Context.Provider value={{checkedIDs,setCheckedIDs}}>
         <div className="schedule-page not-stream-component">
