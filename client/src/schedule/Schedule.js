@@ -13,6 +13,7 @@ export default function Schedule() {
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
     let weeklySchedule = [];
+    const currMonth = moment().format("M");
 
     useEffect(() => {
         fetch("http://localhost:3000/schedule")
@@ -20,34 +21,6 @@ export default function Schedule() {
             //sorts the incoming data by date
             .then(data => setScheduleData(data.schedule.sort((fromA, fromB)=>new Date(fromA.from) - new Date(fromB.from))))
         }, [])
-
-
-    ///////////////////////////////
-    //split up schedule into weeks
-    ///////////////////////////////
-    //Find out Week Numbers
-    scheduleData.map(el => {
-        const num = moment(el.from).format("w")  
-        return weekNum.includes(num) ? null : setWeekNum([num, ...weekNum])
-    })
-
-     //filter inputData by week number and add array to weeklySchedule
-    weekNum.map(weekNum =>{
-        const week = scheduleData.filter(data => {
-            //To make sundays show as the last day of the week, not as the first of the next
-            const num = () =>{ 
-                let number = moment(data.from).format("w");
-                if (moment(data.from).format("dddd") === "Sunday") {
-                    return (parseInt(number) -1).toString()
-                } else {
-                    return number
-                }
-            }
-            return num() === weekNum
-        });
-        weeklySchedule = [week, ...weeklySchedule]
-    })
-    ///////////////////////////////
 
     const handleAdd = boolean => {
         setShowForm(boolean)
@@ -72,6 +45,44 @@ export default function Schedule() {
         window.location.reload()
 
     }
+
+///automatically delete data from 2 month before 
+    scheduleData.map(el =>{
+        const current = moment(el.from, "YYYYMMDD").fromNow();
+        console.log(current)
+        if (current === "2 months ago") {
+            handleDelete([el._id]) 
+        }
+    })
+
+    ///////////////////////////////
+    //split up schedule into weeks
+    ///////////////////////////////
+    //Find out Week Numbers of the current month
+    scheduleData.map(el => {
+        const num = moment(el.from).format("w")  
+        const month = moment(el.from).format("M")
+        return weekNum.includes(num) || month !== currMonth ? null : setWeekNum([num, ...weekNum])
+    })
+
+     //filter inputData by week number and add array to weeklySchedule
+    weekNum.map(weekNum =>{
+        const week = scheduleData.filter(data => {
+            //To make sundays show as the last day of the week, not as the first of the next
+            const num = () =>{ 
+                let number = moment(data.from).format("w");
+                if (moment(data.from).format("dddd") === "Sunday") {
+                    return (parseInt(number) -1).toString()
+                } else {
+                    return number
+                }
+            }
+            return num() === weekNum
+        });
+        weeklySchedule = [week, ...weeklySchedule]
+    })
+    ///////////////////////////////
+
 
     const renderLi = (scheduleData) => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
