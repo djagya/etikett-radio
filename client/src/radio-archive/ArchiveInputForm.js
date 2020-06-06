@@ -26,10 +26,9 @@ export default function ArchiveInputForm() {
         const postData = async (url, data) => {
             const response = await fetch(url, {
                 method: "POST",
+                credentials:"include",
                 headers: {
-                    "Content-Type": "application/json",
-                    // "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
-                },
+                    "Content-Type": "application/json"},
                 body: JSON.stringify(data)
             })
             return response.json()

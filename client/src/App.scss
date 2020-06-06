@@ -7,7 +7,6 @@ $header-height: 20vh;
   color: white;
   background-color: black;
   //respects \n as new lines
-  // white-space: pre-wrap; <-- it's whats causing the top space on homepacge
 }
 
 @font-face{
@@ -197,6 +196,7 @@ q {
 .blog-page {
   display: flex;
   justify-content: center;
+  white-space: pre-wrap;
   
   .blog-content {
     max-width: 600px;

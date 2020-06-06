@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import MusicInputForm from "./ArchiveInputForm";
+import ArchiveInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
 
 export default function ArchiveList(props) {
@@ -74,7 +74,7 @@ export default function ArchiveList(props) {
             <div>
                 <h2>archive</h2>
 
-                {props.cookies.user.role === 'Admin' ?
+                {props.cookies.user && props.cookies.user.role === 'Admin' ?
                     <div className="button-container archive-controls">
                         {showForm ? 
                             <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
@@ -84,7 +84,7 @@ export default function ArchiveList(props) {
                     </div>
                 : null }
                 
-                {showForm ? <MusicInputForm /> : null}
+                {showForm ? <ArchiveInputForm /> : null}
                 <ul className="list-header">
                     {/* <li></li> Placeholder item for show artwork */}
                     <li>sorted by:</li>

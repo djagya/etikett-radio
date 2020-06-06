@@ -6,7 +6,7 @@ import ScheduleWeek from './ScheduleWeek';
 import {Context} from "../Context";
 
 
-export default function Schedule() {
+export default function Schedule(props) {
     const [showForm, setShowForm] = useState(false)
     const [checkedIDs, setCheckedIDs] = useState([]);
 
@@ -100,6 +100,7 @@ export default function Schedule() {
             <div className="schedule-page not-stream-component">
                 <div className="schedule-content">
                     <h2>schedule</h2>
+                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
                     <div className="button-container archive-controls">
                         {showForm ? 
                         <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
@@ -107,6 +108,7 @@ export default function Schedule() {
                         }
                         <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                     </div>
+                    : null }
                     {showForm ? <ScheduleInputForm /> : null} 
                     <ul className="monthly-schedule">
                         {renderLi(scheduleData)}
