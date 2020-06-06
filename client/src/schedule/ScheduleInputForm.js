@@ -13,9 +13,6 @@ export default function ScheduleInputForm() {
     const [from, setFrom] = useState(time);
     const [to, setTo] = useState(time);
 
-  console.log(time)
-
-
     const handleSubmit = event => {
         event.preventDefault()
 
@@ -48,10 +45,6 @@ export default function ScheduleInputForm() {
         }
     }
 
-
-
-
-
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -72,10 +65,8 @@ export default function ScheduleInputForm() {
             default: console.log("Schedule Input ran through without effect")
         }
     };
-
     
     return (
-        
         <div className="input-form schedule-input">
             <h2>add to schedule</h2>
             <form onSubmit={handleSubmit}>

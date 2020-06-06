@@ -66,8 +66,7 @@ export default function ArchiveList() {
         //delete from db
         Delete(checkedIDs, "archive")
 
-        //reset Array of checkedID's
-        setCheckedIDs([]);
+        window.location.reload()
     }
 
     return (

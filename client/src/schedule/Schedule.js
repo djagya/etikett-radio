@@ -69,8 +69,8 @@ export default function Schedule() {
         //delete from db
         Delete(checkedIDs, "schedule")
 
-        //reset Array of checkedID's
-        setCheckedIDs([]);
+        window.location.reload()
+
     }
 
     const renderLi = (scheduleData) => {
