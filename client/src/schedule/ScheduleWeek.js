@@ -55,23 +55,23 @@ export default function ScheduleWeek(data) {
         ///////For interactivity//////////
 
         return (
-        <div key={i}>
-            <ul className="day-details">  
-            <li className={`${isLive}`}>{data.show}</li>
-            <li className={`${isLive}`}>
-                {showStart.format("H:mm")} - {showEnd.format("H:mm")}
-            </li>
-            </ul>
+            <div key={i}>
+                <ul className="day-details">  
+                <li className={`${isLive}`}>{data.show}</li>
+                <li className={`${isLive}`}>
+                    {showStart.format("H:mm")} - {showEnd.format("H:mm")}
+                </li>
+                </ul>
 
-            <div className="button-container archive-controls">
-                {showEdit ? 
-                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
-                }
-                <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
+                <div className="button-container archive-controls">
+                    {showEdit ? 
+                    <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
+                    <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                    }
+                    <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
+                </div>
+                
             </div>
-            
-        </div>
         )
     })
 
@@ -85,7 +85,6 @@ export default function ScheduleWeek(data) {
             isLive = "was-live";
         }
         ///////For interactivity//////////
-        console.log(day)
 
         return (
             <ul className="day-dates">
@@ -98,12 +97,17 @@ export default function ScheduleWeek(data) {
         )
     }
 
-    //In theory should render the array, saving some lines in the return below
+    // In theory should render the array, saving some lines in the return below
     // const renderWeek = days => {
-    //     return days.map(day => {
-    //         if (day.length === 0) return
-    //         renderDate(day)
-    //     })
+
+    //     for (let i=0; i < days.length; i++) {
+    //         renderDate(days[0])
+    //     }
+
+    // //     return days.map(day => {
+    // //         if (day.length === 0) return
+    // //         renderDate(day)
+    // //     })
     // }
     
     return (
