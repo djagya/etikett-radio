@@ -1,14 +1,9 @@
 import React, { useState, useContext} from 'react';
 import moment from "moment";
-import {Context} from "../Context";
-import ScheduleEdit from './ScheduleEdit';
-import ScheduleInputForm from "./ScheduleInputForm"
+import ScheduleEntry from './ScheduleEntry';
 
 export default function ScheduleWeek(data) {
-    const week = data.data
-    const [showEdit, setShowEdit] =useState(false);
-    const context = useContext(Context)
-
+console.log(data)
     const mon = week.filter(data => moment(data.from).format("dddd") === "Monday");
     const tue = week.filter(data => moment(data.from).format("dddd") === "Tuesday");
     const wed = week.filter(data => moment(data.from).format("dddd") === "Wednesday");
@@ -19,22 +14,6 @@ export default function ScheduleWeek(data) {
   
     // const days =[mon, tue, wed, thu, fri, sat, sun];
     
-    const handleIDs = (event) => {
-        const checked = event.target.checked
-        const id = event.target.name
-        if (checked) {
-            context.setCheckedIDs([...context.checkedIDs, id])
-        }
-        if (!checked) {
-            const filteredIDs = context.checkedIDs.filter(el => el !== id);
-            context.setCheckedIDs(filteredIDs)
-        }
-    };
-
-    const handleEdit = boolean => {
-        setShowEdit(boolean)
-    };
-
     const determineWeek=() => {
         const dataWeek = moment(week[0].from).format("W");
         const currWeek = moment().format("W");
@@ -42,47 +21,14 @@ export default function ScheduleWeek(data) {
     }
 
     const dates = day => day.map((data, i) => {
-        ///////For interactivity//////////
-        let isLive = "";
-        const showStart = moment(data.from);
-        const showEnd = moment(data.to);
-        const currTime = moment();
-        
-        if (currTime > showEnd) {
-            isLive = "was-live";
-        }
-        if (showStart < currTime && currTime < showEnd) {
-            isLive = "is-live";
-        }
-        ///////For interactivity//////////
-
         return (
-            <div key={i}>
-                {showEdit? 
-                    <ScheduleInputForm data={data} /> :
-                    <ul className="day-details">  
-                        <li className={`${isLive}`}>{data.show}</li>
-                        <li className={`${isLive}`}>
-                            {showStart.format("H:mm")} - {showEnd.format("H:mm")}
-                        </li>
-                    </ul>
-                }
-                <div className="button-container archive-controls">
-                    {showEdit ? 
-                    <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                    <button type="button" onClick={() => handleEdit(true)}>edit</button> 
-                    }
-                    <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
-                </div>
-                
-            </div>
+            <ScheduleEntry data={data} key={i} />
         )
     })
 
-    
-
     const renderDate = day => {
         if (day.length === 0 ) return null
+
         ///////For interactivity//////////
         let isLive = "";
         if (parseInt(moment().startOf('day').fromNow().substring(0,2)) > 24) {
@@ -115,16 +61,18 @@ export default function ScheduleWeek(data) {
     // }
     
     return (
-        <li>
-            <h3>{determineWeek()}</h3>
-            {/* { renderWeek(days)}  */}
-            {renderDate(mon)}
-            {renderDate(tue)}
-            {renderDate(wed)}
-            {renderDate(thu)}
-            {renderDate(fri)}
-            {renderDate(sat)}
-            {renderDate(sun)}
-        </li>
+        <ul className="weekly-schedule">
+            <li>
+                <h3>{determineWeek()}</h3>
+                {/* { renderWeek(days)}  */}
+                {renderDate(mon)}
+                {renderDate(tue)}
+                {renderDate(wed)}
+                {renderDate(thu)}
+                {renderDate(fri)}
+                {renderDate(sat)}
+                {renderDate(sun)}
+            </li>
+        </ul>
     )
 }

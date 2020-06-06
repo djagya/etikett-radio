@@ -78,9 +78,9 @@ export default function Schedule() {
         if (scheduleData.length === 0) return null; //Because first time the code is running, scheduleData will be an empty array
         
         return weeklySchedule.reverse().map((el, i) => (
-            <ul key={i} className="weekly-schedule">
-            <ScheduleWeek data={el}/>
-            </ul>
+            
+            <ScheduleWeek data={el} key={i}/>
+            
         ));
     };
 
