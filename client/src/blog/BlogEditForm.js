@@ -49,13 +49,12 @@ export default function BlogEditForm(param) {
             case "text":
                 setText(input)
                 break;
-            default: console.log("Archive Input HandleFormInput ran through without effect")
+            default: console.log("BlogEdit ran through without effect")
         }
     };
     
     return (
         <div className="input-form">
-        <button type="button" onClick={()=> console.log(data.data)}/>
         <h2>Edit {data.heading}</h2>
             <form className="post-blog" onSubmit={handleSubmit}>
             <div className="grid-container">

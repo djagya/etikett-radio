@@ -119,13 +119,13 @@ button {
   padding: 0 5px;
   font-size: 1rem;
 }
+///////////////////////////////////
+//          Archive Page
+///////////////////////////////////
 .archive-controls {
   justify-content: space-between;
   margin: 1rem 0;
 }
-///////////////////////////////////
-//          Archive Page
-///////////////////////////////////
 .archive-list-page {
   display: flex;
   justify-content: center;
@@ -234,6 +234,10 @@ q {
   }
   .check-delete {
     margin-left: 1rem;
+  }
+  .edit-grid-container {
+  grid-template-columns: 1fr;
+  width: 200px;
   }
 
   .monthly-schedule {

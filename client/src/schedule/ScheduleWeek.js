@@ -2,6 +2,7 @@ import React, { useState, useContext} from 'react';
 import moment from "moment";
 import {Context} from "../Context";
 import ScheduleEdit from './ScheduleEdit';
+import ScheduleInputForm from "./ScheduleInputForm"
 
 export default function ScheduleWeek(data) {
     const week = data.data
@@ -58,7 +59,7 @@ export default function ScheduleWeek(data) {
         return (
             <div key={i}>
                 {showEdit? 
-                    <ScheduleEdit data={data} /> :
+                    <ScheduleInputForm data={data} /> :
                     <ul className="day-details">  
                         <li className={`${isLive}`}>{data.show}</li>
                         <li className={`${isLive}`}>
