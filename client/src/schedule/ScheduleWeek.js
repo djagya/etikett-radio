@@ -29,8 +29,17 @@ export default function ScheduleWeek(data) {
         }
     };
 
+    const handleEdit = boolean => {
+        setShowEdit(boolean)
+    };
 
-    const dates = day => day.map((data, i) =>{
+    const determineWeek=() => {
+        const dataWeek = moment(week[0].from).format("W");
+        const currWeek = moment().format("W");
+        return dataWeek === currWeek ? "this week" : `week ${dataWeek}`
+    }
+
+    const dates = day => day.map((data, i) => {
         ///////For interactivity//////////
         let isLive = "";
         const showStart = moment(data.from);
@@ -44,6 +53,7 @@ export default function ScheduleWeek(data) {
             isLive = "is-live";
         }
         ///////For interactivity//////////
+
         return (
         <div key={i}>
             <ul className="day-details">  
@@ -65,11 +75,9 @@ export default function ScheduleWeek(data) {
         )
     })
 
-    const handleEdit = boolean => {
-        setShowEdit(boolean)
-    };
+    
 
-    const renderDate = day =>{
+    const renderDate = day => {
         if (day.length === 0 ) return null
         ///////For interactivity//////////
         let isLive = "";
@@ -77,10 +85,9 @@ export default function ScheduleWeek(data) {
             isLive = "was-live";
         }
         ///////For interactivity//////////
-
+        console.log(day)
 
         return (
-
             <ul className="day-dates">
                 <li className="day-head">
                     <div className={`${isLive}`}>{moment(day[0].from).format("dddd")}</div> 
@@ -91,28 +98,18 @@ export default function ScheduleWeek(data) {
         )
     }
 
-    const determineWeek=() => {
-        const dataWeek = moment(week[0].from).format("W");
-        const currWeek = moment().format("W");
-        console.log(week)
-
-        return dataWeek === currWeek ? "this week" : `week ${dataWeek}`
-
-    }
-    
+    //In theory should render the array, saving some lines in the return below
     // const renderWeek = days => {
-    //     days.map(day => {
-    //         if (day.length === 0 ) return null
-
-    //         return renderDate(day)
+    //     return days.map(day => {
+    //         if (day.length === 0) return
+    //         renderDate(day)
     //     })
     // }
-
+    
     return (
-        
         <li>
             <h3>{determineWeek()}</h3>
-            {/* { renderWeek(days)} <-- In theory, could make all the lines below obsolete but for some reason it's not working */}
+            {/* { renderWeek(days)}  */}
             {renderDate(mon)}
             {renderDate(tue)}
             {renderDate(wed)}
