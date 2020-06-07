@@ -22,6 +22,9 @@ const UserSchema = new Schema(
     }
 );
 
+UserSchema.methods.capitalize = function (name) {
+    return name[0].toLocaleUpperCase() + name.substring(1).toLocalerLowerCase();
+};
 
 UserSchema.methods.generateAuthToken = function () {
     const user = this;
