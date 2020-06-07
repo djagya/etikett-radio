@@ -23,11 +23,6 @@ function App(props) {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
-  useEffect(() => {
-    console.log('[useEffect App]')
-    console.log(cookies)
-  }, []);
-
   return (
     <BrowserRouter>
     
@@ -42,7 +37,7 @@ function App(props) {
           <Route exact path="/" component={Home}/> 
        
           {/* User Related */}
-          <Route exact path="/user" component={AccountManager} />
+          <Route exact path="/user" render={(props) => <AccountManager {...props} removeCookie={removeCookie} /> } />
           <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} /> } />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} /> } />
           {/* Archive Related */}
