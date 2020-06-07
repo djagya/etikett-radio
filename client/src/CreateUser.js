@@ -97,6 +97,7 @@ export default function CreateUser(props) {
         }
     };
 
+    if (props.cookies.user) { return <Redirect to="/user" /> }
 
     return (
         <div className="input-form not-stream-component">
