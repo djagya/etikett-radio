@@ -58,7 +58,7 @@ export default function UserList(props) {
                     {renderLi(userData)}
                 </ul>
             : 
-                <h4>Hello {user.name}!</h4>
+                <h3>Hello {user.firstName}! Welcome to etikett radio</h3>
             }
 
         </div>
