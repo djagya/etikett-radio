@@ -43,7 +43,7 @@ function App(props) {
        
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
-          <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} /> } />
+          <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} /> } />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} /> } />
           {/* Archive Related */}
           <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} /> } />
