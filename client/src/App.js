@@ -35,11 +35,9 @@ function App(props) {
 
       <div className="App">
 
-      <div className="noise" >
-        <Noisy />
-      </div>
-
-
+        <div className="noise" >
+          <Noisy />
+        </div>
 
         <div className="stream-page">
           <VideoStream />
