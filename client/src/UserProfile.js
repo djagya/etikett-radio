@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function UserProfile(props) {
+    const user = props.cookies.user
     
     const handleLogOut = () => {
         props.removeCookie('user', {path: "/"});
@@ -9,8 +10,8 @@ export default function UserProfile(props) {
     };
     return (
         <div>
-            <h2>User Profile</h2>
-            <button onClick={()=> console.log(props)}>Console.log</button>
+            <h2>Wassuuuuuuuup {user.firstName} </h2>
+            <button onClick={()=> console.log(user)}>Console.log</button>
             {/* {user ? */}
                 <button onClick={handleLogOut}>Log Out</button>
             {/* : null } */}

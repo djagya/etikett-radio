@@ -24,9 +24,6 @@ export default function Blog(props) {
         ));
     };
 
-    const handleAdd = boolean => {
-        setShowForm(boolean)
-    };
     
         return (
             <Context.Provider value={{blogData,setBlogData}}>
@@ -37,8 +34,8 @@ export default function Blog(props) {
                         {props.cookies.user && props.cookies.user.role === 'Admin' ?
                             <div className="button-container">
                                 {showForm ? 
-                                    <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                                    <button type="button" onClick={() => handleAdd(true)}>add to blog</button> 
+                                    <button type="button" onClick={() => setShowForm(false)}>cancel</button>:
+                                    <button type="button" onClick={() => setShowForm(true)}>add to blog</button> 
                                 }
                             </div>
                         : null }

@@ -36,9 +36,7 @@ export default function LogIn(props) {
     }
 
     const logIn = (data) => {
-        if (data.success) {
-            window.location.assign(`/user/${data.user._id}`)
-        }
+        
         if (data.status === 404) alert("Invalid Email")
         if (data.status === 403) alert("Invalid Password")
 
@@ -72,7 +70,7 @@ export default function LogIn(props) {
                     </label>
                     <label htmlFor="pw">
                         <span className="required">*</span>password
-                    <input type="text" id="pw" placeholder="Password" value={pw} onChange={handleFormInput} />
+                    <input type="password" id="pw" placeholder="Password" value={pw} onChange={handleFormInput} />
                     </label>
                 </div>
                 <div className="submit-button">

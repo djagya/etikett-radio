@@ -13,9 +13,7 @@ export default function ArchiveDetail(props) {
             .then(data => setArchiveData(data.archive))
     })
 
-    const handleEdit = boolean => {
-        setShowEdit(boolean)
-    };
+   
 
     const renderLi = (archiveData) => {
         if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
@@ -37,8 +35,8 @@ export default function ArchiveDetail(props) {
         
             <div className="button-container archive-controls">
                 {showEdit ? 
-                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                <button type="button" onClick={() => setShowEdit(false)}>cancel</button>:
+                <button type="button" onClick={() => setShowEdit(true)}>edit</button> 
                 }
             </div>
             {showEdit ?

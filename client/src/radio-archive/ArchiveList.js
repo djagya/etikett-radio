@@ -48,9 +48,7 @@ export default function ArchiveList(props) {
         }
     };
 
-    const handleAdd = boolean => {
-        setShowForm(boolean)
-    };
+   
     //Delete the deleted Item from archiveData to make it disappear without refreshing the page
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
@@ -78,8 +76,8 @@ export default function ArchiveList(props) {
                 {props.cookies.user && props.cookies.user.role === 'Admin' ?
                     <div className="button-container archive-controls">
                         {showForm ? 
-                            <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                            <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                            <button type="button" onClick={() => setShowForm(false)}>cancel</button>:
+                            <button type="button" onClick={() => setShowForm(true)}>add to archive</button> 
                         }
                         <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                     </div>
