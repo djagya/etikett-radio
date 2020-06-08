@@ -425,4 +425,23 @@ nav {
 }
 
 // Contact
+.Contact {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    margin: 0 auto;
 
+    label,
+    button {
+      margin-top: 1rem;
+    }
+    input {
+      display: block;
+    }
+    input[type=textarea] {
+      height: 120px;
+    }
+  }
+}
