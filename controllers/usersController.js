@@ -28,6 +28,11 @@ exports.getUserById = async (req, res, next) => {
 exports.postUser = async (req, res, next) => {
     try {
         const user = new User(req.body);
+
+        // Capitalize
+        user.firstName = user.firstName[0].toLocaleUpperCase() + user.firstName.substring(1).toLocaleLowerCase();
+        user.lastName = user.lastName[0].toLocaleUpperCase() + user.lastName.substring(1).toLocaleLowerCase();
+
         const token = user.generateAuthToken();
         await user.save();
         const publicData = user.getPublicFields();
