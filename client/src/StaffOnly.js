@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
+import MyProfile from './MyProfile';
 
 export default function UserProfile(props) {
     
-    const [showEdit, setShowEdit] =useState(false);
+    const [showProfile, setShowProfile] =useState(false);
     const user = props.cookies.user
     const id= user._id
     
@@ -14,15 +15,15 @@ export default function UserProfile(props) {
     return (
         <div className="not-stream-component">
             <h2>Wassuuuuuuuup {user.firstName} </h2>
-            {showEdit ? 
-                <button type="button" onClick={() => setShowEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => setShowEdit(true)}>edit profile</button> 
+            {showProfile ? 
+                <button type="button" onClick={() => setShowProfile(false)}>cancel</button>:
+                <button type="button" onClick={() => setShowProfile(true)}>edit profile</button> 
             }
-            {showEdit ? 
-                <p>Edit your profile here</p>:
+            {showProfile ? 
+                <MyProfile id={id} />:
                 null
             }
-            <button onClick={()=> console.log(user)}>Console.log</button>
+            
             {/* {user ? */}
                 <button onClick={handleLogOut}>Log Out</button>
             {/* : null } */}

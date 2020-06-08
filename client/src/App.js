@@ -23,7 +23,7 @@ import Noisy from './noise/Noisy'
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
-import UserProfile from './UserProfile';
+import StaffOnly from './StaffOnly';
 
 
 function App(props) {
@@ -56,7 +56,7 @@ function App(props) {
           <Route exact path="/user" render={(props) => <AccountManager {...props}  cookies={cookies} />} />
           <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-          <Route exact path="/user/:id" render={(props) => <UserProfile {...props} removeCookie={removeCookie} cookies={cookies} />} />
+          <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
           <Route exact path="/contact" component={Contact} />
 
           {/* Archive Related */}
