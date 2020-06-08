@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import ArchiveEdit from './ArchiveEditForm';
 import {Context} from "../Context";
@@ -13,8 +13,6 @@ export default function ArchiveDetail(props) {
             .then(data => setArchiveData(data.archive))
     })
 
-   
-
     const renderLi = (archiveData) => {
         if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (archiveData.length === 0) return null;
@@ -26,8 +24,6 @@ export default function ArchiveDetail(props) {
         )
 
     };
-
-
 
     return (
         <Context.Provider value={{showEdit,setShowEdit}}>

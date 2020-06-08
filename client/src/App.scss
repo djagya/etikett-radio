@@ -34,9 +34,10 @@ h3 {
 .noise {
   height: 100vh;
   position: sticky;
-  top:0;
+  top: 0;
   z-index: -1;
 }
+
 ///////////////////////////////////
 //         Main Page
 ///////////////////////////////////
@@ -322,10 +323,13 @@ body {
 
 
 .App-header {
+<<<<<<< HEAD
 
 background-color: black;
+=======
+  background-color: #000;
+>>>>>>> origin/master
   display: flex;
-
   font-size: calc(10px + 2vmin);
 }
 
@@ -343,14 +347,39 @@ nav {
     width: 100%;
     height: 88vh;
   }
+}
 
-  .message-controls-container {
-    height: 6vh;
-    margin: 0 1.2rem;
-    display: flex;
-    align-items: center;
+.message-controls-container {
+  height: 6vh;
+  margin: 0 1.8rem;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.message span {
+  display: inline-block;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+span {
+  animation: moveText linear 10s backwards infinite;
+}
+
+@keyframes moveText {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-80%);
   }
 }
+
+
 
 .small-header {
   position: fixed;
