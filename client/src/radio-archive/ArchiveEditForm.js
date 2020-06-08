@@ -1,33 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 export default function ArchiveEdit(props) {
+    const archive= props.data
+    const id = props.data._id
+    const [show, setShow] = useState(archive.show);
+    const [host, setHost] = useState(archive.host);
+    const [genre, setGenre] = useState(archive.genre);
+    const [date, setDate] = useState(archive.date);
+    const [link, setLink] = useState(archive.link);
+    const [img, setImg] = useState(archive.img);
+    const [description, setDescription] = useState(archive.description);
 
-    const [archiveData, setArchiveData] = useState({})
-    const id = props.match.params.id
-    const [show, setShow] = useState("");
-    const [host, setHost] = useState("");
-    const [genre, setGenre] = useState("");
-    const [date, setDate] = useState("");
-    const [link, setLink] = useState("");
-    const [img, setImg] = useState("");
-    const [description, setDescription] = useState("");
-
-
-    //Get archive by id to pre-fill the form
-    useEffect(() => {
-        fetch(`http://localhost:3000/archive/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setArchiveData(data.archive);
-                setShow(data.archive.show);
-                setHost(data.archive.host);
-                setGenre(data.archive.genre);
-                setDate(data.archive.date);
-                setLink(data.archive.link);
-                setImg(data.archive.img);
-                setDescription(data.archive.description);
-            })
-    })
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -53,19 +36,19 @@ export default function ArchiveEdit(props) {
             return response.json()
         }
         putData(`http://localhost:3000/archive/${id}`, body)
-            .then(data => { if (!data.success) { console.log(data) } })
-            .then(redirect())
+            .then(data => { if (!data.success) 
+                { console.log(data) } else {
+                    window.location.reload()
+                } })
 
     }
 
-    const redirect = () => {
-        console.log("update done")
-        props.history.push(`/archive/${id}`)
-    };
+   
 
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
+        console.log(description)
         switch (id) {
             case "host":
                 setHost(input)
@@ -109,7 +92,6 @@ export default function ArchiveEdit(props) {
             
             <form className="post-archive" onSubmit={handleSubmit}>
             <div className="button-container">
-            <button type="button" onClick={() => redirect()}>cancel</button>
             </div>
                 <div className="grid-container">
                    

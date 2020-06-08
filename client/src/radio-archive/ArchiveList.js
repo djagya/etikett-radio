@@ -23,7 +23,7 @@ export default function ArchiveList(props) {
 
             <li key={i}>
                 <ul className="archive-list">
-                    <li className="img-container"><img src="//static1.squarespace.com/static/5874cd56b3db2b6aef0ec2aa/t/5db216f523792f1e968351b5/1590509650732/?format=1500w" alt="Show Artwork"/></li>
+                    <li className="img-container"><img src={el.img} alt="Show Artwork"/></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
                     <li>{el.genre}</li>
@@ -66,7 +66,6 @@ export default function ArchiveList(props) {
         //delete from db
         Delete(checkedIDs, "archive")
 
-        window.location.reload()
     }
 
     return (
