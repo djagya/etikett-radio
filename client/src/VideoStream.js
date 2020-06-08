@@ -9,7 +9,7 @@ function VideoStream(props) {
 
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
-        const video = 'https://www.twitch.tv/chillhopmusic';
+        const video = 'https://www.twitch.tv/truthmusic';
         if (ReactPlayer.canPlay(video)) {
             setSource(video);
         }
@@ -23,7 +23,7 @@ function VideoStream(props) {
         }
     }, [props.location.pathname])
 
-    const [playing, setPlaying] = useState(false);
+    const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
@@ -70,6 +70,7 @@ function VideoStream(props) {
                 <NavLink className="nav-link" to="/archive">archive.</NavLink>
                 <NavLink className="nav-link" to="/blog">blog.</NavLink>
                 <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+                <NavLink className="nav-link" to="/contact">contact.</NavLink>
                 <NavLink className="nav-link" to="/user">staff only.</NavLink>
             </nav>
 
@@ -79,7 +80,7 @@ function VideoStream(props) {
                     url={source}
                     playing={playing} 
                     volume={parseFloat(volume)} 
-                    muted={muted}
+                    muted={false}
                     ref={videoPlayer}
                     width="100%"
                     height="100%"

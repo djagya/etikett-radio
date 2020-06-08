@@ -32,9 +32,6 @@ export default function BlogInput() {
 
         const resetForm = (data) => {
             if (data.success) {
-                setHeading("");
-                setDate("");
-                setText("");
                 window.location.reload()
             } else {
                 alert(data.err)

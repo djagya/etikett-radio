@@ -12,8 +12,7 @@ export default function Delete(checkedIDs, route) {
             return response.json()
         }
         deleteData(`http://localhost:3000/${route}/${id}`)
-            .then(data => {
-                if (!data.success) console.log(data)
+            .then(data => { data.success ? console.log("Deleted Data") : console.log(data)
             })
 
     })

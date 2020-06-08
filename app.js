@@ -6,11 +6,13 @@ const { setCors } = require("./middleware/security");
 const dot = require("dotenv");
 dot.config();
 const env = require("./config/config")
+const cookieParser = require('cookie-parser');
 
 const indexRoute = require("./routes/indexRoute");
 const archiveRoute = require("./routes/archiveRoute");
 const usersRoute = require("./routes/usersRoute");
 const blogRoute = require("./routes/blogRoute");
+const scheduleRoute = require("./routes/scheduleRoute");
 
 const port = process.env.PORT || 3000;
 
@@ -24,11 +26,13 @@ mongoose.connection.on("open", () => console.log("db connected"));
 
 app.use(express.json());
 app.use(setCors); //middleware to use setCors on all routes
+app.use(cookieParser());
 
 app.use("/", indexRoute);
 app.use("/archive", archiveRoute);
 app.use("/users", usersRoute);
 app.use("/blog", blogRoute);
+app.use("/schedule", scheduleRoute);
 
 
 //Error Handler

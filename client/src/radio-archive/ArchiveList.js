@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import MusicInputForm from "./ArchiveInputForm"
-import Delete from "../Delete"
+import ArchiveInputForm from "./ArchiveInputForm";
+import Delete from "../Delete";
 
-export default function ArchiveList() {
+export default function ArchiveList(props) {
 
     const [checkedIDs, setCheckedIDs] = useState([]);
     const [archiveData, setArchiveData] = useState([]);
@@ -12,7 +12,7 @@ export default function ArchiveList() {
     useEffect(() => {
         fetch("http://localhost:3000/archive")
             .then(res => res.json())
-            .then(data => setArchiveData(data.archive))
+            .then(data => setArchiveData(data.archive.reverse()))
     }, [])
     //list item construction
     const renderLi = (archiveData) => {
@@ -23,7 +23,7 @@ export default function ArchiveList() {
 
             <li key={i}>
                 <ul className="archive-list">
-                <li className="img-container"><img src="//static1.squarespace.com/static/5874cd56b3db2b6aef0ec2aa/t/5db216f523792f1e968351b5/1590509650732/?format=1500w" alt="Show Artwork"/></li>
+                    <li className="img-container"><img src={el.img} alt="Show Artwork"/></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
                     <li>{el.genre}</li>
@@ -66,22 +66,24 @@ export default function ArchiveList() {
         //delete from db
         Delete(checkedIDs, "archive")
 
-        //reset Array of checkedID's
-        setCheckedIDs([]);
     }
 
     return (
         <div className="archive-list-page not-stream-component">
             <div>
                 <h2>archive</h2>
-                <div className="button-container archive-controls">
-                {showForm ? 
-                <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
-                }
-                <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
-                </div>
-                {showForm ? <MusicInputForm /> : null}
+
+                {props.cookies.user && props.cookies.user.role === 'Admin' ?
+                    <div className="button-container archive-controls">
+                        {showForm ? 
+                            <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
+                            <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                        }
+                        <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                    </div>
+                : null }
+                
+                {showForm ? <ArchiveInputForm /> : null}
                 <ul className="list-header">
                     {/* <li></li> Placeholder item for show artwork */}
                     <li>sorted by:</li>

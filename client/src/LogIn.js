@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom';
 
-export default function LogIn() {
+export default function LogIn(props) {
 
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
-
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -21,12 +21,17 @@ export default function LogIn() {
                 headers: {
                     "Content-Type": "application/json"
                 },
+                credentials: 'include',
                 body: JSON.stringify(data)
             })
             return response.json()
         }
+
         postData("http://localhost:3000/users/login", body)
-            .then(data => { resetForm(data) })
+            .then(data => { 
+                resetForm(data)
+                props.setCookie('user', data.user, {path: '/'})
+            })
 
     }
 
@@ -57,6 +62,8 @@ export default function LogIn() {
             default: console.log("Log In Input from LogIn.js ran through without effect")
         }
     };
+
+    if (props.cookies.user) { return <Redirect to="/user" /> }
 
     return (
         <div className="input-form not-stream-component">

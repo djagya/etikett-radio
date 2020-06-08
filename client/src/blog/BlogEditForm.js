@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react';
 
 export default function BlogEditForm(param) {
 
@@ -6,7 +6,7 @@ export default function BlogEditForm(param) {
     const [heading, setHeading] = useState(data.heading);
     const [date, setDate] = useState(data.date);
     const [text, setText] = useState(data.text);
-    const [id, setId] = useState(data._id)
+    const id = data._id
 
    
     const handleSubmit = event => {
@@ -23,8 +23,7 @@ export default function BlogEditForm(param) {
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json",// "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
-                },
+                    "Content-Type": "application/json",},
                 body: JSON.stringify(data)
             })
             return response.json()
@@ -49,13 +48,12 @@ export default function BlogEditForm(param) {
             case "text":
                 setText(input)
                 break;
-            default: console.log("Archive Input HandleFormInput ran through without effect")
+            default: console.log("BlogEdit ran through without effect")
         }
     };
     
     return (
         <div className="input-form">
-        <button type="button" onClick={()=> console.log(data.data)}/>
         <h2>Edit {data.heading}</h2>
             <form className="post-blog" onSubmit={handleSubmit}>
             <div className="grid-container">

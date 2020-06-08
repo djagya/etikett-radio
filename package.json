@@ -11,16 +11,22 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "http-errors": "^1.7.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.10",
+
     "react-router-dom": "^5.1.2",
     "react-spring": "^8.0.27",
     "react-three-fiber": "^4.2.8",
-    "three": "^0.117.1"
+    "three": "^0.117.1",
+
+    "nodemailer": "^6.4.8",
+    "react-cookie": "^4.0.3",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "faker": "^4.1.0",

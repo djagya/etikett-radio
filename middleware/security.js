@@ -1,7 +1,7 @@
 exports.setCors = (req, res, next) => {
     res.header(
         "Access-Control-Allow-Origin",
-        "*"
+        "http://localhost:3001"
     );
 
     res.header( //optional
@@ -14,6 +14,10 @@ exports.setCors = (req, res, next) => {
 
     res.header( //optional
         "Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS"
+    );
+
+    res.header( //optional
+        "Access-Control-Allow-Credentials", true
     );
     next();
 };

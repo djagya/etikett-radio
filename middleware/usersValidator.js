@@ -22,7 +22,7 @@ exports.validUserInputs = () => {
 
         body("email")
             .isEmail()
-            .normalizeEmail()
+            // .normalizeEmail()
             .withMessage("Invalid email address."),
 
         body("pw")
