@@ -6,7 +6,7 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-
+    
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -33,7 +33,7 @@ export default function Contact() {
         
 
     return (
-        <div className="not-stream-component">
+        <div className="Contact not-stream-component">
             <h1>Contact</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">

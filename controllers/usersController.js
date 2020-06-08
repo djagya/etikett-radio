@@ -104,6 +104,6 @@ exports.sendEmail = async (req, res, next) => {
     };
     await transporter.sendMail(mailOptions, (err, info) => {
         if (err) { next(err) }
-        else { res.json(info) }
+        else { res.json({success: true, info}) }
     });
 }
