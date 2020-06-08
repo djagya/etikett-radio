@@ -42,14 +42,13 @@ export default function Schedule(props) {
         //delete from db
         Delete(checkedIDs, "schedule")
 
-        window.location.reload()
+        // window.location.reload()
 
     }
 
 ///automatically delete data from 2 month before 
     scheduleData.map(el =>{
         const current = moment(el.from, "YYYYMMDD").fromNow();
-        console.log(current)
         if (current === "2 months ago") {
             handleDelete([el._id]) 
         }
@@ -89,9 +88,7 @@ export default function Schedule(props) {
         if (scheduleData.length === 0) return null; //Because first time the code is running, scheduleData will be an empty array
         
         return weeklySchedule.reverse().map((el, i) => (
-            
             <ScheduleWeek data={el} key={i}/>
-            
         ));
     };
 

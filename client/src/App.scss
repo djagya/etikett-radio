@@ -5,7 +5,7 @@ $header-height: 20vh;
   margin: 0;
   box-sizing: border-box;
   color: white;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   //respects \n as new lines
 }
 
@@ -31,6 +31,12 @@ h3 {
   margin-top: $header-height;
 }
 
+.noise {
+  height: 100vh;
+  position: sticky;
+  top:0;
+  z-index: -1;
+}
 ///////////////////////////////////
 //         Main Page
 ///////////////////////////////////

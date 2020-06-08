@@ -34,7 +34,13 @@ function App(props) {
     <BrowserRouter>
 
       <div className="App">
-        <Noisy className="noise" />
+
+      <div className="noise" >
+        <Noisy />
+      </div>
+
+
+
         <div className="stream-page">
           <VideoStream />
         </div>
