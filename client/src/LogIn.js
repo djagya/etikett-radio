@@ -29,18 +29,15 @@ export default function LogIn(props) {
 
         postData("http://localhost:3000/users/login", body)
             .then(data => { 
-                resetForm(data)
+                logIn(data)
                 props.setCookie('user', data.user, {path: '/'})
             })
 
     }
 
-    const resetForm = (data) => {
+    const logIn = (data) => {
         if (data.success) {
-            // window.localStorage.setItem("x-auth", value);
-            setEmail("");
-            setPw("");
-            alert("Log In successful, you might want to redirect your user to the music DB tho")
+            return <Redirect to={`/user/${data.user._id}`} />
         }
         if (data.status === 404) alert("Invalid Email")
         if (data.status === 403) alert("Invalid Password")

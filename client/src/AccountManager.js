@@ -7,7 +7,7 @@ export default function UserList(props) {
     const user = props.cookies.user;
 
     useEffect(() => {
-        fetch("http://localhost:3000/users", {credentials: 'include'})
+        fetch("http://localhost:3000/user", {credentials: 'include'})
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
@@ -41,14 +41,13 @@ export default function UserList(props) {
     if (!user) { 
         return (
             <div className="not-stream-component">
-                <h2> <Link to="/user/createuser">Create New Account</Link>  || <Link to="/user/login">Log In</Link></h2>
+                <h2><Link to="/user/login">log in</Link></h2>
             </div>
         ) 
     }
     
     return (
         <div className="not-stream-component">
-
             {user ?
                 <button onClick={handleLogOut}>Log Out</button>
             : null }

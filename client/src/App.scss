@@ -28,7 +28,7 @@ h3 {
 }
 
 .not-stream-component {
-  margin-top: $header-height;
+  margin-top: $header-height; //-80vh;
 }
 
 .noise {
@@ -42,23 +42,7 @@ h3 {
 ///////////////////////////////////
 .stream-page {
 
-  // Fran: I believe this isn't necessary
-  // height: 100vh;
-  // display: grid;
-  // grid-template-rows: 5fr 90fr 5fr;
-
   position: relative;
-
-  // .twitch {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   padding-top: 40vh;
-  //   height: 100%;
-  //   width: 100%;
-  //   background-color: rgba($color: grey, $alpha: 1.0);
-  // }
-
 }
 
 footer {
@@ -339,7 +323,7 @@ body {
 
 .App-header {
 
-
+background-color: black;
   display: flex;
 
   font-size: calc(10px + 2vmin);
@@ -354,7 +338,6 @@ nav {
 
 .full-header {
   flex-direction: column;
-
 
   .embeded-video {
     width: 100%;
