@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import ArchiveEdit from './ArchiveEditForm';
+import {Context} from "../Context";
 
 export default function ArchiveDetail(props) {
     const [showEdit, setShowEdit] =useState(false);
@@ -31,6 +32,7 @@ export default function ArchiveDetail(props) {
 
 
     return (
+        <Context.Provider value={{showEdit,setShowEdit}}>
         <div className="archive-details-page not-stream-component">
         
             <div className="button-container archive-controls">
@@ -56,5 +58,6 @@ export default function ArchiveDetail(props) {
                 <img src={archiveData.img} alt="Artwork of the show" />
             </div>}
         </div>
+        </Context.Provider>
     )
 }

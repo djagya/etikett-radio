@@ -8,7 +8,7 @@ Route.post("/post", auth, isAdmin, postBlog);
 //Alternative syntax for practice purposes
 Route.route("/:id")
     .get(auth, getBlogById)
-    .put(auth, isAdmin, putBlog)
+    .put(auth, putBlog)
     .delete(auth, isAdmin, deleteBlog);
 
 module.exports = Route;

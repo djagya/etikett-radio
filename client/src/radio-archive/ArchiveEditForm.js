@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import {Context} from "../Context";
 
 export default function ArchiveEdit(props) {
+    const context = useContext(Context)
     const archive= props.data
     const id = props.data._id
     const [show, setShow] = useState(archive.show);
@@ -38,11 +40,9 @@ export default function ArchiveEdit(props) {
         putData(`http://localhost:3000/archive/${id}`, body)
             .then(data => { if (!data.success) 
                 { console.log(data) } else {
-                    window.location.reload()
+                    context.setShowEdit(false)
                 } })
-
     }
-
    
 
     const handleFormInput = event => {

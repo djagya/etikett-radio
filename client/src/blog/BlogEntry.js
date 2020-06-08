@@ -5,7 +5,7 @@ import {Context} from "../Context";
 
 export default function BlogEntry(el, i) {
     const [showEdit, setShowEdit] =useState(false);
-    const contextData = useContext(Context)
+    const context = useContext(Context)
     
     const entry= el.el;
     const handleDelete = (id, heading) => {
@@ -14,9 +14,9 @@ export default function BlogEntry(el, i) {
 
         if (check) {
            //filter copy of blog data based on checkedID and set the new state
-            let filteredBlogData = [...contextData.blogData].filter(el => el._id !== id);
+            let filteredBlogData = [...context.blogData].filter(el => el._id !== id);
 
-            contextData.setBlogData(filteredBlogData)
+            context.setBlogData(filteredBlogData)
 
             //delete from db
             Delete([id], "blog")
@@ -30,8 +30,9 @@ export default function BlogEntry(el, i) {
     };
 
     return (
-        
+        <Context.Provider value={{showEdit,setShowEdit}}>
         <li key={i} className="blog-list">
+
             <div className="button-container archive-controls">
                 {showEdit ? 
                 <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
@@ -49,7 +50,7 @@ export default function BlogEntry(el, i) {
                 <p>{entry.text}</p>
                 </article>
                 }
-        
         </li>
+        </Context.Provider>
     )
 }
