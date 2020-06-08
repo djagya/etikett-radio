@@ -25,7 +25,7 @@ export default function Schedule(props) {
     const handleAdd = boolean => {
         setShowForm(boolean)
     };
-
+    console.log(scheduleData)
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
         if (checkedIDs.length === 0) {
@@ -96,7 +96,7 @@ export default function Schedule(props) {
     };
 
     return (
-        <Context.Provider value={{checkedIDs,setCheckedIDs}}>
+        <Context.Provider value={{checkedIDs,setCheckedIDs,scheduleData,setScheduleData}}>
             <div className="schedule-page not-stream-component">
                 <div className="schedule-content">
                     <h2>schedule</h2>

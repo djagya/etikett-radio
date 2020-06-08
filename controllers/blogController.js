@@ -3,7 +3,6 @@ const Blog = require("../models/blogSchema");
 
 exports.getBlog = async (req, res, next) => {
     try {
-        console.log("getBlog us runnin")
         const blog = await Blog.find()
         res.json({ success: true, blog: blog });
     }
