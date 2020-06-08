@@ -85,3 +85,7 @@ exports.deleteUser = async (req, res, next) => {
         next(err)
     }
 };
+
+exports.sendEmail = async (req, res, next) => {
+    const {name, subject, message} = req.params;
+}
