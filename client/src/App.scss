@@ -369,7 +369,6 @@ nav {
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
-
 }
 
 .message span {
@@ -379,16 +378,16 @@ nav {
 }
 
 span {
-  animation: moveText linear 14s -3s forwards infinite;
+  animation: moveText linear 10s backwards infinite;
 }
 
 @keyframes moveText {
   from {
-    transform: translateX(-150%);
+    transform: translateX(100%);
   }
 
   to {
-    transform: translateX(100%);
+    transform: translateX(-80%);
   }
 }
 

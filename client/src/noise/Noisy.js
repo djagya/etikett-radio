@@ -6,37 +6,34 @@ import { useSpring, a } from "react-spring/three"
 import Effects from './Effects/Effect';
 
 
+// function Dodecahedron() {
+
+//     const { size, viewport } = useThree()
+//     const aspect = size.width / viewport.width
+//     const [spring, set] = useSpring(() => ({
+//         scale: [15, 15, 15],
+//         position: [0, 0, 0],
+//         rotation: [5, 5, 5],
+//         config: { mass: 5, friction: 80, tension: 1000 }
+//     }))
 
 
-
-function Dodecahedron() {
-
-    const { size, viewport } = useThree()
-    const aspect = size.width / viewport.width
-    const [spring, set] = useSpring(() => ({
-        scale: [15, 15, 15],
-        position: [0, 0, 0],
-        rotation: [5, 5, 5],
-        config: { mass: 5, friction: 80, tension: 1000 }
-    }))
-
-
-    const bind = useGesture(
-        {
-            onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, ...props }) => set({ position: [x / aspect, -y / aspect, 0], rotation: [y / aspect, x / aspect, 5] }),
-            onHover: ({ hovering }) => set({ scale: hovering ? [5, 5, 5] : [10, 10, 10] })
-        },
-        {
-            eventOptions: { pointer: true }
-        }
-    )
-    return (
-        <a.mesh {...spring} {...bind()} >
-            <dodecahedronBufferGeometry attach="geometry" args={[4, 0]} />
-            <meshNormalMaterial attach="material" />
-        </a.mesh>
-    )
-}
+//     const bind = useGesture(
+//         {
+//             onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, ...props }) => set({ position: [x / aspect, -y / aspect, 0], rotation: [y / aspect, x / aspect, 5] }),
+//             onHover: ({ hovering }) => set({ scale: hovering ? [5, 5, 5] : [10, 10, 10] })
+//         },
+//         {
+//             eventOptions: { pointer: true }
+//         }
+//     )
+//     return (
+//         <a.mesh {...spring} {...bind()} >
+//             <dodecahedronBufferGeometry attach="geometry" args={[4, 0]} />
+//             <meshNormalMaterial attach="material" />
+//         </a.mesh>
+//     )
+// }
 
 export default function App() {
     return (
@@ -55,11 +52,11 @@ export default function App() {
             }
 
 
-            <mesh >
+            {/* <mesh >
                 <planeBufferGeometry attach="geometry" args={[500, 1500]} />
                 <meshPhongMaterial attach="material" color="#272727" />
             </mesh>
-            <Dodecahedron />
+            <Dodecahedron /> */}
 
         </Canvas>
 
