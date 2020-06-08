@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom';
 
 export default function LogIn(props) {
 
@@ -25,6 +26,7 @@ export default function LogIn(props) {
             })
             return response.json()
         }
+
         postData("http://localhost:3000/users/login", body)
             .then(data => { 
                 resetForm(data)
@@ -60,6 +62,8 @@ export default function LogIn(props) {
             default: console.log("Log In Input from LogIn.js ran through without effect")
         }
     };
+
+    if (props.cookies.user) { return <Redirect to="/user" /> }
 
     return (
         <div className="input-form not-stream-component">

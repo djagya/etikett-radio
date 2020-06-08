@@ -22,7 +22,6 @@ const UserSchema = new Schema(
     }
 );
 
-
 UserSchema.methods.generateAuthToken = function () {
     const user = this;
     const token = jwt.sign({ _id: user._id }, "secretKey").toString(); //secretKey is a dummy for the admin pw
