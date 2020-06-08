@@ -4,7 +4,7 @@ import {Redirect} from "react-router-dom"
 export default function LogIn(props) {
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
-    const id = props.cookies.user._id
+    const id =() => id ? null : props.cookies.user._id
 
     const handleSubmit = event => {
         event.preventDefault()

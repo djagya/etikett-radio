@@ -5,7 +5,7 @@ export default function UserList(props) {
 
     const [userData, setUserData] = useState([]);
     const user = props.cookies.user;
-console.log(user)
+    console.log(user)
     useEffect(() => {
         fetch("http://localhost:3000/user", {credentials: 'include'})
             .then(res => res.json())
@@ -17,7 +17,7 @@ console.log(user)
     const renderLi = (userData) => {
         
         // Render login and create account links
-        if (userData.status === 403) return (<h2> <Link to="/user/createuser">Create New Account</Link>  || <Link to="/user/login">Log In</Link></h2>)
+        if (userData.status === 403) return (<h2>please log in as admin</h2>)
 
         //Because first time the code is running, userData will be an empty array
         if (!userData.users) return null; 
@@ -35,13 +35,6 @@ console.log(user)
         ));
     };
 
-    if (!user) { 
-        return (
-            <div className="not-stream-component">
-                <h2><Link to="/user/login">log in</Link></h2>
-            </div>
-        ) 
-    }
     
     return (
         <div className="not-stream-component">
