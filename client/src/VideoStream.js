@@ -47,12 +47,12 @@ function VideoStream(props) {
         } else {
             setIcon(muteIcon);
             setVolume(0);
-        }        
+        }
     }
 
     const handleVolume = e => {
         setVolume(e.target.value);
-        if(parseFloat(volume) < 0.15) {
+        if (parseFloat(volume) < 0.15) {
             setMuted(true);
             setIcon(muteIcon);
         } else {
@@ -75,11 +75,11 @@ function VideoStream(props) {
             </nav>
 
             <section className="embeded-video">
-                <ReactPlayer 
+                <ReactPlayer
                     className="ReactPlayer"
                     url={source}
-                    playing={playing} 
-                    volume={parseFloat(volume)} 
+                    playing={playing}
+                    volume={parseFloat(volume)}
                     muted={false}
                     ref={videoPlayer}
                     width="100%"
@@ -94,9 +94,9 @@ function VideoStream(props) {
                         <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                         <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
                     </div>
-                : null }
+                    : null}
                 <div className="message">
-                    <span>etikett radio - stream description</span>
+                    <span>etikett radio - stream description, which is gonna be a loooong story</span>
                 </div>
 
             </section>
