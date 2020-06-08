@@ -50,7 +50,7 @@ export default function Contact() {
                 </label>
                 <label htmlFor="message">
                     <span className="required">*</span>message
-                <input type="textarea" id="message" placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)} />
+                <input type="textarea" rows="20" id="message" placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)} />
                 </label>
                 <button type="submit">Send</button>
             </form>
