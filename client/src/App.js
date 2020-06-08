@@ -18,54 +18,58 @@ import ArchiveEdit from './radio-archive/ArchiveEditForm';
 import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
+
+import Noisy from './noise/Noisy'
+
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 
+
 function App(props) {
 
-const [cookies, setCookie, removeCookie] = useCookies(['user'])
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
 
   return (
     <BrowserRouter>
-    
+
       <div className="App">
+        <Noisy className="noise" />
         <div className="stream-page">
-            <VideoStream />  
+          <VideoStream />
         </div>
-        
-        
+
+
         <Switch>
+
           {/*Placeholder for / route so we don't land on Error component*/}
-          <Route exact path="/" component={Home}/> 
-       
+          <Route exact path="/" component={Home} />
+
           {/* User Related */}
-          <Route exact path="/user" render={(props) => <AccountManager {...props} removeCookie={removeCookie} cookies={cookies} /> } />
-          <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} /> } />
-          <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} /> } />
+          <Route exact path="/user" render={(props) => <AccountManager {...props} removeCookie={removeCookie} cookies={cookies} />} />
+          <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
+          <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/contact" component={Contact} />
 
           {/* Archive Related */}
-          <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} /> } />
+          <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
           <Route exact path="/archive/:id" component={ArchiveDetail} />
           <Route exact path="/:id/edit" component={ArchiveEdit} />
 
           {/* Blog Related */}
-          <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} /> } />
+          <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
           {/* Schedule Related */}
           <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
 
           {/* Fallback to Error Page */}
           <Route component={Error} />
-          
-        </Switch>
-        
-        <footer>
-          Footer
-        </footer>
 
+        </Switch>
+
+        <footer>
+        </footer>
       </div>
-      
+
     </BrowserRouter>
   );
 }
