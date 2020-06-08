@@ -1,6 +1,7 @@
 const createError = require("http-errors");
 const User = require("../models/usersSchema");
 const { encrypt } = require("../lib/encrypt");
+const nodemailer = require('nodemailer');
 
 exports.getUsers = async (req, res, next) => {
     try {
@@ -85,3 +86,24 @@ exports.deleteUser = async (req, res, next) => {
         next(err)
     }
 };
+
+exports.sendEmail = async (req, res, next) => {
+    const {name, email, subject, message} = req.body;
+    let transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'etikett.radio.client@gmail.com',
+            pass: 'spongebob01'
+        }
+    });
+    const mailOptions = {
+        from: email,
+        to: 'francisco.chiarino@gmail.com',
+        subject: subject,
+        text: `Name: ${name}\nFrom: ${email}\n \n${message}`
+    };
+    await transporter.sendMail(mailOptions, (err, info) => {
+        if (err) { next(err) }
+        else { res.json({success: true, info}) }
+    });
+}
