@@ -70,6 +70,7 @@ function VideoStream(props) {
                 <NavLink className="nav-link" to="/archive">archive.</NavLink>
                 <NavLink className="nav-link" to="/blog">blog.</NavLink>
                 <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+                <NavLink className="nav-link" to="/contact">contact.</NavLink>
                 <NavLink className="nav-link" to="/user">staff only.</NavLink>
             </nav>
 
