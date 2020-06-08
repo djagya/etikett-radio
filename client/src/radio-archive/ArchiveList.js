@@ -28,7 +28,9 @@ export default function ArchiveList(props) {
                     <li>{el.host}</li>
                     <li>{el.genre}</li>
                     <li>{el.date.substring(0, 10)}</li>
+                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
                     <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
+                    : null }
                 </ul>
             </li>
         ));
