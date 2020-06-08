@@ -9,7 +9,28 @@ export default function Contact() {
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        const options = {
+            method: 'POST',
+            headers: { 'content-type': 'application/json'},
+            body: JSON.stringify({name, email, subject, message})
+        }
+
+        fetch('http://localhost:3000/users/contact', options)
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Your message has been sent!');
+                    setName('');
+                    setEmail('');
+                    setSubject('');
+                    setMessage('');
+                } else {
+                    alert('Opps! Something went wrong...');
+                }
+            })
     }
+        
 
     return (
         <div className="not-stream-component">
@@ -20,8 +41,8 @@ export default function Contact() {
                 <input type="text" id="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
                 </label>
                 <label htmlFor="email">
-                    <span className="required">*</span>name
-                <input type="text" id="email" placeholder="Email" value={email} onChange={(e) => setName(e.target.value)}/>
+                    <span className="required">*</span>email
+                <input type="text" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </label>
                 <label htmlFor="subject">
                     <span className="required">*</span>subject

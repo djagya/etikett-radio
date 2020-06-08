@@ -100,10 +100,10 @@ exports.sendEmail = async (req, res, next) => {
         from: email,
         to: 'francisco.chiarino@gmail.com',
         subject: subject,
-        text: `Name: ${name}\nEmail: ${email}\n \n${message}`
+        text: `Name: ${name}\nFrom: ${email}\n \n${message}`
     };
     await transporter.sendMail(mailOptions, (err, info) => {
         if (err) { next(err) }
-        else { res.json(info.response) }
+        else { res.json(info) }
     });
 }
