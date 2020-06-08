@@ -2,8 +2,10 @@ import React, {useState, useContext} from 'react';
 import Delete from "../Delete";
 import BlogEditForm from './BlogEditForm';
 import {Context} from "../Context";
+import {useCookies} from "react-cookie"
 
 export default function BlogEntry(el, i) {
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
     const [showEdit, setShowEdit] =useState(false);
     const context = useContext(Context)
     
@@ -32,7 +34,7 @@ export default function BlogEntry(el, i) {
     return (
         <Context.Provider value={{showEdit,setShowEdit}}>
         <li key={i} className="blog-list">
-
+        {cookies.user && cookies.user.role === 'Admin' ?
             <div className="button-container archive-controls">
                 {showEdit ? 
                 <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
@@ -40,6 +42,7 @@ export default function BlogEntry(el, i) {
                 }
                 <button type="button" onClick={() => handleDelete(entry._id, entry.heading)}>delete</button>
             </div>
+            : null }
             {showEdit?
                 <BlogEditForm data={el.el}/>:
                 <article>

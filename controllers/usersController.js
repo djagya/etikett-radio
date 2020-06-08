@@ -98,7 +98,7 @@ exports.sendEmail = async (req, res, next) => {
     });
     const mailOptions = {
         from: email,
-        to: 'francisco.chiarino@gmail.com',
+        to: 'simonsch.tz@gmail.com',
         subject: subject,
         text: `Name: ${name}\nFrom: ${email}\n \n${message}`
     };
