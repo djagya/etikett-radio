@@ -14,21 +14,25 @@ import ArchiveEdit from './radio-archive/ArchiveEditForm';
 import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
+import Noisy from './noise/Noisy'
 
 function App(props) {
 
   return (
     <BrowserRouter>
+
       <div className="App">
+        <Noisy className="noise" />
         <div className="stream-page">
-            <VideoStream />  
+          <VideoStream />
         </div>
-        
-        
+
+
         <Switch>
+
           {/*Placeholder for / route so we don't land on Error component*/}
-          <Route exact path="/" component={Home}/> 
-       
+          <Route exact path="/" component={Home} />
+
           {/* User Related */}
           <Route exact path="/user" component={AccountManager} />
           <Route exact path="/user/login" component={LogIn} />
@@ -40,16 +44,12 @@ function App(props) {
           <Route exact path="/blog" component={Blog} />
           {/* Fallback to Error Page */}
           <Route component={Error} />
-          
+
         </Switch>
-        
+
         <footer>
-          Footer
         </footer>
-
       </div>
-      
-
     </BrowserRouter>
   );
 }

@@ -6,10 +6,11 @@ $header-height: 20vh;
   margin: 0;
   box-sizing: border-box;
   color: white;
-  background-color: black;
+  background-color: #302f2f00;
   white-space: pre-wrap; //respects \n as new lines
 }
-@font-face{
+
+@font-face {
   font-family: "GaramondPro";
   src: url("./font/AGaramondPro-Regular.otf");
 }
@@ -20,9 +21,11 @@ h2 {
   text-align: center;
   margin: 1rem 0;
 }
+
 h3 {
   margin-top: 1.5rem;
 }
+
 .nav-link {
   padding: 0 2vw;
 }
@@ -34,7 +37,7 @@ h3 {
 ///////////////////////////////////
 //         Main Page
 ///////////////////////////////////
-.stream-page  {
+.stream-page {
 
   // Fran: I believe this isn't necessary
   // height: 100vh;
@@ -42,7 +45,7 @@ h3 {
   // grid-template-rows: 5fr 90fr 5fr;
 
   position: relative;
- 
+
   .twitch {
     display: flex;
     flex-direction: column;
@@ -52,11 +55,20 @@ h3 {
     width: 100%;
     background-color: rgba($color: grey, $alpha: 1.0);
   }
- 
+
 }
+
+.noise {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+}
+
 footer {
   height: 100vh;
-  background-color: rgba(128, 128, 128, 0.322); 
+
 }
 
 ///////////////////////////////////
@@ -66,13 +78,14 @@ footer {
   display: flex;
   flex-flow: column;
   align-items: center;
+
   .grid-container {
-  display: grid;
-  text-align: left;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 2rem;
-  row-gap: 1rem;
-  width: 600px;
+    display: grid;
+    text-align: left;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    width: 600px;
 
     label {
       input {
@@ -80,32 +93,36 @@ footer {
         height: 2rem;
       }
     }
+
     .describe {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        textarea {
-          width: 100%;
-          min-height: 5rem;
-        }
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+      textarea {
+        width: 100%;
+        min-height: 5rem;
+      }
     }
-  
+
   }
+
   .submit-button {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 1rem;
     height: 2rem;
+
     input {
       height: 100%;
       padding: 0 5px;
       font-size: 1rem;
     }
-  } 
+  }
 
   .required {
-      color: red;
-    }
+    color: red;
+  }
 }
 
 /////////////
@@ -113,35 +130,40 @@ footer {
 /////////////
 .button-container {
   display: flex;
-  height: 2rem; 
+  height: 2rem;
 }
+
 button {
   height: 100%;
   padding: 0 5px;
   font-size: 1rem;
 }
+
 .archive-controls {
   justify-content: space-between;
   margin: 1rem 0;
 }
+
 ///////////////////////////////////
 //          Archive Page
 ///////////////////////////////////
 .archive-list-page {
   display: flex;
   justify-content: center;
-  
-    .img-container {
-      display: flex;
-      justify-content: flex-end;
-      img {
-        width: 50px;
-      }
+
+  .img-container {
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      width: 50px;
     }
-    li {
-      align-self: center;
-    }
-  
+  }
+
+  li {
+    align-self: center;
+  }
+
 }
 
 .check-delete {
@@ -154,24 +176,30 @@ button {
   flex-flow: column;
   align-items: center;
   width: auto;
+
   .archive-details {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+
     .list-right {
       text-align: right;
       margin-left: 2rem;
     }
-  } 
-  
+  }
+
 }
-.list-header, .archive-list {
+
+.list-header,
+.archive-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 20px;
   column-gap: 20px;
 }
+
 .list-header {
   margin-bottom: 2rem;
 }
+
 li {
   list-style-type: none;
   margin-bottom: 5px;
@@ -190,38 +218,38 @@ a {
 .blog-page {
   display: flex;
   justify-content: center;
-  
+
   .blog-content {
     max-width: 600px;
-    
+
     text-align: left;
   }
+
   .blog-list {
     margin: 4rem 0;
+
     h2 {
       margin: 0;
       text-align: left;
     }
+
     .article-header {
       margin: 2rem 0;
       display: flex;
       justify-content: space-between;
     }
   }
-    
-  
-  
+
+
+
 }
-
-
-
-
 
 q {
   max-width: 300px;
   text-align: center;
   margin: 16px 0;
 }
+
 //---------------------------------------------//
 //            From the base react              //
 //---------------------------------------------//
@@ -263,7 +291,7 @@ nav {
 
 .full-header {
   flex-direction: column;
-  
+
 
   .embeded-video {
     width: 100%;
@@ -325,12 +353,12 @@ nav {
   border-width: 9px 0 9px 18px;
 
   &.paused {
-      border-style: double;
-      border-width: 0px 0 0px 18px;
+    border-style: double;
+    border-width: 0px 0 0px 18px;
   }
 
   &:hover {
-      border-color: transparent transparent transparent #707070;
+    border-color: transparent transparent transparent #707070;
   }
 }
 
@@ -351,22 +379,20 @@ nav {
   width: 100px;
 
   &::-webkit-volumeControl-thumb {
-      width: 9px; 
-      height: 9px; 
-      background: #fff; 
-      border: 5px solid #313131;
-      border-radius: 50%;
-      cursor: pointer; 
+    width: 9px;
+    height: 9px;
+    background: #fff;
+    border: 5px solid #313131;
+    border-radius: 50%;
+    cursor: pointer;
   }
 
   &::-moz-range-thumb {
-      width: 9px; 
-      height: 9px; 
-      background: #fff; 
-      border: 5px solid #313131;
-      border-radius: 50%;
-      cursor: pointer; 
+    width: 9px;
+    height: 9px;
+    background: #fff;
+    border: 5px solid #313131;
+    border-radius: 50%;
+    cursor: pointer;
   }
 }
-
-
