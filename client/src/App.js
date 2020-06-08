@@ -18,6 +18,7 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 import Schedule from './schedule/Schedule';
+import Contact from './Contact';
 
 function App(props) {
 
@@ -40,6 +41,8 @@ function App(props) {
           <Route exact path="/user" render={(props) => <AccountManager {...props} removeCookie={removeCookie} cookies={cookies} /> } />
           <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} /> } />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} /> } />
+          <Route exact path="/contact" component={Contact} />
+
           {/* Archive Related */}
           <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} /> } />
           <Route exact path="/archive/:id" component={ArchiveDetail} />
