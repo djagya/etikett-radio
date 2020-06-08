@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { Context } from '../Context';
 
 export default function ScheduleInputForm() {
-
+    const context = useContext(Context)
     // Constructor for initial value/kind of a placeholder
     const newDate = new Date();
     const currentDate = newDate.toISOString().substring(0 ,10)
@@ -38,7 +39,7 @@ export default function ScheduleInputForm() {
 
         const reload = (data) => {
             if (data.success) {
-                window.location.reload()
+                context.setScheduleData([...context.scheduleData, body])
             } else {
                 alert(data.err)
             }
