@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 export default function Contact() {
 
     const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
 
@@ -17,6 +18,10 @@ export default function Contact() {
                 <label htmlFor="name">
                     <span className="required">*</span>name
                 <input type="text" id="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+                </label>
+                <label htmlFor="email">
+                    <span className="required">*</span>name
+                <input type="text" id="email" placeholder="Email" value={email} onChange={(e) => setName(e.target.value)}/>
                 </label>
                 <label htmlFor="subject">
                     <span className="required">*</span>subject
