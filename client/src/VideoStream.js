@@ -6,7 +6,6 @@ import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
 
 function VideoStream(props) {
-
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
         const video = 'https://www.twitch.tv/truthmusic';

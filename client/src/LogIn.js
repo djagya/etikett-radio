@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import {Redirect} from "react-router-dom"
 
 export default function LogIn(props) {
-
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
+    const id = props.cookies.user._id
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -37,7 +37,7 @@ export default function LogIn(props) {
 
     const logIn = (data) => {
         if (data.success) {
-            return <Redirect to={`/user/${data.user._id}`} />
+            window.location.assign(`/user/${data.user._id}`)
         }
         if (data.status === 404) alert("Invalid Email")
         if (data.status === 403) alert("Invalid Password")
@@ -60,8 +60,7 @@ export default function LogIn(props) {
         }
     };
 
-    if (props.cookies.user) { return <Redirect to="/user" /> }
-
+    if (props.cookies.user) { return <Redirect to={`/user/${id}`} /> }
     return (
         <div className="input-form not-stream-component">
             <h2>Log In</h2>

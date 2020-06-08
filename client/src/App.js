@@ -53,10 +53,10 @@ function App(props) {
           <Route exact path="/" component={Home} />
 
           {/* User Related */}
-          <Route exact path="/user" render={(props) => <AccountManager {...props} removeCookie={removeCookie} cookies={cookies} />} />
-          <Route exact path="/user/:id" render={(props) => <UserProfile {...props} setCookie={setCookie} cookies={cookies} />} />
+          <Route exact path="/user" render={(props) => <AccountManager {...props}  cookies={cookies} />} />
           <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
+          <Route exact path="/user/:id" render={(props) => <UserProfile {...props} removeCookie={removeCookie} cookies={cookies} />} />
           <Route exact path="/contact" component={Contact} />
 
           {/* Archive Related */}

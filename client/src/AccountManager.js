@@ -5,17 +5,14 @@ export default function UserList(props) {
 
     const [userData, setUserData] = useState([]);
     const user = props.cookies.user;
-
+console.log(user)
     useEffect(() => {
         fetch("http://localhost:3000/user", {credentials: 'include'})
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
 
-    const handleLogOut = () => {
-        props.removeCookie('user');
-        props.removeCookie('x-auth');
-    };
+    
 
     const renderLi = (userData) => {
         
@@ -48,9 +45,7 @@ export default function UserList(props) {
     
     return (
         <div className="not-stream-component">
-            {user ?
-                <button onClick={handleLogOut}>Log Out</button>
-            : null }
+            
 
             {user.role === 'Admin' ?
                 <ul>
