@@ -24,7 +24,7 @@ import Noisy from './noise/Noisy'
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
-import MyProfile from './user/MyProfile';
+import MyProfile from './user/EditMyProfile';
 import Hosts from './Carousel-Blog/Hosts';
 
 
