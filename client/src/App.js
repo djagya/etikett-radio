@@ -19,7 +19,8 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
-import Noisy from './noise/Noisy'
+import Noisy from './noise/Noisy';
+import ChatApp from './chat/ChatApp';
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
@@ -42,6 +43,9 @@ function App(props) {
 
       <div className="noise" >
         <Noisy />
+      </div>
+      <div className="chat">
+        <ChatApp />
       </div>
 
 
