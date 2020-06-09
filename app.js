@@ -42,10 +42,10 @@ io.on('connection', (socket) => {
       console.log(`${name} has joined ${room}'s chat!`);
   
       // Emit MESSAGE
-      socket.emit('message', {user: 'admin', text: `Hi ${user.name}! Welcome to ${user.room}'s chat!`});
+      socket.emit('message', {user: 'etikett radio', text: `Hi ${user.name}! Welcome to ${user.room}'s chat!`});
   
       // Broadcast MESSAGE
-      socket.broadcast.to(user.room).emit('message', {user: 'admin', text: `${user.name} has joined.`});
+      socket.broadcast.to(user.room).emit('message', {user: 'etikett radio', text: `${user.name} has joined.`});
   
       // Join user
       socket.join(user.room);
@@ -73,7 +73,7 @@ io.on('connection', (socket) => {
       const user = removeUser(socket.id);
       console.log(user)
       if (user) {
-        io.to(user.room).emit('message', {user: 'admin', text: `${user.name} has left.`})
+        io.to(user.room).emit('message', {user: 'etikett radio', text: `${user.name} has left.`})
       }
     })
 })

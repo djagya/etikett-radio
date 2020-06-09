@@ -59,6 +59,12 @@
   align-items: center;
   height: 5%;
   background: #212121;
+
+  .info-inner-container img {
+    width: 16px;
+    margin: 0 0.4rem;
+    cursor: pointer;
+  }
 }
 
 // Chat Form
@@ -87,16 +93,33 @@
 // Messages
 .Messages {
   height: 88%;
-  background: rgba(0, 0, 0, 0.7);
+  // background: rgba(0, 0, 0, 0.3); <-- change chat bg here
   display: flex;
   flex-direction: column-reverse;
 }
 
 // Message
-
-  .justify-right {
-    text-align: right;
-  }
-  .justify-left {
-    text-align: left;
-  }
+.justify-right {
+  text-align: right;
+}
+.justify-left {
+  text-align: left;
+}
+.message-box {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+}
+.bg-white {
+  background: #fff;
+  p { color: #000 }
+}
+.bg-black {
+  background: #000;
+  p { color: #fff }
+}
+.sent-text {
+  margin: 0 0.4rem;
+}
+  
