@@ -10,11 +10,11 @@ export default function Join({setName}) {
   }
 
   return (
-    <div>
+    <div className="Join">
       <h3>Join out chat!</h3>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit} className="join-form">
         <input type="text" placeholder="Name" value={nameInput} onChange={(e) => setNameInput(e.target.value)} />
-        <button type="submit">Join Chat</button>
+        <button type="submit">Join</button>
       </form>
     </div>
   )

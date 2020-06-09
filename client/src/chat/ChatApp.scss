@@ -1,24 +1,84 @@
+// Layout
 .ChatApp * {
   color: black;
   margin: 0;
   padding: 0;
 }
-
 .ChatApp {
+  width: 340px;
   transition: height 450ms ease;
 
   h3 {
     padding: 0.5rem;
   }
 }
-
-.InfoBar {
+.outer-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  height: 100%;
+}
+.inner-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .chat-app-chat {
   height: 88vh;
 }
 .chat-app-join {
   height: 70px;
+}
+
+// Join
+.Join {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .join-form {
+    height: 50%;
+    width: 100%;
+
+    input {
+      height: 2rem;
+      width: 80%;
+    }
+    button {
+      width: 20%;
+    }
+  }
+}
+
+// InfoBar
+.InfoBar {
+  display: flex;
+  justify-content: space-between;
+  height: 5%;
+}
+
+// Chat Form
+.chat-form {
+  align-self: flex-end;
+  input,
+  button {
+    height: 2rem;
+    padding: 0 0.5rem;
+  }
+
+  input {
+    width: 80%;
+  }
+  button {
+    width: 20%;
+  }
+}
+
+// Input 
+.Input {
+  height: 5%;
+}
+
+// Messages
+.Messages {
+  height: 90%;
 }
