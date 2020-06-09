@@ -25,7 +25,6 @@ export default function Schedule(props) {
     const handleAdd = boolean => {
         setShowForm(boolean)
     };
-    console.log(scheduleData)
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
         if (checkedIDs.length === 0) {

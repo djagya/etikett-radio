@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import {Redirect} from "react-router-dom"
 
 export default function LogIn(props) {
-
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
+    const id =() => id ? null : props.cookies.user._id
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -29,19 +29,14 @@ export default function LogIn(props) {
 
         postData("http://localhost:3000/users/login", body)
             .then(data => { 
-                resetForm(data)
+                logIn(data)
                 props.setCookie('user', data.user, {path: '/'})
             })
 
     }
 
-    const resetForm = (data) => {
-        if (data.success) {
-            // window.localStorage.setItem("x-auth", value);
-            setEmail("");
-            setPw("");
-            alert("Log In successful, you might want to redirect your user to the music DB tho")
-        }
+    const logIn = (data) => {
+        
         if (data.status === 404) alert("Invalid Email")
         if (data.status === 403) alert("Invalid Password")
 
@@ -63,8 +58,7 @@ export default function LogIn(props) {
         }
     };
 
-    if (props.cookies.user) { return <Redirect to="/user" /> }
-
+    if (props.cookies.user) { return <Redirect to={`/user`} /> }
     return (
         <div className="input-form not-stream-component">
             <h2>Log In</h2>
@@ -76,7 +70,7 @@ export default function LogIn(props) {
                     </label>
                     <label htmlFor="pw">
                         <span className="required">*</span>password
-                    <input type="text" id="pw" placeholder="Password" value={pw} onChange={handleFormInput} />
+                    <input type="password" id="pw" placeholder="Password" value={pw} onChange={handleFormInput} />
                     </label>
                 </div>
                 <div className="submit-button">

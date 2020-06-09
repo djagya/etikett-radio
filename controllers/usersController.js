@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 
 exports.getUsers = async (req, res, next) => {
     try {
-        console.log("getUsers us runnins")
         const users = await User.find()
         res.json({ success: true, users: users });
     }
@@ -18,6 +17,7 @@ exports.getUserById = async (req, res, next) => {
     const { id } = req.params;
     try {
         const user = await User.findById(id);
+        
         if (!user) throw createError(404);
         res.json({ success: true, user: user });
     }

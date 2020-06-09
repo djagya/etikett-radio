@@ -28,7 +28,7 @@ h3 {
 }
 
 .not-stream-component {
-  margin-top: $header-height;
+  margin-top: $header-height; //-80vh;
 }
 
 .noise {
@@ -43,23 +43,7 @@ h3 {
 ///////////////////////////////////
 .stream-page {
 
-  // Fran: I believe this isn't necessary
-  // height: 100vh;
-  // display: grid;
-  // grid-template-rows: 5fr 90fr 5fr;
-
   position: relative;
-
-  // .twitch {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   padding-top: 40vh;
-  //   height: 100%;
-  //   width: 100%;
-  //   background-color: rgba($color: grey, $alpha: 1.0);
-  // }
-
 }
 
 footer {
@@ -314,7 +298,15 @@ q {
     }
   }
 }
+///////////////////////////////////
+//        Staff Only Page
+///////////////////////////////////
 
+.staff-only {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 //---------------------------------------------//
 //            From the base react              //
 //---------------------------------------------//
@@ -329,19 +321,15 @@ body {
   font-family: "GaramondPro", serif;
 }
 
-
-
 .App {
   text-align: center;
 }
-
-
-
 
 .App-header {
   background-color: #000;
   display: flex;
   font-size: calc(10px + 2vmin);
+  z-index: 1;
 }
 
 nav {
@@ -353,7 +341,6 @@ nav {
 
 .full-header {
   flex-direction: column;
-
 
   .embeded-video {
     width: 100%;
@@ -404,13 +391,13 @@ nav {
   grid-template: 1fr 1fr / repeat(12, 1fr);
 
   nav {
-    grid-column: 5 / -1;
+    grid-column: 3 / 11;
     grid-row: 1 / 2;
     height: 100%;
   }
 
   .message-controls-container {
-    grid-column: 5 / -1;
+    grid-column: 3 / 11;
     grid-row: 2 / 3;
     display: flex;
     align-items: center;
@@ -418,7 +405,7 @@ nav {
   }
 
   .embeded-video {
-    grid-column: 1 / 5;
+    grid-column: 1 / 3;
     grid-row: 1 / 3;
   }
 }

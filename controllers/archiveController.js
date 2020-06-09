@@ -13,6 +13,7 @@ exports.getArchive = async (req, res, next) => {
 
 exports.getArchiveById = async (req, res, next) => {
     const { id } = req.params;
+    console.log(id)
     try {
         const archive = await Archive.findById(id);
         if (!archive) throw createError(404);

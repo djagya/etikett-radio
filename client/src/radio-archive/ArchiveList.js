@@ -28,7 +28,9 @@ export default function ArchiveList(props) {
                     <li>{el.host}</li>
                     <li>{el.genre}</li>
                     <li>{el.date.substring(0, 10)}</li>
+                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
                     <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
+                    : null }
                 </ul>
             </li>
         ));
@@ -46,9 +48,7 @@ export default function ArchiveList(props) {
         }
     };
 
-    const handleAdd = boolean => {
-        setShowForm(boolean)
-    };
+   
     //Delete the deleted Item from archiveData to make it disappear without refreshing the page
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
@@ -76,8 +76,8 @@ export default function ArchiveList(props) {
                 {props.cookies.user && props.cookies.user.role === 'Admin' ?
                     <div className="button-container archive-controls">
                         {showForm ? 
-                            <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                            <button type="button" onClick={() => handleAdd(true)}>add to archive</button> 
+                            <button type="button" onClick={() => setShowForm(false)}>cancel</button>:
+                            <button type="button" onClick={() => setShowForm(true)}>add to archive</button> 
                         }
                         <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                     </div>

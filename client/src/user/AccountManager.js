@@ -5,22 +5,19 @@ export default function UserList(props) {
 
     const [userData, setUserData] = useState([]);
     const user = props.cookies.user;
-
+    console.log(user)
     useEffect(() => {
-        fetch("http://localhost:3000/users", {credentials: 'include'})
+        fetch("http://localhost:3000/user", {credentials: 'include'})
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
 
-    const handleLogOut = () => {
-        props.removeCookie('user');
-        props.removeCookie('x-auth');
-    };
+    
 
     const renderLi = (userData) => {
         
         // Render login and create account links
-        if (userData.status === 403) return (<h2> <Link to="/user/createuser">Create New Account</Link>  || <Link to="/user/login">Log In</Link></h2>)
+        if (userData.status === 403) return (<h2>please log in as admin</h2>)
 
         //Because first time the code is running, userData will be an empty array
         if (!userData.users) return null; 
@@ -38,20 +35,10 @@ export default function UserList(props) {
         ));
     };
 
-    if (!user) { 
-        return (
-            <div className="not-stream-component">
-                <h2> <Link to="/user/createuser">Create New Account</Link>  || <Link to="/user/login">Log In</Link></h2>
-            </div>
-        ) 
-    }
     
     return (
         <div className="not-stream-component">
-
-            {user ?
-                <button onClick={handleLogOut}>Log Out</button>
-            : null }
+            
 
             {user.role === 'Admin' ?
                 <ul>

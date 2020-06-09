@@ -61,11 +61,10 @@ export default function CreateUser(props) {
                 setEmail("");
                 setPW("");
                 setRole("User");
-                alert("You successfully signed up!")
+                alert("User created")
             } else {
                 alert("Please fill out all *Required fields and make sure your password is at least 8 signs long.")
             }
-            console.log(data)
         }
 
     }
@@ -97,8 +96,6 @@ export default function CreateUser(props) {
             default: console.log("Sign up Input in SignUp.js ran through without effect")
         }
     };
-
-    if (props.cookies.user) { return <Redirect to="/user" /> }
 
     return (
         <div className="input-form not-stream-component">
