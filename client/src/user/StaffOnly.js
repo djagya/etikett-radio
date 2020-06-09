@@ -5,9 +5,9 @@ import {Context} from "../Context"
 import CreateUser from './CreateUser';
 export default function UserProfile(props) {
     
-    const [showProfile, setShowProfile] =useState(false);
+    const [profileEdit, setProfileEdit] =useState(false);
     const [showCreate, setShowCreate] =useState(false);
-    const [user, setUser] =useState(props.cookies.user.firstName)
+    const [firstName, setFirstName] =useState(props.cookies.user.firstName)
     const id= props.cookies.user._id
 
     const handleLogOut = () => {
@@ -17,14 +17,14 @@ export default function UserProfile(props) {
     };
   
     return (
-        <Context.Provider value={{user, setUser}}>
+        <Context.Provider value={{firstName, setFirstName, profileEdit, setProfileEdit}}>
             <div className="not-stream-component staff-only">
-                <h2>Wassuuuuuuuup {user}</h2>
-                {showProfile ? 
-                    <button type="button" onClick={() => setShowProfile(false)}>cancel</button>:
-                    <button type="button" onClick={() => setShowProfile(true)}>edit my profile</button> 
+                <h2>Wassuuuuuuuup {firstName}</h2>
+                {profileEdit ? 
+                    <button type="button" onClick={() => setProfileEdit(false)}>cancel</button>:
+                    <button type="button" onClick={() => setProfileEdit(true)}>edit my profile</button> 
                 }
-                {showProfile ? 
+                {profileEdit ? 
                     <MyProfile props={props} id={id} />:
                     null
                 }
