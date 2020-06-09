@@ -8,7 +8,7 @@ export default function Chat({ name, room }) {
   const [messages, setMessages] = useState([]);
 
   // Set server address
-  const endpoint = 'localhost:5000';
+  const endpoint = 'localhost:3000';
 
   useEffect(() => {
     console.log('[useEffect on Chat is running]')
