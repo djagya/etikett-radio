@@ -25,7 +25,6 @@ export default function MyProfile(props, id) {
                 setUserName(data.user.userName)
                 setEmail(data.user.email)
                 setRole(data.user.role)
-                console.log(data)
             }) 
     }, [])
     
@@ -55,7 +54,7 @@ export default function MyProfile(props, id) {
         putData(`http://localhost:3000/users/${props.id}`, body)
             .then(data => { if (!data.success) 
                 { console.log(data) } else {
-                    context.setFirstName(firstName)
+                    context.setName(firstName)
                     context.setProfileEdit(false)
                 } })
     }

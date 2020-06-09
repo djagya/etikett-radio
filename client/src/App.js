@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -26,42 +26,39 @@ import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
 import MyProfile from './user/EditMyProfile';
 import Hosts from './Carousel-Blog/Hosts';
+import { PromiseProvider } from 'mongoose';
+import { Context } from './Context';
 
 
 
 
 function App(props) {
 
-  const [cookies, setCookie, removeCookie] = useCookies(['user'])
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
 
-
+console.log(id)
   return (
     <BrowserRouter>
-
+    <Context.Provider value={{id,setId,name,setName}}>
       <div className="App">
-
-      <div className="noise" >
-        <Noisy />
-      </div>
-
-
-
+        <div className="noise" >
+          <Noisy />
+        </div>
         <div className="stream-page">
           <VideoStream />
-          
         </div>
-
-
         <Switch>
 
           {/*Placeholder for / route so we don't land on Error component*/}
           <Route exact path="/" component={Home} />
 
           {/* User Related */}
-          <Route exact path="/user" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
+          {/* <Route exact path="/user" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} /> */}
           <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-          <Route exact path="/user/:id" render={(props) => <MyProfile {...props}  cookies={cookies} />} />
+          <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie}  cookies={cookies} />} />
           <Route exact path="/contact" component={Contact} />
 
           {/* Archive Related */}
@@ -86,7 +83,7 @@ function App(props) {
         <footer>
         </footer>
       </div>
-
+      </Context.Provider>
     </BrowserRouter>
   );
 }

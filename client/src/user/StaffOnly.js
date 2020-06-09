@@ -4,10 +4,10 @@ import {Context} from "../Context"
 
 import CreateUser from './CreateUser';
 export default function UserProfile(props) {
-    
+    const context = useContext(Context)
+
     const [profileEdit, setProfileEdit] =useState(false);
     const [showCreate, setShowCreate] =useState(false);
-    const [firstName, setFirstName] =useState(props.cookies.user.firstName)
     const id= props.cookies.user._id
 
     const handleLogOut = () => {
@@ -17,9 +17,9 @@ export default function UserProfile(props) {
     };
   
     return (
-        <Context.Provider value={{firstName, setFirstName, profileEdit, setProfileEdit}}>
+        <Context.Provider value={{profileEdit, setProfileEdit}}>
             <div className="not-stream-component staff-only">
-                <h2>Wassuuuuuuuup {firstName}</h2>
+                <h2>Wassuuuuuuuup {context.name}</h2>
                 {profileEdit ? 
                     <button type="button" onClick={() => setProfileEdit(false)}>cancel</button>:
                     <button type="button" onClick={() => setProfileEdit(true)}>edit my profile</button> 
