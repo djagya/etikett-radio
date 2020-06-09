@@ -535,7 +535,7 @@ nav {
 .embla__slide {
   flex: 0 0 auto;
   width: 100%;
-  position: sticky;
+  position: relative;
   counter-increment: embla;
   overflow: hidden;
   min-height: 100px;
@@ -543,7 +543,7 @@ nav {
 }
 
 .embla__slide__image {
-  background: center center/cover no-repeat;
+  background: center center/contain;
   position: absolute;
   top: 0;
   right: 0;
