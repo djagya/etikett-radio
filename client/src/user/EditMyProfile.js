@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Context} from "../Context";
+import { Redirect } from 'react-router-dom';
 
 
-export default function MyProfile(props, id) {
-    const user = props.props.cookies.user
+export default function MyProfile(props) {
+    
+    const user = props.cookies.user
     const context = useContext(Context)
-
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [userName, setUserName] = useState("");
@@ -14,7 +15,7 @@ export default function MyProfile(props, id) {
     const [role, setRole] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${props.id}`, {
+        fetch(`http://localhost:3000/users/${context.id}`, {
             credentials: "include",
             // headers: {"Content-Type": "application/json"}
         })
@@ -27,6 +28,7 @@ export default function MyProfile(props, id) {
                 setRole(data.user.role)
             }) 
     }, [])
+    
     
 
     const handleSubmit = event => {
@@ -51,16 +53,16 @@ export default function MyProfile(props, id) {
             })
             return response.json()
         }
-        putData(`http://localhost:3000/users/${props.id}`, body)
+        putData(`http://localhost:3000/users/${context.id}`, body)
             .then(data => { if (!data.success) 
                 { console.log(data) } else {
-                    context.setName(firstName)
-                    context.setProfileEdit(false)
+                    props.setCookie('user', data.user, {path: '/'}) 
                 } })
+            .then(context.setShowProfileEdit(false) )
     }
-
-
-
+    
+    if (!context.showProfileEdit) {return <Redirect to={`/user/${context.id}`}/>}
+    
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;

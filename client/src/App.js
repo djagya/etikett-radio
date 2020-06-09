@@ -24,9 +24,8 @@ import Noisy from './noise/Noisy'
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
-import MyProfile from './user/EditMyProfile';
+import EditMyProfile from './user/EditMyProfile';
 import Hosts from './Carousel-Blog/Hosts';
-import { PromiseProvider } from 'mongoose';
 import { Context } from './Context';
 
 
@@ -35,13 +34,16 @@ import { Context } from './Context';
 function App(props) {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
-  const [id, setId] = useState("");
-  const [name, setName] = useState("");
-
-console.log(id)
+  /////for context/////
+  let id = "";
+  let [showProfileEdit, setShowProfileEdit] = useState(false)
+  if (cookies.user) {
+    id = cookies.user._id
+  }
+/////////////////////////
   return (
     <BrowserRouter>
-    <Context.Provider value={{id,setId,name,setName}}>
+    <Context.Provider value={{id,showProfileEdit,setShowProfileEdit}}>
       <div className="App">
         <div className="noise" >
           <Noisy />
@@ -55,10 +57,10 @@ console.log(id)
           <Route exact path="/" component={Home} />
 
           {/* User Related */}
-          {/* <Route exact path="/user" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} /> */}
           <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie}  cookies={cookies} />} />
+          <Route exact path="/user/:id/edit" render={(props)=> <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
           <Route exact path="/contact" component={Contact} />
 
           {/* Archive Related */}

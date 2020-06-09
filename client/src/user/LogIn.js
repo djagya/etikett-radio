@@ -40,10 +40,12 @@ export default function LogIn(props) {
         
         if (data.status === 404) alert("Invalid Email")
         if (data.status === 403) alert("Invalid Password")
-
-        else { context.setId(data.user._id) }
+        
+        else {
+            console.log(data)
+        }
     }
-
+    
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -58,7 +60,6 @@ export default function LogIn(props) {
             default: console.log("Log In Input from LogIn.js ran through without effect")
         }
     };
-    console.log(context.id)
     if (props.cookies.user) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className="input-form not-stream-component">

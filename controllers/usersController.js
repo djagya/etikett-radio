@@ -60,7 +60,6 @@ exports.login = async (req, res, next) => {
     }
 };
 exports.putUser = async (req, res, next) => {
-    console.log("putUser is running")
     const { id } = req.params;
     const user = req.body;
     console.log(id, user)
