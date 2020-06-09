@@ -7,7 +7,6 @@ export default function InfoBar({ room, closeChat }) {
   return (
     <div className="InfoBar">
       <div className="info-inner-container">
-        <button>close</button>
         <img src={minimize} alt="minimize icon" />
       </div>
       <h3>{room}</h3>

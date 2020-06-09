@@ -58,8 +58,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5%;
-  background: #212121;
+  height: 10%;
+  background: #000;
 
   .info-inner-container img {
     width: 16px;
@@ -93,7 +93,7 @@
 
 // Messages
 .Messages {
-  height: 88%;
+  height: 83%;
   // background: rgba(0, 0, 0, 0.3); <-- change chat bg here
   display: flex;
   flex-direction: column-reverse;
