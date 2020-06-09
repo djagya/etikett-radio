@@ -367,9 +367,11 @@ nav {
   display: flex;
   align-items: center;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
   overflow: hidden;
 }
+
+/*animated stream description*/
 
 .message span {
   display: inline-block;
@@ -377,7 +379,7 @@ nav {
   white-space: nowrap;
 }
 
-span {
+.moving-text {
   animation: moveText linear 10s backwards infinite;
 }
 
