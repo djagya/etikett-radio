@@ -4,7 +4,7 @@ import './ChatApp.scss';
 import Join from './Join';
 import Chat from './Chat';
 
-function ChatApp() {
+function ChatApp({ setChatState }) {
   const [name, setName] = useState('');
   const room = 'etikett radio';
 
@@ -19,7 +19,7 @@ function ChatApp() {
     name
       ? (
         <div className="ChatApp chat-app-chat">
-          <Chat name={name} room={room} setName={setName} />
+          <Chat name={name} room={room} setChatState={setChatState} />
         </div>
       )
       : (

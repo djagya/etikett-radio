@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -33,8 +33,8 @@ import Hosts from './Carousel-Blog/Hosts';
 
 function App(props) {
 
-  const [cookies, setCookie, removeCookie] = useCookies(['user'])
-
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [chatState, setChatState] = useState('chat-open');
 
   return (
     <BrowserRouter>
@@ -50,8 +50,8 @@ function App(props) {
         <div className="stream-page">
           <VideoStream />
 
-          <div className="chat chat-open">
-            <ChatApp />
+          <div className={`chat ${chatState}`}>
+            <ChatApp setChatState={setChatState} />
           </div>
         </div>
 

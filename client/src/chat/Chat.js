@@ -53,6 +53,13 @@ export default function Chat({ name, room }) {
     }
   }
 
+  const closeChat = e => {
+    
+    // Emit DISCONNECT
+    socket.emit('disconnect');
+    socket.off();
+  }
+
   return (
     <div className="outer-container">
       <div className="inner-container">
