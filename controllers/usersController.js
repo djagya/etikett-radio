@@ -3,6 +3,7 @@ const User = require("../models/usersSchema");
 const { encrypt } = require("../lib/encrypt");
 const nodemailer = require('nodemailer');
 
+
 exports.getUsers = async (req, res, next) => {
     try {
         const users = await User.find()
@@ -59,8 +60,10 @@ exports.login = async (req, res, next) => {
     }
 };
 exports.putUser = async (req, res, next) => {
+    console.log("putUser is running")
     const { id } = req.params;
     const user = req.body;
+    console.log(id, user)
     try {
         if (user.pw) {
             const updatedPW = await encrypt(user.pw);

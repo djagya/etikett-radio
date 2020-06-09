@@ -50,7 +50,7 @@ export default function MyProfile(props, id) {
             })
             return response.json()
         }
-        putData(`http://localhost:3000/archive/${props.id}`, body)
+        putData(`http://localhost:3000/users/${props.id}`, body)
             .then(data => { if (!data.success) 
                 { console.log(data) } else {
                     window.location.assign(`/user`)
