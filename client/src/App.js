@@ -7,9 +7,9 @@ import { useCookies } from 'react-cookie';
 //Page General Related
 import Error from "./Error404";
 //User Account Related
-import AccountManager from "./AccountManager";
-import LogIn from './LogIn';
-import CreateUser from './CreateUser';
+import AccountManager from "./user/AccountManager";
+import LogIn from './user/LogIn';
+import CreateUser from './user/CreateUser';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
@@ -23,8 +23,8 @@ import Noisy from './noise/Noisy'
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
-import StaffOnly from './StaffOnly';
-import MyProfile from './MyProfile';
+import StaffOnly from './user/StaffOnly';
+import MyProfile from './user/MyProfile';
 import Hosts from './Carousel-Blog/Hosts';
 
 
