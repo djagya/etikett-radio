@@ -95,7 +95,7 @@ function VideoStream(props) {
                     </div>
                 : null }
                 <div className="message">
-                    <span>etikett radio - stream description</span>
+                    <span className="moving-text">etikett radio - stream description, which is gonna be a loooong story</span>
                 </div>
 
             </section>
