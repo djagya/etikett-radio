@@ -24,6 +24,7 @@ import Noisy from './noise/Noisy'
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './StaffOnly';
+import MyProfile from './MyProfile';
 
 
 function App(props) {
@@ -36,9 +37,11 @@ function App(props) {
 
       <div className="App">
 
-        <div className="noise" >
-          <Noisy />
-        </div>
+      <div className="noise" >
+        <Noisy />
+      </div>
+
+
 
         <div className="stream-page">
           <VideoStream />
@@ -51,10 +54,10 @@ function App(props) {
           <Route exact path="/" component={Home} />
 
           {/* User Related */}
-          <Route exact path="/user" render={(props) => <AccountManager {...props}  cookies={cookies} />} />
-          <Route exact path="/user/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
+          <Route exact path="/user" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
+          <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-          <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
+          <Route exact path="/user/:id" render={(props) => <MyProfile {...props}  cookies={cookies} />} />
           <Route exact path="/contact" component={Contact} />
 
           {/* Archive Related */}

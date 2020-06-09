@@ -58,7 +58,7 @@ export default function LogIn(props) {
         }
     };
 
-    if (props.cookies.user) { return <Redirect to={`/user/${id}`} /> }
+    if (props.cookies.user) { return <Redirect to={`/user`} /> }
     return (
         <div className="input-form not-stream-component">
             <h2>Log In</h2>

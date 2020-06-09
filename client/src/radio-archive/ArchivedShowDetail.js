@@ -11,8 +11,7 @@ export default function ArchiveDetail(props) {
         fetch(`http://localhost:3000/archive/${param}`)
             .then(res => res.json())
             .then(data => setArchiveData(data.archive))
-    })
-
+    }, [])
     const renderLi = (archiveData) => {
         if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (archiveData.length === 0) return null;

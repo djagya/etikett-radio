@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import MyProfile from './MyProfile';
 
+import { Link } from 'react-router-dom';
 export default function UserProfile(props) {
     
     const [showProfile, setShowProfile] =useState(false);
@@ -10,7 +11,7 @@ export default function UserProfile(props) {
     const handleLogOut = () => {
         props.removeCookie('user', {path: "/"});
         props.removeCookie('x-auth', {path: "/"});
-        window.location.assign(`/user/login`)
+        window.location.assign(`/login`)
     };
     return (
         <div className="not-stream-component">
