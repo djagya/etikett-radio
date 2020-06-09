@@ -6,7 +6,7 @@ export default function Messages({ messages, name }) {
   const renderMessages = messages.map((message, i) => {
     return(
       <div key={i}>
-        {/* <Message message={message} name={name} /> */}
+        <Message message={message} name={name} />
       </div>
     )
   })

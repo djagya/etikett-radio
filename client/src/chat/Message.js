@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
 export default function Message({ message: { user, text }, name }) {
-  const [isSentByUser, setIsSentByUser] = useState(false);
+  // const [isSentByUser, setIsSentByUser] = useState(false);
   const trimmedName = name.trim().toLocaleLowerCase();
+  let isSentByUser = true;
 
   if (user === trimmedName) {
-    setIsSentByUser(true);
+    let isSentByUser = true;
   }
 
   return (
