@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import InfoBar from './InfoBar';
 import Input from './Input';
+import Messages from './Messages';
 
 let socket;
 
@@ -57,6 +58,7 @@ export default function Chat({ name, room }) {
     <div className="outer-container">
       <div className="inner-container">
         <InfoBar room={room} />
+        <Messages messages={messages} name={name} />
         <Input text={text} setText={setText} sendMessage={sendMessage} />
       </div>
     </div>
