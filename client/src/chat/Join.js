@@ -4,6 +4,8 @@ export default function Join({setName}) {
   const [nameInput, setNameInput] = useState('');
 
   const handleSubmit = e => {
+    e.preventDefault();
+    setName(nameInput);
     sessionStorage.setItem('name', nameInput);
   }
 

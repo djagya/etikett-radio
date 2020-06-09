@@ -13,13 +13,13 @@ function ChatApp() {
     if (name) {
       setName(name);
     }
-  }, [sessionStorage])
+  }, [name])
 
   return (
     name
       ? (
         <div className="ChatApp">
-          <Chat name={name} room={room} />
+          <Chat name={name} room={room} setName={setName} />
         </div>
       )
       : (
