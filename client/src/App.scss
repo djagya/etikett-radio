@@ -28,8 +28,7 @@ h3 {
 }
 
 .not-stream-component {
-  margin: -100vh;
-  // margin-top: $header-height;
+  margin-top: $header-height;
 }
 
 .noise {
@@ -369,7 +368,7 @@ nav {
   display: flex;
   align-items: center;
   max-width: 100%;
-  margin: 0;
+  margin: 0 auto; //or margin 0 and then it goes until the end
   overflow: hidden;
 }
 
@@ -382,7 +381,7 @@ nav {
 }
 
 .moving-text {
-  animation: moveText linear 10s backwards infinite;
+  animation: moveText linear 15s backwards infinite;
 }
 
 @keyframes moveText {
@@ -391,7 +390,7 @@ nav {
   }
 
   to {
-    transform: translateX(-80%);
+    transform: translateX(-100%);
   }
 }
 
