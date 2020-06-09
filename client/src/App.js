@@ -41,17 +41,18 @@ function App(props) {
 
       <div className="App">
 
-      <div className="noise" >
-        <Noisy />
-      </div>
-      <div className="chat">
-        <ChatApp />
-      </div>
+        <div className="noise" >
+          <Noisy />
+        </div>
 
-
+        
 
         <div className="stream-page">
           <VideoStream />
+
+          <div className="chat">
+            <ChatApp />
+          </div>
         </div>
 
 
