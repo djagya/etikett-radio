@@ -3,6 +3,7 @@ const app = express();
 const createError = require("http-errors");
 const mongoose = require("mongoose");
 const { setCors } = require("./middleware/security");
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./controllers/chatController');
 const dot = require("dotenv");
 dot.config();
 const env = require("./config/config")
