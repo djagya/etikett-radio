@@ -5,7 +5,7 @@ import '../App.scss'
 
 const Hosts = () => (
   <>
-    <div className="content">
+    <div c>
       <EmblaCarouselComponent>
         <div />
         <div />
