@@ -6,6 +6,7 @@ import Chat from './Chat';
 
 function ChatApp({ setChatState }) {
   const [name, setName] = useState('');
+  const [chatWindow, setChatWindow] = useState('chat-app-chat')
   const room = 'etikett radio';
 
   useEffect(() => {
@@ -18,8 +19,8 @@ function ChatApp({ setChatState }) {
   return (
     name
       ? (
-        <div className="ChatApp chat-app-chat">
-          <Chat name={name} room={room} setChatState={setChatState} />
+        <div className={`ChatApp ${chatWindow}`}>
+          <Chat name={name} room={room} setChatState={setChatState} chatWindow={chatWindow} setChatWindow={setChatWindow} />
         </div>
       )
       : (

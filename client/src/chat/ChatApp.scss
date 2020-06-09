@@ -28,6 +28,22 @@
 .chat-app-chat {
   height: 88vh;
 }
+.chat-app-minimize {
+  height: 40px;
+
+  .InfoBar {
+    // height: 100%;
+  }
+  .Messages,
+  .chat-form {
+    animation: display-off 1s ease forwards;
+    // display: none;
+  }
+}
+@keyframes display-off {
+  0% { opacity: 1;}
+  100% { opacity: 0; z-index: -1;}
+}
 .chat-app-join {
   height: 70px;
 }
