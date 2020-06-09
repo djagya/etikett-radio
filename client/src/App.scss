@@ -48,6 +48,10 @@ h3 {
   top: $nav-height;
   right: 0
 }
+.chat-close {
+  display: none;
+  z-index: -1;
+}
 
 ///////////////////////////////////
 //         Main Page

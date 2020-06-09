@@ -3,15 +3,16 @@ import React from 'react'
 import minimize from '../icons/minimize.png';
 import close from '../icons/close.png';
 
-export default function InfoBar({ room }) {
+export default function InfoBar({ room, closeChat }) {
   return (
     <div className="InfoBar">
       <div className="info-inner-container">
-        <img src={minimize} alt="minimize icon"/>
+        <button>close</button>
+        <img src={minimize} alt="minimize icon" />
       </div>
       <h3>{room}</h3>
       <div className="info-inner-container">
-        <img src={close} alt="close icon"/>
+        <img src={close} alt="close icon" onClick={closeChat} />
       </div>
     </div>
   )
