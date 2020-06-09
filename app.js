@@ -7,6 +7,8 @@ const dot = require("dotenv");
 dot.config();
 const env = require("./config/config")
 const cookieParser = require('cookie-parser');
+const socketio = require('socket.io');
+const http = require('http');
 
 const indexRoute = require("./routes/indexRoute");
 const archiveRoute = require("./routes/archiveRoute");
@@ -15,6 +17,9 @@ const blogRoute = require("./routes/blogRoute");
 const scheduleRoute = require("./routes/scheduleRoute");
 
 const port = process.env.PORT || 3000;
+
+const server = http.createServer(app);
+const io = socketio(server);
 
 mongoose.connect(env.db, {
     useNewUrlParser: true,
@@ -48,4 +53,5 @@ app.use((err, req, res, next) => {
 })
 console.log(port);
 
-app.listen(port, () => console.log(`Server ist am been`));
+// app.listen(port, () => console.log(`Server ist am been`));
+server.listen(port, () => console.log(`Server ist am been`));
