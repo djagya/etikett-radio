@@ -40,9 +40,12 @@ h3 {
 }
 
 .chat {
-  background-color: #fff;
+  background-color: #ffffff;
+}
+.chat-open {
   position: absolute;
-  top: $header-height;
+  top: $nav-height;
+  right: 0
 }
 
 ///////////////////////////////////

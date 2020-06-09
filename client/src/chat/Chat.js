@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import InfoBar from './InfoBar';
 
 let socket;
 
@@ -54,6 +55,7 @@ export default function Chat({ name, room }) {
   return (
     <div className="outer-container">
       <div className="inner-container">
+        <InfoBar room={room} />
         <form onSubmit={sendMessage}>
           <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
           <button type="submit">Send</button>

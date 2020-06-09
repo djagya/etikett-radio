@@ -50,7 +50,7 @@ function App(props) {
         <div className="stream-page">
           <VideoStream />
 
-          <div className="chat">
+          <div className="chat chat-open">
             <ChatApp />
           </div>
         </div>

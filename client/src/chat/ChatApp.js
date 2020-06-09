@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import './ChatApp.scss';
 import Join from './Join';
 import Chat from './Chat';
 

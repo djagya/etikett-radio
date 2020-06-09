@@ -1,3 +1,16 @@
-#chat {
-  background-color: #fff;
+.ChatApp * {
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.ChatApp {
+  h3 {
+    padding: 0.5rem;
+  }
+}
+
+.InfoBar {
+  display: flex;
+  justify-content: space-between;
 }
