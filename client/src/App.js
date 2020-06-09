@@ -23,6 +23,9 @@ import Noisy from './noise/Noisy'
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
+import Hosts from './Carousel-Blog/Hosts';
+
+
 
 
 function App(props) {
@@ -62,6 +65,10 @@ function App(props) {
 
           {/* Blog Related */}
           <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
+
+          {/* Hosts Related */}
+          <Route exact path="/hosts" render={(props) => <Hosts />} />
+
           {/* Schedule Related */}
           <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
 
