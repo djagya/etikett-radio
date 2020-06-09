@@ -6,13 +6,13 @@ export default function Message({ message: { user, text }, name }) {
   let isSentByUser = false;
 
   if (user === trimmedName) {
-    let isSentByUser = true;
+     isSentByUser = true;
   }
 
   return (
     isSentByUser
     ? (
-      <div className="message-container justify-end">
+      <div className="message-container justify-right">
         <p className="sent-text">{trimmedName}</p>
         <div className="message-box bg-dark">
           <p className="message-text color-white">{text}</p>
@@ -20,11 +20,11 @@ export default function Message({ message: { user, text }, name }) {
       </div>
     )
     : (
-      <div className="message-container justify-end">
+      <div className="message-container justify-left">
+        <p className="sent-text">{user}</p>
         <div className="message-box bg-dark">
           <p className="message-text color-black">{text}</p>
         </div>
-        <p className="sent-text">{user}</p>
       </div>
     )
   )

@@ -11,8 +11,11 @@ export default function Messages({ messages, name }) {
     )
   })
   return (
-    <ScrollToBottom className="Messages">
-      {renderMessages}
-    </ScrollToBottom>
+    <div className="Messages">
+      <ScrollToBottom >
+        {renderMessages}
+      </ScrollToBottom>
+    </div>
+    
   )
 }

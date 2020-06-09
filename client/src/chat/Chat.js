@@ -52,7 +52,6 @@ export default function Chat({ name, room }) {
       })
     }
   }
-  console.log(messages)
 
   return (
     <div className="outer-container">
