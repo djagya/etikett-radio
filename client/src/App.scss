@@ -28,13 +28,15 @@ h3 {
 }
 
 .not-stream-component {
-  margin-top: $header-height;
+  margin: -100vh;
+  // margin-top: $header-height;
 }
 
 .noise {
   height: 100vh;
   position: sticky;
   top: 0;
+  bottom: 200;
   z-index: -1;
 }
 
@@ -48,7 +50,7 @@ h3 {
   // display: grid;
   // grid-template-rows: 5fr 90fr 5fr;
 
-  position: relative;
+  // position: relative;
 
   // .twitch {
   //   display: flex;
@@ -64,7 +66,6 @@ h3 {
 
 footer {
   height: 100vh;
-
 }
 
 ///////////////////////////////////
@@ -342,6 +343,7 @@ body {
   background-color: #000;
   display: flex;
   font-size: calc(10px + 2vmin);
+  z-index: 1;
 }
 
 nav {
