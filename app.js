@@ -29,6 +29,54 @@ mongoose.connect(env.db, {
 mongoose.connection.on("error", (err) => console.log(err));
 mongoose.connection.on("open", () => console.log("db connected"));
 
+io.on('connection', (socket) => {
+    console.log('[connection created]');
+  
+    // Recieve JOIN from Chat.js
+    socket.on('join', ({name, room}, callback) => {
+      
+      // Add user
+      const { error, user } = addUser({ id: socket.id, name, room });
+      if (error) return callback(error);
+      console.log(`${name} has joined ${room}'s chat!`);
+  
+      // Emit MESSAGE
+      socket.emit('message', {user: 'admin', text: `Hi ${user.name}! Welcome to ${user.room}'s chat!`});
+  
+      // Broadcast MESSAGE
+      socket.broadcast.to(user.room).emit('message', {user: 'admin', text: `${user.name} has joined.`});
+  
+      // Join user
+      socket.join(user.room);
+  
+      callback();
+    });
+  
+    // Recieve SENDMESSAGE
+    socket.on('sendMessage', (text, callback) => {
+  
+      // Get user who sent message
+      const user = getUser(socket.id);
+  
+      // Emit MESSAGE
+      io.to(user.room).emit('message', { user: user.name, text: text });
+      console.log({ user: user.name, text: text })
+  
+      callback();
+    });
+  
+  
+    // Recieve DISCONNECT from Chat.js
+    socket.on('disconnect', () => {
+      console.log('[user has left the chat]');
+      const user = removeUser(socket.id);
+      console.log(user)
+      if (user) {
+        io.to(user.room).emit('message', {user: 'admin', text: `${user.name} has left.`})
+      }
+    })
+})
+
 app.use(express.json());
 app.use(setCors); //middleware to use setCors on all routes
 app.use(cookieParser());
