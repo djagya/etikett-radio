@@ -18,6 +18,7 @@
     "react-three-fiber": "^4.2.8",
     "react-use-gesture": "^7.0.15",
     "sass": "^1.26.5",
+    "socket.io-client": "^2.3.0",
     "three": "^0.117.1",
     "use-interval": "^1.2.1"
   },
