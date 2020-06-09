@@ -48,6 +48,7 @@ function App(props) {
 
         <div className="stream-page">
           <VideoStream />
+          
         </div>
 
 
