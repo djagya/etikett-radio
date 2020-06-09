@@ -5,6 +5,8 @@
 }
 
 .ChatApp {
+  transition: height 450ms ease;
+
   h3 {
     padding: 0.5rem;
   }
@@ -13,4 +15,10 @@
 .InfoBar {
   display: flex;
   justify-content: space-between;
+}
+.chat-app-chat {
+  height: 88vh;
+}
+.chat-app-join {
+  height: 70px;
 }

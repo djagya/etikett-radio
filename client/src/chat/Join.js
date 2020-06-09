@@ -11,7 +11,7 @@ export default function Join({setName}) {
 
   return (
     <div>
-      <h1>Join</h1>
+      <h3>Join out chat!</h3>
       <form onSubmit={handleSubmit} >
         <input type="text" placeholder="Name" value={nameInput} onChange={(e) => setNameInput(e.target.value)} />
         <button type="submit">Join Chat</button>

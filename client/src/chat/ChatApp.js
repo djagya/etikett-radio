@@ -18,12 +18,12 @@ function ChatApp() {
   return (
     name
       ? (
-        <div className="ChatApp">
+        <div className="ChatApp chat-app-chat">
           <Chat name={name} room={room} setName={setName} />
         </div>
       )
       : (
-        <div className="ChatApp">
+        <div className="ChatApp chat-app-join">
           <Join setName={setName} />
         </div>
       )
