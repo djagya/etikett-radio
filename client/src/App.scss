@@ -1,4 +1,6 @@
 $header-height: 20vh;
+$nav-height: 6vh;
+$embeded-video-height: 88vh;
 
 * {
   padding: 0;
@@ -41,10 +43,43 @@ h3 {
 }
 
 ///////////////////////////////////
+//           Chat
+///////////////////////////////////
+.chat {
+  background-color: transparent;
+}
+.chat-homescreen {
+  position: absolute;
+  top: $nav-height;
+  right: 0;
+  
+  // Chat window height
+  .InfoBar { height: 40px }
+  .Input { height: 36px }
+  .Messages { height: calc(100% - 36px - 40px) }
+
+  .chat-form {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+.chat-routes {
+  position: fixed;
+  top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
+  right: 0;
+  z-index: 2;
+
+  // Chat window height
+  .InfoBar { height: 40px }
+  .Input { height: 8% }
+  .Messages { height: calc(100% - 8% - 40px) }
+}
+
+///////////////////////////////////
 //         Main Page
 ///////////////////////////////////
 .stream-page {
-
   position: relative;
 }
 
@@ -404,7 +439,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 6vh;
+  height: $nav-height;
 }
 
 .full-header {
@@ -412,7 +447,7 @@ nav {
 
   .embeded-video {
     width: 100%;
-    height: 88vh;
+    height: $embeded-video-height;
   }
 }
 

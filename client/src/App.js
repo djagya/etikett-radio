@@ -1,4 +1,6 @@
-import React, {useState, useContext} from 'react';
+
+import React, { useState, useEffect } from 'react';
+
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -19,6 +21,8 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
+import ChatApp from './chat/ChatApp';
+
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
@@ -29,6 +33,11 @@ import { Context } from './Context';
 import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
+
+
+
+
+  const [chatState, setChatState] = useState('chat-homescreen');
 
 
 function App(props) {
@@ -42,6 +51,7 @@ function App(props) {
     id = cookies.user._id
   }
   //////////////////////
+
   return (
     <BrowserRouter>
     <Context.Provider value={
@@ -52,7 +62,7 @@ function App(props) {
       }
     }>
       <div className="App">
-    
+
         <div className="noise" >
           <Noisy />
         </div>
@@ -60,10 +70,15 @@ function App(props) {
         <div className="solar-system">
           <SolarSystem />
         </div>
-
+    
         <div className="stream-page">
           <VideoStream />
+
+          <div className={`chat ${chatState}`}>
+            <ChatApp setChatState={setChatState} />
+          </div>
         </div>
+
         <Switch>
 
           {/*Placeholder for / route so we don't land on Error component*/}
