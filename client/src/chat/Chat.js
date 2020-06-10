@@ -36,15 +36,16 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
   }, [endpoint, sessionStorage])
 
   useEffect(() => {
+    console.log('[useEffect[messages]]')
     // Recieve MESSAGE
     socket.on('message', (message) => {
-      setMessages(messages.concat(message));
+      setMessages(messages => [...messages, message]);
     })
     if (messages.length >= 50) {
       removeFirst();
     }
     
-  }, [messages]);
+  }, []);
 
   const sendMessage = e => {
     e.preventDefault();
