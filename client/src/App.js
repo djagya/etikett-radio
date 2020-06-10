@@ -44,7 +44,13 @@ function App(props) {
   //////////////////////
   return (
     <BrowserRouter>
-    <Context.Provider value={{id,showProfileEdit,setShowProfileEdit,showCreateProfile, setShowCreateProfile}}>
+    <Context.Provider value={
+      {
+        id,
+        showProfileEdit, setShowProfileEdit,
+        showCreateProfile, setShowCreateProfile
+      }
+    }>
       <div className="App">
         <div className="noise" >
           <Noisy />

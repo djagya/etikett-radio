@@ -354,6 +354,18 @@ q {
   
 }
 ///////////////////////////////////
+//        Create User Page
+///////////////////////////////////
+.create-user-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .input-form{
+    max-width: 600px;
+  }
+}
+
+///////////////////////////////////
 //          Error Page
 ///////////////////////////////////
 .error-page {

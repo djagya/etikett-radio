@@ -18,7 +18,7 @@ export default function UserProfile(props) {
         return <Redirect  to={`/user/${context.id}/edit`} />
     }
     if (context.showCreateProfile) {
-        return <Redirect to={`user/createuser`}/>
+        return <Redirect to={`/user/createuser`}/>
     }
 
     return (

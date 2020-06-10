@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 
 export default function CreateUser(props) {
+    const context = useContext(Context)
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [userName, setUserName] = useState("");
@@ -95,10 +98,15 @@ export default function CreateUser(props) {
         }
     };
 
+    if (!context.showCreateProfile) {return <Redirect to={`/user/${context.id}`}/>}
+    
     return (
-        <div className="input-form ">
-            <h2>create:</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="not-stream-component create-user-page">
+            <h2>create a new user</h2>
+            <form className="input-form" onSubmit={handleSubmit}>
+                <div className="button-container">
+                    <button type="button" onClick={() => context.setShowCreateProfile(false)}>cancel</button>
+                </div>
                 <div className="grid-container">
                     <label htmlFor="firstName">
                         <span className="required">*</span>first name
