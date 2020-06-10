@@ -22,6 +22,7 @@ export default function BlogEditForm(param) {
         const putData = async (url, data) => {
             const response = await fetch(url, {
                 method: "PUT",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",},
                 body: JSON.stringify(data)

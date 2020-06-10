@@ -23,7 +23,7 @@ export default function CreateUser(props) {
         };
 
         const postData = async (url, data) => {
-
+            console.log(data)
             const response = await fetch(url, {
                 method: "POST",
                 headers: {"Content-Type": "application/json",},
@@ -36,19 +36,19 @@ export default function CreateUser(props) {
                 resetForm(data);
                 
                 // Set request options
-                const options = {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    credentials: "include",
-                    body: JSON.stringify({ email, pw })
-                };
+                // const options = {
+                //     method: "POST",
+                //     headers: {"Content-Type": "application/json"},
+                //     credentials: "include",
+                //     body: JSON.stringify({ email, pw })
+                // };
 
                 // Login user
-                fetch("http://localhost:3000/users/login", options)
-                    .then(res => res.json())
-                    .then(resData => {
-                        props.setCookie('user', resData.user, {path: '/'})
-                    });
+                // fetch("http://localhost:3000/users/login", options)
+                //     .then(res => res.json())
+                //     .then(resData => {
+                //         props.setCookie('user', resData.user, {path: '/'})
+                //     });
 
             })
 
@@ -68,8 +68,6 @@ export default function CreateUser(props) {
         }
 
     }
-
-
 
     const handleFormInput = event => {
         const id = event.target.id;
