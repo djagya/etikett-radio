@@ -33,7 +33,7 @@ h3 {
 
 .noise {
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: -1;
 }
@@ -298,6 +298,7 @@ q {
     }
   }
 }
+
 ///////////////////////////////////
 //        Staff Only Page
 ///////////////////////////////////
@@ -307,6 +308,7 @@ q {
   flex-direction: column;
   align-items: center;
 }
+
 //---------------------------------------------//
 //            From the base react              //
 //---------------------------------------------//
