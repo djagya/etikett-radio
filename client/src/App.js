@@ -19,7 +19,8 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
-import Noisy from './noise/Noisy'
+import Noisy from './noise/Noisy';
+import SolarSystem from './solar-system-logo/SolarSystem';
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
@@ -40,6 +41,9 @@ function App(props) {
 
         <div className="noise" >
           <Noisy />
+        </div>
+        <div className="solar-system">
+          <SolarSystem />
         </div>
 
         <div className="stream-page">
