@@ -12,7 +12,7 @@ const unsplashImages = [
 ];
 
 const EmblaCarouselComponent = ({ children }) => {
-    const [EmblaCarouselReact, embla] = useEmblaCarousel({ loop: true });
+    const [EmblaCarouselReact, embla] = useEmblaCarousel();
     const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
     const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
