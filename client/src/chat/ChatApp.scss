@@ -92,13 +92,11 @@
 // Messages
 .Messages {
   display: flex;
-  flex-direction: column-reverse;  
+  flex-direction: column-reverse; 
 }
 
 // Needed to display messages upside-down
-.css-y1c0xs {
-  height: none;
-}
+.Messages div:first-child { height: auto; }
 
 // Input 
 .Input {

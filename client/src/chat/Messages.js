@@ -3,6 +3,9 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import Message from './Message';
 
 export default function Messages({ messages, name }) {
+  const test = {
+    height: 0,
+  }
   const renderMessages = messages.map((message, i) => {
     return(
       <div key={i}>
@@ -12,7 +15,7 @@ export default function Messages({ messages, name }) {
   })
   return (
     // <div className="Messages">
-      <ScrollToBottom className="Messages">
+      <ScrollToBottom className={`Messages ${test}`}  >
         {renderMessages}
       </ScrollToBottom>
     // </div>
