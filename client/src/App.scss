@@ -34,7 +34,7 @@ h3 {
 
 .noise {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   top: 0;
   z-index: -1;
@@ -365,7 +365,7 @@ nav {
   display: flex;
   align-items: center;
   max-width: 100%;
-  margin: 0;
+  margin: 0 auto; //or margin 0 and then it goes until the end
   overflow: hidden;
 }
 
@@ -378,7 +378,7 @@ nav {
 }
 
 .moving-text {
-  animation: moveText linear 10s backwards infinite;
+  animation: moveText linear 15s backwards infinite;
 }
 
 @keyframes moveText {
@@ -387,7 +387,7 @@ nav {
   }
 
   to {
-    transform: translateX(-80%);
+    transform: translateX(-100%);
   }
 }
 
@@ -504,7 +504,9 @@ nav {
   }
 }
 
-// Hosts-carousel
+////////////////////
+// Hosts-carousel//
+////////////////////
 .embla {
   position: relative;
   max-width: 70%;
@@ -533,7 +535,7 @@ nav {
 .embla__slide {
   flex: 0 0 auto;
   width: 100%;
-  position: sticky;
+  position: relative;
   counter-increment: embla;
   overflow: hidden;
   min-height: 100px;
@@ -541,7 +543,7 @@ nav {
 }
 
 .embla__slide__image {
-  background: center center/cover no-repeat;
+  background: center center/contain;
   position: absolute;
   top: 0;
   right: 0;
