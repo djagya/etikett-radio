@@ -31,11 +31,13 @@ h3 {
 
 .not-stream-component {
   margin-top: $header-height; //-80vh;
+  background-image: linear-gradient( rgb(0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25));
 }
 
 .noise {
   height: 100vh;
-  position: sticky;
+  width: 100vw;
+  position: fixed;
   top: 0;
   z-index: -1;
 }
@@ -83,7 +85,13 @@ h3 {
 
 footer {
   height: 100vh;
-
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));  
+  display: flex;
+  align-items: flex-end;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 ///////////////////////////////////
@@ -103,9 +111,13 @@ footer {
     width: 600px;
 
     label {
-      input {
+      input, select {
         width: 100%;
         height: 2rem;
+        padding-left: 6px ;
+        option {
+          color: black;
+        }
       }
     }
 
@@ -127,6 +139,7 @@ footer {
     align-items: flex-end;
     margin-top: 1rem;
     height: 2rem;
+    width: 100%;
 
     input {
       height: 100%;
@@ -145,7 +158,9 @@ footer {
 /////////////
 .button-container {
   display: flex;
+  width: 100%;
   height: 2rem;
+  margin: 2rem 0;
 }
 
 button {
@@ -154,17 +169,26 @@ button {
   font-size: 1rem;
 }
 
-///////////////////////////////////
-//          Archive Page
-///////////////////////////////////
-.archive-controls {
+.check-delete {
+  width: 20px;
+  height: 20px;
+}
+.controls {
   justify-content: space-between;
   margin: 1rem 0;
 }
+///////////////////////////////////
+//          Archive Page
+///////////////////////////////////
+
 
 .archive-list-page {
   display: flex;
   justify-content: center;
+
+  .post-archive {
+    margin-bottom: 2rem;
+  }
 
   .img-container {
     display: flex;
@@ -180,32 +204,42 @@ button {
   }
 
 }
-
-.check-delete {
-  width: 20px;
-  height: 20px;
-}
-
 .archive-details-page {
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: auto;
-
+  
+  h2 {
+    margin-bottom: 0;
+  }
+  p {
+    margin-bottom: 2rem;
+  }
   .archive-details {
-    display: flex;
-    justify-content: center;
-
-    .list-right {
-      text-align: right;
-      margin-left: 2rem;
+    width: 600px;
+    div {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
     }
+  
+      .list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  img {
+    max-width: 300px;
+  }
+  .controls {
+    max-width: 600px;
   }
 
 }
 
-.list-header,
-.archive-list {
+
+.list-header, .archive-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 20px;
   column-gap: 20px;
@@ -245,6 +279,9 @@ q {
     max-width: 600px;
 
     text-align: left;
+  }
+  .post-blog {
+    margin-top: 2rem;
   }
 
   .blog-list {
@@ -341,6 +378,37 @@ q {
   display: flex;
   flex-direction: column;
   align-items: center;
+  button {
+    width: 100%;
+    padding: .5rem;
+    margin: 1rem 0;
+  }
+  div {
+    max-width: 600px;
+  }
+  
+}
+///////////////////////////////////
+//        Create User Page
+///////////////////////////////////
+.create-user-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .input-form{
+    max-width: 600px;
+  }
+}
+
+///////////////////////////////////
+//          Error Page
+///////////////////////////////////
+.error-page {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 //---------------------------------------------//
 //            From the base react              //
@@ -389,7 +457,7 @@ nav {
   display: flex;
   align-items: center;
   max-width: 100%;
-  margin: 0;
+  margin: 0 auto; //or margin 0 and then it goes until the end
   overflow: hidden;
 }
 
@@ -397,12 +465,11 @@ nav {
 
 .message span {
   display: inline-block;
-  font-weight: bold;
   white-space: nowrap;
 }
 
 .moving-text {
-  animation: moveText linear 10s backwards infinite;
+  animation: moveText linear 15s backwards infinite;
 }
 
 @keyframes moveText {
@@ -411,7 +478,7 @@ nav {
   }
 
   to {
-    transform: translateX(-80%);
+    transform: translateX(-100%);
   }
 }
 
@@ -528,11 +595,14 @@ nav {
   }
 }
 
-// Hosts-carousel
+////////////////////
+// Hosts-carousel//
+////////////////////
 .embla {
   position: relative;
-  max-width: 70%;
+  max-width: 60%;
   margin: 0 auto;
+  margin-top: 15rem;
 }
 
 .embla__viewport {
@@ -557,7 +627,7 @@ nav {
 .embla__slide {
   flex: 0 0 auto;
   width: 100%;
-  position: sticky;
+  position: relative;
   counter-increment: embla;
   overflow: hidden;
   min-height: 100px;
@@ -565,7 +635,7 @@ nav {
 }
 
 .embla__slide__image {
-  background: center center/cover no-repeat;
+  background: center center/contain;
   position: absolute;
   top: 0;
   right: 0;
@@ -626,7 +696,7 @@ nav {
   cursor: pointer;
   position: relative;
   padding: 0;
-  width: 3rem;
+  width: 1rem;
   height: 3rem;
   margin-right: 0.75rem;
   margin-left: 0.75rem;
@@ -636,13 +706,123 @@ nav {
 }
 
 .embla__dot:after {
-  background-color: #efefef;
+  background-color: #ffffff;
   width: 100%;
-  height: 0.4rem;
+  height: 0.3rem;
   content: "";
 }
 
 .embla__dot.is-selected:after {
   background-color: #000000;
   opacity: 1;
+}
+
+
+//solar-system animation + logo
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+.solar-system {
+  position: fixed;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vh;
+  height: 100vh;
+  margin: 0 auto;
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+  border-radius: 45vw;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  opacity: 0.8;
+}
+
+.sun {
+  width: 19%;
+  height: 19%;
+  background: url(./imageonline-co-noise.png);
+  background-size: 140%;
+  background-position: center;
+  border-radius: 120px;
+  position: absolute;
+  align-self: center;
+  box-shadow: 0 0 55px rgba(255, 255, 255, 1);
+}
+
+.planet {
+  width: 1px;
+  height: 1px;
+  margin: auto;
+  background: white;
+  border-radius: 2.5px;
+}
+
+.planet.mars {
+  width: 10%;
+  height: 10%;
+  border-radius: 500px;
+  margin-top: -5.8%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.planet.earth {
+  width: 10%;
+  height: 10%;
+  border-radius: 500px;
+  margin-top: -5%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.planet.venus {
+  width: 8%;
+  height: 8%;
+  border-radius: 500px;
+  margin-top: -5%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.planet.mercury {
+  width: 8%;
+  height: 8%;
+  border-radius: 500px;
+  margin-top: -5%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.orbit {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5000px;
+  align-self: center;
+  animation: rotating 200s linear infinite;
+}
+
+h2 {
+  font-size: 30px;
+  padding: 3rem;
 }

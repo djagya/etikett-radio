@@ -1,43 +1,38 @@
-import React, {useState} from 'react'
-import MyProfile from './MyProfile';
+import React, {useState, useContext} from 'react'
+import {Context} from "../Context"
+import { Redirect } from 'react-router-dom';
 
-import CreateUser from './CreateUser';
+
 export default function UserProfile(props) {
+    const context = useContext(Context)
     
-    const [showProfile, setShowProfile] =useState(false);
     const [showCreate, setShowCreate] =useState(false);
-    const user = props.cookies.user
-    const id= user._id
-    console.log(user.role)
+
     const handleLogOut = () => {
         props.removeCookie('user', {path: "/"});
         props.removeCookie('x-auth', {path: "/"});
         window.location.assign(`/login`)
     };
+
+    if (context.showProfileEdit)  {
+        return <Redirect  to={`/user/${context.id}/edit`} />
+    }
+    if (context.showCreateProfile) {
+        return <Redirect to={`/user/createuser`}/>
+    }
+
     return (
-        <div className="not-stream-component staff-only">
-            <h2>Wassuuuuuuuup {user.firstName} </h2>
-            {showProfile ? 
-                <button type="button" onClick={() => setShowProfile(false)}>cancel</button>:
-                <button type="button" onClick={() => setShowProfile(true)}>edit profile</button> 
-            }
-            {showProfile ? 
-                <MyProfile props={props} id={id} />:
-                null
-            }
-            
-            {showCreate ? 
-                <button type="button" onClick={() => setShowCreate(false)}>cancel</button>:
-                <button type="button" onClick={() => setShowCreate(true)}>create new profile</button> 
-            }
-            {showCreate ? 
-                <CreateUser />:
-                null
-            }
-            {/* {user ? */}
+        
+            <div className="not-stream-component staff-only">
+                <div>
+                <h2>logged in as {props.cookies.user.firstName}</h2>
+                <button type="button" onClick={() => context.setShowProfileEdit(true)}>edit my profile</button>
+                <button type="button" onClick={() => context.setShowCreateProfile(true)}>create new user</button>
+
                 <button onClick={handleLogOut}>log out</button>
-            {/* : null } */}
-            
-        </div>
+                
+                </div>
+            </div>
+        
     )
 }

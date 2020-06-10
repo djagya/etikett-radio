@@ -4,8 +4,9 @@ import '../App.scss'
 
 
 const Hosts = () => (
-  <>
-    <div c>
+  
+    <div className="not-stream-component hosts">
+    <h2>hosts</h2>
       <EmblaCarouselComponent>
         <div />
         <div />
@@ -14,6 +15,6 @@ const Hosts = () => (
         <div />
       </EmblaCarouselComponent>
     </div>
-  </>
+
 );
 export default Hosts;

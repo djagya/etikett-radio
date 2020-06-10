@@ -42,7 +42,7 @@ export default function ScheduleEntry(props) {
     return (
         <div >
          {cookies.user && cookies.user.role === 'Admin' ?
-            <div className="button-container archive-controls">
+            <div className="button-container controls">
                 {showEdit ? 
                 <button type="button" onClick={() => setShowEdit(false)}>cancel</button>:
                 <button type="button" onClick={() => setShowEdit(true)}>edit</button> 

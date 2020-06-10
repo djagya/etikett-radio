@@ -19,9 +19,9 @@ export default function BlogInput() {
         const postData = async (url, data) => {
             const response = await fetch(url, {
                 method: "POST",
+                credentials:"include",
                 headers: {
                     "Content-Type": "application/json",
-                    // "x-auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIwMTkyMjI0MzAzZDJmNTAyM2FiM2EiLCJpYXQiOjE1ODg1OTkwNzR9.u3oGxeRLOMgILOwWG1VsuJWCEAtkz4G1EbYSQgE5ObY"
                 },
                 body: JSON.stringify(data)
             })
@@ -41,7 +41,6 @@ export default function BlogInput() {
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
-        console.log(input);
         switch (id) {
             case "heading":
                 setHeading(input)

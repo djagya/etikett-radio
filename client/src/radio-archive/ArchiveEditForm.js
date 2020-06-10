@@ -88,9 +88,9 @@ export default function ArchiveEdit(props) {
     };
 
     return (
-        <div className="input-form not-stream-component">
+        <div>
             
-            <form className="post-archive" onSubmit={handleSubmit}>
+            <form className="post-archive input-form" onSubmit={handleSubmit}>
             <div className="button-container">
             </div>
                 <div className="grid-container">

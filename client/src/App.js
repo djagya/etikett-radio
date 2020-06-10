@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
+
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -19,31 +21,56 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
-import Noisy from './noise/Noisy';
 import ChatApp from './chat/ChatApp';
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
-import MyProfile from './user/MyProfile';
+import EditMyProfile from './user/EditMyProfile';
 import Hosts from './Carousel-Blog/Hosts';
+import { Context } from './Context';
+//Style related
+import Noisy from './noise/Noisy'
+import SolarSystem from './solar-system-logo/SolarSystem';
+import footerImg from "./img/footer-img-1920x600.png"
 
 
 
 
-function App() {
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [chatState, setChatState] = useState('chat-homescreen');
+
+
+function App(props) {
+
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  /////for context/////
+  let id = "";
+  const [showProfileEdit, setShowProfileEdit] = useState(false)
+  const [showCreateProfile, setShowCreateProfile] = useState(false)
+  if (cookies.user) {
+    id = cookies.user._id
+  }
+  //////////////////////
 
   return (
     <BrowserRouter>
-
+    <Context.Provider value={
+      {
+        id,
+        showProfileEdit, setShowProfileEdit,
+        showCreateProfile, setShowCreateProfile
+      }
+    }>
       <div className="App">
 
         <div className="noise" >
           <Noisy />
         </div>
-
+    
+        <div className="solar-system">
+          <SolarSystem />
+        </div>
+    
         <div className="stream-page">
           <VideoStream />
 
@@ -58,10 +85,10 @@ function App() {
           <Route exact path="/" component={Home} />
 
           {/* User Related */}
-          <Route exact path="/user" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
           <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-          <Route exact path="/user/:id" render={(props) => <MyProfile {...props}  cookies={cookies} />} />
+          <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie}  cookies={cookies} />} />
+          <Route exact path="/user/:id/edit" render={(props)=> <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
           <Route exact path="/contact" component={Contact} />
 
           {/* Archive Related */}
@@ -84,9 +111,10 @@ function App() {
         </Switch>
 
         <footer>
+        <img src={footerImg} width="1920" height="600"></img>
         </footer>
       </div>
-
+      </Context.Provider>
     </BrowserRouter>
   );
 }
