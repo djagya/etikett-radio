@@ -40,6 +40,9 @@ h3 {
   z-index: -1;
 }
 
+///////////////////////////////////
+//           Chat
+///////////////////////////////////
 .chat {
   background-color: transparent;
 }
@@ -47,6 +50,12 @@ h3 {
   position: absolute;
   top: $nav-height;
   right: 0
+}
+.chat-routes {
+  position: fixed;
+  top: calc(20vh - 40px);
+  right: 0;
+  z-index: 2;
 }
 
 ///////////////////////////////////

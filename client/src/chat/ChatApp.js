@@ -1,10 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import './ChatApp.scss';
 import Join from './Join';
 import Chat from './Chat';
 
-function ChatApp({ setChatState }) {
+function ChatApp({ setChatState, location }) {
   const [name, setName] = useState('');
   const [chatWindow, setChatWindow] = useState('chat-app-chat')
   const room = 'etikett radio';
@@ -15,6 +16,15 @@ function ChatApp({ setChatState }) {
       setName(name);
     }
   }, [name])
+
+  useEffect(() => {
+    console.log('router changed to: ', location.pathname );
+    if (location.pathname === '/') {
+      setChatState('chat-homescreen');
+    } else {
+      setChatState('chat-routes');
+    }
+  }, [location.pathname])
 
   return (
     name
@@ -32,4 +42,4 @@ function ChatApp({ setChatState }) {
 }
 
 
-export default ChatApp;
+export default withRouter(ChatApp);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -31,8 +31,7 @@ import Hosts from './Carousel-Blog/Hosts';
 
 
 
-function App(props) {
-
+function App() {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [chatState, setChatState] = useState('chat-homescreen');
 
@@ -45,8 +44,6 @@ function App(props) {
           <Noisy />
         </div>
 
-        
-
         <div className="stream-page">
           <VideoStream />
 
@@ -54,7 +51,6 @@ function App(props) {
             <ChatApp setChatState={setChatState} />
           </div>
         </div>
-
 
         <Switch>
 
