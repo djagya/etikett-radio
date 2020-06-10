@@ -53,12 +53,13 @@ h3 {
   
   // Chat window height
   .InfoBar { height: 40px }
-  .Input { height: 6% }
-  .Messages { height: calc(100% - 6% - 40px) }
+  .Input { height: 36px }
+  .Messages { height: calc(100% - 36px - 40px) }
 
   .chat-form {
+    height: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
 }
 .chat-routes {

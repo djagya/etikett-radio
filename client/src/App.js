@@ -41,7 +41,7 @@ function App() {
       <div className="App">
 
         <div className="noise" >
-          <Noisy />
+          {/* <Noisy /> */}
         </div>
 
         <div className="stream-page">
