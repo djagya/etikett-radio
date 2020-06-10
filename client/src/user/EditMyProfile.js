@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
+import {Context} from "../Context";
+import { Redirect } from 'react-router-dom';
 
-export default function MyProfile(props, id) {
-    const user = props.props.cookies.user
-    // const param = props.match.params.id
+
+export default function MyProfile(props) {
+    
+    const user = props.cookies.user
+    const context = useContext(Context)
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [userName, setUserName] = useState("");
@@ -11,7 +15,7 @@ export default function MyProfile(props, id) {
     const [role, setRole] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${props.id}`, {
+        fetch(`http://localhost:3000/users/${context.id}`, {
             credentials: "include",
             // headers: {"Content-Type": "application/json"}
         })
@@ -21,11 +25,10 @@ export default function MyProfile(props, id) {
                 setLastName(data.user.lastName)
                 setUserName(data.user.userName)
                 setEmail(data.user.email)
-                setPW(data.user.pw)
                 setRole(data.user.role)
-                console.log(data)
             }) 
     }, [])
+    
     
 
     const handleSubmit = event => {
@@ -50,15 +53,15 @@ export default function MyProfile(props, id) {
             })
             return response.json()
         }
-        putData(`http://localhost:3000/archive/${props.id}`, body)
+        putData(`http://localhost:3000/users/${context.id}`, body)
             .then(data => { if (!data.success) 
                 { console.log(data) } else {
-                    window.location.assign(`/user`)
+                    props.setCookie('user', data.user, {path: '/'}) 
                 } })
+            .then(context.setShowProfileEdit(false) )
     }
-
-
-
+    if (!context.showProfileEdit) {return <Redirect to={`/user/${context.id}`}/>}
+    
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import {Redirect} from "react-router-dom"
+import React, { useState, useContext } from 'react';
+import {Redirect} from "react-router-dom";
+import {Context} from "../Context";
 
 export default function LogIn(props) {
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
-    const id =() => id ? null : props.cookies.user._id
-
+    const context = useContext(Context)
     const handleSubmit = event => {
         event.preventDefault()
 
@@ -30,6 +30,7 @@ export default function LogIn(props) {
         postData("http://localhost:3000/users/login", body)
             .then(data => { 
                 logIn(data)
+                console.log(data)
                 props.setCookie('user', data.user, {path: '/'})
             })
 
@@ -39,10 +40,12 @@ export default function LogIn(props) {
         
         if (data.status === 404) alert("Invalid Email")
         if (data.status === 403) alert("Invalid Password")
-
-        else { console.log(data) }
+        
+        else {
+            console.log(data)
+        }
     }
-
+    
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -57,8 +60,7 @@ export default function LogIn(props) {
             default: console.log("Log In Input from LogIn.js ran through without effect")
         }
     };
-
-    if (props.cookies.user) { return <Redirect to={`/user`} /> }
+    if (props.cookies.user) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className="input-form not-stream-component">
             <h2>Log In</h2>
