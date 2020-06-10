@@ -18,7 +18,6 @@ function ChatApp({ setChatState, location }) {
   }, [name])
 
   useEffect(() => {
-    console.log('router changed to: ', location.pathname );
     if (location.pathname === '/') {
       setChatState('chat-homescreen');
     } else {

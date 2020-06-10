@@ -86,9 +86,24 @@
   }
 }
 
+// Messages
+.Messages {
+  height: calc(100% - 8% - 40px); // Total height - Input height - Infobar height
+  // background: rgba(0, 0, 0, 0.3); 
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+// Input 
+.Input {
+  height: 8%;
+  background: #000;
+}
+
 // Chat Form
 .chat-form {
   align-self: flex-end;
+  height: 100%;
   input,
   button {
     height: 2rem;
@@ -103,19 +118,7 @@
   }
 }
 
-// Input 
-.Input {
-  height: 8%;
-  background: #000;
-}
 
-// Messages
-.Messages {
-  height: calc(100% - 8% - 40px); // Total height - Input height - Infobar height
-  // background: rgba(0, 0, 0, 0.3); 
-  display: flex;
-  flex-direction: column-reverse;
-}
 
 // Message
 .justify-right {

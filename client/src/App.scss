@@ -53,7 +53,7 @@ h3 {
 }
 .chat-routes {
   position: fixed;
-  top: calc(20vh - 40px);
+  top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
   right: 0;
   z-index: 2;
 }
