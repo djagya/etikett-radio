@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
       if (error) return callback(error);
       console.log(`${name} has joined ${room}'s chat!`);
 
-      socket.join(user.room)
+      // socket.join(user.room) 
   
       // Emit MESSAGE
       socket.emit('message', {user: 'etikett radio', text: `Hi ${user.name}! Welcome to ${user.room}'s chat!`});
