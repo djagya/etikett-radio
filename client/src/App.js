@@ -19,7 +19,6 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
-import Noisy from './noise/Noisy'
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
@@ -27,8 +26,9 @@ import StaffOnly from './user/StaffOnly';
 import EditMyProfile from './user/EditMyProfile';
 import Hosts from './Carousel-Blog/Hosts';
 import { Context } from './Context';
-
-
+//Style related
+import Noisy from './noise/Noisy'
+import footerImg from "./img/footer-img-1920x600.png"
 
 
 function App(props) {
@@ -83,6 +83,7 @@ function App(props) {
         </Switch>
 
         <footer>
+        <img src={footerImg} width="1920" height="600"></img>
         </footer>
       </div>
       </Context.Provider>
