@@ -1,4 +1,6 @@
-import React, {useState, useContext} from 'react';
+
+import React, { useState, useEffect } from 'react';
+
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -18,6 +20,8 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
+import ChatApp from './chat/ChatApp';
+
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
@@ -31,8 +35,13 @@ import footerImg from "./img/footer-img-1920x600.png"
 import AllUser from './user/AllUser';
 
 
-function App(props) {
 
+
+  
+
+
+function App(props) {
+  const [chatState, setChatState] = useState('chat-homescreen');
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
@@ -43,6 +52,7 @@ function App(props) {
     id = cookies.user._id
   }
   //////////////////////
+
   return (
     <BrowserRouter>
     <Context.Provider value={
@@ -54,18 +64,23 @@ function App(props) {
       }
     }>
       <div className="App">
-    
-        {/* <div className="noise" >
+
+        <div className="noise" >
           <Noisy />
         </div> */}
     
         <div className="solar-system">
           <SolarSystem />
         </div>
-
+    
         <div className="stream-page">
           <VideoStream />
+
+          <div className={`chat ${chatState}`}>
+            <ChatApp setChatState={setChatState} />
+          </div>
         </div>
+
         <Switch>
 
           {/*Placeholder for / route so we don't land on Error component*/}
