@@ -34,7 +34,7 @@ import Hosts from './Carousel-Blog/Hosts';
 function App(props) {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
-  const [chatState, setChatState] = useState('chat-open');
+  const [chatState, setChatState] = useState('chat-homescreen');
 
   return (
     <BrowserRouter>

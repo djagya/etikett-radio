@@ -20,7 +20,7 @@ function ChatApp({ setChatState }) {
     name
       ? (
         <div className={`ChatApp ${chatWindow}`}>
-          <Chat name={name} room={room} setChatState={setChatState} chatWindow={chatWindow} setChatWindow={setChatWindow} />
+          <Chat name={name} setName={setName} room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} />
         </div>
       )
       : (

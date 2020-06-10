@@ -6,7 +6,7 @@ import Messages from './Messages';
 
 let socket;
 
-export default function Chat({ name, room, setChatState, chatWindow, setChatWindow }) {
+export default function Chat({ name, room, chatWindow, setChatWindow }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -53,17 +53,10 @@ export default function Chat({ name, room, setChatState, chatWindow, setChatWind
     }
   }
 
-  const closeChat = e => {
-    socket.emit('disconnect');
-    socket.off();
-    setChatState('chat-close');
-    sessionStorage.removeItem('name');
-  }
-
   return (
     <div className="outer-container">
       <div className="inner-container">
-        <InfoBar room={room} closeChat={closeChat} chatWindow={chatWindow} setChatWindow={setChatWindow} />
+        <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} />
         <Messages messages={messages} name={name} />
         <Input text={text} setText={setText} sendMessage={sendMessage} />
       </div>

@@ -1,9 +1,8 @@
 import React from 'react'
 // Icons
 import minimize from '../icons/minimize.png';
-import close from '../icons/close.png';
 
-export default function InfoBar({ room, closeChat, chatWindow, setChatWindow }) {
+export default function InfoBar({ room, chatWindow, setChatWindow }) {
   const handleChatWindow = () => {
     if (chatWindow === 'chat-app-chat') {
       setChatWindow('chat-app-minimize');
@@ -19,7 +18,6 @@ export default function InfoBar({ room, closeChat, chatWindow, setChatWindow }) 
       </div>
       <h3>{room}</h3>
       <div className="info-inner-container">
-        <img src={close} alt="close icon" onClick={closeChat} />
       </div>
     </div>
   )

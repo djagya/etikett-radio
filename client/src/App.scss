@@ -43,14 +43,10 @@ h3 {
 .chat {
   background-color: transparent;
 }
-.chat-open {
+.chat-homescreen {
   position: absolute;
   top: $nav-height;
   right: 0
-}
-.chat-close {
-  display: none;
-  z-index: -1;
 }
 
 ///////////////////////////////////
