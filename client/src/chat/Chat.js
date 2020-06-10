@@ -38,9 +38,12 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
   useEffect(() => {
     // Recieve MESSAGE
     socket.on('message', (message) => {
-      setMessages([...messages, message])
-      
+      setMessages(messages.concat(message));
     })
+    if (messages.length >= 50) {
+      removeFirst();
+    }
+    
   }, [messages]);
 
   const sendMessage = e => {
@@ -51,7 +54,12 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
         setText('');
       })
     }
-  }
+  };
+
+  const removeFirst = () => {
+    const [first, ...rest] = messages;
+    return setMessages(rest);
+  };
 
   return (
     <div className="outer-container">

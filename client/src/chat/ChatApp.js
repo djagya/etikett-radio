@@ -8,6 +8,7 @@ import Chat from './Chat';
 function ChatApp({ setChatState, location }) {
   const [name, setName] = useState('');
   const [chatWindow, setChatWindow] = useState('chat-app-chat')
+  const [enableChat, setEnableChat] = useState(true);
   const room = 'etikett radio';
 
   useEffect(() => {
@@ -26,17 +27,24 @@ function ChatApp({ setChatState, location }) {
   }, [location.pathname])
 
   return (
-    name
+    enableChat
       ? (
-        <div className={`ChatApp ${chatWindow}`}>
-          <Chat name={name} setName={setName} room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} />
-        </div>
+        name
+          ? (
+            <div className={`ChatApp ${chatWindow}`}>
+              <Chat name={name} setName={setName} room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} />
+            </div>
+          )
+          : (
+            <div className="ChatApp chat-app-join">
+              <Join setName={setName} />
+            </div>
+          )
       )
       : (
-        <div className="ChatApp chat-app-join">
-          <Join setName={setName} />
-        </div>
+        null
       )
+    
   );
 }
 
