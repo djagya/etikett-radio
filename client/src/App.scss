@@ -33,6 +33,7 @@ h3 {
 
 .noise {
   height: 100vh;
+  width: 100vw;
   position: fixed;
   top: 0;
   z-index: -1;
@@ -513,7 +514,7 @@ nav {
   position: relative;
   max-width: 70%;
   margin: 0 auto;
-  margin-top: 15rem;
+  margin-top: 14rem;
 }
 
 .embla__viewport {
