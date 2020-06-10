@@ -97,7 +97,7 @@ export default function Schedule(props) {
                 <div className="schedule-content">
                     <h2>schedule</h2>
                     {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                    <div className="button-container archive-controls">
+                    <div className="button-container controls">
                         {showForm ? 
                         <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
                         <button type="button" onClick={() => handleAdd(true)}>add schedule</button> 

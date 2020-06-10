@@ -74,7 +74,7 @@ export default function ArchiveList(props) {
                 <h2>archive</h2>
 
                 {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                    <div className="button-container archive-controls">
+                    <div className="button-container controls">
                         {showForm ? 
                             <button type="button" onClick={() => setShowForm(false)}>cancel</button>:
                             <button type="button" onClick={() => setShowForm(true)}>add to archive</button> 
