@@ -92,10 +92,11 @@ export default function MyProfile(props) {
         <div>
                 <div className="input-form not-stream-component">
                 <h2>my profile</h2>
-                <div className="button-container">
-                <button type="button" onClick={() => context.setShowProfileEdit(false)}>cancel</button>
-                </div>
+                
                 <form onSubmit={handleSubmit}>
+                    <div className="button-container">
+                    <button type="button" onClick={() => context.setShowProfileEdit(false)}>cancel</button>
+                    </div>
                     <div className="grid-container">
                         <label htmlFor="firstName">
                             <span className="required">*</span>first name
