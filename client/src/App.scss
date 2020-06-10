@@ -33,9 +33,8 @@ h3 {
 
 .noise {
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
-  bottom: 200;
   z-index: -1;
 }
 
@@ -49,7 +48,7 @@ h3 {
   // display: grid;
   // grid-template-rows: 5fr 90fr 5fr;
 
-  // position: relative;
+  position: relative;
 
   // .twitch {
   //   display: flex;
@@ -507,11 +506,14 @@ nav {
   }
 }
 
-// Hosts-carousel
+////////////////////
+// Hosts-carousel//
+////////////////////
 .embla {
   position: relative;
   max-width: 70%;
   margin: 0 auto;
+  margin-top: 15rem;
 }
 
 .embla__viewport {
