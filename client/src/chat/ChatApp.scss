@@ -43,7 +43,7 @@
     animation: display-off 400ms ease forwards;
   }
   .Input {
-    animation: display-off 100ms ease forwards 500ms;
+    animation: display-off 100ms ease forwards 300ms;
   }
 }
 .chat-app-join {
@@ -123,22 +123,30 @@
 // Message
 .justify-right {
   text-align: right;
+  margin-right: 0.5rem;
+  p {
+    text-align: left;
+  }
 }
 .justify-left {
   text-align: left;
 }
+
 .message-box {
   display: inline-block;
+  max-width: 265px;
   padding: 0.1rem 0.4rem;
   margin-bottom: 0.5rem;
   border-radius: 8px;
 }
 .bg-white {
   background: #fff;
+  border-radius: 8px 8px 0 8px;
   p { color: #000 }
 }
 .bg-black {
   background: #000;
+  border-radius: 8px 8px 8px 0;
   p { color: #fff }
 }
 .sent-text {
