@@ -57,7 +57,7 @@ export default function MyProfile(props) {
                 { console.log(data) } else {
                     props.setCookie('user', data.user, {path: '/'}) 
                 } })
-            .then(context.setShowProfileEdit(false) )
+            .then(context.setProfileEdit(false) )
     }
 
     const handleFormInput = event => {
@@ -116,7 +116,7 @@ export default function MyProfile(props) {
                         </label>
                         <label htmlFor="pw">
                             <span className="required">*</span>password
-                        <input type="text" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
+                        <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
                         </label>
                         {user && user.role === 'Admin' ?
                         <label htmlFor="role">

@@ -14,7 +14,7 @@ export default function CreateUser(props) {
 
     const handleSubmit = event => {
         event.preventDefault()
-
+        console.log("submit is running")
         //POST request
         const body = {
             "firstName": firstName,
