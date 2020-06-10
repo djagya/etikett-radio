@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import ArchiveEdit from './ArchiveEditForm';
 import {Context} from "../Context";
@@ -11,12 +11,7 @@ export default function ArchiveDetail(props) {
         fetch(`http://localhost:3000/archive/${param}`)
             .then(res => res.json())
             .then(data => setArchiveData(data.archive))
-    })
-
-    const handleEdit = boolean => {
-        setShowEdit(boolean)
-    };
-
+    }, [])
     const renderLi = (archiveData) => {
         if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (archiveData.length === 0) return null;
@@ -29,16 +24,14 @@ export default function ArchiveDetail(props) {
 
     };
 
-
-
     return (
         <Context.Provider value={{showEdit,setShowEdit}}>
         <div className="archive-details-page not-stream-component">
         
             <div className="button-container archive-controls">
                 {showEdit ? 
-                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                <button type="button" onClick={() => setShowEdit(false)}>cancel</button>:
+                <button type="button" onClick={() => setShowEdit(true)}>edit</button> 
                 }
             </div>
             {showEdit ?

@@ -6,7 +6,6 @@ import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
 
 function VideoStream(props) {
-
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
         const video = 'https://www.twitch.tv/truthmusic';
@@ -23,7 +22,7 @@ function VideoStream(props) {
         }
     }, [props.location.pathname])
 
-    const [playing, setPlaying] = useState(true);
+    const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
@@ -47,12 +46,12 @@ function VideoStream(props) {
         } else {
             setIcon(muteIcon);
             setVolume(0);
-        }
+        }        
     }
 
     const handleVolume = e => {
         setVolume(e.target.value);
-        if (parseFloat(volume) < 0.15) {
+        if(parseFloat(volume) < 0.15) {
             setMuted(true);
             setIcon(muteIcon);
         } else {
@@ -71,15 +70,15 @@ function VideoStream(props) {
                 <NavLink className="nav-link" to="/blog">blog.</NavLink>
                 <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
                 <NavLink className="nav-link" to="/contact">contact.</NavLink>
-                <NavLink className="nav-link" to="/user">staff only.</NavLink>
+                <NavLink className="nav-link" to="/login">staff only.</NavLink>
             </nav>
 
             <section className="embeded-video">
-                <ReactPlayer
+                <ReactPlayer 
                     className="ReactPlayer"
                     url={source}
-                    playing={playing}
-                    volume={parseFloat(volume)}
+                    playing={playing} 
+                    volume={parseFloat(volume)} 
                     muted={false}
                     ref={videoPlayer}
                     width="100%"
@@ -94,7 +93,7 @@ function VideoStream(props) {
                         <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                         <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
                     </div>
-                    : null}
+                : null }
                 <div className="message">
                     <span className="moving-text">etikett radio - stream description, which is gonna be a loooong story</span>
                 </div>

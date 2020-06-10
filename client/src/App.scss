@@ -28,7 +28,8 @@ h3 {
 }
 
 .not-stream-component {
-  margin-top: $header-height;
+  margin-top: $header-height; //-80vh;
+  background-image: linear-gradient( rgb(0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25));
 }
 
 .noise {
@@ -44,27 +45,18 @@ h3 {
 ///////////////////////////////////
 .stream-page {
 
-  // Fran: I believe this isn't necessary
-  // height: 100vh;
-  // display: grid;
-  // grid-template-rows: 5fr 90fr 5fr;
-
   position: relative;
-
-  // .twitch {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   padding-top: 40vh;
-  //   height: 100%;
-  //   width: 100%;
-  //   background-color: rgba($color: grey, $alpha: 1.0);
-  // }
-
 }
 
 footer {
   height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));  
+  display: flex;
+  align-items: flex-end;
+  img {
+    width: 100vw;
+    height: auto;
+  }
 }
 
 ///////////////////////////////////
@@ -314,7 +306,24 @@ q {
     }
   }
 }
+///////////////////////////////////
+//        Staff Only Page
+///////////////////////////////////
 
+.staff-only {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    width: 100%;
+    padding: .5rem;
+    margin: .5rem 0;
+  }
+  div {
+    max-width: 600px;
+  }
+  
+}
 //---------------------------------------------//
 //            From the base react              //
 //---------------------------------------------//
@@ -329,14 +338,9 @@ body {
   font-family: "GaramondPro", serif;
 }
 
-
-
 .App {
   text-align: center;
 }
-
-
-
 
 .App-header {
   background-color: #000;
@@ -354,7 +358,6 @@ nav {
 
 .full-header {
   flex-direction: column;
-
 
   .embeded-video {
     width: 100%;
@@ -404,13 +407,13 @@ nav {
   grid-template: 1fr 1fr / repeat(12, 1fr);
 
   nav {
-    grid-column: 5 / -1;
+    grid-column: 3 / 11;
     grid-row: 1 / 2;
     height: 100%;
   }
 
   .message-controls-container {
-    grid-column: 5 / -1;
+    grid-column: 3 / 11;
     grid-row: 2 / 3;
     display: flex;
     align-items: center;
@@ -418,7 +421,7 @@ nav {
   }
 
   .embeded-video {
-    grid-column: 1 / 5;
+    grid-column: 1 / 3;
     grid-row: 1 / 3;
   }
 }
@@ -627,6 +630,7 @@ nav {
   background-color: #000000;
   opacity: 1;
 }
+
 
 //solar-system animation + logo
 

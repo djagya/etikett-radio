@@ -25,9 +25,7 @@ export default function ScheduleEntry(props) {
         }
     };
 
-    const handleEdit = boolean => {
-        setShowEdit(boolean)
-    };
+    
      ///////For interactivity//////////
      let isLive = "";
      const showStart = moment(data.from);
@@ -46,8 +44,8 @@ export default function ScheduleEntry(props) {
          {cookies.user && cookies.user.role === 'Admin' ?
             <div className="button-container archive-controls">
                 {showEdit ? 
-                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                <button type="button" onClick={() => setShowEdit(false)}>cancel</button>:
+                <button type="button" onClick={() => setShowEdit(true)}>edit</button> 
                 }
                 <input className="check-delete" name={data._id} type="checkbox" onChange={handleIDs}></input>
             </div>

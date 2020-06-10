@@ -27,18 +27,14 @@ export default function BlogEntry(el, i) {
             }
     }
 
-    const handleEdit = boolean => {
-        setShowEdit(boolean)
-    };
-
     return (
-        <Context.Provider value={{showEdit,setShowEdit}}>
+        
         <li key={i} className="blog-list">
         {cookies.user && cookies.user.role === 'Admin' ?
             <div className="button-container archive-controls">
                 {showEdit ? 
-                <button type="button" onClick={() => handleEdit(false)}>cancel</button>:
-                <button type="button" onClick={() => handleEdit(true)}>edit</button> 
+                <button type="button" onClick={() => setShowEdit(false)}>cancel</button>:
+                <button type="button" onClick={() => setShowEdit(true)}>edit</button> 
                 }
                 <button type="button" onClick={() => handleDelete(entry._id, entry.heading)}>delete</button>
             </div>
@@ -54,6 +50,6 @@ export default function BlogEntry(el, i) {
                 </article>
                 }
         </li>
-        </Context.Provider>
+        
     )
 }

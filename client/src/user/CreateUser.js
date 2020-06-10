@@ -23,7 +23,7 @@ export default function CreateUser(props) {
         };
 
         const postData = async (url, data) => {
-
+            console.log(data)
             const response = await fetch(url, {
                 method: "POST",
                 headers: {"Content-Type": "application/json",},
@@ -36,19 +36,19 @@ export default function CreateUser(props) {
                 resetForm(data);
                 
                 // Set request options
-                const options = {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    credentials: "include",
-                    body: JSON.stringify({ email, pw })
-                };
+                // const options = {
+                //     method: "POST",
+                //     headers: {"Content-Type": "application/json"},
+                //     credentials: "include",
+                //     body: JSON.stringify({ email, pw })
+                // };
 
                 // Login user
-                fetch("http://localhost:3000/users/login", options)
-                    .then(res => res.json())
-                    .then(resData => {
-                        props.setCookie('user', resData.user, {path: '/'})
-                    });
+                // fetch("http://localhost:3000/users/login", options)
+                //     .then(res => res.json())
+                //     .then(resData => {
+                //         props.setCookie('user', resData.user, {path: '/'})
+                //     });
 
             })
 
@@ -61,16 +61,13 @@ export default function CreateUser(props) {
                 setEmail("");
                 setPW("");
                 setRole("User");
-                alert("You successfully signed up!")
+                alert("User created")
             } else {
                 alert("Please fill out all *Required fields and make sure your password is at least 8 signs long.")
             }
-            console.log(data)
         }
 
     }
-
-
 
     const handleFormInput = event => {
         const id = event.target.id;
@@ -97,8 +94,6 @@ export default function CreateUser(props) {
             default: console.log("Sign up Input in SignUp.js ran through without effect")
         }
     };
-
-    if (props.cookies.user) { return <Redirect to="/user" /> }
 
     return (
         <div className="input-form not-stream-component">

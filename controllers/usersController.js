@@ -3,9 +3,9 @@ const User = require("../models/usersSchema");
 const { encrypt } = require("../lib/encrypt");
 const nodemailer = require('nodemailer');
 
+
 exports.getUsers = async (req, res, next) => {
     try {
-        console.log("getUsers us runnins")
         const users = await User.find()
         res.json({ success: true, users: users });
     }
@@ -18,6 +18,7 @@ exports.getUserById = async (req, res, next) => {
     const { id } = req.params;
     try {
         const user = await User.findById(id);
+        
         if (!user) throw createError(404);
         res.json({ success: true, user: user });
     }
@@ -61,6 +62,7 @@ exports.login = async (req, res, next) => {
 exports.putUser = async (req, res, next) => {
     const { id } = req.params;
     const user = req.body;
+    console.log(id, user)
     try {
         if (user.pw) {
             const updatedPW = await encrypt(user.pw);
