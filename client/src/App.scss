@@ -289,6 +289,7 @@ q {
 
     h2 {
       margin: 0;
+      padding: 0;
       text-align: left;
     }
 
@@ -397,6 +398,23 @@ q {
   align-items: center;
   .input-form{
     max-width: 600px;
+  }
+}
+///////////////////////////////////
+//         All User Page
+///////////////////////////////////
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+ 
+  .list-header, .user-data {
+    // max-width: 800px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    gap: 1rem;
   }
 }
 

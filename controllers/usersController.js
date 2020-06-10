@@ -28,9 +28,10 @@ exports.getUserById = async (req, res, next) => {
 };
 
 exports.postUser = async (req, res, next) => {
+    console.log("postUser is running")
     try {
         const user = new User(req.body);
-
+        console.log(user)
         // Capitalize
         user.firstName = user.firstName[0].toLocaleUpperCase() + user.firstName.substring(1).toLocaleLowerCase();
         user.lastName = user.lastName[0].toLocaleUpperCase() + user.lastName.substring(1).toLocaleLowerCase();
