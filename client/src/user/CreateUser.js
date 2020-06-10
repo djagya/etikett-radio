@@ -60,7 +60,7 @@ export default function CreateUser(props) {
                 setUserName("");
                 setEmail("");
                 setPW("");
-                setRole("User");
+                setRole("");
                 alert("User created")
             } else {
                 alert("Please fill out all *Required fields and make sure your password is at least 8 signs long.")
@@ -96,7 +96,7 @@ export default function CreateUser(props) {
     };
 
     return (
-        <div className="input-form not-stream-component">
+        <div className="input-form ">
             <h2>create:</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid-container">

@@ -54,7 +54,7 @@ footer {
   display: flex;
   align-items: flex-end;
   img {
-    width: 100vw;
+    width: 100%;
     height: auto;
   }
 }
@@ -76,9 +76,13 @@ footer {
     width: 600px;
 
     label {
-      input {
+      input, select {
         width: 100%;
         height: 2rem;
+        padding-left: 6px ;
+        option {
+          color: black;
+        }
       }
     }
 
@@ -317,7 +321,7 @@ q {
   button {
     width: 100%;
     padding: .5rem;
-    margin: .5rem 0;
+    margin: 1rem 0;
   }
   div {
     max-width: 600px;
