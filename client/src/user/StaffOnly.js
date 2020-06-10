@@ -5,8 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 export default function UserProfile(props) {
     const context = useContext(Context)
-    
-    const [showCreate, setShowCreate] =useState(false);
+
 
     const handleLogOut = () => {
         props.removeCookie('user', {path: "/"});
@@ -14,11 +13,14 @@ export default function UserProfile(props) {
         window.location.assign(`/login`)
     };
 
-    if (context.showProfileEdit)  {
+    if (context.profileEdit)  {
         return <Redirect  to={`/user/${context.id}/edit`} />
     }
-    if (context.showCreateProfile) {
+    if (context.createProfile) {
         return <Redirect to={`/user/createuser`}/>
+    }
+    if (context.allUser) {
+        return <Redirect to={`/user/all`}/>
     }
 
     return (
@@ -26,9 +28,13 @@ export default function UserProfile(props) {
             <div className="not-stream-component staff-only">
                 <div>
                 <h2>logged in as {props.cookies.user.firstName}</h2>
-                <button type="button" onClick={() => context.setShowProfileEdit(true)}>edit my profile</button>
-                <button type="button" onClick={() => context.setShowCreateProfile(true)}>create new user</button>
-
+                <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
+                {props.cookies.user.role === 'Admin' ?
+                <div>
+                <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
+                <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
+                </div>
+                : null }
                 <button onClick={handleLogOut}>log out</button>
                 
                 </div>

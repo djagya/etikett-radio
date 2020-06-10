@@ -86,7 +86,7 @@ export default function MyProfile(props) {
         }
     };
 
-    if (!context.showProfileEdit) {return <Redirect to={`/user/${context.id}`}/>}
+    if (!context.profileEdit) {return <Redirect to={`/user/${context.id}`}/>}
     
     return (
         <div>
@@ -95,7 +95,7 @@ export default function MyProfile(props) {
                 
                 <form onSubmit={handleSubmit}>
                 <div className="button-container">
-                <button type="button" onClick={() => context.setShowProfileEdit(false)}>cancel</button>
+                <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
                 </div>
                     <div className="grid-container">
                         <label htmlFor="firstName">

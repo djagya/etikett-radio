@@ -29,6 +29,7 @@ import { Context } from './Context';
 import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
+import AllUser from './user/AllUser';
 
 
 function App(props) {
@@ -36,8 +37,9 @@ function App(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
-  const [showProfileEdit, setShowProfileEdit] = useState(false)
-  const [showCreateProfile, setShowCreateProfile] = useState(false)
+  const [profileEdit, setProfileEdit] = useState(false)
+  const [createProfile, setCreateProfile] = useState(false)
+  const [allUser, setAllUser] = useState(false)
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -47,8 +49,9 @@ function App(props) {
     <Context.Provider value={
       {
         id,
-        showProfileEdit, setShowProfileEdit,
-        showCreateProfile, setShowCreateProfile
+        profileEdit, setProfileEdit,
+        createProfile, setCreateProfile,
+        allUser, setAllUser
       }
     }>
       <div className="App">
@@ -71,6 +74,7 @@ function App(props) {
 
           {/* User Related */}
           <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
+          <Route exact path="/user/all" render={(props)=> <AllUser cookies={cookies}/>  } />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie}  cookies={cookies} />} />
           <Route exact path="/user/:id/edit" render={(props)=> <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
@@ -85,7 +89,7 @@ function App(props) {
           <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
 
           {/* Hosts Related */}
-          <Route exact path="/hosts" render={(props) => <Hosts />} />
+          <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
 
           {/* Schedule Related */}
           <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />

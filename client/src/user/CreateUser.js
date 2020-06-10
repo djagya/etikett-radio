@@ -5,11 +5,11 @@ import {Redirect} from 'react-router-dom';
 export default function CreateUser(props) {
     const context = useContext(Context)
 
-    const [firstName, setFirstName] = useState("dummy");
-    const [lastName, setLastName] = useState("dummy");
-    const [userName, setUserName] = useState("dummy");
-    const [email, setEmail] = useState("dummy@gmail.com");
-    const [pw, setPW] = useState("12345678");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [pw, setPW] = useState("");
     const [role, setRole] = useState("Host");
 
     const handleSubmit = event => {
@@ -83,14 +83,14 @@ export default function CreateUser(props) {
         }
     };
 
-    if (!context.showCreateProfile) {return <Redirect to={`/user/${context.id}`}/>}
+    if (!context.createProfile) {return <Redirect to={`/user/${context.id}`}/>}
     
     return (
         <div className="not-stream-component create-user-page">
             <h2>create a new user</h2>
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
-                    <button type="button" onClick={() => context.setShowCreateProfile(false)}>cancel</button>
+                    <button type="button" onClick={() => context.setCreateProfile(false)}>cancel</button>
                 </div>
                 <div className="grid-container">
                     <label htmlFor="firstName">
@@ -111,7 +111,7 @@ export default function CreateUser(props) {
                     </label>
                     <label htmlFor="pw">
                         <span className="required">*</span>password
-                    <input type="text" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
+                    <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="role">
                         <span className="required">*</span>role
