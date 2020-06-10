@@ -7,7 +7,6 @@ import { useCookies } from 'react-cookie';
 //Page General Related
 import Error from "./Error404";
 //User Account Related
-import AccountManager from "./user/AccountManager";
 import LogIn from './user/LogIn';
 import CreateUser from './user/CreateUser';
 //Archive Related
@@ -56,9 +55,9 @@ function App(props) {
     }>
       <div className="App">
     
-        <div className="noise" >
+        {/* <div className="noise" >
           <Noisy />
-        </div>
+        </div> */}
     
         <div className="solar-system">
           <SolarSystem />
