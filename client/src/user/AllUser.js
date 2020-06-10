@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Context} from "../Context";
+import Delete from "../Delete";
 
 export default function AllUser() {
     const [userData, setUserData] = useState([]);
@@ -20,7 +20,22 @@ export default function AllUser() {
             .then(data => setUserData(data.users)) 
     }, [])
 
-   
+    const handleDelete = (id, userName) => {
+
+        const check = window.confirm(`You really want to delete "${userName}"?`);
+
+        if (check) {
+           //filter copy of blog data based on checkedID and set the new state
+            let filteredUserData = [...userData].filter(el => el._id !== id);
+
+            setUserData(filteredUserData)
+
+            //delete from db
+            Delete([id], "users")
+            } else {
+                return null
+            }
+    }
 
     const renderLi = (userData) => {
         
@@ -31,32 +46,30 @@ export default function AllUser() {
         if (userData.length === 0) return null; 
         console.log(userData)
         return userData.map((el, i) => (
-            <li key={i}>
-                <ul>
-                    <li>First Name: {el.firstName}</li>
-                    <li>Last Name: {el.lastName}</li>
-                    <li>User Name: {el.userName}</li>
-                    <li>Email: {el.email}</li>
-                    <li>Role: {el.role}</li>
-                </ul>
-            </li>
+            <ul key={i} className="user-data">
+                <li>{el.firstName}</li>
+                <li>{el.lastName}</li>
+                <li>{el.userName}</li>
+                <li>{el.email}</li>
+                <li>{el.role}</li>
+                <li><button type="button" onClick={() => handleDelete(el._id, el.userName)}>delete</button></li>
+            </ul>
         ));
     };
 
     return (
-        <div className="not-stream-component">
+        <div className="not-stream-component user-list">
             <h2>All Users</h2>
-            <div className="user-list">
-                <ul>
-                    <li>first name</li>
-                    <li>sast name</li>
-                    <li>user name</li>
-                    <li>email</li>
-                    <li>role</li>
-                </ul>
-                <ul>
+            <div>
+                    <ul className="list-header">
+                        <li>first name</li>
+                        <li>last name</li>
+                        <li>user name</li>
+                        <li>email</li>
+                        <li>role</li>
+                    </ul>
                 {renderLi(sortedData)}
-                </ul>
+                
             </div>
         </div>
     )

@@ -365,6 +365,23 @@ q {
     max-width: 600px;
   }
 }
+///////////////////////////////////
+//         All User Page
+///////////////////////////////////
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+ 
+  .list-header, .user-data {
+    // max-width: 800px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    gap: 1rem;
+  }
+}
 
 ///////////////////////////////////
 //          Error Page
