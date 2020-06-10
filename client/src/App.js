@@ -19,7 +19,6 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
-
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
@@ -28,6 +27,7 @@ import Hosts from './Carousel-Blog/Hosts';
 import { Context } from './Context';
 //Style related
 import Noisy from './noise/Noisy'
+import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
 
 
@@ -45,9 +45,15 @@ function App(props) {
     <BrowserRouter>
     <Context.Provider value={{id,showProfileEdit,setShowProfileEdit}}>
       <div className="App">
+    
         <div className="noise" >
           <Noisy />
         </div>
+    
+        <div className="solar-system">
+          <SolarSystem />
+        </div>
+
         <div className="stream-page">
           <VideoStream />
         </div>

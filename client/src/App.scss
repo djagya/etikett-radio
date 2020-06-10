@@ -379,7 +379,6 @@ nav {
 
 .message span {
   display: inline-block;
-  font-weight: bold;
   white-space: nowrap;
 }
 
@@ -515,8 +514,9 @@ nav {
 ////////////////////
 .embla {
   position: relative;
-  max-width: 70%;
+  max-width: 60%;
   margin: 0 auto;
+  margin-top: 15rem;
 }
 
 .embla__viewport {
@@ -610,7 +610,7 @@ nav {
   cursor: pointer;
   position: relative;
   padding: 0;
-  width: 3rem;
+  width: 1rem;
   height: 3rem;
   margin-right: 0.75rem;
   margin-left: 0.75rem;
@@ -620,13 +620,123 @@ nav {
 }
 
 .embla__dot:after {
-  background-color: #efefef;
+  background-color: #ffffff;
   width: 100%;
-  height: 0.4rem;
+  height: 0.3rem;
   content: "";
 }
 
 .embla__dot.is-selected:after {
   background-color: #000000;
   opacity: 1;
+}
+
+
+//solar-system animation + logo
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+.solar-system {
+  position: fixed;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vh;
+  height: 100vh;
+  margin: 0 auto;
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+  border-radius: 45vw;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  opacity: 0.8;
+}
+
+.sun {
+  width: 19%;
+  height: 19%;
+  background: url(./imageonline-co-noise.png);
+  background-size: 140%;
+  background-position: center;
+  border-radius: 120px;
+  position: absolute;
+  align-self: center;
+  box-shadow: 0 0 55px rgba(255, 255, 255, 1);
+}
+
+.planet {
+  width: 1px;
+  height: 1px;
+  margin: auto;
+  background: white;
+  border-radius: 2.5px;
+}
+
+.planet.mars {
+  width: 10%;
+  height: 10%;
+  border-radius: 500px;
+  margin-top: -5.8%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.planet.earth {
+  width: 10%;
+  height: 10%;
+  border-radius: 500px;
+  margin-top: -5%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.planet.venus {
+  width: 8%;
+  height: 8%;
+  border-radius: 500px;
+  margin-top: -5%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.planet.mercury {
+  width: 8%;
+  height: 8%;
+  border-radius: 500px;
+  margin-top: -5%;
+  background: #d3d3d3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.orbit {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5000px;
+  align-self: center;
+  animation: rotating 200s linear infinite;
+}
+
+h2 {
+  font-size: 30px;
+  padding: 3rem;
 }
