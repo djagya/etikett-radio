@@ -5,12 +5,12 @@ import {Redirect} from 'react-router-dom';
 export default function CreateUser(props) {
     const context = useContext(Context)
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [userName, setUserName] = useState("");
-    const [email, setEmail] = useState("");
-    const [pw, setPW] = useState("");
-    const [role, setRole] = useState("User");
+    const [firstName, setFirstName] = useState("dummy");
+    const [lastName, setLastName] = useState("dummy");
+    const [userName, setUserName] = useState("dummy");
+    const [email, setEmail] = useState("dummy@gmail.com");
+    const [pw, setPW] = useState("12345678");
+    const [role, setRole] = useState("Host");
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -24,35 +24,20 @@ export default function CreateUser(props) {
             "pw": pw,
             "role": role
         };
-
+        console.log(role)
         const postData = async (url, data) => {
-            console.log(data)
             const response = await fetch(url, {
                 method: "POST",
-                headers: {"Content-Type": "application/json",},
+                credentials: "include",
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)
             })
             return response.json()
         }
         postData("http://localhost:3000/users/createuser", body)
             .then(data => { 
+                console.log(data)
                 resetForm(data);
-                
-                // Set request options
-                // const options = {
-                //     method: "POST",
-                //     headers: {"Content-Type": "application/json"},
-                //     credentials: "include",
-                //     body: JSON.stringify({ email, pw })
-                // };
-
-                // Login user
-                // fetch("http://localhost:3000/users/login", options)
-                //     .then(res => res.json())
-                //     .then(resData => {
-                //         props.setCookie('user', resData.user, {path: '/'})
-                //     });
-
             })
 
 
