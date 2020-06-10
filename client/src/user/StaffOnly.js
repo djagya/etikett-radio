@@ -21,6 +21,7 @@ export default function UserProfile(props) {
     return (
         
             <div className="not-stream-component staff-only">
+                <div>
                 <h2>logged in as {props.cookies.user.firstName}</h2>
                 <button type="button" onClick={() => context.setShowProfileEdit(true)}>edit my profile</button>
                 
@@ -36,7 +37,7 @@ export default function UserProfile(props) {
                 {/* {user ? */}
                     <button onClick={handleLogOut}>log out</button>
                 {/* : null } */}
-                
+                </div>
             </div>
         
     )

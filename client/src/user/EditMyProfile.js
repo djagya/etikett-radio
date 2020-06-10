@@ -60,7 +60,6 @@ export default function MyProfile(props) {
                 } })
             .then(context.setShowProfileEdit(false) )
     }
-    
     if (!context.showProfileEdit) {return <Redirect to={`/user/${context.id}`}/>}
     
     const handleFormInput = event => {
