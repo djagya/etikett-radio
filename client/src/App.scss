@@ -104,6 +104,7 @@ footer {
     align-items: flex-end;
     margin-top: 1rem;
     height: 2rem;
+    width: 100%;
 
     input {
       height: 100%;
@@ -122,6 +123,7 @@ footer {
 /////////////
 .button-container {
   display: flex;
+  width: 100%;
   height: 2rem;
 }
 
@@ -131,17 +133,26 @@ button {
   font-size: 1rem;
 }
 
-///////////////////////////////////
-//          Archive Page
-///////////////////////////////////
-.archive-controls {
+.check-delete {
+  width: 20px;
+  height: 20px;
+}
+.controls {
   justify-content: space-between;
   margin: 1rem 0;
 }
+///////////////////////////////////
+//          Archive Page
+///////////////////////////////////
+
 
 .archive-list-page {
   display: flex;
   justify-content: center;
+
+  .post-archive {
+    margin-bottom: 2rem;
+  }
 
   .img-container {
     display: flex;
@@ -157,32 +168,42 @@ button {
   }
 
 }
-
-.check-delete {
-  width: 20px;
-  height: 20px;
-}
-
 .archive-details-page {
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: auto;
-
+  
+  h2 {
+    margin-bottom: 0;
+  }
+  p {
+    margin-bottom: 2rem;
+  }
   .archive-details {
-    display: flex;
-    justify-content: center;
-
-    .list-right {
-      text-align: right;
-      margin-left: 2rem;
+    width: 600px;
+    div {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
     }
+  
+      .list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  img {
+    max-width: 300px;
+  }
+  .controls {
+    max-width: 600px;
   }
 
 }
 
-.list-header,
-.archive-list {
+
+.list-header, .archive-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 20px;
   column-gap: 20px;
@@ -222,6 +243,9 @@ q {
     max-width: 600px;
 
     text-align: left;
+  }
+  .post-blog {
+    margin-top: 2rem;
   }
 
   .blog-list {
