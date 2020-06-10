@@ -49,13 +49,28 @@ h3 {
 .chat-homescreen {
   position: absolute;
   top: $nav-height;
-  right: 0
+  right: 0;
+  
+  // Chat window height
+  .InfoBar { height: 40px }
+  .Input { height: 6% }
+  .Messages { height: calc(100% - 6% - 40px) }
+
+  .chat-form {
+    display: flex;
+    align-items: flex-end;
+  }
 }
 .chat-routes {
   position: fixed;
   top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
   right: 0;
   z-index: 2;
+
+  // Chat window height
+  .InfoBar { height: 40px }
+  .Input { height: 8% }
+  .Messages { height: calc(100% - 8% - 40px) }
 }
 
 ///////////////////////////////////
