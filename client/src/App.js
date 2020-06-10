@@ -36,14 +36,15 @@ function App(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
-  let [showProfileEdit, setShowProfileEdit] = useState(false)
+  const [showProfileEdit, setShowProfileEdit] = useState(false)
+  const [showCreateProfile, setShowCreateProfile] = useState(false)
   if (cookies.user) {
     id = cookies.user._id
   }
-/////////////////////////
+  //////////////////////
   return (
     <BrowserRouter>
-    <Context.Provider value={{id,showProfileEdit,setShowProfileEdit}}>
+    <Context.Provider value={{id,showProfileEdit,setShowProfileEdit,showCreateProfile, setShowCreateProfile}}>
       <div className="App">
         <div className="noise" >
           <Noisy />
