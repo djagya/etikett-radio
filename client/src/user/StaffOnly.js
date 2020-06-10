@@ -2,7 +2,6 @@ import React, {useState, useContext} from 'react'
 import {Context} from "../Context"
 import { Redirect } from 'react-router-dom';
 
-import CreateUser from './CreateUser';
 
 export default function UserProfile(props) {
     const context = useContext(Context)
@@ -15,8 +14,12 @@ export default function UserProfile(props) {
         window.location.assign(`/login`)
     };
 
-  if (context.showProfileEdit)  {
-    return <Redirect  to={`/user/${context.id}/edit`} />}
+    if (context.showProfileEdit)  {
+        return <Redirect  to={`/user/${context.id}/edit`} />
+    }
+    if (context.showCreateProfile) {
+        return <Redirect to={`/user/createuser`}/>
+    }
 
     return (
         
@@ -24,19 +27,10 @@ export default function UserProfile(props) {
                 <div>
                 <h2>logged in as {props.cookies.user.firstName}</h2>
                 <button type="button" onClick={() => context.setShowProfileEdit(true)}>edit my profile</button>
+                <button type="button" onClick={() => context.setShowCreateProfile(true)}>create new user</button>
+
+                <button onClick={handleLogOut}>log out</button>
                 
-                
-                {showCreate ? 
-                    <button type="button" onClick={() => setShowCreate(false)}>cancel</button>:
-                    <button type="button" onClick={() => setShowCreate(true)}>create new profile</button> 
-                }
-                {showCreate ? 
-                    <CreateUser />:
-                    null
-                }
-                {/* {user ? */}
-                    <button onClick={handleLogOut}>log out</button>
-                {/* : null } */}
                 </div>
             </div>
         

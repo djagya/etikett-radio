@@ -54,7 +54,7 @@ footer {
   align-items: flex-end;
 
   img {
-    width: 100vw;
+    width: 100%;
     height: auto;
   }
 }
@@ -76,9 +76,16 @@ footer {
     width: 600px;
 
     label {
-      input {
+
+      input,
+      select {
         width: 100%;
         height: 2rem;
+        padding-left: 6px;
+
+        option {
+          color: black;
+        }
       }
     }
 
@@ -100,6 +107,7 @@ footer {
     align-items: flex-end;
     margin-top: 1rem;
     height: 2rem;
+    width: 100%;
 
     input {
       height: 100%;
@@ -118,7 +126,9 @@ footer {
 /////////////
 .button-container {
   display: flex;
+  width: 100%;
   height: 2rem;
+  margin: 2rem 0;
 }
 
 button {
@@ -127,17 +137,28 @@ button {
   font-size: 1rem;
 }
 
-///////////////////////////////////
-//          Archive Page
-///////////////////////////////////
-.archive-controls {
+.check-delete {
+  width: 20px;
+  height: 20px;
+}
+
+.controls {
   justify-content: space-between;
   margin: 1rem 0;
 }
 
+///////////////////////////////////
+//          Archive Page
+///////////////////////////////////
+
+
 .archive-list-page {
   display: flex;
   justify-content: center;
+
+  .post-archive {
+    margin-bottom: 2rem;
+  }
 
   .img-container {
     display: flex;
@@ -154,28 +175,45 @@ button {
 
 }
 
-.check-delete {
-  width: 20px;
-  height: 20px;
-}
-
 .archive-details-page {
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: auto;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
 
   .archive-details {
-    display: flex;
-    justify-content: center;
+    width: 600px;
 
-    .list-right {
-      text-align: right;
-      margin-left: 2rem;
+    div {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
+  img {
+    max-width: 300px;
+  }
+
+  .controls {
+    max-width: 600px;
+  }
+
 }
+
 
 .list-header,
 .archive-list {
@@ -218,6 +256,10 @@ q {
     max-width: 600px;
 
     text-align: left;
+  }
+
+  .post-blog {
+    margin-top: 2rem;
   }
 
   .blog-list {
@@ -319,13 +361,37 @@ q {
   button {
     width: 100%;
     padding: .5rem;
-    margin: .5rem 0;
+    margin: 1rem 0;
   }
 
   div {
     max-width: 600px;
   }
 
+}
+
+///////////////////////////////////
+//        Create User Page
+///////////////////////////////////
+.create-user-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .input-form {
+    max-width: 600px;
+  }
+}
+
+///////////////////////////////////
+//          Error Page
+///////////////////////////////////
+.error-page {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 //---------------------------------------------//
