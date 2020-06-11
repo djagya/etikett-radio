@@ -7,8 +7,8 @@ Route.get("/", auth, getHost);
 Route.post("/post", auth, isHostAdmin, postHost); 
 //Alternative syntax for practice purposes
 Route.route("/:id")
-    .get(auth, getHostById)
-    .put(auth, isAdmin, putHost)
+    .get(auth, isHostAdmin, getHostById)
+    .put(auth, isHostAdmin, putHost)
     .delete(auth, isAdmin, deleteHost);
 
 module.exports = Route;

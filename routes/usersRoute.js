@@ -2,7 +2,7 @@ const Route = require("express").Router();
 const { getUserById, getUsers, postUser, putUser, deleteUser, login, sendEmail } = require("../controllers/usersController");
 const { validUserInputs } = require("../middleware/usersValidator");
 const auth = require("../middleware/tokenAuthenticator");
-const isAdmin = require("../middleware/rolesAuthenticator");
+const {isAdmin} = require("../middleware/rolesAuthenticator");
 
 Route.get("/", auth, isAdmin, getUsers);
 Route.post("/createuser", auth, isAdmin, validUserInputs(), postUser);
