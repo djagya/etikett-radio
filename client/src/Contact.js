@@ -7,7 +7,7 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     
     const handleSubmit = e => {
         e.preventDefault();        
@@ -35,6 +35,7 @@ export default function Contact() {
 
     return (
         <div className="not-stream-component input-form">
+            {loading ? <div className="loading"><img src={noisyEtikettRadioLogo} alt="logo loading spinner"/></div> : null }
             <h1>contact</h1>
             <form onSubmit={handleSubmit}>
                 <div className="grid-container">
