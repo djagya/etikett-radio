@@ -73,7 +73,7 @@ h3 {
   // Chat window height
   .InfoBar { height: 6vh }
   .Input { height: 8% }
-  .Messages { height: calc(100% - 8% - 6vh) } // calc(100% - Input - InfoBar - bottom-space)
+  .Messages { height: calc(100% - 8% - 40px) } // calc(100% - Input - InfoBar - bottom-space)
 }
 
 ///////////////////////////////////
@@ -470,7 +470,7 @@ nav {
 }
 
 .message-controls-container {
-  height: 6vh;
+  height: 40px;
   margin: 0 1.8rem;
   display: flex;
   align-items: center;
