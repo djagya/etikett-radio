@@ -16,7 +16,7 @@ import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
 
-import VideoStream from './VideoStream';
+import Header from './Header';
 import Blog from './blog/Blog';
 import Home from './Home';
 
@@ -72,11 +72,11 @@ console.log(allUser)
         </div>
     
         <div className="solar-system">
-          {/* <SolarSystem /> */}
+          <SolarSystem />
         </div>
     
         <div className="stream-page">
-          <VideoStream chatState={chatState} setChatState={setChatState} />
+          <Header chatState={chatState} setChatState={setChatState} />
         </div>
 
           <Switch>
