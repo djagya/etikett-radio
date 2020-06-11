@@ -11,6 +11,10 @@ $embeded-video-height: 88vh;
   //respects \n as new lines
 }
 
+*::selection {
+  background-color: #ffffff;
+}
+
 @font-face {
   font-family: "GaramondPro";
   src: url("./font/AGaramondPro-Regular.otf");
