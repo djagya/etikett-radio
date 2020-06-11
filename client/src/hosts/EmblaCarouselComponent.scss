@@ -62,11 +62,11 @@
 
 .embla__button:not(:disabled) {
   cursor: pointer;
-  fill: #000000;
+  fill: #e9e9e9;
 }
 
 .embla__button:disabled {
-  fill: #e9e9e9;
+  fill: #000000;
 }
 
 .embla__button__svg {
