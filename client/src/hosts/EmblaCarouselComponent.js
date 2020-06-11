@@ -53,19 +53,19 @@ const EmblaCarouselComponent = ({ children }) => {
                 <div className="embla__container">
                     {children.map((Child, index) => (
                         <div className="embla__slide" key={index}>
-                            {/* <div
+                            <div
                                 className="embla__slide__image"
-                            style={{
-                                backgroundImage: `url(https://source.unsplash.com/${unsplashImages[
-                                    index
-                                ] || "uy5t-CJuIK4"}/800x368)`,
-                                transform: `translateX(${scrollPercentage -
-                                    imageSlides[index]}%)`
-                            }}
-                            /> */}
+                                style={{
+                                    backgroundImage: `url(https://source.unsplash.com/${unsplashImages[
+                                        index
+                                    ] || "uy5t-CJuIK4"}/800x368)`,
+                                    transform: `translateX(${scrollPercentage -
+                                        imageSlides[index]}%)`
+                                }}
+                            />
                             <p>Some tes text here</p>
-                            </div>
-                            
+                        </div>
+
                     ))}
                 </div>
             </EmblaCarouselReact>

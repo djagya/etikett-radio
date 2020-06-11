@@ -52,32 +52,32 @@ function App(props) {
     id = cookies.user._id
   }
   //////////////////////
-console.log(allUser)
+  console.log(allUser)
   return (
     <BrowserRouter>
 
-    <Context.Provider value={
-      {
-        id,
-        profileEdit, setProfileEdit,
-        createProfile, setCreateProfile,
-        allUser, setAllUser,
-        editHost, setEditHost
-      }
-    }>
-      <div className="App">
+      <Context.Provider value={
+        {
+          id,
+          profileEdit, setProfileEdit,
+          createProfile, setCreateProfile,
+          allUser, setAllUser,
+          editHost, setEditHost
+        }
+      }>
+        <div className="App">
 
-        <div className="noise" >
-          <Noisy />
-        </div>
-    
-        <div className="solar-system">
-          <SolarSystem />
-        </div>
-    
-        <div className="stream-page">
-          <Header chatState={chatState} setChatState={setChatState} />
-        </div>
+          <div className="noise" >
+            <Noisy />
+          </div>
+
+          <div className="solar-system">
+            <SolarSystem />
+          </div>
+
+          <div className="stream-page">
+            <Header chatState={chatState} setChatState={setChatState} />
+          </div>
 
           <Switch>
 
@@ -98,8 +98,8 @@ console.log(allUser)
             <Route exact path="/:id/edit" component={ArchiveEdit} />
 
             {/* Hosts Related */}
-            <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
-            <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies}  />} />
+            <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
+            <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies} />} />
 
             {/* Hosts Related */}
             <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
@@ -113,7 +113,7 @@ console.log(allUser)
           </Switch>
 
           <footer>
-            <img src={footerImg} width="1920" height="600"></img>
+            <img src={footerImg} width="1920" height="600" alt="A photo taken from the moon surface's of the planet Earth."></img>
           </footer>
         </div>
       </Context.Provider>
