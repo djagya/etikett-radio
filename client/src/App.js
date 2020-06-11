@@ -74,11 +74,11 @@ function App(props) {
         </div>
     
         <div className="stream-page">
-          <VideoStream />
+          <VideoStream chatState={chatState} setChatState={setChatState} />
 
-          <div className={`chat ${chatState}`}>
+          {/* <div className={`chat ${chatState}`}>
             <ChatApp setChatState={setChatState} />
-          </div>
+          </div> */}
         </div>
 
         <Switch>
