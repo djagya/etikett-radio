@@ -1,4 +1,6 @@
-import React, {useState, useContext} from 'react';
+
+import React, { useState, useEffect } from 'react';
+
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -7,7 +9,6 @@ import { useCookies } from 'react-cookie';
 //Page General Related
 import Error from "./Error404";
 //User Account Related
-import AccountManager from "./user/AccountManager";
 import LogIn from './user/LogIn';
 import CreateUser from './user/CreateUser';
 //Archive Related
@@ -19,6 +20,8 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
+import ChatApp from './chat/ChatApp';
+
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
@@ -29,41 +32,55 @@ import { Context } from './Context';
 import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
+import AllUser from './user/AllUser';
+
+
+
+
+  
 
 
 function App(props) {
-
+  const [chatState, setChatState] = useState('chat-homescreen');
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
-  const [showProfileEdit, setShowProfileEdit] = useState(false)
-  const [showCreateProfile, setShowCreateProfile] = useState(false)
+  const [profileEdit, setProfileEdit] = useState(false)
+  const [createProfile, setCreateProfile] = useState(false)
+  const [allUser, setAllUser] = useState(false)
   if (cookies.user) {
     id = cookies.user._id
   }
   //////////////////////
+
   return (
     <BrowserRouter>
     <Context.Provider value={
       {
         id,
-        showProfileEdit, setShowProfileEdit,
-        showCreateProfile, setShowCreateProfile
+        profileEdit, setProfileEdit,
+        createProfile, setCreateProfile,
+        allUser, setAllUser
       }
     }>
       <div className="App">
-    
+
         <div className="noise" >
           <Noisy />
-        </div>
+        </div> */}
     
         <div className="solar-system">
           <SolarSystem />
         </div>
-
+    
         <div className="stream-page">
           <VideoStream />
+
+          <div className={`chat ${chatState}`}>
+            <ChatApp setChatState={setChatState} />
+          </div>
         </div>
+
         <Switch>
 
           {/*Placeholder for / route so we don't land on Error component*/}
@@ -71,6 +88,7 @@ function App(props) {
 
           {/* User Related */}
           <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
+          <Route exact path="/user/all" render={(props)=> <AllUser cookies={cookies}/>  } />
           <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
           <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie}  cookies={cookies} />} />
           <Route exact path="/user/:id/edit" render={(props)=> <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
@@ -85,7 +103,7 @@ function App(props) {
           <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
 
           {/* Hosts Related */}
-          <Route exact path="/hosts" render={(props) => <Hosts />} />
+          <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
 
           {/* Schedule Related */}
           <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />

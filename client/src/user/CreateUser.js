@@ -10,11 +10,11 @@ export default function CreateUser(props) {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [pw, setPW] = useState("");
-    const [role, setRole] = useState("User");
+    const [role, setRole] = useState("Host");
 
     const handleSubmit = event => {
         event.preventDefault()
-
+        console.log("submit is running")
         //POST request
         const body = {
             "firstName": firstName,
@@ -24,35 +24,20 @@ export default function CreateUser(props) {
             "pw": pw,
             "role": role
         };
-
+        console.log(role)
         const postData = async (url, data) => {
-            console.log(data)
             const response = await fetch(url, {
                 method: "POST",
-                headers: {"Content-Type": "application/json",},
+                credentials: "include",
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)
             })
             return response.json()
         }
         postData("http://localhost:3000/users/createuser", body)
             .then(data => { 
+                console.log(data)
                 resetForm(data);
-                
-                // Set request options
-                // const options = {
-                //     method: "POST",
-                //     headers: {"Content-Type": "application/json"},
-                //     credentials: "include",
-                //     body: JSON.stringify({ email, pw })
-                // };
-
-                // Login user
-                // fetch("http://localhost:3000/users/login", options)
-                //     .then(res => res.json())
-                //     .then(resData => {
-                //         props.setCookie('user', resData.user, {path: '/'})
-                //     });
-
             })
 
 
@@ -98,14 +83,14 @@ export default function CreateUser(props) {
         }
     };
 
-    if (!context.showCreateProfile) {return <Redirect to={`/user/${context.id}`}/>}
+    if (!context.createProfile) {return <Redirect to={`/user/${context.id}`}/>}
     
     return (
         <div className="not-stream-component create-user-page">
             <h2>create a new user</h2>
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
-                    <button type="button" onClick={() => context.setShowCreateProfile(false)}>cancel</button>
+                    <button type="button" onClick={() => context.setCreateProfile(false)}>cancel</button>
                 </div>
                 <div className="grid-container">
                     <label htmlFor="firstName">
@@ -126,7 +111,7 @@ export default function CreateUser(props) {
                     </label>
                     <label htmlFor="pw">
                         <span className="required">*</span>password
-                    <input type="text" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
+                    <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="role">
                         <span className="required">*</span>role

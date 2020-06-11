@@ -33,7 +33,7 @@ UserSchema.methods.getPublicFields = function () {
     const returnObject = {
         firstName: this.firstName,
         lastName: this.lastName,
-        email: this.email.email,
+        email: this.email,
         _id: this._id,
         role: this.role
     }

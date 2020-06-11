@@ -19,7 +19,7 @@ export default function Schedule(props) {
         fetch("http://localhost:3000/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
-            .then(data => setScheduleData(data.schedule.sort((fromA, fromB)=>new Date(fromA.from) - new Date(fromB.from))))
+            .then(data => setScheduleData(data.schedule.sort((entryA, entryB)=>new Date(entryA.from) - new Date(entryB.from))))
         }, [])
 
     const handleAdd = boolean => {

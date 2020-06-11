@@ -57,7 +57,7 @@ export default function MyProfile(props) {
                 { console.log(data) } else {
                     props.setCookie('user', data.user, {path: '/'}) 
                 } })
-            .then(context.setShowProfileEdit(false) )
+            .then(context.setProfileEdit(false) )
     }
 
     const handleFormInput = event => {
@@ -86,7 +86,7 @@ export default function MyProfile(props) {
         }
     };
 
-    if (!context.showProfileEdit) {return <Redirect to={`/user/${context.id}`}/>}
+    if (!context.profileEdit) {return <Redirect to={`/user/${context.id}`}/>}
     
     return (
         <div>
@@ -95,7 +95,7 @@ export default function MyProfile(props) {
                 
                 <form onSubmit={handleSubmit}>
                 <div className="button-container">
-                <button type="button" onClick={() => context.setShowProfileEdit(false)}>cancel</button>
+                <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
                 </div>
                     <div className="grid-container">
                         <label htmlFor="firstName">
@@ -116,7 +116,7 @@ export default function MyProfile(props) {
                         </label>
                         <label htmlFor="pw">
                             <span className="required">*</span>password
-                        <input type="text" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
+                        <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
                         </label>
                         {user && user.role === 'Admin' ?
                         <label htmlFor="role">
