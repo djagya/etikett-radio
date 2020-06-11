@@ -52,15 +52,24 @@ h3 {
 .chat {
   background-color: transparent;
 }
+
 .chat-homescreen {
   position: absolute;
   top: $nav-height;
   right: 0;
-  
+
   // Chat window height
-  .InfoBar { height: 40px }
-  .Input { height: 36px }
-  .Messages { height: calc(100% - 36px - 40px) }
+  .InfoBar {
+    height: 40px
+  }
+
+  .Input {
+    height: 36px
+  }
+
+  .Messages {
+    height: calc(100% - 36px - 40px)
+  }
 
   .chat-form {
     height: 100%;
@@ -68,16 +77,24 @@ h3 {
     align-items: center;
   }
 }
+
 .chat-routes {
-  position: fixed;
-  top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
+  // position: fixed;
+  // top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
   right: 0;
   z-index: 2;
 
   // Chat window height
-  .InfoBar { height: 40px }
-  .Input { height: 8% }
-  .Messages { height: calc(100% - 8% - 40px) }
+  .InfoBar {
+    height: 6vh
+  }
+
+  // .Input { height: 40px }
+  .Messages {
+    height: calc(100% - 40px - 4rem)
+  }
+
+  // calc(100% - InfoBar - bottom-space)
 }
 
 ///////////////////////////////////
@@ -423,6 +440,7 @@ q {
     max-width: 600px;
   }
 }
+
 ///////////////////////////////////
 //         All User Page
 ///////////////////////////////////
@@ -433,7 +451,6 @@ q {
 
 
   .list-container {
-    
   width: fit-content;
   }
  
@@ -441,7 +458,7 @@ q {
     // max-width: 800px;
     text-align: left;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 1rem;
     
   }
@@ -503,7 +520,7 @@ nav {
 }
 
 .message-controls-container {
-  height: 6vh;
+  height: 40px;
   margin: 0 1.8rem;
   display: flex;
   align-items: center;
@@ -560,6 +577,11 @@ nav {
   .embeded-video {
     grid-column: 1 / 3;
     grid-row: 1 / 3;
+  }
+
+  .chat {
+    grid-row: 2 / 4;
+    grid-column-end: -1;
   }
 }
 
@@ -811,7 +833,7 @@ nav {
 .sun {
   width: 19%;
   height: 19%;
-  background: url(./imageonline-co-noise.png);
+  background: url(./solar-system-logo/imageonline-co-noise.png);
   background-size: 140%;
   background-position: center;
   border-radius: 120px;

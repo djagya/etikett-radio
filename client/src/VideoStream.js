@@ -4,6 +4,7 @@ import './App.scss'
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
+import ChatApp from './chat/ChatApp';
 
 function VideoStream(props) {
     useEffect(() => {
@@ -72,6 +73,10 @@ function VideoStream(props) {
                 <NavLink className="nav-link" to="/contact">contact.</NavLink>
                 <NavLink className="nav-link" to="/login">staff only.</NavLink>
             </nav>
+
+            <div className={`chat ${props.chatState}`}>
+            <ChatApp setChatState={props.setChatState} />
+          </div>
 
             <section className="embeded-video">
                 <ReactPlayer 
