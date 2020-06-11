@@ -31,7 +31,10 @@ export default function ScheduleWeek(data) {
 
         ///////For interactivity//////////
         let isLive = "";
-        if (parseInt(moment().startOf('day').fromNow().substring(0,2)) > 24) {
+        // console.log(day[day.length -1].to < new Date().toISOString())
+        // console.log(new Date().toISOString())
+        if (day[day.length -1].to < new Date().toISOString()) {
+            console.log("was-Live")
             isLive = "was-live";
         }
         ///////For interactivity//////////
