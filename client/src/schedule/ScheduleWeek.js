@@ -30,20 +30,17 @@ export default function ScheduleWeek(data) {
         if (day.length === 0 ) return null
 
         ///////For interactivity//////////
-        let isLive = "";
-        // console.log(day[day.length -1].to < new Date().toISOString())
-        // console.log(new Date().toISOString())
+        let isPast = "";
         if (day[day.length -1].to < new Date().toISOString()) {
-            console.log("was-Live")
-            isLive = "was-live";
+            isPast = "was-live";
         }
         ///////For interactivity//////////
 
         return (
             <ul className="day-dates">
                 <li className="day-head">
-                    <div className={`${isLive}`}>{moment(day[0].from).format("dddd")}</div> 
-                    <div className={`${isLive}`}>{moment(day[0].from).format().substring(0, 10)}</div>
+                    <div className={`${isPast}`}>{moment(day[0].from).format("dddd")}</div> 
+                    <div className={`${isPast}`}>{moment(day[0].from).format().substring(0, 10)}</div>
                 </li>
                 {dates(day)}
             </ul>

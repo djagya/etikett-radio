@@ -26,7 +26,7 @@ import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
 import EditMyProfile from './user/EditMyProfile';
-import Hosts from './Carousel-Blog/Hosts';
+import Hosts from './hosts/Hosts';
 import { Context } from './Context';
 //Style related
 import Noisy from './noise/Noisy'
@@ -48,6 +48,7 @@ function App(props) {
   const [profileEdit, setProfileEdit] = useState(false)
   const [createProfile, setCreateProfile] = useState(false)
   const [allUser, setAllUser] = useState(false)
+  const [editHost, setEditHost] = useState(false)
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -60,7 +61,8 @@ function App(props) {
         id,
         profileEdit, setProfileEdit,
         createProfile, setCreateProfile,
-        allUser, setAllUser
+        allUser, setAllUser,
+        editHost, setEditHost
       }
     }>
       <div className="App">
@@ -104,6 +106,7 @@ function App(props) {
 
           {/* Hosts Related */}
           <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
+          <Route exact path="/hosts/:id" render={(props) => <Hosts {...props} cookies={cookies}  />} />
 
           {/* Schedule Related */}
           <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
