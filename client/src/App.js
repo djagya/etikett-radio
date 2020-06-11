@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import './App.scss';
+
+import "./App.scss"
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useCookies } from 'react-cookie';

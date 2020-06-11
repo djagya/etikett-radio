@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
-import './CreateUser.scss';
 
 export default function CreateUser(props) {
     const context = useContext(Context)

@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Noisy from "./noise/Noisy";
-// import './index.css';
 import App from './App';
 import { CookiesProvider } from 'react-cookie';
 

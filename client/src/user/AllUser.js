@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 import Delete from "../Delete";
-import './AllUser.scss';
 
 export default function AllUser() {
     const context = useContext(Context)

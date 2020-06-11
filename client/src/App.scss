@@ -1,3 +1,26 @@
+//main
+@import "./style/Header.scss";
+@import "./style/ChatApp.scss";
+@import "./style/SolarSystem.scss";
+//schedule
+@import "./style/Schedule.scss";
+//archive
+@import "./style/ArchiveList.scss";
+@import "./style/ArchivedShowDetail.scss";
+//blog
+@import "./style/Blog.scss";
+//hosts
+@import "./style/EmblaCarouselComponent.scss";
+
+//user 
+@import "./style/CreateUser.scss";
+@import "./style/AllUser.scss";
+@import "./style/Error404.scss";
+@import "./style/StaffOnly.scss";
+
+
+
+
 $header-height: 20vh;
 
 * {
@@ -22,7 +45,7 @@ $header-height: 20vh;
 
 @font-face {
   font-family: "GaramondPro";
-  src: url("./font/AGaramondPro-Regular.otf");
+  src:url("./font/AGaramondPro-Regular.otf")
 }
 
 h2 {
