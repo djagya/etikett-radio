@@ -15,7 +15,7 @@ export default function Message({ message: { user, text }, name }) {
       <div className="message-container justify-right">
         {/* <p className="sent-text">{trimmedName}</p> */}
         <div className="message-box bg-white">
-          <p className="message-text color-white">{text}</p>
+          <p className="message-text color-white">{ReactEmoji.emojify(text)}</p>
         </div>
       </div>
     )
@@ -23,7 +23,7 @@ export default function Message({ message: { user, text }, name }) {
       <div className="message-container justify-left">
         <p className="sent-text">{user}</p>
         <div className="message-box bg-black">
-          <p className="message-text color-black">{text}</p>
+          <p className="message-text color-black">{ReactEmoji.emojify(text)}</p>
         </div>
       </div>
     )
