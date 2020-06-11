@@ -26,7 +26,7 @@ import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
 import EditMyProfile from './user/EditMyProfile';
-import Hosts from './Carousel-Blog/Hosts';
+import Hosts from './Hosts/Hosts';
 import { Context } from './Context';
 //Style related
 import Noisy from './noise/Noisy'
