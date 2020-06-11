@@ -1,7 +1,5 @@
-import React, { useRef, useEffect, useMemo } from 'react';
-import { Vector2 } from 'three';
+import React, { useRef, useEffect } from 'react';
 import { useFrame, useThree, extend } from 'react-three-fiber';
-
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { NoisePass } from './Noise';
@@ -21,7 +19,7 @@ export default function Effects() {
         size,
     ]);
     useFrame(() => composer.current.render(), 1);
-   
+
 
     return (
         <effectComposer ref={composer} args={[gl]}>
