@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import ArchiveEdit from './ArchiveEditForm';
 import {Context} from "../Context";
+import './ArchivedShowDetail.scss';
 
 export default function ArchiveDetail(props) {
     const [showEdit, setShowEdit] =useState(false);
