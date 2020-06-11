@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react';
+import ReactEmoji from 'react-emoji';
 
 export default function Message({ message: { user, text }, name }) {
-  // const [isSentByUser, setIsSentByUser] = useState(false);
   const trimmedName = name.trim().toLocaleLowerCase();
   let isSentByUser = false;
 
