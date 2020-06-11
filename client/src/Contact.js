@@ -7,10 +7,11 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     
     const handleSubmit = e => {
-        e.preventDefault();        
+        e.preventDefault();
+        setLoading(true);      
 
         const options = {
             method: 'POST',
@@ -21,6 +22,7 @@ export default function Contact() {
         fetch('http://localhost:3000/users/contact', options)
             .then(res => res.json())
             .then(data => {
+                setLoading(false);  
                 if (data.success) {
                     alert('Your message has been sent!');
                     setName('');
