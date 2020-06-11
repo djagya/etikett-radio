@@ -1,0 +1,37 @@
+.archive-details-page {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  .archive-details {
+    width: 600px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  img {
+    max-width: 300px;
+  }
+
+  .controls {
+    max-width: 600px;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BlogInputForm from './BlogInputForm';
 import BlogEntry from './BlogEntry';
 import {Context} from "../Context";
+import './Blog.scss';
 
 export default function Blog(props) {
     const [blogData, setBlogData] = useState([]);

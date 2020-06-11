@@ -1,0 +1,67 @@
+///////////////////////////////////
+//          Schedule Page
+///////////////////////////////////
+.schedule-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .was-live {
+    opacity: .2;
+  }
+
+  .is-live {
+    color: red;
+  }
+
+  .check-delete {
+    margin-left: 1rem;
+  }
+
+  .edit-grid-container {
+    grid-template-columns: 1fr;
+    width: 200px;
+  }
+
+  .monthly-schedule {
+    display: flex;
+
+    .weekly-schedule {
+      margin: 0 2rem;
+
+      .day-dates {
+        text-align: left;
+
+        .day-head {
+          display: flex;
+          justify-content: space-between;
+          margin: 3rem 0 1rem;
+          font-size: 1.5rem;
+          text-transform: lowercase;
+
+          div:nth-child(1) {
+            margin-right: 1rem;
+
+          }
+
+          div:nth-child(2) {
+            font-size: .8rem;
+            letter-spacing: 2px;
+          }
+        }
+
+        .day-details {
+          margin: 0.25rem 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: left;
+
+          li:nth-child(1) {
+            max-width: 150px;
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
