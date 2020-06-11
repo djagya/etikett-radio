@@ -15,6 +15,9 @@ $embeded-video-height: 88vh;
   background-color: #ffffff;
 }
 
+///////////////////////////////////
+//         Typography
+///////////////////////////////////
 @font-face {
   font-family: "GaramondPro";
   src: url("./font/AGaramondPro-Regular.otf");
@@ -29,6 +32,9 @@ h3 {
   margin-top: 1.5rem;
 }
 
+///////////////////////////////////
+//        Overall Layout
+///////////////////////////////////
 .nav-link {
   padding: 0 2vw;
 }
@@ -178,9 +184,9 @@ footer {
   }
 }
 
-/////////////
-// Button
-/////////////
+///////////////////////////////////
+//           Buttons
+///////////////////////////////////
 .button-container {
   display: flex;
   width: 100%;
@@ -207,8 +213,6 @@ button {
 ///////////////////////////////////
 //          Archive Page
 ///////////////////////////////////
-
-
 .archive-list-page {
   display: flex;
   justify-content: center;
@@ -271,7 +275,6 @@ button {
 
 }
 
-
 .list-header,
 .archive-list {
   display: grid;
@@ -289,7 +292,6 @@ li {
   font-size: 1.1rem;
 }
 
-
 a {
   margin: 1rem 0;
 }
@@ -303,7 +305,6 @@ q {
 ///////////////////////////////////
 //          Blog Page
 ///////////////////////////////////
-
 .blog-page {
   display: flex;
   justify-content: center;
@@ -334,9 +335,6 @@ q {
       justify-content: space-between;
     }
   }
-
-
-
 }
 
 ///////////////////////////////////
@@ -410,7 +408,6 @@ q {
 ///////////////////////////////////
 //        Staff Only Page
 ///////////////////////////////////
-
 .staff-only {
   display: flex;
   flex-direction: column;
@@ -550,8 +547,6 @@ nav {
   }
 }
 
-
-
 .small-header {
   position: fixed;
   top: 0;
@@ -668,9 +663,9 @@ nav {
   }
 }
 
-////////////////////
-// Hosts-carousel//
-////////////////////
+///////////////////////////////////
+//        Host Carousel
+///////////////////////////////////
 .embla {
   position: relative;
   max-width: 60%;
@@ -792,8 +787,9 @@ nav {
 
 
 
-//solar-system animation + logo
-
+///////////////////////////////////
+//        Solar System
+///////////////////////////////////
 @keyframes rotating {
   from {
     -ms-transform: rotate(0deg);
@@ -811,7 +807,6 @@ nav {
     transform: rotate(360deg);
   }
 }
-
 
 .solar-system {
   position: fixed;

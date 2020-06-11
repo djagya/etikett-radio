@@ -20,8 +20,6 @@ import VideoStream from './VideoStream';
 import Blog from './blog/Blog';
 import Home from './Home';
 
-import ChatApp from './chat/ChatApp';
-
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
 import StaffOnly from './user/StaffOnly';
@@ -74,17 +72,12 @@ console.log(allUser)
         </div>
     
         <div className="solar-system">
-          <SolarSystem />
+          {/* <SolarSystem /> */}
         </div>
     
         <div className="stream-page">
           <VideoStream chatState={chatState} setChatState={setChatState} />
-
-          {/* <div className={`chat ${chatState}`}>
-            <ChatApp setChatState={setChatState} />
-          </div> */}
         </div>
-
 
           <Switch>
 
@@ -104,9 +97,9 @@ console.log(allUser)
             <Route exact path="/archive/:id" component={ArchiveDetail} />
             <Route exact path="/:id/edit" component={ArchiveEdit} />
 
-          {/* Hosts Related */}
-          <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
-          <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies}  />} />
+            {/* Hosts Related */}
+            <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
+            <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies}  />} />
 
             {/* Hosts Related */}
             <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
