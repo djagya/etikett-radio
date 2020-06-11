@@ -13,18 +13,18 @@ export default function EditHostPage() {
     console.log(hostData)
 
     const userID = context.id;
-    const [hostName, setHostName] = useState("Busted Fingerz");
-    const [hostImg, setHostImg] = useState("https://i1.sndcdn.com/avatars-000456674544-werm3v-t500x500.jpg");
-    const [description, setDescription] = useState("Sickst producer and dj on the planet. Du weißt!");
-    const [youtube, setYoutube] = useState("https://www.youtube.com/user/semdachilla");
-    const [soundcloud, setSoundcloud] = useState("https://soundcloud.com/bustedfingerz");
+    const [hostName, setHostName] = useState("");
+    const [hostImg, setHostImg] = useState("");
+    const [description, setDescription] = useState("");
+    const [youtube, setYoutube] = useState("");
+    const [soundcloud, setSoundcloud] = useState("");
     const [mixcloud, setMixcloud] = useState("");
-    const [facebook, setFacebook] = useState("https://www.facebook.com/bustedfingerz/");
-    const [instagram, setInstagram] = useState("https://www.instagram.com/bustedfingerz/");
+    const [facebook, setFacebook] = useState("");
+    const [instagram, setInstagram] = useState("");
     const [twitter, setTwitter] = useState("");
     const [snapchat, setSnapchat] = useState("");
-    const [otherName, setOtherName] = useState("github");
-    const [otherLink, setOtherLink] = useState("https://github.com/SimonSchoetz");
+    const [otherName, setOtherName] = useState("");
+    const [otherLink, setOtherLink] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:3000/host", {
