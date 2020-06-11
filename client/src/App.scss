@@ -52,15 +52,24 @@ h3 {
 .chat {
   background-color: transparent;
 }
+
 .chat-homescreen {
   position: absolute;
   top: $nav-height;
   right: 0;
-  
+
   // Chat window height
-  .InfoBar { height: 40px }
-  .Input { height: 36px }
-  .Messages { height: calc(100% - 36px - 40px) }
+  .InfoBar {
+    height: 40px
+  }
+
+  .Input {
+    height: 36px
+  }
+
+  .Messages {
+    height: calc(100% - 36px - 40px)
+  }
 
   .chat-form {
     height: 100%;
@@ -68,6 +77,7 @@ h3 {
     align-items: center;
   }
 }
+
 .chat-routes {
   // position: fixed;
   // top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
@@ -75,9 +85,16 @@ h3 {
   z-index: 2;
 
   // Chat window height
-  .InfoBar { height: 6vh }
+  .InfoBar {
+    height: 6vh
+  }
+
   // .Input { height: 40px }
-  .Messages { height: calc(100% - 40px - 4rem) } // calc(100% - InfoBar - bottom-space)
+  .Messages {
+    height: calc(100% - 40px - 4rem)
+  }
+
+  // calc(100% - InfoBar - bottom-space)
 }
 
 ///////////////////////////////////
@@ -423,6 +440,7 @@ q {
     max-width: 600px;
   }
 }
+
 ///////////////////////////////////
 //         All User Page
 ///////////////////////////////////
@@ -431,12 +449,13 @@ q {
   flex-direction: column;
   align-items: center;
 
- 
-  .list-header, .user-data {
+
+  .list-header,
+  .user-data {
     // max-width: 800px;
     text-align: left;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 1rem;
   }
 }
@@ -807,7 +826,7 @@ nav {
 .sun {
   width: 19%;
   height: 19%;
-  background: url(./imageonline-co-noise.png);
+  background: url(./solar-system-logo/imageonline-co-noise.png);
   background-size: 140%;
   background-position: center;
   border-radius: 120px;
