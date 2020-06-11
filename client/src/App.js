@@ -37,7 +37,7 @@ import AllUser from './user/AllUser';
 
 
 
-  
+
 
 
 function App(props) {
@@ -55,6 +55,7 @@ function App(props) {
 
   return (
     <BrowserRouter>
+
     <Context.Provider value={
       {
         id,
@@ -81,42 +82,43 @@ function App(props) {
           </div> */}
         </div>
 
-        <Switch>
 
-          {/*Placeholder for / route so we don't land on Error component*/}
-          <Route exact path="/" component={Home} />
+          <Switch>
 
-          {/* User Related */}
-          <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
-          <Route exact path="/user/all" render={(props)=> <AllUser cookies={cookies}/>  } />
-          <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-          <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie}  cookies={cookies} />} />
-          <Route exact path="/user/:id/edit" render={(props)=> <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
-          <Route exact path="/contact" component={Contact} />
+            {/*Placeholder for / route so we don't land on Error component*/}
+            <Route exact path="/" component={Home} />
 
-          {/* Archive Related */}
-          <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
-          <Route exact path="/archive/:id" component={ArchiveDetail} />
-          <Route exact path="/:id/edit" component={ArchiveEdit} />
+            {/* User Related */}
+            <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
+            <Route exact path="/user/all" render={(props) => <AllUser cookies={cookies} />} />
+            <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
+            <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
+            <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
+            <Route exact path="/contact" component={Contact} />
 
-          {/* Blog Related */}
-          <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
+            {/* Archive Related */}
+            <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
+            <Route exact path="/archive/:id" component={ArchiveDetail} />
+            <Route exact path="/:id/edit" component={ArchiveEdit} />
 
-          {/* Hosts Related */}
-          <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
+            {/* Blog Related */}
+            <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
 
-          {/* Schedule Related */}
-          <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
+            {/* Hosts Related */}
+            <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
 
-          {/* Fallback to Error Page */}
-          <Route component={Error} />
+            {/* Schedule Related */}
+            <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
 
-        </Switch>
+            {/* Fallback to Error Page */}
+            <Route component={Error} />
 
-        <footer>
-        <img src={footerImg} width="1920" height="600"></img>
-        </footer>
-      </div>
+          </Switch>
+
+          <footer>
+            <img src={footerImg} width="1920" height="600"></img>
+          </footer>
+        </div>
       </Context.Provider>
     </BrowserRouter>
   );
