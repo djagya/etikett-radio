@@ -4,7 +4,7 @@ const auth = require("../middleware/tokenAuthenticator");
 const {isAdmin, isHostAdmin} = require("../middleware/rolesAuthenticator");
 
 Route.get("/", auth, getHost);
-Route.post("/post", auth, isHostAdmin, postHost); 
+Route.post("/createhost", auth, isHostAdmin, postHost); 
 //Alternative syntax for practice purposes
 Route.route("/:id")
     .get(auth, isHostAdmin, getHostById)

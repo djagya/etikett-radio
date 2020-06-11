@@ -10,19 +10,21 @@ export default function EditHostPage() {
     const [hostData, setHostData] = useState([]);
     const [profileExists, setProfileExists] = useState(false)
 
+    console.log(hostData)
+
     const userID = context.id;
-    const [hostName, setHostName] = useState("");
-    const [hostImg, setHostImg] = useState("");
-    const [description, setDescription] = useState("");
-    const [youtube, setYoutube] = useState("");
-    const [soundcloud, setSoundcloud] = useState("");
+    const [hostName, setHostName] = useState("Busted Fingerz");
+    const [hostImg, setHostImg] = useState("https://i1.sndcdn.com/avatars-000456674544-werm3v-t500x500.jpg");
+    const [description, setDescription] = useState("Sickst producer and dj on the planet. Du weißt!");
+    const [youtube, setYoutube] = useState("https://www.youtube.com/user/semdachilla");
+    const [soundcloud, setSoundcloud] = useState("https://soundcloud.com/bustedfingerz");
     const [mixcloud, setMixcloud] = useState("");
-    const [facebook, setFacebook] = useState("");
-    const [instagram, setInstagram] = useState("");
+    const [facebook, setFacebook] = useState("https://www.facebook.com/bustedfingerz/");
+    const [instagram, setInstagram] = useState("https://www.instagram.com/bustedfingerz/");
     const [twitter, setTwitter] = useState("");
     const [snapchat, setSnapchat] = useState("");
-    const [otherName, setOtherName] = useState("");
-    const [otherLink, setOtherLink] = useState("");
+    const [otherName, setOtherName] = useState("github");
+    const [otherLink, setOtherLink] = useState("https://github.com/SimonSchoetz");
 
     useEffect(() => {
         fetch("http://localhost:3000/host", {
@@ -56,7 +58,7 @@ export default function EditHostPage() {
             "otherLink": otherLink,
         };
 
-        PostData("http://localhost:3000/users/createuser", body)
+        PostData("http://localhost:3000/host/createhost", body)
             .then(data => { 
                 console.log(data)
             })
@@ -72,7 +74,7 @@ export default function EditHostPage() {
             case "hostImg":
                 setHostImg(input)
                 break;
-            case "description":
+            case "hostDescription":
                 setDescription(input)
                 break;
             case "youtube":
@@ -117,15 +119,15 @@ export default function EditHostPage() {
                 <div className="grid-container">
                     <label htmlFor="hostName">
                         <span className="required">*</span>host name
-                        <input type="url" id="hostName" placeholder="host or show name" value={hostName} onChange={handleFormInput} />
+                        <input type="text" id="hostName" placeholder="host or show name" value={hostName} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="hostImg">
                         <span className="required">*</span>link to artwork
                         <input type="url" id="hostImg" placeholder="artwork link" value={hostImg} onChange={handleFormInput} />
                     </label>
-                    <label className="describe" htmlFor="host-description">
+                    <label className="describe" htmlFor="hostDescription">
                         <span className="required">*</span>host description
-                        <textarea type="text" id="host-description" placeholder="about you and the show" onChange={handleFormInput} defaultValue={description} />
+                        <textarea type="text" id="hostDescription" placeholder="about you and the show" onChange={handleFormInput} defaultValue={description} />
                     </label>
                 </div>
 
