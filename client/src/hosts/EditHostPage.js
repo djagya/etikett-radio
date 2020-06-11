@@ -2,17 +2,19 @@ import React, { useState, useEffect, useContext } from 'react'
 import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 import PostData from "../PostData";
+import PutData from "../PutData";
 
 
-export default function EditHostPage() {
+export default function EditHostPage(props) {
     const context = useContext(Context);
 
-    const [hostData, setHostData] = useState([]);
+    let hostData = [];
+    
+    
     const [profileExists, setProfileExists] = useState(false)
 
-    console.log(hostData)
-
-    const userID = context.id;
+    const id = context.id;
+    const role = props.cookies.user.role
     const [hostName, setHostName] = useState("");
     const [hostImg, setHostImg] = useState("");
     const [description, setDescription] = useState("");
@@ -25,6 +27,7 @@ export default function EditHostPage() {
     const [snapchat, setSnapchat] = useState("");
     const [otherName, setOtherName] = useState("");
     const [otherLink, setOtherLink] = useState("");
+    const [profileID, setProfileID] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:3000/host", {
@@ -34,16 +37,45 @@ export default function EditHostPage() {
             credentials: "include"
         })
             .then(res => res.json())
-            .then(data => setHostData(data.host)) 
-    }, [])
+            .then(data => {
+                if (!data.success) alert("Failed to fetch data, please contact an admin");
+                
+                const filteredData = (data.host.filter(el => el.userID === id ))
+                if (filteredData.length === 0) return hostData = data.host
+                if (filteredData.length > 1) {
+                alert("It looks like there are more than 1 host profiles with the same ID, please contact an admin")
+                return <Redirect to={`/user/${context.id}`}/>
+                }
+                if (filteredData.length === 1 && role !== "Admin") {
+                    alert("Please contact the owner or an admin to edit this host profile")
+                    return <Redirect to={`/hosts`}/>
+                }
+                if (filteredData.length === 1 || role !== "Admin") {
+                    setProfileExists(true)
 
-
+                    setHostName(data.host[0].hostName)
+                    setHostImg(data.host[0].hostImg)
+                    setDescription(data.host[0].description)
+                    setYoutube(data.host[0].youtube)
+                    setSoundcloud(data.host[0].soundcloud)
+                    setMixcloud(data.host[0].mixcloud)
+                    setFacebook(data.host[0].facebook)
+                    setInstagram(data.host[0].instagram)
+                    setTwitter(data.host[0].twitter)
+                    setSnapchat(data.host[0].snapchat)
+                    setOtherName(data.host[0].otherName)
+                    setOtherLink(data.host[0].otherLink)
+                    setProfileID(data.host[0]._id)
+                }   else {
+                    return alert("Something went wrong")
+                }
+            })
+    },  [])
+ 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log("submit is running")
-        //POST request
         const body = {
-            "userID": userID,
+            "userID": id,
             "hostImg": hostImg,
             "hostName": hostName,
             "description": description,
@@ -58,11 +90,23 @@ export default function EditHostPage() {
             "otherLink": otherLink,
         };
 
-        PostData("http://localhost:3000/host/createhost", body)
+        if (!profileExists) {
+            PostData("http://localhost:3000/host/createhost", body)
+                .then(data => { 
+                    console.log(data)
+                })
+        } else {
+            PutData(`http://localhost:3000/host/${profileID}`, body)
             .then(data => { 
-                console.log(data)
-            })
+                if (!data.success) { 
+                    console.log(data)
+                    alert("Something went wrong while updating your data")
+                } else {
+                    alert("Update successful!")
+                } })
+            .then(context.setEditHost(false) )
 
+        }
     }
     const handleFormInput = event => {
         const id = event.target.id;
