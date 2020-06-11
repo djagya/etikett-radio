@@ -12,6 +12,7 @@ export default function EditHostPage() {
 
     const userID = context.id;
     const [hostName, setHostName] = useState("");
+    const [hostImg, setHostImg] = useState("");
     const [description, setDescription] = useState("");
     const [youtube, setYoutube] = useState("");
     const [soundcloud, setSoundcloud] = useState("");
@@ -41,6 +42,7 @@ export default function EditHostPage() {
         //POST request
         const body = {
             "userID": userID,
+            "hostImg": hostImg,
             "hostName": hostName,
             "description": description,
             "youtube": youtube,
@@ -66,6 +68,9 @@ export default function EditHostPage() {
         switch (id) {
             case "hostName":
                 setHostName(input)
+                break;
+            case "hostImg":
+                setHostImg(input)
                 break;
             case "description":
                 setDescription(input)
@@ -94,7 +99,7 @@ export default function EditHostPage() {
             case "otherName":
                 setOtherName(input)
                 break;
-            case "otherName":
+            case "otherLink":
                 setOtherLink(input)
                 break;
             default: console.log("Edit Input in EditHostPage.js ran through without effect")
@@ -110,16 +115,20 @@ export default function EditHostPage() {
                     <button type="button" onClick={() => context.setEditHost(false)}>cancel</button>
                 </div>
                 <div className="grid-container">
-                    <label htmlFor="hostname">
+                    <label htmlFor="hostName">
                         <span className="required">*</span>host name
-                        <input type="hostname" id="hostname" placeholder="Heading" value={hostName} onChange={handleFormInput} />
+                        <input type="url" id="hostName" placeholder="host or show name" value={hostName} onChange={handleFormInput} />
+                    </label>
+                    <label htmlFor="hostImg">
+                        <span className="required">*</span>link to artwork
+                        <input type="url" id="hostImg" placeholder="artwork link" value={hostImg} onChange={handleFormInput} />
                     </label>
                     <label className="describe" htmlFor="host-description">
                         <span className="required">*</span>host description
-                        <textarea type="text" id="host-description" placeholder="About you and the show" onChange={handleFormInput} defaultValue={description} />
+                        <textarea type="text" id="host-description" placeholder="about you and the show" onChange={handleFormInput} defaultValue={description} />
                     </label>
                 </div>
-                
+
                 <div className="grid-container">
                     <label htmlFor="youtube">
                         youtube
@@ -156,12 +165,12 @@ export default function EditHostPage() {
 
                 <div className="grid-container">
                     <label htmlFor="otherName">
-                        otherName
-                        <input type="url" id="otherName" placeholder="otherName link" value={otherName} onChange={handleFormInput} />
+                        name of your website
+                        <input type="text" id="otherName" placeholder="myspace" value={otherName} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="otherLink">
-                        otherLink
-                        <input type="url" id="otherLink" placeholder="otherLink link" value={otherLink} onChange={handleFormInput} />
+                        link to your website
+                        <input type="url" id="otherLink" placeholder="https://myspace.com/roflcopter/imsuchaboomer" value={otherLink} onChange={handleFormInput} />
                     </label>
                 </div>
                 <div className="submit-button">

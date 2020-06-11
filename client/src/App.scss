@@ -133,16 +133,21 @@ footer {
     width: 600px;
 
     label {
-
+      
       input,
       select {
         width: 100%;
         height: 2rem;
-        padding-left: 6px;
-
+        padding-left: .5rem;
+        font-family: "GaramondPro";
         option {
           color: black;
         }
+      }
+      textarea {
+        padding: .5rem;
+        font-family: "GaramondPro";
+        
       }
     }
 
