@@ -54,7 +54,6 @@ function App(props) {
     id = cookies.user._id
   }
   //////////////////////
-console.log(allUser)
   return (
     <BrowserRouter>
 

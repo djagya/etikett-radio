@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const HostSchema = new Schema(
     {
+        userID: {type: String, required: true}, //for validation if user = host page user
         hostName: { type: String, required: true },
         description: {type:String, required: true},
         youtube: { type: String},
@@ -12,7 +13,8 @@ const HostSchema = new Schema(
         instagram: { type: String},
         twitter: { type: String},
         snapchat: { type: String},
-        other: { type: String},
+        otherName: { type: String},
+        otherLink: { type: String}
     }
 );
 module.exports = mongoose.model("Host", HostSchema);
