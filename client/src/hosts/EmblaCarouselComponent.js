@@ -63,8 +63,7 @@ const EmblaCarouselComponent = ({ children }) => {
                                     imageSlides[index]}%)`
                             }}
                             /> */}
-                            <p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p><p>Some tes text here</p>
-                        
+                            <p>Some tes text here</p>
                             </div>
                             
                     ))}
