@@ -67,7 +67,7 @@ function App(props) {
 
         <div className="noise" >
           <Noisy />
-        </div> */}
+        </div>
     
         <div className="solar-system">
           <SolarSystem />

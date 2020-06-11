@@ -28,6 +28,7 @@ export default function ScheduleInputForm() {
         const postData = async (url, data) => {
             const response = await fetch(url, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json"},
                 body: JSON.stringify(data)
@@ -40,6 +41,11 @@ export default function ScheduleInputForm() {
         const reload = (data) => {
             if (data.success) {
                 context.setScheduleData([...context.scheduleData, body])
+                setHost("")
+                setShow("")
+                setFrom(time)
+                setTo(time)
+                
             } else {
                 alert(data.err)
             }

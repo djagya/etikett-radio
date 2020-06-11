@@ -22,9 +22,7 @@ export default function Schedule(props) {
             .then(data => setScheduleData(data.schedule.sort((entryA, entryB)=>new Date(entryA.from) - new Date(entryB.from))))
         }, [])
 
-    const handleAdd = boolean => {
-        setShowForm(boolean)
-    };
+
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
         if (checkedIDs.length === 0) {
@@ -41,7 +39,7 @@ export default function Schedule(props) {
         //delete from db
         Delete(checkedIDs, "schedule")
 
-        // window.location.reload()
+        window.location.reload()
 
     }
 
@@ -81,7 +79,6 @@ export default function Schedule(props) {
     })
     ///////////////////////////////
 
-
     const renderLi = (scheduleData) => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (scheduleData.length === 0) return null; //Because first time the code is running, scheduleData will be an empty array
@@ -99,8 +96,8 @@ export default function Schedule(props) {
                     {props.cookies.user && props.cookies.user.role === 'Admin' ?
                     <div className="button-container controls">
                         {showForm ? 
-                        <button type="button" onClick={() => handleAdd(false)}>cancel</button>:
-                        <button type="button" onClick={() => handleAdd(true)}>add schedule</button> 
+                        <button type="button" onClick={() => setShowForm(false)}>cancel</button>:
+                        <button type="button" onClick={() => setShowForm(true)}>add schedule</button> 
                         }
                         <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                     </div>
