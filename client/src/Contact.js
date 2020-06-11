@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import noisyEtikettRadioLogo from './solar-system-logo/imageonline-co-noise.png';
 
 export default function Contact() {
 
@@ -6,6 +7,7 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
     
     const handleSubmit = e => {
         e.preventDefault();        
