@@ -156,6 +156,10 @@
   border-radius: 8px 8px 8px 0;
   p { color: #fff }
 }
+.message-text {
+  word-wrap: wrap;
+  word-break: break-all;
+}
 .sent-text {
   margin: 0 0.4rem;
 }
