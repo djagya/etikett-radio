@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useEmblaCarousel } from "embla-carousel-react";
 import { DotButton, PrevButton, NextButton } from "./EmblacarouselButtons";
-
+import './EmblaCarouselComponent.scss';
 
 const unsplashImages = [
     "uy5t-CJuIK4",

@@ -1,0 +1,34 @@
+///////////////////////////////////
+//          Blog Page
+///////////////////////////////////
+.blog-page {
+  display: flex;
+  justify-content: center;
+  white-space: pre-wrap;
+
+  .blog-content {
+    max-width: 600px;
+
+    text-align: left;
+  }
+
+  .post-blog {
+    margin-top: 2rem;
+  }
+
+  .blog-list {
+    margin: 4rem 0;
+
+    h2 {
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
+
+    .article-header {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

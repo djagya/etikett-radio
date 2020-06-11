@@ -16,11 +16,9 @@ import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
 
-import VideoStream from './VideoStream';
+import Header from './Header';
 import Blog from './blog/Blog';
 import Home from './Home';
-
-import ChatApp from './chat/ChatApp';
 
 import Schedule from './schedule/Schedule';
 import Contact from './Contact';
@@ -77,13 +75,8 @@ function App(props) {
         </div>
     
         <div className="stream-page">
-          <VideoStream chatState={chatState} setChatState={setChatState} />
-
-          {/* <div className={`chat ${chatState}`}>
-            <ChatApp setChatState={setChatState} />
-          </div> */}
+          <Header chatState={chatState} setChatState={setChatState} />
         </div>
-
 
           <Switch>
 
@@ -103,9 +96,9 @@ function App(props) {
             <Route exact path="/archive/:id" component={ArchiveDetail} />
             <Route exact path="/:id/edit" component={ArchiveEdit} />
 
-          {/* Hosts Related */}
-          <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
-          <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies}  />} />
+            {/* Hosts Related */}
+            <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
+            <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies}  />} />
 
             {/* Hosts Related */}
             <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />

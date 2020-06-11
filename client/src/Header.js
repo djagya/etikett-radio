@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
-import './App.scss'
+import './Header.scss';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
 import ChatApp from './chat/ChatApp';
 
-function VideoStream(props) {
+function Header(props) {
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
         const video = 'https://www.twitch.tv/truthmusic';
@@ -108,4 +108,4 @@ function VideoStream(props) {
     )
 }
 
-export default withRouter(VideoStream);
+export default withRouter(Header);
