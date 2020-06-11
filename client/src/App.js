@@ -33,6 +33,7 @@ import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
 import AllUser from './user/AllUser';
+import EditHostPage from './hosts/EditHostPage';
 
 
 
@@ -106,7 +107,7 @@ console.log(allUser)
 
           {/* Hosts Related */}
           <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
-          <Route exact path="/hosts/:id" render={(props) => <Hosts {...props} cookies={cookies}  />} />
+          <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies}  />} />
 
           {/* Schedule Related */}
           <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />

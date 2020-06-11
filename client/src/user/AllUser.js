@@ -64,7 +64,7 @@ export default function AllUser() {
 
     return (
         <div className="not-stream-component user-list">
-                <h2>All Users</h2>
+            <h2>All Users</h2>
             <div className="list-container">
                 <div className="button-container">
                     <button type="button" onClick={() => context.setAllUser(false)}>cancel</button>

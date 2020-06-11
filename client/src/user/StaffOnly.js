@@ -22,6 +22,9 @@ export default function UserProfile(props) {
     if (context.allUser) {
         return <Redirect to={`/user/all`}/>
     }
+    if (context.editHost) {
+        return <Redirect to={`/hosts/${context.id}`}/>
+    }
 
     return (
         
@@ -29,6 +32,7 @@ export default function UserProfile(props) {
                 <div>
                 <h2>logged in as {props.cookies.user.firstName}</h2>
                 <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
+                <button type="button" onClick={() => context.setEditHost(true)}>edit my host profile</button>
                 {props.cookies.user.role === 'Admin' ?
                 <div>
                 <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
