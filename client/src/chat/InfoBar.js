@@ -16,7 +16,9 @@ export default function InfoBar({ room, chatWindow, setChatWindow }) {
       <div className="info-inner-container">
         <img src={minimize} alt="minimize icon" onClick={handleChatWindow} />
       </div>
-      <h3>{room}</h3>
+      <div className="h3-container">
+        <h3>{room}</h3>
+      </div>
       <div className="info-inner-container">
       </div>
     </div>

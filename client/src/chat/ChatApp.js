@@ -9,7 +9,7 @@ function ChatApp({ setChatState, location }) {
   const [name, setName] = useState('');
   const [chatWindow, setChatWindow] = useState('chat-app-chat')
   const [enableChat, setEnableChat] = useState(true);
-  const room = 'etikett radio';
+  const room = 'etikett chat';
 
   useEffect(() => {
     const name = sessionStorage.getItem('name');

@@ -12,6 +12,10 @@
     padding: 0.5rem;
     margin-right: 2.5rem;
     color: #FFF;
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1.2rem;
   }
 }
 .outer-container {
@@ -20,12 +24,16 @@
   height: 100%;
 }
 .inner-container {
-  width: 100%;
+  width: 100%;  
   display: flex;
   flex-direction: column;
 }
 .chat-app-chat {
   height: 88vh;
+
+  .InfoBar {
+    height: 40px;
+  }
 
   .Messages,
   .chat-form {
@@ -131,7 +139,6 @@
 .justify-left {
   text-align: left;
 }
-
 .message-box {
   display: inline-block;
   max-width: 265px;
@@ -148,6 +155,10 @@
   background: #000;
   border-radius: 8px 8px 8px 0;
   p { color: #fff }
+}
+.message-text {
+  word-wrap: wrap;
+  word-break: break-all;
 }
 .sent-text {
   margin: 0 0.4rem;

@@ -55,31 +55,33 @@ function App(props) {
 
   return (
     <BrowserRouter>
-      <Context.Provider value={
-        {
-          id,
-          profileEdit, setProfileEdit,
-          createProfile, setCreateProfile,
-          allUser, setAllUser
-        }
-      }>
-        <div className="App">
 
-          <div className="noise" >
-            <Noisy />
-          </div>
+    <Context.Provider value={
+      {
+        id,
+        profileEdit, setProfileEdit,
+        createProfile, setCreateProfile,
+        allUser, setAllUser
+      }
+    }>
+      <div className="App">
 
-          <div className="solar-system">
-            <SolarSystem />
-          </div>
+        <div className="noise" >
+          <Noisy />
+        </div>
+    
+        <div className="solar-system">
+          <SolarSystem />
+        </div>
+    
+        <div className="stream-page">
+          <VideoStream chatState={chatState} setChatState={setChatState} />
 
-          <div className="stream-page">
-            <VideoStream />
+          {/* <div className={`chat ${chatState}`}>
+            <ChatApp setChatState={setChatState} />
+          </div> */}
+        </div>
 
-            <div className={`chat ${chatState}`}>
-              <ChatApp setChatState={setChatState} />
-            </div>
-          </div>
 
           <Switch>
 
