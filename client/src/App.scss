@@ -65,15 +65,15 @@ h3 {
   }
 }
 .chat-routes {
-  position: fixed;
-  top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
+  // position: fixed;
+  // top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
   right: 0;
   z-index: 2;
 
   // Chat window height
-  .InfoBar { height: 40px }
+  .InfoBar { height: 6vh }
   .Input { height: 8% }
-  .Messages { height: calc(100% - 8% - 40px - 3rem) } // calc(100% - Input - InfoBar - bottom-space)
+  .Messages { height: calc(100% - 8% - 6vh - 3rem) } // calc(100% - Input - InfoBar - bottom-space)
 }
 
 ///////////////////////////////////
@@ -527,6 +527,11 @@ nav {
   .embeded-video {
     grid-column: 1 / 3;
     grid-row: 1 / 3;
+  }
+
+  .chat {
+    grid-row: 2 / 3;
+    grid-column-end: -1;
   }
 }
 
