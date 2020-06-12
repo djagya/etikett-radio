@@ -8,7 +8,7 @@ import AlertTemplate from 'react-alert-template-basic';
 const options = {
   position: positions.MIDDLE,
   timeout: 0,
-  offset: '30px',
+  offset: '-50px',
   transition: transitions.SCALE,
 }
 
