@@ -7,7 +7,7 @@ import Chat from './Chat';
 function ChatApp({ setChatState, location }) {
   const [name, setName] = useState('');
   const [chatWindow, setChatWindow] = useState('chat-app-chat')
-  const [enableChat, setEnableChat] = useState(true);
+  let enableChat = true;
   const room = 'etikett chat';
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function ChatApp({ setChatState, location }) {
     } else {
       setChatState('chat-routes');
     }
-  }, [location.pathname])
+  }, [location.pathname,setChatState])
 
   return (
     enableChat

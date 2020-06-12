@@ -7,10 +7,7 @@ import PutData from "../PutData";
 
 export default function EditHostPage(props) {
     const context = useContext(Context);
-
-    let hostData = [];
-    
-    
+        
     const [profileExists, setProfileExists] = useState(false)
 
     const id = context.id;
@@ -41,7 +38,7 @@ export default function EditHostPage(props) {
                 if (!data.success) alert("Failed to fetch data, please contact an admin");
                 
                 const filteredData = (data.host.filter(el => el.userID === id ))
-                if (filteredData.length === 0) return hostData = data.host
+                if (filteredData.length === 0) return
                 if (filteredData.length > 1) {
                 alert("It looks like there are more than 1 host profiles with the same ID, please contact an admin")
                 return <Redirect to={`/user/${context.id}`}/>

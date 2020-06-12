@@ -26,7 +26,7 @@ export default function MyProfile(props) {
                 setEmail(data.user.email)
                 setRole(data.user.role)
             }) 
-    }, [])
+    }, [context.id])
     
     
 
