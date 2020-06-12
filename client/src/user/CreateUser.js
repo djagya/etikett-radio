@@ -48,7 +48,7 @@ export default function CreateUser(props) {
                 setUserName("");
                 setEmail("");
                 setPW("");
-                setRole("");
+                setRole("Host");
                 alert("User created")
             } else {
                 alert("Please fill out all *Required fields and make sure your password is at least 8 signs long.")

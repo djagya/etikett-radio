@@ -53,7 +53,6 @@ function App(props) {
   }
   //////////////////////
 
-  console.log(allUser)
   return (
     <DocumentTitle title="Homepage, video streaming">
       <BrowserRouter>

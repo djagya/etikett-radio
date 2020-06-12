@@ -93,7 +93,7 @@ export default function EditHostPage(props) {
                     console.log(data)
                     alert("Something went wrong while uploading your data for the first time")
                 } else {
-                    alert("Congrats to your first host profile entry!")
+                    alert("You successfully initialized your host profile!")
                 } })
             .then(context.setEditHost(false) )
         } else {
@@ -155,7 +155,7 @@ export default function EditHostPage(props) {
 
     if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
     return (
-        <div className="not-stream-component edit-host-page">
+        <div className="not-stream-component create-user-page">
             <h2>edit my host page</h2>
             <form className="post-blog input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
