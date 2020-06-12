@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { useAlert } from 'react-alert';
+import { Redirect } from 'react-router-dom';
 import noisyEtikettRadioLogo from './img/imageonline-co-noise.png';
 
 export default function Contact() {
@@ -7,7 +9,9 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+    const alert = useAlert();
     
     const handleSubmit = e => {
         e.preventDefault();
@@ -24,16 +28,22 @@ export default function Contact() {
             .then(data => {
                 setLoading(false);  
                 if (data.success) {
-                    alert('Your message has been sent!');
                     setName('');
                     setEmail('');
                     setSubject('');
                     setMessage('');
+                    alert.success('Your message has been sent!', {
+                        onClose: () => {
+                            setRedirect(true);
+                        }
+                    });
                 } else {
-                    alert('Opps! Something went wrong...');
+                    alert.error('Opps! Something went wrong...');
                 }
             })
     }
+
+    if (redirect) return <Redirect to='/' />
 
     return (
         <div className="not-stream-component input-form">
