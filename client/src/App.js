@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import './App.scss';
+
+import "./App.scss"
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
@@ -31,7 +32,7 @@ import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
 import AllUser from './user/AllUser';
-import EditHostPage from './hosts/EditHostPage';
+import EditHostForm from './hosts/EditHostForm';
 
 
 
@@ -52,7 +53,6 @@ function App(props) {
     id = cookies.user._id
   }
   //////////////////////
-console.log(allUser)
   return (
     <BrowserRouter>
 
@@ -99,10 +99,13 @@ console.log(allUser)
 
             {/* Hosts Related */}
             <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies}  />} />
-            <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies}  />} />
+            <Route exact path="/hosts/:id" render={(props) => <EditHostForm {...props} cookies={cookies}  />} />
 
             {/* Hosts Related */}
             <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
+            
+            {/* Blog Related */}
+            <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
 
             {/* Schedule Related */}
             <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />

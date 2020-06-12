@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
-import './CreateUser.scss';
 
 export default function CreateUser(props) {
     const context = useContext(Context)
@@ -25,7 +24,6 @@ export default function CreateUser(props) {
             "pw": pw,
             "role": role
         };
-        console.log(role)
         const postData = async (url, data) => {
             const response = await fetch(url, {
                 method: "POST",

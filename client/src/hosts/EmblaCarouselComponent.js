@@ -1,17 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useEmblaCarousel } from "embla-carousel-react";
 import { DotButton, PrevButton, NextButton } from "./EmblacarouselButtons";
-import './EmblaCarouselComponent.scss';
-
-const unsplashImages = [
-    "uy5t-CJuIK4",
-    "NodtnCsLdTE",
-    "bhonzdJMVjY",
-    "so5nsYDOdxw",
-    "XZuTLRfxwcU"
-];
 
 const EmblaCarouselComponent = ({ children }) => {
+    console.log(children)
     const [EmblaCarouselReact, embla] = useEmblaCarousel();
     const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
     const [nextBtnEnabled, setNextBtnEnabled] = useState(false);

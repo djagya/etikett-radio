@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import EmblaCarouselComponent from "./EmblaCarouselComponent";
-import '../App.scss'
+import GetData from "../GetData";
 
 
-const Hosts = () => (
-  
+
+
+export default function Hosts() {
+const [hostData, setHostData] = useState([])
+
+const renderHosts = hostData.map(host => {return<div />} )
+
+useEffect(() => {
+  GetData("http://localhost:3000/host")
+      .then(data => setHostData(data.host))
+}, [])
+console.log(renderHosts)
+
+  return (
     <div className="not-stream-component hosts">
     <h2>hosts</h2>
       <EmblaCarouselComponent>
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
+        
+    {/* {renderHosts} */}
+      <div/>
+        <div/>
       </EmblaCarouselComponent>
     </div>
+  )
+}
 
-);
-export default Hosts;

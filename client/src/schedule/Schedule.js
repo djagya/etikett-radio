@@ -4,7 +4,6 @@ import ScheduleInputForm from './ScheduleInputForm';
 import Delete from "../Delete";
 import ScheduleWeek from './ScheduleWeek';
 import {Context} from "../Context";
-import './Schedule.scss';
 
 
 export default function Schedule(props) {

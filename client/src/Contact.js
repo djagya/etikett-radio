@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import noisyEtikettRadioLogo from './solar-system-logo/imageonline-co-noise.png';
+import noisyEtikettRadioLogo from './img/imageonline-co-noise.png';
 
 export default function Contact() {
 
