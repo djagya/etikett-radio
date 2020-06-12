@@ -34,12 +34,6 @@ mongoose.connection.on("open", () => console.log("db connected"));
 io.on('connection', (socket) => {
     console.log('[connection created]');
   
-    // Check user
-    socket.on('addUser', ({name, room}, callback) => {
-      const { error, user } = addUser({ id: socket.id, name, room });
-      if (error) return callback({error, id});
-    })
-
     // Recieve JOIN from Chat.js
     socket.on('join', ({name, room}, callback) => {
       
