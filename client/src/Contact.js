@@ -37,7 +37,7 @@ export default function Contact() {
         <DocumentTitle title="Contact page">
             <div className="not-stream-component input-form">
                 <h1>contact</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} role="contact-form">
                     <div className="grid-container">
                         <label htmlFor="name">
                             <span className="required">*</span>name
@@ -57,7 +57,7 @@ export default function Contact() {
                         </label>
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="Send" /><span className="required">* required</span>
+                        <input type="submit" value="Send" role='button' /><span className="required">* required</span>
                     </div>
                 </form>
             </div>
