@@ -24,7 +24,12 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     socket.emit('join', {name, room}, (error) => {
       if (error) {
         sessionStorage.removeItem('name');
-        alert.error(error);
+        // alert.error(error);
+        alert.error(error, {
+          onClose: () => {
+            window.location.reload();
+          }
+        })
         // window.location.reload()
       }
     });
