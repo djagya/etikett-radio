@@ -1,38 +1,37 @@
 
 import React, { useState } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import { Context } from './Context';
 
 
 import "./App.scss"
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 
 //Page General Related
+import Home from './Home';
+import Header from './Header';
+import Blog from './blog/Blog';
+import Contact from './Contact';
+import Schedule from './schedule/Schedule';
 import Error from "./Error404";
-//User Account Related
+//User Related
 import LogIn from './user/LogIn';
+import StaffOnly from './user/StaffOnly';
 import CreateUser from './user/CreateUser';
+import EditMyProfile from './user/EditMyProfile';
+import AllUser from './user/AllUser';
+//Host Related
+import Hosts from './hosts/Hosts';
+import EditHostForm from './hosts/EditHostForm';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
 import ArchiveEdit from './radio-archive/ArchiveEditForm';
-
-import Header from './Header';
-import Blog from './blog/Blog';
-import Home from './Home';
-
-import Schedule from './schedule/Schedule';
-import Contact from './Contact';
-import StaffOnly from './user/StaffOnly';
-import EditMyProfile from './user/EditMyProfile';
-import Hosts from './hosts/Hosts';
-import { Context } from './Context';
 //Style related
 import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
-import AllUser from './user/AllUser';
-import EditHostForm from './hosts/EditHostForm';
 
 
 
