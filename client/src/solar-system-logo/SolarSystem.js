@@ -1,4 +1,8 @@
 import React from "react";
+<<<<<<< HEAD
+=======
+import './SolarSystem.scss'
+>>>>>>> origin/master
 
 
 export default function App() {
