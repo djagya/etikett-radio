@@ -22,7 +22,7 @@ import CreateUser from './user/CreateUser';
 import EditMyProfile from './user/EditMyProfile';
 import AllUser from './user/AllUser';
 //Host Related
-import Hosts from './hosts/HostCarousel';
+import HostCarousel from './hosts/HostCarousel';
 import EditHostForm from './hosts/EditHostForm';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
@@ -100,7 +100,7 @@ function App(props) {
               <Route exact path="/:id/edit" component={ArchiveEdit} />
 
               {/* Hosts Related */}
-              <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
+              <Route exact path="/hosts" render={(props) => <HostCarousel {...props} cookies={cookies} />} />
               <Route exact path="/hosts/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
 
               {/* Blog Related */}

@@ -10,52 +10,52 @@ import Img3 from "./vignesh-kumar-r-b-FrZo1GNZ2go-unsplash.jpg";
 
 
 export default function Hosts() {
+const [hostData, setHostData] = useState([])
 
-
-
-    const [hostData, setHostData] = useState([])
-
-    const renderHosts = hostData.map(host => { return <div /> })
   
     useEffect(() => {
       GetData("http://localhost:3000/host")
         .then(data => setHostData(data.host))
     }, [])
 
+    console.log(hostData)
+
   return (
     <DocumentTitle title="Hosts page">
-    <div class="carousel">
-        <div class="carousel-inner">
-            <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
-                checked="checked"/>
-            <div class="carousel-item">
-                <img src={Img1}/>
+    <div className="not-stream-component host-carousel">
+    <h2>hosts</h2>
+        <div className="carousel">
+            <div className="carousel-inner">
+                <input className="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden/>
+                <div className="carousel-item">
+                    <img src={Img1}/>
+                </div>
+                <input className="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden defaultChecked="checked"/>
+                <div className="carousel-item">
+                    <img src={Img2}/>
+                </div>
+                <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden/>
+                <div className="carousel-item">
+                    <img src={Img3}/>
+                </div>
+                <label htmlFor="carousel-3" className="carousel-control prev control-1">‹</label>
+                <label htmlFor="carousel-2" className="carousel-control next control-1">›</label>
+                <label htmlFor="carousel-1" className="carousel-control prev control-2">‹</label>
+                <label htmlFor="carousel-3" className="carousel-control next control-2">›</label>
+                <label htmlFor="carousel-2" className="carousel-control prev control-3">‹</label>
+                <label htmlFor="carousel-1" className="carousel-control next control-3">›</label>
+                <ol className="carousel-indicators">
+                    <li>
+                        <label htmlFor="carousel-1" className="carousel-bullet">img1</label>
+                    </li>
+                    <li>
+                        <label htmlFor="carousel-2" className="carousel-bullet">img2</label>
+                    </li>
+                    <li>
+                        <label htmlFor="carousel-3" className="carousel-bullet">img3</label>
+                    </li>
+                </ol>
             </div>
-            <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden=""/>
-            <div class="carousel-item">
-                <img src={Img2}/>
-            </div>
-            <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden=""/>
-            <div class="carousel-item">
-                <img src={Img3}/>
-            </div>
-            <label for="carousel-3" class="carousel-control prev control-1">‹</label>
-            <label for="carousel-2" class="carousel-control next control-1">›</label>
-            <label for="carousel-1" class="carousel-control prev control-2">‹</label>
-            <label for="carousel-3" class="carousel-control next control-2">›</label>
-            <label for="carousel-2" class="carousel-control prev control-3">‹</label>
-            <label for="carousel-1" class="carousel-control next control-3">›</label>
-            <ol class="carousel-indicators">
-                <li>
-                    <label for="carousel-1" class="carousel-bullet">Test</label>
-                </li>
-                <li>
-                    <label for="carousel-2" class="carousel-bullet">•</label>
-                </li>
-                <li>
-                    <label for="carousel-3" class="carousel-bullet">•</label>
-                </li>
-            </ol>
         </div>
     </div>
     </DocumentTitle>
