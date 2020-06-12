@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ArchiveInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
-import './ArchiveList.scss';
+
 import DocumentTitle from 'react-document-title';
+
 
 export default function ArchiveList(props) {
 

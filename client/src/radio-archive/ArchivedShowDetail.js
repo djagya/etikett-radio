@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import ArchiveEdit from './ArchiveEditForm';
 import {Context} from "../Context";
-import './ArchivedShowDetail.scss';
 
 export default function ArchiveDetail(props) {
     const [showEdit, setShowEdit] =useState(false);
     const [archiveData, setArchiveData] = useState([]);
     const param = props.match.params.id
+
     useEffect(() => {
+
         fetch(`http://localhost:3000/archive/${param}`)
             .then(res => res.json())
             .then(data => setArchiveData(data.archive))
-    }, [])
+    }, [param])
 
     return (
         <Context.Provider value={{showEdit,setShowEdit}}>

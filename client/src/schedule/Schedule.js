@@ -3,9 +3,11 @@ import moment from "moment";
 import ScheduleInputForm from './ScheduleInputForm';
 import Delete from "../Delete";
 import ScheduleWeek from './ScheduleWeek';
-import { Context } from "../Context";
-import './Schedule.scss';
+
 import DocumentTitle from 'react-document-title';
+
+import { Context } from "../Context";
+
 
 
 export default function Schedule(props) {

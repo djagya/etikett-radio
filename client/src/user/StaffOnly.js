@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { Context } from "../Context"
 import { Redirect } from 'react-router-dom';
-import './StaffOnly.scss';
 
 
 export default function UserProfile(props) {

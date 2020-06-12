@@ -9,9 +9,7 @@ export default function ScheduleEntry(props) {
     const [showEdit, setShowEdit] = useState(false);
     const context = useContext(Context)
     const data = props.data
-    const [cookies, setCookie, removeCookie] = useCookies(['user'])
-
-
+    const [cookies] = useCookies(['user'])
 
     const handleIDs = (event) => {
         const checked = event.target.checked

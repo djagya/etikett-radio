@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
-import './Header.scss';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';

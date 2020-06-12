@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import BlogInputForm from './BlogInputForm';
 import BlogEntry from './BlogEntry';
-import { Context } from "../Context";
-import './Blog.scss';
+
 import DocumentTitle from 'react-document-title';
+import { Context } from "../Context";
 
 export default function Blog(props) {
     const [blogData, setBlogData] = useState([]);

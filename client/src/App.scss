@@ -1,199 +1,22 @@
-$header-height: 20vh;
+@use "./style/Variables" as *;
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  color: white;
-  background-color: rgba(0, 0, 0, 0);
-  //respects \n as new lines
-}
+//main
+@use "./style/Global";
+@use "./style/Header";
+@use "./style/ChatApp";
+@use "./style/SolarSystem";
+//schedule
+@use "./style/Schedule";
+//archive
+@use "./style/ArchiveList";
+@use "./style/ArchivedShowDetail";
+//blog
+@use "./style/Blog";
+//hosts
+@use "./style/EmblaCarouselComponent";
 
-*::selection {
-  background-color: #ffffff;
-}
-
-///////////////////////////////////
-//         Typography
-///////////////////////////////////
-.App {
-  text-align: center;
-}
-
-@font-face {
-  font-family: "GaramondPro";
-  src: url("./font/AGaramondPro-Regular.otf");
-}
-
-h2 {
-  text-align: center;
-  margin: 1rem 0;
-}
-
-h3 {
-  margin-top: 1.5rem;
-}
-
-///////////////////////////////////
-//        Overall Layout
-///////////////////////////////////
-a {
-  margin: 1rem 0;
-}
-
-q {
-  max-width: 300px;
-  text-align: center;
-  margin: 16px 0;
-}
-
-///////////////////////////////////
-//         Main Page
-///////////////////////////////////
-.not-stream-component {
-  margin-top: $header-height; //-80vh;
-  background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25));
-}
-
-.noise {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  z-index: -1;
-}
-
-.solar-system {
-  position: fixed;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vh;
-  height: 100vh;
-  margin: 0 auto;
-  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
-  border-radius: 45vw;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  opacity: 0.8;
-}
-
-.stream-page {
-  position: relative;
-}
-
-footer {
-  height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
-  display: flex;
-  align-items: flex-end;
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
-
-///////////////////////////////////
-//          Input Forms
-///////////////////////////////////
-.input-form {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-
-  .grid-container {
-    display: grid;
-    text-align: left;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 1rem;
-    width: 600px;
-
-    label {
-
-      input,
-      select {
-        width: 100%;
-        height: 2rem;
-        padding-left: 6px;
-
-        option {
-          color: black;
-        }
-      }
-    }
-
-    .describe {
-      grid-column-start: 1;
-      grid-column-end: 3;
-
-      textarea {
-        width: 100%;
-        min-height: 5rem;
-      }
-    }
-
-  }
-
-  .submit-button {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: 1rem;
-    height: 2rem;
-    width: 100%;
-
-    input {
-      height: 100%;
-      padding: 0 5px;
-      font-size: 1rem;
-    }
-  }
-
-  .required {
-    color: red;
-  }
-}
-
-///////////////////////////////////
-//           Buttons
-///////////////////////////////////
-.button-container {
-  display: flex;
-  width: 100%;
-  height: 2rem;
-  margin: 2rem 0;
-}
-
-button {
-  height: 100%;
-  padding: 0 5px;
-  font-size: 1rem;
-}
-
-.check-delete {
-  width: 20px;
-  height: 20px;
-}
-
-.controls {
-  justify-content: space-between;
-  margin: 1rem 0;
-}
-
-//---------------------------------------------//
-//            From the base react              //
-//---------------------------------------------//
-body {
-  font-family: "GaramondPro",
-    serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-::placeholder {
-  font-family: "GaramondPro", serif;
-}
+//user 
+@use "./style/CreateUser";
+@use "./style/AllUser";
+@use "./style/Error404";
+@use "./style/StaffOnly";

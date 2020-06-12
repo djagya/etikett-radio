@@ -26,7 +26,7 @@ export default function MyProfile(props) {
                 setEmail(data.user.email)
                 setRole(data.user.role)
             })
-    }, [])
+    }, [context.id])
 
 
 
@@ -45,9 +45,7 @@ export default function MyProfile(props) {
             const response = await fetch(url, {
                 method: "PUT",
                 credentials: "include",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             })
             return response.json()
