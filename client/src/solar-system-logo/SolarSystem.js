@@ -1,5 +1,5 @@
 import React from "react";
-import './SolarSystem.scss';
+import './SolarSystem.scss'
 
 
 export default function App() {
