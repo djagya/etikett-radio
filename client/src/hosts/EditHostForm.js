@@ -25,6 +25,7 @@ export default function EditHostPage(props) {
     const [otherName, setOtherName] = useState("");
     const [otherLink, setOtherLink] = useState("");
     const [profileID, setProfileID] = useState("");
+    const [isActive, setIsActive] = useState("True");
 
     useEffect(() => {
         fetch("http://localhost:3000/host", {
@@ -62,6 +63,7 @@ export default function EditHostPage(props) {
                     setOtherName(filteredData[0].otherName)
                     setOtherLink(filteredData[0].otherLink)
                     setProfileID(filteredData[0]._id)
+                    // isActive(filteredData[0].isActive)
                 }   else {
                     return alert("Something went wrong")
                 }
@@ -84,6 +86,7 @@ export default function EditHostPage(props) {
             "snapchat": snapchat,
             "otherName": otherName,
             "otherLink": otherLink,
+            "isActive": isActive
         };
 
         if (!profileExists) {
@@ -148,6 +151,9 @@ export default function EditHostPage(props) {
                 break;
             case "otherLink":
                 setOtherLink(input)
+                break;
+            case "isActive":
+                setIsActive(input)
                 break;
             default: console.log("Edit Input in EditHostPage.js ran through without effect")
         }
@@ -218,6 +224,13 @@ export default function EditHostPage(props) {
                     <label htmlFor="otherLink">
                         link to your website
                         <input type="url" id="otherLink" placeholder="https://myspace.com/roflcopter/imsuchaboomer" value={otherLink} onChange={handleFormInput} />
+                    </label>
+                    <label htmlFor="isActive">
+                        <span className="required">*</span>Active Host
+                    <select id="isActive" value={isActive} onChange={handleFormInput}>
+                        <option>True</option>
+                        <option>False</option>
+                    </select>
                     </label>
                 </div>
                 <div className="submit-button">
