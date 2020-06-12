@@ -33,6 +33,8 @@ import footerImg from "./img/footer-img-1920x600.png"
 import AllUser from './user/AllUser';
 import EditHostPage from './hosts/EditHostPage';
 
+import DocumentTitle from 'react-document-title';
+
 
 
 
@@ -54,70 +56,72 @@ function App(props) {
   //////////////////////
   console.log(allUser)
   return (
-    <BrowserRouter>
+    <DocumentTitle title="Homepage, video streaming">
+      <BrowserRouter>
 
-      <Context.Provider value={
-        {
-          id,
-          profileEdit, setProfileEdit,
-          createProfile, setCreateProfile,
-          allUser, setAllUser,
-          editHost, setEditHost
-        }
-      }>
-        <div className="App">
+        <Context.Provider value={
+          {
+            id,
+            profileEdit, setProfileEdit,
+            createProfile, setCreateProfile,
+            allUser, setAllUser,
+            editHost, setEditHost
+          }
+        }>
+          <div className="App">
 
-          <div className="noise" >
-            <Noisy />
+            <div className="noise" >
+              <Noisy />
+            </div>
+
+            <div className="solar-system">
+              <SolarSystem />
+            </div>
+
+            <div className="stream-page">
+              <Header chatState={chatState} setChatState={setChatState} />
+            </div>
+
+            <Switch>
+
+              {/*Placeholder for / route so we don't land on Error component*/}
+              <Route exact path="/" component={Home} />
+
+              {/* User Related */}
+              <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
+              <Route exact path="/user/all" render={(props) => <AllUser cookies={cookies} />} />
+              <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
+              <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
+              <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
+              <Route exact path="/contact" component={Contact} />
+
+              {/* Archive Related */}
+              <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
+              <Route exact path="/archive/:id" component={ArchiveDetail} />
+              <Route exact path="/:id/edit" component={ArchiveEdit} />
+
+              {/* Hosts Related */}
+              <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
+              <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies} />} />
+
+              {/* Hosts Related */}
+              <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
+
+              {/* Schedule Related */}
+              <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
+
+              {/* Fallback to Error Page */}
+              <Route component={Error} />
+
+            </Switch>
+
+            <footer>
+              <img src={footerImg} width="1920" height="600" alt="A photo taken from the moon surface's of the planet Earth."></img>
+            </footer>
           </div>
-
-          <div className="solar-system">
-            <SolarSystem />
-          </div>
-
-          <div className="stream-page">
-            <Header chatState={chatState} setChatState={setChatState} />
-          </div>
-
-          <Switch>
-
-            {/*Placeholder for / route so we don't land on Error component*/}
-            <Route exact path="/" component={Home} />
-
-            {/* User Related */}
-            <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
-            <Route exact path="/user/all" render={(props) => <AllUser cookies={cookies} />} />
-            <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-            <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
-            <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
-            <Route exact path="/contact" component={Contact} />
-
-            {/* Archive Related */}
-            <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
-            <Route exact path="/archive/:id" component={ArchiveDetail} />
-            <Route exact path="/:id/edit" component={ArchiveEdit} />
-
-            {/* Hosts Related */}
-            <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
-            <Route exact path="/hosts/:id" render={(props) => <EditHostPage {...props} cookies={cookies} />} />
-
-            {/* Hosts Related */}
-            <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
-
-            {/* Schedule Related */}
-            <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
-
-            {/* Fallback to Error Page */}
-            <Route component={Error} />
-
-          </Switch>
-
-          <footer>
-            <img src={footerImg} width="1920" height="600" alt="A photo taken from the moon surface's of the planet Earth."></img>
-          </footer>
-        </div>
-      </Context.Provider>
-    </BrowserRouter>
+        </Context.Provider>
+      </BrowserRouter>
+    </DocumentTitle>
   );
 }
 
