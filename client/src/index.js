@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { CookiesProvider } from 'react-cookie';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-oldschool-dark';
+import AlertTemplate from 'react-alert-template-basic';
 
 const options = {
   position: positions.MIDDLE,
   timeout: 5000,
   offset: '30px',
-  transition: transitions.SCALE
+  transition: transitions.SCALE,
 }
 
 

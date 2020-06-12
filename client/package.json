@@ -12,7 +12,7 @@
     "moment": "^2.26.0",
     "react": "^16.13.1",
     "react-alert": "^7.0.1",
-    "react-alert-template-oldschool-dark": "^1.0.1",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-emoji": "^0.5.0",
     "react-player": "^2.1.0",
