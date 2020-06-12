@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 
 export default function BlogInput() {
 
     const [heading, setHeading] = useState("");
     const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
     const [text, setText] = useState("");
+    const alert = useAlert();
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -32,9 +34,13 @@ export default function BlogInput() {
 
         const resetForm = (data) => {
             if (data.success) {
-                window.location.reload()
+                alert.success('Your entry has been posted!', {
+                    onClose: () => {
+                       window.location.reload() 
+                    }
+                })
             } else {
-                alert(data.err)
+                alert.error(data.err);
             }
         }
     };
