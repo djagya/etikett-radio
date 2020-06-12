@@ -22,7 +22,7 @@ import CreateUser from './user/CreateUser';
 import EditMyProfile from './user/EditMyProfile';
 import AllUser from './user/AllUser';
 //Host Related
-import Hosts from './hosts/Hosts';
+import Hosts from './hosts/HostCarousel';
 import EditHostForm from './hosts/EditHostForm';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
