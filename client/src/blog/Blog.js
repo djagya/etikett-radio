@@ -31,7 +31,7 @@ export default function Blog(props) {
         <DocumentTitle title="Blog page">
             <Context.Provider value={{ blogData, setBlogData }}>
                 <div className="blog-page not-stream-component">
-                    <div className="blog-content">
+                    <div className="blog-content" title="blog content">
                         <h2>blog</h2>
 
                         {props.cookies.user && props.cookies.user.role === 'Admin' ?
