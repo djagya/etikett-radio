@@ -27,22 +27,24 @@ export default function UserProfile(props) {
     }
 
     return (
+        <>
+            <a href="#maincontent" className="skip-link">Skip to main content</a>
+            <div className="not-stream-component staff-only">
+                <div>
+                    <h2 id="maincontent">logged in as {props.cookies.user.firstName}</h2>
+                    <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
+                    <button type="button" onClick={() => context.setEditHost(true)}>edit my host profile</button>
+                    {props.cookies.user.role === 'Admin' ?
+                        <div>
+                            <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
+                            <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
+                        </div>
+                        : null}
+                    <button onClick={handleLogOut}>log out</button>
 
-        <div className="not-stream-component staff-only">
-            <div>
-                <h2>logged in as {props.cookies.user.firstName}</h2>
-                <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
-                <button type="button" onClick={() => context.setEditHost(true)}>edit my host profile</button>
-                {props.cookies.user.role === 'Admin' ?
-                    <div>
-                        <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
-                        <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
-                    </div>
-                    : null}
-                <button onClick={handleLogOut}>log out</button>
-
+                </div>
             </div>
-        </div>
+        </>
 
     )
 }
