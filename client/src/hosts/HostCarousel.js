@@ -20,6 +20,10 @@ const [hostData, setHostData] = useState([])
 
     console.log(hostData)
 
+    // const renderContent {
+    //     host
+    // }
+
   return (
     <DocumentTitle title="Hosts page">
     <div className="not-stream-component host-carousel">

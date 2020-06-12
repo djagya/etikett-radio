@@ -24,6 +24,7 @@ import AllUser from './user/AllUser';
 //Host Related
 import HostCarousel from './hosts/HostCarousel';
 import EditHostForm from './hosts/EditHostForm';
+import AllHosts from './hosts/AllHosts';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
@@ -48,6 +49,7 @@ function App(props) {
   const [createProfile, setCreateProfile] = useState(false)
   const [allUser, setAllUser] = useState(false)
   const [editHost, setEditHost] = useState(false)
+  const [allHosts, setAllHosts] = useState(false)
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -63,7 +65,8 @@ function App(props) {
             profileEdit, setProfileEdit,
             createProfile, setCreateProfile,
             allUser, setAllUser,
-            editHost, setEditHost
+            editHost, setEditHost,
+            allHosts, setAllHosts
           }
         }>
           <div className="App">
@@ -100,6 +103,7 @@ function App(props) {
 
               {/* Hosts Related */}
               <Route exact path="/hosts" render={(props) => <HostCarousel {...props} cookies={cookies} />} />
+              <Route exact path="/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
               <Route exact path="/hosts/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
 
               {/* Blog Related */}

@@ -25,6 +25,9 @@ export default function UserProfile(props) {
     if (context.editHost) {
         return <Redirect to={`/hosts/${context.id}`} />
     }
+    if (context.allHosts) {
+        return <Redirect to={`/hosts/all`} />
+    }
 
     return (
 
@@ -37,6 +40,7 @@ export default function UserProfile(props) {
                     <div>
                         <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
                         <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
+                        <button type="button" onClick={() => context.setAllHosts(true)}>all hosts</button>
                     </div>
                     : null}
                 <button onClick={handleLogOut}>log out</button>

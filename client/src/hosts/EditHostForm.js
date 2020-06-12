@@ -3,6 +3,7 @@ import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 import PostData from "../PostData";
 import PutData from "../PutData";
+import GetData from "../GetData";
 
 
 export default function EditHostPage(props) {
@@ -28,13 +29,7 @@ export default function EditHostPage(props) {
     const [isActive, setIsActive] = useState("True");
 
     useEffect(() => {
-        fetch("http://localhost:3000/host", {
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        })
-            .then(res => res.json())
+        GetData("http://localhost:3000/host")
             .then(data => {
                 if (!data.success) alert("Failed to fetch data, please contact an admin");
                 
