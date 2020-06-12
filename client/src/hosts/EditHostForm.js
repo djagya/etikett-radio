@@ -155,9 +155,9 @@ export default function EditHostPage(props) {
 
     if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
     return (
-        <div className="not-stream-component create-user-page">
-            <h2>edit my host page</h2>
-            <form className="post-blog input-form" onSubmit={handleSubmit}>
+        <div className="not-stream-component edit-host-page">
+            <h2>edit my host profile</h2>
+            <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
                     <button type="button" onClick={() => context.setEditHost(false)}>cancel</button>
                 </div>
