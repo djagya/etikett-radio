@@ -26,9 +26,10 @@ export default function ArchiveInputForm() {
         const postData = async (url, data) => {
             const response = await fetch(url, {
                 method: "POST",
-                credentials:"include",
+                credentials: "include",
                 headers: {
-                    "Content-Type": "application/json"},
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(data)
             })
             return response.json()
@@ -68,10 +69,10 @@ export default function ArchiveInputForm() {
             case "link":
                 setLink(input)
                 break;
-                case "img":
-                    setImg(input)
-                    break;
-                case "description":
+            case "img":
+                setImg(input)
+                break;
+            case "description":
                 setDescription(input)
                 break;
             default: console.log("Archive Input HandleFormInput ran through without effect")
@@ -81,23 +82,23 @@ export default function ArchiveInputForm() {
         const fields = ["show", "host", "genre"];
         const value = [show, host, genre];
         return fields.map((field, i) => (
-                <label key={i} htmlFor={field}>
-                    <span className="required">*</span>{field}
-                    <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
-                </label>
-            ));
+            <label key={i} htmlFor={field}>
+                <span className="required">*</span>{field}
+                <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
+            </label>
+        ));
     };
     return (
         <div className="input-form">
             <h2>archive show</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
-                    
+
                     {repetitiveInputFields()}
                     <label htmlFor="date">
                         <span className="required">*</span>date
                     <input type="date" id="date" placeholder="yyyy-mm-dd" value={date} onChange={handleFormInput} />
-                    </label> 
+                    </label>
                     <label htmlFor="link">
                         <span className="required">*</span>soundcloud/mixcloud
                     <input type="url" id="link" placeholder="link" value={link} onChange={handleFormInput} />
@@ -112,7 +113,7 @@ export default function ArchiveInputForm() {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" /><span className="required">* required</span>
+                    <input type="submit" value="Save" role="button" /><span className="required">* required</span>
                 </div>
             </form>
         </div>
