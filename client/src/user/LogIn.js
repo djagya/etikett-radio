@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import {Redirect} from "react-router-dom";
-import {Context} from "../Context";
+import { Redirect } from "react-router-dom";
+import { Context } from "../Context";
 
 export default function LogIn(props) {
     const [email, setEmail] = useState("");
@@ -28,24 +28,24 @@ export default function LogIn(props) {
         }
 
         postData("http://localhost:3000/users/login", body)
-            .then(data => { 
+            .then(data => {
                 logIn(data)
                 console.log(data)
-                props.setCookie('user', data.user, {path: '/'})
+                props.setCookie('user', data.user, { path: '/' })
             })
 
     }
 
     const logIn = (data) => {
-        
+
         if (data.status === 404) alert("Invalid Email")
         if (data.status === 403) alert("Invalid Password")
-        
+
         else {
             console.log(data)
         }
     }
-    
+
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -76,7 +76,7 @@ export default function LogIn(props) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Log In" /><span className="required">* required</span>
+                    <input type="submit" value="Log In" role="button" /><span className=" required">* required</span>
                 </div>
             </form>
         </div>
