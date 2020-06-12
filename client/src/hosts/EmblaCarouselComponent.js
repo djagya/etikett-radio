@@ -3,6 +3,7 @@ import { useEmblaCarousel } from "embla-carousel-react";
 import { DotButton, PrevButton, NextButton } from "./EmblacarouselButtons";
 
 const EmblaCarouselComponent = ({ children }) => {
+    console.log(children)
     const [EmblaCarouselReact, embla] = useEmblaCarousel();
     const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
     const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
