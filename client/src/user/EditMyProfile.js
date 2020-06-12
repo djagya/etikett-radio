@@ -94,7 +94,7 @@ export default function MyProfile(props) {
             <div className="input-form not-stream-component">
                 <h2>my profile</h2>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} role="form">
                     <div className="button-container">
                         <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
                     </div>

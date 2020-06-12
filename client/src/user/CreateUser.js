@@ -89,7 +89,7 @@ export default function CreateUser(props) {
     return (
         <div className="not-stream-component create-user-page">
             <h2>create a new user</h2>
-            <form className="input-form" onSubmit={handleSubmit}>
+            <form className="input-form" onSubmit={handleSubmit} role="form">
                 <div className="button-container">
                     <button type="button" onClick={() => context.setCreateProfile(false)}>cancel</button>
                 </div>

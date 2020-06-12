@@ -64,7 +64,7 @@ export default function LogIn(props) {
     return (
         <div className="input-form not-stream-component">
             <h2>Log In</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} role="form">
                 <div className="grid-container">
                     <label htmlFor="email">
                         <span className="required">*</span>email
