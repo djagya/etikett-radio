@@ -9,6 +9,7 @@ function Header(props) {
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
         const video = 'https://www.twitch.tv/truthmusic';
+        // const video = 'https://www.twitch.tv/austinjohnplays/';
         if (ReactPlayer.canPlay(video)) {
             setSource(video);
         }

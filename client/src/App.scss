@@ -236,9 +236,9 @@ button {
   animation: fade-in 3s ease forwards;
 
   img {
-    width: 150px;
-    height: 150px;
-    animation: beat 3s ease-in-out 2s infinite;
+    width: 155px;
+    height: 155px;
+    animation: beat 3s ease-in-out 2s infinite, rotate-forward 3s ease-in-out 2s infinite;
   }
 }
 @keyframes fade-in {
@@ -251,16 +251,32 @@ button {
 }
 @keyframes beat {
   0% {
-    width: 150px;
-    height: 150px;
+    width: 155px;
+    height: 155px;
   }
   50% {
     width: 170px;
     height: 170px;
   }
   100% {
-    width: 150px;
-    height: 150px;
+    width: 155px;
+    height: 155px;
+  }
+}
+@keyframes rotate-forward {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
