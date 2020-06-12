@@ -64,7 +64,7 @@ function Header(props) {
     return (
         <header className={`App-header ${headerSize}`}>
 
-            <nav>
+            <nav role="navigation">
                 <NavLink className="nav-link" to="/">home.</NavLink>
                 <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
                 <NavLink className="nav-link" to="/archive">archive.</NavLink>
