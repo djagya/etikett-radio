@@ -43,32 +43,31 @@ export default function EditHostPage(props) {
                 alert("It looks like there are more than 1 host profiles with the same ID, please contact an admin")
                 return <Redirect to={`/user/${context.id}`}/>
                 }
-                if (filteredData.length === 1 && role !== "Admin") {
+                if (filteredData.length !== 1 && role !== "Admin") {
                     alert("Please contact the owner or an admin to edit this host profile")
                     return <Redirect to={`/hosts`}/>
                 }
-                if (filteredData.length === 1 || role !== "Admin") {
+                if (filteredData.length === 1 || role === "Admin") {
                     setProfileExists(true)
-
-                    setHostName(data.host[0].hostName)
-                    setHostImg(data.host[0].hostImg)
-                    setDescription(data.host[0].description)
-                    setYoutube(data.host[0].youtube)
-                    setSoundcloud(data.host[0].soundcloud)
-                    setMixcloud(data.host[0].mixcloud)
-                    setFacebook(data.host[0].facebook)
-                    setInstagram(data.host[0].instagram)
-                    setTwitter(data.host[0].twitter)
-                    setSnapchat(data.host[0].snapchat)
-                    setOtherName(data.host[0].otherName)
-                    setOtherLink(data.host[0].otherLink)
-                    setProfileID(data.host[0]._id)
+                    setHostName(filteredData[0].hostName)
+                    setHostImg(filteredData[0].hostImg)
+                    setDescription(filteredData[0].description)
+                    setYoutube(filteredData[0].youtube)
+                    setSoundcloud(filteredData[0].soundcloud)
+                    setMixcloud(filteredData[0].mixcloud)
+                    setFacebook(filteredData[0].facebook)
+                    setInstagram(filteredData[0].instagram)
+                    setTwitter(filteredData[0].twitter)
+                    setSnapchat(filteredData[0].snapchat)
+                    setOtherName(filteredData[0].otherName)
+                    setOtherLink(filteredData[0].otherLink)
+                    setProfileID(filteredData[0]._id)
                 }   else {
                     return alert("Something went wrong")
                 }
             })
     },  [])
- 
+
     const handleSubmit = event => {
         event.preventDefault()
         const body = {
@@ -89,9 +88,14 @@ export default function EditHostPage(props) {
 
         if (!profileExists) {
             PostData("http://localhost:3000/host/createhost", body)
-                .then(data => { 
+            .then(data => { 
+                if (!data.success) { 
                     console.log(data)
-                })
+                    alert("Something went wrong while uploading your data for the first time")
+                } else {
+                    alert("Congrats to your first host profile entry!")
+                } })
+            .then(context.setEditHost(false) )
         } else {
             PutData(`http://localhost:3000/host/${profileID}`, body)
             .then(data => { 
