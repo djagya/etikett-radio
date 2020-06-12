@@ -19,7 +19,7 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     socket = io(endpoint);
 
     // Emit JOIN
-    socket.emit('join', {name, room}, (error) => {
+    socket.emit('join', { name, room }, (error) => {
       if (error) {
         sessionStorage.removeItem('name');
         alert(error);
@@ -44,7 +44,7 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     if (messages.length >= 50) {
       removeFirst();
     }
-    
+
   }, []);
 
   const sendMessage = e => {
