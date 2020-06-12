@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import ArchiveInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
 
+import DocumentTitle from 'react-document-title';
+
+
 export default function ArchiveList(props) {
 
     const [checkedIDs, setCheckedIDs] = useState([]);
@@ -23,19 +26,19 @@ export default function ArchiveList(props) {
 
             <li key={i}>
                 <ul className="archive-list">
-                    <li className="img-container"><img src={el.img} alt="Show Artwork"/></li>
+                    <li className="img-container"><img src={el.img} alt="Show Artwork" /></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
                     <li>{el.genre}</li>
                     <li>{el.date.substring(0, 10)}</li>
                     {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                    <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
-                    : null }
+                        <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
+                        : null}
                 </ul>
             </li>
         ));
     };
-    
+
     const handleIDs = (event) => {
         const checked = event.target.checked
         const id = event.target.name
@@ -48,7 +51,7 @@ export default function ArchiveList(props) {
         }
     };
 
-   
+
     //Delete the deleted Item from archiveData to make it disappear without refreshing the page
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
@@ -69,34 +72,35 @@ export default function ArchiveList(props) {
     }
 
     return (
-        <div className="archive-list-page not-stream-component">
-            <div>
-                <h2>archive</h2>
+        <DocumentTitle title="Archive page">
+            <div className="archive-list-page not-stream-component">
+                <div>
+                    <h2>archive</h2>
 
-                {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                    <div className="button-container controls">
-                        {showForm ? 
-                            <button type="button" onClick={() => setShowForm(false)}>cancel</button>:
-                            <button type="button" onClick={() => setShowForm(true)}>add to archive</button> 
-                        }
-                        <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
-                    </div>
-                : null }
-                
-                {showForm ? <ArchiveInputForm /> : null}
-                <ul className="list-header">
-                    {/* <li></li> Placeholder item for show artwork */}
-                    <li>sorted by:</li>
-                    <li>show</li>
-                    <li>host</li>
-                    <li>genre</li>
-                    <li>date</li>
-                </ul>
-                <ul>
-                    {renderLi(archiveData)}
-                </ul>
+                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
+                        <div className="button-container controls">
+                            {showForm ?
+                                <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
+                                <button type="button" onClick={() => setShowForm(true)}>add to archive</button>
+                            }
+                            <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                        </div>
+                        : null}
+
+                    {showForm ? <ArchiveInputForm /> : null}
+                    <ul className="list-header">
+                        {/* <li></li> Placeholder item for show artwork */}
+                        <li>sorted by:</li>
+                        <li>show</li>
+                        <li>host</li>
+                        <li>genre</li>
+                        <li>date</li>
+                    </ul>
+                    <ul>
+                        {renderLi(archiveData)}
+                    </ul>
+                </div>
             </div>
-        </div>
-
+        </DocumentTitle>
     )
 };

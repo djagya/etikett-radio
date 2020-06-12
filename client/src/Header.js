@@ -46,12 +46,12 @@ function Header(props) {
         } else {
             setIcon(muteIcon);
             setVolume(0);
-        }        
+        }
     }
 
     const handleVolume = e => {
         setVolume(e.target.value);
-        if(parseFloat(volume) < 0.15) {
+        if (parseFloat(volume) < 0.15) {
             setMuted(true);
             setIcon(muteIcon);
         } else {
@@ -63,7 +63,7 @@ function Header(props) {
     return (
         <header className={`App-header ${headerSize}`}>
 
-            <nav>
+            <nav role="navigation">
                 <NavLink className="nav-link" to="/">home.</NavLink>
                 <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
                 <NavLink className="nav-link" to="/archive">archive.</NavLink>
@@ -74,15 +74,15 @@ function Header(props) {
             </nav>
 
             <div className={`chat ${props.chatState}`}>
-            <ChatApp setChatState={props.setChatState} />
-          </div>
+                <ChatApp setChatState={props.setChatState} />
+            </div>
 
             <section className="embeded-video">
-                <ReactPlayer 
+                <ReactPlayer
                     className="ReactPlayer"
                     url={source}
-                    playing={playing} 
-                    volume={parseFloat(volume)} 
+                    playing={playing}
+                    volume={parseFloat(volume)}
                     muted={false}
                     ref={videoPlayer}
                     width="100%"
@@ -93,16 +93,17 @@ function Header(props) {
             <section className="message-controls-container">
                 {source === 'http://s9.myradiostream.com:44782/listen.mp3' ?
                     <div className="controls">
-                        <button className="playPauseBtn paused" onClick={handlePlayBtn}></button>
+                        <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
                         <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
-                        <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} />
+                        <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
                     </div>
-                : null }
+                    : null}
                 <div className="message">
                     <span className="moving-text">etikett radio - stream description, which is gonna be a loooong story</span>
                 </div>
 
             </section>
+
         </header>
     )
 }

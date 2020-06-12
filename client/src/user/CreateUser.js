@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
-import {Context} from "../Context";
-import {Redirect} from 'react-router-dom';
+import { Context } from "../Context";
+import { Redirect } from 'react-router-dom';
+
 
 export default function CreateUser(props) {
     const context = useContext(Context)
@@ -28,13 +29,13 @@ export default function CreateUser(props) {
             const response = await fetch(url, {
                 method: "POST",
                 credentials: "include",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             })
             return response.json()
         }
         postData("http://localhost:3000/users/createuser", body)
-            .then(data => { 
+            .then(data => {
                 console.log(data)
                 resetForm(data);
             })
@@ -82,12 +83,12 @@ export default function CreateUser(props) {
         }
     };
 
-    if (!context.createProfile) {return <Redirect to={`/user/${context.id}`}/>}
-    
+    if (!context.createProfile) { return <Redirect to={`/user/${context.id}`} /> }
+
     return (
         <div className="not-stream-component create-user-page">
             <h2>create a new user</h2>
-            <form className="input-form" onSubmit={handleSubmit}>
+            <form className="input-form" onSubmit={handleSubmit} role="form">
                 <div className="button-container">
                     <button type="button" onClick={() => context.setCreateProfile(false)}>cancel</button>
                 </div>
@@ -115,15 +116,15 @@ export default function CreateUser(props) {
                     <label htmlFor="role">
                         <span className="required">*</span>role
                     <select id="role" value={role} onChange={handleFormInput}>
-                        <option>Admin</option>
-                        <option>Host</option>
-                    </select>
+                            <option>Admin</option>
+                            <option>Host</option>
+                        </select>
                     </label>
 
 
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Sign Up" /><span className="required">* Required</span>
+                    <input type="submit" value="Sign Up" role="button" /><span className=" required">* Required</span>
                 </div>
             </form>
         </div>

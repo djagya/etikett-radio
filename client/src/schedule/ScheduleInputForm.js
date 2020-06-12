@@ -5,10 +5,10 @@ export default function ScheduleInputForm() {
     const context = useContext(Context)
     // Constructor for initial value/kind of a placeholder
     const newDate = new Date();
-    const currentDate = newDate.toISOString().substring(0 ,10)
-    const currentTime = newDate.toString().substring(16 ,21)
-    const time = currentDate+"T"+currentTime;
-    
+    const currentDate = newDate.toISOString().substring(0, 10)
+    const currentTime = newDate.toString().substring(16, 21)
+    const time = currentDate + "T" + currentTime;
+
     const [host, setHost] = useState("");
     const [show, setShow] = useState("");
     const [from, setFrom] = useState(time);
@@ -30,7 +30,8 @@ export default function ScheduleInputForm() {
                 method: "POST",
                 credentials: "include",
                 headers: {
-                    "Content-Type": "application/json"},
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(data)
             })
             return response.json()
@@ -45,7 +46,7 @@ export default function ScheduleInputForm() {
                 setShow("")
                 setFrom(time)
                 setTo(time)
-                
+
             } else {
                 alert(data.err)
             }
@@ -66,19 +67,19 @@ export default function ScheduleInputForm() {
                 setFrom(input)
                 setTo(input)
                 break;
-                case "to":
+            case "to":
                 setTo(input)
                 break;
             default: console.log("Schedule Input ran through without effect")
         }
     };
-    
+
     return (
         <div className="input-form schedule-input">
             <h2>add to schedule</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid-container">
-                    
+
                     <label htmlFor="host">
                         host
                         <input type="text" id="host" placeholder="host" value={host} onChange={handleFormInput} />
@@ -89,19 +90,19 @@ export default function ScheduleInputForm() {
                     </label>
                     <label htmlFor="from">
                         <span className="required">*</span>from
-                    <input type="datetime-local" id="from"  value={from} onChange={handleFormInput} />
-                    </label> 
+                    <input type="datetime-local" id="from" value={from} onChange={handleFormInput} />
+                    </label>
                     <label htmlFor="to">
                         <span className="required">*</span>to
-                    <input type="datetime-local" id="to"  value={to} onChange={handleFormInput} />
-                    </label> 
+                    <input type="datetime-local" id="to" value={to} onChange={handleFormInput} />
+                    </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" /><span className="required">* required</span>
+                    <input type="submit" value="Save" role="button" /><span className="required">* required</span>
                 </div>
             </form>
         </div>
-            
-        
+
+
     )
 }

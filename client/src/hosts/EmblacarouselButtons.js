@@ -4,7 +4,7 @@ export const DotButton = ({ selected, onClick }) => (
     <button
         className={`embla__dot${selected ? " is-selected" : ""}`}
         onClick={onClick}
-    />
+        aria-label="slide" />
 );
 
 export const PrevButton = ({ enabled, onClick }) => (

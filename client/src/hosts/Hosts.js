@@ -2,30 +2,35 @@ import React, { useState, useEffect } from "react";
 import EmblaCarouselComponent from "./EmblaCarouselComponent";
 import GetData from "../GetData";
 
-
+import DocumentTitle from 'react-document-title';
 
 
 export default function Hosts() {
-const [hostData, setHostData] = useState([])
+  const [hostData, setHostData] = useState([])
 
-const renderHosts = hostData.map(host => {return<div />} )
+  const renderHosts = hostData.map(host => { return <div /> })
 
-useEffect(() => {
-  GetData("http://localhost:3000/host")
+  useEffect(() => {
+    GetData("http://localhost:3000/host")
       .then(data => setHostData(data.host))
-}, [])
-console.log(renderHosts)
+  }, [])
+  console.log(renderHosts)
 
   return (
-    <div className="not-stream-component hosts">
-    <h2>hosts</h2>
-      <EmblaCarouselComponent>
-        
-    {/* {renderHosts} */}
-      <div/>
-        <div/>
-      </EmblaCarouselComponent>
-    </div>
+    <DocumentTitle title="Hosts page">
+      <div className="not-stream-component hosts">
+        <h2>hosts</h2>
+        <EmblaCarouselComponent>
+
+          {/* {renderHosts} */}
+          <div />
+          <div />
+        </EmblaCarouselComponent>
+      </div>
+    </DocumentTitle>
+
   )
 }
+
+
 

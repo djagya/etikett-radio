@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {Context} from "../Context";
+import { Context } from "../Context";
 import { Redirect } from 'react-router-dom';
 
 
@@ -25,10 +25,10 @@ export default function MyProfile(props) {
                 setUserName(data.user.userName)
                 setEmail(data.user.email)
                 setRole(data.user.role)
-            }) 
+            })
     }, [context.id])
-    
-    
+
+
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -44,18 +44,19 @@ export default function MyProfile(props) {
         const putData = async (url, data) => {
             const response = await fetch(url, {
                 method: "PUT",
-                credentials:"include",
-                headers: {"Content-Type": "application/json"},
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             })
             return response.json()
         }
         putData(`http://localhost:3000/users/${context.id}`, body)
-            .then(data => { if (!data.success) 
-                { console.log(data) } else {
-                    props.setCookie('user', data.user, {path: '/'}) 
-                } })
-            .then(context.setProfileEdit(false) )
+            .then(data => {
+                if (!data.success) { console.log(data) } else {
+                    props.setCookie('user', data.user, { path: '/' })
+                }
+            })
+            .then(context.setProfileEdit(false))
     }
 
     const handleFormInput = event => {
@@ -84,17 +85,17 @@ export default function MyProfile(props) {
         }
     };
 
-    if (!context.profileEdit) {return <Redirect to={`/user/${context.id}`}/>}
-    
+    if (!context.profileEdit) { return <Redirect to={`/user/${context.id}`} /> }
+
     return (
         <div>
-                <div className="input-form not-stream-component">
+            <div className="input-form not-stream-component">
                 <h2>my profile</h2>
-                
-                <form onSubmit={handleSubmit}>
-                <div className="button-container">
-                <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
-                </div>
+
+                <form onSubmit={handleSubmit} role="form">
+                    <div className="button-container">
+                        <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
+                    </div>
                     <div className="grid-container">
                         <label htmlFor="firstName">
                             <span className="required">*</span>first name
@@ -117,21 +118,21 @@ export default function MyProfile(props) {
                         <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
                         </label>
                         {user && user.role === 'Admin' ?
-                        <label htmlFor="role">
-                            <span className="required">*</span>role
+                            <label htmlFor="role">
+                                <span className="required">*</span>role
                         <select id="role" value={role} onChange={handleFormInput}>
-                            <option>Admin</option>
-                            <option>Host</option>
-                        </select>
-                        </label>
-                        : null }
+                                    <option>Admin</option>
+                                    <option>Host</option>
+                                </select>
+                            </label>
+                            : null}
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="Save" /><span className="required">* Required</span>
+                        <input type="submit" value="Save" role="button" /><span className="required">* Required</span>
                     </div>
                 </form>
             </div>
-            
+
         </div>
     )
 }
