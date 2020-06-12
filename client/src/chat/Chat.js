@@ -20,8 +20,8 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     // Connect to endpoint
     socket = io(endpoint);
 
-    // Emit JOIN
-    socket.emit('join', {name, room}, (error) => {
+    // Emit ADD USER
+    socket.emit('addUser', {name, room}, (error) => {
       if (error) {
         sessionStorage.removeItem('name');
         // alert.error(error);
@@ -30,9 +30,22 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
             window.location.reload();
           }
         })
-        // window.location.reload()
       }
-    });
+    })
+
+    // Emit JOIN
+    // socket.emit('join', {name, room}, (error) => {
+    //   if (error) {
+    //     sessionStorage.removeItem('name');
+    //     // alert.error(error);
+    //     alert.error(error, {
+    //       onClose: () => {
+    //         window.location.reload();
+    //       }
+    //     })
+    //     // window.location.reload()
+    //   }
+    // });
 
     return () => {
       // Emit DISCONNECT
