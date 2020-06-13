@@ -38,7 +38,7 @@ export default async function Delete(checkedIDs, route) {
         return await responseArray
     }
 
-    // Make all responses succeeded 
+    // Make sure all responses succeeded 
     const output = await getEachResponse().then(responseArray => {
         console.log('responseArray: ', responseArray);
         let output;

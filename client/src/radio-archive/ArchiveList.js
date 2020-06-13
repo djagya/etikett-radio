@@ -64,7 +64,9 @@ export default function ArchiveList(props) {
         }
         setArchiveData(filteredArchiveData)
         //delete from db
-        Delete(checkedIDs, "archive")
+        Delete(checkedIDs, "archive").then(output => {
+            console.log('third output: ', output)
+        })
 
     }
 
