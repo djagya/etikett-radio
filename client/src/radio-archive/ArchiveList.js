@@ -19,27 +19,7 @@ export default function ArchiveList(props) {
             .then(res => res.json())
             .then(data => setArchiveData(data.archive.reverse()))
     }, [])
-    //list item construction
-    const renderLi = (archiveData) => {
-        if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
-        if (archiveData.length === 0) return null; //Because first time the code is running, archiveData will be an empty array
-        return archiveData.map((el, i) => (
-
-
-            <li key={i}>
-                <ul className="all-data archive-list-grid">
-                    <li className="img-container"><img src={el.img} alt="Show Artwork" /></li>
-                    <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
-                    <li>{el.host}</li>
-                    <li>{el.genre}</li>
-                    <li>{el.date.substring(0, 10)}</li>
-                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                        <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
-                        : null}
-                </ul>
-            </li>
-        ));
-    };
+    
 
     const handleIDs = (event) => {
         const checked = event.target.checked
@@ -74,6 +54,36 @@ export default function ArchiveList(props) {
         })
 
     }
+    //list item construction
+    const renderLi = (archiveData) => {
+        if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
+        if (archiveData.length === 0) return null; //Because first time the code is running, archiveData will be an empty array
+        return archiveData.map((el, i) => (
+
+
+            <li key={i}>
+                <ul className="all-data archive-list-grid">
+                    <li className="img-container"><img src={el.img} alt="Show Artwork" /></li>
+                    <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
+                    <li>{el.host}</li>
+                    <li>{el.genre}</li>
+                    <li>{el.date.substring(0, 10)}</li>
+                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
+                        <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
+                        : null}
+                </ul>
+            </li>
+        ));
+    };
+
+    const renderLiHeader = () => {
+        const listHeader = ["show", "host", "genre", "date"]
+
+        return listHeader.map((el, i) =>(
+            <li key={i} onClick={()=>console.log(i)}>{el}</li>
+
+        ))
+    }
 
     return (
         <DocumentTitle title="Archive page">
@@ -95,10 +105,7 @@ export default function ArchiveList(props) {
                     <ul className="list-header archive-list-grid">
                         {/* <li></li> Placeholder item for show artwork */}
                         <li>sort by:</li>
-                        <li>show</li>
-                        <li>host</li>
-                        <li>genre</li>
-                        <li>date</li>
+                        {renderLiHeader()}
                     </ul>
                     <ul>
                         {renderLi(archiveData)}
