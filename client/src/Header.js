@@ -6,6 +6,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import ChatApp from './chat/ChatApp';
 import GetData from "./GetData";
 import { Context } from "./Context";
+import moment from "moment";
 
 function Header(props) {
     const context = useContext(Context)
@@ -88,7 +89,17 @@ function Header(props) {
     })
     },  [])
 
+    ////////////////
+    //Clock 
+    ////////////////
+    const [time,setTime] = useState( moment().format("h:mm:ss a"))
+    const timer = () => setTime( moment().format("H:mm:ss"))
+    useEffect(
+        () => {
 
+            const id = setInterval(timer, 1000);
+            return () => clearInterval(id);
+        },[time]);
 
     return (
         <header className={`App-header ${headerSize}`}>
@@ -129,11 +140,10 @@ function Header(props) {
                     </div>
                     : null}
                 <div className="message">
-                    <span className="moving-text">{context.infoBarMessage}</span>
+                    <span className="moving-text"> {time} +++ {context.infoBarMessage}</span>
                 </div>
 
             </section>
-
         </header>
     )
 }
