@@ -44,8 +44,7 @@ export default function AllUser() {
     if (!context.allUser) {return <Redirect to={`/user/${context.id}`}/>}
 
     const renderLi = (userData) => {
-        
-        // Render login and create account links
+
         if (userData.status === 403) return (<h2>please log in as admin</h2>)
 
         //Because first time the code is running, userData will be an empty array

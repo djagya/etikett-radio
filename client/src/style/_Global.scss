@@ -185,6 +185,7 @@ $etikett-black-000: rgba(1,5,8, 0);
   ///////////////////////////////////
   .button-container {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 2rem;
     margin: 2rem 0;

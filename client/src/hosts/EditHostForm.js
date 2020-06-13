@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import PostData from "../PostData";
 import PutData from "../PutData";
 import GetData from "../GetData";
+import Delete from "../Delete";
 
 
 export default function EditHostPage(props) {
@@ -154,6 +155,19 @@ export default function EditHostPage(props) {
         }
     };
 
+    const handleDelete = (id, hostName) => {
+
+        const check = window.confirm(`You really want to delete "${hostName}"?`);
+
+        if (check) {
+            //delete from db
+            Delete([id], "hosts")
+            return <Redirect to={`/hosts/all`} />
+        } else {
+            return null
+        }
+    }
+
     if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
     return (
         <div className="not-stream-component edit-host-page">
@@ -161,6 +175,7 @@ export default function EditHostPage(props) {
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
                     <button type="button" onClick={() => context.setEditHost(false)}>cancel</button>
+                    <button type="button" onClick={() => handleDelete(profileID, hostName)}>delete</button>
                 </div>
                 <div className="grid-container">
                     <label htmlFor="hostName">
