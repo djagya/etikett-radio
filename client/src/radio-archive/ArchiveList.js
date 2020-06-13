@@ -27,7 +27,7 @@ export default function ArchiveList(props) {
 
 
             <li key={i}>
-                <ul className="archive-list">
+                <ul className="all-data archive-list-grid">
                     <li className="img-container"><img src={el.img} alt="Show Artwork" /></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
@@ -77,7 +77,7 @@ export default function ArchiveList(props) {
 
     return (
         <DocumentTitle title="Archive page">
-            <div className="archive-list-page not-stream-component">
+            <div className="all-list not-stream-component">
                 <div>
                     <h2>archive</h2>
 
@@ -92,9 +92,9 @@ export default function ArchiveList(props) {
                         : null}
 
                     {showForm ? <ArchiveInputForm /> : null}
-                    <ul className="list-header">
+                    <ul className="list-header archive-list-grid">
                         {/* <li></li> Placeholder item for show artwork */}
-                        <li>sorted by:</li>
+                        <li>sort by:</li>
                         <li>show</li>
                         <li>host</li>
                         <li>genre</li>
