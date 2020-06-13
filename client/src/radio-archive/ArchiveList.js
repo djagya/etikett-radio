@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import ArchiveInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
@@ -7,7 +8,8 @@ export default function ArchiveList(props) {
 
     const [checkedIDs, setCheckedIDs] = useState([]);
     const [archiveData, setArchiveData] = useState([]);
-    const [showForm, setShowForm] = useState(false)
+    const [showForm, setShowForm] = useState(false);
+    const alert = useAlert();
 
     useEffect(() => {
         fetch("http://localhost:3000/archive")
@@ -65,7 +67,7 @@ export default function ArchiveList(props) {
         setArchiveData(filteredArchiveData)
         //delete from db
         Delete(checkedIDs, "archive").then(output => {
-            console.log('third output: ', output)
+            output ? alert.success('Item(s) successfully deleted.') : alert.error('Something went wrong...');
         })
 
     }
