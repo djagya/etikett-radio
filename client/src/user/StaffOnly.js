@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from "../Context"
 import { Redirect } from 'react-router-dom';
 
@@ -6,6 +6,15 @@ import { Redirect } from 'react-router-dom';
 export default function UserProfile(props) {
     const context = useContext(Context)
 
+    //General reset for when you messed around in the staff only section
+    //and you go to another route and come back that you land on the base level again
+    useEffect(()=>{
+    context.setProfileEdit(false)
+    context.setCreateProfile(false)
+    context.setAllUser(false)
+    context.setEditHost(false)
+    context.setAllHosts(false)
+    }, [])
 
     const handleLogOut = () => {
         props.removeCookie('user', { path: "/" });
@@ -25,24 +34,34 @@ export default function UserProfile(props) {
     if (context.editHost) {
         return <Redirect to={`/hosts/${context.id}`} />
     }
+    if (context.allHosts) {
+        return <Redirect to={`/hosts/all`} />
+    }
 
     return (
+
         <>
             <a href="#maincontent" className="skip-link">Skip to main content</a>
             <div className="not-stream-component staff-only">
-                <div>
-                    <h2 id="maincontent">logged in as {props.cookies.user.firstName}</h2>
-                    <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
-                    <button type="button" onClick={() => context.setEditHost(true)}>edit my host profile</button>
-                    {props.cookies.user.role === 'Admin' ?
-                        <div>
-                            <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
-                            <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
-                        </div>
-                        : null}
-                    <button onClick={handleLogOut}>log out</button>
+            <div>
+                <h2>logged in as {props.cookies.user.firstName}</h2>
+                <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
+                <button type="button" onClick={() => {
+                    context.setEditHostID(context.id)
+                    context.setEditHost(true)
+                    }}>edit my host profile
+                </button>
+                {props.cookies.user.role === 'Admin' ?
+                    <div>
+                        <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
+                        <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
+                        <button type="button" onClick={() => context.setAllHosts(true)}>all hosts</button>
+                    </div>
+                    : null}
+                <button onClick={handleLogOut}>log out</button>
 
                 </div>
+
             </div>
         </>
 

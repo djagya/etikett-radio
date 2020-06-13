@@ -44,33 +44,32 @@ export default function AllUser() {
     if (!context.allUser) {return <Redirect to={`/user/${context.id}`}/>}
 
     const renderLi = (userData) => {
-        
-        // Render login and create account links
+
         if (userData.status === 403) return (<h2>please log in as admin</h2>)
 
         //Because first time the code is running, userData will be an empty array
         if (userData.length === 0) return null; 
         return userData.map((el, i) => (
-            <ul key={i} className="user-data">
+            <ol key={i} className="all-data user-list-grid">
                 <li>{el.firstName}</li>
                 <li>{el.lastName}</li>
                 <li>{el.userName}</li>
                 <li>{el.email}</li>
                 <li>{el.role}</li>
-                <li><button type="button" onClick={() => handleDelete(el._id, el.userName)}>delete</button></li>
-            </ul>
+                <li className="button-container"><button type="button" onClick={() => handleDelete(el._id, el.userName)}>delete</button></li>
+            </ol>
         ));
     };
 
     return (
-        <div className="not-stream-component user-list">
+        <div className="not-stream-component all-list">
             <h2>All Users</h2>
             <div className="list-container">
                 <div className="button-container">
-                    <button type="button" onClick={() => context.setAllUser(false)}>cancel</button>
+                    <button type="button" onClick={() => context.setAllUser(false)}>back</button>
                 </div>
                 <div>
-                        <ul className="list-header">
+                        <ul className="list-header user-list-grid">
                             <li>first name</li>
                             <li>last name</li>
                             <li>user name</li>

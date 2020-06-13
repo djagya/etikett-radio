@@ -22,8 +22,9 @@ import CreateUser from './user/CreateUser';
 import EditMyProfile from './user/EditMyProfile';
 import AllUser from './user/AllUser';
 //Host Related
-import Hosts from './hosts/Hosts';
+import HostCarousel from './hosts/HostCarousel';
 import EditHostForm from './hosts/EditHostForm';
+import AllHosts from './hosts/AllHosts';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
@@ -48,12 +49,12 @@ function App(props) {
   const [createProfile, setCreateProfile] = useState(false)
   const [allUser, setAllUser] = useState(false)
   const [editHost, setEditHost] = useState(false)
+  const [editHostID, setEditHostID] = useState("")
+  const [allHosts, setAllHosts] = useState(false)
   if (cookies.user) {
     id = cookies.user._id
   }
   //////////////////////
-
-  console.log(allUser)
   return (
     <DocumentTitle title="Homepage, video streaming">
 
@@ -65,7 +66,9 @@ function App(props) {
             profileEdit, setProfileEdit,
             createProfile, setCreateProfile,
             allUser, setAllUser,
-            editHost, setEditHost
+            editHost, setEditHost,
+            editHostID, setEditHostID,
+            allHosts, setAllHosts
           }
         }>
           <div className="App">
@@ -101,7 +104,8 @@ function App(props) {
               <Route exact path="/:id/edit" component={ArchiveEdit} />
 
               {/* Hosts Related */}
-              <Route exact path="/hosts" render={(props) => <Hosts {...props} cookies={cookies} />} />
+              <Route exact path="/hosts" render={(props) => <HostCarousel {...props} cookies={cookies} />} />
+              <Route exact path="/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
               <Route exact path="/hosts/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
 
               {/* Blog Related */}

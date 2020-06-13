@@ -15,7 +15,8 @@ const HostSchema = new Schema(
         twitter: { type: String},
         snapchat: { type: String},
         otherName: { type: String},
-        otherLink: { type: String}
+        otherLink: { type: String},
+        isActive: {type:String, required: true}
     }
 );
 module.exports = mongoose.model("Host", HostSchema);

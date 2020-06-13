@@ -1,22 +1,23 @@
-@use "./style/Variables" as *;
+@import "./style/Variables";
 
 //main
-@use "./style/Global";
-@use "./style/Header";
-@use "./style/ChatApp";
-@use "./style/SolarSystem";
+@import "./style/Global";
+@import "./style/Header";
+@import "./style/ChatApp";
+@import "./style/SolarSystem";
 //schedule
-@use "./style/Schedule";
+@import "./style/Schedule";
 //archive
-@use "./style/ArchiveList";
-@use "./style/ArchivedShowDetail";
+@import "./style/ArchiveList";
+@import "./style/ArchivedShowDetail";
 //blog
-@use "./style/Blog";
+@import "./style/Blog";
 //hosts
-@use "./style/EmblaCarouselComponent";
+@import "./style/EditHostForm";
+@import "./style/HostCarousel";
 
 //user 
-@use "./style/CreateUser";
-@use "./style/AllUser";
-@use "./style/Error404";
-@use "./style/StaffOnly";
+@import "./style/CreateUser";
+@import "./style/AllUserAllHostsLists";
+@import "./style/Error404";
+@import "./style/StaffOnly";

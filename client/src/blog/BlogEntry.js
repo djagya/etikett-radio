@@ -19,12 +19,11 @@ export default function BlogEntry(el, i) {
             let filteredBlogData = [...context.blogData].filter(el => el._id !== id);
 
             context.setBlogData(filteredBlogData)
-
             //delete from db
             Delete([id], "blog")
-            } else {
-                return null
-            }
+        } else {
+            return null
+        }
     }
 
     return (
