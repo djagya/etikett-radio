@@ -28,11 +28,19 @@ export default function EditHostPage(props) {
     const [otherLink, setOtherLink] = useState("");
     const [profileID, setProfileID] = useState("");
     const [isActive, setIsActive] = useState("ative");
-
+    
     useEffect(() => {
         GetData("http://localhost:3000/host")
             .then(data => {
-                if (!data.success) alert("Failed to fetch data, please contact an admin");
+                console.log(data.host)
+                if (data.status ===403) {
+                    alert("Status 403: Forbidden") 
+                    return
+                }
+                if (!data.success) {
+                    alert("Failed to fetch data, please contact an admin")
+                    return
+                };
                 const filteredData = (data.host.filter(el => el.userID === id ))
                 if (filteredData.length === 0) return
                 if (filteredData.length > 1) {
