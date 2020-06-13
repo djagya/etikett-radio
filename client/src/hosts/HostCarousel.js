@@ -6,28 +6,37 @@ import DocumentTitle from 'react-document-title';
 import Img1 from "./jerome-prax-jLZWzT_kdTI-unsplash.jpg";
 import Img2 from "./kensuke-saito-surf-photography-rXsnA-67Chs-unsplash.jpg";
 import Img3 from "./vignesh-kumar-r-b-FrZo1GNZ2go-unsplash.jpg";
+import HostShowcase from "./HostShowcase";
 // Render div
 
 
 export default function Hosts() {
-const [hostData, setHostData] = useState([])
-
+    const [hostData, setHostData] = useState([])
+    let sortedData = []
   
     useEffect(() => {
       GetData("http://localhost:3000/host")
         .then(data => setHostData(data.host))
     }, [])
 
-    console.log(hostData)
+    if (hostData.length !== 0) sortedData = hostData.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1)
 
-    // const renderContent {
-    //     host
+
+    // const renderLabels = () => {
+    //     if (sortedData.length === 0) return null
+    //     console.log(sortedData)
+    // sortedData.map((hostData, i) => (<HostShowcase hostData={hostData} i={i} />))
+
     // }
+
+
+
 
   return (
     <DocumentTitle title="Hosts page">
     <div className="not-stream-component host-carousel">
     <h2>hosts</h2>
+    <HostShowcase hosts={sortedData} />
         <div className="carousel">
             <div className="carousel-inner">
                 <input className="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden/>
@@ -59,7 +68,9 @@ const [hostData, setHostData] = useState([])
                         <label htmlFor="carousel-3" className="carousel-bullet">img3</label>
                     </li>
                 </ol>
+                
             </div>
+
         </div>
     </div>
     </DocumentTitle>
