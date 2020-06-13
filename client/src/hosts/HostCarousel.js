@@ -8,52 +8,80 @@ import HostShowcase from "./HostShowcase";
 
 export default function Hosts() {
     const [hostData, setHostData] = useState([])
-    let [num, setNum] = useState(1)
+    let filteredData = []
     let sortedData = []
-    console.log(hostData)
+
+    // let [leftNum, setLeftNum] = useState(0)
+    let [num, setNum]  = useState(0)
+    // let [rightNum, setRightNum] = useState(2)
     useEffect(() => {
       GetData("http://localhost:3000/host")
         .then(data => setHostData(data.host))
     }, [])
 
-    if (hostData.length !== 0) sortedData = hostData.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1)
+    //filter out active hosts
+    if (hostData.length !== 0) {
+        filteredData = hostData.filter(host => host.isActive === "active" ) 
+    }
+    //sort active members by hostName
+    if (filteredData.length !== 0) {
+        sortedData = filteredData.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1) 
+    }
 
 
-    // const renderLabels = (host, i) => {
+    const renderHost = () => {
+        if (sortedData.length === 0) return null
+
+
+        return (
+        <div>
+            <input className="carousel-open" type="radio" id={`carousel-${num}`} name="carousel" 
+            aria-hidden="true" hidden defaultChecked={true} />
+            
+            <div className="carousel-item">
+                <img src={sortedData[num].hostImg} alt={`Artwork or photo of ${sortedData[num].hostName}`} />
+            </div>
+        </div> 
+        )
+    }
  
+    // const handleControls = action => {
 
-    //     return (
-    //         <li key={i} className="control-container">
-    //         <label htmlFor={`carousel-${num === 1 ? setNum(sortedData.length) : setNum(num -1)}`} className={`carousel-control prev control-${num}`}>‹</label>
-    //         <label htmlFor={`carousel-${num === setNum(sortedData.length) ? setNum(1) : setNum(num +1)}`} className={`carousel-control prev control-${num}`}>›</label>
-    //         </li>
-    //     )
+    //     if (action === "right") {
+    //         console.log("preCalc ", num)
+    //     setNum(num++)
+    //     console.log("postCalc", num)
+    //         }
+
+    //     if (action === "left") {
+    //     setNum(num--)
+    //     }
     // }
-console.log(num)
-
     const renderIndicator = (host, i) => (
         <li key={i}>
-            <label htmlFor={`carousel-${i+1}`} className="carousel-bullet">{host.hostName}</label>
+            <label htmlFor={`carousel-${i+1}`} onClick={()=>setNum(i)} className={`carousel-hostname`}>
+                {host.hostName}
+            </label>
         </li>
     )
 
   return (
     <DocumentTitle title="Hosts page">
-    <div className="not-stream-component host-carousel">
+    <div className="not-stream-component host-showcase">
     <h2>hosts</h2>
         <div className="carousel">
-            <div className="carousel-inner">
-                <HostShowcase hosts={sortedData} />
-                {/* <ol>
-                {sortedData.map((host, i) => renderLabels(host, i))}
-                </ol> */}
-                <li className="control-container">
-                <label htmlFor={`carousel-${num === 1 ? sortedData.length : (num +1)}`} onClick={() => setNum(num++)} className={`carousel-control prev control-${num}`}>‹</label>
-                <label htmlFor={`carousel-${num === sortedData.length ? 1 : (num -1)}`} onClick={() => setNum(num--)} className={`carousel-control prev control-${num}`}>›</label>
-                </li>
-                <ol className="carousel-indicators">
+        <ol className="carousel-indicators">
                 {sortedData.map((host, i) => renderIndicator(host, i))}
                 </ol>
+            <div className="carousel-inner">
+                {renderHost()}
+
+                {/* <div className="control-container">
+                <label htmlFor={`carousel-${leftNum}`} onClick={() => handleControls("left") } className={`carousel-control prev control-${num}`}>‹</label>
+                <label htmlFor={`carousel-${rightNum}`} onClick={() => handleControls("right")} className={`carousel-control next control-${num}`}>›</label>
+                </div> */}
+
+                
                 
             </div>
 
