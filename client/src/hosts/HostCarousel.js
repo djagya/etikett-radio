@@ -31,6 +31,7 @@ export default function Hosts() {
 
     const renderHost = () => {
         if (sortedData.length === 0) return null
+        const host = sortedData[num]
 
 
         return (
@@ -39,24 +40,26 @@ export default function Hosts() {
             aria-hidden="true" hidden defaultChecked={true} />
             
             <div className="carousel-item">
-                <img src={sortedData[num].hostImg} alt={`Artwork or photo of ${sortedData[num].hostName}`} />
+                <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} />
+                <div>
+                <h3>{host.hostName}</h3>
+                    <q>{host.description}</q>
+                    <div className="social-media-container">
+                    {host.youtube === "" ? null : <a href={host.youtube} target="_blank" rel="noopener noreferrer">Youtube</a>}
+                    {host.soundcloud === "" ? null : <a href={host.soundcloud} target="_blank" rel="noopener noreferrer">SoundCloud</a>}
+                    {host.mixcloud === "" ? null : <a href={host.mixcloud} target="_blank" rel="noopener noreferrer">MixCloud</a>}
+                    {host.facebook === "" ? null : <a href={host.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>}
+                    {host.instagram === "" ? null : <a href={host.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>}
+                    {host.twitter === "" ? null : <a href={host.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>}
+                    {host.snapchat === "" ? null : <a href={host.snapchat} target="_blank" rel="noopener noreferrer">Snapchat</a>}
+                    {host.otherLink === "" ? null : <a href={host.otherLink} target="_blank" rel="noopener noreferrer">{host.otherName}</a>}
+                    </div>
+                </div>
             </div>
         </div> 
         )
     }
- 
-    // const handleControls = action => {
 
-    //     if (action === "right") {
-    //         console.log("preCalc ", num)
-    //     setNum(num++)
-    //     console.log("postCalc", num)
-    //         }
-
-    //     if (action === "left") {
-    //     setNum(num--)
-    //     }
-    // }
     const renderIndicator = (host, i) => (
         <li key={i}>
             <label htmlFor={`carousel-${i+1}`} onClick={()=>setNum(i)} className={`carousel-hostname`}>
@@ -74,17 +77,8 @@ export default function Hosts() {
                 {sortedData.map((host, i) => renderIndicator(host, i))}
                 </ol>
             <div className="carousel-inner">
-                {renderHost()}
-
-                {/* <div className="control-container">
-                <label htmlFor={`carousel-${leftNum}`} onClick={() => handleControls("left") } className={`carousel-control prev control-${num}`}>‹</label>
-                <label htmlFor={`carousel-${rightNum}`} onClick={() => handleControls("right")} className={`carousel-control next control-${num}`}>›</label>
-                </div> */}
-
-                
-                
+                {renderHost()}       
             </div>
-
         </div>
     </div>
     </DocumentTitle>
