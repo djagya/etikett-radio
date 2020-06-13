@@ -2,12 +2,14 @@ import React, {useState, useContext} from 'react';
 import Delete from "../Delete";
 import BlogEditForm from './BlogEditForm';
 import {Context} from "../Context";
-import {useCookies} from "react-cookie"
+import {useCookies} from "react-cookie";
+import { useAlert } from 'react-alert';
 
 export default function BlogEntry(el, i) {
     const [cookies, setCookie, removeCookie] = useCookies(['user'])
     const [showEdit, setShowEdit] =useState(false);
-    const context = useContext(Context)
+    const context = useContext(Context);
+    const alert = useAlert();
     
     const entry= el.el;
     const handleDelete = (id, heading) => {

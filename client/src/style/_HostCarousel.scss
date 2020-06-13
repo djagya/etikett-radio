@@ -36,8 +36,13 @@ img {
 .carousel-item img {
     display: block;
     height: auto;
-    max-width: 500px;
+    max-width: 400px;
 
+}
+.control-container {
+    display: flex;
+    position: absolute;
+    top: 50%;
 }
 
 .carousel-control {
@@ -45,12 +50,10 @@ img {
     border-radius: 50%;
     color: #fff;
     cursor: pointer;
-    display: none;
+    // display: none;
     font-size: 60px;
     height: 60px;
     line-height: 40px;
-    position: absolute;
-    top: 50%;
     -webkit-transform: translate(0, -50%);
     cursor: pointer;
     -ms-transform: translate(0, -50%);
@@ -60,24 +63,24 @@ img {
     z-index: 10;
 }
 
-.carousel-control.prev {
-    left: 2%;
-}
+// .carousel-control.prev {
+//     left: 2%;
+// }
 
-.carousel-control.next {
-    right: 2%;
-}
+// .carousel-control.next {
+//     right: 2%;
+// }
 
 .carousel-control:hover {
     background: rgba(0, 0, 0, 0.8);
     color: #aaaaaa;
 }
 
-#carousel-1:checked~.control-1,
-#carousel-2:checked~.control-2,
-#carousel-3:checked~.control-3 {
-    display: block;
-}
+// #carousel-1:checked~.control-1,
+// #carousel-2:checked~.control-2,
+// #carousel-3:checked~.control-3 {
+//     display: block;
+// }
 
 .carousel-indicators {
     list-style: none;
@@ -100,15 +103,15 @@ img {
     color: #fff;
     cursor: pointer;
     display: block;
-    font-size: 35px;
+    font-size: 1rem;
 }
 
 .carousel-bullet:hover {
     color: #aaaaaa;
 }
 
-#carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
-#carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
-#carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet {
-    color: #000000;
-}
+// #carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
+// #carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
+// #carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet {
+//     color: #000000;
+// }

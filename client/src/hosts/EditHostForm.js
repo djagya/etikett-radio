@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { useAlert } from 'react-alert';
 import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 import PostData from "../PostData";
@@ -27,20 +28,32 @@ export default function EditHostPage(props) {
     const [otherName, setOtherName] = useState("");
     const [otherLink, setOtherLink] = useState("");
     const [profileID, setProfileID] = useState("");
-    const [isActive, setIsActive] = useState("ative");
+    const alert = useAlert();
 
+    const [isActive, setIsActive] = useState("ative");
+    
     useEffect(() => {
         GetData("http://localhost:3000/host")
             .then(data => {
-                if (!data.success) alert("Failed to fetch data, please contact an admin");
+                if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
+                
+                console.log(data.host)
+                if (data.status ===403) {
+                    alert.error("Status 403: Forbidden") 
+                    return
+                }
+                if (!data.success) {
+                    alert.error("Failed to fetch data, please contact an admin")
+                    return
+                };
                 const filteredData = (data.host.filter(el => el.userID === id ))
                 if (filteredData.length === 0) return
                 if (filteredData.length > 1) {
-                alert("It looks like there are more than 1 host profiles with the same ID, please contact an admin")
+                alert.error("It looks like there are more than 1 host profiles with the same ID, please contact an admin.")
                 return <Redirect to={`/user/${context.id}`}/>
                 }
                 if (filteredData.length !== 1 && role !== "Admin") {
-                    alert("Please contact the owner or an admin to edit this host profile")
+                    alert.error("Please contact the owner or an admin to edit this host profile")
                     return <Redirect to={`/hosts`}/>
                 }
                 if (filteredData.length === 1 || role === "Admin") {
@@ -60,7 +73,7 @@ export default function EditHostPage(props) {
                     setProfileID(filteredData[0]._id)
                     // isActive(filteredData[0].isActive)
                 }   else {
-                    return alert("Something went wrong")
+                    return alert.error("Something went wrong")
                 }
             })
     },  [])
@@ -89,9 +102,9 @@ export default function EditHostPage(props) {
             .then(data => { 
                 if (!data.success) { 
                     console.log(data)
-                    alert("Something went wrong while uploading your data for the first time")
+                    alert.error("Something went wrong while uploading your data for the first time.")
                 } else {
-                    alert("You successfully initialized your host profile!")
+                    alert.success("You successfully initialized your host profile!")
                 } })
             .then(context.setEditHost(false) )
         } else {
@@ -99,9 +112,9 @@ export default function EditHostPage(props) {
             .then(data => { 
                 if (!data.success) { 
                     console.log(data)
-                    alert("Something went wrong while updating your data")
+                    alert.error("Something went wrong while updating your data")
                 } else {
-                    alert("Update successful!")
+                    alert.success("Update successful!")
                 } })
             .then(context.setEditHost(false) )
 

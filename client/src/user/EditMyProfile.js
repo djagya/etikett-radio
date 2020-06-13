@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from "../Context";
 import { Redirect } from 'react-router-dom';
+import { useAlert } from 'react-alert';
 
 
 export default function MyProfile(props) {
@@ -12,6 +13,7 @@ export default function MyProfile(props) {
     const [email, setEmail] = useState("");
     const [pw, setPW] = useState("");
     const [role, setRole] = useState("");
+    const alert = useAlert();
 
     useEffect(() => {
         fetch(`http://localhost:3000/users/${context.id}`, {
@@ -19,13 +21,24 @@ export default function MyProfile(props) {
             // headers: {"Content-Type": "application/json"}
         })
             .then(res => res.json())
-            .then(data => {
+            .then(data => { 
+                if(data.status === 403) {
+                alert("Status 403: Forbidden")
+                return
+            }
+                if(data.success){
                 setFirstName(data.user.firstName)
                 setLastName(data.user.lastName)
                 setUserName(data.user.userName)
                 setEmail(data.user.email)
                 setRole(data.user.role)
+
+            } else {
+                alert("Something went wrong")
+                return
+            }
             })
+                
     }, [context.id])
 
 
@@ -51,9 +64,13 @@ export default function MyProfile(props) {
             return response.json()
         }
         putData(`http://localhost:3000/users/${context.id}`, body)
-            .then(data => {
-                if (!data.success) { console.log(data) } else {
-                    props.setCookie('user', data.user, { path: '/' })
+            .then(data => { 
+                if (!data.success) { 
+                    console.log(data)
+                    alert.error('Something went wrong...');
+                } else {
+                    props.setCookie('user', data.user, {path: '/'}) 
+                    alert.success('Profile edited!', { timeout: 3000 });
                 }
             })
             .then(context.setProfileEdit(false))

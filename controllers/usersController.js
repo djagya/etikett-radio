@@ -65,7 +65,7 @@ exports.putUser = async (req, res, next) => {
     const user = req.body;
     console.log(id, user)
     try {
-        if (user.pw) {
+        if (user.pw && user.pw.length >= 8) {
             const updatedPW = await encrypt(user.pw);
             user.pw = updatedPW;
         }

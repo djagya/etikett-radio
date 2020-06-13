@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from "react-router-dom";
-import { Context } from "../Context";
+import {Redirect} from "react-router-dom";
+import { useAlert } from 'react-alert';
+import {Context} from "../Context";
 
 export default function LogIn(props) {
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
-    const context = useContext(Context)
+    const context = useContext(Context);
+    const alert = useAlert();
+
     const handleSubmit = event => {
         event.preventDefault()
 
@@ -37,7 +40,6 @@ export default function LogIn(props) {
             })
 
     }
-
 
     const handleFormInput = event => {
         const id = event.target.id;

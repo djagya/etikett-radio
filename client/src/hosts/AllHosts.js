@@ -11,7 +11,17 @@ export default function AllHosts(props) {
     let sortedData = [];
     useEffect(() => {
         GetData("http://localhost:3000/host")
-            .then(data => setHostData(data.host))
+            .then(data => { 
+                if(data.status === 403) {
+                alert("Status 403: Forbidden")
+                return
+            }
+                if(data.success){
+                return setHostData(data.host)
+            } else {
+                alert("Something went wrong")
+            }
+            })
     }, [])
 
     if (hostData.length !== 0) sortedData = hostData.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1)

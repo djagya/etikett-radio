@@ -21,7 +21,18 @@ export default function AllUser() {
             credentials: "include"
         })
             .then(res => res.json())
-            .then(data => setUserData(data.users)) 
+            .then(data => { 
+                if(data.status === 403) {
+                alert("Status 403: Forbidden")
+                return
+            }
+                if(data.success){
+                setUserData(data.users)
+            } else {
+                alert("Something went wrong")
+                return
+            }
+        })
     }, [])
 
     const handleDelete = (id, userName) => {
