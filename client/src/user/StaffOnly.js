@@ -6,15 +6,8 @@ import { Redirect } from 'react-router-dom';
 export default function UserProfile(props) {
     const context = useContext(Context)
 
-    //General reset for when you messed around in the staff only section
-    //and you go to another route and come back that you land on the base level again
-    useEffect(()=>{
-    context.setProfileEdit(false)
-    context.setCreateProfile(false)
-    context.setAllUser(false)
-    context.setEditHost(false)
-    context.setAllHosts(false)
-    }, [])
+   
+    
 
     const handleLogOut = () => {
         props.removeCookie('user', { path: "/" });
