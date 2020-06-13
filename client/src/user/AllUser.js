@@ -57,7 +57,7 @@ export default function AllUser() {
                 <li>{el.userName}</li>
                 <li>{el.email}</li>
                 <li>{el.role}</li>
-                <li><button type="button" onClick={() => handleDelete(el._id, el.userName)}>delete</button></li>
+                <li className="button-container"><button type="button" onClick={() => handleDelete(el._id, el.userName)}>delete</button></li>
             </ol>
         ));
     };

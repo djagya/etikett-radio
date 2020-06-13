@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
 
+  
 
   .list-container {
   width: fit-content;
@@ -20,6 +21,9 @@
   }
   .user-list-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      .button-container {
+      margin: 0;
+    }
   }
 
   .host-list-grid {
