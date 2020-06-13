@@ -22,9 +22,19 @@
   }
   .list-header {
     margin-bottom: 3rem;
+    text-decoration-line: underline;
     li {
       letter-spacing: 3px;
-      text-decoration-line: underline;
+      
+    }
+
+    .sort {
+      cursor: pointer;
+      
+      transition: 0.1s;
+      &:hover {
+        color: $etikett-hover;
+      }
     }
   }
 

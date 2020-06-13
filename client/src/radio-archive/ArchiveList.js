@@ -77,10 +77,10 @@ export default function ArchiveList(props) {
     };
 
     const renderLiHeader = () => {
-        const listHeader = ["show", "host", "genre", "date"]
+        const listHeader = ["show.", "host.", "genre.", "date."]
 
         return listHeader.map((el, i) =>(
-            <li key={i} onClick={()=>console.log(i)}>{el}</li>
+            <li key={i} onClick={()=>console.log(i)}><span className="sort">{el}</span></li>
 
         ))
     }
