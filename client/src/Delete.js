@@ -1,7 +1,5 @@
-import { useAlert } from 'react-alert';
 
 export default function Delete(checkedIDs, route) {
-    const alert = useAlert()
 
     checkedIDs.map(id => {
         const deleteData = async (url) => {
