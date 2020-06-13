@@ -68,8 +68,6 @@ exports.putUser = async (req, res, next) => {
         if (user.pw && user.pw.length >= 8) {
             const updatedPW = await encrypt(user.pw);
             user.pw = updatedPW;
-        } else {
-            delete user.pw;
         }
         const updateUser = await User.findByIdAndUpdate(id, user, { new: true });
         if (!updateUser) throw createError(500);
