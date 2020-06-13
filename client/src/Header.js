@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext  } from 'react';
 import ReactPlayer from 'react-player';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
 import ChatApp from './chat/ChatApp';
+import GetData from "./GetData";
+import { Context } from "./Context";
 
 function Header(props) {
+    const context = useContext(Context)
+    
+
+
+
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
         const video = 'https://www.twitch.tv/truthmusic';
@@ -61,6 +68,28 @@ function Header(props) {
         }
     }
 
+    ////////////////
+    //For InfoBar
+    ////////////////
+    useEffect(() => {
+    GetData("http://localhost:3000/infobar")
+    .then(data => {
+        if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
+        if (data.status ===403) {
+            alert.error("Status 403: Forbidden") 
+            return
+        }
+        if (!data.success) {
+            alert.error("Failed to fetch data, please contact an admin")
+            return
+        };
+        context.setInfoBarMessage(data.infoBar[0].message)
+        context.setInfoID(data.infoBar[0]._id)
+    })
+    },  [])
+
+
+
     return (
         <header className={`App-header ${headerSize}`}>
 
@@ -100,7 +129,7 @@ function Header(props) {
                     </div>
                     : null}
                 <div className="message">
-                    <span className="moving-text">etikett radio - stream description, which is gonna be a loooong story</span>
+                    <span className="moving-text">{context.infoBarMessage}</span>
                 </div>
 
             </section>

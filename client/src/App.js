@@ -53,6 +53,8 @@ function App(props) {
   const [editHostID, setEditHostID] = useState("")
   const [allHosts, setAllHosts] = useState(false)
   const [editInfoBar, setEditInfoBar] = useState(false)
+  const [infoBarMessage, setInfoBarMessage] = useState("")
+  const [infoID, setInfoID] = useState("")
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -71,7 +73,9 @@ function App(props) {
             editHost, setEditHost,
             editHostID, setEditHostID,
             allHosts, setAllHosts,
-            editInfoBar, setEditInfoBar
+            editInfoBar, setEditInfoBar,
+            infoBarMessage, setInfoBarMessage,
+            infoID, setInfoID
           }
         }>
           <div className="App">
