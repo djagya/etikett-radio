@@ -3,7 +3,6 @@ import GetData from "../GetData";
 
 import DocumentTitle from 'react-document-title';
 
-import HostShowcase from "./HostShowcase";
 
 
 export default function Hosts() {
@@ -11,9 +10,8 @@ export default function Hosts() {
     let filteredData = []
     let sortedData = []
 
-    // let [leftNum, setLeftNum] = useState(0)
     let [num, setNum]  = useState(0)
-    // let [rightNum, setRightNum] = useState(2)
+
     useEffect(() => {
       GetData("http://localhost:3000/host")
         .then(data => setHostData(data.host))
@@ -33,7 +31,7 @@ export default function Hosts() {
         if (sortedData.length === 0) return null
         const host = sortedData[num]
 
-
+        console.log(sortedData)
         return (
         <div>
             <input className="carousel-open" type="radio" id={`carousel-${num}`} name="carousel" 
@@ -45,15 +43,39 @@ export default function Hosts() {
                 <h3>{host.hostName}</h3>
                     <q>{host.description}</q>
                     <div className="social-media-container">
-                    {host.youtube === "" ? null : <a href={host.youtube} target="_blank" rel="noopener noreferrer">Youtube</a>}
-                    {host.soundcloud === "" ? null : <a href={host.soundcloud} target="_blank" rel="noopener noreferrer">SoundCloud</a>}
-                    {host.mixcloud === "" ? null : <a href={host.mixcloud} target="_blank" rel="noopener noreferrer">MixCloud</a>}
-                    {host.facebook === "" ? null : <a href={host.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>}
-                    {host.instagram === "" ? null : <a href={host.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>}
-                    {host.twitter === "" ? null : <a href={host.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>}
-                    {host.snapchat === "" ? null : <a href={host.snapchat} target="_blank" rel="noopener noreferrer">Snapchat</a>}
-                    {host.otherLink === "" ? null : <a href={host.otherLink} target="_blank" rel="noopener noreferrer">{host.otherName}</a>}
+                        {host.youtube === "" ? null : <a href={host.youtube} target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-youtube-square"></i>
+                        </a>}
+
+                        {host.soundcloud === "" ? null : <a href={host.soundcloud} target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-soundcloud"></i>
+                        </a>}
+
+                        {host.mixcloud === "" ? null : <a href={host.mixcloud} target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-mixcloud"></i>
+                        </a>}  
+
+                        {host.facebook === "" ? null : <a href={host.facebook} target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-facebook-square"></i>
+                        </a>}
+
+                        {host.instagram === "" ? null : <a href={host.instagram} target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-instagram"></i>
+                        </a>}
+
+                        {host.twitter === "" ? null : <a href={host.twitter} target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-twitter-square"></i>
+                        </a>}
+
+                        {host.snapchat === "" ? null : <a href={host.snapchat} target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-snapchat-square"></i>
+                        </a>}
                     </div>
+                        {host.otherLink === "" ? null : <a href={host.otherLink} target="_blank" rel="noopener noreferrer">
+                        {host.otherName}
+                        </a>}
+
+                    
                 </div>
             </div>
         </div> 
