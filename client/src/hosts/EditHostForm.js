@@ -27,7 +27,7 @@ export default function EditHostPage(props) {
     const [otherName, setOtherName] = useState("");
     const [otherLink, setOtherLink] = useState("");
     const [profileID, setProfileID] = useState("");
-    const [isActive, setIsActive] = useState("True");
+    const [isActive, setIsActive] = useState("ative");
 
     useEffect(() => {
         GetData("http://localhost:3000/host")
@@ -237,8 +237,8 @@ export default function EditHostPage(props) {
                     <label htmlFor="isActive">
                         <span className="required">*</span>Active Host
                     <select id="isActive" value={isActive} onChange={handleFormInput}>
-                        <option>True</option>
-                        <option>False</option>
+                        <option>active</option>
+                        <option>unactive</option>
                     </select>
                     </label>
                 </div>
