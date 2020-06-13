@@ -1,7 +1,7 @@
 ///////////////////////////////////
 //         All User Page
 ///////////////////////////////////
-.user-list {
+.all-list {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,15 +11,23 @@
   width: fit-content;
   }
  
-  .list-header, .user-data {
+  .list-header, .all-data {
     // max-width: 800px;
     text-align: left;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 1rem;
     
+    gap: 1rem;
   }
-  .user-data {
+  .user-list-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .host-list-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+
+  .all-data {
     margin: .5rem 0 ;
   }
 }
