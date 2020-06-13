@@ -5,7 +5,7 @@ import GetData from "../GetData";
 
 
 
-export default function AllHosts() {
+export default function AllHosts(props) {
     const context = useContext(Context);
     const [hostData, setHostData] = useState([]);
     let sortedData = [];
@@ -17,16 +17,32 @@ export default function AllHosts() {
     if (hostData.length !== 0) sortedData = hostData.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1)
 
     const renderHosts = () => {
+        console.log(sortedData)
         if (sortedData.lenght === 0) return null
         return sortedData.map((host, i) => (
             <ol key={i} className="all-data host-list-grid">
                 <li>{host.hostName}</li>
                 <li>{host.isActive}</li>
-                <li>Link To Edit</li>
+                <li className="button-container">
+                    <button type="button" onClick={() => {
+                        context.setEditHostID(host.userID)
+                        context.setEditHost(true)
+                        }}>edit
+                    </button>
+                </li>
 
             </ol>
         ))
     }
+
+
+    if (context.editHost) {
+        return <Redirect to={`/hosts/${context.id}`} />
+    }
+
+    //Delete from EditHostForm redirects to AllHosts in case Admin was coming from there to delete a profile
+    //and if a user is deleting the own profile, he will get redirected to staff-only
+    if (props.cookies.user.role !== "Admin") {return <Redirect to={`/user/${context.id}`}/>}
 
     if (!context.allHosts) {return <Redirect to={`/user/${context.id}`}/>}
     return (
@@ -40,7 +56,6 @@ export default function AllHosts() {
                     <ul className="list-header host-list-grid">
                         <li>host name</li>
                         <li>is active</li>
-                        {/* <li>edit</li> */}
                     </ul>
                 {renderHosts()}
                 </div>

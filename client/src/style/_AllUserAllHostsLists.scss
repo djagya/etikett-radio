@@ -22,12 +22,15 @@
   .user-list-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
       .button-container {
-      margin: 0;
-    }
+        margin: 0;
+      }
   }
 
   .host-list-grid {
     grid-template-columns: 1fr 1fr 1fr;
+    .button-container {
+      margin: 0;
+    }
   }
 
 

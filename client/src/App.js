@@ -49,12 +49,13 @@ function App(props) {
   const [createProfile, setCreateProfile] = useState(false)
   const [allUser, setAllUser] = useState(false)
   const [editHost, setEditHost] = useState(false)
+  const [editHostID, setEditHostID] = useState("")
   const [allHosts, setAllHosts] = useState(false)
   if (cookies.user) {
     id = cookies.user._id
   }
   //////////////////////
-
+console.log(editHostID)
   return (
     <DocumentTitle title="Homepage, video streaming">
       <BrowserRouter>
@@ -66,6 +67,7 @@ function App(props) {
             createProfile, setCreateProfile,
             allUser, setAllUser,
             editHost, setEditHost,
+            editHostID, setEditHostID,
             allHosts, setAllHosts
           }
         }>
