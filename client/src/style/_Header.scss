@@ -1,12 +1,9 @@
-$nav-height: 6vh;
-$embeded-video-height: 88vh;
-$header-height: 20vh;
 
 ///////////////////////////////////
 //          Header
 ///////////////////////////////////
 .App-header {
-  background-color: #000;
+  background-color: $etikett-black;
   display: flex;
   font-size: calc(10px + 2vmin);
   z-index: 1;
@@ -69,7 +66,7 @@ nav {
 //           Chat
 ///////////////////////////////////
 .chat {
-  background-color: transparent;
+  background-color: $etikett-black-000;
 }
 
 .chat-homescreen {
@@ -127,9 +124,9 @@ nav {
 
 .playPauseBtn {
   border: 0;
-  background: transparent;
+  background: $etikett-black-000;
   height: 18px;
-  border-color: transparent transparent transparent #fff;
+  border-color: $etikett-black-000 $etikett-black-000 $etikett-black-000 #fff;
   transition: 100ms all ease;
   cursor: pointer;
 

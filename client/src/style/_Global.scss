@@ -1,0 +1,292 @@
+$header-height: 20vh;
+$nav-height: 6vh;
+$embeded-video-height: 88vh;
+//colors
+$etikett-black: rgb(1, 5, 8);
+$etikett-black-050: rgba(1, 5, 8, 0.5);
+$etikett-black-025: rgba(1, 5, 8, 0.25);
+$etikett-black-000: rgba(1, 5, 8, 0);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: white;
+  background-color: $etikett-black-000;
+  letter-spacing: .5px;
+}
+
+*::selection {
+  background-color: #ffffff;
+}
+
+///////////////////////////////////
+//         Typography
+///////////////////////////////////
+.App {
+  text-align: center;
+}
+
+@font-face {
+  font-family: "GaramondPro";
+  src: url("../font/AGaramondPro-Regular.otf")
+}
+
+h2 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h3 {
+  margin-top: 1.5rem;
+}
+
+///////////////////////////////////
+//        Overall Layout
+///////////////////////////////////
+a {
+  margin: 1rem 0;
+}
+
+q {
+  max-width: 300px;
+  text-align: center;
+  margin: 16px 0;
+}
+
+///////////////////////////////////
+//         Main Page
+///////////////////////////////////
+.not-stream-component {
+  margin-top: $header-height; //-80vh;
+  background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
+}
+
+.noise {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+.solar-system {
+  position: fixed;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vh;
+  height: 100vh;
+  margin: 0 auto;
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+  border-radius: 45vw;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  opacity: 0.8;
+  // animation: loading 3s ease;
+}
+
+// @keyframes loading {
+//   0% {
+//     z-index: -1;
+//   }
+//   100% {
+//     z-index: 1;
+//   }
+// }
+
+.stream-page {
+  position: relative;
+}
+
+footer {
+  height: 100vh;
+  background-image: linear-gradient($etikett-black-025, $etikett-black-000);
+  display: flex;
+  align-items: flex-end;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+////skip link aria///
+.skip-link {
+  z-index: 9999;
+  transform: translateY(calc(-100% - 1rem));
+  display: block;
+  position: absolute;
+  left: 1rem;
+  top: -1rem;
+  height: 50px;
+  width: 100px;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  transition: all 300ms ease-in-out;
+}
+
+///////////////////////////////////
+//          Input Forms
+///////////////////////////////////
+.input-form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  .grid-container {
+    display: grid;
+    text-align: left;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    width: 600px;
+
+    label {
+
+      input,
+      select {
+        width: 100%;
+        height: 2rem;
+        padding-left: .5rem;
+        font-family: "GaramondPro";
+        option {
+          color: black;
+          font-size: 1rem;
+        }
+        
+      }
+      
+      textarea {
+        padding: .5rem;
+        font-family: "GaramondPro";
+
+      }
+    }
+
+    .describe {
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+      textarea {
+        width: 100%;
+        min-height: 5rem;
+      }
+    }
+
+  }
+
+  .submit-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    margin-top: 1rem;
+    height: 2rem;
+    width: 100%;
+
+    input {
+      height: 100%;
+      padding: 0 5px;
+      font-size: 1rem;
+    }
+  }
+
+  .required {
+    color: red;
+  }
+}
+
+///////////////////////////////////
+//           Buttons
+///////////////////////////////////
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 2rem;
+  margin: 2rem 0;
+}
+
+button {
+  height: 100%;
+  padding: 0 5px;
+  font-size: 1rem;
+}
+
+.check-delete {
+  width: 20px;
+  height: 20px;
+}
+
+.controls {
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+///////////////////////////////////
+//           Loading
+///////////////////////////////////
+.loading {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: fade-in 3s ease forwards;
+
+  img {
+    width: 150px;
+    height: 150px;
+    animation: beat 3s ease-in-out 2s infinite;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes beat {
+  0% {
+    width: 150px;
+    height: 150px;
+  }
+
+  50% {
+    width: 170px;
+    height: 170px;
+  }
+
+  100% {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+
+//---------------------------------------------//
+//            From the base react              //
+//---------------------------------------------//
+body {
+  font-family: "GaramondPro",
+    serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::placeholder {
+  font-family: "GaramondPro", serif;
+}

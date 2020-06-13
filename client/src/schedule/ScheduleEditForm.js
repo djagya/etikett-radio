@@ -4,9 +4,9 @@ import { useAlert } from 'react-alert';
 export default function ScheduleEdit(props) {
 
     const data = props.data
-    const timeFrom = data.from.toString().substring(0, 10)+"T"+data.from.toString().substring(11, 16)
-    const timeTo = data.to.toString().substring(0, 10)+"T"+data.to.toString().substring(11, 16)
-    
+    const timeFrom = data.from.toString().substring(0, 10) + "T" + data.from.toString().substring(11, 16)
+    const timeTo = data.to.toString().substring(0, 10) + "T" + data.to.toString().substring(11, 16)
+
 
     const [host, setHost] = useState(data.host);
     const [show, setShow] = useState(data.show);
@@ -31,7 +31,8 @@ export default function ScheduleEdit(props) {
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"},
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(data)
             })
             return response.json()
@@ -64,7 +65,7 @@ export default function ScheduleEdit(props) {
                 setFrom(input)
                 setTo(input)
                 break;
-                case "to":
+            case "to":
                 setTo(input)
                 break;
             default: console.log("Schedule Edit ran through without effect")
@@ -80,27 +81,27 @@ export default function ScheduleEdit(props) {
             <h2>edit schedule entry</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="edit-grid-container grid-container">
-                    
-                <label htmlFor="host">
-                    host
+
+                    <label htmlFor="host">
+                        host
                     <input type="text" id="host" placeholder="host" value={host} onChange={handleFormInput} />
-                </label>
-                <label htmlFor="show">
-                    <span className="required">*</span>show
+                    </label>
+                    <label htmlFor="show">
+                        <span className="required">*</span>show
                     <input type="text" id="show" placeholder="show" value={show} onChange={handleFormInput} />
-                </label>
+                    </label>
 
                     <label htmlFor="from">
                         <span className="required">*</span>from
-                    <input type="datetime-local" id="from"  value={from} onChange={handleFormInput} />
-                    </label> 
+                    <input type="datetime-local" id="from" value={from} onChange={handleFormInput} />
+                    </label>
                     <label htmlFor="to">
                         <span className="required">*</span>to
-                    <input type="datetime-local" id="to"  value={to} onChange={handleFormInput} />
-                    </label> 
+                    <input type="datetime-local" id="to" value={to} onChange={handleFormInput} />
+                    </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" /><span className="required">* required</span>
+                    <input type="submit" value="Save" role="button" /><span className="required">* required</span>
                 </div>
             </form>
         </div>

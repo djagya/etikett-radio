@@ -21,7 +21,7 @@ const SolarSystem = props => {
 
 const Sun = () => {
     return (
-        <div className="sun">
+        <div className="sun" aria-label="The logo of etikett~radio as a symbolic of the sun.">
         </div>
     );
 };

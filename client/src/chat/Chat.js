@@ -21,7 +21,7 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     socket = io(endpoint);
 
     // Emit JOIN
-    socket.emit('join', {name, room}, (error) => {
+    socket.emit('join', { name, room }, (error) => {
       if (error) {
         sessionStorage.removeItem('name');
         alert.error(error, {

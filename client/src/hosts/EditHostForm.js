@@ -4,6 +4,8 @@ import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 import PostData from "../PostData";
 import PutData from "../PutData";
+import GetData from "../GetData";
+import Delete from "../Delete";
 
 
 export default function EditHostPage(props) {
@@ -11,7 +13,7 @@ export default function EditHostPage(props) {
         
     const [profileExists, setProfileExists] = useState(false)
 
-    const id = context.id;
+    const id = context.editHostID;
     const role = props.cookies.user.role
     const [hostName, setHostName] = useState("");
     const [hostImg, setHostImg] = useState("");
@@ -28,17 +30,22 @@ export default function EditHostPage(props) {
     const [profileID, setProfileID] = useState("");
     const alert = useAlert();
 
+    const [isActive, setIsActive] = useState("ative");
+    
     useEffect(() => {
-        fetch("http://localhost:3000/host", {
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        })
-            .then(res => res.json())
+        GetData("http://localhost:3000/host")
             .then(data => {
                 if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
                 
+                console.log(data.host)
+                if (data.status ===403) {
+                    alert.error("Status 403: Forbidden") 
+                    return
+                }
+                if (!data.success) {
+                    alert.error("Failed to fetch data, please contact an admin")
+                    return
+                };
                 const filteredData = (data.host.filter(el => el.userID === id ))
                 if (filteredData.length === 0) return
                 if (filteredData.length > 1) {
@@ -64,6 +71,7 @@ export default function EditHostPage(props) {
                     setOtherName(filteredData[0].otherName)
                     setOtherLink(filteredData[0].otherLink)
                     setProfileID(filteredData[0]._id)
+                    // isActive(filteredData[0].isActive)
                 }   else {
                     return alert.error("Something went wrong")
                 }
@@ -86,6 +94,7 @@ export default function EditHostPage(props) {
             "snapchat": snapchat,
             "otherName": otherName,
             "otherLink": otherLink,
+            "isActive": isActive
         };
 
         if (!profileExists) {
@@ -95,7 +104,7 @@ export default function EditHostPage(props) {
                     console.log(data)
                     alert.error("Something went wrong while uploading your data for the first time.")
                 } else {
-                    alert.success("Congrats on your first host profile entry!")
+                    alert.success("You successfully initialized your host profile!")
                 } })
             .then(context.setEditHost(false) )
         } else {
@@ -151,17 +160,34 @@ export default function EditHostPage(props) {
             case "otherLink":
                 setOtherLink(input)
                 break;
+            case "isActive":
+                setIsActive(input)
+                break;
             default: console.log("Edit Input in EditHostPage.js ran through without effect")
         }
     };
 
+    const handleDelete = (id, hostName) => {
+
+        const check = window.confirm(`You really want to delete "${hostName}"?`);
+
+        if (check) {
+            //delete from db
+            Delete([id], "host")
+            context.setEditHost(false)
+        } else {
+            return null
+        }
+    }
+
     if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
     return (
         <div className="not-stream-component edit-host-page">
-            <h2>edit my host page</h2>
-            <form className="post-blog input-form" onSubmit={handleSubmit}>
+            <h2>edit my host profile</h2>
+            <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
                     <button type="button" onClick={() => context.setEditHost(false)}>cancel</button>
+                    <button type="button" onClick={() => handleDelete(profileID, hostName)}>delete</button>
                 </div>
                 <div className="grid-container">
                     <label htmlFor="hostName">
@@ -220,6 +246,13 @@ export default function EditHostPage(props) {
                     <label htmlFor="otherLink">
                         link to your website
                         <input type="url" id="otherLink" placeholder="https://myspace.com/roflcopter/imsuchaboomer" value={otherLink} onChange={handleFormInput} />
+                    </label>
+                    <label htmlFor="isActive">
+                        <span className="required">*</span>Active Host
+                    <select id="isActive" value={isActive} onChange={handleFormInput}>
+                        <option>active</option>
+                        <option>unactive</option>
+                    </select>
                     </label>
                 </div>
                 <div className="submit-button">

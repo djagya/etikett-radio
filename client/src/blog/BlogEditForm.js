@@ -25,7 +25,8 @@ export default function BlogEditForm(param) {
                 method: "PUT",
                 credentials: "include",
                 headers: {
-                    "Content-Type": "application/json",},
+                    "Content-Type": "application/json",
+                },
                 body: JSON.stringify(data)
             })
             return response.json()
@@ -45,9 +46,9 @@ export default function BlogEditForm(param) {
             })
             
 
-        
+
     };
-    
+
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -64,31 +65,31 @@ export default function BlogEditForm(param) {
             default: console.log("BlogEdit ran through without effect")
         }
     };
-    
+
     return (
         <div className="input-form">
-        <h2>Edit {data.heading}</h2>
+            <h2>Edit {data.heading}</h2>
             <form className="post-blog" onSubmit={handleSubmit}>
-            <div className="grid-container">
-                
+                <div className="grid-container">
 
-                <label htmlFor="heading">
-                    <span className="required">*</span>heading
+
+                    <label htmlFor="heading">
+                        <span className="required">*</span>heading
                 <input type="heading" id="heading" placeholder="Heading" value={heading} onChange={handleFormInput} />
-                </label>
-                <label htmlFor="date">
-                    <span className="required">*</span>date
+                    </label>
+                    <label htmlFor="date">
+                        <span className="required">*</span>date
                 <input type="date" id="date" placeholder="yyyy-mm-dd" value={date.substring(0, 10)} onChange={handleFormInput} />
-                </label> 
+                    </label>
 
-                <label className="describe" htmlFor="text">
-                <textarea type="text" id="text" placeholder="Whats new?" onChange={handleFormInput} defaultValue={text} />
-                </label>
-            </div>
-            <div className="submit-button">
-                <input type="submit" value="Save" /><span className="required">* required</span>
-            </div>
-        </form>
+                    <label className="describe" htmlFor="text">
+                        <textarea type="text" id="text" placeholder="Whats new?" onChange={handleFormInput} defaultValue={text} />
+                    </label>
+                </div>
+                <div className="submit-button">
+                    <input type="submit" value="Save" role="button" /><span className="required">* required</span>
+                </div>
+            </form>
 
         </div>
     )

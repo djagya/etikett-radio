@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {Context} from "../Context";
+import { Context } from "../Context";
 import { Redirect } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 
@@ -21,16 +21,27 @@ export default function MyProfile(props) {
             // headers: {"Content-Type": "application/json"}
         })
             .then(res => res.json())
-            .then(data => {
+            .then(data => { 
+                if(data.status === 403) {
+                alert("Status 403: Forbidden")
+                return
+            }
+                if(data.success){
                 setFirstName(data.user.firstName)
                 setLastName(data.user.lastName)
                 setUserName(data.user.userName)
                 setEmail(data.user.email)
                 setRole(data.user.role)
-            }) 
+
+            } else {
+                alert("Something went wrong")
+                return
+            }
+            })
+                
     }, [context.id])
-    
-    
+
+
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -46,8 +57,8 @@ export default function MyProfile(props) {
         const putData = async (url, data) => {
             const response = await fetch(url, {
                 method: "PUT",
-                credentials:"include",
-                headers: {"Content-Type": "application/json"},
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             })
             return response.json()
@@ -91,17 +102,17 @@ export default function MyProfile(props) {
         }
     };
 
-    if (!context.profileEdit) {return <Redirect to={`/user/${context.id}`}/>}
-    
+    if (!context.profileEdit) { return <Redirect to={`/user/${context.id}`} /> }
+
     return (
         <div>
-                <div className="input-form not-stream-component">
+            <div className="input-form not-stream-component">
                 <h2>my profile</h2>
-                
-                <form onSubmit={handleSubmit}>
-                <div className="button-container">
-                <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
-                </div>
+
+                <form onSubmit={handleSubmit} role="form">
+                    <div className="button-container">
+                        <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
+                    </div>
                     <div className="grid-container">
                         <label htmlFor="firstName">
                             <span className="required">*</span>first name
@@ -124,21 +135,21 @@ export default function MyProfile(props) {
                         <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
                         </label>
                         {user && user.role === 'Admin' ?
-                        <label htmlFor="role">
-                            <span className="required">*</span>role
+                            <label htmlFor="role">
+                                <span className="required">*</span>role
                         <select id="role" value={role} onChange={handleFormInput}>
-                            <option>Admin</option>
-                            <option>Host</option>
-                        </select>
-                        </label>
-                        : null }
+                                    <option>Admin</option>
+                                    <option>Host</option>
+                                </select>
+                            </label>
+                            : null}
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="Save" /><span className="required">* Required</span>
+                        <input type="submit" value="Save" role="button" /><span className="required">* Required</span>
                     </div>
                 </form>
             </div>
-            
+
         </div>
     )
 }

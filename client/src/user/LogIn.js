@@ -31,24 +31,16 @@ export default function LogIn(props) {
         }
 
         postData("http://localhost:3000/users/login", body)
-            .then(data => { 
-                logIn(data)
-                console.log(data)
-                props.setCookie('user', data.user, {path: '/'})
+            .then(data => {
+                if (data.status === 404) return alert("Invalid Email") 
+                if (data.status === 403) return alert("Invalid Password")
+                    if (data.success) {
+                        props.setCookie('user', data.user, { path: '/' })
+                }
             })
 
     }
 
-    const logIn = (data) => {
-        
-        if (data.status === 404) alert.error("Invalid Email");
-        if (data.status === 403) alert.error("Invalid Password");
-        
-        else {
-            console.log(data)
-        }
-    }
-    
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -67,7 +59,7 @@ export default function LogIn(props) {
     return (
         <div className="input-form not-stream-component">
             <h2>Log In</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} role="form">
                 <div className="grid-container">
                     <label htmlFor="email">
                         <span className="required">*</span>email
@@ -79,7 +71,7 @@ export default function LogIn(props) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Log In" /><span className="required">* required</span>
+                    <input type="submit" value="Log In" role="button" /><span className=" required">* required</span>
                 </div>
             </form>
         </div>

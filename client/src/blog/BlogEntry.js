@@ -21,15 +21,8 @@ export default function BlogEntry(el, i) {
             let filteredBlogData = [...context.blogData].filter(el => el._id !== id);
 
             context.setBlogData(filteredBlogData)
-
             //delete from db
-            Delete([id], "blog").then(output => {
-                if (output) {
-                    alert.success('Entry deleted')
-                } else {
-                    alert.error('Something went wrong...')
-                }
-            })
+            Delete([id], "blog")
         } else {
             return null
         }

@@ -31,7 +31,7 @@ export default function ArchiveEdit(props) {
         const putData = async (url, data) => {
             const response = await fetch(url, {
                 method: "PUT",
-                credentials:"include",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -50,7 +50,7 @@ export default function ArchiveEdit(props) {
                 }
             })
     }
-   
+
 
     const handleFormInput = event => {
         const id = event.target.id;
@@ -72,10 +72,10 @@ export default function ArchiveEdit(props) {
             case "link":
                 setLink(input)
                 break;
-                case "img":
-                    setImg(input)
-                    break;
-                case "description":
+            case "img":
+                setImg(input)
+                break;
+            case "description":
                 setDescription(input)
                 break;
             default: console.log("Archive Edit HandleFormInput ran through without effect")
@@ -87,21 +87,21 @@ export default function ArchiveEdit(props) {
         const fields = ["show", "host", "genre"];
         const value = [show, host, genre]
         return fields.map((field, i) => (
-                <label key={i} htmlFor={field}>
-                    <span className="required">*</span>{field}
-                    <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
-                </label>
-            ));
+            <label key={i} htmlFor={field}>
+                <span className="required">*</span>{field}
+                <input type="text" id={field} placeholder={field} value={value[i]} onChange={handleFormInput} />
+            </label>
+        ));
     };
 
     return (
         <div>
-            
+
             <form className="post-archive input-form" onSubmit={handleSubmit}>
-            <div className="button-container">
-            </div>
+                <div className="button-container">
+                </div>
                 <div className="grid-container">
-                   
+
                     {repetitiveInputFields()}
                     <label htmlFor="date">
                         <span className="required">*</span>date
@@ -121,7 +121,7 @@ export default function ArchiveEdit(props) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Update" /><span className="required">* Required</span>
+                    <input type="submit" value="Update" role="button" /><span className="required">* Required</span>
                 </div>
             </form>
         </div>
