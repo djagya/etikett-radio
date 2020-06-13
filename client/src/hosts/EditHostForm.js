@@ -28,10 +28,8 @@ export default function EditHostPage(props) {
     const [otherName, setOtherName] = useState("");
     const [otherLink, setOtherLink] = useState("");
     const [profileID, setProfileID] = useState("");
-    const alert = useAlert();
-
     const [isActive, setIsActive] = useState("active");
-    
+    const alert = useAlert();
     useEffect(() => {
         GetData("http://localhost:3000/host")
             .then(data => {
