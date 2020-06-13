@@ -33,7 +33,6 @@ export default function EditHostPage(props) {
         GetData("http://localhost:3000/host")
             .then(data => {
                 if (!data.success) alert("Failed to fetch data, please contact an admin");
-                console.log(data.host.map(el => console.log(el.userID , id)))
                 const filteredData = (data.host.filter(el => el.userID === id ))
                 if (filteredData.length === 0) return
                 if (filteredData.length > 1) {

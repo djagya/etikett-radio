@@ -17,7 +17,6 @@ export default function AllHosts(props) {
     if (hostData.length !== 0) sortedData = hostData.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1)
 
     const renderHosts = () => {
-        console.log(sortedData)
         if (sortedData.lenght === 0) return null
         return sortedData.map((host, i) => (
             <ol key={i} className="all-data host-list-grid">

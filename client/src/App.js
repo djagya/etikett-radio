@@ -55,7 +55,6 @@ function App(props) {
     id = cookies.user._id
   }
   //////////////////////
-console.log(editHostID)
   return (
     <DocumentTitle title="Homepage, video streaming">
       <BrowserRouter>
