@@ -7,8 +7,11 @@ const hosts = props.hosts
 
     const renderHost = (host, i) => (
         <li key={i}>
+        <input className="carousel-open" type="radio" id={`carousel-${i}`} name="carousel" 
+        aria-hidden="true" hidden defaultChecked={i===1 ? true : false} />
+        <div className="carousel-item">
             <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} />
-
+        </div>
         </li>
     )
 

@@ -36,21 +36,9 @@ export default function Hosts() {
     <DocumentTitle title="Hosts page">
     <div className="not-stream-component host-carousel">
     <h2>hosts</h2>
-    <HostShowcase hosts={sortedData} />
         <div className="carousel">
             <div className="carousel-inner">
-                <input className="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden/>
-                <div className="carousel-item">
-                    <img src={Img1}/>
-                </div>
-                <input className="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden defaultChecked="checked"/>
-                <div className="carousel-item">
-                    <img src={Img2}/>
-                </div>
-                <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden/>
-                <div className="carousel-item">
-                    <img src={Img3}/>
-                </div>
+                <HostShowcase hosts={sortedData} />
                 <label htmlFor="carousel-3" className="carousel-control prev control-1">‹</label>
                 <label htmlFor="carousel-2" className="carousel-control next control-1">›</label>
                 <label htmlFor="carousel-1" className="carousel-control prev control-2">‹</label>
