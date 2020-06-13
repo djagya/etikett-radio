@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from "../Context"
 import { Redirect } from 'react-router-dom';
 
@@ -31,7 +31,9 @@ export default function UserProfile(props) {
 
     return (
 
-        <div className="not-stream-component staff-only">
+        <>
+            <a href="#maincontent" className="skip-link">Skip to main content</a>
+            <div className="not-stream-component staff-only">
             <div>
                 <h2>logged in as {props.cookies.user.firstName}</h2>
                 <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
@@ -49,8 +51,10 @@ export default function UserProfile(props) {
                     : null}
                 <button onClick={handleLogOut}>log out</button>
 
+                </div>
+
             </div>
-        </div>
+        </>
 
     )
 }

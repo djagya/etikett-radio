@@ -44,32 +44,36 @@ export default function Contact() {
 
     return (
         <DocumentTitle title="Contact page">
-            <div className="not-stream-component input-form">
-                <h1>contact</h1>
-                <form onSubmit={handleSubmit} role="contact-form">
-                    <div className="grid-container">
-                        <label htmlFor="name">
-                            <span className="required">*</span>name
+            <>
+                <a href="#maincontent" className="skip-link">Skip to main content</a>
+                <div className="not-stream-component input-form">
+
+                    <h1 id="maincontent">contact</h1>
+                    <form onSubmit={handleSubmit} role="contact-form" >
+                        <div className="grid-container">
+                            <label htmlFor="name">
+                                <span className="required">*</span>name
                     <input type="text" id="name" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
-                        </label>
-                        <label htmlFor="email">
-                            <span className="required">*</span>email
+                            </label>
+                            <label htmlFor="email">
+                                <span className="required">*</span>email
                     <input type="text" id="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        </label>
-                        <label htmlFor="subject">
-                            <span className="required">*</span>subject
+                            </label>
+                            <label htmlFor="subject">
+                                <span className="required">*</span>subject
                     <input type="text" id="subject" placeholder="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
-                        </label>
-                        <label className="describe" htmlFor="message">
-                            <span className="required">*</span>message
+                            </label>
+                            <label className="describe" htmlFor="message">
+                                <span className="required">*</span>message
                     <textarea type="text" id="message" placeholder="Hey, whats up?" value={message} onChange={(e) => setMessage(e.target.value)} />
-                        </label>
-                    </div>
-                    <div className="submit-button">
-                        <input type="submit" value="Send" role='button' role="button" /><span className="required">* required</span>
-                    </div>
-                </form>
-            </div>
+                            </label>
+                        </div>
+                        <div className="submit-button">
+                            <input type="submit" value="Send" role='button' /><span className="required">* required</span>
+                        </div>
+                    </form>
+                </div>
+            </>
         </DocumentTitle>
 
     )
