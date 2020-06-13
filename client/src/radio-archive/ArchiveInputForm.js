@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 
 export default function ArchiveInputForm() {
     const [host, setHost] = useState("");
@@ -8,6 +9,7 @@ export default function ArchiveInputForm() {
     const [link, setLink] = useState("");
     const [img, setImg] = useState("");
     const [description, setDescription] = useState("");
+    const alert = useAlert();
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -38,9 +40,13 @@ export default function ArchiveInputForm() {
 
         const reload = (data) => {
             if (data.success) {
-                window.location.reload()
+                alert.success('Your entry has been posted!', {
+                    onClose: () => {
+                        window.location.reload()
+                    }
+                })
             } else {
-                alert(data.err)
+                alert.error(data.err);
             }
         }
     }

@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import {Context} from "../Context";
+import { useAlert } from 'react-alert';
 
 export default function ArchiveEdit(props) {
-    const context = useContext(Context)
-    const archive= props.data
-    const id = props.data._id
+    const context = useContext(Context);
+    const archive= props.data;
+    const id = props.data._id;
+    const alert = useAlert();
     const [show, setShow] = useState(archive.show);
     const [host, setHost] = useState(archive.host);
     const [genre, setGenre] = useState(archive.genre);
@@ -38,10 +40,15 @@ export default function ArchiveEdit(props) {
             return response.json()
         }
         putData(`http://localhost:3000/archive/${id}`, body)
-            .then(data => { if (!data.success) 
-                { console.log(data) } else {
-                    context.setShowEdit(false)
-                } })
+            .then(data => { 
+                if (!data.success) { 
+                    console.log(data);
+                    alert.error('Server is not responding... Try again later.'); 
+                } else {
+                    context.setShowEdit(false);
+                    alert.success('Your changes have been saved!', { timeout: 3000 } );
+                }
+            })
     }
    
 

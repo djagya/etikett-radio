@@ -18,7 +18,7 @@ export default function Delete(checkedIDs, route) {
                 if (data.success) {
                     alert.success('Data has been deleted.');
                 } else {
-                    alert.error('Something is not right. Please try again later');
+                    alert.error('Something went wrong... Please try again later');
                 }
             })
 
