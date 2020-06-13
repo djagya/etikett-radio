@@ -1,5 +1,4 @@
-
-export default function Delete(checkedIDs, route) {
+export default async function Delete(checkedIDs, route) {
 
     // checkedIDs.map(id => {
     //     const deleteData = async (url) => {
@@ -31,12 +30,24 @@ export default function Delete(checkedIDs, route) {
     }
     // Get each response
     const getEachResponse = async () => {
-        let dataArr = await Promise.all(checkedIDs.map( async (id) => {
+        let responseArray = await Promise.all(checkedIDs.map( async (id) => {
             const response = await fetch(`http://localhost:3000/${route}/${id}`, options)
             const data = await response.json();
             return await data.success
         }))
-        return await dataArr
+        return await responseArray
     }
-    getEachResponse().then(data => console.log(data))
+
+    // Make all responses succeeded 
+    const output = await getEachResponse().then(responseArray => {
+        console.log('responseArray: ', responseArray);
+        let output;
+        const verifyRes = responseArray.filter(data => data === true);
+        console.log('verifyRes: ', verifyRes);
+        verifyRes.length === checkedIDs.length ? output = true : output = false;
+        console.log('first output: ', output);
+        return output
+    })
+    console.log('second output: ', output);
+    return output
 }
