@@ -160,8 +160,8 @@ export default function EditHostPage(props) {
 
         if (check) {
             //delete from db
-            Delete([id], "hosts")
-            return <Redirect to={`/hosts/all`} />
+            Delete([id], "host")
+            context.setEditHost(false)
         } else {
             return null
         }
