@@ -21,24 +21,22 @@ export default function Delete(checkedIDs, route) {
     //         })
     // })
 
+    
+
     // Options
     const options = {
         method: 'DELETE',
         credentials: 'include',
         headers: {"Content-Type": "application/json"}
     }
-
-    const getEachResponse = () => {
-        let responseArray = [];
-
-        checkedIDs.forEach(id => {
-            fetch(`http://localhost:3000/${route}/${id}`, options)
-                .then(res => res.json())
-                .then(data => responseArray.push(data.success))
-                .catch(error => responseArray.push(error))
-        })
-        console.log(responseArray)
-        return responseArray
+    // Get each response
+    const getEachResponse = async () => {
+        let dataArr = await Promise.all(checkedIDs.map( async (id) => {
+            const response = await fetch(`http://localhost:3000/${route}/${id}`, options)
+            const data = await response.json();
+            return await data.success
+        }))
+        return await dataArr
     }
-    console.log('getEachResponse: ', getEachResponse())
+    getEachResponse().then(data => console.log(data))
 }
