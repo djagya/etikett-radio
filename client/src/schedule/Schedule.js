@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAlert } from 'react-alert';
 import moment from "moment";
 import ScheduleInputForm from './ScheduleInputForm';
 import Delete from "../Delete";
@@ -9,6 +10,7 @@ import {Context} from "../Context";
 export default function Schedule(props) {
     const [showForm, setShowForm] = useState(false)
     const [checkedIDs, setCheckedIDs] = useState([]);
+    const alert = useAlert();
 
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
@@ -37,9 +39,15 @@ export default function Schedule(props) {
         setScheduleData(filteredScheduleData)
 
         //delete from db
-        Delete(checkedIDs, "schedule")
-
-        window.location.reload()
+        Delete(checkedIDs, "schedule").then(output => {
+            if (output) {
+                alert.success('Item(s) successfully deleted.', {
+                    onClose: () => { window.location.reload() }
+                })
+            } else {
+                alert.error('Something went wrong...');
+            }
+        });
 
     }
 

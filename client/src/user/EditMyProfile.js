@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Context} from "../Context";
 import { Redirect } from 'react-router-dom';
+import { useAlert } from 'react-alert';
 
 
 export default function MyProfile(props) {
@@ -12,6 +13,7 @@ export default function MyProfile(props) {
     const [email, setEmail] = useState("");
     const [pw, setPW] = useState("");
     const [role, setRole] = useState("");
+    const alert = useAlert();
 
     useEffect(() => {
         fetch(`http://localhost:3000/users/${context.id}`, {
@@ -51,11 +53,16 @@ export default function MyProfile(props) {
             return response.json()
         }
         putData(`http://localhost:3000/users/${context.id}`, body)
-            .then(data => { if (!data.success) 
-                { console.log(data) } else {
+            .then(data => { 
+                if (!data.success) { 
+                    console.log(data)
+                    alert.error('Something went wrong...');
+                } else {
                     props.setCookie('user', data.user, {path: '/'}) 
-                } })
-            .then(context.setProfileEdit(false) )
+                    alert.success('Profile edited!', { timeout: 3000 });
+                }
+            })
+            .then(context.setProfileEdit(false))
     }
 
     const handleFormInput = event => {

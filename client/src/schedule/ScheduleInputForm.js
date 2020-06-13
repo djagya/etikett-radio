@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
+import { useAlert } from 'react-alert';
 import { Context } from '../Context';
 
 export default function ScheduleInputForm() {
@@ -13,6 +14,7 @@ export default function ScheduleInputForm() {
     const [show, setShow] = useState("");
     const [from, setFrom] = useState(time);
     const [to, setTo] = useState(time);
+    const alert = useAlert();
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -45,9 +47,10 @@ export default function ScheduleInputForm() {
                 setShow("")
                 setFrom(time)
                 setTo(time)
+                alert.success('Schedule successfully posted!', { timeout: 3000 });
                 
             } else {
-                alert(data.err)
+                alert.error(data.err);
             }
         }
     }

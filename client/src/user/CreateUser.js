@@ -1,9 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
+import { useAlert } from 'react-alert';
 import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 
 export default function CreateUser(props) {
-    const context = useContext(Context)
+    const context = useContext(Context);
+    const alert = useAlert();
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -48,9 +50,9 @@ export default function CreateUser(props) {
                 setEmail("");
                 setPW("");
                 setRole("");
-                alert("User created")
+                alert.success("User created", { timeout: 3000 })
             } else {
-                alert("Please fill out all *Required fields and make sure your password is at least 8 signs long.")
+                alert.error("Please fill out all *Required fields and make sure your password is at least 8 signs long.")
             }
         }
 
