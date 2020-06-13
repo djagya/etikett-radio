@@ -31,7 +31,6 @@ export default function Hosts() {
         if (sortedData.length === 0) return null
         const host = sortedData[num]
 
-        console.log(sortedData)
         return (
         <div>
             <input className="carousel-open" type="radio" id={`carousel-${num}`} name="carousel" 
