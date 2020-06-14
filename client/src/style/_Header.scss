@@ -65,6 +65,7 @@ nav {
 
 .small-header-with-video {
   @extend .small-header-without-video;
+  height: 130px;
 
   .message-controls-container {
     grid-column: 3 / 11;
@@ -130,7 +131,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  // width: $chat-width;
+  width: $chat-width;
   height: 100%;
   padding: 0 1rem;
   background: $etikett-black;

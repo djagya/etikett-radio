@@ -13,8 +13,8 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    const video = 'https://www.twitch.tv/truthmusic';
-    // const video = 'https://www.twitch.tv/austinjohnplays/';
+    // const video = 'https://www.twitch.tv/truthmusic';
+    const video = 'https://www.twitch.tv/austinjohnplays/';
     const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
