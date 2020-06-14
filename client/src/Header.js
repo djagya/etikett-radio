@@ -13,8 +13,8 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    // const video = 'https://www.twitch.tv/truthmusic';
-    const video = 'https://www.twitch.tv/austinjohnplays/';
+    const video = 'https://www.twitch.tv/truthmusic';
+    // const video = 'https://www.twitch.tv/austinjohnplays/';
     const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
@@ -22,24 +22,17 @@ function Header(props) {
     const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
     const [chatState, setChatState] = useState('chat-homescreen');
-    const [source, setSource] = useState(video);
+    const [source, setSource] = useState('');
     // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
 
     useEffect(() => {
-        console.log(`
-        before check:
-        video: ${video}
-        source: ${source}`)
-        console.log(ReactPlayer.canPlay(video))
+
         // Check for video
-        if (!ReactPlayer.canPlay(video)) {
-            setSource(radio);
+        if (ReactPlayer.canPlay(video)) {
+            setSource(video);
             console.log('source should change: ', source)
         }
-        console.log(`
-        after check:
-        video: ${video}
-        source: ${source}`)
+
         // If there's video and we are on homescreen
         if (source === video && props.location.pathname === '/') {
             setHeaderSize('full-header');
@@ -53,6 +46,7 @@ function Header(props) {
     }, [])
 
     useEffect(() => {
+        console.log('[useEffect [props.location.pathname]]')
         if (source == video) {
 
             // Change header depending on route if there's video
