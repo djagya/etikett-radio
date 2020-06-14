@@ -120,11 +120,12 @@ nav {
   display: flex;
   align-items: center;
   margin-right: 1rem;
+  background: $etikett-black;
+  z-index: 2;
 }
 
 .playPauseBtn {
   border: 0;
-  background: $etikett-black-000;
   height: 18px;
   border-color: $etikett-black-000 $etikett-black-000 $etikett-black-000 #fff;
   transition: 100ms all ease;
@@ -200,6 +201,7 @@ nav {
 
 .moving-text {
   animation: moveText linear 15s backwards infinite;
+  color: red;
 }
 
 @keyframes moveText {
