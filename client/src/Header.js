@@ -12,24 +12,6 @@ import moment from "moment";
 function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
-
-    useEffect(() => {
-        // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
-        // const video = 'https://www.twitch.tv/truthmusic';
-        const video = 'https://www.twitch.tv/austinjohnplays/';
-        if (ReactPlayer.canPlay(video)) {
-            setSource(video);
-        }
-    }, [])
-
-    useEffect(() => {
-        if (props.location.pathname !== '/') {
-            setHeaderSize('small-header');
-        } else {
-            setHeaderSize('full-header');
-        }
-    }, [props.location.pathname])
-
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
@@ -37,6 +19,34 @@ function Header(props) {
     const [headerSize, setHeaderSize] = useState('');
     const [source, setSource] = useState('http://s9.myradiostream.com:44782/listen.mp3');
     const videoPlayer = useRef();
+    const video = 'https://www.twitch.tv/austinjohnplays/';
+    // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
+    // const video = 'https://www.twitch.tv/truthmusic';
+
+    useEffect(() => {
+        console.log('video: ', video)
+        console.log('video: ', video)
+        if (ReactPlayer.canPlay(video)) {
+            setSource(video);
+        }
+        if (source === video && props.location.pathname === '/') {
+            setHeaderSize('full-header');
+        } else if (source !== video) {
+            setHeaderSize('small-header');
+        }
+    }, [])
+
+    useEffect(() => {
+        if (source == video) {
+            if (props.location.pathname !== '/') {
+                setHeaderSize('small-header');
+            } 
+            else if (props.location.pathname === '/' && source === video) {
+                setHeaderSize('full-header');
+            }    
+        }
+    }, [props.location.pathname])
+
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
