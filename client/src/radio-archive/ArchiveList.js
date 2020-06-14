@@ -13,6 +13,7 @@ export default function ArchiveList(props) {
     const [archiveData, setArchiveData] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [isActive, setIsActive] = useState(3);
+    const [lastSort, setLastSort] = useState(3)
     const alert = useAlert();
 
     useEffect(() => {
@@ -32,19 +33,46 @@ export default function ArchiveList(props) {
         switch (i) {
             case 0:
                 setIsActive(0)
+                if (lastSort !== isActive) {
                 setArchiveData([...archiveData].sort((showA, showB)=>(showA.show > showB.show)? -1 : 1))
+                setLastSort(0)
+            } else {
+                setArchiveData([...archiveData].sort((showA, showB)=>(showA.show < showB.show)? -1 : 1))
+                setLastSort(-1)
+                }
                 break;
             case 1:
                 setIsActive(1)
+                if (lastSort !== isActive){
                 setArchiveData([...archiveData].sort((showA, showB)=>(showA.host > showB.host)? -1 : 1))
+                setLastSort(1)
+                } else {
+                setArchiveData([...archiveData].sort((showA, showB)=>(showA.host < showB.host)? -1 : 1))
+                setLastSort(-1)
+                }
+                setLastSort(1)
                 break;
             case 2:
                 setIsActive(2)
+                if (lastSort !== isActive){
                 setArchiveData([...archiveData].sort((showA, showB)=>(showA.genre > showB.genre)? -1 : 1))
+                setLastSort(2)
+                } else {
+                setArchiveData([...archiveData].sort((showA, showB)=>(showA.genre < showB.genre)? -1 : 1))
+                setLastSort(-1)
+                }
+                setLastSort(2)
                 break;
             case 3:
                 setIsActive(3)
+                if (lastSort !== isActive){
                 setArchiveData([...archiveData].sort((showA, showB)=>(showA.date > showB.date)? -1 : 1))
+                setLastSort(3)
+                } else {
+                setArchiveData([...archiveData].sort((showA, showB)=>(showA.date < showB.date)? -1 : 1))
+                setLastSort(-1)
+                }
+                setLastSort(3)
                 break;
         }
         
