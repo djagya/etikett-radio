@@ -32,8 +32,8 @@ export default function LogIn(props) {
 
         postData("http://localhost:3000/users/login", body)
             .then(data => {
-                if (data.status === 404) return alert("Invalid Email") 
-                if (data.status === 403) return alert("Invalid Password")
+                if (data.status === 404) return alert.error("Invalid Email") 
+                if (data.status === 403) return alert.error("Invalid Password")
                     if (data.success) {
                         props.setCookie('user', data.user, { path: '/' })
                 }
