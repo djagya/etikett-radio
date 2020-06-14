@@ -17,13 +17,13 @@ function ChatApp({ setChatState, location }) {
     }
   }, [name])
 
-  useEffect(() => {
-    if (location.pathname === '/') {
-      setChatState('chat-homescreen');
-    } else {
-      setChatState('chat-routes');
-    }
-  }, [location.pathname,setChatState])
+  // useEffect(() => {
+  //   if (location.pathname === '/') {
+  //     setChatState('chat-homescreen');
+  //   } else {
+  //     setChatState('chat-routes');
+  //   }
+  // }, [location.pathname,setChatState])
 
   return (
     enableChat

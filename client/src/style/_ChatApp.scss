@@ -62,16 +62,17 @@
 .Join {
   display: flex;
   flex-direction: column;
-  background-color: #000;
+  background-color: $etikett-black;
   height: 100%;
 
   .join-form {
-    height: 50%;
+    height: 100%;
     width: 100%;
 
     input {
       height: 2rem;
       width: 80%;
+      background: $etikett-black;
     }
     button {
       width: 20%;

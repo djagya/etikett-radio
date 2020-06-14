@@ -42,7 +42,6 @@ import DocumentTitle from 'react-document-title';
 
 
 function App(props) {
-  const [chatState, setChatState] = useState('chat-homescreen');
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
@@ -89,7 +88,7 @@ function App(props) {
             </div>
 
             <div className="stream-page">
-              <Header chatState={chatState} setChatState={setChatState} />
+              <Header />
             </div>
 
             <Switch>

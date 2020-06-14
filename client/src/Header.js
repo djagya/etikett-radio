@@ -17,6 +17,7 @@ function Header(props) {
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
+    const [chatState, setChatState] = useState('chat-homescreen');
     const [source, setSource] = useState('http://s9.myradiostream.com:44782/listen.mp3');
     const videoPlayer = useRef();
     const video = 'https://www.twitch.tv/austinjohnplays/';
@@ -24,20 +25,28 @@ function Header(props) {
     // const video = 'https://www.twitch.tv/truthmusic';
 
     useEffect(() => {
-        console.log('video: ', video)
-        console.log('video: ', video)
+
+        // Cheack for video
         if (ReactPlayer.canPlay(video)) {
             setSource(video);
         }
+
+        // If there's video and we are on homescreen
         if (source === video && props.location.pathname === '/') {
             setHeaderSize('full-header');
+            setChatState('chat-homescreen')
+
+        // If there's no video
         } else if (source !== video) {
             setHeaderSize('small-header');
+            setChatState('chat-routes')
         }
     }, [])
 
     useEffect(() => {
         if (source == video) {
+
+            // Change header depending on route if there's video
             if (props.location.pathname !== '/') {
                 setHeaderSize('small-header');
             } 
@@ -123,8 +132,8 @@ function Header(props) {
                 <NavLink className="nav-link" to="/login">staff only.</NavLink>
             </nav>
 
-            <div className={`chat ${props.chatState}`}>
-                <ChatApp setChatState={props.setChatState} />
+            <div className={`chat ${chatState}`}>
+                <ChatApp />
             </div>
 
             <section className="embeded-video">
