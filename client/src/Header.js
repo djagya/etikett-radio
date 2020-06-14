@@ -14,7 +14,7 @@ function Header(props) {
     const alert = useAlert();
     const videoPlayer = useRef();
     // const video = 'https://www.twitch.tv/truthmusic';
-    const video = 'https://www.twitch.tv/austinjohnplays/';
+    const video = 'https://www.twitch.tv/jazzzy';
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
     const [playing, setPlaying] = useState(true);
