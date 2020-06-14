@@ -40,7 +40,7 @@ export default function Contact() {
                         }
                     });
                 } else {
-                    alert.error('Something went wrong...');
+                    alert.error('Something went wrong... Please contact an admin');
                 }
             })
     }
