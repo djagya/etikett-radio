@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useContext  } from 'react';
+import { useAlert } from 'react-alert';
 import ReactPlayer from 'react-player';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
@@ -10,9 +11,7 @@ import moment from "moment";
 
 function Header(props) {
     const context = useContext(Context)
-    
-
-
+    const alert = useAlert();
 
     useEffect(() => {
         // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
