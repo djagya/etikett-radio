@@ -134,7 +134,7 @@ function Header(props) {
                 {source === 'http://s9.myradiostream.com:44782/listen.mp3' ?
                     <div className="controls">
                         <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
-                        <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
+                        <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                         <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
                     </div>
                     : null}
