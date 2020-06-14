@@ -20,7 +20,7 @@ export default function AllHosts(props) {
                 return
             }
                 if(data.success){
-                return setHostData(data.host.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
+                setHostData(data.host.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
             } else {
                 alert("Something went wrong")
             }
