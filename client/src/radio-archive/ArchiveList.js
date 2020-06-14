@@ -66,6 +66,7 @@ export default function ArchiveList(props) {
                 setLastSort(-1)
                 }
                 break;
+            default: console.log("Sort Switch ran without any effect")
         }
         
 
