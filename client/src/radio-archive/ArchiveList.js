@@ -12,14 +12,27 @@ export default function ArchiveList(props) {
     const [checkedIDs, setCheckedIDs] = useState([]);
     const [archiveData, setArchiveData] = useState([]);
     const [showForm, setShowForm] = useState(false);
+    const [isActive, setIsActive] = useState(3);
     const alert = useAlert();
 
     useEffect(() => {
         fetch("http://localhost:3000/archive")
             .then(res => res.json())
-            .then(data => setArchiveData(data.archive.reverse()))
+            .then(data => setArchiveData(data.archive.sort((showA, showB)=>(showA.date > showB.date)? -1 : 1)))
     }, [])
-    
+    //initial sort by date, newest first
+    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.date > showB.date)? -1 : 1)
+    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.genre < showB.genre)? -1 : 1)
+    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.host < showB.host)? -1 : 1)
+    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.show < showB.show)? -1 : 1)
+
+
+    const sortData = i => {
+        console.log(i)
+    }
+
+
+
 
     const handleIDs = (event) => {
         const checked = event.target.checked
@@ -80,7 +93,7 @@ export default function ArchiveList(props) {
         const listHeader = ["show.", "host.", "genre.", "date."]
 
         return listHeader.map((el, i) =>(
-            <li key={i} onClick={()=>console.log(i)}><span className="sort">{el}</span></li>
+            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : null } `}>{el}</span></li>
 
         ))
     }

@@ -23,6 +23,7 @@
   .list-header {
     margin-bottom: 3rem;
     text-decoration-line: underline;
+    
     li {
       letter-spacing: 3px;
       
@@ -32,9 +33,16 @@
       cursor: pointer;
       
       transition: 0.1s;
+      &.active {
+        color: $etikett-hover;
+        
+      }
       &:hover {
         color: $etikett-hover;
+        text-decoration-line: underline;
+        text-decoration-color: $etikett-hover;
       }
+      
     }
   }
 
