@@ -13,6 +13,8 @@ export default function Contact() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [redirect, setRedirect] = useState(false);
+
+
     const alert = useAlert();
 
     const handleSubmit = e => {
@@ -34,13 +36,16 @@ export default function Contact() {
                     setEmail('');
                     setSubject('');
                     setMessage('');
-                    alert.success('Your message has been sent!', {
-                        onClose: () => {
-                            setRedirect(true);
-                        }
-                    });
+                    alert.success('Your message has been sent!',
+                        {
+                            onClose: () => {
+                                setRedirect(true);
+
+                            }
+                        });
                 } else {
                     alert.error('Opps! Something went wrong...');
+
                 }
             })
     }
