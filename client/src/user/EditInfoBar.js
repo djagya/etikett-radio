@@ -14,15 +14,16 @@ export default function EditInfoBar(props) {
             "message": context.infoBarMessage
         }
 
-    PutData(`http://localhost:3000/infobar/${context.infoID}`, body)
-        .then(data => { 
-            if (!data.success) { 
-                console.log(data)
-                alert.error("Something went wrong while updating your data")
-            } else {
-                alert.success("Update successful!")
-            } })
-        .then(context.setEditInfoBar(false) )
+        PutData(`http://localhost:3000/infobar/${context.infoID}`, body)
+            .then(data => {
+                if (!data.success) {
+                    console.log(data)
+                    alert.error("Something went wrong while updating your data")
+                } else {
+                    alert.success("Update successful!")
+                }
+            })
+            .then(context.setEditInfoBar(false))
     }
 
     const handleFormInput = event => {
@@ -30,10 +31,10 @@ export default function EditInfoBar(props) {
         context.setInfoBarMessage(input)
     }
 
-if (!context.editInfoBar) { return <Redirect to={`/user/${context.id}`} /> }  
+    if (!context.editInfoBar) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className="input-form not-stream-component">
-            <h2>info bar</h2>
+            <h2 id="main">info bar</h2>
             <form onSubmit={handleSubmit} role="form" className="edit-input-form">
                 <div className="button-container">
                     <button type="button" onClick={() => context.setEditInfoBar(false)}>cancel</button>
