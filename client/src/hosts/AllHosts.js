@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { useAlert } from 'react-alert';
 import {Context} from "../Context";
 import {Redirect, Link} from 'react-router-dom';
 import GetData from "../GetData";
@@ -8,6 +9,7 @@ import GetData from "../GetData";
 export default function AllHosts(props) {
     const context = useContext(Context);
     const [hostData, setHostData] = useState([]);
+    const alert = useAlert();
     
     const [isActive, setIsActive] = useState(0);
     const [lastSort, setLastSort] = useState(0)
@@ -16,13 +18,13 @@ export default function AllHosts(props) {
         GetData("http://localhost:3000/host")
             .then(data => { 
                 if(data.status === 403) {
-                alert("Status 403: Forbidden")
+                alert.error("Status 403: Forbidden")
                 return
             }
                 if(data.success){
                 setHostData(data.host.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
             } else {
-                alert("Something went wrong")
+                alert.error("Something went wrong")
             }
             })
     }, [])
