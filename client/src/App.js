@@ -40,7 +40,6 @@ import SkipLink from 'skip-links';
 
 
 
-
 function App(props) {
   const [chatState, setChatState] = useState('chat-homescreen');
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
@@ -58,12 +57,18 @@ function App(props) {
   if (cookies.user) {
     id = cookies.user._id
   }
+
+
+  const links = [
+    { title: "Skip to main content", to: 'main' },
+    { title: 'Skip to footer', to: 'footer' }
+  ]
   //////////////////////
   return (
     <DocumentTitle title="Homepage, video streaming">
 
       <BrowserRouter>
-
+        <SkipLink links={links} className="skip-link" />
         <Context.Provider value={
           {
             id,
