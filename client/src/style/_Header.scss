@@ -63,6 +63,15 @@ nav {
   }
 }
 
+.small-header-with-video {
+  @extend .small-header-without-video;
+
+  .message-controls-container {
+    grid-column: 3 / 11;
+    margin: 0;
+  }
+}
+
 ///////////////////////////////////
 //           Chat
 ///////////////////////////////////
@@ -206,7 +215,7 @@ nav {
 
 .moving-text {
   animation: moveText linear 15s backwards infinite;
-  color: red;
+  color: #fff;
 }
 
 @keyframes moveText {
