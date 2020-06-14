@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import {useAlert} from 'react-alert'
 
 export default function BlogEditForm(param) {
 
@@ -7,8 +8,8 @@ export default function BlogEditForm(param) {
     const [date, setDate] = useState(data.date);
     const [text, setText] = useState(data.text);
     const id = data._id
-
-
+    const alert = useAlert();
+   
     const handleSubmit = event => {
         event.preventDefault()
 
@@ -31,8 +32,19 @@ export default function BlogEditForm(param) {
             return response.json()
         }
         putData(`http://localhost:3000/blog/${id}`, body)
-            .then(data => { if (!data.success) { console.log(data) } })
-            .then(window.location.reload())
+            .then(data => {  
+                if (!data.success) { 
+                    console.log(data);
+                    alert.error('Server is not responding... Try again later.');
+                } else {
+                    alert.success('Your changes have been saved!', {
+                        onClose: () => {
+                            window.location.reload()
+                        }
+                    })
+                }
+            })
+            
 
 
     };

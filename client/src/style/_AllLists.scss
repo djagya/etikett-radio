@@ -1,0 +1,88 @@
+///////////////////////////////////
+//         All User Page
+///////////////////////////////////
+.all-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  
+
+  .list-container {
+  width: fit-content;
+  }
+ 
+  .list-header, .all-data {
+    text-align: left;
+    display: grid;
+    gap: 1rem;
+  }
+ .all-data {
+    margin: .5rem 0 ;
+  }
+  .list-header {
+    margin-bottom: 3rem;
+    text-decoration-line: underline;
+    
+    li {
+      letter-spacing: 3px;
+      
+    }
+
+    .sort {
+      cursor: pointer;
+      
+      transition: 0.1s;
+      &.active {
+        color: $etikett-hover;
+        
+      }
+      &:hover {
+        color: $etikett-hover;
+        text-decoration-line: underline;
+        text-decoration-color: $etikett-hover;
+      }
+      
+    }
+  }
+
+  .user-list-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    .button-container {
+      margin: 0;
+    }
+  }
+
+  .host-list-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    .button-container {
+      margin: 0;
+    }
+  }
+
+  .archive-list-grid {
+    grid-template-columns: 80px 1fr 1fr 1fr 1fr 20px;
+    column-gap: 20px;
+  }
+  .post-archive {
+    margin-bottom: 2rem;
+  }
+  .img-container {
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      width: 50px;
+    }
+  }
+
+  li {
+    align-self: center;
+  }
+ 
+}
+
+
+
+
+

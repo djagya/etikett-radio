@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useAlert } from 'react-alert';
 import io from 'socket.io-client';
 import InfoBar from './InfoBar';
 import Input from './Input';
@@ -9,6 +10,7 @@ let socket;
 export default function Chat({ name, room, chatWindow, setChatWindow }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
+  const alert = useAlert();
 
   // Set server address
   const endpoint = 'localhost:3000';
@@ -22,8 +24,11 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     socket.emit('join', { name, room }, (error) => {
       if (error) {
         sessionStorage.removeItem('name');
-        alert(error);
-        window.location.reload()
+        alert.error(error, {
+          onClose: () => {
+            window.location.reload()
+          }
+        })
       }
     });
 
@@ -44,7 +49,6 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     if (messages.length >= 50) {
       removeFirst();
     }
-
   }, []);
 
   const sendMessage = e => {

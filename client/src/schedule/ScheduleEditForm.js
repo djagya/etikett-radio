@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 
 export default function ScheduleEdit(props) {
 
@@ -11,7 +12,8 @@ export default function ScheduleEdit(props) {
     const [show, setShow] = useState(data.show);
     const [from, setFrom] = useState(timeFrom);
     const [to, setTo] = useState(timeTo);
-    const id = data._id
+    const id = data._id;
+    const alert = useAlert();
     console.log(timeFrom)
 
     const handleSubmit = event => {
@@ -40,9 +42,11 @@ export default function ScheduleEdit(props) {
 
         const reload = (data) => {
             if (data.success) {
-                window.location.reload()
+                alert.success('Schedule successfullt modifyed!', {
+                    onClose: () => { window.location.reload() }
+                })
             } else {
-                alert(data.err)
+                alert.error(data.err);
             }
         }
     }

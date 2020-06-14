@@ -23,7 +23,6 @@ export default function ScheduleEntry(props) {
         }
     };
 
-
     ///////For interactivity//////////
     let isLive = "";
     const showStart = moment(data.from);

@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from "react-router-dom";
-import { Context } from "../Context";
+import {Redirect} from "react-router-dom";
+import { useAlert } from 'react-alert';
+import {Context} from "../Context";
 
 export default function LogIn(props) {
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
-    const context = useContext(Context)
+    const context = useContext(Context);
+    const alert = useAlert();
+
     const handleSubmit = event => {
         event.preventDefault()
 
@@ -29,21 +32,13 @@ export default function LogIn(props) {
 
         postData("http://localhost:3000/users/login", body)
             .then(data => {
-                logIn(data)
-                console.log(data)
-                props.setCookie('user', data.user, { path: '/' })
+                if (data.status === 404) return alert("Invalid Email") 
+                if (data.status === 403) return alert("Invalid Password")
+                    if (data.success) {
+                        props.setCookie('user', data.user, { path: '/' })
+                }
             })
 
-    }
-
-    const logIn = (data) => {
-
-        if (data.status === 404) alert("Invalid Email")
-        if (data.status === 403) alert("Invalid Password")
-
-        else {
-            console.log(data)
-        }
     }
 
     const handleFormInput = event => {
