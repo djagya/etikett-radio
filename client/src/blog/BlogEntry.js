@@ -22,7 +22,13 @@ export default function BlogEntry(el, i) {
 
             context.setBlogData(filteredBlogData)
             //delete from db
-            Delete([id], "blog")
+            Delete([id], "blog").then(output => {
+                if (output) {
+                    alert.success('Blog(s) deleted.');
+                } else {
+                    alert.error("Failed to delete data, please contact an admin.");
+                }
+            })
         } else {
             return null
         }
