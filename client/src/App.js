@@ -35,7 +35,7 @@ import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
 import DocumentTitle from 'react-document-title';
-
+import SkipLink from 'skip-links';
 
 
 
