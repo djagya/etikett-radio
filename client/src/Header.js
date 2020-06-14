@@ -12,25 +12,34 @@ import moment from "moment";
 function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
+    const videoPlayer = useRef();
+    // const video = 'https://www.twitch.tv/truthmusic';
+    const video = 'https://www.twitch.tv/austinjohnplays/';
+    const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
     const [chatState, setChatState] = useState('chat-homescreen');
-    const [source, setSource] = useState('http://s9.myradiostream.com:44782/listen.mp3');
-    const videoPlayer = useRef();
-    const video = 'https://www.twitch.tv/austinjohnplays/';
+    const [source, setSource] = useState(video);
     // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
-    // const video = 'https://www.twitch.tv/truthmusic';
 
     useEffect(() => {
-
-        // Cheack for video
-        if (ReactPlayer.canPlay(video)) {
-            setSource(video);
+        console.log(`
+        before check:
+        video: ${video}
+        source: ${source}`)
+        console.log(ReactPlayer.canPlay(video))
+        // Check for video
+        if (!ReactPlayer.canPlay(video)) {
+            setSource(radio);
+            console.log('source should change: ', source)
         }
-
+        console.log(`
+        after check:
+        video: ${video}
+        source: ${source}`)
         // If there's video and we are on homescreen
         if (source === video && props.location.pathname === '/') {
             setHeaderSize('full-header');
