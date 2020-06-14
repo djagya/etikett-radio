@@ -21,15 +21,10 @@ export default function ArchiveList(props) {
             .then(res => res.json())
             .then(data => setArchiveData(data.archive.sort((showA, showB)=>(showA.date > showB.date)? -1 : 1)))
     }, [])
-    //initial sort by date, newest first
-    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.date > showB.date)? -1 : 1)
-    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.genre > showB.genre)? -1 : 1)
-    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.host > showB.host)? -1 : 1)
-    // if (archiveData.length !== 0) sortedData = archiveData.sort((showA, showB)=>(showA.show > showB.show)? -1 : 1)
+ 
 
 
     const sortData = i => {
-        
         switch (i) {
             case 0:
                 setIsActive(0)
@@ -50,7 +45,6 @@ export default function ArchiveList(props) {
                 setArchiveData([...archiveData].sort((showA, showB)=>(showA.host < showB.host)? -1 : 1))
                 setLastSort(-1)
                 }
-                setLastSort(1)
                 break;
             case 2:
                 setIsActive(2)
@@ -61,7 +55,6 @@ export default function ArchiveList(props) {
                 setArchiveData([...archiveData].sort((showA, showB)=>(showA.genre < showB.genre)? -1 : 1))
                 setLastSort(-1)
                 }
-                setLastSort(2)
                 break;
             case 3:
                 setIsActive(3)
@@ -72,7 +65,6 @@ export default function ArchiveList(props) {
                 setArchiveData([...archiveData].sort((showA, showB)=>(showA.date < showB.date)? -1 : 1))
                 setLastSort(-1)
                 }
-                setLastSort(3)
                 break;
         }
         
