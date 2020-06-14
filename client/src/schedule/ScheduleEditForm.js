@@ -42,7 +42,7 @@ export default function ScheduleEdit(props) {
 
         const reload = (data) => {
             if (data.success) {
-                alert.success('Schedule successfullt modifyed!', {
+                alert.success('Schedule modifyed!', {
                     onClose: () => { window.location.reload() }
                 })
             } else {

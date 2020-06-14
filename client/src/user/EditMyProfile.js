@@ -23,7 +23,7 @@ export default function MyProfile(props) {
             .then(res => res.json())
             .then(data => { 
                 if(data.status === 403) {
-                alert("Status 403: Forbidden")
+                alert.error("Status 403: Forbidden");
                 return
             }
                 if(data.success){
@@ -34,7 +34,7 @@ export default function MyProfile(props) {
                 setRole(data.user.role)
 
             } else {
-                alert("Something went wrong")
+                alert.error("Something went wrong");
                 return
             }
             })
