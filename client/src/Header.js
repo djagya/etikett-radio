@@ -13,8 +13,8 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    const video = 'https://www.twitch.tv/truthmusic';
-    // const video = 'https://www.twitch.tv/austinjohnplays/';
+    // const video = 'https://www.twitch.tv/truthmusic';
+    const video = 'https://www.twitch.tv/austinjohnplays/';
     const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
@@ -39,7 +39,7 @@ function Header(props) {
 
         // If there's no video
         } else if (source !== video) {
-            setHeaderSize('small-header');
+            setHeaderSize('small-header-without-video');
             setChatState('chat-routes');
         } else {
             setHeaderSize('small-header');
@@ -164,7 +164,7 @@ function Header(props) {
                         <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                         <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
                     </div>
-                    : null}
+                : null}
                 <div className="message">
                     <span className="moving-text"> {time} +++ {context.infoBarMessage}</span>
                 </div>

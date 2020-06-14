@@ -29,7 +29,7 @@ nav {
   }
 }
 
-.small-header {
+.small-header-without-video {
   position: fixed;
   top: 0;
   height: $header-height;
@@ -120,6 +120,8 @@ nav {
 .controls {
   display: flex;
   align-items: center;
+  justify-content: center;
+  // width: $chat-width;
   height: 100%;
   padding: 0 1rem;
   background: $etikett-black;
@@ -190,7 +192,7 @@ nav {
   margin: 0 1.8rem;
   display: flex;
   align-items: center;
-  max-width: 100%;
+  // max-width: 100%;
   margin: 0 auto; //or margin 0 and then it goes until the end
   overflow: hidden;
 }
