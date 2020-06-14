@@ -30,7 +30,9 @@ export default function UserProfile(props) {
     if (context.allHosts) {
         return <Redirect to={`/hosts/all`} />
     }
-
+    if (context.editInfoBar) {
+        return <Redirect to={`/infobar`} />
+    }
     return (
 
         <>
@@ -44,6 +46,7 @@ export default function UserProfile(props) {
                     context.setEditHost(true)
                     }}>edit my host profile
                 </button>
+                <button type="button" onClick={() => context.setEditInfoBar(true)}>edit info bar</button>
                 {props.cookies.user.role === 'Admin' ?
                     <div>
                         <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>

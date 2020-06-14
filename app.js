@@ -17,6 +17,7 @@ const usersRoute = require("./routes/usersRoute");
 const blogRoute = require("./routes/blogRoute");
 const scheduleRoute = require("./routes/scheduleRoute");
 const hostRoute = require("./routes/hostRoute");
+const infoBarRoute = require("./routes/infoBarRoute");
 
 const port = process.env.PORT || 3000;
 
@@ -91,6 +92,7 @@ app.use("/users", usersRoute);
 app.use("/blog", blogRoute);
 app.use("/schedule", scheduleRoute);
 app.use("/host", hostRoute);
+app.use("/infoBar", infoBarRoute);
 
 
 //Error Handler

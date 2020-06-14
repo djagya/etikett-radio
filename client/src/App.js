@@ -12,6 +12,7 @@ import "./App.scss"
 import Home from './Home';
 import Header from './Header';
 import Blog from './blog/Blog';
+import EditInfoBar from "./user/EditInfoBar";
 import Contact from './Contact';
 import Schedule from './schedule/Schedule';
 import Error from "./Error404";
@@ -51,6 +52,9 @@ function App(props) {
   const [editHost, setEditHost] = useState(false)
   const [editHostID, setEditHostID] = useState("")
   const [allHosts, setAllHosts] = useState(false)
+  const [editInfoBar, setEditInfoBar] = useState(false)
+  const [infoBarMessage, setInfoBarMessage] = useState("")
+  const [infoID, setInfoID] = useState("")
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -68,7 +72,10 @@ function App(props) {
             allUser, setAllUser,
             editHost, setEditHost,
             editHostID, setEditHostID,
-            allHosts, setAllHosts
+            allHosts, setAllHosts,
+            editInfoBar, setEditInfoBar,
+            infoBarMessage, setInfoBarMessage,
+            infoID, setInfoID
           }
         }>
           <div className="App">
@@ -96,6 +103,7 @@ function App(props) {
               <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
               <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
               <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
+              <Route exact path="/infobar" render={(props) => <EditInfoBar {...props} cookies={cookies} />} />
               <Route exact path="/contact" component={Contact} />
 
               {/* Archive Related */}

@@ -8,6 +8,9 @@ import GetData from "../GetData";
 export default function AllHosts(props) {
     const context = useContext(Context);
     const [hostData, setHostData] = useState([]);
+    
+    const [isActive, setIsActive] = useState(0);
+    const [lastSort, setLastSort] = useState(0)
     let sortedData = [];
     useEffect(() => {
         GetData("http://localhost:3000/host")
@@ -17,18 +20,45 @@ export default function AllHosts(props) {
                 return
             }
                 if(data.success){
-                return setHostData(data.host)
+                setHostData(data.host.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
             } else {
                 alert("Something went wrong")
             }
             })
     }, [])
 
-    if (hostData.length !== 0) sortedData = hostData.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1)
+    // if (hostData.length !== 0) setHostData([...hostData].sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
+
+    const sortData = i => {
+        switch (i) {
+            case 0:
+                setIsActive(0)
+                if (lastSort !== isActive) {
+                setHostData([...hostData].sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
+                setLastSort(0)
+            } else {
+                setHostData([...hostData].sort((hostA, hostB)=>(hostA.hostName > hostB.hostName)? -1 : 1))
+                setLastSort(-1)
+                }
+                break;
+            case 1:
+                setIsActive(1)
+                if (lastSort !== isActive){
+                setHostData([...hostData].sort((hostA, hostB)=>(hostA.isActive < hostB.isActive)? -1 : 1))
+                setLastSort(1)
+                } else {
+                setHostData([...hostData].sort((hostA, hostB)=>(hostA.isActive > hostB.isActive)? -1 : 1))
+                setLastSort(-1)
+                }
+                break;
+                default: console.log("Sort Switch ran without any effect")
+            }
+            
+    }
 
     const renderHosts = () => {
-        if (sortedData.lenght === 0) return null
-        return sortedData.map((host, i) => (
+        if (hostData.lenght === 0) return null
+        return hostData.map((host, i) => (
             <ol key={i} className="all-data host-list-grid">
                 <li>{host.hostName}</li>
                 <li>{host.isActive}</li>
@@ -44,6 +74,14 @@ export default function AllHosts(props) {
         ))
     }
 
+    const renderLiHeader = () => {
+        const listHeader = ["host.", "status."]
+
+        return listHeader.map((el, i) =>(
+            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : null } `}>{el}</span></li>
+
+        ))
+    }
 
     if (context.editHost) {
         return <Redirect to={`/hosts/${context.id}`} />
@@ -63,8 +101,7 @@ export default function AllHosts(props) {
                 </div>
                 <div>
                     <ul className="list-header host-list-grid">
-                        <li>host name</li>
-                        <li>is active</li>
+                        {renderLiHeader()}
                     </ul>
                 {renderHosts()}
                 </div>
