@@ -7,10 +7,8 @@ export default function AllUser() {
     const context = useContext(Context)
 
     const [userData, setUserData] = useState([]);
-
-    let sortedData = userData.sort((userA, userB)=>(userA.firstName < userB.firstName)? -1 : 1)
-
-
+    const [isActive, setIsActive] = useState(0);
+    const [lastSort, setLastSort] = useState(0)
 
     useEffect(() => {
 
@@ -27,13 +25,70 @@ export default function AllUser() {
                 return
             }
                 if(data.success){
-                setUserData(data.users)
+                setUserData(data.users.sort((userA, userB)=>(userA.firstName < userB.firstName)? -1 : 1))
             } else {
                 alert("Something went wrong")
                 return
             }
         })
     }, [])
+
+    const sortData = i => {
+        switch (i) {
+            case 0:
+                setIsActive(0)
+                if (lastSort !== isActive) {
+                setUserData([...userData].sort((userA, userB)=>(userA.firstName < userB.firstName)? -1 : 1))
+                setLastSort(0)
+            } else {
+                setUserData([...userData].sort((userA, userB)=>(userA.firstName > userB.firstName)? -1 : 1))
+                setLastSort(-1)
+                }
+                break;
+            case 1:
+                setIsActive(1)
+                if (lastSort !== isActive){
+                setUserData([...userData].sort((userA, userB)=>(userA.lastName < userB.lastName)? -1 : 1))
+                setLastSort(1)
+                } else {
+                setUserData([...userData].sort((userA, userB)=>(userA.lastName > userB.lastName)? -1 : 1))
+                setLastSort(-1)
+                }
+                break;
+            case 2:
+                setIsActive(2)
+                if (lastSort !== isActive){
+                setUserData([...userData].sort((userA, userB)=>(userA.userName < userB.userName)? -1 : 1))
+                setLastSort(2)
+                } else {
+                setUserData([...userData].sort((userA, userB)=>(userA.userName > userB.userName)? -1 : 1))
+                setLastSort(-1)
+                }
+                break;
+            case 3:
+                setIsActive(3)
+                if (lastSort !== isActive){
+                setUserData([...userData].sort((userA, userB)=>(userA.email < userB.email)? -1 : 1))
+                setLastSort(3)
+                } else {
+                setUserData([...userData].sort((userA, userB)=>(userA.email > userB.email)? -1 : 1))
+                setLastSort(-1)
+                }
+                break;
+                case 4:
+                    setIsActive(4)
+                    if (lastSort !== isActive){
+                    setUserData([...userData].sort((userA, userB)=>(userA.role < userB.role)? -1 : 1))
+                    setLastSort(4)
+                    } else {
+                    setUserData([...userData].sort((userA, userB)=>(userA.role > userB.role)? -1 : 1))
+                    setLastSort(-1)
+                    }
+                    break;
+            default: console.log("Sort Switch ran without any effect")
+        }
+    }
+
 
     const handleDelete = (id, userName) => {
 
@@ -52,7 +107,7 @@ export default function AllUser() {
             }
     }
 
-    if (!context.allUser) {return <Redirect to={`/user/${context.id}`}/>}
+   
 
     const renderLi = (userData) => {
 
@@ -71,7 +126,16 @@ export default function AllUser() {
             </ol>
         ));
     };
+    const renderLiHeader = () => {
+        const listHeader = ["first name.", "last name.", "user name.", "email.", "role."]
 
+        return listHeader.map((el, i) =>(
+            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : null } `}>{el}</span></li>
+
+        ))
+    }
+
+    if (!context.allUser) {return <Redirect to={`/user/${context.id}`}/>}
     return (
         <div className="not-stream-component all-list">
             <h2>All Users</h2>
@@ -81,13 +145,9 @@ export default function AllUser() {
                 </div>
                 <div>
                         <ul className="list-header user-list-grid">
-                            <li>first name</li>
-                            <li>last name</li>
-                            <li>user name</li>
-                            <li>email</li>
-                            <li>role</li>
+                            {renderLiHeader()}
                         </ul>
-                    {renderLi(sortedData)}
+                    {renderLi(userData)}
                 </div>
             </div>
         </div>
