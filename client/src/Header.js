@@ -13,8 +13,8 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    const video = 'https://www.twitch.tv/truthmusic';
-    // const video = 'https://www.twitch.tv/austinjohnplays/';
+    // const video = 'https://www.twitch.tv/truthmusic';
+    const video = 'https://www.twitch.tv/austinjohnplays/';
     const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
@@ -22,42 +22,48 @@ function Header(props) {
     const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
     const [chatState, setChatState] = useState('chat-homescreen');
-    const [source, setSource] = useState('');
-    // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
+    const [source, setSource] = useState(radio);
 
     useEffect(() => {
 
         // Check for video
         if (ReactPlayer.canPlay(video)) {
-            setSource(video);
+            setSource(video)
             console.log('source should change: ', source)
         }
 
         // If there's video and we are on homescreen
         if (source === video && props.location.pathname === '/') {
             setHeaderSize('full-header');
-            setChatState('chat-homescreen')
+            setChatState('chat-homescreen');
 
         // If there's no video
         } else if (source !== video) {
             setHeaderSize('small-header');
-            setChatState('chat-routes')
+            setChatState('chat-routes');
+        } else {
+            setHeaderSize('small-header');
+            setChatState('chat-routes');
         }
-    }, [])
 
-    useEffect(() => {
-        console.log('[useEffect [props.location.pathname]]')
-        if (source == video) {
+        console.log(source)
+    // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
+    }, [source, props.location.pathname])
 
-            // Change header depending on route if there's video
-            if (props.location.pathname !== '/') {
-                setHeaderSize('small-header');
-            } 
-            else if (props.location.pathname === '/' && source === video) {
-                setHeaderSize('full-header');
-            }    
-        }
-    }, [props.location.pathname])
+    // useEffect(() => {
+    //     console.log('[useEffect [props.location.pathname]]')
+    //     if (source == video) {
+
+    //         // Change header depending on route if there's video
+    //         if (props.location.pathname !== '/') {
+    //             setHeaderSize('small-header');
+    //             setChatState('chat-routes')
+    //         } 
+    //         else if (props.location.pathname === '/' && source === video) {
+    //             setHeaderSize('full-header');
+    //         }    
+    //     }
+    // }, [props.location.pathname])
 
 
     const handlePlayBtn = e => {
@@ -153,7 +159,7 @@ function Header(props) {
             </section>
 
             <section className="message-controls-container">
-                {source === 'http://s9.myradiostream.com:44782/listen.mp3' ?
+                {source === radio ?
                     <div className="controls">
                         <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
                         <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
