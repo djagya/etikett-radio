@@ -35,9 +35,11 @@ export default function LogIn(props) {
                 if (data.status === 404) return alert.error("Invalid Email") 
                 if (data.status === 403) return alert.error("Invalid Password")
                 if (data.success) {
-                    props.setCookie('user', data.user, { path: '/' })
-                    sessionStorage.setItem('name', data.user.userName);
-                    props.setName(data.user.userName);
+                    props.setCookie('user', data.user, { path: '/' });
+                    if (data.user.role === 'Host') {
+                        sessionStorage.setItem('name', data.user.userName);
+                        props.setName(data.user.userName);    
+                    }
                 }
             })
             .catch(err => {

@@ -106,7 +106,7 @@ function App(props) {
               <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies}  setName={setName} />} />
               <Route exact path="/user/all" render={(props) => <AllUser {...props} cookies={cookies} />} />
               <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-              <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
+              <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} setName={setName} />} />
               <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
               <Route exact path="/infobar" render={(props) => <EditInfoBar {...props} cookies={cookies} />} />
               <Route exact path="/contact" component={Contact} />
