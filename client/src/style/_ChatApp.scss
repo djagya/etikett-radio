@@ -67,12 +67,16 @@
 
   .join-form {
     height: 100%;
+    min-height: 36px;
     width: 100%;
 
+    input,
+    button {
+      background: $etikett-black;  
+    }
     input {
-      height: 2rem;
+      height: 100%;
       width: 80%;
-      background: $etikett-black;
     }
     button {
       width: 20%;
