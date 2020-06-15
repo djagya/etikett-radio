@@ -38,7 +38,7 @@ export default function Hosts() {
 
                 <div className="carousel-item">
                     <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} />
-                    <div>
+                    <div className="host-description">
                         <h3>{host.hostName}</h3>
                         <q>{host.description}</q>
                         <div className="social-media-container">
@@ -84,7 +84,7 @@ export default function Hosts() {
     const renderIndicator = (host, i) => (
         <li key={i}>
             <label htmlFor={`carousel-${i + 1}`} onClick={() => setNum(i)} className={`carousel-hostname`}>
-                {host.hostName}++++
+                {host.hostName}
             </label>
         </li>
     )
@@ -93,17 +93,18 @@ export default function Hosts() {
         <DocumentTitle title="Hosts page">
             <div className="not-stream-component host-showcase">
                 <h2>hosts</h2>
-                <div className="carousel">
-                    <ol className="carousel-inner">
-                        {sortedData.map((host, i) => renderIndicator(host, i))}
 
-                        <div >
-                            {renderHost()}
-                        </div>
+                <div className="carousel">
+                    <ol className="carousel-indicators">
+                        {sortedData.map((host, i) => renderIndicator(host, i))}
                     </ol>
+
+                    <div className="carousel-inner">
+                        {renderHost()}
+                    </div>
                 </div>
             </div>
-        </DocumentTitle >
+        </DocumentTitle>
     )
 }
 
