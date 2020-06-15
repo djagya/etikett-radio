@@ -13,8 +13,12 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
+    // Currently not streaming example
     // const channelId = '521258416';
-    const video = 'https://www.twitch.tv/etikett_radio';
+    // const video = 'https://www.twitch.tv/etikett_radio';
+    // Currently sreaming example
+    const channelId = '274901255';
+    const video = 'https://www.twitch.tv/truthmusic';
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
     const [playing, setPlaying] = useState(true);
@@ -26,7 +30,7 @@ function Header(props) {
     const [source, setSource] = useState(radio);
 
     useEffect(() => {
-
+        console.log('use effect started')
         const options = {
             headers: {
                 'Accept': 'application/vnd.twitchtv.v5+json',
@@ -35,17 +39,21 @@ function Header(props) {
             }
         }
 
-        fetch(`https://api.twitch.tv/helix/streams?user_id=521258416`, options)
+        fetch(`https://api.twitch.tv/helix/streams?user_id=${channelId}`, options)
             .then(res => res.json())
             .then(streamData => {
-                if (streamData.data.type === "live") {
-                    setSource(video)
+                if (!streamData.data[0]) {
+                    return
                 }
-            }).then(() => {
+                if (streamData.data[0].type === "live") {
+                    setSource(video)
+                    console.log('source: ', source);
+                }
+            })
+            .then(() => {
                 if (source === video && props.location.pathname === '/') {
                     setHeaderSize('full-header');
                     setChatState('chat-homescreen');
-        
                 // If there's no video
                 } else if (source !== video) {
                     setHeaderSize('small-header-without-video');
@@ -56,7 +64,7 @@ function Header(props) {
                 }
             })
 
-    }, [])
+    }, [source])
 
     useEffect(() => {
 
