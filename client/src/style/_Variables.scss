@@ -11,3 +11,15 @@ $etikett-hover: rgb(70, 120, 131);
 
 //font
 $etikett-font: "GaramondPro", serif;
+
+// Responsiveness
+$media-breakpoints: (
+  "big-desktop": 1800px,
+  "desktop": 1200px,
+  "tablet": 900px,
+  "phone": 600px
+);
+
+@function breakpoints($breakpoint) {
+  @return map-get($media-breakpoints, $breakpoint)
+}
