@@ -45,7 +45,7 @@ export default function EditInfoBar(props) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" />
+                    <input type="submit" value="save" />
                 </div>
             </form>
         </div>

@@ -145,7 +145,7 @@ export default function MyProfile(props) {
                             : null}
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="Save" role="button" /><span className="required">* Required</span>
+                        <input type="submit" value="save" role="button" /><span className="required">* Required</span>
                     </div>
                 </form>
             </div>

@@ -17,6 +17,9 @@
     border-color: white;
     border-radius: 3px;
   }
+  ::placeholder {
+    color: rgba(255, 255, 255, 0.541);
+}
 }
 
 *::selection {
@@ -208,6 +211,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// ::placeholder {
-
-// }

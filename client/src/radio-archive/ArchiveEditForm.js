@@ -121,7 +121,7 @@ export default function ArchiveEdit(props) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Update" role="button" /><span className="required">* Required</span>
+                    <input type="submit" value="update" role="button" /><span className="required">* Required</span>
                 </div>
             </form>
         </div>

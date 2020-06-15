@@ -254,7 +254,7 @@ export default function EditHostPage(props) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" /><span className="required">* required</span>
+                    <input type="submit" value="save" /><span className="required">* required</span>
                 </div>
             </form>
 

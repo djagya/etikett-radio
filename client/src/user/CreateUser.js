@@ -125,7 +125,7 @@ export default function CreateUser(props) {
 
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Sign Up" role="button" /><span className=" required">* Required</span>
+                    <input type="submit" value="create" role="button" /><span className=" required">* Required</span>
                 </div>
             </form>
         </div>
