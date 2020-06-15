@@ -38,7 +38,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
       // Turn off this socket
       socket.off();
     }
-  }, [endpoint, sessionStorage])
+  }, [endpoint, /* sessionStorage */])
 
   useEffect(() => {
     console.log('[useEffect[messages]]')

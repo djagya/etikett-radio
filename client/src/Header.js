@@ -166,7 +166,7 @@ function Header(props) {
                     </nav>
 
                     <div className={`chat ${chatState}`}>
-                        <ChatApp />
+                        <ChatApp name={props.name} setName={props.setName} />
                     </div>
 
                     <section className="embeded-video">

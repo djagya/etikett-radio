@@ -37,6 +37,7 @@ export default function LogIn(props) {
                 if (data.success) {
                     props.setCookie('user', data.user, { path: '/' })
                     sessionStorage.setItem('name', data.user.userName);
+                    props.setName(data.user.userName);
                 }
             })
             .catch(err => {
