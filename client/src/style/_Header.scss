@@ -213,10 +213,10 @@ nav {
 
 @keyframes ticker {
   0% {
-    transform: translate3d(50%, 0, 0)
+    transform: translate3d(80%, 0, 0)
   }
 
   100% {
-    transform: translate3d(-80%, -10%, 0);
+    transform: translate3d(-100%, -10%, 0);
   }
 }

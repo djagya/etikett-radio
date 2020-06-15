@@ -133,7 +133,7 @@ function App(props) {
             </Switch>
 
             <footer id="footer">
-              <img src={footerImg} width="1920" height="600" alt="A photo taken from the moon surface's of the planet Earth."></img>
+              <div className="footer-img"></div>
             </footer>
           </div>
         </Context.Provider>

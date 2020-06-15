@@ -77,7 +77,7 @@ export default function Contact() {
                         </label>
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="Send" role='button' /><span className="required">* required</span>
+                        <input type="submit" value="send" role='button' /><span className="required">* required</span>
                     </div>
                 </form>
             </div>

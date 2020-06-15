@@ -118,13 +118,19 @@ footer {
   display: flex;
   align-items: flex-end;
 
-
-
-  img {
+  .footer-img {
     width: 100%;
-    height: auto;
-    opacity: 0.7;
+    height: 100vh;
+    background-size: 100%;
+    background-image: url("../img/footer-img-1920x600.png") ;
+    background-position: bottom;
+    background-repeat: no-repeat,
   }
+
+  // img {
+  //   width: 100%;
+  //   height: auto;
+  // }
 }
 
 ////skip link aria///
