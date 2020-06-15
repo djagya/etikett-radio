@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useAlert } from 'react-alert';
-import {Context} from "../Context";
-import {Redirect} from 'react-router-dom';
+import { Context } from "../Context";
+import { Redirect } from 'react-router-dom';
 
 export default function CreateUser(props) {
     const context = useContext(Context);
@@ -88,7 +88,7 @@ export default function CreateUser(props) {
 
     return (
         <div className="not-stream-component create-user-page">
-            <h2>create a new user</h2>
+            <h2 id="main">create a new user</h2>
             <form className="input-form" onSubmit={handleSubmit} role="form">
                 <div className="button-container">
                     <button type="button" onClick={() => context.setCreateProfile(false)}>cancel</button>

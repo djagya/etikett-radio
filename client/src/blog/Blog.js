@@ -30,10 +30,9 @@ export default function Blog(props) {
     return (
         <DocumentTitle title="Blog page">
             <Context.Provider value={{ blogData, setBlogData }}>
-                <a href="#maincontent" className="skip-link">Skip to main content</a>
                 <div className="blog-page not-stream-component">
                     <div className="blog-content" title="blog content">
-                        <h2 id="maincontent">blog</h2>
+                        <h2 id="main">blog</h2>
 
                         {props.cookies.user && props.cookies.user.role === 'Admin' ?
                             <div className="button-container">
