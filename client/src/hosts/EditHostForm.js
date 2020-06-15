@@ -180,7 +180,7 @@ export default function EditHostPage(props) {
 
     if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
     return (
-        <div className="not-stream-component edit-host-page">
+        <div className={`${context.gapClass} edit-host-page`}>
             <h2>edit my host profile</h2>
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
@@ -254,7 +254,7 @@ export default function EditHostPage(props) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="Save" /><span className="required">* required</span>
+                    <input type="submit" value="save" /><span className="required">* required</span>
                 </div>
             </form>
 

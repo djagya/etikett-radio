@@ -18,11 +18,20 @@
       label {
   
         input,
-        select {
+        select, textarea {
+          margin-top: .25rem;
+          // background-color: $etikett-black-050;
+          background-color: rgba(255, 255, 255, 0.10);
           width: 100%;
           height: 2rem;
           padding-left: .5rem;
-  
+          border: 0px solid;
+          border-bottom: 1px solid rgb(255, 255, 255);;
+          border-radius: 3px;
+          
+          &:focus {
+            background-color: $etikett-black-750;
+          }
           option {
             color: black;
             font-size: 1rem;
@@ -102,8 +111,11 @@
     cursor: default;
     border-width: 2px;
     border-style: outset;
-    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-color: (rgb(195, 195, 195),rgb(118, 118, 118)  );
     border-image: initial;
+    &:active {
+      border-style: inset;
+    }
 
     ///////
     

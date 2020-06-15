@@ -13,7 +13,7 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    // Currently not streaming example
+    // // Currently not streaming example
     const channelId = '521258416';
     const video = 'https://www.twitch.tv/etikett_radio';
     // Currently sreaming example
@@ -21,7 +21,7 @@ function Header(props) {
     // const video = 'https://www.twitch.tv/truthmusic';
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
-    const [playing, setPlaying] = useState(true);
+    const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
@@ -29,6 +29,8 @@ function Header(props) {
     const [chatState, setChatState] = useState('chat-homescreen');
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
+
+    context.setPathName(props.location.pathname) 
 
     useEffect(() => {
         console.log('use effect started')
@@ -54,18 +56,23 @@ function Header(props) {
                 if (source === video && props.location.pathname === '/') {
                     setHeaderSize('full-header');
                     setChatState('chat-homescreen');
+                    context.setGapClass("big-gap");
                 // If there's no video
                 } else if (source !== video) {
                     setHeaderSize('small-header-without-video');
                     setChatState('chat-routes');
+                    context.setGapClass("small-gap");
                 } else {
                     setHeaderSize('small-header-with-video');
                     setChatState('chat-routes');
+                    context.setGapClass("small-gap");
                 }
                 setLoading(false);
             })
 
     }, [source])
+    
+
 
     useEffect(() => {
 

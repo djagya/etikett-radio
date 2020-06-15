@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useAlert } from 'react-alert';
 import moment from "moment";
 import ScheduleInputForm from './ScheduleInputForm';
@@ -12,6 +12,7 @@ import { Context } from "../Context";
 
 
 export default function Schedule(props) {
+    const context = useContext(Context)
     const [showForm, setShowForm] = useState(false)
     const [checkedIDs, setCheckedIDs] = useState([]);
     const alert = useAlert();
@@ -104,7 +105,7 @@ export default function Schedule(props) {
     return (
         <DocumentTitle title="Schedule page">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>
-                <div className="schedule-page not-stream-component">
+                <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
                         <h2 id="main">schedule</h2>
                         {props.cookies.user && props.cookies.user.role === 'Admin' ?
