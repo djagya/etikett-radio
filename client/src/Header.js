@@ -8,7 +8,6 @@ import ChatApp from './chat/ChatApp';
 import GetData from "./GetData";
 import { Context } from "./Context";
 import moment from "moment";
-import loadingIcon from './img/imageonline-co-noise.png';
 
 function Header(props) {
     const context = useContext(Context)
@@ -150,50 +149,55 @@ function Header(props) {
         },[time]);
 
     return (
-        <header className={`App-header ${headerSize}`}>
-            <div className="loading"><img src={loadingIcon} alt="loading icon"/></div>
+        loading
+            ? (
+                null
+            )
+            : (
+                <header className={`App-header ${headerSize}`}>
+                            
+                    <nav role="navigation">
+                        <NavLink className="nav-link" to="/">home.</NavLink>
+                        <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
+                        <NavLink className="nav-link" to="/archive">archive.</NavLink>
+                        <NavLink className="nav-link" to="/blog">blog.</NavLink>
+                        <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+                        <NavLink className="nav-link" to="/contact">contact.</NavLink>
+                        <NavLink className="nav-link" to="/login">staff only.</NavLink>
+                    </nav>
 
-            <nav role="navigation">
-                <NavLink className="nav-link" to="/">home.</NavLink>
-                <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
-                <NavLink className="nav-link" to="/archive">archive.</NavLink>
-                <NavLink className="nav-link" to="/blog">blog.</NavLink>
-                <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
-                <NavLink className="nav-link" to="/contact">contact.</NavLink>
-                <NavLink className="nav-link" to="/login">staff only.</NavLink>
-            </nav>
-
-            <div className={`chat ${chatState}`}>
-                <ChatApp />
-            </div>
-
-            <section className="embeded-video">
-                <ReactPlayer
-                    className="ReactPlayer"
-                    url={source}
-                    playing={playing}
-                    volume={parseFloat(volume)}
-                    muted={false}
-                    ref={videoPlayer}
-                    width="100%"
-                    height="100%"
-                />
-            </section>
-
-            <section className="message-controls-container">
-                {source === radio ?
-                    <div className="controls">
-                        <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
-                        <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
-                        <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
+                    <div className={`chat ${chatState}`}>
+                        <ChatApp />
                     </div>
-                : null}
-                <div className="message">
-                    <span className="moving-text"> {time} +++ {context.infoBarMessage}</span>
-                </div>
 
-            </section>
-        </header>
+                    <section className="embeded-video">
+                        <ReactPlayer
+                            className="ReactPlayer"
+                            url={source}
+                            playing={playing}
+                            volume={parseFloat(volume)}
+                            muted={false}
+                            ref={videoPlayer}
+                            width="100%"
+                            height="100%"
+                        />
+                    </section>
+
+                    <section className="message-controls-container">
+                        {source === radio ?
+                            <div className="controls">
+                                <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
+                                <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
+                                <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
+                            </div>
+                        : null}
+                        <div className="message">
+                            <span className="moving-text"> {time} +++ {context.infoBarMessage}</span>
+                        </div>
+
+                    </section>
+                </header>                
+            )
     )
 }
 
