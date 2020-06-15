@@ -15,21 +15,37 @@ export default function Join({setName}) {
         data.host.map(({hostName}) => {
           if (hostName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase()) {
             match = true;
-            return alert.error('Username is already taken.');
+            return match
           }
         })
         return match
       })
       .then((match) => {
         if (!match) {
-          setName(nameInput);
-          sessionStorage.setItem('name', nameInput);  
-        }
+          fetch('http://localhost:3000/chat')
+            .then(res => res.json())
+            .then(data => {
+              data.chatUsers.map(({name}) => {
+                if (name === nameInput.trim().toLocaleLowerCase()) {
+                  match = true;
+                  return match; 
+                }
+              });
+              return match; 
+            })
+            .then((match) => {
+              if (!match) {
+                setName(nameInput);
+                sessionStorage.setItem('name', nameInput);      
+              } else {
+                alert.error('User is already taken.');
+              }
+            })  
+        } else {
+          alert.error('User is already taken.');
+          return; 
+        } 
       })
-
-    // fetch('http://localhost:3000/chat')
-    //   .then(res => res.json())
-    //   .then(data => console.log(data));
   }
 
   return (
