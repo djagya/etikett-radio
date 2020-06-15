@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Context } from "../Context";
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import ArchiveInputForm from "./ArchiveInputForm";
@@ -8,6 +9,7 @@ import DocumentTitle from 'react-document-title';
 
 
 export default function ArchiveList(props) {
+    const context = useContext(Context)
 
     const [checkedIDs, setCheckedIDs] = useState([]);
     const [archiveData, setArchiveData] = useState([]);
@@ -139,7 +141,7 @@ export default function ArchiveList(props) {
 
     return (
         <DocumentTitle title="Archive page">
-            <div className="all-list not-stream-component">
+            <div className={`${context.gapClass} all-list`}>
                 <div>
                     <h2 id="main">archive</h2>
 

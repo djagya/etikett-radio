@@ -95,7 +95,7 @@ export default function AllHosts(props) {
 
     if (!context.allHosts) {return <Redirect to={`/user/${context.id}`}/>}
     return (
-        <div className="not-stream-component all-list">
+        <div className={context.gapClass}>
             <h2>all hosts</h2>
             <div className="list-container">
                 <div className="button-container">

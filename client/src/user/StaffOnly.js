@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react'
-import { Context } from "../Context"
+import React, { useContext } from 'react';
+import { Context } from "../Context";
 import { Redirect } from 'react-router-dom';
 
 
 export default function UserProfile(props) {
-    const context = useContext(Context)
+    const context = useContext(Context);
 
 
 
@@ -37,7 +37,7 @@ export default function UserProfile(props) {
 
         <>
             <a href="#maincontent" className="skip-link">Skip to main content</a>
-            <div className="not-stream-component staff-only">
+            <div className={`${context.gapClass} staff-only`}>
                 <div>
                     <h2 id="main">logged in as {props.cookies.user.firstName}</h2>
                     <div className="button-container">

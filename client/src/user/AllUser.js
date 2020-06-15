@@ -145,7 +145,7 @@ export default function AllUser() {
 
     if (!context.allUser) {return <Redirect to={`/user/${context.id}`}/>}
     return (
-        <div className="not-stream-component all-list">
+        <div className={`${context.gapClass} all-list`}>
             <h2>All Users</h2>
             <div className="list-container">
                 <div className="button-container">

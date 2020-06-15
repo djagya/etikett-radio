@@ -33,7 +33,7 @@ export default function EditInfoBar(props) {
 
     if (!context.editInfoBar) { return <Redirect to={`/user/${context.id}`} /> }
     return (
-        <div className="input-form not-stream-component">
+        <div className={`${context.gapClass} input-form`}>
             <h2 id="main">info bar</h2>
             <form onSubmit={handleSubmit} role="form" className="edit-input-form">
                 <div className="button-container">

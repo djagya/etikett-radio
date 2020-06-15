@@ -13,7 +13,7 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    // Currently not streaming example
+    // // Currently not streaming example
     const channelId = '521258416';
     const video = 'https://www.twitch.tv/etikett_radio';
     // Currently sreaming example
@@ -54,13 +54,16 @@ function Header(props) {
                 if (source === video && props.location.pathname === '/') {
                     setHeaderSize('full-header');
                     setChatState('chat-homescreen');
+                    context.setGapClass("big-gap");
                 // If there's no video
                 } else if (source !== video) {
                     setHeaderSize('small-header-without-video');
                     setChatState('chat-routes');
+                    context.setGapClass("small-gap");
                 } else {
                     setHeaderSize('small-header-with-video');
                     setChatState('chat-routes');
+                    context.setGapClass("small-gap");
                 }
                 setLoading(false);
             })

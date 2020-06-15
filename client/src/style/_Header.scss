@@ -31,7 +31,7 @@ nav {
 .small-header-without-video {
   position: fixed;
   top: 0;
-  height: 130px;
+  height: $header-height-small;
   width: 100%;
   display: grid;
   grid-template: 1fr 1fr / 15% repeat(10, 1fr) 15%;

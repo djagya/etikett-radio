@@ -44,19 +44,19 @@ function App(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
-  const [profileEdit, setProfileEdit] = useState(false)
-  const [createProfile, setCreateProfile] = useState(false)
-  const [allUser, setAllUser] = useState(false)
-  const [editHost, setEditHost] = useState(false)
-  const [editHostID, setEditHostID] = useState("")
-  const [allHosts, setAllHosts] = useState(false)
-  const [editInfoBar, setEditInfoBar] = useState(false)
-  const [infoBarMessage, setInfoBarMessage] = useState("")
-  const [infoID, setInfoID] = useState("")
+  const [profileEdit, setProfileEdit] = useState(false);
+  const [createProfile, setCreateProfile] = useState(false);
+  const [allUser, setAllUser] = useState(false);
+  const [editHost, setEditHost] = useState(false);
+  const [editHostID, setEditHostID] = useState("");
+  const [allHosts, setAllHosts] = useState(false);
+  const [editInfoBar, setEditInfoBar] = useState(false);
+  const [infoBarMessage, setInfoBarMessage] = useState("");
+  const [infoID, setInfoID] = useState("");
+  const [gapClass, setGapClass] =useState("big-gap");
   if (cookies.user) {
     id = cookies.user._id
   }
-
 
   const links = [
     { title: "Skip to main content", to: 'main' },
@@ -79,7 +79,8 @@ function App(props) {
             allHosts, setAllHosts,
             editInfoBar, setEditInfoBar,
             infoBarMessage, setInfoBarMessage,
-            infoID, setInfoID
+            infoID, setInfoID,
+            gapClass, setGapClass
           }
         }>
           <div className="App">

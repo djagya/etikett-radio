@@ -87,7 +87,7 @@ export default function CreateUser(props) {
     if (!context.createProfile) { return <Redirect to={`/user/${context.id}`} /> }
 
     return (
-        <div className="not-stream-component create-user-page">
+        <div className={`${context.gapClass} create-user-page`}>
             <h2 id="main">create a new user</h2>
             <form className="input-form" onSubmit={handleSubmit} role="form">
                 <div className="button-container">

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../Context";
 import GetData from "../GetData";
 
 import DocumentTitle from 'react-document-title';
@@ -6,6 +7,7 @@ import DocumentTitle from 'react-document-title';
 
 
 export default function Hosts() {
+    const context = useContext(Context);
     const [hostData, setHostData] = useState([])
     let filteredData = []
     let sortedData = []
@@ -91,7 +93,7 @@ export default function Hosts() {
 
     return (
         <DocumentTitle title="Hosts page">
-            <div className="not-stream-component host-showcase">
+            <div className={`${context.gapClass} host-showcase`}>
                 <h2>hosts</h2>
 
                 <div className="carousel">
