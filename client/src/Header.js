@@ -13,8 +13,8 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    const video = 'https://www.twitch.tv/truthmusic';
-    // const video = 'https://www.twitch.tv/jazzzy/';
+    // const channelId = '521258416';
+    const video = 'https://www.twitch.tv/etikett_radio';
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
     const [playing, setPlaying] = useState(true);
@@ -27,11 +27,44 @@ function Header(props) {
 
     useEffect(() => {
 
-        // Check for video
-        if (ReactPlayer.canPlay(video)) {
-            setSource(video)
-            console.log('source should change: ', source)
+        const options = {
+            headers: {
+                'Accept': 'application/vnd.twitchtv.v5+json',
+                'Client-ID': 'gp762nuuoqcoxypju8c569th9wz7q5',
+                'Authorization': 'Bearer mz2js4nc3yjfywkj04p5bhivieycjm'
+            }
         }
+
+        fetch(`https://api.twitch.tv/helix/streams?user_id=521258416`, options)
+            .then(res => res.json())
+            .then(streamData => {
+                if (streamData.data.type === "live") {
+                    setSource(video)
+                }
+            }).then(() => {
+                if (source === video && props.location.pathname === '/') {
+                    setHeaderSize('full-header');
+                    setChatState('chat-homescreen');
+        
+                // If there's no video
+                } else if (source !== video) {
+                    setHeaderSize('small-header-without-video');
+                    setChatState('chat-routes');
+                } else {
+                    setHeaderSize('small-header-with-video');
+                    setChatState('chat-routes');
+                }
+            })
+
+    }, [])
+
+    useEffect(() => {
+
+        // Check for video
+        // if (ReactPlayer.canPlay(video)) {
+        //     setSource(video)
+        //     console.log('source should change: ', source)
+        // }
 
         // If there's video and we are on homescreen
         if (source === video && props.location.pathname === '/') {
@@ -46,8 +79,7 @@ function Header(props) {
             setHeaderSize('small-header-with-video');
             setChatState('chat-routes');
         }
-
-        console.log(ReactPlayer.getChannel())
+        console.log('asdasd')
 
     // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
     }, [source, props.location.pathname])
