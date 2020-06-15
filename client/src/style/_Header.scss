@@ -1,4 +1,3 @@
-
 ///////////////////////////////////
 //          Header
 ///////////////////////////////////
@@ -192,22 +191,32 @@ nav {
 }
 
 /*animated stream description*/
+//needs adjustment for mobile version
 
-.message span {
-  display: inline-block;
-  white-space: nowrap;
+.title {
+  display: flex;
+  overflow: hidden;
+
+  .row {
+    white-space: nowrap;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 15s;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+
+  }
 }
 
-.moving-text {
-  animation: moveText linear 15s backwards infinite;
-}
-
-@keyframes moveText {
-  from {
-    transform: translateX(100%);
+@keyframes ticker {
+  0% {
+    transform: translate3d(50%, 0, 0)
   }
 
-  to {
-    transform: translateX(-100%);
+  100% {
+    transform: translate3d(-80%, -10%, 0);
   }
 }
