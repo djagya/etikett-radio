@@ -1,11 +1,8 @@
-$header-height: 20vh;
-$nav-height: 6vh;
-$embeded-video-height: 88vh;
-//colors
-$etikett-black: rgb(1, 5, 8);
-$etikett-black-050: rgba(1, 5, 8, 0.5);
-$etikett-black-025: rgba(1, 5, 8, 0.25);
-$etikett-black-000: rgba(1, 5, 8, 0);
+
+@font-face {
+  font-family: "GaramondPro", serif;
+  src: url("../font/AGaramondPro-Regular.otf")
+}
 
 * {
   padding: 0;
@@ -14,10 +11,17 @@ $etikett-black-000: rgba(1, 5, 8, 0);
   color: white;
   background-color: $etikett-black-000;
   letter-spacing: .5px;
+  font-family: $etikett-font;
+  &:focus {
+    border-width: 2px;
+    border-color: white;
+    border-radius: 3px;
+  }
 }
 
 *::selection {
   background-color: #ffffff;
+  color: $etikett-black;
 }
 
 ///////////////////////////////////
@@ -27,10 +31,7 @@ $etikett-black-000: rgba(1, 5, 8, 0);
   text-align: center;
 }
 
-@font-face {
-  font-family: "GaramondPro";
-  src: url("../font/AGaramondPro-Regular.otf")
-}
+
 
 h2 {
   text-align: center;
@@ -47,6 +48,7 @@ h3 {
 a {
   margin: 1rem 0;
 }
+
 i {
   font-size: 2rem;
 }
@@ -116,10 +118,19 @@ footer {
   display: flex;
   align-items: flex-end;
 
-  img {
+  .footer-img {
     width: 100%;
-    height: auto;
+    height: 100vh;
+    background-size: 100%;
+    background-image: url("../img/footer-img-1920x600.png") ;
+    background-position: bottom;
+    background-repeat: no-repeat,
   }
+
+  // img {
+  //   width: 100%;
+  //   height: auto;
+  // }
 }
 
 ////skip link aria///
@@ -128,7 +139,7 @@ footer {
   transform: translateY(calc(-100% - 1rem));
   display: block;
   position: absolute;
-  left: 1rem;
+  left: 1.5rem;
   top: -1rem;
   height: 50px;
   width: 100px;
@@ -137,103 +148,6 @@ footer {
 .skip-link:focus {
   transform: translateY(0);
   transition: all 300ms ease-in-out;
-}
-
-///////////////////////////////////
-//          Input Forms
-///////////////////////////////////
-.input-form {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-
-  .grid-container {
-    display: grid;
-    text-align: left;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 1rem;
-    width: 600px;
-
-    label {
-
-      input,
-      select {
-        width: 100%;
-        height: 2rem;
-        padding-left: .5rem;
-        font-family: "GaramondPro";
-        option {
-          color: black;
-          font-size: 1rem;
-        }
-        
-      }
-      
-      textarea {
-        padding: .5rem;
-        font-family: "GaramondPro";
-
-      }
-    }
-
-    .describe {
-      grid-column-start: 1;
-      grid-column-end: 3;
-
-      textarea {
-        width: 100%;
-        min-height: 5rem;
-      }
-    }
-
-  }
-
-  .submit-button {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: flex-end;
-    margin-top: 1rem;
-    height: 2rem;
-    width: 100%;
-
-    input {
-      height: 100%;
-      padding: 0 5px;
-      font-size: 1rem;
-    }
-  }
-
-  .required {
-    color: red;
-  }
-}
-
-///////////////////////////////////
-//           Buttons
-///////////////////////////////////
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 2rem;
-  margin: 2rem 0;
-}
-
-button {
-  height: 100%;
-  padding: 0 5px;
-  font-size: 1rem;
-}
-
-.check-delete {
-  width: 20px;
-  height: 20px;
-}
-
-.controls {
-  margin: 1rem 0;
 }
 
 ///////////////////////////////////
@@ -289,12 +203,11 @@ button {
 //            From the base react              //
 //---------------------------------------------//
 body {
-  font-family: "GaramondPro",
-    serif;
+    
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::placeholder {
-  font-family: "GaramondPro", serif;
-}
+// ::placeholder {
+
+// }

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useAlert } from 'react-alert';
-import {Context} from "../Context";
+import { Context } from "../Context";
 
 export default function LogIn(props) {
     const [email, setEmail] = useState("");
@@ -58,7 +58,7 @@ export default function LogIn(props) {
     if (props.cookies.user) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className="input-form not-stream-component">
-            <h2>Log In</h2>
+            <h2 id="main">Log In</h2>
             <form onSubmit={handleSubmit} role="form">
                 <div className="grid-container">
                     <label htmlFor="email">

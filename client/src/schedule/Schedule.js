@@ -104,10 +104,9 @@ export default function Schedule(props) {
     return (
         <DocumentTitle title="Schedule page">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>
-                <a href="#maincontent" className="skip-link">Skip to main content</a>
                 <div className="schedule-page not-stream-component">
                     <div className="schedule-content">
-                        <h2 id="maincontent">schedule</h2>
+                        <h2 id="main">schedule</h2>
                         {props.cookies.user && props.cookies.user.role === 'Admin' ?
                             <div className="button-container controls">
                                 {showForm ?

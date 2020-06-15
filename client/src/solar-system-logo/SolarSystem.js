@@ -6,10 +6,10 @@ export default function App() {
 
         <SolarSystem>
             <Sun />
-            <Planet name="mercury" distanceFromSun="32" years="0.23" />
-            <Planet name="venus" distanceFromSun="40" years="0.8" />
+            <Planet name="mercury" distanceFromSun="30" years="0.23" />
+            <Planet name="venus" distanceFromSun="40" years="0.5" />
             <Planet name="earth" distanceFromSun="50" years="1" />
-            <Planet name="mars" distanceFromSun="60" years="2" />
+            <Planet name="mars" distanceFromSun="60" years="1.5" />
         </SolarSystem>
 
     );
@@ -21,7 +21,7 @@ const SolarSystem = props => {
 
 const Sun = () => {
     return (
-        <div className="sun" aria-label="The logo of etikett~radio as a symbolic of the sun.">
+        <div className="sun" aria-label="The logo of etikett~radio as a symbol of the sun.">
         </div>
     );
 };

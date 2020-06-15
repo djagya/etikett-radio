@@ -38,7 +38,7 @@ export default function MyProfile(props) {
                 return
             }
             })
-                
+
     }, [context.id])
 
 
@@ -64,12 +64,12 @@ export default function MyProfile(props) {
             return response.json()
         }
         putData(`http://localhost:3000/users/${context.id}`, body)
-            .then(data => { 
-                if (!data.success) { 
+            .then(data => {
+                if (!data.success) {
                     console.log(data)
                     alert.error('Something went wrong...');
                 } else {
-                    props.setCookie('user', data.user, {path: '/'}) 
+                    props.setCookie('user', data.user, { path: '/' })
                     alert.success('Profile edited!', { timeout: 3000 });
                 }
             })
@@ -107,7 +107,7 @@ export default function MyProfile(props) {
     return (
         <div>
             <div className="input-form not-stream-component">
-                <h2>my profile</h2>
+                <h2 id="main">my profile</h2>
 
                 <form onSubmit={handleSubmit} role="form">
                     <div className="button-container">

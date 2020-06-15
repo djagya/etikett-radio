@@ -14,11 +14,11 @@ function Header(props) {
     const alert = useAlert();
     const videoPlayer = useRef();
     // Currently not streaming example
-    // const channelId = '521258416';
-    // const video = 'https://www.twitch.tv/etikett_radio';
+    const channelId = '521258416';
+    const video = 'https://www.twitch.tv/etikett_radio';
     // Currently sreaming example
-    const channelId = '274901255';
-    const video = 'https://www.twitch.tv/truthmusic';
+    // const channelId = '274901255';
+    // const video = 'https://www.twitch.tv/truthmusic';
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
     const [playing, setPlaying] = useState(true);
@@ -120,33 +120,33 @@ function Header(props) {
     //For InfoBar
     ////////////////
     useEffect(() => {
-    GetData("http://localhost:3000/infobar")
-    .then(data => {
-        if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
-        if (data.status ===403) {
-            alert.error("Status 403: Forbidden") 
-            return
-        }
-        if (!data.success) {
-            alert.error("Failed to fetch data, please contact an admin")
-            return
-        };
-        context.setInfoBarMessage(data.infoBar[0].message)
-        context.setInfoID(data.infoBar[0]._id)
-    })
-    },  [])
+        GetData("http://localhost:3000/infobar")
+            .then(data => {
+                if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
+                if (data.status === 403) {
+                    alert.error("Status 403: Forbidden")
+                    return
+                }
+                if (!data.success) {
+                    alert.error("Failed to fetch data, please contact an admin")
+                    return
+                };
+                context.setInfoBarMessage(data.infoBar[0].message)
+                context.setInfoID(data.infoBar[0]._id)
+            })
+    }, [])
 
     ////////////////
     //Clock 
     ////////////////
-    const [time,setTime] = useState( moment().format("h:mm:ss a"))
-    const timer = () => setTime( moment().format("H:mm:ss"))
+    const [time, setTime] = useState(moment().format("h:mm:ss a"))
+    const timer = () => setTime(moment().format("H:mm:ss"))
     useEffect(
         () => {
 
             const id = setInterval(timer, 1000);
             return () => clearInterval(id);
-        },[time]);
+        }, [time]);
 
     return (
         loading
@@ -185,7 +185,7 @@ function Header(props) {
 
                     <section className="message-controls-container">
                         {source === radio ?
-                            <div className="controls">
+                            <div className="player-controls">
                                 <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
                                 <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                                 <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />

@@ -35,8 +35,7 @@ import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
 import DocumentTitle from 'react-document-title';
-
-
+import SkipLink from 'skip-links';
 
 
 
@@ -57,12 +56,18 @@ function App(props) {
   if (cookies.user) {
     id = cookies.user._id
   }
+
+
+  const links = [
+    { title: "Skip to main content", to: 'main' },
+    { title: 'Skip to footer', to: 'footer' }
+  ]
   //////////////////////
   return (
     <DocumentTitle title="Homepage, video streaming">
 
       <BrowserRouter>
-
+        <SkipLink links={links} className="skip-link" />
         <Context.Provider value={
           {
             id,
@@ -126,8 +131,8 @@ function App(props) {
 
             </Switch>
 
-            <footer>
-              <img src={footerImg} width="1920" height="600" alt="A photo taken from the moon surface's of the planet Earth."></img>
+            <footer id="footer">
+              <div className="footer-img"></div>
             </footer>
           </div>
         </Context.Provider>
