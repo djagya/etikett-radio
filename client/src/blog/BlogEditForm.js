@@ -35,7 +35,7 @@ export default function BlogEditForm(param) {
             .then(data => {  
                 if (!data.success) { 
                     console.log(data);
-                    alert.error('Server is not responding... Try again later.');
+                    alert.error('Server is not responding... Please try again later.');
                 } else {
                     alert.success('Your changes have been saved!', {
                         onClose: () => {

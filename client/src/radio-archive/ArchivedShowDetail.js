@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import ArchiveEdit from './ArchiveEditForm';
 import {Context} from "../Context";
@@ -6,13 +7,18 @@ import {Context} from "../Context";
 export default function ArchiveDetail(props) {
     const [showEdit, setShowEdit] =useState(false);
     const [archiveData, setArchiveData] = useState([]);
-    const param = props.match.params.id
+    const param = props.match.params.id;
+    const alert = useAlert();
 
     useEffect(() => {
 
         fetch(`http://localhost:3000/archive/${param}`)
             .then(res => res.json())
             .then(data => setArchiveData(data.archive))
+            .catch(err => {
+                console.log('Error fetching data: ', err);
+                alert.error("Failed to fetch data, please contact an admin.");
+            })
     }, [param])
 
     return (

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext  } from 'react';
+import { useAlert } from 'react-alert';
 import ReactPlayer from 'react-player';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
@@ -10,34 +11,80 @@ import moment from "moment";
 
 function Header(props) {
     const context = useContext(Context)
-
-
-
-
-    useEffect(() => {
-        // Stream that is only available on sundays (for testing): https://www.twitch.tv/austinjohnplays/
-        const video = 'https://www.twitch.tv/truthmusic';
-        // const video = 'https://www.twitch.tv/austinjohnplays/';
-        if (ReactPlayer.canPlay(video)) {
-            setSource(video);
-        }
-    }, [])
-
-    useEffect(() => {
-        if (props.location.pathname !== '/') {
-            setHeaderSize('small-header');
-        } else {
-            setHeaderSize('full-header');
-        }
-    }, [props.location.pathname])
-
-    const [playing, setPlaying] = useState(false);
+    const alert = useAlert();
+    const videoPlayer = useRef();
+    // Currently not streaming example
+    const channelId = '521258416';
+    const video = 'https://www.twitch.tv/etikett_radio';
+    // Currently sreaming example
+    // const channelId = '274901255';
+    // const video = 'https://www.twitch.tv/truthmusic';
+    // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
+    const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
+    const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
-    const [source, setSource] = useState('http://s9.myradiostream.com:44782/listen.mp3');
-    const videoPlayer = useRef();
+    const [chatState, setChatState] = useState('chat-homescreen');
+    const [source, setSource] = useState(radio);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        console.log('use effect started')
+        const options = {
+            headers: {
+                'Accept': 'application/vnd.twitchtv.v5+json',
+                'Client-ID': 'gp762nuuoqcoxypju8c569th9wz7q5',
+                'Authorization': 'Bearer mz2js4nc3yjfywkj04p5bhivieycjm'
+            }
+        }
+
+        fetch(`https://api.twitch.tv/helix/streams?user_id=${channelId}`, options)
+            .then(res => res.json())
+            .then(streamData => {
+                if (!streamData.data[0]) {
+                    return
+                }
+                if (streamData.data[0].type === "live") {
+                    setSource(video)
+                }
+            })
+            .then(() => {
+                if (source === video && props.location.pathname === '/') {
+                    setHeaderSize('full-header');
+                    setChatState('chat-homescreen');
+                // If there's no video
+                } else if (source !== video) {
+                    setHeaderSize('small-header-without-video');
+                    setChatState('chat-routes');
+                } else {
+                    setHeaderSize('small-header-with-video');
+                    setChatState('chat-routes');
+                }
+                setLoading(false);
+            })
+
+    }, [source])
+
+    useEffect(() => {
+
+        // If there's video and we are on homescreen
+        if (source === video && props.location.pathname === '/') {
+            setHeaderSize('full-header');
+            setChatState('chat-homescreen');
+
+        // If there's no video
+        } else if (source !== video) {
+            setHeaderSize('small-header-without-video');
+            setChatState('chat-routes');
+        } else {
+            setHeaderSize('small-header-with-video');
+            setChatState('chat-routes');
+        }
+
+    // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
+    }, [source, props.location.pathname])
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -102,49 +149,55 @@ function Header(props) {
         }, [time]);
 
     return (
-        <header className={`App-header ${headerSize}`}>
+        loading
+            ? (
+                null
+            )
+            : (
+                <header className={`App-header ${headerSize}`}>
+                            
+                    <nav role="navigation">
+                        <NavLink className="nav-link" to="/">home.</NavLink>
+                        <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
+                        <NavLink className="nav-link" to="/archive">archive.</NavLink>
+                        <NavLink className="nav-link" to="/blog">blog.</NavLink>
+                        <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
+                        <NavLink className="nav-link" to="/contact">contact.</NavLink>
+                        <NavLink className="nav-link" to="/login">staff only.</NavLink>
+                    </nav>
 
-            <nav role="navigation">
-                <NavLink className="nav-link" to="/">home.</NavLink>
-                <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
-                <NavLink className="nav-link" to="/archive">archive.</NavLink>
-                <NavLink className="nav-link" to="/blog">blog.</NavLink>
-                <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
-                <NavLink className="nav-link" to="/contact">contact.</NavLink>
-                <NavLink className="nav-link" to="/login">staff only.</NavLink>
-            </nav>
-
-            <div className={`chat ${props.chatState}`}>
-                <ChatApp setChatState={props.setChatState} />
-            </div>
-
-            <section className="embeded-video">
-                <ReactPlayer
-                    className="ReactPlayer"
-                    url={source}
-                    playing={playing}
-                    volume={parseFloat(volume)}
-                    muted={false}
-                    ref={videoPlayer}
-                    width="100%"
-                    height="100%"
-                />
-            </section>
-
-            <section className="message-controls-container">
-                {source === 'http://s9.myradiostream.com:44782/listen.mp3' ?
-                    <div className="controls">
-                        <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
-                        <img className="audioIcon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
-                        <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
+                    <div className={`chat ${chatState}`}>
+                        <ChatApp />
                     </div>
-                    : null}
-                <div className="title">
-                    <span className="row">{time} +++ {context.infoBarMessage}</span>
-                </div>
 
-            </section>
-        </header>
+                    <section className="embeded-video">
+                        <ReactPlayer
+                            className="ReactPlayer"
+                            url={source}
+                            playing={playing}
+                            volume={parseFloat(volume)}
+                            muted={false}
+                            ref={videoPlayer}
+                            width="100%"
+                            height="100%"
+                        />
+                    </section>
+
+                    <section className="message-controls-container">
+                        {source === radio ?
+                            <div className="player-controls">
+                                <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
+                                <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
+                                <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
+                            </div>
+                        : null}
+                        <div className="message">
+                            <span className="moving-text"> {time} +++ {context.infoBarMessage}</span>
+                        </div>
+
+                    </section>
+                </header>                
+            )
     )
 }
 

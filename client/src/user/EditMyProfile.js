@@ -21,22 +21,22 @@ export default function MyProfile(props) {
             // headers: {"Content-Type": "application/json"}
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.status === 403) {
-                    alert("Status 403: Forbidden")
-                    return
-                }
-                if (data.success) {
-                    setFirstName(data.user.firstName)
-                    setLastName(data.user.lastName)
-                    setUserName(data.user.userName)
-                    setEmail(data.user.email)
-                    setRole(data.user.role)
+            .then(data => { 
+                if(data.status === 403) {
+                alert.error("Status 403: Forbidden");
+                return
+            }
+                if(data.success){
+                setFirstName(data.user.firstName)
+                setLastName(data.user.lastName)
+                setUserName(data.user.userName)
+                setEmail(data.user.email)
+                setRole(data.user.role)
 
-                } else {
-                    alert("Something went wrong")
-                    return
-                }
+            } else {
+                alert.error("Something went wrong");
+                return
+            }
             })
 
     }, [context.id])

@@ -43,7 +43,7 @@ export default function ArchiveEdit(props) {
             .then(data => { 
                 if (!data.success) { 
                     console.log(data);
-                    alert.error('Server is not responding... Try again later.'); 
+                    alert.error('Server is not responding... Please try again later.'); 
                 } else {
                     context.setShowEdit(false);
                     alert.success('Your changes have been saved!', { timeout: 3000 } );

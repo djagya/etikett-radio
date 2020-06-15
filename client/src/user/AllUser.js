@@ -27,7 +27,7 @@ export default function AllUser() {
                 if(data.success){
                 setUserData(data.users.sort((userA, userB)=>(userA.firstName < userB.firstName)? -1 : 1))
             } else {
-                alert("Something went wrong")
+                alert("Failed to fetch data, please contact an admin.")
                 return
             }
         })
@@ -101,10 +101,18 @@ export default function AllUser() {
             setUserData(filteredUserData)
 
             //delete from db
-            Delete([id], "users")
-            } else {
-                return null
-            }
+            Delete([id], "users").then(output => {
+                if (output) {
+                    alert.success('User successfully deleted.', {
+                        onClose: () => { window.location.reload() }
+                    })
+                } else {
+                    alert.error('Failed to delete user, please contact an admin.');
+                }
+            })
+        } else {
+            return null
+        }
     }
 
    

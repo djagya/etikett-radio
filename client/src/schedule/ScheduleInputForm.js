@@ -48,7 +48,7 @@ export default function ScheduleInputForm() {
                 setShow("")
                 setFrom(time)
                 setTo(time)
-                alert.success('Schedule successfully posted!', { timeout: 3000 });
+                alert.success('Schedule posted!', { timeout: 3000 });
                 
             } else {
                 alert.error(data.err);

@@ -68,8 +68,6 @@ export default function ArchiveList(props) {
                 break;
             default: console.log("Sort Switch ran without any effect")
         }
-
-
     }
 
 

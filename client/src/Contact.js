@@ -44,8 +44,7 @@ export default function Contact() {
                             }
                         });
                 } else {
-                    alert.error('Opps! Something went wrong...');
-
+                    alert.error('Something went wrong... Please contact an admin');
                 }
             })
     }
@@ -61,23 +60,23 @@ export default function Contact() {
                     <div className="grid-container">
                         <label htmlFor="name">
                             <span className="required">*</span>name
-                    <input type="text" id="name" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input required type="text" id="name" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
                         </label>
                         <label htmlFor="email">
                             <span className="required">*</span>email
-                    <input type="text" id="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input required type="email" id="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </label>
                         <label htmlFor="subject">
                             <span className="required">*</span>subject
-                    <input type="text" id="subject" placeholder="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
+                    <input required type="text" id="subject" placeholder="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
                         </label>
                         <label className="describe" htmlFor="message">
                             <span className="required">*</span>message
-                    <textarea type="text" id="message" placeholder="Hey, whats up?" value={message} onChange={(e) => setMessage(e.target.value)} />
+                    <textarea required type="text" id="message" placeholder="Hey, whats up?" value={message} onChange={(e) => setMessage(e.target.value)} />
                         </label>
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="Send" role='button' /><span className="required">* required</span>
+                        <input type="submit" value="send" role='button' /><span className="required">* required</span>
                     </div>
                 </form>
             </div>

@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import BlogInputForm from './BlogInputForm';
 import BlogEntry from './BlogEntry';
-
+import { useAlert } from 'react-alert';
 import DocumentTitle from 'react-document-title';
 import { Context } from "../Context";
 
 export default function Blog(props) {
     const [blogData, setBlogData] = useState([]);
     const [showForm, setShowForm] = useState(false);
+    const alert = useAlert();
 
     useEffect(() => {
         fetch("http://localhost:3000/blog")
             .then(res => res.json())
             .then(data => setBlogData(data.blog.reverse()))
+            .catch(err => {
+                console.log('Error fetching data: ', err)
+                alert.error("Failed to fetch data, please contact an admin.")
+            })
     }, [])
     //list item construction
     const renderLi = (blogData) => {

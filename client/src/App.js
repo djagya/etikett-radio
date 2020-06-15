@@ -41,7 +41,6 @@ import SkipLink from 'skip-links';
 
 
 function App(props) {
-  const [chatState, setChatState] = useState('chat-homescreen');
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
@@ -94,7 +93,7 @@ function App(props) {
             </div>
 
             <div className="stream-page">
-              <Header chatState={chatState} setChatState={setChatState} />
+              <Header />
             </div>
 
             <Switch>
@@ -133,7 +132,7 @@ function App(props) {
             </Switch>
 
             <footer id="footer">
-              <img src={footerImg} width="1920" height="600" alt="A photo taken from the moon surface's of the planet Earth."></img>
+              <div className="footer-img"></div>
             </footer>
           </div>
         </Context.Provider>
