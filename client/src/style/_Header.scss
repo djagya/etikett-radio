@@ -213,14 +213,10 @@ nav {
 
 @keyframes ticker {
   0% {
-    transform: translate3d(80%, 0, 0)
+    transform: translate3d(80%, 0, 0);
   }
 
   100% {
-<<<<<<< HEAD
-    transform: translate3d(-100%, -10%, 0);
-=======
     transform: translate3d(-100%, 0, 0);
->>>>>>> origin/adjustment-solarSystem
   }
 }
