@@ -1,4 +1,3 @@
-
 ///////////////////////////////////
 //          Input Forms
 ///////////////////////////////////
@@ -43,92 +42,163 @@
           padding: .5rem;
   
         }
+
       }
-  
-      .describe {
-        grid-column-start: 1;
-        grid-column-end: 3;
-  
-        textarea {
-          width: 100%;
-          min-height: 5rem;
-        }
-      }
-  
-    }
-  
-    .submit-button {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      align-items: flex-end;
-      margin-top: 1rem;
-      height: 2rem;
-      width: 100%;
-  
-      input {
-        height: 100%;
-        padding: 0 5px;
-        font-size: 1rem;
+
+      textarea {
+        padding: .5rem;
+
       }
     }
-  
-    .required {
-      color: red;
+
+    .describe {
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+      textarea {
+        width: 100%;
+        min-height: 5rem;
+      }
     }
+
   }
+
+.submit-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-end;
+  margin-top: 1rem;
+  height: 2rem;
+  margin: 2rem 0;
+}
+
+button {
+  height: 100%;
+  padding: 0 5px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+
   
-  ///////////////////////////////////
-  //           Buttons
-  ///////////////////////////////////
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 2rem;
-    margin: 2rem 0;
+  ///////
+  //Hardcoding styling from chrome to make it look the same everywhere
+  ///////
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  border-width: 2px;
+  border-style: outset;
+  border-color: (rgb(195, 195, 195),rgb(118, 118, 118)  );
+  border-image: initial;
+  &:active {
+    border-style: inset;
   }
+
+  ///////
   
-  button {
+}
+
+.check-delete {
+  width: 20px;
+  height: 20px;
+  background-color: #010508;
+  width: 100%;
+
+  input {
     height: 100%;
     padding: 0 5px;
     font-size: 1rem;
-    letter-spacing: 1px;
+  }
+}
 
-    
-    ///////
-    //Hardcoding styling from chrome to make it look the same everywhere
-    ///////
-    -webkit-writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    cursor: default;
-    border-width: 2px;
-    border-style: outset;
-    border-color: (rgb(195, 195, 195),rgb(118, 118, 118)  );
-    border-image: initial;
-    &:active {
-      border-style: inset;
-    }
+.required {
+  color: red;
+}
 
-    ///////
-    
-  }
-  
-  .check-delete {
-    width: 20px;
-    height: 20px;
-    background-color: #010508;
-  }
-  
-  .controls {
-    justify-content: space-between;
-    margin: 1rem 0;
-  }
-  
+
+///////////////////////////////////
+//           Buttons
+///////////////////////////////////
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 2rem;
+  margin: 2rem 0;
+}
+
+button {
+  height: 100%;
+  padding: 0 5px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+
+
+  ///////
+  //Hardcoding styling from chrome to make it look the same everywhere
+  ///////
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  border-width: 2px;
+  border-style: outset;
+  border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+  border-image: initial;
+
+  ///////
+
+}
+
+//checkbox
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  /* Hides the default checkbox style */
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: .15s;
+  // border-radius: 2em;
+  background-color: rgb(240, 240, 240);
+}
+
+input[type="checkbox"]:checked {
+  background-color: $etikett-hover;
+}
+
+input[type="checkbox"]:before,
+input[type="checkbox"]:checked:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 1.4rem;
+  text-align: center;
+  color: #fff;
+  // border: 1px solid $etikett-black;?
+}
+
+input[type="checkbox"]:checked:before {
+  content: '\2713';
+}
+
+
+.controls {
+  justify-content: space-between;
+  margin: 1rem 0;
+}
