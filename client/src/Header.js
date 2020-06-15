@@ -48,7 +48,6 @@ function Header(props) {
                 }
                 if (streamData.data[0].type === "live") {
                     setSource(video)
-                    setLoading(false);
                 }
             })
             .then(() => {
@@ -63,6 +62,7 @@ function Header(props) {
                     setHeaderSize('small-header-with-video');
                     setChatState('chat-routes');
                 }
+                setLoading(false);
             })
 
     }, [source])
