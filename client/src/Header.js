@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext  } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import ReactPlayer from 'react-player';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
@@ -10,7 +10,7 @@ import moment from "moment";
 
 function Header(props) {
     const context = useContext(Context)
-    
+
 
 
 
@@ -73,33 +73,33 @@ function Header(props) {
     //For InfoBar
     ////////////////
     useEffect(() => {
-    GetData("http://localhost:3000/infobar")
-    .then(data => {
-        if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
-        if (data.status ===403) {
-            alert.error("Status 403: Forbidden") 
-            return
-        }
-        if (!data.success) {
-            alert.error("Failed to fetch data, please contact an admin")
-            return
-        };
-        context.setInfoBarMessage(data.infoBar[0].message)
-        context.setInfoID(data.infoBar[0]._id)
-    })
-    },  [])
+        GetData("http://localhost:3000/infobar")
+            .then(data => {
+                if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
+                if (data.status === 403) {
+                    alert.error("Status 403: Forbidden")
+                    return
+                }
+                if (!data.success) {
+                    alert.error("Failed to fetch data, please contact an admin")
+                    return
+                };
+                context.setInfoBarMessage(data.infoBar[0].message)
+                context.setInfoID(data.infoBar[0]._id)
+            })
+    }, [])
 
     ////////////////
     //Clock 
     ////////////////
-    const [time,setTime] = useState( moment().format("h:mm:ss a"))
-    const timer = () => setTime( moment().format("H:mm:ss"))
+    const [time, setTime] = useState(moment().format("h:mm:ss a"))
+    const timer = () => setTime(moment().format("H:mm:ss"))
     useEffect(
         () => {
 
             const id = setInterval(timer, 1000);
             return () => clearInterval(id);
-        },[time]);
+        }, [time]);
 
     return (
         <header className={`App-header ${headerSize}`}>
@@ -139,8 +139,8 @@ function Header(props) {
                         <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
                     </div>
                     : null}
-                <div className="message">
-                    <span className="moving-text"> {time} +++ {context.infoBarMessage}</span>
+                <div className="title">
+                    <span className="row">{time} +++ {context.infoBarMessage}</span>
                 </div>
 
             </section>
