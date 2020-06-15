@@ -6,7 +6,7 @@ export default function App() {
 
         <SolarSystem>
             <Sun />
-            <Planet name="mercury" distanceFromSun="32" years="0.23" />
+            <Planet name="mercury" distanceFromSun="30" years="0.23" />
             <Planet name="venus" distanceFromSun="40" years="0.5" />
             <Planet name="earth" distanceFromSun="50" years="1" />
             <Planet name="mars" distanceFromSun="60" years="1.5" />
