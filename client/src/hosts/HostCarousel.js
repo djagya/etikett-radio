@@ -39,10 +39,12 @@ export default function Hosts() {
                     aria-hidden="true" hidden defaultChecked={true} />
 
                 <div className="carousel-item">
-                    <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} />
+                    <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" />
                     <div className="host-description">
                         <h3>{host.hostName}</h3>
-                        <q>{host.description}</q>
+                        <div className="about-host">
+                            <q>{host.description}</q>
+                        </div>
                         <div className="social-media-container">
                             {host.youtube === "" ? null : <a href={host.youtube} target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-youtube-square"></i>
@@ -71,10 +73,11 @@ export default function Hosts() {
                             {host.snapchat === "" ? null : <a href={host.snapchat} target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-snapchat-square"></i>
                             </a>}
+
+                            {host.otherLink === "" ? null : <a href={host.otherLink} target="_blank" rel="noopener noreferrer">
+                                {host.otherName}
+                            </a>}
                         </div>
-                        {host.otherLink === "" ? null : <a href={host.otherLink} target="_blank" rel="noopener noreferrer">
-                            {host.otherName}
-                        </a>}
 
 
                     </div>
