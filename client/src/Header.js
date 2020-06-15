@@ -13,8 +13,8 @@ function Header(props) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
-    // const video = 'https://www.twitch.tv/truthmusic';
-    const video = 'https://www.twitch.tv/jazzzy';
+    const video = 'https://www.twitch.tv/truthmusic';
+    // const video = 'https://www.twitch.tv/jazzzy/';
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
     const [playing, setPlaying] = useState(true);
@@ -47,24 +47,10 @@ function Header(props) {
             setChatState('chat-routes');
         }
 
+        console.log(ReactPlayer.getChannel())
+
     // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
     }, [source, props.location.pathname])
-
-    // useEffect(() => {
-    //     console.log('[useEffect [props.location.pathname]]')
-    //     if (source == video) {
-
-    //         // Change header depending on route if there's video
-    //         if (props.location.pathname !== '/') {
-    //             setHeaderSize('small-header');
-    //             setChatState('chat-routes')
-    //         } 
-    //         else if (props.location.pathname === '/' && source === video) {
-    //             setHeaderSize('full-header');
-    //         }    
-    //     }
-    // }, [props.location.pathname])
-
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
