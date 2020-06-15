@@ -25,13 +25,13 @@
     text-decoration-line: underline;
     
     li {
-      letter-spacing: 3px;
       
+      letter-spacing: 3px;
     }
 
     .sort {
       cursor: pointer;
-      
+      letter-spacing: 3px;
       transition: 0.1s;
       &.active {
         color: $etikett-hover;
