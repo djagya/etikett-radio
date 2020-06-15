@@ -8,6 +8,7 @@ import ChatApp from './chat/ChatApp';
 import GetData from "./GetData";
 import { Context } from "./Context";
 import moment from "moment";
+import loadingIcon from './img/imageonline-co-noise.png';
 
 function Header(props) {
     const context = useContext(Context)
@@ -28,6 +29,7 @@ function Header(props) {
     const [headerSize, setHeaderSize] = useState('');
     const [chatState, setChatState] = useState('chat-homescreen');
     const [source, setSource] = useState(radio);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         console.log('use effect started')
@@ -47,7 +49,7 @@ function Header(props) {
                 }
                 if (streamData.data[0].type === "live") {
                     setSource(video)
-                    console.log('source: ', source);
+                    setLoading(false);
                 }
             })
             .then(() => {
@@ -68,12 +70,6 @@ function Header(props) {
 
     useEffect(() => {
 
-        // Check for video
-        // if (ReactPlayer.canPlay(video)) {
-        //     setSource(video)
-        //     console.log('source should change: ', source)
-        // }
-
         // If there's video and we are on homescreen
         if (source === video && props.location.pathname === '/') {
             setHeaderSize('full-header');
@@ -87,7 +83,6 @@ function Header(props) {
             setHeaderSize('small-header-with-video');
             setChatState('chat-routes');
         }
-        console.log('asdasd')
 
     // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
     }, [source, props.location.pathname])
@@ -156,6 +151,7 @@ function Header(props) {
 
     return (
         <header className={`App-header ${headerSize}`}>
+            <div className="loading"><img src={loadingIcon} alt="loading icon"/></div>
 
             <nav role="navigation">
                 <NavLink className="nav-link" to="/">home.</NavLink>
