@@ -1,12 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 
 export default function Join({setName}) {
   const [nameInput, setNameInput] = useState('');
+  const alert = useAlert();
 
   const handleSubmit = e => {
     e.preventDefault();
-    setName(nameInput);
-    sessionStorage.setItem('name', nameInput);
+
+    fetch('http://localhost:3000/host')
+      .then(res => res.json())
+      .then(data => {
+        let match = false;
+        data.host.map(({hostName}) => {
+          if (hostName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase()) {
+            match = true;
+            return alert.error('Username is already taken.');
+          }
+        })
+        return match
+      })
+      .then((match) => {
+        if (!match) {
+          setName(nameInput);
+          sessionStorage.setItem('name', nameInput);  
+        }
+      })
   }
 
   return (
