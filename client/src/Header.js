@@ -30,6 +30,8 @@ function Header(props) {
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
 
+    context.setPathName(props.location.pathname) 
+
     useEffect(() => {
         console.log('use effect started')
         const options = {
@@ -69,6 +71,8 @@ function Header(props) {
             })
 
     }, [source])
+    
+
 
     useEffect(() => {
 

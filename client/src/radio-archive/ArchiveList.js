@@ -134,7 +134,7 @@ export default function ArchiveList(props) {
         const listHeader = ["show.", "host.", "genre.", "date."]
 
         return listHeader.map((el, i) => (
-            <li key={i} ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : null} `}>{el}</span></li>
+            <li key={i} ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
 
         ))
     }

@@ -138,7 +138,7 @@ export default function AllUser() {
         const listHeader = ["first name.", "last name.", "user name.", "email.", "role."]
 
         return listHeader.map((el, i) =>(
-            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : null } `}>{el}</span></li>
+            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
 
         ))
     }

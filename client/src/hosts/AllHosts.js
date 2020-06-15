@@ -80,7 +80,7 @@ export default function AllHosts(props) {
         const listHeader = ["host.", "status."]
 
         return listHeader.map((el, i) =>(
-            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : null } `}>{el}</span></li>
+            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : "" } `}>{el}</span></li>
 
         ))
     }
@@ -95,7 +95,7 @@ export default function AllHosts(props) {
 
     if (!context.allHosts) {return <Redirect to={`/user/${context.id}`}/>}
     return (
-        <div className={context.gapClass}>
+        <div className={` all-list ${context.gapClass}`}>
             <h2>all hosts</h2>
             <div className="list-container">
                 <div className="button-container">

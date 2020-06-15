@@ -104,17 +104,7 @@ li {
   justify-content: center;
   align-self: center;
   opacity: 0.8;
-  // animation: loading 3s ease;
 }
-
-// @keyframes loading {
-//   0% {
-//     z-index: -1;
-//   }
-//   100% {
-//     z-index: 1;
-//   }
-// }
 
 .stream-page {
   position: relative;
@@ -122,9 +112,10 @@ li {
 
 footer {
   height: 100vh;
-  background-image: linear-gradient($etikett-black-025, $etikett-black-000);
   display: flex;
   align-items: flex-end;
+
+ 
 
   .footer-img {
     width: 100%;
@@ -135,12 +126,11 @@ footer {
     background-repeat: no-repeat,
   }
 
-  // img {
-  //   width: 100%;
-  //   height: auto;
-  // }
-}
 
+}
+ .gradient {
+    background-image: linear-gradient($etikett-black-025, $etikett-black-000);
+  }
 ////skip link aria///
 .skip-link {
   z-index: 9999;

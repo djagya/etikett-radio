@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 
@@ -54,6 +54,8 @@ function App(props) {
   const [infoBarMessage, setInfoBarMessage] = useState("");
   const [infoID, setInfoID] = useState("");
   const [gapClass, setGapClass] =useState("big-gap");
+  const [pathName, setPathName] =useState("/")
+  const [gradient, setGradient] =useState("gradient");
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -63,6 +65,9 @@ function App(props) {
     { title: 'Skip to footer', to: 'footer' }
   ]
   //////////////////////
+
+  
+  console.log(pathName)
   return (
     <DocumentTitle title="Homepage, video streaming">
 
@@ -80,7 +85,9 @@ function App(props) {
             editInfoBar, setEditInfoBar,
             infoBarMessage, setInfoBarMessage,
             infoID, setInfoID,
-            gapClass, setGapClass
+            gapClass, setGapClass,
+            pathName, setPathName,
+            gradient, setGradient
           }
         }>
           <div className="App">
@@ -132,7 +139,7 @@ function App(props) {
 
             </Switch>
 
-            <footer id="footer">
+            <footer id="footer" className={pathName !== "/" ? "gradient" : ""}>
               <div className="footer-img"></div>
             </footer>
           </div>
