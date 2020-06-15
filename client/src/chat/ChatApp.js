@@ -6,8 +6,7 @@ import Chat from './Chat';
 
 function ChatApp() {
   const [name, setName] = useState('');
-  const [chatWindow, setChatWindow] = useState('chat-app-chat')
-  let enableChat = true;
+  const [chatWindow, setChatWindow] = useState('chat-app-chat');
   const room = 'etikett chat';
 
   useEffect(() => {
@@ -18,24 +17,17 @@ function ChatApp() {
   }, [name])
 
   return (
-    enableChat
+    name
       ? (
-        name
-          ? (
-            <div className={`ChatApp ${chatWindow}`}>
-              <Chat name={name} setName={setName} room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} />
-            </div>
-          )
-          : (
-            <div className="ChatApp chat-app-join">
-              <Join setName={setName} />
-            </div>
-          )
+        <div className={`ChatApp ${chatWindow}`}>
+          <Chat name={name} setName={setName} room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} />
+        </div>
       )
       : (
-        null
-      )
-    
+        <div className="ChatApp chat-app-join">
+          <Join setName={setName} />
+        </div>
+      ) 
   );
 }
 
