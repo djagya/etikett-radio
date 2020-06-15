@@ -36,12 +36,8 @@ export default function LogIn(props) {
                 if (data.status === 403) return alert.error("Invalid Password")
                 if (data.success) {
                     props.setCookie('user', data.user, { path: '/' })
-                    return data.user.userName
+                    sessionStorage.setItem('name', data.user.userName);
                 }
-            })
-            .then(userName => {
-                setName(userName);
-                sessionStorage.setItem('name', userName);
             })
             .catch(err => {
                 console.log(err);

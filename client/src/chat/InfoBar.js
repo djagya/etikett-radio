@@ -2,7 +2,7 @@ import React from 'react'
 // Icons
 import minimize from '../icons/minimize.png';
 
-export default function InfoBar({ room, chatWindow, setChatWindow, setName, socket }) {
+export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
   const handleChatWindow = () => {
     if (chatWindow === 'chat-app-chat') {
       setChatWindow('chat-app-minimize');
