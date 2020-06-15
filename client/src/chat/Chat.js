@@ -33,7 +33,6 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
     });
 
     return () => {
-      console.log('[chat will disconnect')
       // Emit DISCONNECT
       socket.emit('disconnect');
       // Turn off this socket
@@ -47,12 +46,11 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
     socket.on('message', (message) => {
       setMessages(messages => [...messages, message]);
     })
-    if (messages.length >= 50) {
-      removeFirst();
-    }
+    
   }, []);
 
   const sendMessage = e => {
+    console.log('[send message is running]')
     e.preventDefault();
     if (text) {
       // Emit SENDMESSAGE
@@ -60,6 +58,10 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
         setText('');
       })
     }
+    if (messages.length >= 50) {
+        removeFirst();
+        console.log(messages.length)
+    } 
   };
 
   const removeFirst = () => {

@@ -73,7 +73,7 @@ io.on('connection', (socket) => {
   
     // Recieve DISCONNECT from Chat.js
     socket.on('disconnect', () => {
-      console.log('[user has left the chat]');
+      console.log('[diconnect fired in backend]');
       const user = removeUser(socket.id);
       console.log(user)
       if (user) {
