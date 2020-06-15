@@ -1,4 +1,9 @@
 
+@font-face {
+  font-family: "GaramondPro", serif;
+  src: url("../font/AGaramondPro-Regular.otf")
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -6,10 +11,17 @@
   color: white;
   background-color: $etikett-black-000;
   letter-spacing: .5px;
+  font-family: $etikett-font;
+  :focus {
+    border-width: 2px;
+    border-color: white;
+    border-radius: 3px;
+}
 }
 
 *::selection {
   background-color: #ffffff;
+  color: $etikett-black;
 }
 
 ///////////////////////////////////
@@ -19,10 +31,7 @@
   text-align: center;
 }
 
-@font-face {
-  font-family: "GaramondPro";
-  src: url("../font/AGaramondPro-Regular.otf")
-}
+
 
 h2 {
   text-align: center;
@@ -188,12 +197,11 @@ footer {
 //            From the base react              //
 //---------------------------------------------//
 body {
-  font-family: "GaramondPro",
-    serif;
+    
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::placeholder {
-  font-family: "GaramondPro", serif;
-}
+// ::placeholder {
+
+// }
