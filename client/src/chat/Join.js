@@ -49,14 +49,23 @@ export default function Join({setName}) {
                 setName(nameInput);
                 sessionStorage.setItem('name', nameInput);      
               } else {
-                alert.error('User is already taken.');
+                alert.error('Username is already taken.');
                 return;
               }
-            })  
+            })
+            .catch(err => {
+              console.log(err);
+              alert.error('Server is not responding. Please contact an admin.')
+            })
+
         } else {
-          alert.error('User is already taken.');
+          alert.error('Username is already taken.');
           return; 
         } 
+      })
+      .catch(err => {
+        console.log(err);
+        alert.error('Server is not responding. Please contact an admin.')
       })
   }
 
