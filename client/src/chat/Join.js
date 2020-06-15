@@ -15,8 +15,8 @@ export default function Join({setName}) {
         let match = false;
 
         // Compare user's chatName with hostName
-        data.host.map(({hostName}) => {
-          if (hostName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase()) {
+        data.host.map(({hostName, isActive}) => {
+          if (hostName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase() && isActive === 'active') {
             match = true;
             return match
           }
