@@ -31,7 +31,6 @@ function Header(props) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        console.log('use effect started')
         const options = {
             headers: {
                 'Accept': 'application/vnd.twitchtv.v5+json',

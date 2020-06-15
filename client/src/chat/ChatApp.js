@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Join from './Join';
 import Chat from './Chat';
 
-function ChatApp({ setChatState, location }) {
+function ChatApp() {
   const [name, setName] = useState('');
   const [chatWindow, setChatWindow] = useState('chat-app-chat')
   let enableChat = true;
@@ -16,14 +16,6 @@ function ChatApp({ setChatState, location }) {
       setName(name);
     }
   }, [name])
-
-  // useEffect(() => {
-  //   if (location.pathname === '/') {
-  //     setChatState('chat-homescreen');
-  //   } else {
-  //     setChatState('chat-routes');
-  //   }
-  // }, [location.pathname,setChatState])
 
   return (
     enableChat
