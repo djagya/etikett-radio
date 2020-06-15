@@ -26,6 +26,10 @@ export default function Join({setName}) {
           sessionStorage.setItem('name', nameInput);  
         }
       })
+
+    fetch('http://localhost:3000/chat')
+      .then(res => res.json())
+      .then(data => console.log(data));
   }
 
   return (
