@@ -1,8 +1,6 @@
 .carousel {
     width: 900px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
     border: 1px solid rgba(190, 190, 195, 0.219);
     box-shadow: 0 1px 3px rgba(255, 255, 255, 0.12),
 
@@ -23,6 +21,7 @@
     display: grid;
     grid-template-rows: 15% 65% 10% 10%;
     text-align: justify;
+
 
     h3 {
         padding: 0 0 0 0.5rem;
@@ -58,8 +57,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 0.5rem;
+    text-align: left;
 
     .carousel-hostname {
+        text-transform: lowercase;
         cursor: pointer;
 
         &:hover {
