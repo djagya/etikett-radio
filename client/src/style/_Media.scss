@@ -36,5 +36,21 @@
       }
     } 
   } 
+  .archive-add-delete-buttons {
+    margin: 0.5rem;
+    justify-content: space-between;
+  }
+
+  // Blog
+  .blog-content {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .blog-date {
+    font-size: 0.8rem;
+  }
+  .blog-text {
+    font-size: 1rem;
+  }
   
 }
