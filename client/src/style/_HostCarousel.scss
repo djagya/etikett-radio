@@ -60,6 +60,7 @@
     grid-gap: 0.5rem;
 
     .carousel-hostname {
+        text-transform: lowercase;
         cursor: pointer;
 
         &:hover {
