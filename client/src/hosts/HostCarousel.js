@@ -39,7 +39,7 @@ export default function Hosts() {
                     aria-hidden="true" hidden defaultChecked={true} />
 
                 <div className="carousel-item">
-                    <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" />
+                    <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" width="500px" height="500px" />
                     <div className="host-description">
                         <h3>{host.hostName}</h3>
                         <div className="about-host">
