@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useAlert } from 'react-alert';
 import {Context} from "../Context";
 import {Redirect} from 'react-router-dom';
 import Delete from "../Delete";
 
 export default function AllUser() {
-    const context = useContext(Context)
+    const context = useContext(Context);
+    const alert = useAlert();
 
     const [userData, setUserData] = useState([]);
     const [isActive, setIsActive] = useState(0);

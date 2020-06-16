@@ -8,6 +8,12 @@ export default function EditInfoBar(props) {
     const context = useContext(Context)
     const alert = useAlert();
 
+    const [currMessage, setCurrMessage] = useState("")
+
+    useEffect(() => {
+        setCurrMessage(context.infoBarMessage)
+    }, [])
+
     const handleSubmit = event => {
         event.preventDefault()
         const body = {
@@ -31,13 +37,18 @@ export default function EditInfoBar(props) {
         context.setInfoBarMessage(input)
     }
 
+    const handleCancel = () => {
+        context.setInfoBarMessage(currMessage)
+        context.setEditInfoBar(false)
+    }
+
     if (!context.editInfoBar) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={`${context.gapClass} input-form`}>
             <h2 id="main">info bar</h2>
             <form onSubmit={handleSubmit} role="form" className="edit-input-form">
                 <div className="button-container">
-                    <button type="button" onClick={() => context.setEditInfoBar(false)}>cancel</button>
+                    <button type="button" onClick={() => handleCancel()}>cancel</button>
                 </div>
                 <div className="info-bar-input-container">
                     <label htmlFor="infobar-message">

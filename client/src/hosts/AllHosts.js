@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useAlert } from 'react-alert';
-import {Context} from "../Context";
-import {Redirect, Link} from 'react-router-dom';
+import { Context } from "../Context";
+import { Redirect, Link } from 'react-router-dom';
 import GetData from "../GetData";
 
 
@@ -10,22 +10,22 @@ export default function AllHosts(props) {
     const context = useContext(Context);
     const [hostData, setHostData] = useState([]);
     const alert = useAlert();
-    
+
     const [isActive, setIsActive] = useState(0);
     const [lastSort, setLastSort] = useState(0)
     let sortedData = [];
     useEffect(() => {
         GetData("http://localhost:3000/host")
-            .then(data => { 
-                if(data.status === 403) {
-                alert.error("Status 403: Forbidden")
-                return
-            }
-                if(data.success){
-                setHostData(data.host.sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
-            } else {
-                alert.error("Something went wrong")
-            }
+            .then(data => {
+                if (data.status === 403) {
+                    alert.error("Status 403: Forbidden")
+                    return
+                }
+                if (data.success) {
+                    setHostData(data.host.sort((hostA, hostB) => (hostA.hostName < hostB.hostName) ? -1 : 1))
+                } else {
+                    alert.error("Something went wrong")
+                }
             })
     }, [])
 
@@ -36,30 +36,30 @@ export default function AllHosts(props) {
             case 0:
                 setIsActive(0)
                 if (lastSort !== isActive) {
-                setHostData([...hostData].sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
-                setLastSort(0)
-            } else {
-                setHostData([...hostData].sort((hostA, hostB)=>(hostA.hostName > hostB.hostName)? -1 : 1))
-                setLastSort(-1)
+                    setHostData([...hostData].sort((hostA, hostB) => (hostA.hostName < hostB.hostName) ? -1 : 1))
+                    setLastSort(0)
+                } else {
+                    setHostData([...hostData].sort((hostA, hostB) => (hostA.hostName > hostB.hostName) ? -1 : 1))
+                    setLastSort(-1)
                 }
                 break;
             case 1:
                 setIsActive(1)
-                if (lastSort !== isActive){
-                setHostData([...hostData].sort((hostA, hostB)=>(hostA.isActive < hostB.isActive)? -1 : 1))
-                setLastSort(1)
+                if (lastSort !== isActive) {
+                    setHostData([...hostData].sort((hostA, hostB) => (hostA.isActive < hostB.isActive) ? -1 : 1))
+                    setLastSort(1)
                 } else {
-                setHostData([...hostData].sort((hostA, hostB)=>(hostA.isActive > hostB.isActive)? -1 : 1))
-                setLastSort(-1)
+                    setHostData([...hostData].sort((hostA, hostB) => (hostA.isActive > hostB.isActive) ? -1 : 1))
+                    setLastSort(-1)
                 }
                 break;
-                default: console.log("Sort Switch ran without any effect")
-            }
-            
+            default: console.log("Sort Switch ran without any effect")
+        }
+
     }
 
     const renderHosts = () => {
-        if (hostData.lenght === 0) return null
+        if (hostData.length === 0) return null
         return hostData.map((host, i) => (
             <ol key={i} className="all-data host-list-grid">
                 <li>{host.hostName}</li>
@@ -68,7 +68,7 @@ export default function AllHosts(props) {
                     <button type="button" onClick={() => {
                         context.setEditHostID(host.userID)
                         context.setEditHost(true)
-                        }}>edit
+                    }}>edit
                     </button>
                 </li>
 
@@ -79,8 +79,8 @@ export default function AllHosts(props) {
     const renderLiHeader = () => {
         const listHeader = ["host.", "status."]
 
-        return listHeader.map((el, i) =>(
-            <li key={i} ><span onClick={()=>sortData(i)} className={`sort ${i === isActive ? "active" : "" } `}>{el}</span></li>
+        return listHeader.map((el, i) => (
+            <li key={i} ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
 
         ))
     }
@@ -91,9 +91,9 @@ export default function AllHosts(props) {
 
     //Delete from EditHostForm redirects to AllHosts in case Admin was coming from there to delete a profile
     //and if a user is deleting the own profile, he will get redirected to staff-only
-    if (props.cookies.user.role !== "Admin") {return <Redirect to={`/user/${context.id}`}/>}
+    if (props.cookies.user.role !== "Admin") { return <Redirect to={`/user/${context.id}`} /> }
 
-    if (!context.allHosts) {return <Redirect to={`/user/${context.id}`}/>}
+    if (!context.allHosts) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={` all-list ${context.gapClass}`}>
             <h2>all hosts</h2>
@@ -105,7 +105,7 @@ export default function AllHosts(props) {
                     <ul className="list-header host-list-grid">
                         {renderLiHeader()}
                     </ul>
-                {renderHosts()}
+                    {renderHosts()}
                 </div>
             </div>
         </div>

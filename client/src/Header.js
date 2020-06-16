@@ -203,7 +203,7 @@ function Header(props) {
                             </div>
                         : null}
                         <div className="message">
-                            <span className="moving-text"> {time} +++ {context.infoBarMessage}</span>
+                            <span className="moving-text"> {time} -- {context.infoBarMessage}</span>
                         </div>
 
                     </section>

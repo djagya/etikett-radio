@@ -69,8 +69,6 @@ function App(props) {
   ]
   //////////////////////
 
-  
-  console.log(pathName)
   return (
     <DocumentTitle title="Homepage, video streaming">
 

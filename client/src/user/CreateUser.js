@@ -16,7 +16,6 @@ export default function CreateUser(props) {
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log("submit is running")
         //POST request
         const body = {
             "firstName": firstName,
@@ -43,6 +42,7 @@ export default function CreateUser(props) {
 
 
         const resetForm = (data) => {
+            console.log(data.message)
             if (data.success) {
                 setFirstName("");
                 setLastName("");
@@ -51,8 +51,13 @@ export default function CreateUser(props) {
                 setPW("");
                 setRole("Host");
                 alert.success("User created", { timeout: 3000 })
-            } else {
-                alert.error("Please fill out all *Required fields and make sure your password is at least 8 signs long.")
+            } 
+            if (data.status === 203) {
+               alert.error("Please fill out all *Required fields, make sure your password is at least 8 signs long and that you use a valid email.")
+               return 
+            }
+            if (data.err.substring(0,6) === "E11000") {
+                alert.error("Email address already in use")
             }
         }
 
