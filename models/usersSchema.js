@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const uniqueValidator = require("mongoose-unique-validator");
 const { encrypt, compare } = require("../lib/encrypt");
 const { Schema } = mongoose;
 
@@ -8,7 +9,7 @@ const UserSchema = new Schema(
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
         userName: { type: String, required: true },
-        email: { type: String, required: true, dropDups: true },
+        email: { type: String, required: true, unique: true },
         pw: { type: String, required: true },
         role: {
             type: String,

@@ -37,6 +37,9 @@
         display: flex;
         justify-content: flex-end;
         padding: 1rem 0.5rem 0 0;
+        i {
+            margin-left: .5rem;
+        }
     }
 
     .host-pagelink {
@@ -56,7 +59,8 @@
     bottom: 10%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 0.5rem;
+    column-gap: 2rem;
+    row-gap: .5rem;
     text-align: left;
 
     .carousel-hostname {
