@@ -37,7 +37,7 @@ export default function LogIn(props) {
                 if (data.success) {
                     props.setCookie('user', data.user, { path: '/' });
                     if (data.user.role === 'Host' || data.user.role === 'Admin') {
-                        sessionStorage.setItem('name', data.user.userName);
+                        props.setCookie('name', data.user.userName, { path: '/' });
                         props.setName(data.user.userName);    
                     }
                 }
