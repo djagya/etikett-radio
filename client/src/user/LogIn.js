@@ -36,7 +36,7 @@ export default function LogIn(props) {
                 if (data.status === 403) return alert.error("Invalid Password")
                 if (data.success) {
                     props.setCookie('user', data.user, { path: '/' });
-                    if (data.user.role === 'Host') {
+                    if (data.user.role === 'Host' || data.user.role === 'Admin') {
                         sessionStorage.setItem('name', data.user.userName);
                         props.setName(data.user.userName);    
                     }
