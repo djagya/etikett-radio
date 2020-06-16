@@ -61,7 +61,7 @@ export default function ScheduleWeek(data) {
     // }
     
     return (
-        <ul className="weekly-schedule">
+        <ul className={`weekly-schedule ${determineWeek().split(' ')[0]}`}>
             <li>
                 <h3>{determineWeek()}</h3>
                 {/* { renderWeek(days)}  */}

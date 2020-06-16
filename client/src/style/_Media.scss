@@ -4,3 +4,9 @@
     top: -48px
   }
 }
+
+@media only screen and (max-width: breakpoints(phone)) {
+  .weekly-schedule:not(.this) {
+      display: none;
+    }
+}
