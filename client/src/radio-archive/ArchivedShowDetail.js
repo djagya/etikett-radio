@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import ArchiveEdit from './ArchiveEditForm';
 import {Context} from "../Context";
 
 export default function ArchiveDetail(props) {
+    const context = useContext(Context)
     const [showEdit, setShowEdit] =useState(false);
     const [archiveData, setArchiveData] = useState([]);
     const param = props.match.params.id;
@@ -23,7 +24,7 @@ export default function ArchiveDetail(props) {
 
     return (
         <Context.Provider value={{showEdit,setShowEdit}}>
-        <div className="archive-details-page not-stream-component">
+        <div className={`${context.gapClass} archive-details-page`}>
         
             <div className="button-container controls">
                 {showEdit ? 

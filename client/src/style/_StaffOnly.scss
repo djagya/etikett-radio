@@ -8,11 +8,12 @@
 
   button {
     width: 100%;
-    padding: .5rem;
-    margin: 1rem 0;
+  }
+  .button-container {
+    height: 3rem;
   }
 
   div {
-    max-width: 600px;
+    width: 300px;
   }
 }

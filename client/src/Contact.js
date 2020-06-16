@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Context } from "./Context";
 import { useAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
@@ -6,6 +7,7 @@ import noisyEtikettRadioLogo from './img/imageonline-co-noise.png';
 
 
 export default function Contact() {
+    const context = useContext(Context);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -41,10 +43,11 @@ export default function Contact() {
                             onClose: () => {
                                 setRedirect(true);
 
-                            }
+                            },
+                            onClick: console.log("working")
                         });
                 } else {
-                    alert.error('Something went wrong... Please contact an admin');
+                    alert.error('Something went wrong... Please contact an admin', { onClick: console.log("working") });
                 }
             })
     }
@@ -53,7 +56,7 @@ export default function Contact() {
 
     return (
         <DocumentTitle title="Contact page">
-            <div className="not-stream-component input-form">
+            <div className={`${context.gapClass} input-form`}>
 
                 <h1 id="main">contact</h1>
                 <form onSubmit={handleSubmit} role="contact-form" >

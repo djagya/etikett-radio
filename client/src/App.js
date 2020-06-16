@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 
@@ -44,26 +44,33 @@ function App(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
-  const [profileEdit, setProfileEdit] = useState(false)
-  const [createProfile, setCreateProfile] = useState(false)
-  const [allUser, setAllUser] = useState(false)
-  const [editHost, setEditHost] = useState(false)
-  const [editHostID, setEditHostID] = useState("")
-  const [allHosts, setAllHosts] = useState(false)
-  const [editInfoBar, setEditInfoBar] = useState(false)
-  const [infoBarMessage, setInfoBarMessage] = useState("")
-  const [infoID, setInfoID] = useState("")
+
+  const [profileEdit, setProfileEdit] = useState(false);
+  const [createProfile, setCreateProfile] = useState(false);
+  const [allUser, setAllUser] = useState(false);
+  const [editHost, setEditHost] = useState(false);
+  const [editHostID, setEditHostID] = useState("");
+  const [allHosts, setAllHosts] = useState(false);
+  const [editInfoBar, setEditInfoBar] = useState(false);
+  const [infoBarMessage, setInfoBarMessage] = useState("");
+  const [infoID, setInfoID] = useState("");
   const [name, setName] = useState('');
+  const [gapClass, setGapClass] =useState("big-gap");
+  const [pathName, setPathName] =useState("/")
+  const [gradient, setGradient] =useState("gradient");
+
   if (cookies.user) {
     id = cookies.user._id
   }
-
 
   const links = [
     { title: "Skip to main content", to: 'main' },
     { title: 'Skip to footer', to: 'footer' }
   ]
   //////////////////////
+
+  
+  console.log(pathName)
   return (
     <DocumentTitle title="Homepage, video streaming">
 
@@ -80,7 +87,10 @@ function App(props) {
             allHosts, setAllHosts,
             editInfoBar, setEditInfoBar,
             infoBarMessage, setInfoBarMessage,
-            infoID, setInfoID
+            infoID, setInfoID,
+            gapClass, setGapClass,
+            pathName, setPathName,
+            gradient, setGradient
           }
         }>
           <div className="App">
@@ -132,7 +142,7 @@ function App(props) {
 
             </Switch>
 
-            <footer id="footer">
+            <footer id="footer" className={pathName !== "/" ? "gradient" : ""}>
               <div className="footer-img"></div>
             </footer>
           </div>

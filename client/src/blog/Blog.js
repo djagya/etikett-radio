@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import BlogInputForm from './BlogInputForm';
 import BlogEntry from './BlogEntry';
 import { useAlert } from 'react-alert';
 import DocumentTitle from 'react-document-title';
 import { Context } from "../Context";
+import { contextsKey } from 'express-validator/src/base';
 
 export default function Blog(props) {
+    const context = useContext(Context)
     const [blogData, setBlogData] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const alert = useAlert();
@@ -35,7 +37,7 @@ export default function Blog(props) {
     return (
         <DocumentTitle title="Blog page">
             <Context.Provider value={{ blogData, setBlogData }}>
-                <div className="blog-page not-stream-component">
+                <div className={`${context.gapClass} blog-page`}>
                     <div className="blog-content" title="blog content">
                         <h2 id="main">blog</h2>
 
