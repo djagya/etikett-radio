@@ -203,8 +203,7 @@ nav {
   margin: 0 1.8rem;
   display: flex;
   align-items: center;
-  // max-width: 100%;
-  margin: 0 auto; //or margin 0 and then it goes until the end
+  margin: 0; //or margin 0 and then it goes until the end
   overflow: hidden;
 }
 
@@ -214,6 +213,7 @@ nav {
 .message {
   display: flex;
   overflow: hidden;
+  width: 100%;
 
   .moving-text {
     white-space: nowrap;
