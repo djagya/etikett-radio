@@ -6,7 +6,6 @@
 }
 .ChatApp {
   width: $chat-width;
-  transition: height 400ms ease-in;
 
   h3 {
     padding: 0.5rem;
@@ -30,6 +29,7 @@
 }
 .chat-app-chat {
   height: 88vh;
+  transition: $chat-height-transition;
 
   .InfoBar {
     height: 40px;
@@ -42,6 +42,7 @@
 }
 .chat-app-minimize {
   height: 50px;
+  transition: $chat-height-transition;
 
   .InfoBar {
     height: 40px;
@@ -73,9 +74,9 @@
     input,
     button {
       background: $etikett-black;  
+      height: 36px;
     }
     input {
-      height: 100%;
       width: 80%;
     }
     button {

@@ -2,7 +2,7 @@ import React from 'react'
 // Icons
 import minimize from '../icons/minimize.png';
 
-export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
+export default function InfoBar({ room, chatWindow, setChatWindow, setName, removeCookie }) {
   const handleChatWindow = () => {
     if (chatWindow === 'chat-app-chat') {
       setChatWindow('chat-app-minimize');
@@ -12,7 +12,7 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
   }
 
   const handleLogOut = () => {
-    sessionStorage.removeItem('name');
+    removeCookie('name');
     setName(null);
   }
 

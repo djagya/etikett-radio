@@ -104,7 +104,7 @@ export default function ArchiveList(props) {
         setArchiveData(filteredArchiveData)
         //delete from db
         Delete(checkedIDs, "archive").then(output => {
-            output ? alert.success('Item(s) successfully deleted.') : alert.error('Something went wrong...');
+            output ? alert.success('Item(s) successfully deleted.', { timeout: 3000 }) : alert.error('Something went wrong...');
         })
 
     }
@@ -116,7 +116,7 @@ export default function ArchiveList(props) {
 
 
             <li key={i}>
-                <ul className="all-data archive-list-grid">
+                <ul className="all-data archive-list-grid archive-card">
                     <li className="img-container"><img src={el.img} alt="Show Artwork" width="50" height="50" /></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
@@ -146,7 +146,7 @@ export default function ArchiveList(props) {
                     <h2 id="main">archive</h2>
 
                     {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                        <div className="button-container controls">
+                        <div className="button-container controls archive-add-delete-buttons">
                             {showForm ?
                                 <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
                                 <button type="button" onClick={() => setShowForm(true)}>add to archive</button>
@@ -156,7 +156,7 @@ export default function ArchiveList(props) {
                         : null}
 
                     {showForm ? <ArchiveInputForm /> : null}
-                    <ul className="list-header archive-list-grid">
+                    <ul className="list-header archive-list-grid sort-by-box">
                         {/* <li></li> Placeholder item for show artwork */}
                         <li>sort by:</li>
                         {renderLiHeader()}

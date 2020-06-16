@@ -7,7 +7,7 @@ import Messages from './Messages';
 
 let socket;
 
-export default function Chat({ name, setName, room, chatWindow, setChatWindow }) {
+export default function Chat({ name, setName, room, chatWindow, setChatWindow, removeCookie }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
   const alert = useAlert();
@@ -23,7 +23,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
     // Emit JOIN
     socket.emit('join', { name, room }, (error) => {
       if (error) {
-        sessionStorage.removeItem('name');
+        removeCookie('name');
         alert.error(error, {
           onClose: () => {
             window.location.reload()
@@ -37,6 +37,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
       socket.emit('disconnect');
       // Turn off this socket
       socket.off();
+      console.log('[chat will unmount]')
     }
   }, [endpoint, /* sessionStorage */])
 
@@ -72,7 +73,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
   return (
     <div className="outer-container">
       <div className="inner-container">
-        <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} setName={setName} />
+        <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} setName={setName} removeCookie={removeCookie} />
         <Messages messages={messages} name={name} />
         <Input text={text} setText={setText} sendMessage={sendMessage} />
       </div>
