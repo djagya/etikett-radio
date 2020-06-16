@@ -193,7 +193,7 @@ export default function EditHostPage(props) {
                         <input type="text" id="hostName" placeholder="host or show name" value={hostName} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="hostImg">
-                        <span className="required">*</span>link to artwork
+                        <span className="required">*</span>artwork link (please keep it 500x500)
                         <input type="url" id="hostImg" placeholder="artwork link" value={hostImg} onChange={handleFormInput} />
                     </label>
                     <label className="describe" htmlFor="hostDescription">

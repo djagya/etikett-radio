@@ -117,7 +117,7 @@ export default function ArchiveList(props) {
 
             <li key={i}>
                 <ul className="all-data archive-list-grid">
-                    <li className="img-container"><img src={el.img} alt="Show Artwork" /></li>
+                    <li className="img-container"><img src={el.img} alt="Show Artwork" width="50" height="50" /></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
                     <li>{el.genre}</li>
