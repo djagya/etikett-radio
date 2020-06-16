@@ -116,7 +116,7 @@ export default function ArchiveList(props) {
 
 
             <li key={i}>
-                <ul className="all-data archive-list-grid">
+                <ul className="all-data archive-list-grid archive-card">
                     <li className="img-container"><img src={el.img} alt="Show Artwork" /></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
@@ -156,7 +156,7 @@ export default function ArchiveList(props) {
                         : null}
 
                     {showForm ? <ArchiveInputForm /> : null}
-                    <ul className="list-header archive-list-grid">
+                    <ul className="list-header archive-list-grid sort-by-box">
                         {/* <li></li> Placeholder item for show artwork */}
                         <li>sort by:</li>
                         {renderLiHeader()}

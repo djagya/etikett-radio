@@ -6,7 +6,35 @@
 }
 
 @media only screen and (max-width: breakpoints(phone)) {
+
+  // Chat
+  .chat {
+    display: none;
+  }
+
+  // Schedule
   .weekly-schedule:not(.this) {
       display: none;
     }
+
+  // Archive
+  .all-list {
+    .archive-list-grid {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }  
+    .sort-by-box {
+      flex-flow: row wrap;
+      justify-content: center;
+      width: 200px;
+      margin: 0 auto;
+    }
+    .archive-card {
+      img {
+        width: 150px;
+      }
+    } 
+  } 
+  
 }
