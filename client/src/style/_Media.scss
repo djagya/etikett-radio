@@ -52,5 +52,19 @@
   .blog-text {
     font-size: 1rem;
   }
+
+  // Forms
+  .input-form {
+    
+    .grid-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .grid-container,
+    .submit-button {
+      width: 90%;
+      margin: 1rem auto;
+    }
+  }
   
 }
