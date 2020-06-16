@@ -12,6 +12,8 @@ export default function UserProfile(props) {
     const handleLogOut = () => {
         props.removeCookie('user', { path: "/" });
         props.removeCookie('x-auth', { path: "/" });
+        props.setName(null);
+        sessionStorage.removeItem('name');
         window.location.assign(`/login`)
     };
 

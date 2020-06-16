@@ -23,8 +23,17 @@ exports.removeUser = id => {
   if (index !== -1) {
     return users.splice(index, 1)[0];
   }
+  console.log(users)
 }
 
 exports.getUser = id => users.find((user) => user.id === id);
 
-exports.getUsersInRoom = room => users.filter((user) => users.room === room);
+exports.getUsersInRoom = async (req, res, next) => {
+  try {
+    const chatUsers = users;
+    res.json({ success: true, chatUsers: users })
+  }
+  catch (err) {
+    next(err)
+  }
+}

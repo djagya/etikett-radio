@@ -2,13 +2,18 @@ import React from 'react'
 // Icons
 import minimize from '../icons/minimize.png';
 
-export default function InfoBar({ room, chatWindow, setChatWindow }) {
+export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
   const handleChatWindow = () => {
     if (chatWindow === 'chat-app-chat') {
       setChatWindow('chat-app-minimize');
     } else {
       setChatWindow('chat-app-chat');
     }
+  }
+
+  const handleLogOut = () => {
+    sessionStorage.removeItem('name');
+    setName(null);
   }
 
   return (
@@ -20,6 +25,7 @@ export default function InfoBar({ room, chatWindow, setChatWindow }) {
         <h3>{room}</h3>
       </div>
       <div className="info-inner-container">
+        <button id="chat-logout" onClick={handleLogOut} >Log out</button>
       </div>
     </div>
   )

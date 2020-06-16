@@ -7,7 +7,7 @@ import Messages from './Messages';
 
 let socket;
 
-export default function Chat({ name, room, chatWindow, setChatWindow }) {
+export default function Chat({ name, setName, room, chatWindow, setChatWindow }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
   const alert = useAlert();
@@ -38,7 +38,7 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
       // Turn off this socket
       socket.off();
     }
-  }, [endpoint, sessionStorage])
+  }, [endpoint, /* sessionStorage */])
 
   useEffect(() => {
     console.log('[useEffect[messages]]')
@@ -46,12 +46,11 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
     socket.on('message', (message) => {
       setMessages(messages => [...messages, message]);
     })
-    if (messages.length >= 50) {
-      removeFirst();
-    }
+    
   }, []);
 
   const sendMessage = e => {
+    console.log('[send message is running]')
     e.preventDefault();
     if (text) {
       // Emit SENDMESSAGE
@@ -59,6 +58,10 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
         setText('');
       })
     }
+    if (messages.length >= 50) {
+        removeFirst();
+        console.log(messages.length)
+    } 
   };
 
   const removeFirst = () => {
@@ -69,7 +72,7 @@ export default function Chat({ name, room, chatWindow, setChatWindow }) {
   return (
     <div className="outer-container">
       <div className="inner-container">
-        <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} />
+        <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} setName={setName} />
         <Messages messages={messages} name={name} />
         <Input text={text} setText={setText} sendMessage={sendMessage} />
       </div>

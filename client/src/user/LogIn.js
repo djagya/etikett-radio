@@ -34,11 +34,18 @@ export default function LogIn(props) {
             .then(data => {
                 if (data.status === 404) return alert.error("Invalid Email") 
                 if (data.status === 403) return alert.error("Invalid Password")
-                    if (data.success) {
-                        props.setCookie('user', data.user, { path: '/' })
+                if (data.success) {
+                    props.setCookie('user', data.user, { path: '/' });
+                    if (data.user.role === 'Host') {
+                        sessionStorage.setItem('name', data.user.userName);
+                        props.setName(data.user.userName);    
+                    }
                 }
             })
-
+            .catch(err => {
+                console.log(err);
+                alert.error('Failed to fetch user. Pleas contact an admin');
+            })
     }
 
     const handleFormInput = event => {

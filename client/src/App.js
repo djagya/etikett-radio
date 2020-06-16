@@ -44,6 +44,7 @@ function App(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   /////for context/////
   let id = "";
+
   const [profileEdit, setProfileEdit] = useState(false);
   const [createProfile, setCreateProfile] = useState(false);
   const [allUser, setAllUser] = useState(false);
@@ -53,9 +54,11 @@ function App(props) {
   const [editInfoBar, setEditInfoBar] = useState(false);
   const [infoBarMessage, setInfoBarMessage] = useState("");
   const [infoID, setInfoID] = useState("");
+  const [name, setName] = useState('');
   const [gapClass, setGapClass] =useState("big-gap");
   const [pathName, setPathName] =useState("/")
   const [gradient, setGradient] =useState("gradient");
+
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -101,7 +104,7 @@ function App(props) {
             </div>
 
             <div className="stream-page">
-              <Header />
+              <Header name={name} setName={setName} />
             </div>
 
             <Switch>
@@ -110,10 +113,10 @@ function App(props) {
               <Route exact path="/" component={Home} />
 
               {/* User Related */}
-              <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} />} />
+              <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies}  setName={setName} />} />
               <Route exact path="/user/all" render={(props) => <AllUser {...props} cookies={cookies} />} />
               <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-              <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} />} />
+              <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} setName={setName} />} />
               <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
               <Route exact path="/infobar" render={(props) => <EditInfoBar {...props} cookies={cookies} />} />
               <Route exact path="/contact" component={Contact} />

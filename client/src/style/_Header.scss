@@ -32,6 +32,7 @@ nav {
 .small-header-without-video {
   position: fixed;
   top: 0;
+
   height: $header-height-small;
   width: 100%;
   display: grid;
@@ -230,7 +231,7 @@ nav {
 
 @keyframes ticker {
   0% {
-    transform: translate3d(80%, 0, 0);
+    transform: translate3d(90%, 0, 0);
   }
 
   100% {
