@@ -28,7 +28,6 @@ exports.getUserById = async (req, res, next) => {
 };
 
 exports.postUser = async (req, res, next) => {
-    console.log("postUser is running")
     try {
         const user = new User(req.body);
         console.log(user)
