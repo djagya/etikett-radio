@@ -2,7 +2,7 @@ $header-height-big: 20vh;
 $header-height-small: 14vh;
 $nav-height: 6vh;
 $embeded-video-height: 88vh;
-$chat-width: 340px;
+
 //colors
 $etikett-black: rgb(1,5,8);
 $etikett-black-750: rgba(1,5,8, 0.75);
@@ -13,6 +13,10 @@ $etikett-hover: rgb(70, 120, 131);
 
 //font
 $etikett-font: "GaramondPro", serif;
+
+//chat
+$chat-width: 340px;
+$chat-height-transition: height 400ms ease-in;
 
 // responsiveness
 $media-breakpoints: (

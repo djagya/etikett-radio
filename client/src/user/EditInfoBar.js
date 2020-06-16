@@ -26,7 +26,7 @@ export default function EditInfoBar(props) {
                     console.log(data)
                     alert.error("Something went wrong while updating your data")
                 } else {
-                    alert.success("Update successful!")
+                    alert.success("Update successful!", { timeout: 3000 })
                 }
             })
             .then(context.setEditInfoBar(false))

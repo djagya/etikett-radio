@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAlert } from 'react-alert';
 
-export default function Join({setName}) {
+export default function Join({ setName, setCookie}) {
   const [nameInput, setNameInput] = useState('');
   const alert = useAlert();
 
@@ -47,7 +47,7 @@ export default function Join({setName}) {
               if (!match) {
                 // Add user
                 setName(nameInput);
-                sessionStorage.setItem('name', nameInput);      
+                setCookie('name', nameInput, {path: '/'});      
               } else {
                 alert.error('Username is already taken.');
                 return;

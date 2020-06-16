@@ -175,9 +175,11 @@ function Header(props) {
                         <NavLink activeClassName="active-nav" className="nav-link" to="/login">staff only.</NavLink>
                     </nav>
 
+                    {window.innerWidth < 900 ? null :
                     <div className={`chat ${chatState}`}>
                         <ChatApp name={props.name} setName={props.setName} />
                     </div>
+                    }
 
                     <section className="embeded-video">
                         <ReactPlayer
