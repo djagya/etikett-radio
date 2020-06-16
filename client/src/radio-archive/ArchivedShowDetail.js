@@ -37,7 +37,7 @@ export default function ArchiveDetail(props) {
             <div className="archive-details">
                 <Link to={`/archive`}>back to archive</Link>
                 <div>
-                    <img src={archiveData.img} width="300" height="300" alt="Artwork of the show" />
+                    <img src={archiveData.img} width="300" height="300" alt={`Artwork of ${archiveData.show}`} />
                     <div className="list">
                         <h2>{archiveData.show} by {archiveData.host}</h2>
                         <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
