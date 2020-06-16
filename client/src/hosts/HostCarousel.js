@@ -99,7 +99,7 @@ export default function Hosts() {
     return (    
         <DocumentTitle title="Hosts page">
             <div className={`${context.gapClass} host-page`}>
-                <h2>hosts</h2>
+                <h2>hosts.</h2>
 
                 <div className="host-content">
                     <ol className="side-list">

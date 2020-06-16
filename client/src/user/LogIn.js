@@ -65,7 +65,7 @@ export default function LogIn(props) {
     if (props.cookies.user) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={`${context.gapClass} input-form`}>
-            <h2 id="main">Log In</h2>
+            <h2 id="main">log in.</h2>
             <form onSubmit={handleSubmit} role="form">
                 <div className="grid-container">
                     <label htmlFor="email">

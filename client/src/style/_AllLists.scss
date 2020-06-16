@@ -23,9 +23,11 @@
   .list-header {
     margin-bottom: 3rem;
     text-decoration-line: underline;
-    
-    li {
+    * {
       
+    }
+
+    li {
       letter-spacing: 3px;
     }
 
@@ -33,11 +35,13 @@
       cursor: pointer;
       letter-spacing: 3px;
       transition: 0.1s;
+      text-decoration-color: rgba(255, 255, 255, 0.2);
       &.active {
         color: $etikett-hover;
         
       }
       &:hover {
+        transition: 0.1s;
         color: $etikett-hover;
         text-decoration-line: underline;
         text-decoration-color: $etikett-hover;

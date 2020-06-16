@@ -166,13 +166,13 @@ function Header(props) {
                 <header className={`App-header ${headerSize}`}>
                             
                     <nav role="navigation">
-                        <NavLink className="nav-link" to="/">home.</NavLink>
-                        <NavLink className="nav-link" to="/schedule">schedule.</NavLink>
-                        <NavLink className="nav-link" to="/archive">archive.</NavLink>
-                        <NavLink className="nav-link" to="/blog">blog.</NavLink>
-                        <NavLink className="nav-link" to="/hosts">hosts.</NavLink>
-                        <NavLink className="nav-link" to="/contact">contact.</NavLink>
-                        <NavLink className="nav-link" to="/login">staff only.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" to="/">home.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" to="/archive">archive.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" to="/blog">blog.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" to="/hosts">hosts.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" to="/contact">contact.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" to="/login">staff only.</NavLink>
                     </nav>
 
                     <div className={`chat ${chatState}`}>

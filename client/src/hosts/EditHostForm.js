@@ -181,7 +181,7 @@ export default function EditHostPage(props) {
     if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
     return (
         <div className={`${context.gapClass} edit-host-page`}>
-            <h2>edit my host profile</h2>
+            <h2>edit my host profile.</h2>
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
                     <button type="button" onClick={() => context.setEditHost(false)}>cancel</button>
