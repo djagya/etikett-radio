@@ -107,7 +107,7 @@ export default function Schedule(props) {
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>
                 <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
-                        <h2 id="main">schedule</h2>
+                        <h2 id="main">schedule.</h2>
                         {props.cookies.user && props.cookies.user.role === 'Admin' ?
                             <div className="button-container controls">
                                 {showForm ?

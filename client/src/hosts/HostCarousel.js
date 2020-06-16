@@ -88,25 +88,25 @@ export default function Hosts() {
         )
     }
 
-    const renderIndicator = (host, i) => (
-        <li key={i}>
-            <label htmlFor={`carousel-${i + 1}`} onClick={() => setNum(i)} className={`carousel-hostname`}>
+    const renderSideList = (host, i) => (
+        <li key={i} className="side-list-item">
+            <label htmlFor={`carousel-${i + 1}`} onClick={() => setNum(i)} className={`side-list-name ${num === i ? "active" : ""}`}>
                 {host.hostName}
             </label>
         </li>
     )
 
-    return (
+    return (    
         <DocumentTitle title="Hosts page">
-            <div className={`${context.gapClass} host-showcase`}>
-                <h2>hosts</h2>
+            <div className={`${context.gapClass} host-page`}>
+                <h2>hosts.</h2>
 
-                <div className="carousel">
-                    <ol className="carousel-indicators">
-                        {sortedData.map((host, i) => renderIndicator(host, i))}
+                <div className="host-content">
+                    <ol className="side-list">
+                        {sortedData.map((host, i) => renderSideList(host, i))}
                     </ol>
 
-                    <div className="carousel-inner">
+                    <div className="host-card">
                         {renderHost()}
                     </div>
                 </div>

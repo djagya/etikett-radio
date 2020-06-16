@@ -107,7 +107,7 @@ export default function MyProfile(props) {
     return (
         <div>
             <div className={`${context.gapClass} input-form`}>
-                <h2 id="main">my profile</h2>
+                <h2 id="main">my profile.</h2>
 
                 <form onSubmit={handleSubmit} role="form">
                     <div className="button-container">

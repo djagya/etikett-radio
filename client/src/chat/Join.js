@@ -71,7 +71,7 @@ export default function Join({ setName, setCookie}) {
 
   return (
     <div className="Join">
-      <h3>Join our chat!</h3>
+      <h3>join the chat</h3>
       <form onSubmit={handleSubmit} className="join-form">
         <input type="text" placeholder="Name" value={nameInput} onChange={(e) => setNameInput(e.target.value)} />
         <button type="submit">Join</button>

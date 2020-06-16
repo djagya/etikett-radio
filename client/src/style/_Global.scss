@@ -6,6 +6,7 @@
 * {
   padding: 0;
   margin: 0;
+  line-height: 1.3;
   box-sizing: border-box;
   color: white;
   background-color: $etikett-black-000;
@@ -41,11 +42,13 @@ h2 {
   text-align: center;
   margin: 1rem 0;
   font-weight: normal;
+  letter-spacing: 3px;
 }
 
 h3 {
   margin-top: 1.5rem;
   font-weight: normal;
+  letter-spacing: 3px;
 }
 
 ///////////////////////////////////
@@ -83,7 +86,6 @@ li {
 .small-gap {
   margin-top: $header-height-small;
   background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
-
 }
 
 .noise {

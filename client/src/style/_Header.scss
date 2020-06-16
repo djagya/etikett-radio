@@ -18,8 +18,19 @@ nav {
 
 .nav-link {
   padding: 0 2vw;
+  transition: 0.1s;
+  letter-spacing: 2px;
+  text-decoration-color: rgba(255, 255, 255, 0.2);
+  &:hover {
+    color: $etikett-hover;
+    text-decoration-color: $etikett-hover;
+  }
+  
 }
-
+.active-nav {
+    color: $etikett-hover;
+    text-decoration-color: white;
+  }
 .full-header {
   flex-direction: column;
 

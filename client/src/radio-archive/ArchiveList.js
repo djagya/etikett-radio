@@ -116,8 +116,9 @@ export default function ArchiveList(props) {
 
 
             <li key={i}>
-                <ul className="all-data archive-list-grid archive-card">
-                    <li className="img-container"><img src={el.img} alt="Show Artwork" width="50" height="50" /></li>
+
+                <ul className="all-data archive-list-grid">
+                    <li className="img-container"><img src={el.img} alt={`Small version of the artwork of ${el.show}`} width="50" height="50" /></li>
                     <li><Link to={`archive/${el._id}`}>{el.show}</Link></li>
                     <li>{el.host}</li>
                     <li>{el.genre}</li>
@@ -143,7 +144,7 @@ export default function ArchiveList(props) {
         <DocumentTitle title="Archive page">
             <div className={`${context.gapClass} all-list`}>
                 <div>
-                    <h2 id="main">archive</h2>
+                    <h2 id="main">archive.</h2>
 
                     {props.cookies.user && props.cookies.user.role === 'Admin' ?
                         <div className="button-container controls archive-add-delete-buttons">

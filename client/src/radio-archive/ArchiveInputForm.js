@@ -96,7 +96,7 @@ export default function ArchiveInputForm() {
     };
     return (
         <div className="input-form">
-            <h2>archive show</h2>
+            <h2>archive a show.</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="grid-container">
 
