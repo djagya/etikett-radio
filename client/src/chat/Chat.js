@@ -37,6 +37,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow })
       socket.emit('disconnect');
       // Turn off this socket
       socket.off();
+      console.log('[chat will unmount]')
     }
   }, [endpoint, /* sessionStorage */])
 
