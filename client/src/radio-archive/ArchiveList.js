@@ -104,7 +104,7 @@ export default function ArchiveList(props) {
         setArchiveData(filteredArchiveData)
         //delete from db
         Delete(checkedIDs, "archive").then(output => {
-            output ? alert.success('Item(s) successfully deleted.') : alert.error('Something went wrong...');
+            output ? alert.success('Item(s) successfully deleted.', { timeout: 3000 }) : alert.error('Something went wrong...');
         })
 
     }

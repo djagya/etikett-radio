@@ -24,7 +24,7 @@ export default function BlogEntry(el, i) {
             //delete from db
             Delete([id], "blog").then(output => {
                 if (output) {
-                    alert.success('Blog(s) deleted.');
+                    alert.success('Blog(s) deleted.', { timeout: 3000 });
                 } else {
                     alert.error("Failed to delete data, please contact an admin.");
                 }
