@@ -16,12 +16,12 @@ function Header(props) {
     const videoPlayer = useRef();
 
     // Currently not streaming example
-    const channelId = '521258416';
-    const video = 'https://www.twitch.tv/etikett_radio';
+    // const channelId = '521258416';
+    // const video = 'https://www.twitch.tv/etikett_radio';
 
     // Currently sreaming example
-    // const channelId = '274901255';
-    // const video = 'https://www.twitch.tv/truthmusic';
+    const channelId = '274901255';
+    const video = 'https://www.twitch.tv/truthmusic';
   
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
@@ -54,7 +54,7 @@ function Header(props) {
                 if (!streamData.data[0]) {
                     return
                 }
-                if (streamData.data[0].type === "live") {
+                if (streamData.data[0].type === "live" && !isMobile) {
                     setSource(video)
                 }
             })

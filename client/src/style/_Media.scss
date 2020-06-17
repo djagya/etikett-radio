@@ -7,6 +7,26 @@
 
 @media only screen and (max-width: breakpoints(phone)) {
 
+  // Header 
+  .small-header-without-video,
+  .message-controls-container {
+    @include flex-column;
+  }
+
+  .small-header-without-video {
+    height: $mobile-header-height;
+
+    nav {
+      height: 60px;
+    }
+    .player-controls {
+      height: 30px;
+    }
+    .message-controls-container {
+      height: 60px;
+    }
+  }
+
   // Chat
   .chat {
     display: none;
@@ -20,8 +40,7 @@
   // Archive
   .all-list {
     .archive-list-grid {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       padding: 1rem;
     }  
     .sort-by-box {
@@ -57,8 +76,7 @@
   .input-form {
     
     .grid-container {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
     }
     .grid-container,
     .submit-button {
