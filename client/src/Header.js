@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useContext  } from 'react';
 import { useAlert } from 'react-alert';
 import ReactPlayer from 'react-player';
-import { useMediaQuery } from 'react-responsive';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
@@ -10,7 +9,7 @@ import GetData from "./GetData";
 import { Context } from "./Context";
 import moment from "moment";
 
-function Header(props) {
+function Header({ location, name, setName, isMobile }) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
@@ -34,10 +33,7 @@ function Header(props) {
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
 
-    // Media Queries
-    const isMobile = useMediaQuery({ maxWidth: 600 })
-
-    context.setPathName(props.location.pathname) 
+    context.setPathName(location.pathname) 
 
     useEffect(() => {
         const options = {
@@ -59,7 +55,7 @@ function Header(props) {
                 }
             })
             .then(() => {
-                if (source === video && props.location.pathname === '/') {
+                if (source === video && location.pathname === '/') {
                     setHeaderSize('full-header');
                     setChatState('chat-homescreen');
                     context.setGapClass("big-gap");
@@ -82,7 +78,7 @@ function Header(props) {
     useEffect(() => {
 
         // If there's video and we are on homescreen
-        if (source === video && props.location.pathname === '/') {
+        if (source === video && location.pathname === '/') {
             setHeaderSize('full-header');
             setChatState('chat-homescreen');
 
@@ -96,7 +92,7 @@ function Header(props) {
         }
 
     // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
-    }, [source, props.location.pathname])
+    }, [source, location.pathname])
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -180,7 +176,7 @@ function Header(props) {
 
                     { isMobile ? null :
                         <div className={`chat ${chatState}`}>
-                            <ChatApp name={props.name} setName={props.setName} />
+                            <ChatApp name={name} setName={setName} />
                         </div>
                     }
 
