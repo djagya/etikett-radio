@@ -4,7 +4,11 @@
   .full-header {
     .chat-homescreen-with-video {
       position: fixed;
-      top: 4px;
+      top: -5px;
+
+      .outer-container {
+        padding: 0;
+      }
     }
     .InfoBar {
       margin-top: 0.8rem;
