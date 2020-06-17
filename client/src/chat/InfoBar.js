@@ -25,7 +25,7 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName, remo
         <h3>{room}</h3>
       {/* </div> */}
       <div className="button-container">
-        <button id="chat-logout" className="chat-button" onClick={handleLogOut} >Log out</button>
+        <button id="chat-logout" className="chat-button" onClick={handleLogOut} >log out</button>
       </div>
     </div>
   )
