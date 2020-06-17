@@ -1,7 +1,10 @@
 @media only screen and (min-width: breakpoints(big-desktop)) {
-  .Join {
-    position: relative;
-    top: -48px
+  .chat-homescreen {
+    top: 0;
+
+    .InfoBar {
+      margin-top: 8px;
+    }
   }
 }
 
