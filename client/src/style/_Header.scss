@@ -143,8 +143,12 @@ nav {
   position: fixed;
   top: $full-header-nav-height;
 
+  .outer-container {
+    padding-top: 1rem;
+  }
+
   .Messages {
-    height: calc($nav-height-home-video - 36px - 40px)
+    height: calc($full-header-nav-height - $full-header-message-height - 100vh)
   }
 }
 
@@ -161,7 +165,7 @@ nav {
 
   // .Input { height: 40px }
   .Messages {
-    height: calc(100% - 40px - 4rem)
+    height: calc(100% - 40px - 6rem)
   }
 
   // calc(100% - InfoBar - bottom-space)
