@@ -31,12 +31,17 @@ nav {
     color: $etikett-hover;
     text-decoration-color: white;
   }
+
 .full-header {
   flex-direction: column;
 
   .embeded-video {
     width: 100%;
     height: $embeded-video-height;
+  }
+
+  .message-controls-container {
+    height: $full-header-message-height;
   }
 }
 
@@ -50,10 +55,10 @@ nav {
   grid-template: 1fr 1fr / 15% repeat(10, 1fr) 15%;
 
   nav {
-    grid-column: 2 / 13;
+    grid-column: 1 / 13;
     grid-row: 1 / 2;
     height: 100%;
-    justify-content: start;
+    justify-content: center;
   }
 
   .message-controls-container {
@@ -84,6 +89,12 @@ nav {
 .small-header-with-video {
   @extend .small-header-without-video;
   height: $header-height-big;
+
+  nav {
+    grid-column: 2 / 13;
+    height: 100%;
+    justify-content: start;
+  }
 
   .message-controls-container {
     grid-column: 3 / 11;
@@ -124,7 +135,12 @@ nav {
 }
 
 .chat-homescreen-with-video {
-  @extend .chat-homescreen-without-video
+  @extend .chat-homescreen-without-video;
+
+
+  .Messages {
+    height: calc($nav-height-home-video - 36px - 40px)
+  }
 }
 
 .chat-routes-without-video {
