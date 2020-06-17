@@ -34,6 +34,7 @@ export default function MyProfile(props) {
                 setRole(data.user.role)
 
             } else {
+                console.log(data)
                 alert.error("Something went wrong");
                 return
             }
