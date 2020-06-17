@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext  } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useAlert } from 'react-alert';
 import ReactPlayer from 'react-player';
 import audioIcon from './icons/audio.png';
@@ -8,6 +8,7 @@ import ChatApp from './chat/ChatApp';
 import GetData from "./GetData";
 import { Context } from "./Context";
 import moment from "moment";
+import ResponsiveNavbar from './ResponsiveNavbar';
 
 function Header({ location, name, setName, isMobile }) {
     const context = useContext(Context)
@@ -21,7 +22,7 @@ function Header({ location, name, setName, isMobile }) {
     // Currently sreaming example
     const channelId = '274901255';
     const video = 'https://www.twitch.tv/truthmusic';
-  
+
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
     const [playing, setPlaying] = useState(false);
@@ -33,7 +34,7 @@ function Header({ location, name, setName, isMobile }) {
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
 
-    context.setPathName(location.pathname) 
+    context.setPathName(location.pathname)
 
     useEffect(() => {
         const options = {
@@ -59,7 +60,7 @@ function Header({ location, name, setName, isMobile }) {
                     setHeaderSize('full-header');
                     setChatState('chat-homescreen');
                     context.setGapClass("big-gap");
-                // If there's no video
+                    // If there's no video
                 } else if (source !== video) {
                     setHeaderSize('small-header-without-video');
                     setChatState('chat-routes');
@@ -73,7 +74,7 @@ function Header({ location, name, setName, isMobile }) {
             })
 
     }, [source])
-    
+
 
     useEffect(() => {
 
@@ -82,7 +83,7 @@ function Header({ location, name, setName, isMobile }) {
             setHeaderSize('full-header');
             setChatState('chat-homescreen');
 
-        // If there's no video
+            // If there's no video
         } else if (source !== video) {
             setHeaderSize('small-header-without-video');
             setChatState('chat-routes');
@@ -91,7 +92,7 @@ function Header({ location, name, setName, isMobile }) {
             setChatState('chat-routes');
         }
 
-    // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
+        // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
     }, [source, location.pathname])
 
     const handlePlayBtn = e => {
@@ -163,18 +164,19 @@ function Header({ location, name, setName, isMobile }) {
             )
             : (
                 <header className={`App-header ${headerSize}`}>
-                            
-                    <nav role="navigation">
-                        <NavLink activeClassName="active-nav" className="nav-link" exact={true} to="/">home.</NavLink>
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/archive">archive.</NavLink>
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/blog">blog.</NavLink>
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/hosts">hosts.</NavLink>
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/contact">contact.</NavLink>
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/login">staff only.</NavLink>
-                    </nav>
+                    {isMobile ? <ResponsiveNavbar /> :
+                        <nav role="navigation">
+                            <NavLink activeClassName="active-nav" className="nav-link" exact={true} to="/">home.</NavLink>
+                            <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
+                            <NavLink activeClassName="active-nav" className="nav-link" to="/archive">archive.</NavLink>
+                            <NavLink activeClassName="active-nav" className="nav-link" to="/blog">blog.</NavLink>
+                            <NavLink activeClassName="active-nav" className="nav-link" to="/hosts">hosts.</NavLink>
+                            <NavLink activeClassName="active-nav" className="nav-link" to="/contact">contact.</NavLink>
+                            <NavLink activeClassName="active-nav" className="nav-link" to="/login">staff only.</NavLink>
+                        </nav>
+                    }
 
-                    { isMobile ? null :
+                    {isMobile ? null :
                         <div className={`chat ${chatState}`}>
                             <ChatApp name={name} setName={setName} />
                         </div>
@@ -200,13 +202,13 @@ function Header({ location, name, setName, isMobile }) {
                                 <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                                 <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
                             </div>
-                        : null}
+                            : null}
                         <div className="message">
                             <span className="moving-text"> {time} -- {context.infoBarMessage}</span>
                         </div>
 
                     </section>
-                </header>                
+                </header>
             )
     )
 }
