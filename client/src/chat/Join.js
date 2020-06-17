@@ -13,7 +13,9 @@ export default function Join({ setName, setCookie}) {
       .then(res => res.json())
       .then(data => {
         let match = false;
-
+        if (nameInput === "") {
+          alert.error("Please enter a nick name to join the chat!")
+        }
         // Compare user's chatName with hostName
         data.host.map(({hostName, isActive}) => {
           if (hostName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase() && isActive === 'active') {
@@ -25,16 +27,16 @@ export default function Join({ setName, setCookie}) {
         return match
       })
       .then((match) => {
-
         if (!match) {
           // Prevent user from having the same name as a chat user
           fetch('http://localhost:3000/chat')
             .then(res => res.json())
             .then(data => {
-
+           
               // Compare user's chatName with chatUsers
               data.chatUsers.map(({name}) => {
                 if (name === nameInput.trim().toLocaleLowerCase()) {
+                  
                   match = true;
                   return match; 
                 }
@@ -71,10 +73,11 @@ export default function Join({ setName, setCookie}) {
 
   return (
     <div className="Join">
-      <h3>join the chat</h3>
       <form onSubmit={handleSubmit} className="join-form">
-        <input type="text" placeholder="Name" value={nameInput} onChange={(e) => setNameInput(e.target.value)} />
-        <button type="submit">Join</button>
+        <div className="button-container">
+        <input type="text" placeholder="Enter a nick name to join the chat" value={nameInput} onChange={(e) => setNameInput(e.target.value)} />
+        <button className="chat-button" type="submit">Join</button>
+        </div>
       </form>
     </div>
   )

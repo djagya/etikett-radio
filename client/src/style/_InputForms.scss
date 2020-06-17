@@ -15,7 +15,7 @@
       width: 600px;
   
       label {
-  
+
         input,
         select, textarea {
           margin-top: .25rem;
@@ -35,15 +35,15 @@
             color: black;
             font-size: 1rem;
           }
-  
+    
         }
-  
+    
         textarea {
           padding: .5rem;
-  
+
         }
 
-      }
+     }
 
       textarea {
         padding: .5rem;
@@ -51,17 +51,17 @@
       }
     }
 
-    .describe {
-      grid-column-start: 1;
-      grid-column-end: 3;
+  .describe {
+    grid-column-start: 1;
+    grid-column-end: 3;
 
-      textarea {
-        width: 100%;
-        min-height: 5rem;
-      }
+    textarea {
+      width: 100%;
+      min-height: 5rem;
     }
-
   }
+
+}
 
 .submit-button {
   display: flex;

@@ -11,11 +11,7 @@ Route.post("/contact", sendEmail);
 //Alternative syntax for practice purposes
 Route.route("/:id")
     .get(auth, getUserById)
-<<<<<<< HEAD
-    .put(auth, validUserInputs(), isHostAdmin, putUser)
-=======
     .put(auth, isHostAdmin, putUser)
->>>>>>> origin/master
     .delete(auth, isAdmin, deleteUser);
 
 module.exports = Route;

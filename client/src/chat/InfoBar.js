@@ -21,11 +21,11 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName, remo
       <div className="info-inner-container">
         <img src={minimize} alt="minimize icon" onClick={handleChatWindow} role="button" />
       </div>
-      <div className="h3-container">
+      {/* <div className="h3-container"> */}
         <h3>{room}</h3>
-      </div>
-      <div className="info-inner-container">
-        <button id="chat-logout" onClick={handleLogOut} >Log out</button>
+      {/* </div> */}
+      <div className="button-container">
+        <button id="chat-logout" className="chat-button" onClick={handleLogOut} >Log out</button>
       </div>
     </div>
   )
