@@ -27,6 +27,11 @@
     }
   }
 
+  // Main Content
+  .small-gap {
+    margin-top: $mobile-header-height;
+  }
+
   // Chat
   .chat {
     display: none;
