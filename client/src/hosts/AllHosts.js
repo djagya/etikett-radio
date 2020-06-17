@@ -96,7 +96,7 @@ export default function AllHosts(props) {
     if (!context.allHosts) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={` all-list ${context.gapClass}`}>
-            <h2>all hosts.</h2>
+            <h2 id="main">all hosts.</h2>
             <div className="list-container">
                 <div className="button-container">
                     <button type="button" onClick={() => context.setAllHosts(false)}>back</button>
