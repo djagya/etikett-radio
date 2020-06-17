@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext  } from 'react';
 import { useAlert } from 'react-alert';
 import ReactPlayer from 'react-player';
+import { useMediaQuery } from 'react-responsive';
 import audioIcon from './icons/audio.png';
 import muteIcon from './icons/mute.png';
 import { withRouter, NavLink } from 'react-router-dom';
@@ -32,6 +33,9 @@ function Header(props) {
     const [chatState, setChatState] = useState('chat-homescreen');
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
+
+    // Media Queries
+    const isMobile = useMediaQuery({ maxWidth: 600 })
 
     context.setPathName(props.location.pathname) 
 
@@ -175,10 +179,10 @@ function Header(props) {
                         <NavLink activeClassName="active-nav" className="nav-link" to="/login">staff only.</NavLink>
                     </nav>
 
-                    {window.innerWidth < 900 ? null :
-                    <div className={`chat ${chatState}`}>
-                        <ChatApp name={props.name} setName={props.setName} />
-                    </div>
+                    { isMobile ? null :
+                        <div className={`chat ${chatState}`}>
+                            <ChatApp name={props.name} setName={props.setName} />
+                        </div>
                     }
 
                     <section className="embeded-video">
