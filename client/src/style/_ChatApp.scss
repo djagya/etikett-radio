@@ -9,9 +9,13 @@
 
   h3 {
     padding: 0.5rem;
-    white-space: nowrap;
+    width: 100%;
     color: #FFF;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    color: $etikett-hover;
+    letter-spacing: 2px;
+    text-decoration-line: underline ;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
   }
   p {
     font-size: 1.1rem;
@@ -65,10 +69,7 @@
   display: flex;
   flex-direction: column;
   background-color: $etikett-black;
-  height: 100%;
-  h3 {
-        letter-spacing: initial;
-      }
+  // height: 100%;
   .join-form {
     height: 100%;
     min-height: 36px;
@@ -86,6 +87,7 @@
       margin: 0 .5rem;
       padding: 0 5px;
       height: 100%;
+      white-space: nowrap;
     }
 // InfoBar
 .InfoBar {
@@ -95,6 +97,9 @@
   background: #000;
   z-index: 2;
 
+  .button-container {
+    width: auto;
+  }
   .info-inner-container img {
     width: 16px;
     margin: 0 0.4rem;
