@@ -140,7 +140,8 @@ nav {
 
 .chat-homescreen-with-video {
   @extend .chat-homescreen-without-video;
-
+  position: fixed;
+  top: $full-header-nav-height;
 
   .Messages {
     height: calc($nav-height-home-video - 36px - 40px)
