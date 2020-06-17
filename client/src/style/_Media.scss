@@ -1,4 +1,6 @@
 @media only screen and (min-width: breakpoints(big-desktop)) {
+
+  // Header with video
   .chat-homescreen {
     top: 0;
 
@@ -6,9 +8,19 @@
       margin-top: 8px;
     }
   }
-  .chat-routes {
-    position: fixed;
-    top: 30px;
+
+  // Header without video
+  .small-header-without-video {
+    .chat-routes,
+    .chat-homescreen {
+      top: 18px;
+    }
+  }
+  .small-header-with-video {
+    .chat-routes {
+      position: fixed;
+      top: 30px;
+    }  
   }
 }
 
