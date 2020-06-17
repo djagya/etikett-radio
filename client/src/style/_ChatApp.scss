@@ -4,14 +4,50 @@
   margin: 0;
   padding: 0;
 }
+
+.chat {
+  .chat-button {
+    margin: 0 .5rem;
+    padding: 0 5px;
+    height: 100%;
+    white-space: nowrap;
+  }
+
+  input, select, textarea {
+    // margin-top: .25rem;
+    // background-color: $etikett-black-050;
+    background-color: rgba(255, 255, 255, 0.10);
+    width: 100%;
+    height: 2rem;
+    padding-left: .5rem;
+    border: 0px solid;
+    border-bottom: 1px solid rgb(255, 255, 255);;
+    border-radius: 3px;
+    
+    &:focus {
+      background-color: $etikett-black-750;
+    }
+    option {
+      color: black;
+      font-size: 1rem;
+    }
+
+  }
+}
+
+
 .ChatApp {
   width: $chat-width;
 
   h3 {
     padding: 0.5rem;
-    margin-right: 2.5rem;
+    width: 100%;
     color: #FFF;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    color: $etikett-hover;
+    letter-spacing: 2px;
+    text-decoration-line: underline ;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
   }
   p {
     font-size: 1.1rem;
@@ -61,30 +97,22 @@
 
 // Join
 .Join {
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   background-color: $etikett-black;
-  height: 100%;
-  h3 {
-        letter-spacing: initial;
-      }
+  // height: 100%;
   .join-form {
     height: 100%;
     min-height: 36px;
     width: 100%;
-
-    input,
-    button {
-      background: $etikett-black;  
-      height: 36px;
-    }
     input {
-      width: 80%;
+      width: 100%;
+      padding-left: 5px;
     }
-    button {
-      width: 20%;
-    }
+
     
+
   }
 }
 
@@ -96,6 +124,9 @@
   background: #000;
   z-index: 2;
 
+  .button-container {
+    width: auto;
+  }
   .info-inner-container img {
     width: 16px;
     margin: 0 0.4rem;
