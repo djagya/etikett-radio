@@ -139,6 +139,7 @@
 
     nav {
       height: 60px;
+      justify-content: end;
     }
 
     .player-controls {
@@ -161,16 +162,13 @@
   }
 
   // Chat
-
   .chat {
     display: none;
   }
 
-  .embeded-video {
-    display: none;
+  .full-header .embeded-video {
+    height: 50vh;
   }
-
-
 
   // Schedule
   .weekly-schedule:not(.this) {
