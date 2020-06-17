@@ -93,5 +93,15 @@
   .edit-input-form {
     width: 90%;
   }
+
+  // All hosts
+  .all-list .user-list-grid {
+    @include flex-column;
+
+    li {
+      margin: 0;
+    }
+  }
+
   
 }
