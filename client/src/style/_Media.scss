@@ -7,6 +7,31 @@
 
 @media only screen and (max-width: breakpoints(phone)) {
 
+  // Header 
+  .small-header-without-video,
+  .message-controls-container {
+    @include flex-column;
+  }
+
+  .small-header-without-video {
+    height: $mobile-header-height;
+
+    nav {
+      height: 60px;
+    }
+    .player-controls {
+      height: 40px;
+    }
+    .message-controls-container {
+      height: 60px;
+    }
+  }
+
+  // Main Content
+  .small-gap {
+    margin-top: $mobile-header-height;
+  }
+
   // Chat
   .chat {
     display: none;
@@ -20,8 +45,7 @@
   // Archive
   .all-list {
     .archive-list-grid {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       padding: 1rem;
     }  
     .sort-by-box {
@@ -57,8 +81,7 @@
   .input-form {
     
     .grid-container {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
     }
     .grid-container,
     .submit-button {
@@ -70,5 +93,35 @@
   .edit-input-form {
     width: 90%;
   }
-  
+
+  // All Users
+  .all-list .user-list-grid {
+    @include flex-column;
+
+    li {
+      margin: 0;
+    }
+  }
+
+  // All Hosts
+  .all-list {
+
+    .list-container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .host-list-grid {
+      grid-template-columns: 50% 1fr 1fr;
+    }
+
+    li {
+      &:nth-child(1) { justify-self: start; }
+      &:nth-child(2) { justify-self: center; }
+    }
+  }
+
+  .button-container {
+    justify-content: end;
+  }
 }

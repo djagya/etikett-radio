@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
+import { useMediaQuery } from 'react-responsive';
 
 
 import "./App.scss"
@@ -59,6 +60,9 @@ function App(props) {
   const [pathName, setPathName] =useState("/")
   const [gradient, setGradient] =useState("gradient");
 
+  // Media Queries
+  const isMobile = useMediaQuery({ maxWidth: 600 })
+
   if (cookies.user) {
     id = cookies.user._id
   }
@@ -102,14 +106,16 @@ function App(props) {
             </div>
 
             <div className="stream-page">
-              <Header name={name} setName={setName} />
+              <Header name={name} setName={setName} isMobile={isMobile} />
             </div>
 
             <Switch>
 
               {/*Placeholder for / route so we don't land on Error component*/}
-              <Route exact path="/" component={Home} />
-
+              <Route exact path="/">
+                { isMobile ? <Redirect to="/schedule" /> : <Home/> }
+              </Route>
+              
               {/* User Related */}
               <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies}  setName={setName} />} />
               <Route exact path="/user/all" render={(props) => <AllUser {...props} cookies={cookies} />} />
