@@ -9,18 +9,18 @@ import GetData from "./GetData";
 import { Context } from "./Context";
 import moment from "moment";
 
-function Header(props) {
+function Header({ location, name, setName, isMobile }) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
 
     // Currently not streaming example
-    const channelId = '521258416';
-    const video = 'https://www.twitch.tv/etikett_radio';
+    // const channelId = '521258416';
+    // const video = 'https://www.twitch.tv/etikett_radio';
 
     // Currently sreaming example
-    // const channelId = '274901255';
-    // const video = 'https://www.twitch.tv/truthmusic';
+    const channelId = '274901255';
+    const video = 'https://www.twitch.tv/truthmusic';
   
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
@@ -33,7 +33,7 @@ function Header(props) {
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
 
-    context.setPathName(props.location.pathname) 
+    context.setPathName(location.pathname) 
 
     useEffect(() => {
         const options = {
@@ -50,12 +50,12 @@ function Header(props) {
                 if (!streamData.data[0]) {
                     return
                 }
-                if (streamData.data[0].type === "live") {
+                if (streamData.data[0].type === "live" && !isMobile) {
                     setSource(video)
                 }
             })
             .then(() => {
-                if (source === video && props.location.pathname === '/') {
+                if (source === video && location.pathname === '/') {
                     setHeaderSize('full-header');
                     setChatState('chat-homescreen');
                     context.setGapClass("big-gap");
@@ -75,11 +75,10 @@ function Header(props) {
     }, [source])
     
 
-
     useEffect(() => {
 
         // If there's video and we are on homescreen
-        if (source === video && props.location.pathname === '/') {
+        if (source === video && location.pathname === '/') {
             setHeaderSize('full-header');
             setChatState('chat-homescreen');
 
@@ -93,7 +92,7 @@ function Header(props) {
         }
 
     // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
-    }, [source, props.location.pathname])
+    }, [source, location.pathname])
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -166,7 +165,7 @@ function Header(props) {
                 <header className={`App-header ${headerSize}`}>
                             
                     <nav role="navigation">
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/">home.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" exact={true} to="/">home.</NavLink>
                         <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
                         <NavLink activeClassName="active-nav" className="nav-link" to="/archive">archive.</NavLink>
                         <NavLink activeClassName="active-nav" className="nav-link" to="/blog">blog.</NavLink>
@@ -175,10 +174,10 @@ function Header(props) {
                         <NavLink activeClassName="active-nav" className="nav-link" to="/login">staff only.</NavLink>
                     </nav>
 
-                    {window.innerWidth < 900 ? null :
-                    <div className={`chat ${chatState}`}>
-                        <ChatApp name={props.name} setName={props.setName} />
-                    </div>
+                    { isMobile ? null :
+                        <div className={`chat ${chatState}`}>
+                            <ChatApp name={name} setName={setName} />
+                        </div>
                     }
 
                     <section className="embeded-video">
