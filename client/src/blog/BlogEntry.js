@@ -24,7 +24,7 @@ export default function BlogEntry(el, i) {
             //delete from db
             Delete([id], "blog").then(output => {
                 if (output) {
-                    alert.success('Blog(s) deleted.');
+                    alert.success('Blog(s) deleted.', { timeout: 3000 });
                 } else {
                     alert.error("Failed to delete data, please contact an admin.");
                 }
@@ -51,9 +51,9 @@ export default function BlogEntry(el, i) {
                 <article>
                 <div className="article-header">
                     <h2>{entry.heading}</h2>
-                    <p>{entry.date.substring(0, 10)}</p>
+                    <p className="blog-date" >{entry.date.substring(0, 10)}</p>
                 </div>
-                <p>{entry.text}</p>
+                <p className="blog-text" >{entry.text}</p>
                 </article>
                 }
         </li>

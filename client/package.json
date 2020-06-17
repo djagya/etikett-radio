@@ -19,6 +19,7 @@
     "react-dom": "^16.13.1",
     "react-emoji": "^0.5.0",
     "react-player": "^2.1.0",
+    "react-responsive": "^8.1.0",
     "react-scripts": "3.4.1",
     "react-scroll-to-bottom": "^2.0.0",
     "react-spring": "^8.0.27",

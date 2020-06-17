@@ -36,8 +36,8 @@ export default function LogIn(props) {
                 if (data.status === 403) return alert.error("Invalid Password")
                 if (data.success) {
                     props.setCookie('user', data.user, { path: '/' });
-                    if (data.user.role === 'Host') {
-                        sessionStorage.setItem('name', data.user.userName);
+                    if (data.user.role === 'Host' || data.user.role === 'Admin') {
+                        props.setCookie('name', data.user.userName, { path: '/' });
                         props.setName(data.user.userName);    
                     }
                 }
@@ -65,7 +65,7 @@ export default function LogIn(props) {
     if (props.cookies.user) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={`${context.gapClass} input-form`}>
-            <h2 id="main">Log In</h2>
+            <h2 id="main">log in.</h2>
             <form onSubmit={handleSubmit} role="form">
                 <div className="grid-container">
                     <label htmlFor="email">

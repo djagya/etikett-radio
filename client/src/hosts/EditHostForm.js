@@ -102,7 +102,7 @@ export default function EditHostPage(props) {
                     console.log(data)
                     alert.error("Something went wrong while uploading your data for the first time.")
                 } else {
-                    alert.success("You successfully initialized your host profile!")
+                    alert.success("You successfully initialized your host profile!", { timeout: 3000 })
                 } })
             .then(context.setEditHost(false) )
         } else {
@@ -112,7 +112,7 @@ export default function EditHostPage(props) {
                     console.log(data)
                     alert.error("Something went wrong while updating your data")
                 } else {
-                    alert.success("Update successful!")
+                    alert.success("Update successful!", { timeout: 3000 })
                 } })
             .then(context.setEditHost(false) )
 
@@ -181,7 +181,7 @@ export default function EditHostPage(props) {
     if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
     return (
         <div className={`${context.gapClass} edit-host-page`}>
-            <h2>edit my host profile</h2>
+            <h2>edit my host profile.</h2>
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
                     <button type="button" onClick={() => context.setEditHost(false)}>cancel</button>
