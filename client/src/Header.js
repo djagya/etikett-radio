@@ -79,7 +79,6 @@ function Header(props) {
     }, [source])
     
 
-
     useEffect(() => {
 
         // If there's video and we are on homescreen
@@ -170,7 +169,7 @@ function Header(props) {
                 <header className={`App-header ${headerSize}`}>
                             
                     <nav role="navigation">
-                        <NavLink activeClassName="active-nav" className="nav-link" to="/">home.</NavLink>
+                        <NavLink activeClassName="active-nav" className="nav-link" exact={true} to="/">home.</NavLink>
                         <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
                         <NavLink activeClassName="active-nav" className="nav-link" to="/archive">archive.</NavLink>
                         <NavLink activeClassName="active-nav" className="nav-link" to="/blog">blog.</NavLink>
