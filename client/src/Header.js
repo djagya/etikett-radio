@@ -16,12 +16,12 @@ function Header({ location, name, setName, isMobile }) {
     const videoPlayer = useRef();
 
     // Currently not streaming example
-    const channelId = '521258416';
-    const video = 'https://www.twitch.tv/etikett_radio';
+    // const channelId = '521258416';
+    // const video = 'https://www.twitch.tv/etikett_radio';
 
     // Currently sreaming example
-    // const channelId = '274901255';
-    // const video = 'https://www.twitch.tv/truthmusic';
+    const channelId = '274901255';
+    const video = 'https://www.twitch.tv/truthmusic';
 
     // const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const radio = 'https://geekanddummy.com/wp-content/uploads/2014/01/2-Kids-Laughing.mp3'
@@ -30,7 +30,7 @@ function Header({ location, name, setName, isMobile }) {
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
-    const [chatState, setChatState] = useState('chat-homescreen');
+    const [chatState, setChatState] = useState('chat-homescreen-with-video');
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
 
@@ -58,16 +58,16 @@ function Header({ location, name, setName, isMobile }) {
             .then(() => {
                 if (source === video && location.pathname === '/') {
                     setHeaderSize('full-header');
-                    setChatState('chat-homescreen');
+                    setChatState('chat-homescreen-with-video');
                     context.setGapClass("big-gap");
                     // If there's no video
                 } else if (source !== video) {
                     setHeaderSize('small-header-without-video');
-                    setChatState('chat-routes');
+                    setChatState('chat-routes-without-video');
                     context.setGapClass("small-gap");
                 } else {
                     setHeaderSize('small-header-with-video');
-                    setChatState('chat-routes');
+                    setChatState('chat-routes-with-video');
                     context.setGapClass("small-gap");
                 }
                 setLoading(false);
@@ -81,15 +81,15 @@ function Header({ location, name, setName, isMobile }) {
         // If there's video and we are on homescreen
         if (source === video && location.pathname === '/') {
             setHeaderSize('full-header');
-            setChatState('chat-homescreen');
+            setChatState('chat-homescreen-with-video');
 
             // If there's no video
         } else if (source !== video) {
             setHeaderSize('small-header-without-video');
-            setChatState('chat-routes');
+            setChatState('chat-routes-without-video');
         } else {
             setHeaderSize('small-header-with-video');
-            setChatState('chat-routes');
+            setChatState('chat-routes-with-video');
         }
 
         // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
