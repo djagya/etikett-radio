@@ -10,7 +10,7 @@ import { Context } from "./Context";
 import moment from "moment";
 import ResponsiveNavbar from './ResponsiveNavbar';
 
-function Header({ location, name, setName, isMobile }) {
+function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
@@ -51,7 +51,7 @@ function Header({ location, name, setName, isMobile }) {
                 if (!streamData.data[0]) {
                     return
                 }
-                if (streamData.data[0].type === "live" && !isMobile) {
+                if (streamData.data[0].type === "live" && !isMobileDevice) {
                     setSource(video)
                 }
             })
@@ -164,7 +164,7 @@ function Header({ location, name, setName, isMobile }) {
             )
             : (
                 <header className={`App-header ${headerSize}`}>
-                    {isMobile ? <ResponsiveNavbar /> :
+                    {isMobileWidth ? <ResponsiveNavbar /> :
                         <nav role="navigation">
                             <NavLink activeClassName="active-nav" className="nav-link" exact={true} to="/">home.</NavLink>
                             <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
@@ -176,7 +176,7 @@ function Header({ location, name, setName, isMobile }) {
                         </nav>
                     }
 
-                    {isMobile ? null :
+                    {isMobileDevice ? null :
                         <div className={`chat ${chatState}`}>
                             <ChatApp name={name} setName={setName} />
                         </div>
