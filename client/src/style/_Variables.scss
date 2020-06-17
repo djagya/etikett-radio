@@ -4,7 +4,9 @@ $header-height-small: 14vh;
 $nav-height: 50px;
 $embeded-video-height: 88vh;
 $mobile-header-height: 130px;
+$full-header-nav-height: 5vh;
 $full-header-message-height: 5vh;
+$full-header-video-height: calc(100vh - 5vh - 5vh);
 
 //colors
 $etikett-black: rgb(1,5,8);

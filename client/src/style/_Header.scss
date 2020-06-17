@@ -35,6 +35,10 @@ nav {
 .full-header {
   flex-direction: column;
 
+  nav {
+    height: $full-header-nav-height;
+  }
+
   .embeded-video {
     width: 100%;
     height: $embeded-video-height;
