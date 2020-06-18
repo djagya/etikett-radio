@@ -68,7 +68,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 } else {
                     setHeaderSize('small-header-with-video');
                     setChatState('chat-routes-with-video');
-                    context.setGapClass("small-gap");
+                    context.setGapClass("big-gap");
                 }
                 setLoading(false);
             })
