@@ -13,7 +13,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
   const alert = useAlert();
 
   // Set server address
-  const endpoint = 'localhost:3000';
+  const endpoint = '/';
 
   useEffect(() => {
     console.log('[useEffect on Chat is running]')
