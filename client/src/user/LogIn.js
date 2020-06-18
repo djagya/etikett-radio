@@ -35,15 +35,13 @@ export default function LogIn(props) {
                 if (data.status === 404) return alert.error("Invalid Email") 
                 if (data.status === 403) return alert.error("Invalid Password")
                 if (data.success) {
-                    props.setCookie('user', data.user, { path: '/' });
-                    console.log(props.cookies.name)
-                    if (!props.cookies.name) {
-                        props.setCookie('name', data.user.userName, { path: '/' });
-                        props.setName(data.user.userName);
-                    } else {
-                        props.setCookie('name', data.user.userName, { path: '/' });
-                        window.location.reload();
+                    props.removeCookie('name', { path: '/'})
+                    if (context.socket.connected) {
+                        context.socket.disconnect()
                     }
+                    props.setName(data.user.userName);
+                    props.setCookie('name', data.user.userName, { path: '/' });
+                    props.setCookie('user', data.user, { path: '/' });
                 }
             })
             .catch(err => {

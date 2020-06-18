@@ -33,10 +33,10 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
       // Emit DISCONNECT
       socket.emit('disconnect');
       // Turn off this socket
-      socket.off();
+      // socket.off();
       console.log('[chat will unmount]')
     }
-  }, [])
+  }, [name])
 
   useEffect(() => {
     console.log('[useEffect[messages]]')
