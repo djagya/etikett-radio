@@ -148,15 +148,23 @@
     }
 
     .player-controls {
-      height: 40px;
+      display: flex;
+      justify-content: start;
+      margin-left: 1.3rem;
+      height: 50px;
       z-index: 0;
     }
 
     .message-controls-container {
-      height: 60px;
-      padding-top: 0.5rem;
+      height: 75px;
+      padding-top: 0;
       margin: 0 1rem;
 
+    }
+
+    .page-title-mobile {
+      text-align: left;
+      padding: 1rem;
     }
 
   }
@@ -407,5 +415,106 @@
     }
   }
 
+  //host page
 
+  .host-page {
+
+
+    .carousel-item {
+      @include flex-column;
+      padding: 1rem;
+    }
+
+    .host-content {
+      width: 300px;
+      margin: 1rem;
+
+
+      &:hover {
+        box-shadow: 0 14px 28px rgba(139, 139, 139, 0.25),
+          0 10px 10px rgba(156, 156, 156, 0.22);
+        transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
+      }
+    }
+
+    .host-images {
+      width: 100px;
+      height: 100px;
+      margin-left: 0.2rem;
+    }
+
+
+    .host-card {
+      width: 300px;
+      border-right: 1px solid rgba(190, 190, 195, 0.219);
+      box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
+
+    }
+
+    .host-description {
+
+      h3 {
+        padding: 0 0 0.5rem 0.2rem;
+      }
+
+      .about-host {
+        padding: 0;
+      }
+
+
+      .social-media-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1.2rem 0.5rem 0 0;
+
+        i {
+          margin-left: .5rem;
+        }
+      }
+
+      .host-pagelink {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 0.5rem;
+      }
+    }
+
+    .side-list {
+      display: none;
+      // flex-direction: column;
+      // justify-content: center;
+
+      // border-left: 1px solid rgba(190, 190, 195, 0.219);
+      // // box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
+      // padding-left: 2px;
+
+      // background-image: linear-gradient(to right, $etikett-black, $etikett-black-000, $etikett-black-000);
+
+      // text-decoration-line: underline;
+      // text-align: left;
+
+      .side-list-item {
+        margin: 0.5rem 0;
+
+        .side-list-name {
+
+          text-transform: lowercase;
+          cursor: pointer;
+          letter-spacing: 3px;
+          transition: 0.1s;
+
+          &.active {
+            color: $etikett-hover;
+
+          }
+
+          &:hover {
+            color: $etikett-hover;
+            text-decoration-line: underline;
+            text-decoration-color: $etikett-hover;
+          }
+        }
+      }
+    }
+  }
 }
