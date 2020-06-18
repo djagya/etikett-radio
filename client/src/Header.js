@@ -10,7 +10,7 @@ import { Context } from "./Context";
 import moment from "moment";
 import ResponsiveNavbar from './ResponsiveNavbar';
 
-function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
+function Header({ location, name, setName, isMobileWidth, isMobileDevice, isPortrait }) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
@@ -176,11 +176,9 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                         </nav>
                     }
 
-                    {isMobileDevice ? null :
-                        <div className={`chat ${chatState}`}>
-                            <ChatApp name={name} setName={setName} />
-                        </div>
-                    }
+                    <div className={`chat ${chatState}`}>
+                        <ChatApp name={name} setName={setName} />
+                    </div>
 
                     <section className="embeded-video">
                         <ReactPlayer

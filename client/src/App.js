@@ -63,6 +63,7 @@ function App(props) {
   // Media Queries
   const isMobileWidth = useMediaQuery({ maxWidth: 600 });
   const isMobileDevice = useMediaQuery({ maxDeviceWidth: 600 });
+  const isPortrait = useMediaQuery({ orientation: 'landscape' });
 
   if (cookies.user) {
     id = cookies.user._id
@@ -107,7 +108,7 @@ function App(props) {
             </div>
 
             <div className="stream-page">
-              <Header name={name} setName={setName} isMobileWidth={isMobileWidth} isMobileDevice={isMobileDevice} />
+              <Header name={name} setName={setName} isMobileWidth={isMobileWidth} isMobileDevice={isMobileDevice} isPortrait={isPortrait} />
             </div>
 
             <Switch>

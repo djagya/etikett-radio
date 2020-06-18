@@ -28,6 +28,11 @@
   }
 }
 
+@media only screen and (max-width: breakpoints(tablet)) {
+  .chat {
+    display: none;
+  }
+}
 
 //ipad
 // @media only screen and (max-width: breakpoints(tablet)) {
