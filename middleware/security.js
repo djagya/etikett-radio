@@ -13,7 +13,7 @@ exports.setCors = (req, res, next) => {
     )
 
     res.header( //optional
-        "Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS"
+        "Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, DELETE, OPTIONS"
     );
 
     res.header( //optional

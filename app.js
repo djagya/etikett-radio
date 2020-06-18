@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
       // socket.join(user.room) 
   
       // Emit MESSAGE
-      socket.emit('message', {user: 'etikett radio', text: `Hi ${user.name}! Welcome to ${user.room}'s chat!`});
+      socket.emit('message', {user: 'etikett radio', text: `Welcome ${user.name}!`});
   
       // Broadcast MESSAGE
       socket.broadcast.to(user.room).emit('message', {user: 'etikett radio', text: `${user.name} has joined.`});

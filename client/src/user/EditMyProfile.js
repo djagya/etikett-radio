@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context } from "../Context";
 import { Redirect } from 'react-router-dom';
 import { useAlert } from 'react-alert';
+import PatchData from "../PatchData";
 
 
 export default function MyProfile(props) {
@@ -17,8 +18,7 @@ export default function MyProfile(props) {
 
     useEffect(() => {
         fetch(`http://localhost:3000/users/${context.id}`, {
-            credentials: "include",
-            // headers: {"Content-Type": "application/json"}
+            credentials: "include"
         })
             .then(res => res.json())
             .then(data => { 
@@ -42,29 +42,8 @@ export default function MyProfile(props) {
 
     }, [context.id])
 
-
-
-    const handleSubmit = event => {
-        event.preventDefault()
-        const body = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "userName": userName,
-            "email": email,
-            "pw": pw,
-            "role": role
-        };
-        //Put request
-        const putData = async (url, data) => {
-            const response = await fetch(url, {
-                method: "PUT",
-                credentials: "include",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            })
-            return response.json()
-        }
-        putData(`http://localhost:3000/users/${context.id}`, body)
+    const handlePatch = body => {
+        PatchData(`http://localhost:3000/users/${context.id}`, body)
             .then(data => {
                 if (!data.success) {
                     console.log(data)
@@ -74,7 +53,27 @@ export default function MyProfile(props) {
                     alert.success('Profile edited!', { timeout: 3000 });
                 }
             })
-            .then(context.setProfileEdit(false))
+            // .then(context.setProfileEdit(false))
+    }    
+
+    const handlePersonalSubmit = event => {
+        event.preventDefault()
+        const body = {
+            "firstName": firstName,
+            "lastName": lastName,
+            "userName": userName,
+            "email": email,
+            "role": role
+        };
+        handlePatch(body)
+    }
+
+    const handlePWSubmit = event => {
+        event.preventDefault()
+        const body = {
+            "pw": pw,
+        };
+        handlePatch(body)
     }
 
     const handleFormInput = event => {
@@ -110,7 +109,7 @@ export default function MyProfile(props) {
             <div className={`${context.gapClass} input-form`}>
                 <h2 id="main">my profile.</h2>
 
-                <form onSubmit={handleSubmit} role="form">
+                <form onSubmit={handlePersonalSubmit} role="form">
                     <div className="button-container">
                         <button type="button" onClick={() => context.setProfileEdit(false)}>cancel</button>
                     </div>
@@ -131,10 +130,6 @@ export default function MyProfile(props) {
                             <span className="required">*</span>email
                         <input type="text" id="email" placeholder="Email" value={email} onChange={handleFormInput} />
                         </label>
-                        <label htmlFor="pw">
-                            <span className="required">*</span>password
-                        <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
-                        </label>
                         {user && user.role === 'Admin' ?
                             <label htmlFor="role">
                                 <span className="required">*</span>role
@@ -149,8 +144,18 @@ export default function MyProfile(props) {
                         <input type="submit" value="save" role="button" /><span className="required">* Required</span>
                     </div>
                 </form>
+                <form onSubmit={handlePWSubmit} role="form">
+                    <div className="grid-container">
+                        <label htmlFor="pw">
+                            <span className="required">*</span>password
+                            <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
+                        </label>
+                    </div>
+                    <div className="submit-button">
+                        <input type="submit" value="save" role="button" /><span className="required">* Required</span>
+                    </div>
+                </form>
             </div>
-
         </div>
     )
 }
