@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useAlert } from 'react-alert';
-import io from 'socket.io-client';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
@@ -14,6 +13,9 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
 
   useEffect(() => {
     console.log('[useEffect on Chat is running]')
+    if (!socket.connected) {
+      socket.connect();
+    }
 
     // Emit JOIN
     socket.emit('join', { name, room }, (error) => {

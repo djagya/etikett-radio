@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { useCookies } from 'react-cookie';
+import { Context } from "../Context";
+
 // Icons
 import minimize from '../icons/minimize.png';
 
 export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
   const [cookies, setCookie, removeCookie] = useCookies(['name', 'user']);
+  const { socket } = useContext(Context)
 
   const handleChatWindow = () => {
     if (chatWindow === 'chat-app-chat') {
@@ -17,6 +20,7 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
   const handleLogOut = () => {
     removeCookie('name', { path: '/' });
     setName(null);
+    socket.disconnect();
   }
 
   return (
