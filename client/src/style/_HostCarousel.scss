@@ -17,6 +17,12 @@
     
 }
 
+a {
+    :hover {
+        color: $etikett-hover;
+        transition: 0.1s;
+    }
+}
 
 .host-card {
     // margin: 0 auto;
