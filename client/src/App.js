@@ -61,7 +61,8 @@ function App(props) {
   const [gradient, setGradient] =useState("gradient");
 
   // Media Queries
-  const isMobile = useMediaQuery({ maxWidth: 600 })
+  const isMobileWidth = useMediaQuery({ maxWidth: 600 });
+  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 600 });
 
   if (cookies.user) {
     id = cookies.user._id
@@ -106,14 +107,14 @@ function App(props) {
             </div>
 
             <div className="stream-page">
-              <Header name={name} setName={setName} isMobile={isMobile} />
+              <Header name={name} setName={setName} isMobileWidth={isMobileWidth} isMobileDevice={isMobileDevice} />
             </div>
 
             <Switch>
 
               {/*Placeholder for / route so we don't land on Error component*/}
               <Route exact path="/">
-                { isMobile ? <Redirect to="/schedule" /> : <Home/> }
+                { isMobileDevice ? <Redirect to="/schedule" /> : <Home/> }
               </Route>
               
               {/* User Related */}

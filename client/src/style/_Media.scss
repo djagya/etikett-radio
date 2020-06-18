@@ -1,7 +1,30 @@
 @media only screen and (min-width: breakpoints(big-desktop)) {
-  .Join {
-    position: relative;
-    top: -48px
+
+  // Header with video
+  .full-header {
+    .chat-homescreen-with-video {
+      position: fixed;
+      top: -5px;
+
+      .outer-container {
+        padding: 0;
+      }
+    }
+    .InfoBar {
+      margin-top: 0.8rem;
+    }
+  }
+  .small-header-with-video {
+    .chat-routes-with-video {
+      position: fixed;
+      top: 30px;
+    }  
+  }
+
+  // Header without video
+  .chat-routes-without-video {
+    position: fixed;
+    top: 13px;
   }
 }
 
@@ -116,6 +139,7 @@
 
     nav {
       height: 60px;
+      justify-content: end;
     }
 
     .player-controls {
@@ -138,16 +162,13 @@
   }
 
   // Chat
-
   .chat {
     display: none;
   }
 
-  .embeded-video {
-    display: none;
+  .full-header .embeded-video {
+    height: 50vh;
   }
-
-
 
   // Schedule
   .weekly-schedule:not(.this) {

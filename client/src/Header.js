@@ -10,7 +10,7 @@ import { Context } from "./Context";
 import moment from "moment";
 import ResponsiveNavbar from './ResponsiveNavbar';
 
-function Header({ location, name, setName, isMobile }) {
+function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
@@ -30,7 +30,7 @@ function Header({ location, name, setName, isMobile }) {
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
     const [headerSize, setHeaderSize] = useState('');
-    const [chatState, setChatState] = useState('chat-homescreen');
+    const [chatState, setChatState] = useState('chat-homescreen-with-video');
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
 
@@ -51,23 +51,23 @@ function Header({ location, name, setName, isMobile }) {
                 if (!streamData.data[0]) {
                     return
                 }
-                if (streamData.data[0].type === "live" && !isMobile) {
+                if (streamData.data[0].type === "live" && !isMobileDevice) {
                     setSource(video)
                 }
             })
             .then(() => {
                 if (source === video && location.pathname === '/') {
                     setHeaderSize('full-header');
-                    setChatState('chat-homescreen');
+                    setChatState('chat-homescreen-with-video');
                     context.setGapClass("big-gap");
                     // If there's no video
                 } else if (source !== video) {
                     setHeaderSize('small-header-without-video');
-                    setChatState('chat-routes');
+                    setChatState('chat-routes-without-video');
                     context.setGapClass("small-gap");
                 } else {
                     setHeaderSize('small-header-with-video');
-                    setChatState('chat-routes');
+                    setChatState('chat-routes-with-video');
                     context.setGapClass("big-gap");
                 }
                 setLoading(false);
@@ -81,15 +81,15 @@ function Header({ location, name, setName, isMobile }) {
         // If there's video and we are on homescreen
         if (source === video && location.pathname === '/') {
             setHeaderSize('full-header');
-            setChatState('chat-homescreen');
+            setChatState('chat-homescreen-with-video');
 
             // If there's no video
         } else if (source !== video) {
             setHeaderSize('small-header-without-video');
-            setChatState('chat-routes');
+            setChatState('chat-routes-without-video');
         } else {
             setHeaderSize('small-header-with-video');
-            setChatState('chat-routes');
+            setChatState('chat-routes-with-video');
         }
 
         // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
@@ -164,7 +164,7 @@ function Header({ location, name, setName, isMobile }) {
             )
             : (
                 <header className={`App-header ${headerSize}`}>
-                    {isMobile ? <ResponsiveNavbar /> :
+                    {isMobileWidth ? <ResponsiveNavbar /> :
                         <nav role="navigation">
                             <NavLink activeClassName="active-nav" className="nav-link" exact={true} to="/">home.</NavLink>
                             <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
@@ -176,7 +176,7 @@ function Header({ location, name, setName, isMobile }) {
                         </nav>
                     }
 
-                    {isMobile ? null :
+                    {isMobileDevice ? null :
                         <div className={`chat ${chatState}`}>
                             <ChatApp name={name} setName={setName} />
                         </div>
