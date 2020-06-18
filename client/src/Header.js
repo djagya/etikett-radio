@@ -10,7 +10,7 @@ import { Context } from "./Context";
 import moment from "moment";
 import ResponsiveNavbar from './ResponsiveNavbar';
 
-function Header({ location, name, setName, isMobileWidth, isMobileDevice, isPortrait }) {
+function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
     const alert = useAlert();
     const videoPlayer = useRef();
