@@ -40,6 +40,9 @@ export default function LogIn(props) {
                     if (!props.cookies.name) {
                         props.setCookie('name', data.user.userName, { path: '/' });
                         props.setName(data.user.userName);
+                    } else {
+                        props.setCookie('name', data.user.userName, { path: '/' });
+                        window.location.reload();
                     }
                 }
             })

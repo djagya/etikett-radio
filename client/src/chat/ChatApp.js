@@ -7,7 +7,7 @@ import Chat from './Chat';
 
 function ChatApp({ name, setName }) {
   const [chatWindow, setChatWindow] = useState('chat-app-chat');
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(['user', 'name']);
   const room = 'etikett chat';
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import minimize from '../icons/minimize.png';
 
 export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(['name', 'user']);
 
   const handleChatWindow = () => {
     if (chatWindow === 'chat-app-chat') {
@@ -27,9 +27,11 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
       {/* <div className="h3-container"> */}
         <h3>{room}</h3>
       {/* </div> */}
-      {/* <div className="button-container">
+      {cookies.user ? null :
+      <div className="button-container">
         <button id="chat-logout" className="chat-button" onClick={handleLogOut} >log out</button>
-      </div> */}
+      </div>
+      }
     </div>
   )
 }
