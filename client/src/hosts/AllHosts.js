@@ -15,7 +15,7 @@ export default function AllHosts(props) {
     const [lastSort, setLastSort] = useState(0)
     let sortedData = [];
     useEffect(() => {
-        GetData("http://localhost:3000/host")
+        GetData("/host")
             .then(data => {
                 if (data.status === 403) {
                     alert.error("Status 403: Forbidden")

@@ -14,7 +14,7 @@ export default function UserProfile(props) {
         props.removeCookie('x-auth', { path: "/" });
         props.setName(null);
         props.removeCookie('name', { path: "/"});
-        window.location.assign(`/login`)
+        props.history.push("/login")
     };
 
     if (context.profileEdit) {
