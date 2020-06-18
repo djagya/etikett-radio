@@ -42,7 +42,7 @@ import SkipLink from 'skip-links';
 
 
 function App(props) {
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(['user', 'name']);
   /////for context/////
   let id = "";
 

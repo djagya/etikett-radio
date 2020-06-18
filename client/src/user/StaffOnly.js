@@ -13,7 +13,7 @@ export default function UserProfile(props) {
         props.removeCookie('user', { path: "/" });
         props.removeCookie('x-auth', { path: "/" });
         props.setName(null);
-        props.removeCookie('name');
+        props.removeCookie('name', { path: "/"});
         window.location.assign(`/login`)
     };
 
