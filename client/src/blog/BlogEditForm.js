@@ -31,7 +31,7 @@ export default function BlogEditForm(param) {
             })
             return response.json()
         }
-        putData(`http://localhost:3000/blog/${id}`, body)
+        putData(`/blog/${id}`, body)
             .then(data => {  
                 if (!data.success) { 
                     console.log(data);

@@ -19,7 +19,7 @@ export default function ArchiveList(props) {
     const alert = useAlert();
 
     useEffect(() => {
-        fetch("http://localhost:3000/archive")
+        fetch("/archive")
             .then(res => res.json())
             .then(data => setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1)))
     }, [])

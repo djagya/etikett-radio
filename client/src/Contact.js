@@ -29,7 +29,7 @@ export default function Contact() {
             body: JSON.stringify({ name, email, subject, message })
         }
 
-        fetch('http://localhost:3000/users/contact', options)
+        fetch('/users/contact', options)
             .then(res => res.json())
             .then(data => {
                 setLoading(false);

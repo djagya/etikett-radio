@@ -36,7 +36,7 @@ export default function ArchiveInputForm() {
             })
             return response.json()
         }
-        postData("http://localhost:3000/archive/post", body)
+        postData("/archive/post", body)
             .then(data => { reload(data) })
 
         const reload = (data) => {

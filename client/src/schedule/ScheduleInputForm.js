@@ -38,7 +38,7 @@ export default function ScheduleInputForm() {
             })
             return response.json()
         }
-        postData("http://localhost:3000/schedule/post", body)
+        postData("/schedule/post", body)
             .then(data => { reload(data) })
 
         const reload = (data) => {

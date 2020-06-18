@@ -30,7 +30,7 @@ export default function LogIn(props) {
             return response.json()
         }
 
-        postData("http://localhost:3000/users/login", body)
+        postData("/users/login", body)
             .then(data => {
                 if (data.status === 404) return alert.error("Invalid Email") 
                 if (data.status === 403) return alert.error("Invalid Password")

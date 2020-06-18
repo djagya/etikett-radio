@@ -9,7 +9,7 @@ export default async function Delete(checkedIDs, route) {
     // Get each response
     const getEachResponse = async () => {
         let responseArray = await Promise.all(checkedIDs.map( async (id) => {
-            const response = await fetch(`http://localhost:3000/${route}/${id}`, options)
+            const response = await fetch(`/${route}/${id}`, options)
             const data = await response.json();
             return await data.success
         }))

@@ -13,7 +13,7 @@ export default function ArchiveDetail(props) {
 
     useEffect(() => {
 
-        fetch(`http://localhost:3000/archive/${param}`)
+        fetch(`/archive/${param}`)
             .then(res => res.json())
             .then(data => setArchiveData(data.archive))
             .catch(err => {

@@ -37,7 +37,7 @@ export default function ScheduleEdit(props) {
             })
             return response.json()
         }
-        postData(`http://localhost:3000/schedule/${id}`, body)
+        postData(`/schedule/${id}`, body)
             .then(data => { reload(data) })
 
         const reload = (data) => {

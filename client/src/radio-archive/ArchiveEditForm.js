@@ -39,7 +39,7 @@ export default function ArchiveEdit(props) {
             })
             return response.json()
         }
-        putData(`http://localhost:3000/archive/${id}`, body)
+        putData(`/archive/${id}`, body)
             .then(data => { 
                 if (!data.success) { 
                     console.log(data);

@@ -9,7 +9,7 @@ export default function Join({ setName, setCookie}) {
     e.preventDefault();
 
     // Prevent user from having the same name as host
-    fetch('http://localhost:3000/users')
+    fetch('/users')
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -30,7 +30,7 @@ export default function Join({ setName, setCookie}) {
       .then((match) => {
         if (!match) {
           // Prevent user from having the same name as a chat user
-          fetch('http://localhost:3000/chat')
+          fetch('/chat')
             .then(res => res.json())
             .then(data => {
            

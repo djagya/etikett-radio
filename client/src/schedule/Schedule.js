@@ -23,7 +23,7 @@ export default function Schedule(props) {
     const currMonth = moment().format("M");
 
     useEffect(() => {
-        fetch("http://localhost:3000/schedule")
+        fetch("/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
             .then(data => setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))))

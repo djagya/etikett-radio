@@ -17,7 +17,7 @@ export default function MyProfile(props) {
     const alert = useAlert();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${context.id}`, {
+        fetch(`/users/${context.id}`, {
             credentials: "include"
         })
             .then(res => res.json())
@@ -43,7 +43,7 @@ export default function MyProfile(props) {
     }, [context.id])
 
     const handlePatch = body => {
-        PatchData(`http://localhost:3000/users/${context.id}`, body)
+        PatchData(`/users/${context.id}`, body)
             .then(data => {
                 if (!data.success) {
                     console.log(data)

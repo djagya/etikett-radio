@@ -129,7 +129,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice, isPort
     //For InfoBar
     ////////////////
     useEffect(() => {
-        GetData("http://localhost:3000/infobar")
+        GetData("/infobar")
             .then(data => {
                 if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
                 if (data.status === 403) {

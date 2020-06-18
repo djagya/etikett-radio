@@ -31,7 +31,7 @@ export default function EditHostPage(props) {
     const [isActive, setIsActive] = useState("active");
     const alert = useAlert();
     useEffect(() => {
-        GetData("http://localhost:3000/host")
+        GetData("/host")
             .then(data => {
                 if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
                 

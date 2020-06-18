@@ -34,7 +34,7 @@ export default function CreateUser(props) {
             })
             return response.json()
         }
-        postData("http://localhost:3000/users/createuser", body)
+        postData("/users/createuser", body)
             .then(data => {
                 console.log(data)
                 resetForm(data);

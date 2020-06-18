@@ -29,7 +29,7 @@ export default function BlogInput() {
             })
             return response.json()
         }
-        postData("http://localhost:3000/blog/post", body)
+        postData("/blog/post", body)
             .then(data => { resetForm(data) })
 
         const resetForm = (data) => {

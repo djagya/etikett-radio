@@ -14,7 +14,7 @@ export default function AllUser() {
 
     useEffect(() => {
 
-        fetch("http://localhost:3000/users", {
+        fetch("/users", {
             headers: {
                 "Content-Type": "application/json"
             },

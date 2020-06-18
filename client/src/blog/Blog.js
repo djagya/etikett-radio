@@ -13,7 +13,7 @@ export default function Blog(props) {
     const alert = useAlert();
 
     useEffect(() => {
-        fetch("http://localhost:3000/blog")
+        fetch("/blog")
             .then(res => res.json())
             .then(data => setBlogData(data.blog.reverse()))
             .catch(err => {
