@@ -14,6 +14,7 @@ export default function UserProfile(props) {
         props.removeCookie('x-auth', { path: "/" });
         props.setName(null);
         props.removeCookie('name', { path: "/"});
+        context.socket.disconnect();
         props.history.push("/login")
     };
 
