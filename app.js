@@ -110,5 +110,15 @@ app.use((err, req, res, next) => {
 })
 console.log(port);
 
+
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"))
+}
+
+
+
+
 // app.listen(port, () => console.log(`Server ist am been`));
 server.listen(port, () => console.log(`Server ist am been`));
+
