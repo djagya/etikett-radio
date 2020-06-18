@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { HashRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 import { useMediaQuery } from 'react-responsive';
@@ -78,7 +78,7 @@ function App(props) {
   return (
     <DocumentTitle title="Homepage, video streaming">
 
-      <HashRouter>
+      <BrowserRouter>
         <SkipLink links={links} className="skip-link" />
         <Context.Provider value={
           {
@@ -153,7 +153,7 @@ function App(props) {
             </footer>
           </div>
         </Context.Provider>
-      </HashRouter>
+      </BrowserRouter>
     </DocumentTitle>
 
   );
