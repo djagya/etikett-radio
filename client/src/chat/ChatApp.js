@@ -11,7 +11,6 @@ function ChatApp({ name, setName }) {
   const room = 'etikett chat';
 
   useEffect(() => {
-    console.log('[useEffect on ChatApp is running]')
     const name = cookies.name;
     if (name) {
       setName(name);

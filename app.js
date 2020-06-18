@@ -35,7 +35,6 @@ mongoose.connection.on("error", (err) => console.log(err));
 mongoose.connection.on("open", () => console.log("db connected"));
 
 io.on('connection', (socket) => {
-    console.log('[connection created]');
   
     // Recieve JOIN from Chat.js
     socket.on('join', ({name, room}, callback) => {
@@ -43,7 +42,6 @@ io.on('connection', (socket) => {
       // Add user
       const { error, user } = addUser({ id: socket.id, name, room });
       if (error) return callback(error);
-      console.log(`${name} has joined ${room}'s chat!`);
 
       // socket.join(user.room) 
   
@@ -67,7 +65,6 @@ io.on('connection', (socket) => {
   
       // Emit MESSAGE
       io.to(user.room).emit('message', { user: user.name, text: text });
-      console.log({ user: user.name, text: text })
   
       callback();
     });
@@ -75,9 +72,7 @@ io.on('connection', (socket) => {
   
     // Recieve DISCONNECT from Chat.js
     socket.on('disconnect', () => {
-      console.log('[diconnect fired in backend]');
       const user = removeUser(socket.id);
-      console.log(user)
       if (user) {
         io.to(user.room).emit('message', {user: 'etikett radio', text: `${user.name} has left.`})
       }

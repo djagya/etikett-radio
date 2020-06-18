@@ -12,7 +12,6 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
   const alert = useAlert();
 
   useEffect(() => {
-    console.log('[useEffect on Chat is running]')
     if (!socket.connected) {
       socket.connect();
     }
@@ -34,12 +33,10 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
       socket.emit('disconnect');
       // Turn off this socket
       // socket.off();
-      console.log('[chat will unmount]')
     }
   }, [name])
 
   useEffect(() => {
-    console.log('[useEffect[messages]]')
     // Recieve MESSAGE
     socket.on('message', (message) => {
       setMessages(messages => [...messages, message]);
@@ -48,7 +45,6 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
   }, []);
 
   const sendMessage = e => {
-    console.log('[send message is running]')
     e.preventDefault();
     if (text) {
       // Emit SENDMESSAGE
@@ -58,7 +54,6 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
     }
     if (messages.length >= 50) {
         removeFirst();
-        console.log(messages.length)
     } 
   };
 

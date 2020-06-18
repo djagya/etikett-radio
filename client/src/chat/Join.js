@@ -12,7 +12,6 @@ export default function Join({ setName, setCookie}) {
     fetch('/users')
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         let match = false;
         if (nameInput === "") {
           alert.error("Please enter a nick name to join the chat!")
@@ -57,7 +56,6 @@ export default function Join({ setName, setCookie}) {
               }
             })
             .catch(err => {
-              console.log(err);
               alert.error('Server is not responding. Please contact an admin.')
             })
 
@@ -67,7 +65,6 @@ export default function Join({ setName, setCookie}) {
         } 
       })
       .catch(err => {
-        console.log(err);
         alert.error('Server is not responding. Please contact an admin.')
       })
   }
