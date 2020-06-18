@@ -9,16 +9,17 @@ export default function Join({ setName, setCookie}) {
     e.preventDefault();
 
     // Prevent user from having the same name as host
-    fetch('http://localhost:3000/host')
+    fetch('http://localhost:3000/users')
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         let match = false;
         if (nameInput === "") {
           alert.error("Please enter a nick name to join the chat!")
         }
         // Compare user's chatName with hostName
-        data.host.map(({hostName, isActive}) => {
-          if (hostName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase() && isActive === 'active') {
+        data.users.map(({ userName }) => {
+          if (userName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase()) {
             match = true;
             return match
           }
