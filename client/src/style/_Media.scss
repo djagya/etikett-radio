@@ -10,15 +10,17 @@
         padding: 0;
       }
     }
+
     .InfoBar {
       margin-top: 0.8rem;
     }
   }
+
   .small-header-with-video {
     .chat-routes-with-video {
       position: fixed;
       top: 30px;
-    }  
+    }
   }
 
   // Header without video
@@ -144,14 +146,14 @@
 
     nav {
       height: 60px;
-      justify-content: end;
+      justify-content: flex-end;
     }
 
     .player-controls {
       display: flex;
       justify-content: start;
       margin-left: 1.3rem;
-      height: 50px;
+      height: 40px;
       z-index: 0;
     }
 
@@ -346,7 +348,7 @@
       transition-delay: .2s;
       overflow: hidden;
       background-color: $etikett-black;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
 
     }
 
@@ -387,7 +389,7 @@
             height: 100%;
             transition-delay: 0s;
             z-index: 3;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
           }
 
           &__btn {
