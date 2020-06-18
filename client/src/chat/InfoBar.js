@@ -1,8 +1,11 @@
 import React from 'react'
+import { useCookies } from 'react-cookie';
 // Icons
 import minimize from '../icons/minimize.png';
 
-export default function InfoBar({ room, chatWindow, setChatWindow, setName, removeCookie }) {
+export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+
   const handleChatWindow = () => {
     if (chatWindow === 'chat-app-chat') {
       setChatWindow('chat-app-minimize');
@@ -12,7 +15,7 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName, remo
   }
 
   const handleLogOut = () => {
-    removeCookie('name');
+    removeCookie('name', { path: '/' });
     setName(null);
   }
 
@@ -24,9 +27,9 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName, remo
       {/* <div className="h3-container"> */}
         <h3>{room}</h3>
       {/* </div> */}
-      <div className="button-container">
+      {/* <div className="button-container">
         <button id="chat-logout" className="chat-button" onClick={handleLogOut} >log out</button>
-      </div>
+      </div> */}
     </div>
   )
 }
