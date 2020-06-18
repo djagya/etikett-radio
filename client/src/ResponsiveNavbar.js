@@ -10,7 +10,9 @@ export default function ResponsiveNavbar() {
     return (
 
         <header className="App-header">
+            <span className="page-title-mobile">etikett~radio</span>
             <nav role="navigation" className="mobile-menu">
+
                 <input type="checkbox" id="checkbox" className="mobile-menu__checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
                 <label htmlFor="checkbox" className="mobile-menu__btn"><div className="mobile-menu__icon"></div></label>
 
@@ -26,6 +28,6 @@ export default function ResponsiveNavbar() {
 
                 </div>
             </nav>
-        </header>
+        </header >
     )
 }

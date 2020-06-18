@@ -38,7 +38,7 @@ export default function Blog(props) {
         <DocumentTitle title="Blog page">
             <Context.Provider value={{ blogData, setBlogData }}>
                 <div className={`${context.gapClass} blog-page`}>
-                    <div className="blog-content" title="blog content">
+                    <div className="blog-content">
                         <h2 id="main">blog.</h2>
 
                         {props.cookies.user && props.cookies.user.role === 'Admin' ?

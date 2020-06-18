@@ -34,7 +34,7 @@ export default function Hosts() {
         const host = sortedData[num]
 
         return (
-            <div>
+            <div className="host-shit">
                 <input className="carousel-open" type="radio" id={`carousel-${num}`} name="carousel"
                     aria-hidden="true" hidden defaultChecked={true} />
 
@@ -96,18 +96,20 @@ export default function Hosts() {
         </li>
     )
 
-    return (    
+    return (
         <DocumentTitle title="Hosts page">
-            <div className={`${context.gapClass} host-page`}>
-                <h2>hosts.</h2>
+            <div className="hosts">
+                <div className={`${context.gapClass} host-page`}>
+                    <h2>hosts.</h2>
 
-                <div className="host-content">
-                    <ol className="side-list">
-                        {sortedData.map((host, i) => renderSideList(host, i))}
-                    </ol>
+                    <div className="host-content">
+                        <ol className="side-list">
+                            {sortedData.map((host, i) => renderSideList(host, i))}
+                        </ol>
 
-                    <div className="host-card">
-                        {renderHost()}
+                        <div className="host-card">
+                            {renderHost()}
+                        </div>
                     </div>
                 </div>
             </div>
