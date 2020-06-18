@@ -4,6 +4,7 @@ import { HashRouter, Switch, Route, withRouter, Redirect } from 'react-router-do
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 import { useMediaQuery } from 'react-responsive';
+import io from 'socket.io-client';
 
 
 import "./App.scss"
@@ -59,6 +60,7 @@ function App(props) {
   const [gapClass, setGapClass] =useState("big-gap");
   const [pathName, setPathName] =useState("/")
   const [gradient, setGradient] =useState("gradient");
+  const socket = io();
 
   // Media Queries
   const isMobileWidth = useMediaQuery({ maxWidth: 600 });
@@ -94,7 +96,8 @@ function App(props) {
             infoID, setInfoID,
             gapClass, setGapClass,
             pathName, setPathName,
-            gradient, setGradient
+            gradient, setGradient,
+            socket
           }
         }>
           <div className="App">

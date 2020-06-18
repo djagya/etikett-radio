@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
-import io from 'socket.io-client';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
@@ -12,13 +11,8 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
   const [messages, setMessages] = useState([]);
   const alert = useAlert();
 
-  // Set server address
-  const endpoint = '/';
-
   useEffect(() => {
     console.log('[useEffect on Chat is running]')
-    // Connect to endpoint
-    socket = io(endpoint);
 
     // Emit JOIN
     socket.emit('join', { name, room }, (error) => {
