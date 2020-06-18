@@ -40,6 +40,7 @@ import DocumentTitle from 'react-document-title';
 import SkipLink from 'skip-links';
 
 
+const socket = io();
 
 
 function App(props) {
@@ -60,7 +61,6 @@ function App(props) {
   const [gapClass, setGapClass] =useState("big-gap");
   const [pathName, setPathName] =useState("/")
   const [gradient, setGradient] =useState("gradient");
-  const socket = io();
 
   // Media Queries
   const isMobileWidth = useMediaQuery({ maxWidth: 600 });

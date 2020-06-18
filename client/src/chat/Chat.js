@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useAlert } from 'react-alert';
+import io from 'socket.io-client';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
-
-let socket;
+import { Context } from "../Context";
 
 export default function Chat({ name, setName, room, chatWindow, setChatWindow, removeCookie }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
+  const { socket } = useContext(Context)
   const alert = useAlert();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
       socket.off();
       console.log('[chat will unmount]')
     }
-  }, [endpoint, /* sessionStorage */])
+  }, [])
 
   useEffect(() => {
     console.log('[useEffect[messages]]')
