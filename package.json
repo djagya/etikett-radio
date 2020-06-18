@@ -1,4 +1,7 @@
 {
+  "engine": {
+    "node":"12.x"
+  },
   "name": "etikett-radio",
   "version": "1.0.0",
   "description": "",
@@ -6,9 +9,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
-    "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build"
+    "build": "cd client && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -29,9 +30,5 @@
     "react-three-fiber": "^4.2.8",
     "socket.io": "^2.3.0",
     "three": "^0.117.1"
-  },
-  "devDependencies": {
-    "faker": "^4.1.0",
-    "nodemon": "^2.0.3"
   }
 }

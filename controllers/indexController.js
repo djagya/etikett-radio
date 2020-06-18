@@ -1,3 +1,6 @@
+const path = require("path");
+
 exports.indexController = (req, res, next) => { //set up base route //request to see data
-    res.send("indexController am been")
+
+    res.sendFile(path.resolve(__dirname, "../client/build", "index.html"))
 };

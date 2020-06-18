@@ -149,7 +149,7 @@ nav {
   }
 
   .Messages {
-    height: calc($full-header-nav-height - $full-header-message-height - 100vh)
+    height: calc(100vh - 5vh - 5vh) //$full-header-video-heigh
   }
 }
 

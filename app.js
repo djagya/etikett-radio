@@ -10,6 +10,7 @@ const env = require("./config/config")
 const cookieParser = require('cookie-parser');
 const socketio = require('socket.io');
 const http = require('http');
+const path = require("path");
 
 const indexRoute = require("./routes/indexRoute");
 const archiveRoute = require("./routes/archiveRoute");
@@ -87,6 +88,8 @@ app.use(express.json());
 app.use(setCors); //middleware to use setCors on all routes
 app.use(cookieParser());
 
+app.use(express.static("client/build"))
+
 app.use("/", indexRoute);
 app.use("/archive", archiveRoute);
 app.use("/users", usersRoute);
@@ -112,10 +115,18 @@ console.log(port);
 
 
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"))
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"))
+// }
 
+// if (process.env.NODE_ENV === 'production') {
+//   app.disable('x-powered-by')
+//   app.use(compression())
+//   app.use(express.static('client/build'));
+//   app.get('*', (req, res) => {
+//       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+//   });
+// }
 
 
 
