@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../Context";
 import GetData from "../GetData";
-
 import DocumentTitle from 'react-document-title';
 
 
 
-export default function Hosts() {
+
+export default function Hosts({ isMobileWidth }) {
     const context = useContext(Context);
     const [hostData, setHostData] = useState([])
     let filteredData = []
@@ -15,7 +15,7 @@ export default function Hosts() {
     let [num, setNum] = useState(0)
 
     useEffect(() => {
-        GetData("/host")
+        GetData("http://localhost:3000/host")
             .then(data => setHostData(data.host))
     }, [])
 
@@ -96,12 +96,13 @@ export default function Hosts() {
         </li>
     )
 
+
+
     return (
         <DocumentTitle title="Hosts page">
             <div className="hosts">
                 <div className={`${context.gapClass} host-page`}>
                     <h2>hosts.</h2>
-
                     <div className="host-content">
                         <ol className="side-list">
                             {sortedData.map((host, i) => renderSideList(host, i))}

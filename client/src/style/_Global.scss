@@ -113,6 +113,27 @@ li {
   opacity: 0.8;
 }
 
+//clickable logo
+.etikett-black {
+  position: absolute;
+  top: 41%;
+  left: 45.5%;
+  cursor: pointer;
+  background: url(../img/etikett-black.jpg);
+  background-size: 140%;
+  background-position: center;
+  border-radius: 360px;
+  width: 9%;
+  height: 18%;
+  align-self: center;
+  box-shadow: 0 0 55px rgba(255, 255, 255, 1);
+
+  &:hover {
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+  }
+}
+
 .stream-page {
   position: relative;
 }
