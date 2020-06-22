@@ -61,6 +61,8 @@ function App(props) {
   const [gapClass, setGapClass] = useState("big-gap");
   const [pathName, setPathName] = useState("/")
   const [gradient, setGradient] = useState("gradient");
+  const [showAbout, setShowAbout] = useState(false)
+
 
   // Media Queries
   const isMobileWidth = useMediaQuery({ maxWidth: 600 });
@@ -96,6 +98,7 @@ function App(props) {
             gapClass, setGapClass,
             pathName, setPathName,
             gradient, setGradient,
+            showAbout, setShowAbout,
             socket
           }
         }>

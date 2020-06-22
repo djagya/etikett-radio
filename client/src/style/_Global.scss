@@ -115,7 +115,7 @@ li {
 
 //clickable logo
 .etikett-black {
-  position: absolute;
+  position: fixed;
   left: 0; 
   right: 0;
   top: 0; 
@@ -124,6 +124,7 @@ li {
   
   cursor: pointer;
   background: url(../img/etikett-black.jpg);
+  background-repeat: no-repeat;
   background-size: 140%;
   background-position: center;
   border-radius: 360px;
