@@ -128,11 +128,12 @@ li {
   background-size: 140%;
   background-position: center;
   border-radius: 360px;
-  width: 9.5%;
-  height: 19%;
+  width: 179px;
+  height: 179px;
   align-self: center;
   box-shadow: 0 0 55px rgba(255, 255, 255, 1);
 
+  transition: 0.4s ease-in-out;
   &:hover {
     opacity: 0;
     transition: 0.4s ease-in-out;
@@ -183,6 +184,11 @@ footer {
   transition: all 300ms ease-in-out;
 }
 
+.c-links {
+  li {
+  margin: 0;
+}
+}
 ///////////////////////////////////
 //           Loading
 ///////////////////////////////////
