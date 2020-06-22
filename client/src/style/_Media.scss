@@ -30,88 +30,91 @@
   }
 }
 
+@media only screen and (max-width: breakpoints(desktop)) {
+  .message {
+    font-size: 1.3rem;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    .moving-text {
+      white-space: nowrap;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-name: ticker;
+      animation-duration: 15s;
+
+      &:hover {
+        animation-play-state: paused;
+      }
+
+    }
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translate3d(60%, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+}
+
+
 @media only screen and (max-width: breakpoints(tablet)) {
   .chat {
     display: none;
   }
+
+  .solar-system {
+    position: fixed;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vh;
+    height: 70vh;
+    margin: 0 auto;
+    box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+    border-radius: 70vw;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    opacity: 0.8;
+  }
+
+  .message {
+    font-size: 1.3rem;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    .moving-text {
+      white-space: nowrap;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-name: ticker;
+      animation-duration: 15s;
+
+      &:hover {
+        animation-play-state: paused;
+      }
+
+    }
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translate3d(50%, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
 }
-
-//ipad
-// @media only screen and (max-width: breakpoints(tablet)) {
-//   .solar-system {
-//     position: fixed;
-//     z-index: -1;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     width: 70vh;
-//     height: 70vh;
-//     margin: 0 auto;
-//     box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
-//     border-radius: 70vw;
-//     display: flex;
-//     justify-content: center;
-//     align-self: center;
-//     opacity: 0.8;
-//   }
-
-//   .App-header {
-//     background-color: $etikett-black;
-//     display: flex;
-//     font-size: calc(10px + 2vmin);
-//     z-index: 1;
-//     box-shadow: 0px 0px 15px 15px $etikett-black;
-//   }
-
-//   nav {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     height: $nav-height;
-//   }
-
-//   .nav-link {
-//     padding: 0 2vw;
-//   }
-
-//   .full-header {
-//     flex-direction: column;
-
-//     .embeded-video {
-//       width: 100%;
-//       height: $embeded-video-height;
-//     }
-//   }
-
-//   .small-header-without-video {
-//     position: fixed;
-//     top: 0;
-
-//     height: $header-height-small;
-//     width: 100%;
-//     display: grid;
-//     grid-template: 1fr 1fr / 15% repeat(10, 1fr) 15%;
-
-//     nav {
-//       grid-column: 2 / 12;
-//       grid-row: 1 / 2;
-//       height: 100%;
-//     }
-
-//     .message-controls-container {
-//       grid-column: 1 / 11;
-//       grid-row: 2 / 3;
-//       display: flex;
-//       align-items: center;
-//     }
-
-//     .embeded-video {
-//       grid-column: 1 / 2;
-//       grid-row: 1 / 3;
-//       z-index: 2;
-//     }
-//   }
-// }
 
 
 
@@ -258,7 +261,8 @@
     }
   }
 
-  // All Hosts
+  //menü
+
   .all-list {
 
     .list-container {
@@ -266,7 +270,7 @@
       margin: 0 auto;
     }
 
-    .host-list-grid {
+    .hosts-list-grid {
       grid-template-columns: 50% 1fr 1fr;
     }
 
@@ -421,8 +425,6 @@
   //host page
 
   .host-page {
-
-
     .carousel-item {
       @include flex-column;
       padding: 1rem;
@@ -462,6 +464,7 @@
 
       .about-host {
         padding: 0;
+
       }
 
 
@@ -484,40 +487,37 @@
 
     .side-list {
       display: none;
-      // flex-direction: column;
-      // justify-content: center;
 
-      // border-left: 1px solid rgba(190, 190, 195, 0.219);
-      // // box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
-      // padding-left: 2px;
+    }
+  }
 
-      // background-image: linear-gradient(to right, $etikett-black, $etikett-black-000, $etikett-black-000);
+  .message {
+    font-size: 1.3rem;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
 
-      // text-decoration-line: underline;
-      // text-align: left;
+    .moving-text {
+      white-space: nowrap;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-name: ticker;
+      animation-duration: 15s;
 
-      .side-list-item {
-        margin: 0.5rem 0;
-
-        .side-list-name {
-
-          text-transform: lowercase;
-          cursor: pointer;
-          letter-spacing: 3px;
-          transition: 0.1s;
-
-          &.active {
-            color: $etikett-hover;
-
-          }
-
-          &:hover {
-            color: $etikett-hover;
-            text-decoration-line: underline;
-            text-decoration-color: $etikett-hover;
-          }
-        }
+      &:hover {
+        animation-play-state: paused;
       }
+
+    }
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translate3d(50%, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(-100%, 0, 0);
     }
   }
 }

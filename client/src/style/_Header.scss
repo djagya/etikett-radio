@@ -21,16 +21,18 @@ nav {
   transition: 0.1s;
   letter-spacing: 2px;
   text-decoration-color: rgba(255, 255, 255, 0.2);
+
   &:hover {
     color: $etikett-hover;
     text-decoration-color: $etikett-hover;
   }
-  
+
 }
+
 .active-nav {
-    color: $etikett-hover;
-    text-decoration-color: white;
-  }
+  color: $etikett-hover;
+  text-decoration-color: white;
+}
 
 .full-header {
   flex-direction: column;
@@ -283,7 +285,7 @@ nav {
 
 @keyframes ticker {
   0% {
-    transform: translate3d(90%, 0, 0);
+    transform: translate3d(150%, 0, 0);
   }
 
   100% {
