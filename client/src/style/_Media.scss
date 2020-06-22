@@ -60,6 +60,32 @@
       transform: translate3d(-100%, 0, 0);
     }
   }
+
+  //clickable logo
+  .etikett-black {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    cursor: pointer;
+    background: url(../img/etikett-black.jpg);
+    background-repeat: no-repeat;
+    background-size: 140%;
+    background-position: center;
+    border-radius: 100%;
+    width: 19vh;
+    height: 19vh;
+    // align-self: center;
+    box-shadow: 0 0 55px rgba(255, 255, 255, 1);
+
+    transition: 0.4s ease-in-out;
+
+    &:hover {
+      opacity: 0;
+      transition: 0.4s ease-in-out;
+    }
+  }
 }
 
 
@@ -83,6 +109,33 @@
     justify-content: center;
     align-self: center;
     opacity: 0.8;
+  }
+
+  //clickable logo
+  .etikett-black {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    cursor: pointer;
+    background: url(../img/etikett-black.jpg);
+    background-repeat: no-repeat;
+    background-size: 140%;
+    background-position: center;
+    border-radius: 100%;
+    width: 15vh;
+    height: 15vh;
+    // align-self: center;
+    box-shadow: 0 0 55px rgba(255, 255, 255, 1);
+
+    transition: 0.4s ease-in-out;
+
+
+    &:hover {
+      opacity: 0;
+      transition: 0.4s ease-in-out;
+    }
   }
 
   .message {
@@ -137,6 +190,33 @@
     align-self: center;
     opacity: 0.8;
   }
+
+  .etikett-black {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    cursor: pointer;
+    background: url(../img/etikett-black.jpg);
+    background-repeat: no-repeat;
+    background-size: 140%;
+    background-position: center;
+    border-radius: 100%;
+    width: 13vh;
+    height: 13vh;
+    // align-self: center;
+    box-shadow: 0 0 55px rgba(255, 255, 255, 1);
+
+    transition: 0.4s ease-in-out;
+
+
+    &:hover {
+      opacity: 0;
+      transition: 0.4s ease-in-out;
+    }
+  }
+
 
   // Header 
   .small-header-without-video,

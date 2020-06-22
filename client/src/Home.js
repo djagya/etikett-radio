@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useContext } from 'react';
 import AboutUs from './AboutUs';
-import {Context} from "./Context";
+import { Context } from "./Context";
 
 
 
@@ -13,10 +13,10 @@ export default function Home() {
     return (
         <div>
 
-        {context.showAbout? <AboutUs/>:
-        <div onClick={() => context.setShowAbout(true)} className="etikett-black"></div>
-        }
-        
+            {context.showAbout ? <AboutUs /> :
+                <div onClick={() => context.setShowAbout(true)} className="etikett-black"></div>
+            }
+
 
 
         </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { HashRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
