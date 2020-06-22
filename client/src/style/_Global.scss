@@ -116,15 +116,19 @@ li {
 //clickable logo
 .etikett-black {
   position: absolute;
-  top: 41%;
-  left: 45.5%;
+  left: 0; 
+  right: 0;
+  top: 0; 
+  bottom: 0;
+  margin: auto; 
+  
   cursor: pointer;
   background: url(../img/etikett-black.jpg);
   background-size: 140%;
   background-position: center;
   border-radius: 360px;
-  width: 9%;
-  height: 18%;
+  width: 9.5%;
+  height: 19%;
   align-self: center;
   box-shadow: 0 0 55px rgba(255, 255, 255, 1);
 

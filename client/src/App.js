@@ -108,7 +108,7 @@ function App(props) {
             <div className="solar-system">
               <SolarSystem />
             </div>
-            <div className="etikett-black"></div>
+
 
             <div className="stream-page">
               <Header name={name} setName={setName} isMobileWidth={isMobileWidth} isMobileDevice={isMobileDevice} />
