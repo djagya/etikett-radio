@@ -4,7 +4,7 @@ export default function Input({ text, setText, sendMessage }) {
   const [rows, setRows] = useState(1);
 
   useEffect(() => {
-    if (text.length >= 23 && rows < 2) {
+    if (text.length >= 23) {
       setRows(2)
     }
   }, [text])
