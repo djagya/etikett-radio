@@ -79,7 +79,7 @@ function App(props) {
   //////////////////////
 
   return (
-    <DocumentTitle title="Homepage, video streaming">
+    <DocumentTitle title="etikett~radio | homepage">
 
       <HashRouter>
         <SkipLink links={links} className="skip-link" />

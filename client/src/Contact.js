@@ -55,7 +55,7 @@ export default function Contact() {
     if (redirect) return <Redirect to='/' />
 
     return (
-        <DocumentTitle title="Contact page">
+        <DocumentTitle title="Contact">
             <div className={`${context.gapClass} input-form`}>
 
                 <h2 id="main">contact.</h2>

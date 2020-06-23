@@ -103,7 +103,7 @@ export default function Schedule(props) {
     };
 
     return (
-        <DocumentTitle title="Schedule page">
+        <DocumentTitle title="Schedule">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>
                 <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
