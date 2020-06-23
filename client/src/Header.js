@@ -19,6 +19,9 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const channelId = '521258416';
     const video = 'https://www.twitch.tv/etikett_radio';
 
+    // const channelId = '274901255';
+    // const video = 'https://www.twitch.tv/truthmusic';
+
     const radio = 'http://s9.myradiostream.com:44782/listen.mp3';
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState("0.5");
@@ -191,7 +194,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                     <section className="message-controls-container">
                         {source === radio ?
                             <div className="player-controls">
-                                <button className="playPauseBtn paused" onClick={handlePlayBtn} role="play-pause button"></button>
+                                <button className="playPauseBtn" onClick={handlePlayBtn} role="play-pause button"></button>
                                 <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
                                 <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
                             </div>
