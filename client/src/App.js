@@ -139,8 +139,8 @@ function App(props) {
 
               {/* Hosts Related */}
               <Route exact path="/hosts" render={(props) => <HostCarousel {...props} cookies={cookies} />} />
-              <Route exact path="/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
-              <Route exact path="/hosts/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
+              <Route exact path="/user/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
+              <Route exact path="/user/host/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
 
               {/* Blog Related */}
               <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
