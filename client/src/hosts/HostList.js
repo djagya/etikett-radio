@@ -16,10 +16,7 @@ export default function HostList() {
     const renderHost = () => {
         if (hostData.length === 0) return null
         
-        return hostData.map((host, i) => 
-
-                
-                    (
+        return hostData.map((host, i) => (
                 <Fragment key={i}>
                     <li className="host-item">
                         <Link to={`hosts/${host._id}`} param={host._id} >
@@ -28,10 +25,8 @@ export default function HostList() {
                         </Link>
                     </li>
                 </Fragment>
-            )
-        )
+        ))
     }
-
 
     return (
         <DocumentTitle title="Hosts">

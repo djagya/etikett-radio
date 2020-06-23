@@ -141,7 +141,7 @@ export default function ArchiveList(props) {
     }
 
     return (
-        <DocumentTitle title="Archive page">
+        <DocumentTitle title="Archive">
             <div className={`${context.gapClass} all-list`}>
                 <div>
                     <h2 id="main">archive.</h2>

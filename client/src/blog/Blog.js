@@ -35,7 +35,7 @@ export default function Blog(props) {
 
 
     return (
-        <DocumentTitle title="Blog page">
+        <DocumentTitle title="Blog">
             <Context.Provider value={{ blogData, setBlogData }}>
                 <div className={`${context.gapClass} blog-page`}>
                     <div className="blog-content">
