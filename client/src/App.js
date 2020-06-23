@@ -24,7 +24,8 @@ import CreateUser from './user/CreateUser';
 import EditMyProfile from './user/EditMyProfile';
 import AllUser from './user/AllUser';
 //Host Related
-import HostCarousel from './hosts/HostCarousel';
+import HostList from './hosts/HostList';
+import HostDetails from './hosts/HostDetails';
 import EditHostForm from './hosts/EditHostForm';
 import AllHosts from './hosts/AllHosts';
 //Archive Related
@@ -138,7 +139,8 @@ function App(props) {
               <Route exact path="/:id/edit" component={ArchiveEdit} />
 
               {/* Hosts Related */}
-              <Route exact path="/hosts" render={(props) => <HostCarousel {...props} cookies={cookies} />} />
+              <Route exact path="/hosts" render={(props) => <HostList {...props} cookies={cookies} />} />
+              <Route exact path="/hosts/:id" render={(props) => <HostDetails {...props} cookies={cookies} />} />
               <Route exact path="/user/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
               <Route exact path="/user/host/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
 
