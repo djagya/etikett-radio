@@ -155,7 +155,6 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             const id = setInterval(timer, 1000);
             return () => clearInterval(id);
         }, [time]);
-        console.log(source);
     return (
         loading
             ? (

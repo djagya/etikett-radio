@@ -96,7 +96,7 @@ export default function EditHostPage(props) {
         };
 
         if (!profileExists) {
-            PostData("http://localhost:3000/host/createhost", body)
+            PostData("/host/createhost", body)
             .then(data => { 
                 if (!data.success) { 
                     console.log(data)
@@ -106,7 +106,7 @@ export default function EditHostPage(props) {
                 } })
             .then(context.setEditHost(false) )
         } else {
-            PutData(`http://localhost:3000/host/${profileID}`, body)
+            PutData(`/host/${profileID}`, body)
             .then(data => { 
                 if (!data.success) { 
                     console.log(data)

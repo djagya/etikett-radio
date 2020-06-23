@@ -28,10 +28,10 @@ export default function UserProfile(props) {
         return <Redirect to={`/user/all`} />
     }
     if (context.editHost) {
-        return <Redirect to={`/hosts/${context.id}`} />
+        return <Redirect to={`/user/host/${context.id}`} />
     }
     if (context.allHosts) {
-        return <Redirect to={`/hosts/all`} />
+        return <Redirect to={`/user/hosts/all`} />
     }
     if (context.editInfoBar) {
         return <Redirect to={`/infobar`} />

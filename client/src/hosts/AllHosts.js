@@ -86,7 +86,7 @@ export default function AllHosts(props) {
     }
 
     if (context.editHost) {
-        return <Redirect to={`/hosts/${context.id}`} />
+        return <Redirect to={`/user/host/${context.id}`} />
     }
 
     //Delete from EditHostForm redirects to AllHosts in case Admin was coming from there to delete a profile
