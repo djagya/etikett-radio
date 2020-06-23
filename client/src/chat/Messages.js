@@ -5,7 +5,7 @@ import { css } from 'glamor';
 
 export default function Messages({ messages, name, bottomSpace }) {
   const responsiveHeight = css({
-    paddingBottom: bottomSpace
+    paddingBottom: bottomSpace,
   })
   const renderMessages = messages.map((message, i) => {
     return(
@@ -15,7 +15,7 @@ export default function Messages({ messages, name, bottomSpace }) {
     )
   })
   return (
-      <ScrollToBottom className={`Messages ${responsiveHeight}`} style={{padding: "5rem"}} >
+      <ScrollToBottom className={`Messages ${responsiveHeight}`} >
         {renderMessages}
       </ScrollToBottom>    
   )
