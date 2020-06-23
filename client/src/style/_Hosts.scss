@@ -50,3 +50,37 @@
 }
 
 
+.grid-wrapper {
+    // background-color: $etikett-black; ??maybe
+
+    .hosts-list {
+        padding-top: 1rem;
+        width: 60%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 0.5rem;
+    }
+
+    .host-images {
+        // border: 1px solid #FFF;
+        opacity: 0.2;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: uppercase;
+        font-weight: bold;
+
+    }
+
+    // #hosts-title {
+    //     margin-top: 1rem;
+    // } ?????
+
+}
