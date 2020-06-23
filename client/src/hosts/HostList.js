@@ -18,12 +18,13 @@ export default function HostList() {
 
         return hostData.map((host, i) =>
             (
-                <li key={i} className="host-item">
+                <li key={i} className="hosts-list">
                     <Link to={`hosts/${host._id}`} >
                         <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" width="400px" height="400px" />
-                        <h3>{host.hostName}</h3>
+                        <h3 className="host-name">{host.hostName}</h3>
                     </Link>
                 </li>
+
             )
         )
     }
@@ -31,9 +32,13 @@ export default function HostList() {
 
     return (
         <DocumentTitle title="Hosts">
-            <div className={` all-list ${context.gapClass}`}>
-                <h2>hosts.</h2>
-                {renderHost()}
+            <div className={`${context.gapClass}`}>
+                <h2 id="hosts-title">hosts.</h2>
+                <div className="grid-wrapper">
+                    <div className=" hosts-list">
+                        {renderHost()}
+                    </div>
+                </div>
             </div>
         </DocumentTitle>
     )
