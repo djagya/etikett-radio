@@ -1,8 +1,12 @@
 import React from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom';
 import Message from './Message';
+import { css } from 'glamor';
 
 export default function Messages({ messages, name }) {
+  const responsiveHeight = css({
+    paddingBottom: '3rem'
+  })
   const renderMessages = messages.map((message, i) => {
     return(
       <div key={i}>
@@ -11,7 +15,7 @@ export default function Messages({ messages, name }) {
     )
   })
   return (
-      <ScrollToBottom className="Messages" style={{padding: "5rem"}} >
+      <ScrollToBottom className={`Messages ${responsiveHeight}`} style={{padding: "5rem"}} >
         {renderMessages}
       </ScrollToBottom>    
   )
