@@ -66,10 +66,8 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
     <div className="outer-container">
       <div className="inner-container">
         <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} setName={setName} />
-        <div className="chat-responsive-container">
-          <Messages messages={messages} name={name} />
-          <Input text={text} setText={setText} sendMessage={sendMessage} />
-        </div>
+        <Messages messages={messages} name={name} />
+        <Input text={text} setText={setText} sendMessage={sendMessage} />
       </div>
     </div>
   )
