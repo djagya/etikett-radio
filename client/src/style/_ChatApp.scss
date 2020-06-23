@@ -156,16 +156,19 @@
 // Chat Form
 .chat-form {
   align-self: flex-end;
-  input,
+  #input-message-textarea,
   button {
-    height: 2rem;
     padding: 0 0.5rem;
   }
 
-  input {
+  #input-message-textarea {
+    overflow-x: hidden;
+    resize: none;
     width: 80%;
+    height: auto;
   }
   button {
+    height: 2rem;
     width: 20%;
   }
 }
