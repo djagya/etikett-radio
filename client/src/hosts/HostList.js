@@ -12,31 +12,29 @@ export default function HostList() {
         GetData("/host")
             .then(data => setHostData(data.host.filter(host => host.isActive === "active").sort((hostA, hostB) => (hostA.hostName < hostB.hostName) ? -1 : 1)))
     }, [])
+
     const renderHost = () => {
         if (hostData.length === 0) return null
         
-       return hostData.map((host, i) => 
-                     (
-                    <li key={i} className="host-item">
-                        <Link to={`hosts/${host._id}`} className="carousel-item">
-                            <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" width="500px" height="500px" />
-                            <div className="host-description">
-                                <h3>{host.hostName}</h3>
-                            </div>
-                        </Link>
-                    </li>
-                )
-                
+        return hostData.map((host, i) => 
+                    (
+                <li key={i} className="host-item">
+                    <Link to={`hosts/${host._id}`} >
+                        <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" width="400px" height="400px" />
+                        <h3>{host.hostName}</h3>  
+                    </Link>
+                </li>
             )
-
-      
+        )
     }
 
 
     return (
-        <div className={` all-list ${context.gapClass}`}>
-            <h2>hosts.</h2>
-            {renderHost()}
-        </div>
+        <DocumentTitle title="Hosts page">
+            <div className={` all-list ${context.gapClass}`}>
+                <h2>hosts.</h2>
+                {renderHost()}
+            </div>
+        </DocumentTitle>
     )
 }
