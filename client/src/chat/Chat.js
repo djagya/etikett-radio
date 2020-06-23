@@ -48,7 +48,6 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
 
   useEffect(() => {
     const charLength = 27;
-    console.log(text.length)
     if (text.length >= charLength * 2) {
       setRows(3)
       setBottomSpace('2.3rem')
