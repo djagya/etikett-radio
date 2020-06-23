@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-export default function Input({ text, setText, sendMessage }) {
-  const [rows, setRows] = useState(1);
-
-  useEffect(() => {
-    const charLength = 23;
-    if (text.length >= charLength * 2) {
-      setRows(3)
-    } else if (text.length >= charLength) {
-      setRows(2)
-    } else {
-      setRows(1)
-    }
-  }, [text])
+export default function Input({ rows, text, setText, sendMessage }) {
 
   return (
     <div className="Input">

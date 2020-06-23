@@ -3,9 +3,9 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import Message from './Message';
 import { css } from 'glamor';
 
-export default function Messages({ messages, name }) {
+export default function Messages({ messages, name, bottomSpace }) {
   const responsiveHeight = css({
-    paddingBottom: '3rem'
+    paddingBottom: bottomSpace
   })
   const renderMessages = messages.map((message, i) => {
     return(
