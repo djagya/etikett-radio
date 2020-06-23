@@ -80,21 +80,12 @@ export default function Hosts({ isMobileWidth }) {
                             </a>}
                         </div>
 
-
-
                     </div>
                 </div>
             </div>
         )
     }
 
-    const renderSideList = (host, i) => (
-        <li key={i} className="side-list-item">
-            <label htmlFor={`carousel-${i + 1}`} onClick={() => setNum(i)} className={`side-list-name ${num === i ? "active" : ""}`}>
-                {host.hostName}
-            </label>
-        </li>
-    )
 
 
 
@@ -104,10 +95,6 @@ export default function Hosts({ isMobileWidth }) {
                 <div className={`${context.gapClass} host-page`}>
                     <h2>hosts.</h2>
                     <div className="host-content">
-                        <ol className="side-list">
-                            {sortedData.map((host, i) => renderSideList(host, i))}
-                        </ol>
-
                         <div className="host-card">
                             {renderHost()}
                         </div>
