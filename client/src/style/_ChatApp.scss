@@ -162,10 +162,12 @@
   }
 
   #input-message-textarea {
-    overflow-x: hidden;
+    overflow: hidden;
     resize: none;
     width: 80%;
     height: auto;
+    align-self: flex-end;
+    min-height: 2rem;
   }
   button {
     height: 2rem;
