@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, Fragment } from 'react'
 import { Context } from "../Context";
 import GetData from "../GetData";
 import DocumentTitle from 'react-document-title';
@@ -17,20 +17,24 @@ export default function HostList() {
         if (hostData.length === 0) return null
         
         return hostData.map((host, i) => 
+
+                
                     (
-                <li key={i} className="host-item">
-                    <Link to={`hosts/${host._id}`} >
-                        <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" width="400px" height="400px" />
-                        <h3>{host.hostName}</h3>  
-                    </Link>
-                </li>
+                <Fragment key={i}>
+                    <li className="host-item">
+                        <Link to={`hosts/${host._id}`} param={host._id} >
+                            <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" width="400px" height="400px" />
+                            <h3>{host.hostName}</h3>  
+                        </Link>
+                    </li>
+                </Fragment>
             )
         )
     }
 
 
     return (
-        <DocumentTitle title="Hosts page">
+        <DocumentTitle title="Hosts">
             <div className={` all-list ${context.gapClass}`}>
                 <h2>hosts.</h2>
                 {renderHost()}
