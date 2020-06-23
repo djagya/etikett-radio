@@ -11,6 +11,7 @@
 
 nav {
   display: flex;
+  flex-flow: wrap;
   align-items: center;
   justify-content: center;
   height: $nav-height;
