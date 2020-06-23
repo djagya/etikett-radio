@@ -6,9 +6,9 @@ $nav-height: 50px;
 
 $embeded-video-height: 88vh;
 $mobile-header-height: 130px;
-$full-header-nav-height: 5vh;
-$full-header-message-height: 5vh;
-$full-header-video-height: calc(100vh - 5vh - 5vh);
+$full-header-nav-height: 47px; //47px is close to 5vh
+$full-header-message-height: 47px;
+$full-header-video-height: calc(100vh - 47px - 47px);
 
 //colors
 $etikett-black: rgb(1,5,8);
