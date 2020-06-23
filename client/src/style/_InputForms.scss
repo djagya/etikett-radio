@@ -29,7 +29,7 @@
           border-radius: 3px;
           
           &:focus {
-            background-color: $etikett-black-750;
+            background-color: $etikett-black-075;
           }
           option {
             color: black;
@@ -85,7 +85,7 @@ button, input[type=submit] {
   ///////
   //Hardcoding styling from chrome to make it look the same everywhere
   ///////
-  -webkit-writing-mode: horizontal-tb !important;
+  // -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
   word-spacing: normal;
   text-transform: none;
@@ -144,7 +144,7 @@ input[type="checkbox"] {
   width: 20px;
   cursor: pointer;
   position: relative;
-  -webkit-transition: .15s;
+  transition: .15s;
   // border-radius: 2em;
   background-color: rgb(240, 240, 240);
 }
