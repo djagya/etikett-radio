@@ -15,7 +15,7 @@ export default function Hosts({ isMobileWidth }) {
     let [num, setNum] = useState(0)
 
     useEffect(() => {
-        GetData("http://localhost:3000/host")
+        GetData("/host")
             .then(data => setHostData(data.host))
     }, [])
 

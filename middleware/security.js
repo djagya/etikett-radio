@@ -1,7 +1,7 @@
 exports.setCors = (req, res, next) => {
     res.header(
         "Access-Control-Allow-Origin",
-        "http://localhost:3001"
+        "https://etikett-radio.herokuapp.com/"
     );
 
     res.header( //optional
