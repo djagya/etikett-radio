@@ -5,7 +5,8 @@
   background-color: $etikett-black;
   display: flex;
   font-size: 1.5rem;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
   box-shadow: 0px 0px 15px 15px $etikett-black;
 }
 
