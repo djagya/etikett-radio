@@ -14,18 +14,20 @@
             transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
         }
 
+        .host-image-detail {
+            max-width: 500px;
+            max-height: 500px;
+        }
         .host-description {
             display: grid;
             grid-template-rows: 15% 65% 10% 10%;
             text-align: left;
-            .about-host, h3 {
-                padding: 0 0.5rem;
-            }
+            padding: 1rem;
 
             .social-media-container {
                 display: flex;
                 justify-content: flex-end;
-                padding: 1rem 0.5rem 0 0;
+                padding-top: 1rem;
                 i {
                     margin-left: .5rem;
                 }
@@ -34,7 +36,6 @@
             .host-pagelink {
                 display: flex;
                 justify-content: flex-end;
-                padding-right: 0.5rem; 
             }
 
             a {
