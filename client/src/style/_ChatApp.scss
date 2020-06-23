@@ -25,7 +25,7 @@
     border-radius: 3px;
     
     &:focus {
-      background-color: $etikett-black-750;
+      background-color: $etikett-black-075;
     }
     option {
       color: black;
@@ -113,8 +113,6 @@
       padding-left: 5px;
     }
 
-    
-
   }
 }
 
@@ -143,15 +141,21 @@
 .Messages {
   display: flex;
   flex-direction: column-reverse; 
+  transition: .25s;
+  &:hover {
+  background-color: $etikett-black-075;
+  
+  
+}
 }
 
 // Needed to display messages upside-down
 .Messages div:first-child { height: auto; }
 
 // Input 
-.Input {
+// .Input {
   // background: rgba(0, 0, 0, 0);
-}
+// }
 
 // Chat Form
 .chat-form {
@@ -179,6 +183,7 @@
   }
 }
 .justify-left {
+  display: flex;
   text-align: left;
 }
 .message-box {
@@ -189,21 +194,21 @@
   border-radius: 8px;
 }
 .bg-white {
-  background: rgba(255, 255, 255, 0.50);
+  background: $etikett-hover;
   border-radius: 8px 8px 0 8px;
-  p { color: #000 }
+  p { color: $etikett-black }
 }
 .bg-black {
   background: $etikett-black-025;
   border-radius: 8px 8px 8px 0;
-  p { color: rgba(255, 255, 255, 0.5) }
+  p { color: rgba(255, 255, 255) }
 }
 .message-text {
-  // text-shadow:  -.5px -.5px 2px  $etikett-black-025;
   word-wrap: wrap;
 }
 .sent-text {
   margin: 0 0.4rem;
+  color: $etikett-hover;
 }
   
 // Animation
