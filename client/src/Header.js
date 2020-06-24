@@ -10,6 +10,7 @@ import { Context } from "./Context";
 import moment from "moment";
 import ResponsiveNavbar from './ResponsiveNavbar';
 import ErrorBoundary from './ErrorBoundary';
+import Stream from './Stream';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
@@ -181,7 +182,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                     </div>
 
                     <ErrorBoundary>
-                        <section className="embeded-video">
+                        {/* <section className="embeded-video">
                             <ReactPlayer
                                 className="ReactPlayer"
                                 url={source}
@@ -196,7 +197,8 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                                     new Error('Player could not load. Try reloading the page, or contact an admin.'
                                     )}}
                             />
-                        </section>
+                        </section> */}
+                        <Stream source={source} playing={playing} volume={volume} videoPlayer={videoPlayer} />
                     </ErrorBoundary>
 
                     <section className="message-controls-container">
