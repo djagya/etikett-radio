@@ -189,6 +189,10 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                             ref={videoPlayer}
                             width="100%"
                             height="100%"
+                            onError={(err) => {
+                                console.log(err)
+                                new Error('Player could not load. Try reloading the page, or contact an admin.'
+                                )}}
                         />
                     </section>
 
