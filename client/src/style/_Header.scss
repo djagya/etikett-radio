@@ -156,7 +156,7 @@ nav {
   }
 
   .Messages {
-    height: calc(100vh - 47px - 47px) //$full-header-video-heigh
+    height: calc(100% - 47px - 47px - 25px ) // 100% - $full-header-nav-height - $full-header-message-height - twitch controls hight
   }
 }
 
