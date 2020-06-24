@@ -393,23 +393,26 @@
   .grid-wrapper {
 
 
+
     .hosts-list {
       padding-top: 1rem;
-      width: 80%;
+      width: 570px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      grid-gap: 0.5rem;
+      grid-template-columns: repeat(2, 280px);
+      grid-gap: 1rem;
 
       .host-image-borders {
         border: 1px solid rgba(255, 255, 255, 0.486);
         background-color: $etikett-black;
         height: 300px;
+        max-width: 280px;
 
         .host-images {
           position: relative;
           opacity: 0;
           z-index: 2;
+          max-width: 280px;
 
           &:hover {
             border: 1px solid rgb(255, 255, 255);
@@ -868,21 +871,30 @@
   ///host cards
   .grid-wrapper {
 
+    display: grid;
+
 
     .hosts-list {
-      padding-top: 1rem;
+      width: 180px;
       margin: 0 auto;
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
 
 
       .host-image-borders {
         border: 1px solid rgba(255, 255, 255, 0.486);
         background-color: $etikett-black;
-        height: 300px;
+        height: 200px;
+        max-width: 180px;
 
         .host-images {
           position: relative;
           opacity: 0;
           z-index: 2;
+          height: 200px;
+          max-width: 180px;
+
 
           &:hover {
             border: 1px solid rgb(255, 255, 255);
@@ -894,8 +906,10 @@
 
       .host-name {
         position: relative;
-        bottom: 50%;
+        width: 180px;
+        margin: 0;
         text-transform: lowercase;
+        font-size: 16px;
         opacity: 1;
         z-index: 1;
       }
