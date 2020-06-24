@@ -907,10 +907,12 @@
 
     .host-description {
       height: 100%;
+      // display: grid;
+      // grid-template-rows: 20% 60% 10% 10%;
 
 
       h3 {
-        padding: 0 0 0.5rem 0.2rem;
+        // padding: 0 0 0.5rem 0.2rem;
       }
 
       .about-host {
