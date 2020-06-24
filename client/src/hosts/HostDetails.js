@@ -70,7 +70,7 @@ export default function Hosts(props) {
     }
 
     return (
-        <DocumentTitle title={`${host.hostName}`}>
+        <DocumentTitle title={`${host.length === 0? "Host" : host.hostName}`}>
             <div className="hosts">
                 <div className={`${context.gapClass} host-page`}>
                     <h2>hosts.</h2>
