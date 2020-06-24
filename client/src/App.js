@@ -61,7 +61,8 @@ function App(props) {
   const [gapClass, setGapClass] = useState("big-gap");
   const [pathName, setPathName] = useState("/")
   const [gradient, setGradient] = useState("gradient");
-  const [showAbout, setShowAbout] = useState(false)
+  const [showAbout, setShowAbout] = useState(false);
+  const [onChat, setOnChat] = useState(true);
 
 
   // Media Queries
@@ -77,7 +78,6 @@ function App(props) {
     { title: 'Skip to footer', to: 'footer' }
   ]
   //////////////////////
-
   return (
     <DocumentTitle title="etikett~radio | homepage">
 
@@ -99,6 +99,7 @@ function App(props) {
             pathName, setPathName,
             gradient, setGradient,
             showAbout, setShowAbout,
+            onChat, setOnChat,
             socket
           }
         }>

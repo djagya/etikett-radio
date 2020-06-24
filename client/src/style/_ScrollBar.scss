@@ -23,20 +23,44 @@ body {
         }
     }  
 }
-
-.Messages * {
+///////////////////////////////////
+//          Chat Bar
+///////////////////////////////////
+.show-scroll * {
     //  background-color: white;
     &::-webkit-scrollbar {
         width: 4px;
-        background-color: $etikett-hover;
-        position: absolute;
+        background-color: $etikett-black-000 ;
         border-radius: 5px;
     }
 
     &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-        background-image: linear-gradient($etikett-black, $etikett-black-075) ;
+        background-color: $etikett-black-000 ;
+    }
+ 
+    &::-webkit-scrollbar-thumb {
+        background-color: $etikett-hover;
+        box-shadow: inset $etikett-black-075 0px 0px 2px 1px;
+        border-radius: 5px;
+    
+        &:hover {
+            border-radius: 5px;
+            box-shadow: inset $etikett-black 0px 0px 0px .5px;
+            background-color: $etikett-hover;
         }
+    }  
+
+}
+.hide-scroll * {
+    &::-webkit-scrollbar {
+        width: 4px;
+        background-color: $etikett-black-000;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $etikett-black-000 ;
+    }
  
     &::-webkit-scrollbar-thumb {
         background-color: $etikett-black-000;
@@ -48,5 +72,4 @@ body {
             background-color: $etikett-hover;
         }
     }  
-
 }
