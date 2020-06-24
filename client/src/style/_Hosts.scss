@@ -53,11 +53,13 @@
 
 
 .grid-wrapper {
-    width: 1000px;
+    width: 80%;
     margin: 0 auto;
 
     .hosts-list {
         padding-top: 1rem;
+        width: 80%;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-gap: 0.5rem;
@@ -66,11 +68,13 @@
             border: 1px solid rgba(255, 255, 255, 0.486);
             background-color: $etikett-black;
             height: 300px;
+            width: 300px;
 
             .host-images {
                 position: relative;
                 opacity: 0;
                 z-index: 2;
+                width: 300px;
 
                 &:hover {
                     border: 1px solid rgb(255, 255, 255);
@@ -82,6 +86,7 @@
 
         .host-name {
             position: relative;
+            width: 300px;
             bottom: 50%;
             text-transform: lowercase;
             opacity: 1;
