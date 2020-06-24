@@ -80,12 +80,14 @@
                 }
             }
         }
+        .link-component {
+            text-decoration: none;
+          }
 
         .host-name {
             position: relative;
             bottom: 50%;
             text-transform: lowercase;
-            text-decoration-color: #ff0000;
             opacity: 1;
             z-index: 1;
         }
@@ -93,3 +95,4 @@
     }
 
 }
+
