@@ -4,11 +4,12 @@ import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
 import { Context } from "../Context";
+import { contextsKey } from 'express-validator/src/base';
 
 export default function Chat({ name, setName, room, chatWindow, setChatWindow, removeCookie }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
-  const { socket } = useContext(Context)
+  const { socket, setOnChat } = useContext(Context)
   const alert = useAlert();
   const [rows, setRows] = useState(1);
   const [bottomSpace, setBottomSpace] = useState(0);
@@ -80,7 +81,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
 
   return (
     <div className="outer-container">
-      <div className="inner-container">
+      <div className="inner-container" onMouseEnter={()=>{setOnChat(true)}} onMouseLeave={()=>{setOnChat(false)}}>
         <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} setName={setName} />
         <Messages messages={messages} name={name} bottomSpace={bottomSpace} />
         <Input rows={rows} text={text} setText={setText} sendMessage={sendMessage} />

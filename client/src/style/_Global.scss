@@ -65,7 +65,7 @@ i {
 q {
   max-width: 300px;
   text-align: center;
-  margin: 16px 0;
+  margin: 0 auto;
   white-space: pre-wrap;
 }
 
@@ -119,6 +119,7 @@ li {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 
   cursor: pointer;
   background: url(../img/etikett-black.jpg);

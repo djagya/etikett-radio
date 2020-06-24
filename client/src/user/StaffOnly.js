@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Context } from "../Context";
 import { Redirect } from 'react-router-dom';
+import DocumentTitle from 'react-document-title';
 
 
 export default function UserProfile(props) {
@@ -13,7 +14,7 @@ export default function UserProfile(props) {
         props.removeCookie('user', { path: "/" });
         props.removeCookie('x-auth', { path: "/" });
         props.setName(null);
-        props.removeCookie('name', { path: "/"});
+        props.removeCookie('name', { path: "/" });
         context.socket.disconnect();
         props.history.push("/login")
     };
@@ -28,54 +29,55 @@ export default function UserProfile(props) {
         return <Redirect to={`/user/all`} />
     }
     if (context.editHost) {
-        return <Redirect to={`/hosts/${context.id}`} />
+        return <Redirect to={`/user/host/${context.id}`} />
     }
     if (context.allHosts) {
-        return <Redirect to={`/hosts/all`} />
+        return <Redirect to={`/user/hosts/all`} />
     }
     if (context.editInfoBar) {
         return <Redirect to={`/infobar`} />
     }
     return (
-
-        <>
-            <a href="#maincontent" className="skip-link">Skip to main content</a>
-            <div className={`${context.gapClass} staff-only`}>
-                <div>
-                    <h2 id="main">logged in as {props.cookies.user.firstName}</h2>
-                    <div className="button-container">
-                    <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
-                    </div>
-                    <div className="button-container">
-                    <button type="button" onClick={() => {
-                        context.setEditHostID(context.id)
-                        context.setEditHost(true)
-                    }}>edit my host profile
-                    </button>
-                    </div>
-                    <div className="button-container">
-                    <button type="button" onClick={() => context.setEditInfoBar(true)}>edit info bar</button>
-                    </div>
-                    {props.cookies.user.role === 'Admin' ?
-                        <div>
-                            <div className="button-container">
-                            <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
-                            </div>
-                            <div className="button-container">
-                            <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
-                            </div>
-                            <div className="button-container">
-                            <button type="button" onClick={() => context.setAllHosts(true)}>all hosts</button>
-                            </div>
+        <DocumentTitle title="Staff">
+            <div>
+                <a href="#maincontent" className="skip-link">Skip to main content</a>
+                <div className={`${context.gapClass} staff-only`}>
+                    <div>
+                        <h2 id="main">logged in as {props.cookies.user.firstName}</h2>
+                        <div className="button-container">
+                            <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
                         </div>
-                        : null}
-                    <div className="button-container">
-                    <button onClick={handleLogOut}>log out</button>
+                        <div className="button-container">
+                            <button type="button" onClick={() => {
+                                context.setEditHostID(context.id)
+                                context.setEditHost(true)
+                            }}>edit my host profile
+                    </button>
+                        </div>
+                        <div className="button-container">
+                            <button type="button" onClick={() => context.setEditInfoBar(true)}>edit info bar</button>
+                        </div>
+                        {props.cookies.user.role === 'Admin' ?
+                            <div>
+                                <div className="button-container">
+                                    <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
+                                </div>
+                                <div className="button-container">
+                                    <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
+                                </div>
+                                <div className="button-container">
+                                    <button type="button" onClick={() => context.setAllHosts(true)}>all hosts</button>
+                                </div>
+                            </div>
+                            : null}
+                        <div className="button-container">
+                            <button onClick={handleLogOut}>log out</button>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </>
+        </DocumentTitle>
 
     )
 }

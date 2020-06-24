@@ -24,7 +24,8 @@ import CreateUser from './user/CreateUser';
 import EditMyProfile from './user/EditMyProfile';
 import AllUser from './user/AllUser';
 //Host Related
-import HostCarousel from './hosts/HostCarousel';
+import HostList from './hosts/HostList';
+import HostDetails from './hosts/HostDetails';
 import EditHostForm from './hosts/EditHostForm';
 import AllHosts from './hosts/AllHosts';
 //Archive Related
@@ -60,7 +61,8 @@ function App(props) {
   const [gapClass, setGapClass] = useState("big-gap");
   const [pathName, setPathName] = useState("/")
   const [gradient, setGradient] = useState("gradient");
-  const [showAbout, setShowAbout] = useState(false)
+  const [showAbout, setShowAbout] = useState(false);
+  const [onChat, setOnChat] = useState(true);
 
 
   // Media Queries
@@ -76,9 +78,8 @@ function App(props) {
     { title: 'Skip to footer', to: 'footer' }
   ]
   //////////////////////
-
   return (
-    <DocumentTitle title="Homepage, video streaming">
+    <DocumentTitle title="etikett~radio | homepage">
 
       <HashRouter>
         <SkipLink links={links} className="skip-link" />
@@ -98,6 +99,7 @@ function App(props) {
             pathName, setPathName,
             gradient, setGradient,
             showAbout, setShowAbout,
+            onChat, setOnChat,
             socket
           }
         }>
@@ -123,29 +125,30 @@ function App(props) {
                 {isMobileDevice ? <Redirect to="/schedule" /> : <Home />}
               </Route>
 
-              {/* User Related */}
+              {/* Staff Only Routes */}
               <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} setName={setName} removeCookie={removeCookie} />} />
               <Route exact path="/user/all" render={(props) => <AllUser {...props} cookies={cookies} />} />
               <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
               <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} setName={setName} />} />
               <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
+              <Route exact path="/user/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
+              <Route exact path="/user/host/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
               <Route exact path="/infobar" render={(props) => <EditInfoBar {...props} cookies={cookies} />} />
               <Route exact path="/contact" component={Contact} />
 
-              {/* Archive Related */}
+              {/* Archive Routes */}
               <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
               <Route exact path="/archive/:id" component={ArchiveDetail} />
               <Route exact path="/:id/edit" component={ArchiveEdit} />
 
-              {/* Hosts Related */}
-              <Route exact path="/hosts" render={(props) => <HostCarousel {...props} cookies={cookies} />} />
-              <Route exact path="/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
-              <Route exact path="/hosts/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
+              {/* Hosts Routes */}
+              <Route exact path="/hosts" render={(props) => <HostList {...props} cookies={cookies} />} />
+              <Route exact path="/hosts/:id" render={(props) => <HostDetails {...props} cookies={cookies} />} />
 
-              {/* Blog Related */}
+              {/* Blog Routes */}
               <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
 
-              {/* Schedule Related */}
+              {/* Schedule Routes */}
               <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
 
               {/* Fallback to Error Page */}
