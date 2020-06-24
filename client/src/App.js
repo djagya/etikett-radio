@@ -11,7 +11,7 @@ import "./App.scss"
 
 //Page General Related
 import Home from './Home';
-import Header from './Header';
+import Header from './header/Header';
 import Blog from './blog/Blog';
 import EditInfoBar from "./user/EditInfoBar";
 import Contact from './Contact';
