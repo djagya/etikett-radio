@@ -43,47 +43,41 @@
     }
   }
 
-  .grid-wrapper {
+  // .grid-wrapper {
 
+  //       width: 1000px;
 
-    .hosts-list {
-      padding-top: 1rem;
-      width: 80%;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      grid-gap: 0.5rem;
+  //   .hosts-list {
+  //     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  //     grid-gap: 0.5rem;
 
-      .host-image-borders {
-        border: 1px solid rgba(255, 255, 255, 0.486);
-        background-color: $etikett-black;
-        height: 300px;
+  //     .host-image-borders {
+  //       border: 1px solid rgba(255, 255, 255, 0.486);
+  //       background-color: $etikett-black;
+  //       height: 300px;
 
-        .host-images {
-          position: relative;
-          opacity: 0;
-          z-index: 2;
+  //       .host-images {
+  //         position: relative;
+  //         opacity: 0;
+  //         z-index: 2;
 
-          &:hover {
-            border: 1px solid rgb(255, 255, 255);
-            opacity: 1;
-            transition: 0.3s ease-in;
-          }
-        }
-      }
+  //         &:hover {
+  //           border: 1px solid rgb(255, 255, 255);
+  //           opacity: 1;
+  //           transition: 0.3s ease-in;
+  //         }
+  //       }
+  //     }
 
-      .host-name {
-        position: relative;
-        bottom: 50%;
-        text-transform: lowercase;
-        text-decoration-color: #ff0000;
-        opacity: 1;
-        z-index: 1;
-      }
+  //     .host-name {
+  //       text-transform: lowercase;
+  //       opacity: 1;
+  //       z-index: 1;
+  //     }
 
-    }
+  //   }
 
-  }
+  // }
 }
 
 @media only screen and (max-width: breakpoints(desktop)) {
@@ -250,50 +244,63 @@
     max-width: 600px;
   }
 
-  .grid-wrapper {
+//////////////////////////////////////////////////////////
+// Host PC Small
+//////////////////////////////////////////////////////////
+
+  .host-list-container{
+    .grid-wrapper {
+
+      width: 900px;
+      .hosts-list {
+
+        grid-template-columns: repeat(3, 280px);
+      .hosts-list-item {
+            
+        // grid-gap: 2v;
 
 
-    .hosts-list {
-      padding-top: 1rem;
-      width: 70%;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      grid-gap: 0.5rem;
+          .link-component{
+            // width: 280px;
+            // height: 280px;
+            // h3 {
+            //     max-width: 280px;
+            //   }
+            .host-image-borders {
+              // border: 1px solid rgba(255, 255, 255, 0.486);
+              // background-color: $etikett-black;
+              height: 280px;
+              max-width: 280px;
 
-      .host-image-borders {
-        border: 1px solid rgba(255, 255, 255, 0.486);
-        background-color: $etikett-black;
-        height: 300px;
-
-
-        .host-images {
-          position: relative;
-          opacity: 0;
-          z-index: 2;
-
-          &:hover {
-            border: 1px solid rgb(255, 255, 255);
-            opacity: 1;
-            transition: 0.3s ease-in;
+              
+              .host-images {
+                // position: relative;
+                // opacity: 0;
+                // z-index: 2;
+                // max-width: 280px;
+                // max-height: 280px;
+                
+                &:hover {
+                  // border: 1px solid rgb(255, 255, 255);
+                  // opacity: 1;
+                  // transition: 0.3s ease-in;
+                }
+              }
+            }
           }
+          .host-name {
+            letter-spacing: 2px;
+            // text-transform: lowercase;
+            // opacity: 1;
+            // z-index: 1;
+            // letter-spacing: 2px;
+          }
+
         }
       }
-
-      .host-name {
-        position: relative;
-        bottom: 50%;
-        text-transform: lowercase;
-        text-decoration-color: #ff0000;
-        opacity: 1;
-        z-index: 1;
-      }
-
     }
-
   }
 }
-
 
 @media only screen and (max-width: breakpoints(tablet)) {
   .chat {
@@ -474,50 +481,22 @@
   .controls {
     max-width: 600px;
   }
+  //////////////////////////////////////////////////////////
+  // Host Component Tablet
+  //////////////////////////////////////////////////////////
+  .host-list-container{
+    .grid-wrapper {
+      width: 600px;
 
-  .grid-wrapper {
+      .hosts-list {
+        grid-template-columns: repeat(2, 280px);
 
-
-
-    .hosts-list {
-      padding-top: 1rem;
-      width: 570px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, 280px);
-      grid-gap: 1rem;
-
-      .host-image-borders {
-        border: 1px solid rgba(255, 255, 255, 0.486);
-        background-color: $etikett-black;
-        height: 300px;
-        max-width: 280px;
-
-        .host-images {
-          position: relative;
-          opacity: 0;
-          z-index: 2;
+        .host-image-borders {
+          height: 280px;
           max-width: 280px;
-
-          &:hover {
-            border: 1px solid rgb(255, 255, 255);
-            opacity: 1;
-            transition: 0.3s ease-in;
-          }
         }
       }
-
-      .host-name {
-        position: relative;
-        bottom: 50%;
-        text-transform: lowercase;
-        text-decoration-color: #ff0000;
-        opacity: 1;
-        z-index: 1;
-      }
-
     }
-
   }
 }
 
@@ -741,8 +720,8 @@
   .all-list {
 
     .list-container {
-      width: 80%;
-      margin: 0 auto;
+      width: 100%;
+      // margin: 0 auto;
     }
 
     .hosts-list-grid {
@@ -925,9 +904,7 @@
       // grid-template-rows: 20% 60% 10% 10%;
 
 
-      h3 {
-        // padding: 0 0 0.5rem 0.2rem;
-      }
+      
 
       .about-host {
 
@@ -956,55 +933,48 @@
   }
 
   ///host cards
-  .grid-wrapper {
+//////////////////////////////////////////////////////////
+  // Host Component Phone
+  //////////////////////////////////////////////////////////
+  // .host-list-container{
+  //   .grid-wrapper {
+  //     width: 600px;
 
-    display: grid;
+  //     .hosts-list {
+  //       grid-template-columns: repeat(2, 280px);
 
+  //       .host-image-borders {
+  //         height: 280px;
+  //         max-width: 280px;
+  //       }
+  //     }
+  //   }
+  // }
+  .host-list-container{
+    .grid-wrapper {
+      width: 100vw;
 
-    .hosts-list {
-      width: 180px;
-      margin: 0 auto;
-      padding-top: 1rem;
-      display: flex;
-      flex-direction: column;
+      .hosts-list{
+        display: flex;
+        justify-content: center;
+        flex-flow:wrap;
+        width: 90vw;
+        .hosts-list-item {
+          margin: .5rem;
 
+          
+            .link-component{
+              .host-image-borders {
+                height: 200px;
+                max-width: 200px;
+              }
+            }
+          
 
-      .host-image-borders {
-        border: 1px solid rgba(255, 255, 255, 0.486);
-        background-color: $etikett-black;
-        height: 200px;
-        max-width: 180px;
-
-        .host-images {
-          position: relative;
-          opacity: 0;
-          z-index: 2;
-          height: 200px;
-          max-width: 180px;
-
-
-          &:hover {
-            border: 1px solid rgb(255, 255, 255);
-            opacity: 1;
-            transition: 0.3s ease-in;
-          }
         }
       }
-
-      .host-name {
-        position: relative;
-        width: 180px;
-        margin: 0;
-        text-transform: lowercase;
-        font-size: 16px;
-        opacity: 1;
-        z-index: 1;
-      }
-
     }
-
   }
-
   .message {
     font-size: 1.3rem;
     display: flex;

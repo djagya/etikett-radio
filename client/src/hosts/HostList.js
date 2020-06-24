@@ -18,13 +18,13 @@ export default function HostList() {
 
         return hostData.map((host, i) => (
             <Fragment key={i}>
-                <li className="hosts-list">
+                <li className="hosts-list-item">
                     <Link className="link-component" to={`hosts/${host._id}`} param={host._id} >
+                    
                         <div className="host-image-borders">
+                            <h3 className="host-name">{host.hostName}.</h3>
                             <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-images" width="400px" height="400px" />
                         </div>
-                        <h3 className="host-name">{host.hostName}.</h3>
-
                     </Link>
                 </li>
             </Fragment>
@@ -33,7 +33,7 @@ export default function HostList() {
 
     return (
         <DocumentTitle title="Hosts">
-            <div className={`${context.gapClass}`}>
+            <div className={`${context.gapClass} host-list-container`}>
                 <h2 id="hosts-title">hosts.</h2>
                 <div className="grid-wrapper">
                     <div className=" hosts-list">
