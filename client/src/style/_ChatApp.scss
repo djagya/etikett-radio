@@ -83,6 +83,8 @@
   .Messages,
   .chat-form {
     animation: display-on 400ms ease forwards;
+
+    
   }
 }
 
@@ -186,8 +188,8 @@
     align-self: flex-end;
   }
   .chat-send {
-    margin-top: 4px;
-    max-height: 34px;
+    // margin-top: 4px;
+    height: 32px;
     width: 20%;
   }
 }
