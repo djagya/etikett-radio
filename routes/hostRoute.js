@@ -7,7 +7,7 @@ Route.get("/", auth, getHost);
 Route.post("/createhost", auth, isHostAdmin, postHost); 
 //Alternative syntax for practice purposes
 Route.route("/:id")
-    .get(auth, isHostAdmin, getHostById)
+    .get(auth, getHostById)
     .put(auth, isHostAdmin, putHost)
     .delete(auth, isAdmin, deleteHost);
 
