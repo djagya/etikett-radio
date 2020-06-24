@@ -42,6 +42,48 @@
       margin-top: 63px;
     }
   }
+
+  .grid-wrapper {
+
+
+    .hosts-list {
+      padding-top: 1rem;
+      width: 80%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: 0.5rem;
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 300px;
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: lowercase;
+        text-decoration-color: #ff0000;
+        opacity: 1;
+        z-index: 1;
+      }
+
+    }
+
+  }
 }
 
 @media only screen and (max-width: breakpoints(desktop)) {
@@ -74,6 +116,42 @@
       transform: translate3d(-100%, 0, 0);
     }
   }
+
+  ///navigation bar
+  nav {
+    display: flex;
+    // flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    height: $nav-height;
+  }
+
+  .nav-link {
+    padding: 0 1vw;
+    transition: 0.1s;
+    letter-spacing: 1px;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      color: $etikett-hover;
+      text-decoration-color: $etikett-hover;
+    }
+
+  }
+
+  .active-nav {
+    color: $etikett-hover;
+    text-decoration-color: white;
+  }
+
+  .full-header {
+    flex-direction: column;
+
+    nav {
+      height: $full-header-nav-height;
+    }
+  }
+
 
   //clickable logo
   .etikett-black {
@@ -171,12 +249,90 @@
   .controls {
     max-width: 600px;
   }
+
+  .grid-wrapper {
+
+
+    .hosts-list {
+      padding-top: 1rem;
+      width: 70%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: 0.5rem;
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 300px;
+
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: lowercase;
+        text-decoration-color: #ff0000;
+        opacity: 1;
+        z-index: 1;
+      }
+
+    }
+
+  }
 }
 
 
 @media only screen and (max-width: breakpoints(tablet)) {
   .chat {
     display: none;
+  }
+
+  ///navigation bar
+  nav {
+    display: flex;
+    // flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    height: $nav-height;
+  }
+
+  .nav-link {
+    padding: 0 0.8vw;
+    transition: 0.1s;
+    letter-spacing: 1px;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      color: $etikett-hover;
+      text-decoration-color: $etikett-hover;
+    }
+
+  }
+
+  .active-nav {
+    color: $etikett-hover;
+    text-decoration-color: white;
+  }
+
+  .full-header {
+    flex-direction: column;
+
+    nav {
+      height: $full-header-nav-height;
+    }
   }
 
   .solar-system {
@@ -209,8 +365,8 @@
     background-size: 140%;
     background-position: center;
     border-radius: 100%;
-    width: 15vh;
-    height: 15vh;
+    width: 13.2vh;
+    height: 13.2vh;
     // align-self: center;
     box-shadow: 0 0 55px rgba(255, 255, 255, 1);
 
@@ -318,6 +474,51 @@
   .controls {
     max-width: 600px;
   }
+
+  .grid-wrapper {
+
+
+
+    .hosts-list {
+      padding-top: 1rem;
+      width: 570px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 280px);
+      grid-gap: 1rem;
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 300px;
+        max-width: 280px;
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+          max-width: 280px;
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: lowercase;
+        text-decoration-color: #ff0000;
+        opacity: 1;
+        z-index: 1;
+      }
+
+    }
+
+  }
 }
 
 
@@ -354,8 +555,8 @@
     background-size: 140%;
     background-position: center;
     border-radius: 100%;
-    width: 13vh;
-    height: 13vh;
+    width: 12.2vh;
+    height: 12.2vh;
     // align-self: center;
     box-shadow: 0 0 55px rgba(255, 255, 255, 1);
 
@@ -699,46 +900,39 @@
   //host page
 
   .host-page {
-    .carousel-item {
-      @include flex-column;
-      padding: 1rem;
-    }
-
-    .host-content {
-      width: 300px;
-      margin: 1rem;
-
-
-      &:hover {
-        box-shadow: 0 14px 28px rgba(139, 139, 139, 0.25),
-          0 10px 10px rgba(156, 156, 156, 0.22);
-        transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
-      }
-    }
-
-    .host-images {
-      width: 100px;
-      height: 100px;
-      margin-left: 0.2rem;
-    }
-
-
     .host-card {
+      @include flex-column;
       width: 300px;
       border-right: 1px solid rgba(190, 190, 195, 0.219);
       box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
-
+      height: 100vh;
     }
 
+    // .host-content {
+    //   height: 100vw;
+    // }
+
+
+    .host-image-detail {
+      width: 300px;
+      height: 300px;
+    }
+
+
     .host-description {
+      height: 100%;
+      // display: grid;
+      // grid-template-rows: 20% 60% 10% 10%;
+
 
       h3 {
-        padding: 0 0 0.5rem 0.2rem;
+        // padding: 0 0 0.5rem 0.2rem;
       }
 
       .about-host {
-        padding: 0;
 
+
+        padding: 0;
       }
 
 
@@ -759,10 +953,56 @@
       }
     }
 
-    .side-list {
-      display: none;
+  }
+
+  ///host cards
+  .grid-wrapper {
+
+    display: grid;
+
+
+    .hosts-list {
+      width: 180px;
+      margin: 0 auto;
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 200px;
+        max-width: 180px;
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+          height: 200px;
+          max-width: 180px;
+
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        width: 180px;
+        margin: 0;
+        text-transform: lowercase;
+        font-size: 16px;
+        opacity: 1;
+        z-index: 1;
+      }
 
     }
+
   }
 
   .message {
@@ -794,6 +1034,7 @@
       transform: translate3d(-100%, 0, 0);
     }
   }
+
 
 
   ///header-gap

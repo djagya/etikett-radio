@@ -21,7 +21,7 @@
 
         .host-description {
             display: grid;
-            grid-template-rows: 15% 65% 10% 10%;
+            grid-template-rows: 10% 70% 10% 10%;
             text-align: left;
             padding: 1rem;
 
@@ -53,11 +53,12 @@
 
 
 .grid-wrapper {
-
+    width: 80%;
+    margin: 0 auto;
 
     .hosts-list {
         padding-top: 1rem;
-        width: 60%;
+        width: 80%;
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -67,11 +68,13 @@
             border: 1px solid rgba(255, 255, 255, 0.486);
             background-color: $etikett-black;
             height: 300px;
+            width: 300px;
 
             .host-images {
                 position: relative;
                 opacity: 0;
                 z-index: 2;
+                width: 300px;
 
                 &:hover {
                     border: 1px solid rgb(255, 255, 255);
@@ -86,6 +89,7 @@
 
         .host-name {
             position: relative;
+            width: 300px;
             bottom: 50%;
             text-transform: lowercase;
             opacity: 1;

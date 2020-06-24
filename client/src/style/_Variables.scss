@@ -11,16 +11,17 @@ $full-header-message-height: 47px;
 $full-header-video-height: calc(100vh - 47px - 47px);
 
 //colors
-$etikett-black: rgb(1,5,8);
-$etikett-black-075: rgba(1,5,8, 0.75);
-$etikett-black-050: rgba(1,5,8, 0.5);
-$etikett-black-025: rgba(1,5,8, 0.25);
-$etikett-black-000: rgba(1,5,8, 0);
+$etikett-black: rgb(1, 5, 8);
+$etikett-black-075: rgba(1, 5, 8, 0.75);
+$etikett-black-050: rgba(1, 5, 8, 0.5);
+$etikett-black-025: rgba(1, 5, 8, 0.25);
+$etikett-black-000: rgba(1, 5, 8, 0);
 $etikett-hover: rgb(70, 120, 131);
 $etikett-hover-050: rgb(70, 120, 131, .5);
 
 //font
-$etikett-font: "GaramondPro", serif;
+$etikett-font: "GaramondPro",
+serif;
 
 //chat
 $chat-width: 340px;
@@ -33,12 +34,10 @@ $chat-height-transition: height 400ms ease-in;
 }
 
 // responsiveness
-$media-breakpoints: (
-  "big-desktop": 1900px,
-  "desktop": 1200px,
+$media-breakpoints: ("big-desktop": 1900px,
+  "desktop": 1400px,
   "tablet": 900px,
-  "phone": 600px
-);
+  "phone": 600px);
 
 @function breakpoints($breakpoint) {
   @return map-get($media-breakpoints, $breakpoint)
