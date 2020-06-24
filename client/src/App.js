@@ -63,6 +63,7 @@ function App(props) {
   const [gradient, setGradient] = useState("gradient");
   const [showAbout, setShowAbout] = useState(false);
   const [onChat, setOnChat] = useState(true);
+  const [chatHeight, setChatHeight] = useState(0);
 
 
   // Media Queries
@@ -100,6 +101,7 @@ function App(props) {
             gradient, setGradient,
             showAbout, setShowAbout,
             onChat, setOnChat,
+            chatHeight, setChatHeight,
             socket
           }
         }>

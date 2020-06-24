@@ -12,6 +12,10 @@
     height: 100%;
     white-space: nowrap;
   }
+  transition: .2s;
+  &:hover {
+    background-color: $etikett-black-075;
+  }
 
   input, select, textarea {
     // margin-top: .25rem;
@@ -143,11 +147,7 @@
   display: flex;
   flex-direction: column-reverse; 
   transition: .25s;
-  &:hover {
-  background-color: $etikett-black-075;
   
-  
-}
 }
 
 // Needed to display messages upside-down
@@ -170,13 +170,17 @@
   }
 
   #input-message-textarea {
+    font-size: 1rem;
     padding: 0.2rem 0.5rem;
     overflow-x: hidden;
     resize: none;
     width: 80%;
-    height: auto;
+    max-height: 88px;
     align-self: flex-end;
     min-height: 2rem;
+    &:focus {
+      background-color: $etikett-black;
+    }
   }
   button {
     height: 2rem;

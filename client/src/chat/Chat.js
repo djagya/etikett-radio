@@ -9,9 +9,8 @@ import { contextsKey } from 'express-validator/src/base';
 export default function Chat({ name, setName, room, chatWindow, setChatWindow, removeCookie }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
-  const { socket, setOnChat } = useContext(Context)
+  const { socket, setOnChat, chatHeight } = useContext(Context)
   const alert = useAlert();
-  const [rows, setRows] = useState(1);
   const [bottomSpace, setBottomSpace] = useState(0);
 
   useEffect(() => {
@@ -47,19 +46,20 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
     
   }, []);
 
+
+
+
   useEffect(() => {
-    const charLength = 27;
-    if (text.length >= charLength * 2) {
-      setRows(3)
-      setBottomSpace('2.3rem')
-    } else if (text.length >= charLength) {
-      setRows(2)
-      setBottomSpace('0.8rem')
+    console.log(chatHeight)
+    if (chatHeight > 87 ) {
+      return
     } else {
-      setRows(1)
-      setBottomSpace('0rem')
+      setBottomSpace(chatHeight-32+"px")
     }
-  }, [text])
+  }, [chatHeight])
+
+
+
 
   const sendMessage = e => {
     e.preventDefault();
@@ -84,7 +84,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
       <div className="inner-container" onMouseEnter={()=>{setOnChat(true)}} onMouseLeave={()=>{setOnChat(false)}}>
         <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} setName={setName} />
         <Messages messages={messages} name={name} bottomSpace={bottomSpace} />
-        <Input rows={rows} text={text} setText={setText} sendMessage={sendMessage} />
+        <Input text={text} setText={setText} sendMessage={sendMessage} />
       </div>
     </div>
   )
