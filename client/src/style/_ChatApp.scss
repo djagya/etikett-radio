@@ -12,11 +12,7 @@
     height: 100%;
     white-space: nowrap;
   }
-  transition: .2s;
-  &:hover {
-    background-color: $etikett-black-075;
-  }
-
+  
   input, select, textarea {
     // margin-top: .25rem;
     // background-color: $etikett-black-050;
@@ -29,7 +25,9 @@
     border-radius: 3px;
     
     &:focus {
-      background-color: $etikett-black-075;
+      background-color: $etikett-black;
+      outline: none;
+      border: 1px solid; 
     }
     option {
       color: black;
@@ -64,8 +62,14 @@
 }
 .inner-container {
   width: 100%;  
+  
   display: flex;
   flex-direction: column;
+  transition: .2s;
+  &:hover {
+    background-color: $etikett-black-075;
+  }
+
 }
 
 .chat-app-chat {
@@ -127,7 +131,9 @@
   align-items: center;
   background: #000;
   z-index: 2;
-
+  h3 {
+    cursor: pointer;
+  }
   .button-container {
     width: auto;
   }
@@ -175,15 +181,13 @@
     overflow-x: hidden;
     resize: none;
     width: 80%;
+    height: 32px;
     max-height: 88px;
     align-self: flex-end;
-    min-height: 2rem;
-    &:focus {
-      background-color: $etikett-black;
-    }
   }
-  button {
-    height: 2rem;
+  .chat-send {
+    margin-top: 4px;
+    max-height: 34px;
     width: 20%;
   }
 }
@@ -218,7 +222,7 @@
   p { color: rgba(255, 255, 255) }
 }
 .message-text {
-  word-wrap: wrap;
+  overflow-wrap: break-word;
 }
 .sent-text {
   margin: 0 0.4rem;
