@@ -28,6 +28,48 @@
     position: fixed;
     top: 13px;
   }
+
+  .grid-wrapper {
+
+
+    .hosts-list {
+      padding-top: 1rem;
+      width: 80%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: 0.5rem;
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 300px;
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: lowercase;
+        text-decoration-color: #ff0000;
+        opacity: 1;
+        z-index: 1;
+      }
+
+    }
+
+  }
 }
 
 @media only screen and (max-width: breakpoints(desktop)) {
@@ -156,6 +198,49 @@
 
   .controls {
     max-width: 600px;
+  }
+
+  .grid-wrapper {
+
+
+    .hosts-list {
+      padding-top: 1rem;
+      width: 70%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: 0.5rem;
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 300px;
+
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: lowercase;
+        text-decoration-color: #ff0000;
+        opacity: 1;
+        z-index: 1;
+      }
+
+    }
+
   }
 }
 
@@ -303,6 +388,48 @@
 
   .controls {
     max-width: 600px;
+  }
+
+  .grid-wrapper {
+
+
+    .hosts-list {
+      padding-top: 1rem;
+      width: 80%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: 0.5rem;
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 300px;
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: lowercase;
+        text-decoration-color: #ff0000;
+        opacity: 1;
+        z-index: 1;
+      }
+
+    }
+
   }
 }
 
@@ -685,46 +812,37 @@
   //host page
 
   .host-page {
-    .carousel-item {
-      @include flex-column;
-      padding: 1rem;
-    }
-
-    .host-content {
-      width: 300px;
-      margin: 1rem;
-
-
-      &:hover {
-        box-shadow: 0 14px 28px rgba(139, 139, 139, 0.25),
-          0 10px 10px rgba(156, 156, 156, 0.22);
-        transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
-      }
-    }
-
-    .host-images {
-      width: 100px;
-      height: 100px;
-      margin-left: 0.2rem;
-    }
-
-
     .host-card {
+      @include flex-column;
       width: 300px;
       border-right: 1px solid rgba(190, 190, 195, 0.219);
       box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
-
+      height: 100vh;
     }
 
+    // .host-content {
+    //   height: 100vw;
+    // }
+
+
+    .host-image-detail {
+      width: 300px;
+      height: 300px;
+    }
+
+
     .host-description {
+      height: 100%;
+
 
       h3 {
         padding: 0 0 0.5rem 0.2rem;
       }
 
       .about-host {
-        padding: 0;
 
+
+        padding: 0;
       }
 
 
@@ -745,10 +863,45 @@
       }
     }
 
-    .side-list {
-      display: none;
+  }
+
+  ///host cards
+  .grid-wrapper {
+
+
+    .hosts-list {
+      padding-top: 1rem;
+      margin: 0 auto;
+
+
+      .host-image-borders {
+        border: 1px solid rgba(255, 255, 255, 0.486);
+        background-color: $etikett-black;
+        height: 300px;
+
+        .host-images {
+          position: relative;
+          opacity: 0;
+          z-index: 2;
+
+          &:hover {
+            border: 1px solid rgb(255, 255, 255);
+            opacity: 1;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+
+      .host-name {
+        position: relative;
+        bottom: 50%;
+        text-transform: lowercase;
+        opacity: 1;
+        z-index: 1;
+      }
 
     }
+
   }
 
   .message {
