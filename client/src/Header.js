@@ -9,6 +9,7 @@ import GetData from "./GetData";
 import { Context } from "./Context";
 import moment from "moment";
 import ResponsiveNavbar from './ResponsiveNavbar';
+import ErrorBoundary from './ErrorBoundary';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
@@ -179,22 +180,24 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                         <ChatApp name={name} setName={setName} />
                     </div>
 
-                    <section className="embeded-video">
-                        <ReactPlayer
-                            className="ReactPlayer"
-                            url={source}
-                            playing={playing}
-                            volume={parseFloat(volume)}
-                            muted={false}
-                            ref={videoPlayer}
-                            width="100%"
-                            height="100%"
-                            onError={(err) => {
-                                console.log(err)
-                                new Error('Player could not load. Try reloading the page, or contact an admin.'
-                                )}}
-                        />
-                    </section>
+                    <ErrorBoundary>
+                        <section className="embeded-video">
+                            <ReactPlayer
+                                className="ReactPlayer"
+                                url={source}
+                                playing={playing}
+                                volume={parseFloat(volume)}
+                                muted={false}
+                                ref={videoPlayer}
+                                width="100%"
+                                height="100%"
+                                onError={(err) => {
+                                    console.log(err)
+                                    new Error('Player could not load. Try reloading the page, or contact an admin.'
+                                    )}}
+                            />
+                        </section>
+                    </ErrorBoundary>
 
                     <section className="message-controls-container">
                         {source === radio ?
