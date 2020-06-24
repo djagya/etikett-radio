@@ -50,15 +50,12 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
 
 
   useEffect(() => {
-    console.log(chatHeight)
     if (chatHeight > 87 ) {
       return
     } else {
       setBottomSpace(chatHeight-32+"px")
     }
   }, [chatHeight])
-
-
 
 
   const sendMessage = e => {
@@ -73,7 +70,6 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
         removeFirst();
     } 
   };
-
   const removeFirst = () => {
     const [first, ...rest] = messages;
     return setMessages(rest);

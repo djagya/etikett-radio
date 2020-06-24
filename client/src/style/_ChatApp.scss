@@ -40,6 +40,7 @@
 
 .ChatApp {
   width: $chat-width;
+  
 
   h3 {
     padding: 0.5rem;
@@ -61,13 +62,18 @@
   height: 100%;
 }
 .inner-container {
-  width: 100%;  
   
+  width: 100%;  
   display: flex;
   flex-direction: column;
   transition: .2s;
+  
+  
   &:hover {
     background-color: $etikett-black-075;
+    box-shadow: inset .5px 0px 0px 0px rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    transition: 0ms;
   }
 
 }
@@ -151,6 +157,7 @@
 
 // Messages
 .Messages {
+  padding-left: 1px;
   margin-right: .5rem;
   display: flex;
   flex-direction: column-reverse; 
@@ -172,7 +179,7 @@
 // Chat Form
 .chat-form {
   align-self: flex-end;
-
+  padding-left: 1px;
   button {
     padding: 0 0.5rem;
   }
