@@ -1,13 +1,17 @@
 import React, {useContext} from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom';
 import Message from './Message';
+import { css } from 'glamor';
 import { Context } from "../Context";
 
-export default function Messages({ messages, name }) {
+
+export default function Messages({ messages, name, bottomSpace }) {
   const {onChat} = useContext(Context)
-  const test = {
-    height: 0,
-  }
+  const responsiveHeight = css({
+    paddingBottom: bottomSpace,
+  })
+
+  
   const renderMessages = messages.map((message, i) => {
     return(
       <div key={i}>
@@ -18,7 +22,7 @@ export default function Messages({ messages, name }) {
 
 
   return (
-      <ScrollToBottom className={`Messages ${onChat ? "show-scroll" : "hide-scroll"} ${test}`}  >
+      <ScrollToBottom className={`Messages ${onChat ? "show-scroll" : "hide-scroll"} ${responsiveHeight}`} >
         {renderMessages}
       </ScrollToBottom>    
   )

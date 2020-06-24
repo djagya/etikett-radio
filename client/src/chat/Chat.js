@@ -11,6 +11,8 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
   const [messages, setMessages] = useState([]);
   const { socket, setOnChat } = useContext(Context)
   const alert = useAlert();
+  const [rows, setRows] = useState(1);
+  const [bottomSpace, setBottomSpace] = useState(0);
 
   useEffect(() => {
     if (!socket.connected) {
@@ -45,6 +47,20 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
     
   }, []);
 
+  useEffect(() => {
+    const charLength = 27;
+    if (text.length >= charLength * 2) {
+      setRows(3)
+      setBottomSpace('2.3rem')
+    } else if (text.length >= charLength) {
+      setRows(2)
+      setBottomSpace('0.8rem')
+    } else {
+      setRows(1)
+      setBottomSpace('0rem')
+    }
+  }, [text])
+
   const sendMessage = e => {
     e.preventDefault();
     if (text) {
@@ -67,8 +83,8 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
     <div className="outer-container">
       <div className="inner-container" onMouseEnter={()=>{setOnChat(true)}} onMouseLeave={()=>{setOnChat(false)}}>
         <InfoBar room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} setName={setName} />
-        <Messages messages={messages} name={name} />
-        <Input text={text} setText={setText} sendMessage={sendMessage} />
+        <Messages messages={messages} name={name} bottomSpace={bottomSpace} />
+        <Input rows={rows} text={text} setText={setText} sendMessage={sendMessage} />
       </div>
     </div>
   )
