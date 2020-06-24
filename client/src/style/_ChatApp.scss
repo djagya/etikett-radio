@@ -75,9 +75,9 @@
   .Messages,
   .chat-form {
     animation: display-on 400ms ease forwards;
-    
   }
 }
+
 .chat-app-minimize {
   height: 50px;
   transition: $chat-height-transition;
@@ -151,7 +151,10 @@
 }
 
 // Needed to display messages upside-down
-.Messages div:first-child { height: auto; }
+.Messages div:first-child { 
+  height: auto; 
+  scrollbar-base-color: red;
+}
 
 // Input 
 // .Input {
@@ -161,16 +164,22 @@
 // Chat Form
 .chat-form {
   align-self: flex-end;
-  input,
+
   button {
-    height: 2rem;
     padding: 0 0.5rem;
   }
 
-  input {
+  #input-message-textarea {
+    padding: 0.2rem 0.5rem;
+    overflow-x: hidden;
+    resize: none;
     width: 80%;
+    height: auto;
+    align-self: flex-end;
+    min-height: 2rem;
   }
   button {
+    height: 2rem;
     width: 20%;
   }
 }
