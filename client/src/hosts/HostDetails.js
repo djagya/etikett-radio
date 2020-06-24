@@ -68,7 +68,7 @@ export default function Hosts(props) {
             </>
         )
     }
-
+    console.log(host.hostName ? true : false)
     return (
         <DocumentTitle title={`${host.length === 0? "Host" : host.hostName}`}>
             <div className="hosts">
