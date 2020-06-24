@@ -26,7 +26,7 @@ body {
 ///////////////////////////////////
 //          Chat Bar
 ///////////////////////////////////
-.show-scroll * {
+.show-scroll *, #input-message-textarea {
     //  background-color: white;
     &::-webkit-scrollbar {
         width: 4px;
@@ -73,3 +73,4 @@ body {
         }
     }  
 }
+
