@@ -78,18 +78,14 @@ export default function ArchiveInputForm(props) {
             PostData("/archive/post", body)
                 .then(data => { 
                     if (data.success) {
-                        alert.success('Show archived!', {
-                            onClose: () => {
-                                setArchiveData([data.archive, ...archiveData])
-                                setShowForm(false)
-                            }
-                        })
+                        alert.success('Show archived!', { timeout: 3000 })
+                        setArchiveData([data.archive, ...archiveData])
+                        setShowForm(false)
                     } else {
                         alert.error(data.err);
                     }
                 
                 })
-
 
 
         } else {
@@ -122,6 +118,7 @@ export default function ArchiveInputForm(props) {
             <Fragment key={i}>
                 <option onClick={() =>{
                     setFilter(el.hostName) 
+                    setImg(el.hostImg)
                     setHost(el.hostName)
                 }}>{el.hostName}</option>
             </Fragment>
