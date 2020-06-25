@@ -8,7 +8,11 @@ import { ClampToEdgeWrapping } from 'three';
 
 export default function ArchiveInputForm(props) {
     const [exist, setExist] = useState(false);
-    const {setShowEdit, archiveData, setArchiveData} =useContext(Context)
+    const {
+        setShowEdit, 
+        archiveData, setArchiveData,
+        setShowForm
+    } =useContext(Context)
     const [hostData, setHostData] = useState([]);
     const [host, setHost] = useState("");
     let hostID = "";
@@ -76,7 +80,8 @@ export default function ArchiveInputForm(props) {
                     if (data.success) {
                         alert.success('Show archived!', {
                             onClose: () => {
-                                window.location.reload()
+                                setArchiveData([data.archive, ...archiveData])
+                                setShowForm(false)
                             }
                         })
                     } else {

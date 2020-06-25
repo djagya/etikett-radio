@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { Context } from "../Context";
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
@@ -112,20 +112,21 @@ export default function ArchiveList(props) {
         if (archiveData.length === 0) return null; //Because first time the code is running, archiveData will be an empty array
         return archiveData.map((el, i) => (
 
+            <Fragment key={i}>
+                <li>
 
-            <li key={i}>
-
-                <ul className="all-data archive-list-grid">
-                    <li className="img-container"><img src={el.img} alt={`Small version of the artwork of ${el.show}`} width="50" height="50" /></li>
-                    <li><Link className="link-component" to={`archive/${el._id}`}>{el.show}</Link></li>
-                    <li><Link className="link-component" to={`hosts/${el.hostID}`}>{el.host}</Link></li>
-                    <li>{el.genre}</li>
-                    <li>{el.date.substring(0, 10)}</li>
-                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                        <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
-                        : null}
-                </ul>
-            </li>
+                    <ul className="all-data archive-list-grid">
+                        <li className="img-container"><img src={el.img} alt={`Small version of the artwork of ${el.show}`} width="50" height="50" /></li>
+                        <li><Link className="link-component" to={`archive/${el._id}`}>{el.show}</Link></li>
+                        <li><Link className="link-component" to={`hosts/${el.hostID}`}>{el.host}</Link></li>
+                        <li>{el.genre}</li>
+                        <li>{el.date.substring(0, 10)}</li>
+                        {props.cookies.user && props.cookies.user.role === 'Admin' ?
+                            <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
+                            : null}
+                    </ul>
+                </li>
+            </Fragment>
         ));
     };
 
@@ -140,31 +141,38 @@ export default function ArchiveList(props) {
 
     return (
         <DocumentTitle title="Archive">
-            <div className={`${context.gapClass} all-list`}>
-                <div>
-                    <h2 id="main">archive.</h2>
+            <Context.Provider value={{ 
+                showForm, setShowForm,
+                archiveData, setArchiveData
+                
+                }}>
+                <div className={`${context.gapClass} all-list`}>
+                    <div>
+                        <h2 id="main">archive.</h2>
 
-                    {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                        <div className="button-container controls archive-add-delete-buttons">
-                            {showForm ?
-                                <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
-                                <button type="button" onClick={() => setShowForm(true)}>add to archive</button>
-                            }
-                            <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
-                        </div>
-                        : null}
+                        {props.cookies.user && props.cookies.user.role === 'Admin' ?
+                            <div className="button-container controls archive-add-delete-buttons">
+                                {showForm ?
+                                    <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
+                                    <button type="button" onClick={() => setShowForm(true)}>add to archive</button>
+                                }
+                                <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                            </div>
+                            : null}
 
-                    {showForm ? <ArchiveInputForm /> : null}
-                    <ul className="list-header archive-list-grid sort-by-box">
-                        {/* <li></li> Placeholder item for show artwork */}
-                        <li>sort by:</li>
-                        {renderLiHeader()}
-                    </ul>
-                    <ul>
-                        {renderLi(archiveData)}
-                    </ul>
+                        {showForm ? <ArchiveInputForm /> : null}
+                        <ul className="list-header archive-list-grid sort-by-box">
+                            {/* <li></li> Placeholder item for show artwork */}
+                            <li>sort by:</li>
+                            {renderLiHeader()}
+                        </ul>
+                        <ul>
+                            {renderLi(archiveData)}
+                        </ul>
+                    </div>
                 </div>
-            </div>
+
+            </Context.Provider>
         </DocumentTitle>
     )
 };
