@@ -57,20 +57,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 }
             })
             .then(() => {
-                if (source === video && location.pathname === '/') {
-                    setHeaderSize('full-header');
-                    setChatState('chat-homescreen-with-video');
-                    context.setGapClass("big-gap");
-                    // If there's no video
-                } else if (source !== video) {
-                    setHeaderSize('small-header-without-video');
-                    setChatState('chat-routes-without-video');
-                    context.setGapClass("small-gap");
-                } else {
-                    setHeaderSize('small-header-with-video');
-                    setChatState('chat-routes-with-video');
-                    context.setGapClass("big-gap");
-                }
+                setHeaderChatGapSize();
                 setLoading(false);
             })
 
@@ -78,23 +65,28 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
 
 
     useEffect(() => {
+        setHeaderChatGapSize();
+    }, [source, location.pathname])
+
+    const setHeaderChatGapSize = () => {
 
         // If there's video and we are on homescreen
         if (source === video && location.pathname === '/') {
             setHeaderSize('full-header');
             setChatState('chat-homescreen-with-video');
+            context.setGapClass("big-gap");
 
-            // If there's no video
+        // If there's no video
         } else if (source !== video) {
             setHeaderSize('small-header-without-video');
             setChatState('chat-routes-without-video');
+            context.setGapClass("small-gap");
         } else {
             setHeaderSize('small-header-with-video');
             setChatState('chat-routes-with-video');
+            context.setGapClass("big-gap");
         }
-
-        // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
-    }, [source, location.pathname])
+    }
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -125,6 +117,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             setIcon(audioIcon);
         }
     }
+
 
     return (
         loading
