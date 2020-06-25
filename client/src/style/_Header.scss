@@ -23,10 +23,12 @@ nav {
   transition: 0.1s;
   letter-spacing: 2px;
   text-decoration-color: rgba(255, 255, 255, 0.2);
+  transition: 0.1s;
 
   &:hover {
     color: $etikett-hover;
     text-decoration-color: $etikett-hover;
+    transition: 0.1s;
   }
 
 }
@@ -140,6 +142,7 @@ nav {
     height: 100%;
     display: flex;
     align-items: center;
+    
   }
 }
 
@@ -153,7 +156,7 @@ nav {
   }
 
   .Messages {
-    height: calc(100vh - 47px - 47px) //$full-header-video-heigh
+    height: calc(100% - 47px - 47px - 25px ) // 100% - $full-header-nav-height - $full-header-message-height - twitch controls hight
   }
 }
 

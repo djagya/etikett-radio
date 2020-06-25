@@ -21,7 +21,7 @@
 
         .host-description {
             display: grid;
-            grid-template-rows: 15% 65% 10% 10%;
+            grid-template-rows: 10% 70% 10% 10%;
             text-align: left;
             padding: 1rem;
 
@@ -51,45 +51,75 @@
 
 }
 
+.host-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 
-.grid-wrapper {
+    .grid-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%; 
+        
+        .hosts-list {
+            display: grid;
+            grid-template-columns: repeat(3, 300px);
+            gap: 2vw;
 
-
-    .hosts-list {
-        padding-top: 1rem;
-        width: 60%;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 0.5rem;
-
-        .host-image-borders {
-            border: 1px solid rgba(255, 255, 255, 0.486);
-            background-color: $etikett-black;
-            height: 300px;
-
-            .host-images {
-                position: relative;
-                opacity: 0;
-                z-index: 2;
-
-                &:hover {
-                    border: 1px solid rgb(255, 255, 255);
-                    opacity: 1;
-                    transition: 0.3s ease-in;
-                }
+            .hosts-list-item {
+                display: flex;
+                justify-content: center;
+                margin: 0;
+                
             }
-        }
 
-        .host-name {
-            position: relative;
-            bottom: 50%;
-            text-transform: lowercase;
-            text-decoration-color: #ff0000;
-            opacity: 1;
-            z-index: 1;
+            .link-component {
+                text-decoration: none;
+                margin: 0;
+                h3 {
+                    max-width: 100%;
+                  }
+
+                .host-image-borders {
+                    position: relative;
+                    border: 1px solid rgba(255, 255, 255, 0.486);
+                    background-color: $etikett-black;
+                    height: 300px;
+                    width: 300px;
+
+                    .host-images {
+                        position: relative;
+                        opacity: 0;
+                        z-index: 2;
+                        width: 100%;
+                        height: 100%;
+
+                        &:hover {
+                            border: 1px solid rgb(255, 255, 255);
+                            opacity: 1;
+                            transition: 0.3s ease-in;
+                        }
+                    }
+                }  
+            
+            }
+
+            .host-name {
+                height: 100%;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                width: 100%;
+                // top:50%;
+                text-transform: lowercase;
+                opacity: 1;
+                z-index: 1;
+            }
+
         }
 
     }
-
 }

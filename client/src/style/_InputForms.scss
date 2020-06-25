@@ -30,6 +30,8 @@
           
           &:focus {
             background-color: $etikett-black-075;
+            outline: none;
+            border: 1px solid; 
           }
           option {
             color: black;
