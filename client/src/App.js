@@ -40,6 +40,8 @@ import DocumentTitle from 'react-document-title';
 import SkipLink from 'skip-links';
 import GlobalErrorBoundary from './GlobalErrorBoundary';
 
+//scroll to top
+import ScrollMemory from 'react-router-scroll-memory';
 
 const socket = io();
 
@@ -84,6 +86,7 @@ function App(props) {
     <DocumentTitle title="etikett~radio | homepage">
 
       <HashRouter>
+        <ScrollMemory />
         <SkipLink links={links} className="skip-link" />
         <Context.Provider value={
           {

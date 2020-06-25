@@ -23,6 +23,7 @@
     "react-player": "^2.1.0",
     "react-responsive": "^8.1.0",
     "react-router-restore-scroll": "0.0.1",
+    "react-router-scroll-memory": "^2.0.6",
     "react-scripts": "3.4.1",
     "react-scroll-to-bottom": "^2.0.0",
     "react-spring": "^8.0.27",
