@@ -5,15 +5,17 @@
     .chat-homescreen-with-video {
       position: fixed;
       top: -5px;
-      
-      
+
+
       .outer-container {
         padding: 0;
       }
+
       .Messages {
         margin-top: 30px;
-        
+
       }
+
       .chat-send {
         margin-top: 4px;
       }
@@ -28,6 +30,7 @@
     .chat-routes-with-video {
       position: fixed;
       top: 30px;
+
       .Messages {
         margin-top: 63px;
       }
@@ -38,6 +41,7 @@
   .chat-routes-without-video {
     position: fixed;
     top: 13px;
+
     .Messages {
       margin-top: 63px;
     }
@@ -244,23 +248,25 @@
   //   max-width: 600px;
   // }
 
-//////////////////////////////////////////////////////////
-// Host PC Small
-//////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////
+  // Host PC Small
+  //////////////////////////////////////////////////////////
 
-  .host-list-container{
+  .host-list-container {
     .grid-wrapper {
 
       // width: 900px;
       .hosts-list {
 
         grid-template-columns: repeat(3, 280px);
-      .hosts-list-item {
-            
-        // grid-gap: 2v;
+
+        .hosts-list-item {
+
+          // grid-gap: 2v;
 
 
-          .link-component{
+          .link-component {
+
             // width: 280px;
             // height: 280px;
             // h3 {
@@ -272,14 +278,14 @@
               height: 280px;
               max-width: 280px;
 
-              
+
               .host-images {
                 // position: relative;
                 // opacity: 0;
                 // z-index: 2;
                 // max-width: 280px;
                 // max-height: 280px;
-                
+
                 &:hover {
                   // border: 1px solid rgb(255, 255, 255);
                   // opacity: 1;
@@ -288,6 +294,7 @@
               }
             }
           }
+
           .host-name {
             letter-spacing: 2px;
             // text-transform: lowercase;
@@ -484,10 +491,51 @@
   //////////////////////////////////////////////////////////
   // Host Component Tablet
   //////////////////////////////////////////////////////////
-  .host-list-container{
+  .host-list-container {
     .grid-wrapper {
       .hosts-list {
         grid-template-columns: repeat(2, 280px);
+      }
+    }
+  }
+
+  //host page tablet
+
+  .host-page {
+    .host-card {
+      @include flex-column;
+      width: 500px;
+      border-right: 1px solid rgba(190, 190, 195, 0.219);
+      box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
+
+
+      h3 {
+        margin-top: 0;
+      }
+
+      .host-description {
+
+        .about-host {
+          padding: 0.5rem 0;
+        }
+
+        .social-and-pagelink {
+          display: grid;
+          grid-template-rows: 45% 45%;
+          align-content: flex-end;
+
+          .social-media-container {
+            i {
+              margin-left: .5rem;
+            }
+          }
+        }
+
+      }
+
+      .host-image-detail {
+        width: 500px;
+        height: 500px;
       }
     }
   }
@@ -877,85 +925,78 @@
       width: 300px;
       border-right: 1px solid rgba(190, 190, 195, 0.219);
       box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
-      height: 100vh;
-    }
-
-    // .host-content {
-    //   height: 100vw;
-    // }
 
 
-    .host-image-detail {
-      width: 300px;
-      height: 300px;
-    }
-
-
-    .host-description {
-      height: 100%;
-      // display: grid;
-      // grid-template-rows: 20% 60% 10% 10%;
-
-
-      
-
-      .about-host {
-
-
-        padding: 0;
+      h3 {
+        margin-top: 0;
       }
 
+      .host-description {
 
-      .social-media-container {
-        display: flex;
-        justify-content: flex-end;
-        padding: 1.2rem 0.5rem 0 0;
-
-        i {
-          margin-left: .5rem;
+        .about-host {
+          padding: 0.5rem 0;
         }
+
+        .social-and-pagelink {
+          display: grid;
+          grid-template-rows: 45% 45%;
+          align-content: flex-end;
+
+          .social-media-container {
+            i {
+              margin-left: .5rem;
+            }
+          }
+        }
+
       }
 
-      .host-pagelink {
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 0.5rem;
+      .host-image-detail {
+        width: 300px;
+        height: 300px;
       }
     }
-
   }
+
+
 
   ///host cards
   //////////////////////////////////////////////////////////
   // Host Component Phone
   //////////////////////////////////////////////////////////
 
-  .host-list-container{
+  .host-list-container {
     .grid-wrapper {
 
-      .hosts-list{
+      .hosts-list {
         display: flex;
         justify-content: center;
-        flex-flow:wrap;
+        flex-flow: wrap;
         width: 90vw;
+
         .hosts-list-item {
           margin: .5rem;
 
-          
-            .link-component{
-              .host-image-borders {
-                height: 200px;
-                max-width: 200px;
-              }
-              
 
+          .link-component {
+            .host-image-borders {
+              height: 200px;
+              max-width: 200px;
             }
-          
+
+            // .host-image-borders {
+            //   height: auto;
+            //   max-width: 95vw;
+            // }
+
+          }
+
 
         }
       }
     }
   }
+
   .message {
     font-size: 1.3rem;
     display: flex;

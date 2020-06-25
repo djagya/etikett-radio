@@ -20,25 +20,40 @@
         }
 
         .host-description {
-            display: grid;
-            grid-template-rows: 10% 70% 10% 10%;
+            @include flex-column;
+            justify-content: space-between;
             text-align: left;
             padding: 1rem;
 
-            .social-media-container {
-                display: flex;
-                justify-content: flex-end;
-                padding-top: 1rem;
+            .about-host {
+                height: 100%;
+            }
 
-                i {
-                    margin-left: .5rem;
+            h3 {
+                margin-bottom: 2rem;
+            }
+
+            .social-and-pagelink {
+
+
+                .social-media-container {
+                    display: flex;
+                    justify-content: flex-end;
+                    padding-top: 1rem;
+
+                    i {
+                        margin-left: .5rem;
+                    }
+                }
+
+
+
+                .host-pagelink {
+                    display: flex;
+                    justify-content: flex-end;
                 }
             }
 
-            .host-pagelink {
-                display: flex;
-                justify-content: flex-end;
-            }
 
             a {
                 :hover {
@@ -60,8 +75,8 @@
     .grid-wrapper {
         display: flex;
         justify-content: center;
-        width: 100%; 
-        
+        width: 100%;
+
         .hosts-list {
             display: grid;
             grid-template-columns: repeat(3, 300px);
@@ -71,15 +86,16 @@
                 display: flex;
                 justify-content: center;
                 margin: 0;
-                
+
             }
 
             .link-component {
                 text-decoration: none;
                 margin: 0;
+
                 h3 {
                     max-width: 100%;
-                  }
+                }
 
                 .host-image-borders {
                     position: relative;
@@ -101,8 +117,8 @@
                             transition: 0.3s ease-in;
                         }
                     }
-                }  
-            
+                }
+
             }
 
             .host-name {

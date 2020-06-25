@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useAlert } from 'react-alert';
-import ReactPlayer from 'react-player';
-import audioIcon from './icons/audio.png';
-import muteIcon from './icons/mute.png';
-import { withRouter, NavLink } from 'react-router-dom';
-import ChatApp from './chat/ChatApp';
-import GetData from "./GetData";
-import { Context } from "./Context";
-import moment from "moment";
+import audioIcon from '../icons/audio.png';
+import muteIcon from '../icons/mute.png';
+import { withRouter } from 'react-router-dom';
+import ChatApp from '../chat/ChatApp';
+import GetData from "../GetData";
+import { Context } from "../Context";
 import ResponsiveNavbar from './ResponsiveNavbar';
+import Stream from './Stream';
+import DesktopNavbar from './DesktopNavbar';
+import MessageControls from './MessageControls';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
@@ -125,86 +126,26 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         }
     }
 
-    ////////////////
-    //For InfoBar
-    ////////////////
-    useEffect(() => {
-        GetData("/infobar")
-            .then(data => {
-                if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
-                if (data.status === 403) {
-                    alert.error("Status 403: Forbidden")
-                    return
-                }
-                if (!data.success) {
-                    alert.error("Failed to fetch data, please contact an admin")
-                    return
-                };
-                context.setInfoBarMessage(data.infoBar[0].message)
-                context.setInfoID(data.infoBar[0]._id)
-            })
-    }, [])
-
-    ////////////////
-    //Clock 
-    ////////////////
-    const [time, setTime] = useState(moment().format("h:mm:ss a"))
-    const timer = () => setTime(moment().format("H:mm:ss"))
-    useEffect(
-        () => {
-
-            const id = setInterval(timer, 1000);
-            return () => clearInterval(id);
-        }, [time]);
     return (
         loading
-            ? (
-                null
-            )
-            : (
+            ? ( null ) : (
                 <header className={`App-header ${headerSize}`}>
-                    {isMobileWidth ? <ResponsiveNavbar /> :
-                        <nav role="navigation">
-                            <NavLink activeClassName="active-nav" className="nav-link" exact={true} to="/">home.</NavLink>
-                            <NavLink activeClassName="active-nav" className="nav-link" to="/schedule">schedule.</NavLink>
-                            <NavLink activeClassName="active-nav" className="nav-link" to="/hosts">hosts.</NavLink>
-                            <NavLink activeClassName="active-nav" className="nav-link" to="/archive">archive.</NavLink>
-                            <NavLink activeClassName="active-nav" className="nav-link" to="/blog">blog.</NavLink>
-                            <NavLink activeClassName="active-nav" className="nav-link" to="/contact">contact.</NavLink>
-                            <NavLink activeClassName="active-nav" className="nav-link" to="/login">staff only.</NavLink>
-                        </nav>
-                    }
 
-                    <div className={`chat ${chatState}`}>
-                        <ChatApp name={name} setName={setName} />
-                    </div>
+                    {isMobileWidth ? <ResponsiveNavbar /> : <DesktopNavbar /> }
 
-                    <section className="embeded-video">
-                        <ReactPlayer
-                            className="ReactPlayer"
-                            url={source}
-                            playing={playing}
-                            volume={parseFloat(volume)}
-                            muted={false}
-                            ref={videoPlayer}
-                            width="100%"
-                            height="100%"
+                        <div className={`chat ${chatState}`}> <ChatApp name={name} setName={setName} /> </div>
+
+                        <Stream source={source} playing={playing} volume={volume} videoPlayer={videoPlayer} />
+
+                        <MessageControls 
+                            source={source} 
+                            radio={radio} 
+                            icon={icon} 
+                            volume={volume} 
+                            handlePlayBtn={handlePlayBtn} 
+                            handleAudio={handleAudio} 
+                            handleVolume={handleVolume}
                         />
-                    </section>
-
-                    <section className="message-controls-container">
-                        {source === radio ?
-                            <div className="player-controls">
-                                <button className="playPauseBtn" onClick={handlePlayBtn} role="play-pause button"></button>
-                                <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
-                                <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
-                            </div>
-                            : null}
-                        <div className="message">
-                            <span className="moving-text"> {time} -- {context.infoBarMessage}</span>
-                        </div>
-
-                    </section>
                 </header>
             )
     )
