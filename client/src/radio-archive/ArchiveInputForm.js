@@ -1,12 +1,14 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, useContext } from 'react';
 import { useAlert } from 'react-alert';
+import {Context} from "../Context";
 import PostData from "../PostData";
+import PutData from "../PutData";
 import GetData from "../GetData";
 import { ClampToEdgeWrapping } from 'three';
 
 export default function ArchiveInputForm(props) {
     const [exist, setExist] = useState(false);
-
+    const {setShowEdit, archiveData, setArchiveData} =useContext(Context)
     const [hostData, setHostData] = useState([]);
     const [host, setHost] = useState("");
     let hostID = "";
@@ -19,7 +21,7 @@ export default function ArchiveInputForm(props) {
     const [description, setDescription] = useState("");
     const alert = useAlert();
 
-    const archive= props && props.data;
+    const archive= archiveData;
     const id =props.data && props.data._id;
 
     useEffect(() => {
@@ -29,6 +31,7 @@ export default function ArchiveInputForm(props) {
                 if (id) {
                         setExist(true)
                         setHost(archive.host)
+                        setFilter(archive.host)
                         setShow(archive.show)
                         setGenre(archive.genre)
                         setDate(archive.date.toString().substring(0, 10))
@@ -41,8 +44,6 @@ export default function ArchiveInputForm(props) {
     }, [])
 
 
-    
-console.log(archive)
 
 
 
@@ -69,20 +70,37 @@ console.log(archive)
             "description": description,
         };
         
-        PostData("/archive/post", body)
-            .then(data => { reload(data) })
+        if (!exist) {
+            PostData("/archive/post", body)
+                .then(data => { 
+                    if (data.success) {
+                        alert.success('Show archived!', {
+                            onClose: () => {
+                                window.location.reload()
+                            }
+                        })
+                    } else {
+                        alert.error(data.err);
+                    }
+                
+                })
 
-        const reload = (data) => {
-            if (data.success) {
-                alert.success('Your entry has been posted!', {
-                    onClose: () => {
-                        window.location.reload()
+
+
+        } else {
+            PutData(`/archive/${id}`, body)
+                .then(data => { 
+                    if (!data.success) { 
+                        console.log(data);
+                        alert.error('Server is not responding... Please try again later.'); 
+                    } else {
+                        setArchiveData(data.archive)
+                        setShowEdit(false);
+                        alert.success('Your changes have been saved!', { timeout: 3000 } );
                     }
                 })
-            } else {
-                alert.error(data.err);
-            }
         }
+
     }
     const filtered = () => {
 
