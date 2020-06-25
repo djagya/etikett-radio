@@ -52,7 +52,7 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         // Sanitize word
         titleWords.forEach(word => {
           let sanitizedWord = word[0].toLocaleUpperCase() + word.substring(1).toLocaleLowerCase();
-          sanitizedTitle += sanitizedWord;
+          sanitizedTitle += sanitizedWord + ' ';
         })
   
         // Set title
