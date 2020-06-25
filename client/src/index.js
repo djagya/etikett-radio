@@ -11,13 +11,35 @@ const options = {
   offset: '-50px',
   transition: transitions.SCALE,
 }
+const alertStyle = {
+  backgroundColor: '#010508',
+  color: '#fff',
+  padding: '10px',
+  textTransform: 'lowercase',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  boxShadow: '0px 2px 2px 2px rgba(0, 0, 0, 0.03)',
+  width: '300px',
+  border: "1px solid #467883",
+  boxSizing: 'border-box'
+}
+const buttonStyle = {
+  marginLeft: '20px',
+  border: 'none',
+  height: "10px",
+  display: 'flex',
+  alignItems: 'center',
+  cursor: 'pointer',
+  color: '#fff'
+}
 const AlertTemplate = ({ style, options, message, close }) => (
-  <div style={{ color: "#ff0000", ...style }}>
+  <div style={{ ...alertStyle, ...style }}>
     {options.type === 'info' && '!'}
     {options.type === 'success' && ':)'}
-    {options.type === 'error' && ':('}
+    {options.type === 'error' && ''}
     {message}
-    <button onClick={close}>X</button>
+    <button onClick={close} style={buttonStyle}>X</button>
   </div>
 )
 
