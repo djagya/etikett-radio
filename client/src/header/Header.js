@@ -57,11 +57,10 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 }
             })
             .then(() => {
-                setHeaderChatGapSize();
                 setLoading(false);
             })
 
-    }, [source])
+    }, [])
 
 
     useEffect(() => {
@@ -139,6 +138,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                             handleAudio={handleAudio} 
                             handleVolume={handleVolume}
                         />
+                        <button onClick={() => source === video ? setSource(radio) : setSource(video)} >Change source</button>
                 </header>
             )
     )
