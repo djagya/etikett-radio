@@ -72,8 +72,35 @@ export default function ArchiveList(props) {
         }
     }
 
+    ////////////////
+    //  Filter
+    ////////////////
+    const [selected, setSelected] = useState("genre")
+    const [filter, setFilter] = useState("")
 
+    const handleSelect = event => {
+        const input = event.target.value
+        if (input !== selected) {
+            setSelected(input)
+            setFilter("")
+        } else return
+        
+    }
+    const handleFilterInput = event => {
+        setFilter(event.target.value)
 
+    }
+
+    const filtered = () => {
+        if (archiveData.length !== 0 && filter !== "") {
+            return archiveData.filter(entry => entry.show.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+        } else {
+            return archiveData
+        }
+    }
+    ////////////////
+    //  Filter
+    ////////////////
 
     const handleIDs = (event) => {
         const checked = event.target.checked
@@ -86,7 +113,6 @@ export default function ArchiveList(props) {
             setCheckedIDs(filteredIDs)
         }
     };
-
 
     //Delete the deleted Item from archiveData to make it disappear without refreshing the page
     const handleDelete = (checkedIDs) => {
@@ -109,10 +135,10 @@ export default function ArchiveList(props) {
 
     }
     //list item construction
-    const renderLi = (archiveData) => {
+    const renderLi = () => {
         if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (archiveData.length === 0) return null; //Because first time the code is running, archiveData will be an empty array
-        return archiveData.map((el, i) => (
+        return filtered().map((el, i) => (
 
             <Fragment key={i}>
                 <li>
@@ -144,21 +170,8 @@ export default function ArchiveList(props) {
 
 
 
-    ////////////////
-    //  Filter
-    ///////////////
-    const [selected, setSelected] = useState("genre")
-    const [filter, setFilter] = useState("")
 
-    const handleSelect = event => {
-        setSelected(event.target.value)
-        console.log(event.target.checked)
-    }
-
-    const handleFilterInput = event => {
-        setFilter(event.target.value)
-    }
-
+ 
 
     return (
         <DocumentTitle title="Archive">
@@ -215,7 +228,7 @@ export default function ArchiveList(props) {
                             {renderLiHeader()}
                         </ul>
                         <ul>
-                            {renderLi(archiveData)}
+                            {renderLi()}
                         </ul>
                     </div>
                 </div>
