@@ -74,14 +74,17 @@ export default function ArchiveInputForm() {
         return filtered().map((el,i) => 
 
             <Fragment key={i}>
-                <option onClick={() =>setFilter(host)}>{el.hostName}</option>
+                <option onClick={() =>{
+                    setFilter(el.hostName) 
+                    setHost(el.hostName)
+                }}>{el.hostName}</option>
             </Fragment>
         
-    )
+        )
     }
 
-
-
+console.log("filter "+filter)
+console.log("host "+host)
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -90,6 +93,7 @@ export default function ArchiveInputForm() {
                 setHost(input)
                 break;
             case "filter":
+                setHost(input)
                 setFilter(input)
                 break;
             case "show":
