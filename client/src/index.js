@@ -19,10 +19,12 @@ const alertStyle = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  boxShadow: '0px 2px 2px 2px rgba(0, 0, 0, 0.03)',
   width: '300px',
+  height: "70px",
   border: "1px solid #467883",
-  boxSizing: 'border-box'
+  boxSizing: 'border-box',
+  // boxShadow: '0 14px 28px rgba(255, 255, 255, 0.25)'
+
 }
 const buttonStyle = {
   marginLeft: '20px',
