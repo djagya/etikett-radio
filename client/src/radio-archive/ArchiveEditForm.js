@@ -4,7 +4,7 @@ import { useAlert } from 'react-alert';
 
 export default function ArchiveEdit(props) {
     const context = useContext(Context);
-    const archive= props.data;
+    const archive= props && props.data;
     const id = props.data._id;
     const alert = useAlert();
     const [show, setShow] = useState(archive.show);

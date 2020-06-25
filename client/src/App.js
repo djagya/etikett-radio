@@ -31,11 +31,10 @@ import AllHosts from './hosts/AllHosts';
 //Archive Related
 import ArchiveList from "./radio-archive/ArchiveList";
 import ArchiveDetail from './radio-archive/ArchivedShowDetail';
-import ArchiveEdit from './radio-archive/ArchiveEditForm';
+import ArchiveInputForm from './radio-archive/ArchiveInputForm';
 //Style related
 import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
-import footerImg from "./img/footer-img-1920x600.png"
 import DocumentTitle from 'react-document-title';
 import SkipLink from 'skip-links';
 import GlobalErrorBoundary from './GlobalErrorBoundary';
@@ -146,7 +145,7 @@ function App(props) {
                 {/* Archive Routes */}
                 <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
                 <Route exact path="/archive/:id" component={ArchiveDetail} />
-                <Route exact path="/:id/edit" component={ArchiveEdit} />
+                <Route exact path="/:id/edit" component={ArchiveInputForm} />
 
                 {/* Hosts Routes */}
                 <Route exact path="/hosts" render={(props) => <HostList {...props} cookies={cookies} />} />

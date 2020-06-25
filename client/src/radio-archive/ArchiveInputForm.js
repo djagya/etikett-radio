@@ -4,7 +4,9 @@ import PostData from "../PostData";
 import GetData from "../GetData";
 import { ClampToEdgeWrapping } from 'three';
 
-export default function ArchiveInputForm() {
+export default function ArchiveInputForm(props) {
+    const [exist, setExist] = useState(false);
+
     const [hostData, setHostData] = useState([]);
     const [host, setHost] = useState("");
     let hostID = "";
@@ -17,10 +19,32 @@ export default function ArchiveInputForm() {
     const [description, setDescription] = useState("");
     const alert = useAlert();
 
+    const archive= props && props.data;
+    const id =props.data && props.data._id;
+
     useEffect(() => {
         GetData("/host")
-            .then(data => setHostData(data.host.sort((hostA, hostB) => (hostA.hostName < hostB.hostName) ? -1 : 1)))
+            .then(data => {
+                setHostData(data.host.sort((hostA, hostB) => (hostA.hostName < hostB.hostName) ? -1 : 1))
+                if (id) {
+                        setExist(true)
+                        setHost(archive.host)
+                        setShow(archive.show)
+                        setGenre(archive.genre)
+                        setDate(archive.date.toString().substring(0, 10))
+                        setLink(archive.link)
+                        setImg(archive.img)
+                        setDescription(archive.description)
+                    }
+            })
+            
     }, [])
+
+
+    
+console.log(archive)
+
+
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -33,7 +57,7 @@ export default function ArchiveInputForm() {
             alert.error("Can't find the host");
             return
         }
-        //POST request
+        
         const body = {
             "host": host,
             "hostID": hostID,
@@ -44,7 +68,6 @@ export default function ArchiveInputForm() {
             "img": img,
             "description": description,
         };
-        console.log(body)
         
         PostData("/archive/post", body)
             .then(data => { reload(data) })

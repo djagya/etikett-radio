@@ -35,7 +35,6 @@ export default function EditHostPage(props) {
             .then(data => {
                 if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
                 
-                console.log(data.host)
                 if (data.status ===403) {
                     alert.error("Status 403: Forbidden") 
                     return

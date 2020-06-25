@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
-import ArchiveEdit from './ArchiveEditForm';
 import { Context } from "../Context";
+import ArchiveInputForm from './ArchiveInputForm';
 
 export default function ArchiveDetail(props) {
     const context = useContext(Context)
@@ -33,7 +33,7 @@ export default function ArchiveDetail(props) {
                         }
                     </div>
                     {showEdit ?
-                        <ArchiveEdit id={param} data={archiveData} /> :
+                        <ArchiveInputForm id={param} data={archiveData} /> :
                         <div className="archive-details">
                             <Link className="link-component" to={`/archive`}>back to archive</Link>
                             <div className="archive-details-card">
