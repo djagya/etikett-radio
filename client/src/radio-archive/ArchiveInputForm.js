@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { useAlert } from 'react-alert';
 import PostData from "../PostData";
 import GetData from "../GetData";
+import { ClampToEdgeWrapping } from 'three';
 
 export default function ArchiveInputForm() {
     const [hostData, setHostData] = useState([]);
@@ -60,13 +61,23 @@ export default function ArchiveInputForm() {
             }
         }
     }
+    const filtered = () => {
 
+        if (hostData.length !== 0 && filter !=="") {
+            return hostData.filter(host => host.hostName.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+        } else {
+            return hostData
+        }
+    }
     const renderHostOptions = () => {
-        return hostData.map((host,i) => 
+        // if (filtered.length === 0) return
+        return filtered().map((el,i) => 
+
             <Fragment key={i}>
-                <option>{host.hostName}</option>
+                <option onClick={() =>setFilter(host)}>{el.hostName}</option>
             </Fragment>
-        )
+        
+    )
     }
 
 
@@ -78,9 +89,9 @@ export default function ArchiveInputForm() {
             case "host":
                 setHost(input)
                 break;
-                case "filter":
-                    setFilter(input)
-                    break;
+            case "filter":
+                setFilter(input)
+                break;
             case "show":
                 setShow(input)
                 break;
