@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import ChatApp from '../chat/ChatApp';
 import GetData from "../GetData";
 import { Context } from "../Context";
-import moment from "moment";
 import ResponsiveNavbar from './ResponsiveNavbar';
 import Stream from './Stream';
 import DesktopNavbar from './DesktopNavbar';
@@ -147,18 +146,6 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             })
     }, [])
 
-    ////////////////
-    //Clock 
-    ////////////////
-    const [time, setTime] = useState(moment().format("h:mm:ss a"))
-    const timer = () => setTime(moment().format("H:mm:ss"))
-    useEffect(
-        () => {
-
-            const id = setInterval(timer, 1000);
-            return () => clearInterval(id);
-        }, [time]);
-
     return (
         loading
             ? ( null ) : (
@@ -178,7 +165,6 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                             handlePlayBtn={handlePlayBtn} 
                             handleAudio={handleAudio} 
                             handleVolume={handleVolume}
-                            time={time}
                         />
                 </header>
             )

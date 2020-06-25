@@ -1,8 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Context } from "../Context";
+import moment from "moment";
 
-export default function MessageControls({ source, radio, icon, volume, handlePlayBtn, handleAudio, handleVolume, time }) {
+
+export default function MessageControls({ source, radio, icon, volume, handlePlayBtn, handleAudio, handleVolume }) {
   const context = useContext(Context);
+  const [time, setTime] = useState(moment().format("h:mm:ss a"))
+  const timer = () => setTime(moment().format("H:mm:ss"))
+
+  useEffect(() => {
+    const id = setInterval(timer, 1000);
+    return () => clearInterval(id);
+  }, [time]);
 
   return (
     <section className="message-controls-container">

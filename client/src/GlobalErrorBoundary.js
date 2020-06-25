@@ -16,7 +16,7 @@ class GlobalErrorBoundary extends React.Component {
   // You can also log the error to an error reporting service    
     console.log(error, errorInfo);  
   }
-
+  
   render() {
     if (this.state.hasError) {      
     // You can render any custom fallback UI      
@@ -25,7 +25,8 @@ class GlobalErrorBoundary extends React.Component {
           <div className="global-error-inner-container">
             <h1>Something went wrong: </h1>
             <p>{this.state.error.message}</p>
-            <Link to="/" className="link-component">Home</Link>
+            {/* Shoud we just ask the user to realod the page? */}
+            <Link to="/">Home</Link>
           </div>
         </div>
       )    
