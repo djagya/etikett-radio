@@ -25,29 +25,30 @@ export default function ArchiveDetail(props) {
     return (
         <Context.Provider value={{ showEdit, setShowEdit }}>
             <div className={`${context.gapClass} archive-details-page`}>
-
-                <div className="button-container controls">
+                <div className="archive-details-content">
+                    <div className="button-container controls">
+                        {showEdit ?
+                            <button type="button" onClick={() => setShowEdit(false)}>cancel</button> :
+                            <button type="button" onClick={() => setShowEdit(true)}>edit</button>
+                        }
+                    </div>
                     {showEdit ?
-                        <button type="button" onClick={() => setShowEdit(false)}>cancel</button> :
-                        <button type="button" onClick={() => setShowEdit(true)}>edit</button>
-                    }
-                </div>
-                {showEdit ?
-                    <ArchiveEdit id={param} data={archiveData} /> :
-                    <div className="archive-details">
-                        <Link className="link-component" to={`/archive`}>back to archive</Link>
-                        <div className="archive-details-card">
-                            <img src={archiveData.img} width="300" height="300" alt={`Artwork of ${archiveData.show}`} />
-                            <div className="list">
-                                <h2>{archiveData.show} by {archiveData.host}</h2>
-                                <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
-                                <p>{archiveData.genre}</p>
-                                <q>{archiveData.description}</q>
-                                <a className="link-component" target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
+                        <ArchiveEdit id={param} data={archiveData} /> :
+                        <div className="archive-details">
+                            <Link className="link-component" to={`/archive`}>back to archive</Link>
+                            <div className="archive-details-card">
+                                <img src={archiveData.img} width="300" height="300" alt={`Artwork of ${archiveData.show}`} />
+                                <div className="list">
+                                    <h2>{archiveData.show} by {archiveData.host}</h2>
+                                    <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
+                                    <p>{archiveData.genre}</p>
+                                    <q>{archiveData.description}</q>
+                                    <a className="link-component" target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </Context.Provider>
     )

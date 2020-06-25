@@ -24,8 +24,6 @@ export default function ArchiveList(props) {
             .then(data => setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1)))
     }, [])
 
-console.log(archiveData)
-
     const sortData = i => {
         switch (i) {
             case 0:
