@@ -21,7 +21,7 @@ const alertStyle = {
   justifyContent: 'center',
   alignItems: 'center',
   width: '300px',
-  height: "70px",
+  height: "auto",
   border: "1px solid #467883",
   boxSizing: 'border-box',
   borderRadius: "2px"
