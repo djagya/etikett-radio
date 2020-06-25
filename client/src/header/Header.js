@@ -50,6 +50,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         fetch(`https://api.twitch.tv/helix/streams?user_id=${channelId}`, options)
             .then(res => res.json())
             .then(streamData => {
+                console.log(streamData)
                 if (!streamData.data[0]) {
                     return
                 }
