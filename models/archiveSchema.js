@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const ArchiveSchema = new Schema(
     {
         host: { type: String, required: true },
+        hostID: {type: String, required: true},
         show: { type: String, required: true },
         genre: { type: String, required: true },
         date: { type: Date, default: Date.now, required: true },

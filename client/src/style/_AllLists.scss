@@ -64,13 +64,20 @@
     }
   }
 
-  .archive-list-grid {
-    grid-template-columns: 80px 1fr 1fr 1fr 1fr 20px;
+
+.archive-list-grid {
+  width: 1000px;
+  margin-left: 20px; //to center because of for users invisible checkbox placeholder 
+    grid-template-columns: 80px 3fr 2fr 2fr 1fr 20px;
+    li {
+      max-width: 250px;
+    }
     column-gap: 20px;
   }
   .post-archive {
     margin-bottom: 2rem;
   }
+
   .img-container {
     display: flex;
     justify-content: flex-end;

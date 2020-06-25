@@ -30,7 +30,7 @@ export default function ArchiveInputForm() {
         if (chosenHost.hostName === host) { 
             hostID = chosenHost._id;
          } else {
-            alert.error("Host doesnt exist");
+            alert.error("Can't find the host");
             return
         }
         //POST request
@@ -44,9 +44,8 @@ export default function ArchiveInputForm() {
             "img": img,
             "description": description,
         };
-        console.log("chosenID "+chosenHost._id)
-        console.log("set host ID "+hostID)
-        return
+        console.log(body)
+        
         PostData("/archive/post", body)
             .then(data => { reload(data) })
 

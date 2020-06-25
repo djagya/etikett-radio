@@ -24,7 +24,7 @@ export default function ArchiveList(props) {
             .then(data => setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1)))
     }, [])
 
-
+console.log(archiveData)
 
     const sortData = i => {
         switch (i) {
@@ -120,7 +120,7 @@ export default function ArchiveList(props) {
                 <ul className="all-data archive-list-grid">
                     <li className="img-container"><img src={el.img} alt={`Small version of the artwork of ${el.show}`} width="50" height="50" /></li>
                     <li><Link className="link-component" to={`archive/${el._id}`}>{el.show}</Link></li>
-                    <li>{el.host}</li>
+                    <li><Link className="link-component" to={`hosts/${el.hostID}`}>{el.host}</Link></li>
                     <li>{el.genre}</li>
                     <li>{el.date.substring(0, 10)}</li>
                     {props.cookies.user && props.cookies.user.role === 'Admin' ?
