@@ -34,6 +34,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [chatState, setChatState] = useState('chat-homescreen-with-video');
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
+    const [showSourceBtn, setShowSourceBtn] = useState(false);
 
     context.setPathName(location.pathname)
 
@@ -41,8 +42,8 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         const options = {
             headers: {
                 'Accept': 'application/vnd.twitchtv.v5+json',
-                'Client-ID': 'gp762nuuoqcoxypju8c569th9wz7q5',
-                'Authorization': 'Bearer mz2js4nc3yjfywkj04p5bhivieycjm'
+                'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
+                'Authorization': process.env.REACT_APP_TWITCH_AUTH_KEY
             }
         }
 
@@ -54,47 +55,39 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 }
                 if (streamData.data[0].type === "live" && !isMobileDevice) {
                     setSource(video)
+                    setShowSourceBtn(true);
                 }
             })
             .then(() => {
-                if (source === video && location.pathname === '/') {
-                    setHeaderSize('full-header');
-                    setChatState('chat-homescreen-with-video');
-                    context.setGapClass("big-gap");
-                    // If there's no video
-                } else if (source !== video) {
-                    setHeaderSize('small-header-without-video');
-                    setChatState('chat-routes-without-video');
-                    context.setGapClass("small-gap");
-                } else {
-                    setHeaderSize('small-header-with-video');
-                    setChatState('chat-routes-with-video');
-                    context.setGapClass("big-gap");
-                }
                 setLoading(false);
             })
 
-    }, [source])
+    }, [])
 
 
     useEffect(() => {
+        setHeaderChatGapSize();
+    }, [source, location.pathname])
+
+    const setHeaderChatGapSize = () => {
 
         // If there's video and we are on homescreen
         if (source === video && location.pathname === '/') {
             setHeaderSize('full-header');
             setChatState('chat-homescreen-with-video');
+            context.setGapClass("big-gap");
 
-            // If there's no video
+        // If there's no video
         } else if (source !== video) {
             setHeaderSize('small-header-without-video');
             setChatState('chat-routes-without-video');
+            context.setGapClass("small-gap");
         } else {
             setHeaderSize('small-header-with-video');
             setChatState('chat-routes-with-video');
+            context.setGapClass("big-gap");
         }
-
-        // I thought this would create an infinite loop, but it works ¯\_(ツ)_/¯
-    }, [source, location.pathname])
+    }
 
     const handlePlayBtn = e => {
         e.target.classList.toggle('paused')
@@ -126,6 +119,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         }
     }
 
+
     return (
         loading
             ? ( null ) : (
@@ -146,6 +140,11 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                             handleAudio={handleAudio} 
                             handleVolume={handleVolume}
                         />
+                        
+                        {showSourceBtn ? 
+                            <button className="change-source-btn" onClick={() => source === video ? setSource(radio) : setSource(video)} >Change source</button>
+                        : null}
+                        
                 </header>
             )
     )
