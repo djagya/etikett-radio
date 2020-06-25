@@ -1,0 +1,17 @@
+.global-error-outer-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: black;
+  text-align: left;
+}
+
+.global-error-inner-container {
+  position: relative;
+  top: 20%;
+  left: 5%;
+
+  p {
+    margin: 2rem 0;
+  }
+}

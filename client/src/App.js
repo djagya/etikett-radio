@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
@@ -11,7 +11,7 @@ import "./App.scss"
 
 //Page General Related
 import Home from './Home';
-import Header from './Header';
+import Header from './header/Header';
 import Blog from './blog/Blog';
 import EditInfoBar from "./user/EditInfoBar";
 import Contact from './Contact';
@@ -38,6 +38,7 @@ import SolarSystem from './solar-system-logo/SolarSystem';
 import footerImg from "./img/footer-img-1920x600.png"
 import DocumentTitle from 'react-document-title';
 import SkipLink from 'skip-links';
+import GlobalErrorBoundary from './GlobalErrorBoundary';
 
 
 const socket = io();
@@ -106,61 +107,64 @@ function App(props) {
           }
         }>
           <div className="App">
+            <GlobalErrorBoundary>
 
-            <div className="noise" >
-              <Noisy />
-            </div>
+              <div className="noise" >
+                <Noisy />
+              </div>
 
-            <div className="solar-system">
-              <SolarSystem />
-            </div>
+              <div className="solar-system">
+                <SolarSystem />
+              </div>
 
 
-            <div className="stream-page">
-              <Header name={name} setName={setName} isMobileWidth={isMobileWidth} isMobileDevice={isMobileDevice} />
-            </div>
+              <div className="stream-page">
+                <Header name={name} setName={setName} isMobileWidth={isMobileWidth} isMobileDevice={isMobileDevice} />
+              </div>
 
-            <Switch>
+              <Switch>
 
-              {/*Placeholder for / route so we don't land on Error component*/}
-              <Route exact path="/">
-                {isMobileDevice ? <Redirect to="/schedule" /> : <Home />}
-              </Route>
+                {/*Placeholder for / route so we don't land on Error component*/}
+                <Route exact path="/">
+                  {isMobileDevice ? <Redirect to="/schedule" /> : <Home />}
+                </Route>
 
-              {/* Staff Only Routes */}
-              <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} setName={setName} removeCookie={removeCookie} />} />
-              <Route exact path="/user/all" render={(props) => <AllUser {...props} cookies={cookies} />} />
-              <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
-              <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} setName={setName} />} />
-              <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
-              <Route exact path="/user/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
-              <Route exact path="/user/host/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
-              <Route exact path="/infobar" render={(props) => <EditInfoBar {...props} cookies={cookies} />} />
-              <Route exact path="/contact" component={Contact} />
+                {/* Staff Only Routes */}
+                <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} setName={setName} removeCookie={removeCookie} />} />
+                <Route exact path="/user/all" render={(props) => <AllUser {...props} cookies={cookies} />} />
+                <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
+                <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} setName={setName} />} />
+                <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
+                <Route exact path="/user/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
+                <Route exact path="/user/host/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
+                <Route exact path="/infobar" render={(props) => <EditInfoBar {...props} cookies={cookies} />} />
+                <Route exact path="/contact" component={Contact} />
 
-              {/* Archive Routes */}
-              <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
-              <Route exact path="/archive/:id" component={ArchiveDetail} />
-              <Route exact path="/:id/edit" component={ArchiveEdit} />
+                {/* Archive Routes */}
+                <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
+                <Route exact path="/archive/:id" component={ArchiveDetail} />
+                <Route exact path="/:id/edit" component={ArchiveEdit} />
 
-              {/* Hosts Routes */}
-              <Route exact path="/hosts" render={(props) => <HostList {...props} cookies={cookies} />} />
-              <Route exact path="/hosts/:id" render={(props) => <HostDetails {...props} cookies={cookies} />} />
+                {/* Hosts Routes */}
+                <Route exact path="/hosts" render={(props) => <HostList {...props} cookies={cookies} />} />
+                <Route exact path="/hosts/:id" render={(props) => <HostDetails {...props} cookies={cookies} />} />
 
-              {/* Blog Routes */}
-              <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
+                {/* Blog Routes */}
+                <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
 
-              {/* Schedule Routes */}
-              <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
+                {/* Schedule Routes */}
+                <Route exact path="/schedule" render={(props) => <Schedule {...props} cookies={cookies} />} />
 
-              {/* Fallback to Error Page */}
-              <Route component={Error} />
+                {/* Fallback to Error Page */}
+                <Route component={Error} />
 
-            </Switch>
+              </Switch>
 
-            <footer id="footer" className={pathName !== "/" ? "gradient" : ""}>
-              <div className="footer-img"></div>
-            </footer>
+              <footer id="footer" className={pathName !== "/" ? "gradient" : ""}>
+                <div className="footer-img"></div>
+              </footer>
+
+            </GlobalErrorBoundary>
           </div>
         </Context.Provider>
       </HashRouter>
