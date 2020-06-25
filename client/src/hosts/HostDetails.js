@@ -16,7 +16,7 @@ export default function Hosts(props) {
     useEffect(() => {
         GetData(`/host/${param}`)
             .then(data => setHost(data.host))
-    }, [])
+    }, [param])
 
 
 

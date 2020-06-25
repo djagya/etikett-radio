@@ -186,7 +186,7 @@ export default function ArchiveInputForm(props) {
                         </label>
                         <label htmlFor="genre">
                         <span className="required">*</span>genre
-                            <input type="text" id="genre" placeholder="genre" value={genre} onChange={handleFormInput} />
+                            <input type="text" id="genre" placeholder="please divide multiple genres only with space" value={genre} onChange={handleFormInput} />
                         </label>
                         <label htmlFor="date">
                             <span className="required">*</span>date

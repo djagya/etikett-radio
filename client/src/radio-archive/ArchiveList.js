@@ -72,9 +72,9 @@ export default function ArchiveList(props) {
         }
     }
 
-    ////////////////
-    //  Filter
-    ////////////////
+    ////////////////////////////
+    //  Filter Section Start
+    ////////////////////////////
     const [selected, setSelected] = useState("genre")
     const [filter, setFilter] = useState("")
 
@@ -90,10 +90,8 @@ export default function ArchiveList(props) {
         setFilter(event.target.value)
 
     }
-
     const filtered = (category) => {
         if (archiveData.length !== 0 && filter !== "") {
-            console.log(category)
             switch(category) {
                 case "show":
                     return archiveData.filter(entry => entry.show.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
@@ -108,9 +106,9 @@ export default function ArchiveList(props) {
             return archiveData
         }
     }
-    ////////////////
-    //  Filter
-    ////////////////
+    ////////////////////////////
+    //   Filter Section End
+    ////////////////////////////
 
     const handleIDs = (event) => {
         const checked = event.target.checked
@@ -188,8 +186,7 @@ export default function ArchiveList(props) {
             <Context.Provider value={{ 
                 showForm, setShowForm,
                 archiveData, setArchiveData
-                
-                }}>
+            }}>
                 <div className={`${context.gapClass} all-list`}>
                     <div>
                         <h2 id="main">archive.</h2>
@@ -203,13 +200,8 @@ export default function ArchiveList(props) {
                                 <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                             </div>
                             : null}
-
                         {showForm ? <ArchiveInputForm /> : null}
-
-
-
                         <form className="archive-filter">
-                        
                             <div className="filter-selector-container">
                                 <span className="filter-by-box">filter by:</span>
                                 <label htmlFor="show-filter" className={`${selected ==="show" ? "active" : ""} `} >show
@@ -229,10 +221,6 @@ export default function ArchiveList(props) {
 
                             </div>
                         </form>
-
-
-
-
                         <ul className="list-header archive-list-grid sort-by-box">
                             <li>sort by:</li>
                             {renderLiHeader()}
