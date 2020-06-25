@@ -7,6 +7,7 @@ import { ClampToEdgeWrapping } from 'three';
 export default function ArchiveInputForm() {
     const [hostData, setHostData] = useState([]);
     const [host, setHost] = useState("");
+    let hostID = "";
     const [filter, setFilter] = useState("");
     const [show, setShow] = useState("");
     const [genre, setGenre] = useState("");
@@ -24,9 +25,18 @@ export default function ArchiveInputForm() {
     const handleSubmit = event => {
         event.preventDefault()
 
+        const chosenHost = hostData.filter(host => host.hostName.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))[0];
+
+        if (chosenHost.hostName === host) { 
+            hostID = chosenHost._id;
+         } else {
+            alert.error("Host doesnt exist");
+            return
+        }
         //POST request
         const body = {
             "host": host,
+            "hostID": hostID,
             "show": show,
             "genre": genre,
             "date": date,
@@ -34,18 +44,9 @@ export default function ArchiveInputForm() {
             "img": img,
             "description": description,
         };
-
-        // const postData = async (url, data) => {
-        //     const response = await fetch(url, {
-        //         method: "POST",
-        //         credentials: "include",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify(data)
-        //     })
-        //     return response.json()
-        // }
+        console.log("chosenID "+chosenHost._id)
+        console.log("set host ID "+hostID)
+        return
         PostData("/archive/post", body)
             .then(data => { reload(data) })
 
@@ -83,8 +84,7 @@ export default function ArchiveInputForm() {
         )
     }
 
-console.log("filter "+filter)
-console.log("host "+host)
+
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
