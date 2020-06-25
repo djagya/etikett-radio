@@ -148,13 +148,16 @@ export default function ArchiveList(props) {
     //  Filter
     ///////////////
     const [selected, setSelected] = useState("genre")
+    const [filter, setFilter] = useState("")
 
     const handleSelect = event => {
         setSelected(event.target.value)
         console.log(event.target.checked)
     }
 
-
+    const handleFilterInput = event => {
+        setFilter(event.target.value)
+    }
 
 
     return (
@@ -184,17 +187,23 @@ export default function ArchiveList(props) {
 
                         <form className="archive-filter">
                         
-                            <div className="filter-selector">
-                                <h3>filter by:</h3>
-                                <label htmlFor="show-filter" className={`${selected ==="show" ? "active" : ""} listheader`} >show
+                            <div className="filter-selector-container">
+                                <span className="filter-by-box">filter by:</span>
+                                <label htmlFor="show-filter" className={`${selected ==="show" ? "active" : ""} `} >show
                                     <input type="radio" id="show-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="show"} value="show"/>
                                 </label>
-                                <label htmlFor="host-filter" className={`${selected ==="host" ? "active" : ""} listheader`} >host
+                                <label htmlFor="host-filter" className={`${selected ==="host" ? "active" : ""} `} >host
                                     <input type="radio" id="host-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="host"} value="host"/>
                                 </label>
-                                <label htmlFor="genre-filter" className={`${selected ==="genre" ? "active" : ""} listheader`} >genre
+                                <label htmlFor="genre-filter" className={`${selected ==="genre" ? "active" : ""} `} >genre
                                     <input type="radio" id="genre-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="genre"} value="genre"/>
                                 </label>
+                            </div>
+                            <div className="filter-input-container">
+                                <label htmlFor="filter-input">
+                                    <input type="text" id="filter-input" placeholder="filter" value={filter} onChange={handleFilterInput} />
+                                </label>
+
                             </div>
                         </form>
 
@@ -202,7 +211,6 @@ export default function ArchiveList(props) {
 
 
                         <ul className="list-header archive-list-grid sort-by-box">
-                            {/* <li></li> Placeholder item for show artwork */}
                             <li>sort by:</li>
                             {renderLiHeader()}
                         </ul>
