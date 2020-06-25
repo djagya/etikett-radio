@@ -17,12 +17,12 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const videoPlayer = useRef();
 
     // Currently not streaming example
-    // const channelId = '521258416';
-    // const video = 'https://www.twitch.tv/etikett_radio';
+    const channelId = '521258416';
+    const video = 'https://www.twitch.tv/etikett_radio';
 
     // Currently sreaming example
-    const channelId = '274901255';
-    const video = 'https://www.twitch.tv/truthmusic';
+    // const channelId = '274901255';
+    // const video = 'https://www.twitch.tv/truthmusic';
 
     const radio = 'https://s9.myradiostream.com/44782/listen.mp3';
 
@@ -34,6 +34,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [chatState, setChatState] = useState('chat-homescreen-with-video');
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(true);
+    const [showSourceBtn, setShowSourceBtn] = useState(false);
 
     context.setPathName(location.pathname)
 
@@ -54,6 +55,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 }
                 if (streamData.data[0].type === "live" && !isMobileDevice) {
                     setSource(video)
+                    setShowSourceBtn(true);
                 }
             })
             .then(() => {
@@ -138,7 +140,10 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                             handleAudio={handleAudio} 
                             handleVolume={handleVolume}
                         />
-                        <button onClick={() => source === video ? setSource(radio) : setSource(video)} >Change source</button>
+                        {showSourceBtn ? 
+                            <button onClick={() => source === video ? setSource(radio) : setSource(video)} >Change source</button>
+                        : null}
+                        
                 </header>
             )
     )
