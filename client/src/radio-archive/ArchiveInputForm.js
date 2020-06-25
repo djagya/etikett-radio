@@ -63,12 +63,9 @@ export default function ArchiveInputForm() {
 
     const renderHostOptions = () => {
         return hostData.map((host,i) => 
-
-           
             <Fragment key={i}>
                 <option>{host.hostName}</option>
             </Fragment>
-            
         )
     }
 
@@ -117,15 +114,13 @@ export default function ArchiveInputForm() {
                         <input type="text" id="filter" placeholder="filter" value={filter} onChange={handleFormInput} />
                     </label>
                     <label className="archive-select-container" htmlFor="host">
-                        <select id="host" value={host} size="17" onChange={handleFormInput}>
+                        <select id="host" value={host} size="19" onChange={handleFormInput}>
                             {renderHostOptions()}
                         </select>
                     </label>
                     
                     
                     </div>
-
-
                     <div className="archive-input-right">
                         <label htmlFor="show">
                             <span className="required">*</span>show
@@ -152,7 +147,7 @@ export default function ArchiveInputForm() {
                         <textarea type="text" id="description" placeholder="Describe the show (e.g. discussed topics, featured artists, track list etc.)" onChange={handleFormInput} defaultValue={description} />
                         </label>
                     </div>
-                    <div className="submit-button">
+                    <div className="submit-button describe">
                         <input type="submit" value="save" role="button" /><span className="required">* required</span>
                     </div>
                 </div>

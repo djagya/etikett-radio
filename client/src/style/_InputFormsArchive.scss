@@ -4,7 +4,8 @@
     .archive-input-left {
         .archive-select-container {
             select {
-            height: auto;
+            height: 364px; //magic number to align it with the right side
+            
                 option {
                     margin-top: 4px;
                     color: rgba(255, 255, 255, 0.50);
@@ -12,4 +13,15 @@
             }
         }
     }
+    .archive-input-right {
+        display: flex;
+        flex-flow: wrap;
+        label {
+            width: 100%;
+            &:not(:first-child){
+                margin-top: .5rem;
+            }
+        }
+    }
+
 }
