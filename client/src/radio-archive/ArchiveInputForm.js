@@ -112,13 +112,14 @@ export default function ArchiveInputForm(props) {
         }
     }
     const renderHostOptions = () => {
-        // if (filtered.length === 0) return
         return filtered().map((el,i) => 
 
             <Fragment key={i}>
                 <option onClick={() =>{
                     setFilter(el.hostName) 
+                    if (img === ""){
                     setImg(el.hostImg)
+                    }
                     setHost(el.hostName)
                 }}>{el.hostName}</option>
             </Fragment>
