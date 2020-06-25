@@ -18,6 +18,8 @@ export default function ArchiveList(props) {
     const [lastSort, setLastSort] = useState(3)
     const alert = useAlert();
 
+    
+
     useEffect(() => {
         fetch("/archive")
             .then(res => res.json())
@@ -134,10 +136,25 @@ export default function ArchiveList(props) {
         const listHeader = ["show.", "host.", "genre.", "date."]
 
         return listHeader.map((el, i) => (
+            <>
             <li key={i} ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
-
+            </>
         ))
     }
+
+
+
+    ////////////////
+    //  Filter
+    ///////////////
+    const [selected, setSelected] = useState("genre")
+
+    const handleSelect = event => {
+        setSelected(event.target.value)
+    }
+
+
+
 
     return (
         <DocumentTitle title="Archive">
@@ -161,6 +178,28 @@ export default function ArchiveList(props) {
                             : null}
 
                         {showForm ? <ArchiveInputForm /> : null}
+
+
+
+                        <form className="archive-filter">
+                        
+                            <div className="filter-selector">
+                                <h3>filter by:</h3>
+                                <label htmlFor="show-filter" className="test" >show
+                                    <input type="radio" id="show-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="show"} value="show"/>
+                                </label>
+                                <label htmlFor="host-filter" className="test" >host
+                                    <input type="radio" id="host-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="host"} value="host"/>
+                                </label>
+                                <label htmlFor="genre-filter" className="test" >genre
+                                    <input type="radio" id="genre-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="genre"} value="genre"/>
+                                </label>
+                            </div>
+                        </form>
+
+
+
+
                         <ul className="list-header archive-list-grid sort-by-box">
                             {/* <li></li> Placeholder item for show artwork */}
                             <li>sort by:</li>
