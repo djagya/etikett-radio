@@ -56,10 +56,6 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         // Set title
         setSongName(sanitizedTitle);
       })
-      .catch(err => {
-        console.log(err)
-        alert.error('Failed to fetch song title.')
-      })
 
     return () => clearInterval(id);
   }, [time]);
