@@ -60,7 +60,7 @@ export default function Hosts(props) {
                         </a>}
                     </div>
                     <div className="host-pagelink">
-                        {host.otherLink === "" ? null : <a href={host.otherLink} target="_blank" rel="noopener noreferrer">
+                        {host.otherLink === "" ? null : <a className="link-component" href={host.otherLink} target="_blank" rel="noopener noreferrer">
                         {host.otherName}
                         </a>}
                     </div>
@@ -73,7 +73,7 @@ export default function Hosts(props) {
             <div className="hosts">
                 <div className={`${context.gapClass} host-page`}>
                     <h2>hosts.</h2>
-                    <Link to={`/hosts`}>back to hosts</Link>
+                    <Link className="link-component" to={`/hosts`}>back to hosts</Link>
                     <div className="host-content">
                         <div className="host-card">
                             {renderHost()}

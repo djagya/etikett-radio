@@ -24,12 +24,12 @@ export default function InfoBar({ room, chatWindow, setChatWindow, setName }) {
   }
 
   return (
-    <div className="InfoBar">
+    <div className="InfoBar"  >
       <div className="info-inner-container">
         <img src={minimize} alt="minimize icon" onClick={handleChatWindow} role="button" />
       </div>
       {/* <div className="h3-container"> */}
-        <h3>{room}</h3>
+        <h3 onClick={handleChatWindow}>{room}</h3>
       {/* </div> */}
       {cookies.user ? null :
       <div className="button-container">

@@ -4,12 +4,6 @@ exports.addUser = ({ id, name, room }) => {
   name = name.trim().toLocaleLowerCase();
   room = room.trim().toLocaleLowerCase();
 
-  // Make sure names are different
-  const existingUser = users.find((user) => user.name === name);
-  if (existingUser) {
-    return { error: 'Username is already taken.'}
-  }
-
   // Create user
   const user = { id, name, room };
   users.push(user);
