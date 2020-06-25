@@ -114,7 +114,7 @@ exports.sendEmail = async (req, res, next) => {
         service: 'Gmail',
         auth: {
             user: 'etikett.radio.client@gmail.com',
-            pass: 'spongebob01'
+            pass: process.env.EMAIL_PASSWORD
         }
     });
     const mailOptions = {

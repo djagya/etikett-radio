@@ -30,34 +30,36 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         console.log(err)
         alert.error('Failed to fetch info. Please contact an admin.')
       })
-  }, [])
-
-  useEffect(() => {
-    const id = setInterval(timer, 1000);
-    GetData('https://s9.myradiostream.com/44782/stats?json=1')
+    }, [])
+    
+    useEffect(() => {
+      const id = setInterval(timer, 1000);
+      
+      fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
+      .then(res => res.json())
       .then(data => {
         let titleWords;
         let sanitizedTitle = '';
-
+  
         // Separate words
         if (data.songtitle.includes('_')) {
           titleWords = data.songTitle.split('_');
         }
         if (data.songtitle.includes(' ')) {
-          titleWords = data.songTitle.split(' ');
+          titleWords = data.songtitle.split(' ');
         }
-
+  
         // Sanitize word
         titleWords.forEach(word => {
           let sanitizedWord = word[0].toLocaleUpperCase() + word.substring(1).toLocaleLowerCase();
-          sanitizedTitle += sanitizedWord;
+          sanitizedTitle += sanitizedWord + ' ';
         })
-
+  
         // Set title
         setSongName(sanitizedTitle);
       })
-
-    return () => clearInterval(id);
+      
+      return () => clearInterval(id);
   }, [time]);
 
   return (
