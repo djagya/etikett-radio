@@ -41,8 +41,8 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         const options = {
             headers: {
                 'Accept': 'application/vnd.twitchtv.v5+json',
-                'Client-ID': 'gp762nuuoqcoxypju8c569th9wz7q5',
-                'Authorization': 'Bearer mz2js4nc3yjfywkj04p5bhivieycjm'
+                'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
+                'Authorization': process.env.REACT_APP_TWITCH_AUTH_KEY
             }
         }
 
