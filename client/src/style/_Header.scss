@@ -6,7 +6,7 @@
   display: flex;
   font-size: 1.5rem;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   box-shadow: 0px 0px 15px 15px $etikett-black;
 }
 
@@ -123,6 +123,7 @@ nav {
   position: absolute;
   top: $nav-height;
   right: 0;
+  z-index: 3;
 
   // Chat window height
   .InfoBar {
@@ -150,6 +151,7 @@ nav {
   @extend .chat-homescreen-without-video;
   position: fixed;
   top: $full-header-nav-height;
+  z-index: 3;
 
   .outer-container {
     padding-top: 1rem;

@@ -488,11 +488,6 @@
     .grid-wrapper {
       .hosts-list {
         grid-template-columns: repeat(2, 280px);
-
-        .host-image-borders {
-          height: 280px;
-          max-width: 280px;
-        }
       }
     }
   }
@@ -952,10 +947,7 @@
                 height: 200px;
                 max-width: 200px;
               }
-              // .host-image-borders {
-              //   height: auto;
-              //   max-width: 95vw;
-              // }
+              
 
             }
           
