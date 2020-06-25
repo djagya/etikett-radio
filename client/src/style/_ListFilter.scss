@@ -1,4 +1,23 @@
 .filter-selector {
-    label{
-    font-size:2rem;}
+    input[type="radio"] {
+        display: none;
+    }
+
+
+    label {
+        cursor: pointer;
+      letter-spacing: 3px;
+      transition: 0.1s;
+      text-decoration-color: rgba(255, 255, 255, 0.2);
+      &.active {
+        color: $etikett-hover;
+        
+      }
+      &:hover {
+        transition: 0.1s;
+        color: $etikett-hover;
+        text-decoration-line: underline;
+        text-decoration-color: $etikett-hover;
+      }
+    }
 }

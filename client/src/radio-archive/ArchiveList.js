@@ -151,6 +151,7 @@ export default function ArchiveList(props) {
 
     const handleSelect = event => {
         setSelected(event.target.value)
+        console.log(event.target.checked)
     }
 
 
@@ -185,13 +186,13 @@ export default function ArchiveList(props) {
                         
                             <div className="filter-selector">
                                 <h3>filter by:</h3>
-                                <label htmlFor="show-filter" className="test" >show
+                                <label htmlFor="show-filter" className={`${selected ==="show" ? "active" : ""} listheader`} >show
                                     <input type="radio" id="show-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="show"} value="show"/>
                                 </label>
-                                <label htmlFor="host-filter" className="test" >host
+                                <label htmlFor="host-filter" className={`${selected ==="host" ? "active" : ""} listheader`} >host
                                     <input type="radio" id="host-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="host"} value="host"/>
                                 </label>
-                                <label htmlFor="genre-filter" className="test" >genre
+                                <label htmlFor="genre-filter" className={`${selected ==="genre" ? "active" : ""} listheader`} >genre
                                     <input type="radio" id="genre-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="genre"} value="genre"/>
                                 </label>
                             </div>
