@@ -34,8 +34,7 @@
             }
 
             .social-and-pagelink {
-                @include flex-column;
-                justify-content: flex-end;
+
 
                 .social-media-container {
                     display: flex;

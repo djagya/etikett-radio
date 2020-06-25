@@ -507,44 +507,44 @@
 
   //host page tablet
 
-  // .host-page {
-  //   .host-card {
-  //     @include flex-column;
-  //     width: 500px;
-  //     border-right: 1px solid rgba(190, 190, 195, 0.219);
-  //     box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
+  .host-page {
+    .host-card {
+      @include flex-column;
+      width: 500px;
+      border-right: 1px solid rgba(190, 190, 195, 0.219);
+      box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
 
 
-  //     h3 {
-  //       margin-top: 0;
-  //     }
+      h3 {
+        margin-top: 0;
+      }
 
-  //     .host-description {
+      .host-description {
 
-  //       .about-host {
-  //         padding: 0.5rem 0;
-  //       }
+        .about-host {
+          padding: 0.5rem 0;
+        }
 
-  //       .social-and-pagelink {
-  //         display: grid;
-  //         grid-template-rows: 45% 45%;
-  //         align-content: flex-end;
+        .social-and-pagelink {
+          display: grid;
+          grid-template-rows: 45% 45%;
+          align-content: flex-end;
 
-  //         .social-media-container {
-  //           i {
-  //             margin-left: .5rem;
-  //           }
-  //         }
-  //       }
+          .social-media-container {
+            i {
+              margin-left: .5rem;
+            }
+          }
+        }
 
-  //     }
+      }
 
-  //     .host-image-detail {
-  //       width: 500px;
-  //       height: 500px;
-  //     }
-  //   }
-  // }
+      .host-image-detail {
+        width: 500px;
+        height: 500px;
+      }
+    }
+  }
 }
 
 
@@ -949,28 +949,22 @@
           align-content: flex-end;
 
           .social-media-container {
-
-
             i {
               margin-left: .5rem;
             }
           }
-
-          .host-pagelink {
-            padding: 0;
-          }
         }
 
       }
+
+      .host-image-detail {
+        width: 300px;
+        height: 300px;
+      }
     }
-
-
-    .host-image-detail {
-      width: 300px;
-      height: 300px;
-    }
-
   }
+
+
 
   ///host cards
   //////////////////////////////////////////////////////////
