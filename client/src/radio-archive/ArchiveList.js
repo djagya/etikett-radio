@@ -91,9 +91,19 @@ export default function ArchiveList(props) {
 
     }
 
-    const filtered = () => {
+    const filtered = (category) => {
         if (archiveData.length !== 0 && filter !== "") {
-            return archiveData.filter(entry => entry.show.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+            console.log(category)
+            switch(category) {
+                case "show":
+                    return archiveData.filter(entry => entry.show.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+                case "host":
+                    return archiveData.filter(entry => entry.host.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+                case "genre":
+                    return archiveData.filter(entry => entry.genre.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+                default: console.log("Archive Filter Input ran through without effect")
+                
+            }
         } else {
             return archiveData
         }
@@ -138,7 +148,7 @@ export default function ArchiveList(props) {
     const renderLi = () => {
         if (archiveData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (archiveData.length === 0) return null; //Because first time the code is running, archiveData will be an empty array
-        return filtered().map((el, i) => (
+        return filtered(selected).map((el, i) => (
 
             <Fragment key={i}>
                 <li>
