@@ -1,8 +1,15 @@
 //Main Styling comes from _InputForms.scss
-.archive-select-container {
-    select {
-      height: auto;
-      max-height: 100%;
 
+.post-archive{
+    .archive-input-left {
+        .archive-select-container {
+            select {
+            height: auto;
+                option {
+                    margin-top: 4px;
+                    color: rgba(255, 255, 255, 0.50);
+                }
+            }
+        }
     }
-  }
+}
