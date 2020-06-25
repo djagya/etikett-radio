@@ -307,6 +307,46 @@
       }
     }
   }
+
+  //host page tablet
+
+  .host-page {
+    .host-card {
+      width: 850px;
+      border-right: 1px solid rgba(190, 190, 195, 0.219);
+      box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
+
+
+      h3 {
+        margin-top: 0;
+      }
+
+      .host-description {
+
+        .about-host {
+          padding: 0.5rem 0;
+        }
+
+        .social-and-pagelink {
+          display: grid;
+          grid-template-rows: 45% 45%;
+          align-content: flex-end;
+
+          .social-media-container {
+            i {
+              margin-left: .5rem;
+            }
+          }
+        }
+
+      }
+
+      .host-image-detail {
+        width: 450px;
+        height: 450px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: breakpoints(tablet)) {
