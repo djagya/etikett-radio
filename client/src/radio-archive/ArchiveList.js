@@ -180,9 +180,9 @@ export default function ArchiveList(props) {
         const listHeader = ["show.", "host.", "genre.", "date."]
 
         return listHeader.map((el, i) => (
-            <>
-            <li key={i} ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
-            </>
+            <Fragment  key={i}>
+            <li><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
+            </Fragment>
         ))
     }
 

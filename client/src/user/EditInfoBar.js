@@ -12,7 +12,7 @@ export default function EditInfoBar(props) {
 
     useEffect(() => {
         setCurrMessage(context.infoBarMessage)
-    }, [])
+    }, [context.infoBarMessage])
 
     const handleSubmit = event => {
         event.preventDefault()
