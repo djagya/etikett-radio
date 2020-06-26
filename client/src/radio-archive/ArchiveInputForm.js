@@ -106,7 +106,7 @@ export default function ArchiveInputForm(props) {
     const filtered = () => {
 
         if (hostData.length !== 0 && filter !=="") {
-            return hostData.filter(host => host.hostName.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+            return hostData.filter(host => host.hostName.toLocaleLowerCase().includes(filter.toLocaleLowerCase()))
         } else {
             return hostData
         }
