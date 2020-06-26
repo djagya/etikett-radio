@@ -38,8 +38,9 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
       fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
       .then(res => res.json())
       .then(data => {
-        let titleWords;
+        let titleWords = [];
         let sanitizedTitle = '';
+
         // Separate words
         if (data.songtitle.includes('_')) {
           titleWords = data.songtitle.split('_');
@@ -56,6 +57,10 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
   
         // Set title
         setSongName(sanitizedTitle);
+      })
+      .catch(err => {
+        console.log(err)
+        setSongName('');
       })
       
       return () => clearInterval(id);

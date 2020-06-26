@@ -46,6 +46,12 @@ exports.postUser = async (req, res, next) => {
 };
 exports.login = async (req, res, next) => {
     const { email, pw } = req.body
+    const options = {
+        // httpOnly: true,
+        // maxAge: 1000 * 60 * 60 * 24,
+        // secure: true,
+        // domain: 'https://localhost:3001'
+    }
     try {
         const user = await User.findOne({ email })
         if (!user) throw createError(404)
@@ -54,7 +60,7 @@ exports.login = async (req, res, next) => {
         const token = user.generateAuthToken();
         const publicData = user.getPublicFields();
 
-        res.cookie("x-auth", token).json({ success: true, user: publicData });
+        res.cookie("x-auth", token, options).json({ success: true, user: publicData });
     } catch (err) {
         next(err)
     }
