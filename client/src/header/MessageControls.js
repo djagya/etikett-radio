@@ -40,7 +40,6 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
       .then(data => {
         let titleWords;
         let sanitizedTitle = '';
-        console.log(data.songtitle)
         // Separate words
         if (data.songtitle.includes('_')) {
           titleWords = data.songtitle.split('_');

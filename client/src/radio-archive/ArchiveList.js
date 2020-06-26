@@ -94,12 +94,22 @@ export default function ArchiveList(props) {
         if (archiveData.length !== 0 && filter !== "") {
             switch(category) {
                 case "show":
-                    return archiveData.filter(entry => entry.show.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+                    return archiveData.filter(entry => entry
+                        .show
+                        .toLocaleLowerCase()
+                        .includes(filter.toLocaleLowerCase()))
                 case "host":
-                    return archiveData.filter(entry => entry.host.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+                    return archiveData.filter(entry => entry
+                        .host
+                        .toLocaleLowerCase()
+                        .includes(filter.toLocaleLowerCase()))
                 case "genre":
-                    return archiveData.filter(entry => entry.genre.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
-                default: console.log("Archive Filter Input ran through without effect")
+                    return archiveData.filter(entry => entry.genre
+                            .toLocaleLowerCase()
+                            .includes(filter.toLocaleLowerCase())
+                            )
+                default: console.log("Archive Filter Input ran through without effect") 
+                return archiveData
                 
             }
         } else {
