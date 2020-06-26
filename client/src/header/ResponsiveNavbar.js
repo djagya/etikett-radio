@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 
 
@@ -10,7 +10,9 @@ export default function ResponsiveNavbar() {
     return (
 
         <header className="App-header">
-            <span className="page-title-mobile"><Redirect to="/schedule" id="page-title-link">etikett~radio</Redirect></span>
+
+            <Link to="/schedule" id="page-title-link"> <span className="page-title-mobile">etikett~radio</span></Link>
+
             <nav role="navigation" className="mobile-menu">
 
                 <input type="checkbox" id="checkbox" className="mobile-menu__checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
