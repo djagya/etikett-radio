@@ -1,6 +1,6 @@
 {
   "engine": {
-    "node":"12.x"
+    "node": "12.x"
   },
   "name": "etikett-radio",
   "version": "1.0.0",
