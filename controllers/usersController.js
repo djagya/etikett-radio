@@ -60,7 +60,7 @@ exports.login = async (req, res, next) => {
         const token = user.generateAuthToken();
         const publicData = user.getPublicFields();
 
-        res.cookie("x-auth", token).json({ success: true, user: publicData });
+        res.cookie("x-auth", token, options).json({ success: true, user: publicData });
     } catch (err) {
         next(err)
     }
