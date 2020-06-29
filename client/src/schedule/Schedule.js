@@ -46,11 +46,11 @@ export default function Schedule(props) {
         //delete from db
         Delete(checkedIDs, "schedule").then(output => {
             if (output) {
-                alert.success('Schedile(s) successfully deleted.', {
+                alert.success('Schedule(s) successfully deleted.', {
                     onClose: () => { window.location.reload() }
                 })
             } else {
-                alert.error('Failed to delete schedule, please contact an admin.');
+                alert.error('Failed to delete schedule, please contact the admin.');
             }
         });
 

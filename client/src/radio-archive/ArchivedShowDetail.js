@@ -19,15 +19,15 @@ export default function ArchiveDetail(props) {
             .then(data => setArchiveData(data.archive))
             .catch(err => {
                 console.log('Error fetching data: ', err);
-                alert.error("Failed to fetch data, please contact an admin.");
+                alert.error("Failed to fetch data, please contact the admin.");
             })
     }, [param])
     return (
         <DocumentTitle title={`Archive | ${archiveData.show}`}>
-            <Context.Provider value={{ 
-                showEdit, setShowEdit, 
+            <Context.Provider value={{
+                showEdit, setShowEdit,
                 archiveData, setArchiveData
-                }}>
+            }}>
                 <div className={`${context.gapClass} archive-details-page`}>
                     <div className="archive-details-content">
                         <div className="button-container controls">

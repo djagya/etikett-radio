@@ -47,7 +47,7 @@ export default function LogIn(props) {
             })
             .catch(err => {
                 console.log(err);
-                alert.error('Failed to fetch user. Pleas contact an admin');
+                alert.error('Failed to fetch user. Please contact the admin');
             })
     }
 
@@ -62,7 +62,7 @@ export default function LogIn(props) {
                 setPw(input)
                 break;
 
-            default: console.log("Log In Input from LogIn.js ran through without effect")
+            default: console.log("Log In Input from LogIn.js ran through without any effect")
         }
     };
     if (props.cookies.user) { return <Redirect to={`/user/${context.id}`} /> }
