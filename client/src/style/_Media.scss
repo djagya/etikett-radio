@@ -153,100 +153,18 @@
 
   //clickable logo
   .etikett-black {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    cursor: pointer;
-    background: url(../img/etikett-black.jpg);
-    background-repeat: no-repeat;
-    background-size: 140%;
-    background-position: center;
-    border-radius: 100%;
     width: 19vh;
     height: 19vh;
-    // align-self: center;
-    box-shadow: 0 0 55px rgba(255, 255, 255, 1);
 
-    transition: 0.4s ease-in-out;
-
-    &:hover {
-      opacity: 0;
-      transition: 0.4s ease-in-out;
-    }
   }
 
   ///archive
-  .archive-details-page {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-
-
-    h2 {
-      margin: 0 0.5rem;
-      padding: 0;
-      font-size: 1.5rem;
-    }
-
-    p {
-      margin-bottom: 2rem;
-      text-align: right;
-      margin: 0.5rem;
-    }
-
-    q {
-      max-width: 300px;
-      margin: 0 auto;
-      margin-top: 1rem;
-    }
-
-    a {
-      text-align: right;
-      margin-right: 0.5rem;
-    }
-  }
 
   .archive-details-card {
-    display: flex;
-    align-items: center;
-    margin-top: 7%;
-    width: 900px;
-    box-shadow: 0 7px 14px rgba(139, 139, 139, 0.25),
-      0 10px 10px rgba(156, 156, 156, 0.22);
-
-    &:hover {
-      box-shadow: 0 14px 28px rgba(219, 219, 219, 0.25),
-        0 10px 10px rgba(156, 156, 156, 0.22);
-      transition: all 0.8s cubic-bezier(.25, .8, .25, 1);
-    }
-
-    div {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-    }
-
-    .list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    &q {
-      max-width: 300px;
-    }
-
+    width: 700px;
   }
 
-  img {
-    max-width: 300px;
-    max-height: 300px;
-  }
 
-  // .controls {
-  //   max-width: 600px;
-  // }
 
   //////////////////////////////////////////////////////////
   // Host PC Small

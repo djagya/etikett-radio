@@ -41,14 +41,16 @@ export default function ArchiveDetail(props) {
                             <div className="archive-details">
                                 <Link className="link-component" to={`/archive`}>back to archive</Link>
                                 <div className="archive-details-card">
-                                    <img src={archiveData.img} width="300" height="300" alt={`Artwork of ${archiveData.show}`} />
-                                    <div className="list">
-                                        <h2>{archiveData.show} by {archiveData.host}</h2>
-                                        <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
-                                        <p>{archiveData.genre}</p>
-                                        <a className="link-component" target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
-                                        <q>{archiveData.description}</q>
+                                    <div className="img-header">
+                                        <img src={archiveData.img} width="300" height="300" alt={`Artwork of ${archiveData.show}`} />
+                                        <div className="header-p-a">
+                                            <h2>{archiveData.show} by {archiveData.host}</h2>
+                                            <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
+                                            <p>{archiveData.genre}</p>
+                                            <a className="link-component" target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
+                                        </div>
                                     </div>
+                                    <q>{archiveData.description}</q>
                                 </div>
                             </div>
                         }
