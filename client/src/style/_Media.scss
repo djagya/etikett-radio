@@ -180,53 +180,18 @@
 
   .host-list-container {
     .grid-wrapper {
-
-      // width: 900px;
       .hosts-list {
-
         grid-template-columns: repeat(3, 280px);
 
         .hosts-list-item {
-
-          // grid-gap: 2v;
-
-
           .link-component {
-
-            // width: 280px;
-            // height: 280px;
-            // h3 {
-            //     max-width: 280px;
-            //   }
             .host-image-borders {
-              // border: 1px solid rgba(255, 255, 255, 0.486);
-              // background-color: $etikett-black;
               height: 280px;
               max-width: 280px;
-
-
-              .host-images {
-                // position: relative;
-                // opacity: 0;
-                // z-index: 2;
-                // max-width: 280px;
-                // max-height: 280px;
-
-                &:hover {
-                  // border: 1px solid rgb(255, 255, 255);
-                  // opacity: 1;
-                  // transition: 0.3s ease-in;
-                }
-              }
             }
           }
-
           .host-name {
             letter-spacing: 2px;
-            // text-transform: lowercase;
-            // opacity: 1;
-            // z-index: 1;
-            // letter-spacing: 2px;
           }
 
         }
