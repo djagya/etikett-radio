@@ -84,10 +84,10 @@ export default function Imprint() {
                     </ul>
                 </section>
                 <section className="website-builder">
-                    <p>This webiste was designed and built by:</p>
+                    <p>This website was designed and built by:</p>
                     <div>
                         <ul>
-                            <li>Adrien Tollas</li>
+                            <li>Adrienn Tollas</li>
                             <li>Francisco Chiarino</li>
                             <li>Simon Schötz</li>
                         </ul>

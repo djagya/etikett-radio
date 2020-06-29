@@ -347,7 +347,12 @@
       }
     }
   }
+
+
 }
+
+
+
 
 @media only screen and (max-width: breakpoints(tablet)) {
   .chat {
@@ -579,7 +584,21 @@
       }
     }
   }
+//About Us and Imprint
+  .imprint {
+    .imprint-content {
+      width: 90vw;
+    }
+  }
+  .about-us{
+    .about-us-content {
+        width: 90vw;
+    }
+  }
 }
+
+
+
 
 
 
