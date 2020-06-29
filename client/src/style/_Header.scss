@@ -153,12 +153,12 @@ nav {
   top: $full-header-nav-height;
   z-index: 3;
 
+  .chat-app-chat {
+    height: calc(100vh - 47px - 47px - 25px);
+    // calc(full-screen - $full-header-nav-height - $full-header-message-height - space to see twitch controllers)
+  }
   .outer-container {
     padding-top: 1rem;
-  }
-
-  .Messages {
-    height: calc(100% - 47px - 47px - 25px ) // 100% - $full-header-nav-height - $full-header-message-height - twitch controls hight
   }
 }
 
@@ -168,6 +168,10 @@ nav {
   right: 0;
   z-index: 2;
 
+  .chat-app-chat {
+    height: 80vh;
+  }
+
   // Chat window height
   .InfoBar {
     height: 6vh
@@ -175,14 +179,26 @@ nav {
 
   // .Input { height: 40px }
   .Messages {
-    height: calc(100% - 40px - 6rem)
+    height: 100%;
+  }
+
+  .button-container {
+    margin: 0;
   }
 
   // calc(100% - InfoBar - bottom-space)
 }
 
 .chat-routes-with-video {
-  @extend .chat-routes-without-video
+  @extend .chat-routes-without-video;
+
+  .chat-app-chat {
+    height: 80vh;
+  }
+
+  .Messages {
+    height: 100%;
+  }
 }
 
 ///////////////////////////////////
