@@ -1,4 +1,4 @@
-import React, {  useContext, useState } from 'react'
+import React, {  useContext, useState } from 'react';
 import {Context} from "./Context";
 import { Link } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
