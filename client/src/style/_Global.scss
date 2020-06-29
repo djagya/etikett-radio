@@ -228,15 +228,19 @@ footer {
 }
 
 @keyframes spin {
-  0% {
+  from {
     transform: rotate(0deg);
   }
 
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 
+@keyframes fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
 
 
 //---------------------------------------------//
