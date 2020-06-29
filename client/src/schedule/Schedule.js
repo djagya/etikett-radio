@@ -17,7 +17,7 @@ export default function Schedule(props) {
     const [showForm, setShowForm] = useState(false)
     const [checkedIDs, setCheckedIDs] = useState([]);
     const alert = useAlert();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
@@ -25,7 +25,7 @@ export default function Schedule(props) {
     const currMonth = moment().format("M");
 
     useEffect(() => {
-        setLoading(true)
+        setLoading(true);
         fetch("/schedule")
             .then(res => res.json())
             //sorts the incoming data by date

@@ -34,12 +34,13 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [headerSize, setHeaderSize] = useState('');
     const [chatState, setChatState] = useState('chat-homescreen-with-video');
     const [source, setSource] = useState(radio);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [showSourceBtn, setShowSourceBtn] = useState(false);
 
     context.setPathName(location.pathname)
 
     useEffect(() => {
+        setLoading(true);
         const options = {
             headers: {
                 'Accept': 'application/vnd.twitchtv.v5+json',

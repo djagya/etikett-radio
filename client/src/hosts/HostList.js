@@ -3,14 +3,27 @@ import { Context } from "../Context";
 import GetData from "../GetData";
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router-dom';
+import { useAlert } from 'react-alert';
+import Loading from '../Loading';
 
 export default function HostList() {
     const context = useContext(Context);
-    const [hostData, setHostData] = useState([])
+    const [hostData, setHostData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const alert = useAlert();
 
     useEffect(() => {
+        setLoading(true);
         GetData("/host")
-            .then(data => setHostData(data.host.filter(host => host.isActive === "active").sort((hostA, hostB) => (hostA.hostName < hostB.hostName) ? -1 : 1)))
+            .then(data => {
+                setHostData(data.host.filter(host => host.isActive === "active").sort((hostA, hostB) => (hostA.hostName < hostB.hostName) ? -1 : 1))
+                setLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                alert.error('Failed to fetch hosts from the server. Please contact the admin.');
+            })
     }, [])
 
     const renderHost = () => {
@@ -30,6 +43,8 @@ export default function HostList() {
             </Fragment>
         ))
     }
+
+    if (loading) return <Loading />
 
     return (
         <DocumentTitle title="Hosts">

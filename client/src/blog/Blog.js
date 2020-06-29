@@ -11,10 +11,11 @@ export default function Blog(props) {
     const context = useContext(Context)
     const [blogData, setBlogData] = useState([]);
     const [showForm, setShowForm] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const alert = useAlert();
 
     useEffect(() => {
+        setLoading(true);
         fetch("/blog")
             .then(res => res.json())
             .then(data => {
@@ -24,7 +25,7 @@ export default function Blog(props) {
             .catch(err => {
                 setLoading(false);
                 console.log('Error fetching data: ', err)
-                alert.error("Failed to fetch data, please contact an admin.")
+                alert.error('Failed to fetch blog entries from the server. Please contact the admin.');
             })
     }, [])
     //list item construction

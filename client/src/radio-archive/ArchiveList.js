@@ -17,12 +17,13 @@ export default function ArchiveList(props) {
     const [showForm, setShowForm] = useState(false);
     const [isActive, setIsActive] = useState(3);
     const [lastSort, setLastSort] = useState(3)
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const alert = useAlert();
 
     
 
     useEffect(() => {
+        setLoading(true);
         fetch("/archive")
             .then(res => res.json())
             .then(data => {
