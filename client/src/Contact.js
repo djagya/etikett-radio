@@ -3,7 +3,7 @@ import { Context } from "./Context";
 import { useAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
-import noisyEtikettRadioLogo from './img/imageonline-co-noise.png';
+import Loading from './Loading';
 
 
 export default function Contact() {
@@ -13,7 +13,7 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [redirect, setRedirect] = useState(false);
 
 
@@ -53,6 +53,7 @@ export default function Contact() {
     }
 
     if (redirect) return <Redirect to='/' />
+    if (loading) return <Loading />
 
     return (
         <DocumentTitle title="Contact">

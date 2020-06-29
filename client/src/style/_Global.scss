@@ -218,42 +218,24 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  animation: fade-in 350ms ease forwards;
 
   img {
     width: 150px;
     height: 150px;
-    animation: beat 3s ease-in-out 2s infinite;
+    animation:spin 3s ease-in-out 2s infinite;
   }
 }
 
-@keyframes fade-in {
+@keyframes spin {
   0% {
-    opacity: 0;
+    transform: rotate(0deg);
   }
 
   100% {
-    opacity: 1;
+    transform: rotate(360deg);
   }
 }
 
-@keyframes beat {
-  0% {
-    width: 150px;
-    height: 150px;
-  }
-
-  50% {
-    width: 170px;
-    height: 170px;
-  }
-
-  100% {
-    width: 150px;
-    height: 150px;
-  }
-}
 
 
 //---------------------------------------------//
