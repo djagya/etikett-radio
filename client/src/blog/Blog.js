@@ -5,18 +5,24 @@ import { useAlert } from 'react-alert';
 import DocumentTitle from 'react-document-title';
 import { Context } from "../Context";
 import { contextsKey } from 'express-validator/src/base';
+import Loading from '../Loading';
 
 export default function Blog(props) {
     const context = useContext(Context)
     const [blogData, setBlogData] = useState([]);
     const [showForm, setShowForm] = useState(false);
+    const [loading, setLoading] = useState(true);
     const alert = useAlert();
 
     useEffect(() => {
         fetch("/blog")
             .then(res => res.json())
-            .then(data => setBlogData(data.blog.reverse()))
+            .then(data => {
+                setBlogData(data.blog.reverse());
+                setLoading(false);
+            })
             .catch(err => {
+                setLoading(false);
                 console.log('Error fetching data: ', err)
                 alert.error("Failed to fetch data, please contact an admin.")
             })
@@ -33,6 +39,7 @@ export default function Blog(props) {
         ));
     };
 
+    if (loading) return <Loading />
 
     return (
         <DocumentTitle title="Blog">
