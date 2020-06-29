@@ -249,9 +249,10 @@ footer {
 .all-list,
 .blog-page,
 .host-list-container,
+.hosts,
 .input-form,
 .staff-only {
-  animation: fadein ease 800ms;
+  animation: fadein ease 700ms;
 }
 
 @keyframes fadein {
