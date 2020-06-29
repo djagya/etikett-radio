@@ -13,6 +13,7 @@ export default function MyProfile(props) {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [pw, setPW] = useState("");
+    const [pwCheck, setPWCheck] = useState("");
     const [role, setRole] = useState("");
     const alert = useAlert();
     const [editProfile, setEditProfile] = useState(false);
@@ -45,6 +46,10 @@ export default function MyProfile(props) {
     }, [context.id])
 
     const handlePatch = body => {
+        if (pw !== pwCheck) {
+            alert.error("Please repeat your password");
+            return
+        }
         PatchData(`/users/${context.id}`, body)
             .then(data => {
                 if (!data.success) {
@@ -53,9 +58,10 @@ export default function MyProfile(props) {
                 } else {
                     props.setCookie('user', data.user, { path: '/' })
                     alert.success('Profile edited!', { timeout: 3000 });
+                    setEditPW(false)
+                    setEditProfile(false)
                 }
             })
-            // .then(context.setProfileEdit(false))
     }    
 
     const handlePersonalSubmit = event => {
@@ -71,6 +77,7 @@ export default function MyProfile(props) {
     }
 
     const handlePWSubmit = event => {
+        
         event.preventDefault()
         const body = {
             "pw": pw,
@@ -97,6 +104,9 @@ export default function MyProfile(props) {
             case "pw":
                 setPW(input)
                 break;
+                case "pwCheck":
+                    setPWCheck(input)
+                    break;
             case "role":
                 setRole(input)
                 break;
@@ -111,15 +121,35 @@ export default function MyProfile(props) {
             <div className={`${context.gapClass} input-form`}>
                 <h2 id="main">my profile.</h2>
                 <div>
-                {!editPW && !editProfile ?
-                    <div className="button-container">
-                        <button type="button" onClick={() => context.setProfileEdit(false)}>back</button>
-                    </div> : null
+                    {!editPW && !editProfile ?
+
+                        <div>
+                            <div className="button-container">
+                                <button type="button" onClick={() => context.setProfileEdit(false)}>back</button>
+                            </div>
+                            <div>
+                                <div className="user-overview">
+                                    <ul>
+                                        <li>name:</li>
+                                        <li>user name:</li>
+                                        <li>email:</li>
+                                        <li>role:</li>
+                                    </ul>
+                                    <ul>
+                                        <li>{firstName} {lastName}</li>
+                                        <li>{userName}</li>
+                                        <li>{email}</li>
+                                        <li>{role}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> : null
+
                     }
                     {editProfile ? 
                         
                         <form onSubmit={handlePersonalSubmit} role="form">
-                            <div className="button-container staff-only">
+                            <div className="button-container">
                                 <button type="button" onClick={() => setEditProfile(false)}>cancel</button>
                             </div>
                             <div className="grid-container">
@@ -154,7 +184,7 @@ export default function MyProfile(props) {
                             </div>
                         </form>  :
                         editPW? null :
-                        <div className="button-container">
+                        <div className="button-container option-button">
                             <button type="button" onClick={() => setEditProfile(true)}>edit user data</button>
                         </div>
                             
@@ -169,6 +199,9 @@ export default function MyProfile(props) {
                             <label htmlFor="pw">
                                 <span className="required">*</span>password
                                 <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
+                            </label><label htmlFor="pwCheck">
+                                <span className="required">*</span>repeat password
+                                <input type="password" id="pwCheck" placeholder="repeat to check yourself" value={pwCheck} onChange={handleFormInput} />
                             </label>
                         </div>
                         <div className="submit-button">
@@ -176,7 +209,7 @@ export default function MyProfile(props) {
                         </div>
                         </form>  :
                         editProfile? null :
-                        <div className="button-container">
+                        <div className="button-container option-button">
                             <button type="button" onClick={() => setEditPW(true)}>change password</button>
                         </div>
 }
