@@ -161,7 +161,8 @@
   ///archive
 
   .archive-details-card {
-    width: 700px;
+    width: 90vw;
+    margin: 2rem 1rem;
   }
 
 
@@ -385,7 +386,17 @@
 
 
   .archive-details-card {
-    width: 580px;
+    width: 90vw;
+    margin: 2rem 1rem;
+
+    img {
+      width: 100%;
+    }
+
+    q {
+      width: 90%;
+      margin: 0.5rem;
+    }
   }
 
 
@@ -558,8 +569,8 @@
 
 
   .archive-details-card {
-    margin-top: 2rem;
-    width: 250px;
+    margin: 2rem 1rem;
+    width: 90vw;
 
     h2 {
       font-size: 18px;
@@ -568,8 +579,9 @@
     }
 
     q {
-      max-width: 230px;
+      width: 90%;
       margin: 1rem 0.5rem;
+      overflow-wrap: break-word;
     }
 
     .img-header {
@@ -580,6 +592,7 @@
       img {
         max-width: 250px;
         max-height: 250px;
+        margin: auto;
       }
     }
   }
