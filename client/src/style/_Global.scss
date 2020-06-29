@@ -237,6 +237,19 @@ footer {
   }
 }
 
+///////////////////////////////////
+//          Fade In
+///////////////////////////////////
+
+.schedule-content,
+.all-list,
+.blog-page,
+.host-list-container,
+.input-form,
+.staff-only {
+  animation: fadein ease 1s;
+}
+
 @keyframes fadein {
   0% {opacity: 0;}
   100% {opacity: 1;}

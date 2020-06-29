@@ -5,7 +5,6 @@ import { useAlert } from 'react-alert';
 import DocumentTitle from 'react-document-title';
 import { Context } from "../Context";
 import { contextsKey } from 'express-validator/src/base';
-import Loading from '../Loading';
 
 export default function Blog(props) {
     const context = useContext(Context)
@@ -40,7 +39,7 @@ export default function Blog(props) {
         ));
     };
 
-    if (loading) return <Loading />
+    if (loading) return null
 
     return (
         <DocumentTitle title="Blog">

@@ -8,7 +8,6 @@ import ScheduleWeek from './ScheduleWeek';
 import DocumentTitle from 'react-document-title';
 
 import { Context } from "../Context";
-import Loading from '../Loading';
 
 
 
@@ -113,7 +112,7 @@ export default function Schedule(props) {
         ));
     };
 
-    if (loading) return  <Loading /> 
+    if (loading) return  null 
 
     return (
         <DocumentTitle title="Schedule">
