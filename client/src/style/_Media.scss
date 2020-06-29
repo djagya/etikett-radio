@@ -30,7 +30,10 @@
     .chat-routes-with-video {
       position: fixed;
       top: 30px;
-
+      
+      .chat-app-chat {
+        height: 95vh;
+      }
       .Messages {
         margin-top: 63px;
       }
@@ -41,6 +44,10 @@
   .chat-routes-without-video {
     position: fixed;
     top: 13px;
+
+    .chat-app-chat {
+      height: 97vh;
+    }
 
     .Messages {
       margin-top: 63px;
@@ -153,100 +160,19 @@
 
   //clickable logo
   .etikett-black {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    cursor: pointer;
-    background: url(../img/etikett-black.jpg);
-    background-repeat: no-repeat;
-    background-size: 140%;
-    background-position: center;
-    border-radius: 100%;
     width: 19vh;
     height: 19vh;
-    // align-self: center;
-    box-shadow: 0 0 55px rgba(255, 255, 255, 1);
 
-    transition: 0.4s ease-in-out;
-
-    &:hover {
-      opacity: 0;
-      transition: 0.4s ease-in-out;
-    }
   }
 
   ///archive
-  .archive-details-page {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-
-
-    h2 {
-      margin: 0 0.5rem;
-      padding: 0;
-      font-size: 1.5rem;
-    }
-
-    p {
-      margin-bottom: 2rem;
-      text-align: right;
-      margin: 0.5rem;
-    }
-
-    q {
-      max-width: 300px;
-      margin: 0 auto;
-      margin-top: 1rem;
-    }
-
-    a {
-      text-align: right;
-      margin-right: 0.5rem;
-    }
-  }
 
   .archive-details-card {
-    display: flex;
-    align-items: center;
-    margin-top: 7%;
-    width: 900px;
-    box-shadow: 0 7px 14px rgba(139, 139, 139, 0.25),
-      0 10px 10px rgba(156, 156, 156, 0.22);
-
-    &:hover {
-      box-shadow: 0 14px 28px rgba(219, 219, 219, 0.25),
-        0 10px 10px rgba(156, 156, 156, 0.22);
-      transition: all 0.8s cubic-bezier(.25, .8, .25, 1);
-    }
-
-    div {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-    }
-
-    .list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    &q {
-      max-width: 300px;
-    }
-
+    width: 90vw;
+    margin: 2rem 1rem;
   }
 
-  img {
-    max-width: 300px;
-    max-height: 300px;
-  }
 
-  // .controls {
-  //   max-width: 600px;
-  // }
 
   //////////////////////////////////////////////////////////
   // Host PC Small
@@ -469,70 +395,23 @@
   }
 
   //archive
-  .archive-details-page {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
 
 
-    h2 {
-      margin: 0 0.5rem;
-      font-size: 1.5rem;
-    }
+  .archive-details-card {
+    width: 90vw;
+    margin: 2rem 1rem;
 
-    p {
-      margin-bottom: 2rem;
-      text-align: right;
-      margin: 0.5rem;
+    img {
+      width: 100%;
     }
 
     q {
-      max-width: 300px;
-      margin: 0 auto;
-      margin-top: 1rem;
-    }
-
-    a {
-      text-align: right;
-      margin-right: 0.5rem;
+      width: 90%;
+      margin: 0.5rem;
     }
   }
 
-  .archive-details-card {
-    display: flex;
-    align-items: center;
-    margin-top: 7%;
-    width: 600px;
-    box-shadow: 0 7px 14px rgba(139, 139, 139, 0.25),
-      0 10px 10px rgba(156, 156, 156, 0.22);
 
-    &:hover {
-      box-shadow: 0 14px 28px rgba(219, 219, 219, 0.25),
-        0 10px 10px rgba(156, 156, 156, 0.22);
-      transition: all 0.8s cubic-bezier(.25, .8, .25, 1);
-    }
-
-    div {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-    }
-
-    .list {
-      display: flex;
-      flex-direction: column;
-    }
-
-  }
-
-  img {
-    max-width: 300px;
-    max-height: 300px;
-  }
-
-  // .controls {
-  //   max-width: 600px;
-  // }
   //////////////////////////////////////////////////////////
   // Host Component Tablet
   //////////////////////////////////////////////////////////
@@ -712,59 +591,36 @@
     display: none;
   }
 
-  ///archive cards
-  .archive-details-page {
-    display: flex;
-    align-items: center;
+  ///archive (cards)
 
+
+  .archive-details-card {
+    margin: 2rem 1rem;
+    width: 90vw;
 
     h2 {
-      margin-bottom: 0;
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
+      font-size: 18px;
+      margin: 0.5rem 0.5rem 1rem 0.5rem;
 
-    p {
-      margin-bottom: 2rem;
-      font-size: 0.8rem;
     }
 
     q {
-      max-width: 180px;
-      margin: 0 auto;
-      margin-top: 0.5rem;
+      width: 90%;
+      margin: 1rem 0.5rem;
+      overflow-wrap: break-word;
     }
 
-    .archive-details-card {
+    .img-header {
       display: flex;
       flex-direction: column;
-      margin-top: 20%;
-      width: 200px;
-      box-shadow: 0 7px 14px rgba(139, 139, 139, 0.25),
-        0 10px 10px rgba(156, 156, 156, 0.22);
-
-      &:hover {
-        box-shadow: 0 14px 28px rgba(219, 219, 219, 0.25),
-          0 10px 10px rgba(156, 156, 156, 0.22);
-        transition: all 0.8s cubic-bezier(.25, .8, .25, 1);
-      }
 
 
-      .list {
-        display: flex;
-        width: 100%;
-        margin: 0 auto;
+      img {
+        max-width: 250px;
+        max-height: 250px;
+        margin: auto;
       }
     }
-
-    img {
-      max-width: 200px;
-      max-height: 200px;
-    }
-
-    // .controls {
-    //   max-width: 600px;
-    // }
   }
 
 
@@ -1015,91 +871,91 @@
         height: 300px;
       }
     }
-  }
 
 
 
-  ///host cards
-  //////////////////////////////////////////////////////////
-  // Host Component Phone
-  //////////////////////////////////////////////////////////
 
-  .host-list-container {
-    .grid-wrapper {
+    ///host cards
+    //////////////////////////////////////////////////////////
+    // Host Component Phone
+    //////////////////////////////////////////////////////////
 
-      .hosts-list {
-        display: flex;
-        justify-content: center;
-        flex-flow: wrap;
-        width: 90vw;
+    .host-list-container {
+      .grid-wrapper {
 
-        .hosts-list-item {
-          margin: .5rem;
+        .hosts-list {
+          display: flex;
+          justify-content: center;
+          flex-flow: wrap;
+          width: 90vw;
+
+          .hosts-list-item {
+            margin: .5rem;
 
 
-          .link-component {
-            .host-image-borders {
-              height: 200px;
-              max-width: 200px;
+            .link-component {
+              .host-image-borders {
+                height: 200px;
+                max-width: 200px;
+              }
+
+              // .host-image-borders {
+              //   height: auto;
+              //   max-width: 95vw;
+              // }
+
             }
 
-            // .host-image-borders {
-            //   height: auto;
-            //   max-width: 95vw;
-            // }
 
           }
-
-
         }
       }
     }
-  }
 
-  .message {
-    font-size: 1.3rem;
-    display: flex;
-    overflow: hidden;
-    width: 100%;
+    .message {
+      font-size: 1.3rem;
+      display: flex;
+      overflow: hidden;
+      width: 100%;
 
-    .moving-text {
-      white-space: nowrap;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-name: ticker;
-      animation-duration: 15s;
+      .moving-text {
+        white-space: nowrap;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-name: ticker;
+        animation-duration: 15s;
 
-      &:hover {
-        animation-play-state: paused;
+        &:hover {
+          animation-play-state: paused;
+        }
+
+      }
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translate3d(50%, 0, 0);
       }
 
-    }
-  }
-
-  @keyframes ticker {
-    0% {
-      transform: translate3d(50%, 0, 0);
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
     }
 
-    100% {
-      transform: translate3d(-100%, 0, 0);
+
+
+    ///header-gap
+    .big-gap {
+      margin-top: 220px;
+      background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
+    }
+
+    //quotes mobile
+    q {
+      // max-width: 300px;
+      text-align: center;
+      margin: 16px 0;
+      white-space: pre-wrap;
     }
   }
-
-
-
-  ///header-gap
-  .big-gap {
-    margin-top: 220px;
-    background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
-  }
-
-  //quotes mobile
-  q {
-    // max-width: 300px;
-    text-align: center;
-    margin: 16px 0;
-    white-space: pre-wrap;
-  }
-
 }
