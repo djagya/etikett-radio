@@ -6,6 +6,7 @@ import ArchiveInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
 
 import DocumentTitle from 'react-document-title';
+import Null from '../loading/Null';
 
 
 export default function ArchiveList(props) {
@@ -16,14 +17,24 @@ export default function ArchiveList(props) {
     const [showForm, setShowForm] = useState(false);
     const [isActive, setIsActive] = useState(3);
     const [lastSort, setLastSort] = useState(3)
+    const [loading, setLoading] = useState(false);
     const alert = useAlert();
 
-    
+
 
     useEffect(() => {
+        setLoading(true);
         fetch("/archive")
             .then(res => res.json())
-            .then(data => setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1)))
+            .then(data => {
+                setLoading(false);
+                setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1))
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                alert.error('Failed to fetch archive from the server. Please contact the admin.');
+            })
     }, [])
 
     const sortData = i => {
@@ -84,7 +95,7 @@ export default function ArchiveList(props) {
             setSelected(input)
             setFilter("")
         } else return
-        
+
     }
     const handleFilterInput = event => {
         setFilter(event.target.value)
@@ -92,7 +103,7 @@ export default function ArchiveList(props) {
     }
     const filtered = (category) => {
         if (archiveData.length !== 0 && filter !== "") {
-            switch(category) {
+            switch (category) {
                 case "show":
                     return archiveData.filter(entry => entry
                         .show
@@ -105,12 +116,12 @@ export default function ArchiveList(props) {
                         .includes(filter.toLocaleLowerCase()))
                 case "genre":
                     return archiveData.filter(entry => entry.genre
-                            .toLocaleLowerCase()
-                            .includes(filter.toLocaleLowerCase())
-                            )
-                default: console.log("Archive Filter Input ran through without effect") 
-                return archiveData
-                
+                        .toLocaleLowerCase()
+                        .includes(filter.toLocaleLowerCase())
+                    )
+                default: console.log("Archive Filter Input ran through without any effect")
+                    return archiveData
+
             }
         } else {
             return archiveData
@@ -180,20 +191,18 @@ export default function ArchiveList(props) {
         const listHeader = ["show.", "host.", "genre.", "date."]
 
         return listHeader.map((el, i) => (
-            <Fragment  key={i}>
-            <li><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
+            <Fragment key={i}>
+                <li><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
             </Fragment>
         ))
     }
 
 
-
-
- 
+    if (loading) return <Null />
 
     return (
         <DocumentTitle title="Archive">
-            <Context.Provider value={{ 
+            <Context.Provider value={{
                 showForm, setShowForm,
                 archiveData, setArchiveData
             }}>
@@ -214,14 +223,14 @@ export default function ArchiveList(props) {
                         <form className="archive-filter">
                             <div className="filter-selector-container">
                                 <span className="filter-by-box">filter by:</span>
-                                <label htmlFor="show-filter" className={`${selected ==="show" ? "active" : ""} `} >show
-                                    <input type="radio" id="show-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="show"} value="show"/>
+                                <label htmlFor="show-filter" className={`${selected === "show" ? "active" : ""} `} >show
+                                    <input type="radio" id="show-filter" name="archive-filter" onChange={handleSelect} checked={selected === "show"} value="show" />
                                 </label>
-                                <label htmlFor="host-filter" className={`${selected ==="host" ? "active" : ""} `} >host
-                                    <input type="radio" id="host-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="host"} value="host"/>
+                                <label htmlFor="host-filter" className={`${selected === "host" ? "active" : ""} `} >host
+                                    <input type="radio" id="host-filter" name="archive-filter" onChange={handleSelect} checked={selected === "host"} value="host" />
                                 </label>
-                                <label htmlFor="genre-filter" className={`${selected ==="genre" ? "active" : ""} `} >genre
-                                    <input type="radio" id="genre-filter" name="archive-filter" onChange={handleSelect} checked={selected ==="genre"} value="genre"/>
+                                <label htmlFor="genre-filter" className={`${selected === "genre" ? "active" : ""} `} >genre
+                                    <input type="radio" id="genre-filter" name="archive-filter" onChange={handleSelect} checked={selected === "genre"} value="genre" />
                                 </label>
                             </div>
                             <div className="filter-input-container">

@@ -92,6 +92,10 @@ textarea {
   resize: vertical;
 }
 
+.Null {
+  height: 200vh;
+}
+
 ///////////////////////////////////
 //         Main Page
 ///////////////////////////////////
@@ -210,49 +214,52 @@ footer {
 ///////////////////////////////////
 //           Loading
 ///////////////////////////////////
-.loading {
+.Loading {
   display: flex;
-  justify-self: center;
+  justify-content: center;
   align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  animation: fade-in 350ms ease forwards;
-
+  z-index: 3;
+  
   img {
-    width: 150px;
-    height: 150px;
-    animation: beat 3s ease-in-out 2s infinite;
+    width: 70%;
+    height: 70%;
+    animation:spin 3s ease-in-out infinite;
   }
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
 
-  100% {
-    opacity: 1;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes beat {
-  0% {
-    width: 150px;
-    height: 150px;
-  }
+///////////////////////////////////
+//          Fade In
+///////////////////////////////////
+.App-header,
+.schedule-page,
+.all-list,
+.archive-details-page,
+.blog-page,
+.host-list-container,
+.hosts,
+.input-form,
+.staff-only,
+.etikett-black {
+  animation: fadein ease 700ms;
+}
 
-  50% {
-    width: 170px;
-    height: 170px;
-  }
-
-  100% {
-    width: 150px;
-    height: 150px;
-  }
+@keyframes fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 

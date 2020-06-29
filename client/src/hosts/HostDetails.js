@@ -3,19 +3,32 @@ import { Context } from "../Context";
 import GetData from "../GetData";
 import DocumentTitle from 'react-document-title';
 import { Link } from "react-router-dom";
+import { useAlert } from 'react-alert';
+import Null from "../loading/Null";
 
 
 
 
 export default function Hosts(props) {
     const context = useContext(Context);
-    const [host, setHost] = useState([])
+    const [host, setHost] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const alert = useAlert();
 
     const param = props.match.params.id;
 
     useEffect(() => {
+        setLoading(true);
         GetData(`/host/${param}`)
-            .then(data => setHost(data.host))
+            .then(data => {
+                setLoading(false);
+                setHost(data.host);
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                alert.error('Failed to fetch host. Please contact the admin.');
+            })
     }, [param])
 
 
@@ -70,6 +83,9 @@ export default function Hosts(props) {
             </>
         )
     }
+
+    if (loading) return <Null />
+
     return (
         <DocumentTitle title={`${host.hostName}`}>
             <div className="hosts">

@@ -10,6 +10,7 @@ import ResponsiveNavbar from './ResponsiveNavbar';
 import Stream from './Stream';
 import DesktopNavbar from './DesktopNavbar';
 import MessageControls from './MessageControls';
+import Loading from '../loading/Loading';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
@@ -33,12 +34,13 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [headerSize, setHeaderSize] = useState('');
     const [chatState, setChatState] = useState('chat-homescreen-with-video');
     const [source, setSource] = useState(radio);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [showSourceBtn, setShowSourceBtn] = useState(false);
 
     context.setPathName(location.pathname)
 
     useEffect(() => {
+        setLoading(true);
         const options = {
             headers: {
                 'Accept': 'application/vnd.twitchtv.v5+json',
@@ -60,6 +62,11 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             })
             .then(() => {
                 setLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                setSource(radio);
             })
 
     }, [])
@@ -122,7 +129,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
 
     return (
         loading
-            ? ( null ) : (
+            ? ( <Loading /> ) : (
                 <header className={`App-header ${headerSize}`}>
 
                     {isMobileWidth ? <ResponsiveNavbar /> : <DesktopNavbar /> }

@@ -8,6 +8,7 @@ import ScheduleWeek from './ScheduleWeek';
 import DocumentTitle from 'react-document-title';
 
 import { Context } from "../Context";
+import Null from '../loading/Null';
 
 
 
@@ -16,6 +17,7 @@ export default function Schedule(props) {
     const [showForm, setShowForm] = useState(false)
     const [checkedIDs, setCheckedIDs] = useState([]);
     const alert = useAlert();
+    const [loading, setLoading] = useState(false);
 
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
@@ -23,10 +25,19 @@ export default function Schedule(props) {
     const currMonth = moment().format("M");
 
     useEffect(() => {
+        setLoading(true);
         fetch("/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
-            .then(data => setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))))
+            .then(data => {
+                setLoading(false)
+                setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from)))
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                alert.error('Failed to fetch schedule from the server. Please contact the admin.');
+            })
     }, [])
 
 
@@ -46,11 +57,11 @@ export default function Schedule(props) {
         //delete from db
         Delete(checkedIDs, "schedule").then(output => {
             if (output) {
-                alert.success('Schedile(s) successfully deleted.', {
+                alert.success('Schedule(s) successfully deleted.', {
                     onClose: () => { window.location.reload() }
                 })
             } else {
-                alert.error('Failed to delete schedule, please contact an admin.');
+                alert.error('Failed to delete schedule, please contact the admin.');
             }
         });
 
@@ -101,6 +112,8 @@ export default function Schedule(props) {
             <ScheduleWeek data={el} key={i} />
         ));
     };
+
+    if (loading) return  <Null /> 
 
     return (
         <DocumentTitle title="Schedule">
