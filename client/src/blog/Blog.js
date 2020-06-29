@@ -18,7 +18,7 @@ export default function Blog(props) {
             .then(data => setBlogData(data.blog.reverse()))
             .catch(err => {
                 console.log('Error fetching data: ', err)
-                alert.error("Failed to fetch data, please contact an admin.")
+                alert.error("Failed to fetch data, please contact the admin.")
             })
     }, [])
     //list item construction

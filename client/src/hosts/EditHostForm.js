@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useAlert } from 'react-alert';
-import {Context} from "../Context";
-import {Redirect} from 'react-router-dom';
+import { Context } from "../Context";
+import { Redirect } from 'react-router-dom';
 import PostData from "../PostData";
 import PutData from "../PutData";
 import GetData from "../GetData";
@@ -10,7 +10,7 @@ import Delete from "../Delete";
 
 export default function EditHostPage(props) {
     const context = useContext(Context);
-        
+
     const [profileExists, setProfileExists] = useState(false)
 
     const id = context.editHostID;
@@ -33,25 +33,25 @@ export default function EditHostPage(props) {
     useEffect(() => {
         GetData("/host")
             .then(data => {
-                if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
-                
-                if (data.status ===403) {
-                    alert.error("Status 403: Forbidden") 
+                if (!data.success) alert.error("Failed to fetch data, please contact the admin.");
+
+                if (data.status === 403) {
+                    alert.error("Status 403: Forbidden")
                     return
                 }
                 if (!data.success) {
-                    alert.error("Failed to fetch data, please contact an admin")
+                    alert.error("Failed to fetch data, please contact the admin")
                     return
                 };
-                const filteredData = (data.host.filter(el => el.userID === id ))
+                const filteredData = (data.host.filter(el => el.userID === id))
                 if (filteredData.length === 0) return
                 if (filteredData.length > 1) {
-                alert.error("It looks like there are more than 1 host profiles with the same ID, please contact an admin.")
-                return <Redirect to={`/user/${context.id}`}/>
+                    alert.error("It looks like there are more than 1 host profiles with the same ID, please contact the admin.")
+                    return <Redirect to={`/user/${context.id}`} />
                 }
                 if (filteredData.length !== 1 && role !== "Admin") {
-                    alert.error("Please contact the owner or an admin to edit this host profile")
-                    return <Redirect to={`/hosts`}/>
+                    alert.error("Please contact the owner or the admin to edit this host profile")
+                    return <Redirect to={`/hosts`} />
                 }
                 if (filteredData.length === 1 || role === "Admin") {
                     setProfileExists(true)
@@ -69,11 +69,11 @@ export default function EditHostPage(props) {
                     setOtherLink(filteredData[0].otherLink)
                     setProfileID(filteredData[0]._id)
                     // isActive(filteredData[0].isActive)
-                }   else {
+                } else {
                     return alert.error("Something went wrong")
                 }
             })
-    },  [])
+    }, [])
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -96,24 +96,26 @@ export default function EditHostPage(props) {
 
         if (!profileExists) {
             PostData("/host/createhost", body)
-            .then(data => { 
-                if (!data.success) { 
-                    console.log(data)
-                    alert.error("Something went wrong while uploading your data for the first time.")
-                } else {
-                    alert.success("You successfully initialized your host profile!", { timeout: 3000 })
-                } })
-            .then(context.setEditHost(false) )
+                .then(data => {
+                    if (!data.success) {
+                        console.log(data)
+                        alert.error("Something went wrong while uploading your data for the first time.")
+                    } else {
+                        alert.success("You successfully initialized your host profile!", { timeout: 3000 })
+                    }
+                })
+                .then(context.setEditHost(false))
         } else {
             PutData(`/host/${profileID}`, body)
-            .then(data => { 
-                if (!data.success) { 
-                    console.log(data)
-                    alert.error("Something went wrong while updating your data")
-                } else {
-                    alert.success("Update successful!", { timeout: 3000 })
-                } })
-            .then(context.setEditHost(false) )
+                .then(data => {
+                    if (!data.success) {
+                        console.log(data)
+                        alert.error("Something went wrong while updating your data")
+                    } else {
+                        alert.success("Update successful!", { timeout: 3000 })
+                    }
+                })
+                .then(context.setEditHost(false))
 
         }
     }
@@ -166,7 +168,7 @@ export default function EditHostPage(props) {
 
     const handleDelete = (id, hostName) => {
 
-        const check = window.confirm(`You really want to delete "${hostName}"?`);
+        const check = window.confirm(`Are you sure you want to delete "${hostName}"?`);
 
         if (check) {
             //delete from db
@@ -177,7 +179,7 @@ export default function EditHostPage(props) {
         }
     }
 
-    if (!context.editHost) {return <Redirect to={`/user/${context.id}`}/>}
+    if (!context.editHost) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={`${context.gapClass} edit-host-page`}>
             <h2>edit my host profile.</h2>
@@ -247,9 +249,9 @@ export default function EditHostPage(props) {
                     <label htmlFor="isActive">
                         <span className="required">*</span>Active Host
                     <select id="isActive" value={isActive} onChange={handleFormInput}>
-                        <option>active</option>
-                        <option>inactive</option>
-                    </select>
+                            <option>active</option>
+                            <option>inactive</option>
+                        </select>
                     </label>
                 </div>
                 <div className="submit-button">

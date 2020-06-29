@@ -47,7 +47,7 @@ export default function Contact() {
                             onClick: console.log("working")
                         });
                 } else {
-                    alert.error('Something went wrong... Please contact an admin', { onClick: console.log("working") });
+                    alert.error('Something went wrong... Please contact the admin', { onClick: console.log("working") });
                 }
             })
     }
