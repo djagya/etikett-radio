@@ -1,5 +1,4 @@
 // Layout
-
 .chat {
   .chat-button {
     margin: 0 .5rem;
@@ -167,9 +166,13 @@
 }
 
 // Input 
-// .Input {
-  // background: rgba(0, 0, 0, 0);
-// }
+.Input {
+  margin-top: auto;
+
+  .button-container {
+    margin: 0;
+  }
+}
 
 // Chat Form
 .chat-form {
