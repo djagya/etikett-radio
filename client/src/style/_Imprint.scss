@@ -3,70 +3,70 @@
     flex-direction: column;
     align-items: center;
     
-.imprint-content {
-    width: 868px;
+    .imprint-content {
+        width: 868px;
 
-    h3 {
-        margin: 0;
-        font-size: 2.1rem;
-    }
-    h4 {
-        font-weight: lighter;
-        font-size: 1.5rem;
-        letter-spacing: 2px;
-        margin: 2.5rem 0 1rem;
-    }
-
-    section {
-        font-size: 1.1rem;
-        text-align: left;
-        margin-bottom: 3rem;
-        padding: 1rem 1.5rem ;
-        background-color: $etikett-black-075;
-        box-shadow: inset 0px -.3px 2px 0px rgba(255, 255, 255, 0.1);
-        p {
-            margin: 1.5rem 0;
-            span {
-                color: $etikett-hover;
-            }
-        }
-
-        ul {
-            margin-top: .5rem;
-
-            li {
-                list-style-type: square;
-                margin-left: 3rem;
-                
-            }
-        }
-        .address {
-           margin: 1rem 0;
-            li {
-            list-style-type: none;
+        h3 {
             margin: 0;
-            }
+            font-size: 2.1rem;
+        }
+        h4 {
+            font-weight: lighter;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin: 2.5rem 0 1rem;
         }
 
-    }
-    
-    .website-builder {
-        margin-top: 5rem;
-    
-        p {
-            margin-top: 0;
-        }
-        div {
+        section {
+            font-size: 1.1rem;
+            text-align: left;
+            margin-bottom: 3rem;
+            padding: 1rem 1.5rem ;
+            background-color: $etikett-black-075;
+            box-shadow: inset 0px -.3px 2px 0px rgba(255, 255, 255, 0.1);
+            p {
+                margin: 1.5rem 0;
+                span {
+                    color: $etikett-hover;
+                }
+            }
+
             ul {
-                display: grid; 
-                grid-template-columns: repeat(3, 1fr);
+                margin-top: .5rem;
+
                 li {
-                    list-style-type: none;
-                    margin: 0 3rem 0 0;
+                    list-style-type: square;
+                    margin-left: 3rem;
+                    
+                }
+            }
+            .address {
+            margin: 1rem 0;
+                li {
+                list-style-type: none;
+                margin: 0;
+                }
+            }
+
+        }
+        
+        .website-builder {
+            margin-top: 5rem;
+        
+            p {
+                margin-top: 0;
+            }
+            div {
+                ul {
+                    display: grid; 
+                    grid-template-columns: repeat(3, 1fr);
+                    li {
+                        list-style-type: none;
+                        margin: 0 3rem 0 0;
+                    }
                 }
             }
         }
     }
-}
 
 }
