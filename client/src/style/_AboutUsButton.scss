@@ -6,6 +6,7 @@
     transform: translate(-50%, -50%);
     z-index: 1;
     transition: 0.4s ease-in-out;
+    margin: 0;
     &:hover {
         opacity: 0;
         transition: 0.4s ease-in-out;
@@ -104,13 +105,3 @@
 
 
 
-
-.about-us {
-    position: absolute;
-    width: 100vw;
-    // height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: none;
-}

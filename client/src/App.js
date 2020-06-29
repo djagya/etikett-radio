@@ -12,6 +12,7 @@ import "./App.scss"
 //Page General Related
 import Home from './Home';
 import Header from './header/Header';
+import AboutUs from './AboutUs';
 import Blog from './blog/Blog';
 import EditInfoBar from "./user/EditInfoBar";
 import Contact from './Contact';
@@ -130,6 +131,9 @@ function App(props) {
                 <Route exact path="/">
                   {isMobileDevice ? <Redirect to="/schedule" /> : <Home />}
                 </Route>
+                {/* About Us Routes */}
+                <Route exact path="/about" render={(props) => <AboutUs {...props} cookies={cookies}/>} />
+                
 
                 {/* Staff Only Routes */}
                 <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} setName={setName} removeCookie={removeCookie} />} />
