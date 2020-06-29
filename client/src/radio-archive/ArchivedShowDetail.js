@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Context } from "../Context";
 import ArchiveInputForm from './ArchiveInputForm';
 import DocumentTitle from 'react-document-title';
+import Null from '../loading/Null';
 
 export default function ArchiveDetail(props) {
     const context = useContext(Context)
@@ -11,17 +12,27 @@ export default function ArchiveDetail(props) {
     const [archiveData, setArchiveData] = useState([]);
     const param = props.match.params.id;
     const alert = useAlert();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-
+        setLoading(true)
         fetch(`/archive/${param}`)
             .then(res => res.json())
-            .then(data => setArchiveData(data.archive))
+            .then(data => {
+                setLoading(false);
+                setArchiveData(data.archive)
+            })
             .catch(err => {
                 console.log('Error fetching data: ', err);
+
+                setLoading(false);
                 alert.error("Failed to fetch data, please contact the admin.");
+
             })
     }, [param])
+
+    if (loading) return <Null />
+
     return (
         <DocumentTitle title={`Archive | ${archiveData.show}`}>
             <Context.Provider value={{
