@@ -17,7 +17,7 @@ export default function Schedule(props) {
     const [showForm, setShowForm] = useState(false)
     const [checkedIDs, setCheckedIDs] = useState([]);
     const alert = useAlert();
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true);
 
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
@@ -32,6 +32,11 @@ export default function Schedule(props) {
             .then(data => {
                 setLoading(false)
                 setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from)))
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                alert.error('Failed to fetch schedule from the server. Please contact the admin');
             })
     }, [])
 
