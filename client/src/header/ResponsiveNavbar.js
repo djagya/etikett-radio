@@ -11,7 +11,7 @@ export default function ResponsiveNavbar() {
 
         <header className="App-header">
 
-            <Link to="/schedule" id="page-title-link"> <span className="page-title-mobile">etikett~radio</span></Link>
+            <Link to="/about" id="page-title-link"> <span className="page-title-mobile">etikett~radio</span></Link>
 
             <nav role="navigation" className="mobile-menu">
 
