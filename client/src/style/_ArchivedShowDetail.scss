@@ -29,7 +29,6 @@
 
 .archive-details-card {
   display: flex;
-  align-items: center;
   margin-top: 7%;
   width: 900px;
   box-shadow: 0 7px 14px rgba(139, 139, 139, 0.25),
@@ -55,7 +54,6 @@
 }
 
 img {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 200px;
+  max-height: 200px;
 }
-

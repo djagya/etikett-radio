@@ -46,8 +46,8 @@ export default function ArchiveDetail(props) {
                                         <h2>{archiveData.show} by {archiveData.host}</h2>
                                         <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
                                         <p>{archiveData.genre}</p>
-                                        <q>{archiveData.description}</q>
                                         <a className="link-component" target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
+                                        <q>{archiveData.description}</q>
                                     </div>
                                 </div>
                             </div>
