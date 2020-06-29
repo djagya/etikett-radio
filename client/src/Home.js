@@ -14,7 +14,11 @@ export default function Home() {
         <div>
 
             {context.showAbout ? <AboutUs /> :
-                <div onClick={() => context.setShowAbout(true)} className="etikett-black"></div>
+            <div className="about-us-button" onClick={() => context.setShowAbout(true)}>
+                <div className="about-us-cover">about<br/> us</div>
+                <div  className="etikett-black"></div>
+            </div>
+                
             }
 
 
