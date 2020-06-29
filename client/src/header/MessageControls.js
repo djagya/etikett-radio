@@ -14,13 +14,13 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
   useEffect(() => {
     GetData("/infobar")
       .then(data => {
-        if (!data.success) alert.error("Failed to fetch data, please contact an admin.");
+        if (!data.success) alert.error("Failed to fetch data, please contact the admin.");
         if (data.status === 403) {
           alert.error("Status 403: Forbidden")
           return
         }
         if (!data.success) {
-          alert.error("Failed to fetch data, please contact an admin")
+          alert.error("Failed to fetch data, please contact the admin")
           return
         };
         context.setInfoBarMessage(data.infoBar[0].message)
@@ -28,14 +28,14 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
       })
       .catch(err => {
         console.log(err)
-        alert.error('Failed to fetch info. Please contact an admin.')
+        alert.error('Failed to fetch info. Please contact the admin.')
       })
-    }, [])
-    
-    useEffect(() => {
-      const id = setInterval(timer, 1000);
-      
-      fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(timer, 1000);
+
+    fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
       .then(res => res.json())
       .then(data => {
         let titleWords = [];
@@ -48,13 +48,13 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         if (data.songtitle.includes(' ')) {
           titleWords = data.songtitle.split(' ');
         }
-  
+
         // Sanitize word
         titleWords.forEach(word => {
           let sanitizedWord = word[0].toLocaleUpperCase() + word.substring(1).toLocaleLowerCase();
           sanitizedTitle += sanitizedWord + ' ';
         })
-  
+
         // Set title
         setSongName(sanitizedTitle);
       })
@@ -62,17 +62,17 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         console.log(err)
         setSongName('');
       })
-      
-      return () => clearInterval(id);
+
+    return () => clearInterval(id);
   }, [time]);
 
   return (
     <section className="message-controls-container">
       {source === radio ?
         <div className="player-controls">
-            <button className="playPauseBtn" onClick={handlePlayBtn} role="play-pause button"></button>
-            <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
-            <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
+          <button className="playPauseBtn" onClick={handlePlayBtn} role="play-pause button"></button>
+          <img className="audio-icon" src={icon} alt="speaker icon" width="18" onClick={handleAudio} />
+          <input className="volumeControl" type="range" min="0" max="1" step="any" value={volume} onChange={handleVolume} role="volume" />
         </div>
         : null}
       <div className="message">

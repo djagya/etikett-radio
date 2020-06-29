@@ -25,7 +25,9 @@ export default function Blog(props) {
             .catch(err => {
                 setLoading(false);
                 console.log('Error fetching data: ', err)
+
                 alert.error('Failed to fetch blog entries from the server. Please contact the admin.');
+
             })
     }, [])
     //list item construction

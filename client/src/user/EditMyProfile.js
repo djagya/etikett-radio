@@ -21,23 +21,23 @@ export default function MyProfile(props) {
             credentials: "include"
         })
             .then(res => res.json())
-            .then(data => { 
-                if(data.status === 403) {
-                alert.error("Status 403: Forbidden");
-                return
-            }
-                if(data.success){
-                setFirstName(data.user.firstName)
-                setLastName(data.user.lastName)
-                setUserName(data.user.userName)
-                setEmail(data.user.email)
-                setRole(data.user.role)
+            .then(data => {
+                if (data.status === 403) {
+                    alert.error("Status 403: Forbidden");
+                    return
+                }
+                if (data.success) {
+                    setFirstName(data.user.firstName)
+                    setLastName(data.user.lastName)
+                    setUserName(data.user.userName)
+                    setEmail(data.user.email)
+                    setRole(data.user.role)
 
-            } else {
-                console.log(data)
-                alert.error("Something went wrong");
-                return
-            }
+                } else {
+                    console.log(data)
+                    alert.error("Something went wrong");
+                    return
+                }
             })
 
     }, [context.id])
@@ -53,8 +53,8 @@ export default function MyProfile(props) {
                     alert.success('Profile edited!', { timeout: 3000 });
                 }
             })
-            // .then(context.setProfileEdit(false))
-    }    
+        // .then(context.setProfileEdit(false))
+    }
 
     const handlePersonalSubmit = event => {
         event.preventDefault()
@@ -98,7 +98,7 @@ export default function MyProfile(props) {
             case "role":
                 setRole(input)
                 break;
-            default: console.log("Sign up Input in SignUp.js ran through without effect")
+            default: console.log("Sign up Input in SignUp.js ran through without any effect")
         }
     };
 
@@ -141,7 +141,7 @@ export default function MyProfile(props) {
                             : null}
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="save" role="button" /><span className="required">* Required</span>
+                        <input type="submit" value="save" role="button" /><span className="required">* required</span>
                     </div>
                 </form>
                 <form onSubmit={handlePWSubmit} role="form">
@@ -152,7 +152,7 @@ export default function MyProfile(props) {
                         </label>
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="save" role="button" /><span className="required">* Required</span>
+                        <input type="submit" value="save" role="button" /><span className="required">* required</span>
                     </div>
                 </form>
             </div>

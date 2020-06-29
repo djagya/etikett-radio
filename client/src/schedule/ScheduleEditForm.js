@@ -42,7 +42,7 @@ export default function ScheduleEdit(props) {
 
         const reload = (data) => {
             if (data.success) {
-                alert.success('Schedule modifyed!', {
+                alert.success('Schedule modified!', {
                     onClose: () => { window.location.reload() }
                 })
             } else {
@@ -68,7 +68,7 @@ export default function ScheduleEdit(props) {
             case "to":
                 setTo(input)
                 break;
-            default: console.log("Schedule Edit ran through without effect")
+            default: console.log("Schedule Edit ran through without any effect")
         }
     };
 

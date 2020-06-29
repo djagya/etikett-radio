@@ -49,7 +49,7 @@ export default function ScheduleInputForm() {
                 setFrom(time)
                 setTo(time)
                 alert.success('Schedule posted!', { timeout: 3000 });
-                
+
             } else {
                 alert.error(data.err);
             }
@@ -73,7 +73,7 @@ export default function ScheduleInputForm() {
             case "to":
                 setTo(input)
                 break;
-            default: console.log("Schedule Input ran through without effect")
+            default: console.log("Schedule Input ran through without any effect")
         }
     };
 

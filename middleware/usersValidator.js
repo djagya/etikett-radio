@@ -18,7 +18,7 @@ exports.validUserInputs = () => {
             .notEmpty()
             .trim()
             .escape()
-            .withMessage("Invalid user name."),
+            .withMessage("Invalid username."),
 
         body("email")
             .isEmail()

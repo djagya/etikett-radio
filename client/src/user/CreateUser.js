@@ -51,12 +51,12 @@ export default function CreateUser(props) {
                 setPW("");
                 setRole("Host");
                 alert.success("User created", { timeout: 3000 })
-            } 
-            if (data.status === 203) {
-               alert.error("Please fill out all *Required fields, make sure your password is at least 8 signs long and that you use a valid email.")
-               return 
             }
-            if (data.err.substring(0,6) === "E11000") {
+            if (data.status === 203) {
+                alert.error("Please fill out all *required fields, make sure your password is at least 8 characters long and that you use a valid email.")
+                return
+            }
+            if (data.err.substring(0, 6) === "E11000") {
                 alert.error("Email address already in use")
             }
         }
@@ -85,7 +85,7 @@ export default function CreateUser(props) {
             case "role":
                 setRole(input)
                 break;
-            default: console.log("Sign up Input in SignUp.js ran through without effect")
+            default: console.log("Sign up Input in SignUp.js ran through without any effect")
         }
     };
 
@@ -117,7 +117,7 @@ export default function CreateUser(props) {
                     </label>
                     <label htmlFor="pw">
                         <span className="required">*</span>password
-                    <input type="password" id="pw" placeholder="At least 8 signs long" value={pw} onChange={handleFormInput} />
+                    <input type="password" id="pw" placeholder="At least 8 characters long" value={pw} onChange={handleFormInput} />
                     </label>
                     <label htmlFor="role">
                         <span className="required">*</span>role
@@ -130,7 +130,7 @@ export default function CreateUser(props) {
 
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="create" role="button" /><span className=" required">* Required</span>
+                    <input type="submit" value="create" role="button" /><span className=" required">* required</span>
                 </div>
             </form>
         </div>
