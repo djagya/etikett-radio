@@ -4,6 +4,7 @@ import GetData from "../GetData";
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router-dom';
 import { useAlert } from 'react-alert';
+import Null from '../loading/Null';
 
 export default function HostList() {
     const context = useContext(Context);
@@ -43,7 +44,7 @@ export default function HostList() {
         ))
     }
 
-    if (loading) return null
+    if (loading) return <Null />
 
     return (
         <DocumentTitle title="Hosts">

@@ -6,6 +6,7 @@ import ArchiveInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
 
 import DocumentTitle from 'react-document-title';
+import Null from '../loading/Null';
 
 
 export default function ArchiveList(props) {
@@ -196,7 +197,7 @@ export default function ArchiveList(props) {
         ))
     }
 
-    if (loading) return null
+    if (loading) return <Null />
 
     return (
         <DocumentTitle title="Archive">

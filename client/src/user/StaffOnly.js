@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Context } from "../Context";
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
+import Null from '../loading/Null';
 
 
 export default function UserProfile(props) {

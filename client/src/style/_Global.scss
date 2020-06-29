@@ -245,13 +245,13 @@ footer {
 //          Fade In
 ///////////////////////////////////
 
-.schedule-content,
+.schedule-page,
 .all-list,
 .blog-page,
 .host-list-container,
 .input-form,
 .staff-only {
-  animation: fadein ease 1s;
+  animation: fadein ease 800ms;
 }
 
 @keyframes fadein {
