@@ -8,6 +8,7 @@ import ScheduleWeek from './ScheduleWeek';
 import DocumentTitle from 'react-document-title';
 
 import { Context } from "../Context";
+import Loading from '../Loading';
 
 
 
@@ -16,6 +17,7 @@ export default function Schedule(props) {
     const [showForm, setShowForm] = useState(false)
     const [checkedIDs, setCheckedIDs] = useState([]);
     const alert = useAlert();
+    const [loading, setLoading] = useState(false)
 
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
@@ -23,10 +25,14 @@ export default function Schedule(props) {
     const currMonth = moment().format("M");
 
     useEffect(() => {
+        setLoading(true)
         fetch("/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
-            .then(data => setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))))
+            .then(data => {
+                setLoading(false)
+                setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from)))
+            })
     }, [])
 
 
@@ -102,6 +108,8 @@ export default function Schedule(props) {
         ));
     };
 
+    if (loading) return  <Loading /> 
+    
     return (
         <DocumentTitle title="Schedule">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>

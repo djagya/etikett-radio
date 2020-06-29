@@ -212,17 +212,17 @@ footer {
 ///////////////////////////////////
 .loading {
   display: flex;
-  justify-self: center;
+  justify-content: center;
   align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
+  
   img {
-    width: 150px;
-    height: 150px;
-    animation:spin 3s ease-in-out 2s infinite;
+    width: 70%;
+    height: 70%;
+    animation:spin 3s ease-in-out infinite;
   }
 }
 
