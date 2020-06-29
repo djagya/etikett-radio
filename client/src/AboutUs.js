@@ -1,11 +1,10 @@
-import React, {  useContext, useState } from 'react';
-import {Context} from "./Context";
+import React, {  useContext } from 'react';
+import { Context } from "./Context";
 import { Link } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 
 export default function AboutUs() {
-    const {showAbout, setShowAbout, gapClass} = useContext(Context);
-    const [redirect, setRedirect] = useState(false)
+    const {gapClass} = useContext(Context);
 
    
 
