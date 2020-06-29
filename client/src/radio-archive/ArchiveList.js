@@ -6,6 +6,7 @@ import ArchiveInputForm from "./ArchiveInputForm";
 import Delete from "../Delete";
 
 import DocumentTitle from 'react-document-title';
+import Loading from '../Loading';
 
 
 export default function ArchiveList(props) {
@@ -16,6 +17,7 @@ export default function ArchiveList(props) {
     const [showForm, setShowForm] = useState(false);
     const [isActive, setIsActive] = useState(3);
     const [lastSort, setLastSort] = useState(3)
+    const [loading, setLoading] = useState(true);
     const alert = useAlert();
 
     
@@ -23,7 +25,15 @@ export default function ArchiveList(props) {
     useEffect(() => {
         fetch("/archive")
             .then(res => res.json())
-            .then(data => setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1)))
+            .then(data => {
+                setLoading(false);
+                setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1))
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                alert.error('Failed to fetch archive from the server. Please contact the admin.');
+            })
     }, [])
 
     const sortData = i => {
@@ -186,10 +196,7 @@ export default function ArchiveList(props) {
         ))
     }
 
-
-
-
- 
+    if (loading) return <Loading />
 
     return (
         <DocumentTitle title="Archive">

@@ -36,7 +36,7 @@ export default function Schedule(props) {
             .catch(err => {
                 console.log(err);
                 setLoading(false);
-                alert.error('Failed to fetch schedule from the server. Please contact the admin');
+                alert.error('Failed to fetch schedule from the server. Please contact the admin.');
             })
     }, [])
 
@@ -114,7 +114,7 @@ export default function Schedule(props) {
     };
 
     if (loading) return  <Loading /> 
-    
+
     return (
         <DocumentTitle title="Schedule">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>
