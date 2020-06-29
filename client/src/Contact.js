@@ -3,7 +3,7 @@ import { Context } from "./Context";
 import { useAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
-import Loading from './Loading';
+import Loading from './loading/Loading';
 
 
 export default function Contact() {

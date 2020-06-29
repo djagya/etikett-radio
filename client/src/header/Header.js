@@ -10,7 +10,7 @@ import ResponsiveNavbar from './ResponsiveNavbar';
 import Stream from './Stream';
 import DesktopNavbar from './DesktopNavbar';
 import MessageControls from './MessageControls';
-import Loading from '../Loading';
+import Loading from '../loading/Loading';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
