@@ -18,6 +18,10 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
       socket.connect();
     }
 
+    if (chatWindow !== 'chat-app-chat') {
+      setChatWindow('chat-app-chat');
+    }
+
     // Emit JOIN
     socket.emit('join', { name, room }, (error) => {
       if (error) {
