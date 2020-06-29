@@ -12,6 +12,8 @@ import "./App.scss"
 //Page General Related
 import Home from './Home';
 import Header from './header/Header';
+import AboutUs from './AboutUs';
+import Imprint from './Imprint';
 import Blog from './blog/Blog';
 import EditInfoBar from "./user/EditInfoBar";
 import Contact from './Contact';
@@ -130,7 +132,11 @@ function App(props) {
                 <Route exact path="/">
                   {isMobileDevice ? <Redirect to="/schedule" /> : <Home />}
                 </Route>
-
+                {/* About Us */}
+                <Route exact path="/about" render={(props) => <AboutUs {...props} cookies={cookies}/>} />
+                {/* About Us */}
+                <Route exact path="/imprint" render={(props) => <Imprint {...props} cookies={cookies}/>} />
+                
                 {/* Staff Only Routes */}
                 <Route exact path="/login" render={(props) => <LogIn {...props} setCookie={setCookie} cookies={cookies} setName={setName} removeCookie={removeCookie} />} />
                 <Route exact path="/user/all" render={(props) => <AllUser {...props} cookies={cookies} />} />
