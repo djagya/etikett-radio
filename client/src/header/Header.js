@@ -62,6 +62,11 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             .then(() => {
                 setLoading(false);
             })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+                setSource(radio);
+            })
 
     }, [])
 
