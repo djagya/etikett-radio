@@ -10,6 +10,7 @@ import ResponsiveNavbar from './ResponsiveNavbar';
 import Stream from './Stream';
 import DesktopNavbar from './DesktopNavbar';
 import MessageControls from './MessageControls';
+import Loading from '../Loading';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
@@ -122,7 +123,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
 
     return (
         loading
-            ? ( null ) : (
+            ? ( <Loading /> ) : (
                 <header className={`App-header ${headerSize}`}>
 
                     {isMobileWidth ? <ResponsiveNavbar /> : <DesktopNavbar /> }
