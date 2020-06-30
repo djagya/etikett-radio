@@ -150,7 +150,7 @@ function App(props) {
 
                 {/* Archive Routes */}
                 <Route exact path="/archive" render={(props) => <ArchiveList {...props} cookies={cookies} />} />
-                <Route exact path="/archive/:id" component={ArchiveDetail} />
+                <Route exact path="/archive/:id" render={(props) => <ArchiveDetail {...props} cookies={cookies} />} />
                 <Route exact path="/:id/edit" component={ArchiveInputForm} />
 
                 {/* Hosts Routes */}
