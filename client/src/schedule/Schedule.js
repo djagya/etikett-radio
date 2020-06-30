@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { useAlert } from 'react-alert';
 import moment from "moment";
 import ScheduleInputForm from './ScheduleInputForm';
@@ -108,8 +108,9 @@ export default function Schedule(props) {
         if (scheduleData.length === 0) return null; //Because first time the code is running, scheduleData will be an empty array
 
         return weeklySchedule.reverse().map((el, i) => (
-
-            <ScheduleWeek data={el} key={i} />
+            <Fragment key={i}>
+                <ScheduleWeek data={el} />
+            </Fragment>
         ));
     };
 

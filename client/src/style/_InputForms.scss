@@ -109,6 +109,11 @@ button, input[type=submit] {
   
 }
 
+.link-button {
+  height: 100%;
+  margin: 0;
+}
+
 .check-delete {
   width: 20px;
   height: 20px;
@@ -136,6 +141,7 @@ button, input[type=submit] {
   width: 100%;
   height: 2rem;
   margin: 2rem 0;
+  text-decoration: none;
 }
 
 //checkbox

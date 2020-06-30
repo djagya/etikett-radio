@@ -52,13 +52,8 @@ function App(props) {
   /////for context/////
   let id = "";
 
-  const [profileEdit, setProfileEdit] = useState(false);
-  const [createProfile, setCreateProfile] = useState(false);
-  const [allUser, setAllUser] = useState(false);
-  const [editHost, setEditHost] = useState(false);
   const [editHostID, setEditHostID] = useState("");
   const [allHosts, setAllHosts] = useState(false);
-  const [editInfoBar, setEditInfoBar] = useState(false);
   const [infoBarMessage, setInfoBarMessage] = useState("");
   const [infoID, setInfoID] = useState("");
   const [name, setName] = useState('');
@@ -92,13 +87,8 @@ function App(props) {
         <Context.Provider value={
           {
             id,
-            profileEdit, setProfileEdit,
-            createProfile, setCreateProfile,
-            allUser, setAllUser,
-            editHost, setEditHost,
             editHostID, setEditHostID,
             allHosts, setAllHosts,
-            editInfoBar, setEditInfoBar,
             infoBarMessage, setInfoBarMessage,
             infoID, setInfoID,
             gapClass, setGapClass,

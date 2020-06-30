@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from "../Context";
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import PutData from "../PutData";
 
@@ -42,14 +42,12 @@ export default function EditInfoBar(props) {
         context.setEditInfoBar(false)
     }
 
-    if (!context.editInfoBar) { return <Redirect to={`/user/${context.id}`} /> }
+ 
     return (
         <div className={`${context.gapClass} input-form`}>
             <h2 id="main">info bar</h2>
             <form onSubmit={handleSubmit} role="form" className="edit-input-form">
-                <div className="button-container">
-                    <button type="button" onClick={() => handleCancel()}>cancel</button>
-                </div>
+                <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                 <div className="info-bar-input-container">
                     <label htmlFor="infobar-message">
                         <input type="text" id="infobar-message" placeholder="info bar message" value={context.infoBarMessage} onChange={handleFormInput} />
