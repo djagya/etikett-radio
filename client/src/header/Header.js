@@ -153,7 +153,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                         />
                         
                         {showSourceBtn ? 
-                            <button className="change-source-btn" onClick={() => source === video ? setSource(radio) : setSource(video)} >Change source</button>
+                            <button className="change-source-btn" onClick={() => source === video ? setSource(radio) : setSource(video)}> <span>Change source</span></button>
                         : null}
                         
                 </header>
