@@ -178,7 +178,7 @@ export default function ArchiveList(props) {
                         <li><Link className="link-component" to={`hosts/${el.hostID}`}>{el.host}</Link></li>
                         <li>{el.genre}</li>
                         <li>{el.date.substring(0, 10)}</li>
-                        {props.cookies.user && props.cookies.user.role === 'Admin' || "Host" ?
+                        {props.cookies.user && props.cookies.user.role === 'Admin' && "Host" ?
                             <li><input className="check-delete" name={el._id} type="checkbox" onChange={handleIDs}></input></li>
                             : null}
                     </ul>
@@ -210,7 +210,7 @@ export default function ArchiveList(props) {
                     <div>
                         <h2 id="main">archive.</h2>
 
-                        {props.cookies.user && props.cookies.user.role === 'Admin' || "Host" ?
+                        {props.cookies.user && props.cookies.user.role === 'Admin' && "Host" ?
                             <div className="button-container controls archive-add-delete-buttons">
                                 {showForm ?
                                     <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
