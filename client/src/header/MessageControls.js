@@ -33,41 +33,42 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         alert.error('Failed to fetch info. Please contact the admin.')
       })
     
-      const getSongName = setInterval(() => {
-        console.log('setInterval')
-        fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
-          .then(res => res.json())
-          .then(data => {
-            let titleWords = [];
-            let sanitizedTitle = '';
-      
-            // Separate words
-            if (data.songtitle.includes('_')) {
-              titleWords = data.songtitle.split('_');
-            }
-            if (data.songtitle.includes(' ')) {
-              titleWords = data.songtitle.split(' ');
-            }
-      
-            // Sanitize word
-            titleWords.forEach(word => {
-              let sanitizedWord = word[0].toLocaleUpperCase() + word.substring(1).toLocaleLowerCase();
-              sanitizedTitle += sanitizedWord + ' ';
-            })
-      
-            // Set title
-            if (mounted) {
-              setSongName(sanitizedTitle);
-            }
+    const getSongName = () => {
+      fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
+        .then(res => res.json())
+        .then(data => {
+          let titleWords = [];
+          let sanitizedTitle = '';
+    
+          // Separate words
+          if (data.songtitle.includes('_')) {
+            titleWords = data.songtitle.split('_');
+          }
+          if (data.songtitle.includes(' ')) {
+            titleWords = data.songtitle.split(' ');
+          }
+    
+          // Sanitize word
+          titleWords.forEach(word => {
+            let sanitizedWord = word[0].toLocaleUpperCase() + word.substring(1).toLocaleLowerCase();
+            sanitizedTitle += sanitizedWord + ' ';
           })
-          .catch(err => {
-            console.log(err)
-            setSongName('');
-          })
-      }, 1000 * 10);
+    
+          // Set title
+          if (mounted) {
+            setSongName(sanitizedTitle);
+          }
+        })
+        .catch(err => {
+          console.log(err)
+          setSongName('');
+        })
+    };
+    getSongName();
+    const everyFifteenSeconds = setInterval(getSongName, 1000 * 15);
   
     return () => {
-      clearInterval(getSongName);
+      clearInterval(everyFifteenSeconds);
       mounted = false;
     }
   }, [])
