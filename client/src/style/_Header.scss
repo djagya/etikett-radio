@@ -326,18 +326,39 @@ nav {
   height: 50px;
   background: black;
   color: white;
-  border: 1px solid white;
   border-radius: 50px;
   transition: width 300ms ease;
+  display: flex;
+  align-items: center;
 
   span {
+    display: none;
     opacity: 0;
   }
 
+  img {
+    margin: 0 0.4rem;
+  }
+
   &:hover {
-    width: 150px;
+    width: 100px;
     span {
+      display: block;
       animation: show-up 300ms ease 250ms forwards;
+    }
+  }
+}
+
+@-moz-document url-prefix() {
+  .change-source-btn {
+    transition: none;
+
+    &:hover {
+      width: 50px;
+      span {
+        display: none;
+        animation: none;
+      }
     }
   }
 }
