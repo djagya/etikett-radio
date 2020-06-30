@@ -52,8 +52,6 @@ function App(props) {
   /////for context/////
   let id = "";
 
-  const [createProfile, setCreateProfile] = useState(false);
-  const [allUser, setAllUser] = useState(false);
   const [editHostID, setEditHostID] = useState("");
   const [allHosts, setAllHosts] = useState(false);
   const [infoBarMessage, setInfoBarMessage] = useState("");
@@ -89,8 +87,6 @@ function App(props) {
         <Context.Provider value={
           {
             id,
-            createProfile, setCreateProfile,
-            allUser, setAllUser,
             editHostID, setEditHostID,
             allHosts, setAllHosts,
             infoBarMessage, setInfoBarMessage,

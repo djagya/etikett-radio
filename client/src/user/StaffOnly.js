@@ -36,27 +36,25 @@ export default function UserProfile(props) {
                             <button type="button">edit my user data</button>
                         </Link>
                         <Link className="button-container" to={`/user/host/${context.id}`}>
-                            <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my host profile
-                            </button>
+                            <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my host profile</button>
                         </Link>
-
-
                         <Link className="button-container" to={`/infobar`}>
-                            <button type="button">edit info bar
-                            </button>
+                            <button type="button">edit info bar</button>
                         </Link>
                         {props.cookies.user.role === 'Admin' ?
                             <div>
-                                <div className="button-container">
-                                    <button type="button" onClick={() => context.setCreateProfile(true)}>create new user</button>
-                                </div>
-                                <div className="button-container">
-                                    <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
-                                </div>
-                                <Link className="button-container" to={`/user/hosts/all`}><button type="button">all hosts</button></Link>
+                                <Link className="button-container"  to={`/user/createuser`}>
+                                    <button type="button">create new user</button>
+                                </Link>
+                                <Link className="button-container"  to={`/user/all`}>
+                                    <button type="button">all user</button>
+                                </Link>
+                                <Link className="button-container" to={`/user/hosts/all`}>
+                                    <button type="button">all hosts</button>
+                                </Link>
                                 
                             </div>
-                            : null}
+                        : null}
                         <div className="button-container">
                             <button onClick={handleLogOut}>log out</button>
                         </div>
