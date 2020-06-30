@@ -47,41 +47,7 @@
     }
   }
 
-  // .grid-wrapper {
 
-  //       width: 1000px;
-
-  //   .hosts-list {
-  //     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  //     grid-gap: 0.5rem;
-
-  //     .host-image-borders {
-  //       border: 1px solid rgba(255, 255, 255, 0.486);
-  //       background-color: $etikett-black;
-  //       height: 300px;
-
-  //       .host-images {
-  //         position: relative;
-  //         opacity: 0;
-  //         z-index: 2;
-
-  //         &:hover {
-  //           border: 1px solid rgb(255, 255, 255);
-  //           opacity: 1;
-  //           transition: 0.3s ease-in;
-  //         }
-  //       }
-  //     }
-
-  //     .host-name {
-  //       text-transform: lowercase;
-  //       opacity: 1;
-  //       z-index: 1;
-  //     }
-
-  //   }
-
-  // }
 }
 
 @media only screen and (max-width: breakpoints(desktop)) {
@@ -209,6 +175,7 @@
   .archive-details-card {
     width: 876px;
     margin: 2rem 1rem;
+
     q {
       max-width: 100%;
     }
@@ -219,9 +186,33 @@
     max-height: 300px;
   }
 
-  // .controls {
-  //   max-width: 600px;
-  // }
+  ///main archive page
+  .all-list {
+    .archive-list-grid {
+      grid-template-columns: 80px 3fr 3fr 1fr 20px;
+    }
+
+    //target this to get rid of the 3. column
+    .list-header,
+    .all-data {
+      width: 90vw;
+      margin: 0 auto;
+
+
+      :nth-child(3) {
+        display: none;
+      }
+    }
+
+    .list-header {
+      display: flex;
+      justify-content: center;
+    }
+
+
+  }
+
+
 
   //////////////////////////////////////////////////////////
   // Host PC Small
@@ -240,6 +231,7 @@
               max-width: 280px;
             }
           }
+
           .host-name {
             letter-spacing: 2px;
           }
@@ -427,7 +419,7 @@
       margin: 0 .5rem;
     }
 
-    
+
 
     a {
       text-align: right;
@@ -448,6 +440,7 @@
       padding: 0.5rem;
 
     }
+
     .link-component {
       margin: 0 .5rem;
     }
@@ -458,9 +451,30 @@
     max-height: 300px;
   }
 
-  // .controls {
-  //   max-width: 600px;
-  // }
+
+
+  ///main archive page
+
+  .list-header,
+  .all-data {
+    width: 500px;
+    margin: 0 auto;
+
+    :nth-child(3) {
+      display: none;
+    }
+
+    :nth-child(4) {
+      display: none;
+    }
+
+    &.archive-list-grid {
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr 20px;
+    }
+
+  }
+
   //////////////////////////////////////////////////////////
   // Host Component Tablet
   //////////////////////////////////////////////////////////
@@ -512,15 +526,17 @@
       }
     }
   }
-//About Us and Imprint
+
+  //About Us and Imprint
   .imprint {
     .imprint-content {
       width: 90vw;
     }
   }
-  .about-us{
+
+  .about-us {
     .about-us-content {
-        width: 90vw;
+      width: 90vw;
     }
   }
 }
@@ -652,34 +668,35 @@
       font-size: 1rem;
     }
 
-  
 
     .archive-details-card {
       margin: 2rem 1rem;
       width: 90vw;
-  
+
       h2 {
         font-size: 18px;
         margin: 0.5rem 0.5rem 1rem 0.5rem;
-  
+
       }
-      p, .link-component  {
+
+      p,
+      .link-component {
         text-align: center;
+
         margin: 0;
         margin-bottom: .5rem;
       }
-
-  
+      
       q {
         width: 100%;
         // margin: 1rem 0.5rem;
       }
-  
+
       .img-header {
         display: flex;
         flex-direction: column;
-  
-  
+
+
         img {
           max-width: 250px;
           max-height: 250px;
@@ -693,11 +710,37 @@
       max-height: 200px;
     }
 
-    // .controls {
-    //   max-width: 600px;
-    // }
+
   }
 
+  ///main archive page
+
+  .list-header,
+  .all-data {
+
+
+    :nth-child(3) {
+      display: none;
+    }
+
+    :nth-child(4) {
+      display: none;
+    }
+
+    :nth-child(5) {
+      display: none;
+    }
+
+    &.archive-list-grid {
+      display: grid;
+      grid-template-columns: 80px 1fr 20px;
+    }
+
+    .list-header {
+      display: none;
+    }
+
+  }
 
   .archive-add-delete-buttons {
     margin: 0.5rem;

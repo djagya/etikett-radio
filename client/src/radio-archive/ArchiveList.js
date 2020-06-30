@@ -218,7 +218,7 @@ export default function ArchiveList(props) {
                                 }
                                 <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
                             </div>
-                        : null}
+                            : null}
                         {showForm ? <ArchiveInputForm /> : null}
                         <form className="archive-filter">
                             <div className="filter-selector-container">
@@ -244,7 +244,7 @@ export default function ArchiveList(props) {
                             <li>sort by:</li>
                             {renderLiHeader()}
                         </ul>
-                        <ul>
+                        <ul className="all-details-sorted">
                             {renderLi()}
                         </ul>
                     </div>
