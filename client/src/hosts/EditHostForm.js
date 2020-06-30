@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
 import { Redirect, Link } from 'react-router-dom';
+import DocumentTitle from 'react-document-title';
 import PostData from "../PostData";
 import PutData from "../PutData";
 import GetData from "../GetData";
@@ -182,94 +183,96 @@ export default function EditHostPage(props) {
     }
 
     return (
-        <div className={`${context.gapClass} edit-host-page`}>
-            {context.id !== userID ? 
-            <h2>edit {hostName}s host profile.</h2>:
-            <h2>edit my host profile.</h2>
-            }
-            
-            <form className="input-form" onSubmit={handleSubmit}>
-                <div className="button-container">
+        <DocumentTitle title="Edit host profile">
+            <div className={`${context.gapClass} edit-host-page`}>
                 {context.id !== userID ? 
-                    <Link className="link-button" to={`/user/hosts/all`}><button type="button">back</button></Link>
-                    :<Link className="link-button" to={`/user/${context.id}`}><button type="button">back</button></Link>
-                    
+                <h2>edit {hostName}s host profile.</h2>:
+                <h2>edit my host profile.</h2>
                 }
-                {props.cookies.user.role === 'Admin' ?
-                    <button type="button" onClick={() => handleDelete(profileID, hostName)}>delete</button>
-                : null}
-                </div>
-                <div className="grid-container">
-                    <label htmlFor="hostName">
-                        <span className="required">*</span>host name
-                        <input type="text" id="hostName" placeholder="host or show name" value={hostName} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="hostImg">
-                        <span className="required">*</span>artwork link (please keep it 500x500)
-                        <input type="url" id="hostImg" placeholder="artwork link" value={hostImg} onChange={handleFormInput} />
-                    </label>
-                    <label className="describe" htmlFor="hostDescription">
-                        <span className="required">*</span>host description
-                        <textarea type="text" id="hostDescription" placeholder="about you and the show" onChange={handleFormInput} defaultValue={description} />
-                    </label>
-                </div>
+                
+                <form className="input-form" onSubmit={handleSubmit}>
+                    <div className="button-container">
+                    {context.id !== userID ? 
+                        <Link className="link-button" to={`/user/hosts/all`}><button type="button">back</button></Link>
+                        :<Link className="link-button" to={`/user/${context.id}`}><button type="button">back</button></Link>
+                        
+                    }
+                    {props.cookies.user.role === 'Admin' ?
+                        <button type="button" onClick={() => handleDelete(profileID, hostName)}>delete</button>
+                    : null}
+                    </div>
+                    <div className="grid-container">
+                        <label htmlFor="hostName">
+                            <span className="required">*</span>host name
+                            <input type="text" id="hostName" placeholder="host or show name" value={hostName} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="hostImg">
+                            <span className="required">*</span>artwork link (please keep it 500x500)
+                            <input type="url" id="hostImg" placeholder="artwork link" value={hostImg} onChange={handleFormInput} />
+                        </label>
+                        <label className="describe" htmlFor="hostDescription">
+                            <span className="required">*</span>host description
+                            <textarea type="text" id="hostDescription" placeholder="about you and the show" onChange={handleFormInput} defaultValue={description} />
+                        </label>
+                    </div>
 
-                <div className="grid-container">
-                    <label htmlFor="youtube">
-                        youtube
-                        <input type="url" id="youtube" placeholder="youtube link" value={youtube} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="soundcloud">
-                        soundcloud
-                        <input type="url" id="soundcloud" placeholder="soundcloud link" value={soundcloud} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="mixcloud">
-                        mixcloud
-                        <input type="url" id="mixcloud" placeholder="mixcloud link" value={mixcloud} onChange={handleFormInput} />
-                    </label>
-                </div>
+                    <div className="grid-container">
+                        <label htmlFor="youtube">
+                            youtube
+                            <input type="url" id="youtube" placeholder="youtube link" value={youtube} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="soundcloud">
+                            soundcloud
+                            <input type="url" id="soundcloud" placeholder="soundcloud link" value={soundcloud} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="mixcloud">
+                            mixcloud
+                            <input type="url" id="mixcloud" placeholder="mixcloud link" value={mixcloud} onChange={handleFormInput} />
+                        </label>
+                    </div>
 
-                <div className="grid-container">
-                    <label htmlFor="facebook">
-                        facebook
-                        <input type="url" id="facebook" placeholder="facebook link" value={facebook} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="instagram">
-                        instagram
-                        <input type="url" id="instagram" placeholder="instagram link" value={instagram} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="twitter">
-                        twitter
-                        <input type="url" id="twitter" placeholder="twitter link" value={twitter} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="snapchat">
-                        snapchat
-                        <input type="url" id="snapchat" placeholder="snapchat link" value={snapchat} onChange={handleFormInput} />
-                    </label>
-                </div>
+                    <div className="grid-container">
+                        <label htmlFor="facebook">
+                            facebook
+                            <input type="url" id="facebook" placeholder="facebook link" value={facebook} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="instagram">
+                            instagram
+                            <input type="url" id="instagram" placeholder="instagram link" value={instagram} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="twitter">
+                            twitter
+                            <input type="url" id="twitter" placeholder="twitter link" value={twitter} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="snapchat">
+                            snapchat
+                            <input type="url" id="snapchat" placeholder="snapchat link" value={snapchat} onChange={handleFormInput} />
+                        </label>
+                    </div>
 
-                <div className="grid-container">
-                    <label htmlFor="otherName">
-                        name of your website
-                        <input type="text" id="otherName" placeholder="myspace" value={otherName} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="otherLink">
-                        link to your website
-                        <input type="url" id="otherLink" placeholder="https://myspace.com/roflcopter/imsuchaboomer" value={otherLink} onChange={handleFormInput} />
-                    </label>
-                    <label htmlFor="isActive">
-                        <span className="required">*</span>Active Host
-                    <select id="isActive" value={isActive} onChange={handleFormInput}>
-                            <option>active</option>
-                            <option>inactive</option>
-                        </select>
-                    </label>
-                </div>
-                <div className="submit-button">
-                    <input type="submit" value="save" /><span className="required">* required</span>
-                </div>
-            </form>
+                    <div className="grid-container">
+                        <label htmlFor="otherName">
+                            name of your website
+                            <input type="text" id="otherName" placeholder="myspace" value={otherName} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="otherLink">
+                            link to your website
+                            <input type="url" id="otherLink" placeholder="https://myspace.com/roflcopter/imsuchaboomer" value={otherLink} onChange={handleFormInput} />
+                        </label>
+                        <label htmlFor="isActive">
+                            <span className="required">*</span>Active Host
+                        <select id="isActive" value={isActive} onChange={handleFormInput}>
+                                <option>active</option>
+                                <option>inactive</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div className="submit-button">
+                        <input type="submit" value="save" /><span className="required">* required</span>
+                    </div>
+                </form>
 
-        </div>
+            </div>
+        </DocumentTitle>
     )
 }
