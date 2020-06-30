@@ -112,6 +112,8 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             setButtonIcon(clapperboard);
             setButtonText('Video');
         }
+        // Pause player
+        setPlaying(false)
     }, [source])
 
 
