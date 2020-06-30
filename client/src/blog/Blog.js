@@ -31,7 +31,7 @@ export default function Blog(props) {
             })
     }, [])
     //list item construction
-    const renderLi = (blogData) => {
+    const renderLi = () => {
         if (blogData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (blogData.length === 0) return null;
 
@@ -41,12 +41,14 @@ export default function Blog(props) {
             </Fragment>
         ));
     };
-
     if (loading) return <Null />
 
     return (
         <DocumentTitle title="Blog">
-            <Context.Provider value={{ blogData, setBlogData }}>
+            <Context.Provider value={{ 
+                blogData, setBlogData,
+                showForm, setShowForm
+                 }}>
                 <div className={`${context.gapClass} blog-page`}>
                     <div className="blog-content">
                         <h2 id="main">blog.</h2>
@@ -61,7 +63,7 @@ export default function Blog(props) {
 
                         {showForm ? <BlogInputForm /> : null}
                         <ul>
-                            {renderLi(blogData)}
+                            {renderLi()}
                         </ul>
                     </div>
                 </div>
