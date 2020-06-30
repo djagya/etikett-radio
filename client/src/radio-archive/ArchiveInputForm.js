@@ -4,7 +4,7 @@ import {Context} from "../Context";
 import PostData from "../PostData";
 import PutData from "../PutData";
 import GetData from "../GetData";
-import { ClampToEdgeWrapping } from 'three';
+
 
 export default function ArchiveInputForm(props) {
     const [exist, setExist] = useState(false);

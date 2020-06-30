@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Delete from "../Delete";
 
 export default function AllUser() {
@@ -145,14 +145,11 @@ export default function AllUser() {
         ))
     }
 
-    if (!context.allUser) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={`${context.gapClass} all-list`}>
             <h2>all users.</h2>
             <div className="list-container">
-                <div className="button-container">
-                    <button type="button" onClick={() => context.setAllUser(false)}>back</button>
-                </div>
+            <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                 <div>
                     <ul className="list-header user-list-grid">
                         {renderLiHeader()}

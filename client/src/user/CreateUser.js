@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function CreateUser(props) {
     const context = useContext(Context);
@@ -88,16 +88,11 @@ export default function CreateUser(props) {
             default: console.log("Sign up Input in SignUp.js ran through without any effect")
         }
     };
-
-    if (!context.createProfile) { return <Redirect to={`/user/${context.id}`} /> }
-
     return (
         <div className={`${context.gapClass} create-user-page`}>
             <h2 id="main">create a new user.</h2>
             <form className="input-form" onSubmit={handleSubmit} role="form">
-                <div className="button-container">
-                    <button type="button" onClick={() => context.setCreateProfile(false)}>cancel</button>
-                </div>
+                <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                 <div className="grid-container">
                     <label htmlFor="firstName">
                         <span className="required">*</span>first name

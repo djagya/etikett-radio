@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from "../Context";
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import PatchData from "../PatchData";
 
@@ -113,9 +113,6 @@ export default function MyProfile(props) {
             default: console.log("Sign up Input in SignUp.js ran through without any effect")
         }
     };
-
-    if (!context.profileEdit) { return <Redirect to={`/user/${context.id}`} /> }
-
     return (
         <div>
             <div className={`${context.gapClass} input-form`}>
@@ -124,9 +121,7 @@ export default function MyProfile(props) {
                     {!editPW && !editProfile ?
 
                         <div>
-                            <div className="button-container">
-                                <button type="button" onClick={() => context.setProfileEdit(false)}>back</button>
-                            </div>
+                        <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                             <div>
                                 <div className="user-overview">
                                     <ul>
