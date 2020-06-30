@@ -20,9 +20,9 @@ export default function UserProfile(props) {
         props.history.push("/login")
     };
 
-    if (context.profileEdit) {
-        return <Redirect to={`/user/${context.id}/edit`} />
-    }
+    // if (context.profileEdit) {
+    //     return <Redirect to={`/user/${context.id}/edit`} />
+    // }
     if (context.createProfile) {
         return <Redirect to={`/user/createuser`} />
     }
@@ -42,9 +42,10 @@ export default function UserProfile(props) {
                 <div className={`${context.gapClass} staff-only`}>
                     <div>
                         <h2 id="main">logged in as {props.cookies.user.firstName}</h2>
-                        <div className="button-container">
-                            <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
-                        </div>
+                        {/* <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link> */}
+                        <Link className="button-container" to={`/user/${context.id}/edit`}>
+                            <button type="button">edit my user data</button>
+                        </Link>
 
 
 
