@@ -47,9 +47,7 @@ exports.postUser = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     const { email, pw } = req.body
     const options = {
-        httpOnly: true,
-        maxAge: 1000 * 60 * 60 * 24,
-        // secure: true,
+        // secure: true
     }
     try {
         const user = await User.findOne({ email })

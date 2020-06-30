@@ -52,7 +52,7 @@ export default function Blog(props) {
                 <div className={`${context.gapClass} blog-page`}>
                     <div className="blog-content">
                         <h2 id="main">blog.</h2>
-                        {props.cookies.user && props.cookies.user.role === 'Admin' && "Host" ?
+                        {(props.cookies.user && props.cookies.user.role === ('Admin' || "Host")) ?
                             <div className="button-container">
                                 {showForm ?
                                     <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
