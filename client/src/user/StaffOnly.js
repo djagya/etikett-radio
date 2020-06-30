@@ -19,21 +19,11 @@ export default function UserProfile(props) {
         context.socket.disconnect();
         props.history.push("/login")
     };
-
-    // if (context.profileEdit) {
-    //     return <Redirect to={`/user/${context.id}/edit`} />
-    // }
     if (context.createProfile) {
         return <Redirect to={`/user/createuser`} />
     }
     if (context.allUser) {
         return <Redirect to={`/user/all`} />
-    }
-    // if (context.allHosts) {
-    //     return <Redirect to={`/user/hosts/all`} />
-    // }
-    if (context.editInfoBar) {
-        return <Redirect to={`/infobar`} />
     }
     return (
         <DocumentTitle title="Staff">
@@ -45,19 +35,16 @@ export default function UserProfile(props) {
                         <Link className="button-container" to={`/user/${context.id}/edit`}>
                             <button type="button">edit my user data</button>
                         </Link>
-
-
-
                         <Link className="button-container" to={`/user/host/${context.id}`}>
                             <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my host profile
                             </button>
                         </Link>
 
 
-
-                        <div className="button-container">
-                            <button type="button" onClick={() => context.setEditInfoBar(true)}>edit info bar</button>
-                        </div>
+                        <Link className="button-container" to={`/infobar`}>
+                            <button type="button">edit info bar
+                            </button>
+                        </Link>
                         {props.cookies.user.role === 'Admin' ?
                             <div>
                                 <div className="button-container">

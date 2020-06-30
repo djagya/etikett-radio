@@ -52,12 +52,10 @@ function App(props) {
   /////for context/////
   let id = "";
 
-  const [profileEdit, setProfileEdit] = useState(false);
   const [createProfile, setCreateProfile] = useState(false);
   const [allUser, setAllUser] = useState(false);
   const [editHostID, setEditHostID] = useState("");
   const [allHosts, setAllHosts] = useState(false);
-  const [editInfoBar, setEditInfoBar] = useState(false);
   const [infoBarMessage, setInfoBarMessage] = useState("");
   const [infoID, setInfoID] = useState("");
   const [name, setName] = useState('');
@@ -76,7 +74,7 @@ function App(props) {
   if (cookies.user) {
     id = cookies.user._id
   }
-  
+
   const links = [
     { title: "Skip to main content", to: 'main' },
     { title: 'Skip to footer', to: 'footer' }
@@ -91,12 +89,10 @@ function App(props) {
         <Context.Provider value={
           {
             id,
-            profileEdit, setProfileEdit,
             createProfile, setCreateProfile,
             allUser, setAllUser,
             editHostID, setEditHostID,
             allHosts, setAllHosts,
-            editInfoBar, setEditInfoBar,
             infoBarMessage, setInfoBarMessage,
             infoID, setInfoID,
             gapClass, setGapClass,

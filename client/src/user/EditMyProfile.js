@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from "../Context";
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import PatchData from "../PatchData";
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react'
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import GetData from "../GetData";
 import DocumentTitle from 'react-document-title';
 
@@ -29,7 +29,6 @@ export default function AllHosts(props) {
             })
     }, [])
 
-    // if (hostData.length !== 0) setHostData([...hostData].sort((hostA, hostB)=>(hostA.hostName < hostB.hostName)? -1 : 1))
 
     const sortData = i => {
         switch (i) {
@@ -90,15 +89,6 @@ export default function AllHosts(props) {
         ))
     }
 
-    // if (context.editHost) {
-    //     return <Redirect to={`/user/host/${context.id}`} />
-    // }
-
-    //Delete from EditHostForm redirects to AllHosts in case Admin was coming from there to delete a profile
-    //and if a user is deleting the own profile, he will get redirected to staff-only
-    if (props.cookies.user.role !== "Admin") { return <Redirect to={`/user/${context.id}`} /> }
-
-    // if (!context.allHosts) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <DocumentTitle title="All Hosts">
             <div className={` all-list ${context.gapClass}`}>
