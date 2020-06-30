@@ -42,7 +42,7 @@ export default function ArchiveDetail(props) {
                 <div className={`${context.gapClass} archive-details-page`}>
                     <div className="archive-details-content">
                         <div className="button-container controls">
-                            {props.cookies.user && props.cookies.user.role === 'Admin' && "Host" ?
+                            {(props.cookies.user && props.cookies.user.role === ('Admin' || "Host")) ?
                                 showEdit ?
                                     <button type="button" onClick={() => setShowEdit(false)}>cancel</button> :
                                     <button type="button" onClick={() => setShowEdit(true)}>edit</button>

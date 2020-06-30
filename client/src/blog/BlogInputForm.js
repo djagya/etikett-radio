@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useAlert } from 'react-alert';
+import { Context } from "../Context";
 
 export default function BlogInput() {
 
@@ -7,6 +8,7 @@ export default function BlogInput() {
     const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
     const [text, setText] = useState("");
     const alert = useAlert();
+    const {blogData, setBlogData, setShowForm} = useContext(Context)
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -34,11 +36,9 @@ export default function BlogInput() {
 
         const resetForm = (data) => {
             if (data.success) {
-                alert.success('Your entry has been posted!', {
-                    onClose: () => {
-                       window.location.reload() 
-                    }
-                })
+                alert.success('Your entry has been posted!', {timeout: 3000})
+                setBlogData([data.blog, ...blogData])
+                setShowForm(false)
             } else {
                 alert.error(data.err);
             }

@@ -37,8 +37,12 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [loading, setLoading] = useState(false);
     const [showSourceBtn, setShowSourceBtn] = useState(false);
 
-    context.setPathName(location.pathname)
+    useEffect(() => {
+        context.setPathName(location.pathname)
 
+    }, [context.setPathName, location.pathname])
+
+    
     useEffect(() => {
         setLoading(true);
         const options = {

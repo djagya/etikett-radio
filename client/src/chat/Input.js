@@ -1,4 +1,4 @@
-import React, {useRef, useContext} from 'react';
+import React, {useRef, useContext, useEffect} from 'react';
 import autosize from "autosize";
 import { Context } from "../Context";
 
@@ -8,7 +8,11 @@ export default function Input({ text, setText, sendMessage }) {
   const {setChatHeight} = useContext(Context)
 
   autosize(reference)
-  setChatHeight(reference === null ? 0 : parseInt(reference.style.height.substring(0, 3)))
+  useEffect(() => {
+    setChatHeight(reference === null ? 0 : parseInt(reference.style.height.substring(0, 3)))
+  }, [setChatHeight])
+  
+
   return (
     <div className="Input">
       <form onSubmit={sendMessage} className="chat-form button-container">
