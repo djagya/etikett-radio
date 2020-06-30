@@ -265,9 +265,17 @@ nav {
     width: 9px;
     height: 9px;
     background: #fff;
-    border: 5px solid #313131;
+    border: 5px solid $etikett-hover;
     border-radius: 50%;
     cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: $etikett-hover;
+    border-radius: 50%;
   }
 }
 
@@ -321,7 +329,49 @@ nav {
 ///////////////////////////////////
 .change-source-btn {
   position: fixed;
-  bottom: 0;
-  width: 80px;
+  bottom: 50%;
+  width: 50px;
   height: 50px;
+  background: black;
+  color: white;
+  border-radius: 50px;
+  transition: width 300ms ease;
+  display: flex;
+  align-items: center;
+
+  span {
+    display: none;
+    opacity: 0;
+  }
+
+  img {
+    margin: 0 0.4rem;
+  }
+
+  &:hover {
+    width: 100px;
+    span {
+      display: block;
+      animation: show-up 300ms ease 250ms forwards;
+    }
+  }
+}
+
+@-moz-document url-prefix() {
+  .change-source-btn {
+    transition: none;
+
+    &:hover {
+      width: 50px;
+      span {
+        display: none;
+        animation: none;
+      }
+    }
+  }
+}
+
+@keyframes show-up {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

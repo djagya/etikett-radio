@@ -3,6 +3,8 @@ import ReactPlayer from 'react-player';
 import { useAlert } from 'react-alert';
 
 export default function Stream({ source, playing, volume, videoPlayer }) {
+  const alert = useAlert();
+
   return (
     <section className="embeded-video">
       <ReactPlayer

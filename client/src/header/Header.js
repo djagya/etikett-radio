@@ -11,6 +11,8 @@ import Stream from './Stream';
 import DesktopNavbar from './DesktopNavbar';
 import MessageControls from './MessageControls';
 import Loading from '../loading/Loading';
+import microphone from '../icons/microphone.png';
+import clapperboard from '../icons/clapperboard.png';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
@@ -36,6 +38,8 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(false);
     const [showSourceBtn, setShowSourceBtn] = useState(false);
+    const [buttonIcon, setButtonIcon] = useState(null);
+    const [buttonText, setButtonText] = useState(null);
 
     useEffect(() => {
         context.setPathName(location.pathname)
@@ -77,32 +81,50 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
 
 
     useEffect(() => {
+        const setHeaderChatGapSize = () => {
+
+            // If there's video and we are on homescreen
+            if (source === video && location.pathname === '/') {
+                setHeaderSize('full-header');
+                setChatState('chat-homescreen-with-video');
+                context.setGapClass("big-gap");
+    
+            // If there's no video
+            } else if (source !== video) {
+                setHeaderSize('small-header-without-video');
+                setChatState('chat-routes-without-video');
+                context.setGapClass("small-gap");
+            } else {
+                setHeaderSize('small-header-with-video');
+                setChatState('chat-routes-with-video');
+                context.setGapClass("big-gap");
+            }
+        }
         setHeaderChatGapSize();
     }, [source, location.pathname])
 
-    const setHeaderChatGapSize = () => {
-
-        // If there's video and we are on homescreen
-        if (source === video && location.pathname === '/') {
-            setHeaderSize('full-header');
-            setChatState('chat-homescreen-with-video');
-            context.setGapClass("big-gap");
-
-        // If there's no video
-        } else if (source !== video) {
-            setHeaderSize('small-header-without-video');
-            setChatState('chat-routes-without-video');
-            context.setGapClass("small-gap");
+    useEffect(() => {
+        // Set button icon
+        if (source === video) {
+            setButtonIcon(microphone);
+            setButtonText('Radio');
         } else {
-            setHeaderSize('small-header-with-video');
-            setChatState('chat-routes-with-video');
-            context.setGapClass("big-gap");
+            setButtonIcon(clapperboard);
+            setButtonText('Video');
         }
-    }
+        // Pause player
+        setPlaying(false)
+    }, [source])
+
 
     const handlePlayBtn = e => {
-        e.target.classList.toggle('paused')
-        setPlaying(!playing);
+        if (playing) {
+            e.target.classList.remove('paused');
+            setPlaying(false);
+        } else {
+            e.target.classList.add('paused');
+            setPlaying(true);
+        }
     }
 
     const handleAudio = () => {
@@ -153,7 +175,10 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                         />
                         
                         {showSourceBtn ? 
-                            <button className="change-source-btn" onClick={() => source === video ? setSource(radio) : setSource(video)} >Change source</button>
+                            <button className="change-source-btn" onClick={() => source === video ? setSource(radio) : setSource(video)}>
+                                <img src={buttonIcon} width="24" alt="icon"/>
+                                <span>{buttonText}</span>
+                            </button>
                         : null}
                         
                 </header>
