@@ -116,8 +116,13 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
 
 
     const handlePlayBtn = e => {
-        e.target.classList.toggle('paused')
-        setPlaying(!playing);
+        if (playing) {
+            e.target.classList.remove('paused');
+            setPlaying(false);
+        } else {
+            e.target.classList.add('paused');
+            setPlaying(true);
+        }
     }
 
     const handleAudio = () => {
