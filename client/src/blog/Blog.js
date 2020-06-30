@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import BlogInputForm from './BlogInputForm';
 import BlogEntry from './BlogEntry';
 import { useAlert } from 'react-alert';
@@ -30,15 +30,16 @@ export default function Blog(props) {
 
             })
     }, [])
+
     //list item construction
     const renderLi = (blogData) => {
         if (blogData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (blogData.length === 0) return null;
 
         return blogData.map((el, i) => (
-
-            <BlogEntry el={el} key={i} i={i} />
-
+            <Fragment key={i}>
+                <BlogEntry el={el}  i={i} />
+            </Fragment>
         ));
     };
 
@@ -50,7 +51,7 @@ export default function Blog(props) {
                 <div className={`${context.gapClass} blog-page`}>
                     <div className="blog-content">
                         <h2 id="main">blog.</h2>
-                        {props.cookies.user && props.cookies.user.role === 'Admin' ?
+                        {props.cookies.user && props.cookies.user.role === 'Admin' || "Host" ?
                             <div className="button-container">
                                 {showForm ?
                                     <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
