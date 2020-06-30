@@ -12,6 +12,8 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
   const timer = () => setTime(moment().format("H:mm:ss"))
 
   useEffect(() => {
+    let mounted = true;
+
     GetData("/infobar")
       .then(data => {
         if (!data.success) alert.error("Failed to fetch data, please contact the admin.");
@@ -30,41 +32,51 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         console.log(err)
         alert.error('Failed to fetch info. Please contact the admin.')
       })
+    
+      const getSongName = setInterval(() => {
+        console.log('setInterval')
+        fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
+          .then(res => res.json())
+          .then(data => {
+            let titleWords = [];
+            let sanitizedTitle = '';
+      
+            // Separate words
+            if (data.songtitle.includes('_')) {
+              titleWords = data.songtitle.split('_');
+            }
+            if (data.songtitle.includes(' ')) {
+              titleWords = data.songtitle.split(' ');
+            }
+      
+            // Sanitize word
+            titleWords.forEach(word => {
+              let sanitizedWord = word[0].toLocaleUpperCase() + word.substring(1).toLocaleLowerCase();
+              sanitizedTitle += sanitizedWord + ' ';
+            })
+      
+            // Set title
+            if (mounted) {
+              setSongName(sanitizedTitle);
+            }
+          })
+          .catch(err => {
+            console.log(err)
+            setSongName('');
+          })
+      }, 1000 * 10);
+  
+    return () => {
+      clearInterval(getSongName);
+      mounted = false;
+    }
   }, [])
-
-  useEffect(() => {
-    const id = setInterval(timer, 1000);
-
-    fetch('https://cors-anywhere.herokuapp.com/https://s9.myradiostream.com/44782/stats?json=1')
-      .then(res => res.json())
-      .then(data => {
-        let titleWords = [];
-        let sanitizedTitle = '';
-
-        // Separate words
-        if (data.songtitle.includes('_')) {
-          titleWords = data.songtitle.split('_');
-        }
-        if (data.songtitle.includes(' ')) {
-          titleWords = data.songtitle.split(' ');
-        }
-
-        // Sanitize word
-        titleWords.forEach(word => {
-          let sanitizedWord = word[0].toLocaleUpperCase() + word.substring(1).toLocaleLowerCase();
-          sanitizedTitle += sanitizedWord + ' ';
-        })
-
-        // Set title
-        setSongName(sanitizedTitle);
-      })
-      .catch(err => {
-        console.log(err)
-        setSongName('');
-      })
-
-    return () => clearInterval(id);
-  }, [time]);
+    
+    useEffect(() => {
+      const id = setInterval(timer, 1000); 
+      return () => clearInterval(id);
+    }, [time]);
+    
 
   return (
     <section className="message-controls-container">
