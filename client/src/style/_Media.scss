@@ -193,7 +193,7 @@
     p {
       margin-bottom: 2rem;
       text-align: right;
-      margin: 0.5rem;
+      margin: 0 1rem;
     }
 
     q {
@@ -652,9 +652,7 @@
       font-size: 1rem;
     }
 
-    p {
-      font-size: 0.8rem;
-    }
+  
 
     .archive-details-card {
       margin: 2rem 1rem;
@@ -668,12 +666,13 @@
       p, .link-component  {
         text-align: center;
         margin: 0;
+        margin-bottom: .5rem;
       }
+
   
       q {
         width: 100%;
         // margin: 1rem 0.5rem;
-        overflow-wrap: break-word;
       }
   
       .img-header {
@@ -1018,7 +1017,7 @@
     }
   }
 
-
+ 
 
   ///header-gap
   .big-gap {

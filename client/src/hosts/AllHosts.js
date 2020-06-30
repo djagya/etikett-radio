@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, Fragment } from 'react'
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
 import { Redirect, Link } from 'react-router-dom';
 import GetData from "../GetData";
+import DocumentTitle from 'react-document-title';
 
 
 
@@ -13,7 +14,6 @@ export default function AllHosts(props) {
 
     const [isActive, setIsActive] = useState(0);
     const [lastSort, setLastSort] = useState(0)
-    let sortedData = [];
     useEffect(() => {
         GetData("/host")
             .then(data => {
@@ -61,18 +61,22 @@ export default function AllHosts(props) {
     const renderHosts = () => {
         if (hostData.length === 0) return null
         return hostData.map((host, i) => (
-            <ol key={i} className="all-data host-list-grid">
-                <li>{host.hostName}</li>
-                <li>{host.isActive}</li>
-                <li className="button-container">
-                    <button type="button" onClick={() => {
-                        context.setEditHostID(host.userID)
-                        context.setEditHost(true)
-                    }}>edit
-                    </button>
-                </li>
+            <Fragment key={i}>
+                <ol className="all-data host-list-grid">
+                    <li>{host.hostName}</li>
+                    <li>{host.isActive}</li>
+                    <li className="button-container">
 
-            </ol>
+                        <Link className="link-button" to={`/user/host/${context.id}`}>
+                            <button type="button" onClick={() => context.setEditHostID(host.userID)}>
+                            edit
+                            </button>
+                        </Link>
+
+
+                    </li>
+                </ol>
+            </Fragment>
         ))
     }
 
@@ -80,34 +84,35 @@ export default function AllHosts(props) {
         const listHeader = ["host.", "status."]
 
         return listHeader.map((el, i) => (
-            <li key={i} ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
-
+            <Fragment key={i}>
+            <li ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
+            </Fragment>
         ))
     }
 
-    if (context.editHost) {
-        return <Redirect to={`/user/host/${context.id}`} />
-    }
+    // if (context.editHost) {
+    //     return <Redirect to={`/user/host/${context.id}`} />
+    // }
 
     //Delete from EditHostForm redirects to AllHosts in case Admin was coming from there to delete a profile
     //and if a user is deleting the own profile, he will get redirected to staff-only
     if (props.cookies.user.role !== "Admin") { return <Redirect to={`/user/${context.id}`} /> }
 
-    if (!context.allHosts) { return <Redirect to={`/user/${context.id}`} /> }
+    // if (!context.allHosts) { return <Redirect to={`/user/${context.id}`} /> }
     return (
-        <div className={` all-list ${context.gapClass}`}>
-            <h2 id="main">all hosts.</h2>
-            <div className="list-container">
-                <div className="button-container">
-                    <button type="button" onClick={() => context.setAllHosts(false)}>back</button>
-                </div>
-                <div>
-                    <ul className="list-header host-list-grid">
-                        {renderLiHeader()}
-                    </ul>
-                    {renderHosts()}
+        <DocumentTitle title="All Hosts">
+            <div className={` all-list ${context.gapClass}`}>
+                <h2 id="main">all hosts.</h2>
+                <div className="list-container">
+                    <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
+                    <div>
+                        <ul className="list-header host-list-grid">
+                            {renderLiHeader()}
+                        </ul>
+                        {renderHosts()}
+                    </div>
                 </div>
             </div>
-        </div>
+        </DocumentTitle>
     )
 }

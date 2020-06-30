@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PostData from "../PostData";
 import PutData from "../PutData";
 import GetData from "../GetData";
@@ -51,7 +51,7 @@ export default function EditHostPage(props) {
                 }
                 if (filteredData.length !== 1 && role !== "Admin") {
                     alert.error("Please contact the owner or the admin to edit this host profile")
-                    return <Redirect to={`/hosts`} />
+                    return <Redirect to={`/user/${context.id}`} />
                 }
                 if (filteredData.length === 1 || role === "Admin") {
                     setProfileExists(true)
@@ -179,14 +179,16 @@ export default function EditHostPage(props) {
         }
     }
 
-    if (!context.editHost) { return <Redirect to={`/user/${context.id}`} /> }
+    // if (!context.editHost) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={`${context.gapClass} edit-host-page`}>
             <h2>edit my host profile.</h2>
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
-                    <button type="button" onClick={() => context.setEditHost(false)}>cancel</button>
+                <Link className="link-button" to={`/user/${context.id}`}><button type="button">back</button></Link>
+                {props.cookies.user.role === 'Admin' ?
                     <button type="button" onClick={() => handleDelete(profileID, hostName)}>delete</button>
+                : null}
                 </div>
                 <div className="grid-container">
                     <label htmlFor="hostName">

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from "../Context";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import Null from '../loading/Null';
 
@@ -29,12 +29,9 @@ export default function UserProfile(props) {
     if (context.allUser) {
         return <Redirect to={`/user/all`} />
     }
-    if (context.editHost) {
-        return <Redirect to={`/user/host/${context.id}`} />
-    }
-    if (context.allHosts) {
-        return <Redirect to={`/user/hosts/all`} />
-    }
+    // if (context.allHosts) {
+    //     return <Redirect to={`/user/hosts/all`} />
+    // }
     if (context.editInfoBar) {
         return <Redirect to={`/infobar`} />
     }
@@ -48,13 +45,16 @@ export default function UserProfile(props) {
                         <div className="button-container">
                             <button type="button" onClick={() => context.setProfileEdit(true)}>edit my user data</button>
                         </div>
-                        <div className="button-container">
-                            <button type="button" onClick={() => {
-                                context.setEditHostID(context.id)
-                                context.setEditHost(true)
-                            }}>edit my host profile
-                    </button>
-                        </div>
+
+
+
+                        <Link className="button-container" to={`/user/host/${context.id}`}>
+                            <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my host profile
+                            </button>
+                        </Link>
+
+
+
                         <div className="button-container">
                             <button type="button" onClick={() => context.setEditInfoBar(true)}>edit info bar</button>
                         </div>
@@ -66,9 +66,8 @@ export default function UserProfile(props) {
                                 <div className="button-container">
                                     <button type="button" onClick={() => context.setAllUser(true)}>all user</button>
                                 </div>
-                                <div className="button-container">
-                                    <button type="button" onClick={() => context.setAllHosts(true)}>all hosts</button>
-                                </div>
+                                <Link className="button-container" to={`/user/hosts/all`}><button type="button">all hosts</button></Link>
+                                
                             </div>
                             : null}
                         <div className="button-container">

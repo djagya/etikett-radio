@@ -55,7 +55,6 @@ function App(props) {
   const [profileEdit, setProfileEdit] = useState(false);
   const [createProfile, setCreateProfile] = useState(false);
   const [allUser, setAllUser] = useState(false);
-  const [editHost, setEditHost] = useState(false);
   const [editHostID, setEditHostID] = useState("");
   const [allHosts, setAllHosts] = useState(false);
   const [editInfoBar, setEditInfoBar] = useState(false);
@@ -95,7 +94,6 @@ function App(props) {
             profileEdit, setProfileEdit,
             createProfile, setCreateProfile,
             allUser, setAllUser,
-            editHost, setEditHost,
             editHostID, setEditHostID,
             allHosts, setAllHosts,
             editInfoBar, setEditInfoBar,
