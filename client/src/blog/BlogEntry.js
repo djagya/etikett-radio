@@ -37,7 +37,7 @@ export default function BlogEntry(el, i) {
     return (
 
         <li key={i} className="blog-list">
-            {cookies.user && cookies.user.role === 'Admin' ?
+            {cookies.user && cookies.user.role === 'Admin' && "Host" ?
                 <div className="button-container controls">
                     {showEdit ?
                         <button type="button" onClick={() => setShowEdit(false)}>cancel</button> :
