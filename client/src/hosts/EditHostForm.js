@@ -15,6 +15,7 @@ export default function EditHostPage(props) {
 
     const id = context.editHostID;
     const role = props.cookies.user.role
+    const [userID, setUserID] = useState("")
     const [hostName, setHostName] = useState("");
     const [hostImg, setHostImg] = useState("");
     const [description, setDescription] = useState("");
@@ -55,6 +56,7 @@ export default function EditHostPage(props) {
                 }
                 if (filteredData.length === 1 || role === "Admin") {
                     setProfileExists(true)
+                    setUserID(filteredData[0].userID)
                     setHostName(filteredData[0].hostName)
                     setHostImg(filteredData[0].hostImg)
                     setDescription(filteredData[0].description)
@@ -179,13 +181,20 @@ export default function EditHostPage(props) {
         }
     }
 
-    // if (!context.editHost) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <div className={`${context.gapClass} edit-host-page`}>
+            {context.id !== userID ? 
+            <h2>edit {hostName}s host profile.</h2>:
             <h2>edit my host profile.</h2>
+            }
+            
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="button-container">
-                <Link className="link-button" to={`/user/${context.id}`}><button type="button">back</button></Link>
+                {context.id !== userID ? 
+                    <Link className="link-button" to={`/user/hosts/all`}><button type="button">back</button></Link>
+                    :<Link className="link-button" to={`/user/${context.id}`}><button type="button">back</button></Link>
+                    
+                }
                 {props.cookies.user.role === 'Admin' ?
                     <button type="button" onClick={() => handleDelete(profileID, hostName)}>delete</button>
                 : null}

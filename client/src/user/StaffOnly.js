@@ -42,7 +42,6 @@ export default function UserProfile(props) {
                 <div className={`${context.gapClass} staff-only`}>
                     <div>
                         <h2 id="main">logged in as {props.cookies.user.firstName}</h2>
-                        {/* <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link> */}
                         <Link className="button-container" to={`/user/${context.id}/edit`}>
                             <button type="button">edit my user data</button>
                         </Link>
