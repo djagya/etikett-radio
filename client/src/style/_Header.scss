@@ -265,9 +265,17 @@ nav {
     width: 9px;
     height: 9px;
     background: #fff;
-    border: 5px solid #313131;
+    border: 5px solid $etikett-hover;
     border-radius: 50%;
     cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: $etikett-hover;
+    border-radius: 50%;
   }
 }
 
