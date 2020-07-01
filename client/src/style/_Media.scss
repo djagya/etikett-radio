@@ -187,28 +187,21 @@
   }
 
   ///main archive page
-  .all-list {
-    .archive-list-grid {
-      grid-template-columns: 80px 3fr 3fr 1fr 20px;
+  .list-header,
+  .all-data {
+
+
+    :nth-child(3) {
+      display: none;
     }
 
-    //target this to get rid of the 3. column
-    .list-header,
-    .all-data {
-      width: 90vw;
-      margin: 0 auto;
 
 
-      :nth-child(3) {
-        display: none;
-      }
+    &.archive-list-grid {
+      width: 800px;
+      display: grid;
+      grid-template-columns: 200px 1fr 1fr 1fr 20px;
     }
-
-    .list-header {
-      display: flex;
-      justify-content: center;
-    }
-
 
   }
 
@@ -457,8 +450,6 @@
 
   .list-header,
   .all-data {
-    width: 500px;
-    margin: 0 auto;
 
     :nth-child(3) {
       display: none;
@@ -469,8 +460,9 @@
     }
 
     &.archive-list-grid {
+      width: 90vw;
       display: grid;
-      grid-template-columns: 1fr 3fr 1fr 20px;
+      grid-template-columns: 100px 2fr 1fr 20px;
     }
 
   }
@@ -715,9 +707,10 @@
 
   ///main archive page
 
+  ///main archive page
+
   .list-header,
   .all-data {
-
 
     :nth-child(3) {
       display: none;
@@ -732,15 +725,16 @@
     }
 
     &.archive-list-grid {
+      width: 90vw;
       display: grid;
-      grid-template-columns: 80px 1fr 20px;
+      grid-template-columns: 50px 1fr;
     }
 
-    .list-header {
+    .sort-list {
       display: none;
     }
-
   }
+
 
   .archive-add-delete-buttons {
     margin: 0.5rem;

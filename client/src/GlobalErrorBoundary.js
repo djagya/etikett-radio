@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 
 class GlobalErrorBoundary extends React.Component {
   constructor(props) {
@@ -26,7 +25,7 @@ class GlobalErrorBoundary extends React.Component {
             <h1>Something went wrong: </h1>
             <p>{this.state.error.message}</p>
             {/* Shoud we just ask the user to realod the page? */}
-            <Link to="/">Home</Link>
+            <button onClick={() => window.location = '/'}>Home</button>
           </div>
         </div>
       )    
