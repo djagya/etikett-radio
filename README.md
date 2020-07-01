@@ -1,6 +1,6 @@
 # etikett radio
 
-etikett radio is a radio station for students of Catalyst Music school (former dBs Berlin) in Berlin.
+etikett radio is a radio station for students of dBs Berlin Music School.
 The web site makes it possible to listen to their live radio shows or watching their twitch stream while browsing through the content or interact with other users in the chat.
 Moreover, students are now able to work on their portfolio on the website without relying on the mentor.
 
@@ -24,7 +24,8 @@ Moreover, students are now able to work on their portfolio on the website withou
 ### Accessibility 
 
 - react-document-title (gives each component an individual title)
--
+- skip-links (option for users tabbing through the website to skip the navigation section)
+- usage of Fragments
 
 ### Front End
 
