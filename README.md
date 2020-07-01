@@ -41,10 +41,10 @@ Moreover, students are now able to work on their portfolio on the website withou
 - embedded radio stream with custom controls and extracted metadata to automatically display the currently playing show on the info bar
 - automatically detects if a twitch stream is happening and provides it with the option to switch between twitch input and radio input (audio only mode)
 
-#### Visuals
+#### Visuals / Styling
 - noise texture (three.js)
 - planetarium (react only)
-- other styling with SCSS
+- other styling with SCSS only, no frameworks
 - custom scroll bars everywhere (for chrome at least)
 
 #### Schedule
