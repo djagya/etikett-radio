@@ -56,7 +56,11 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
     
           // Set title
           if (mounted) {
+            if (sanitizedTitle === "") {
+              setSongName("Etikett Radio")
+            } else {
             setSongName(sanitizedTitle);
+            }
           }
         })
         .catch(err => {
@@ -89,7 +93,7 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
         </div>
         : null}
       <div className="message">
-        <span className="moving-text"> {time} -- {songName} -- {context.infoBarMessage}</span>
+        <span className="moving-text"> {time} -- Now playing: {songName} -- {context.infoBarMessage}</span>
       </div>
 
     </section>
