@@ -193,7 +193,7 @@ nav {
   @extend .chat-routes-without-video;
 
   .chat-app-chat {
-    height: calc(100vh - 127px) // calc(100vh - navbar height (when it's wraped)
+    height: calc(100vh - 127px) // 100vh - navbar height (when it's wraped)
   }
 
 }
