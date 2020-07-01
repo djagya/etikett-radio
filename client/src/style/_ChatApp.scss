@@ -198,12 +198,6 @@
     width: 20%;
   }
 }
-// Firefox
-@-moz-document url-prefix() {
-  #input-message-textarea {
-    max-height: 70px !important;
-  }
-}
 
 // Message
 .justify-right {
