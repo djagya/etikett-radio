@@ -31,7 +31,7 @@ export default function Schedule(props) {
             //sorts the incoming data by date
             .then(data => {
                 setLoading(false)
-                setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from)))
+                setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))) //Initial sort, to get all weeks in the right order
             })
             .catch(err => {
                 console.log(err);
@@ -87,7 +87,10 @@ export default function Schedule(props) {
 
     //filter inputData by week number and add array to weeklySchedule
     weekNum.map(weekNum => {
-        const week = scheduleData.filter(data => {
+        //sort again so also new entries get sorted properly
+        const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
+
+        const week = sortedMonth.filter(data => {
             //To make sundays show as the last day of the week, not as the first of the next
             const num = () => {
                 let number = moment(data.from).format("w");
@@ -103,9 +106,9 @@ export default function Schedule(props) {
     })
     ///////////////////////////////
 
-    const renderLi = (scheduleData) => {
+    const renderLi = () => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
-        if (scheduleData.length === 0) return null; //Because first time the code is running, scheduleData will be an empty array
+        if (scheduleData.length === 0) return; //Because first time the code is running, scheduleData will be an empty array
 
         return weeklySchedule.reverse().map((el, i) => (
             <Fragment key={i}>
@@ -133,7 +136,7 @@ export default function Schedule(props) {
                             : null}
                         {showForm ? <ScheduleInputForm /> : null}
                         <ul className="monthly-schedule">
-                            {renderLi(scheduleData)}
+                            {renderLi()}
                         </ul>
                     </div>
                 </div>
