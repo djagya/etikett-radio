@@ -4,25 +4,23 @@
   .full-header {
     .chat-homescreen-with-video {
       position: fixed;
-      top: -5px;
+      top: 10px;
 
+      .Join {
+        margin: 0;
+      }
+
+      .chat-app-chat {
+        height: calc(100vh - 47px - 38px) // 100vh - message bar - space
+      }
 
       .outer-container {
         padding: 0;
       }
 
-      .Messages {
-        margin-top: 30px;
-
-      }
-
       .chat-send {
         margin-top: 4px;
       }
-    }
-
-    .InfoBar {
-      margin-top: 0.8rem;
     }
   }
 
@@ -30,10 +28,6 @@
     .chat-routes-with-video {
       position: fixed;
       top: 30px;
-
-      .Messages {
-        margin-top: 63px;
-      }
     }
   }
 
@@ -41,10 +35,6 @@
   .chat-routes-without-video {
     position: fixed;
     top: 13px;
-
-    .Messages {
-      margin-top: 63px;
-    }
   }
 
 
