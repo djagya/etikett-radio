@@ -72,7 +72,7 @@ export default function EditHostPage(props) {
                     setOtherName(filteredData[0].otherName)
                     setOtherLink(filteredData[0].otherLink)
                     setProfileID(filteredData[0]._id)
-                    // isActive(filteredData[0].isActive)
+                    setIsActive(filteredData[0].isActive)
                 } else {
                     return alert.error("Something went wrong")
                 }
