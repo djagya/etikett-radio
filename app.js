@@ -21,7 +21,7 @@ const hostRoute = require("./routes/hostRoute");
 const infoBarRoute = require("./routes/infoBarRoute");
 const chatRoute = require('./routes/chatRoute');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const server = http.createServer(app);
 const io = socketio(server);

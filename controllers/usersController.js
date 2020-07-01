@@ -45,9 +45,11 @@ exports.postUser = async (req, res, next) => {
 };
 exports.login = async (req, res, next) => {
     const { email, pw } = req.body
-    const options = {
-        secure: true
+    const options = {}
+    if (process.env.PORT)   {
+        options.secure = true
     }
+
     try {
         const user = await User.findOne({ email })
         if (!user) throw createError(404)
