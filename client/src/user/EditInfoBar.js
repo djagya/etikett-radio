@@ -13,17 +13,16 @@ export default function EditInfoBar(props) {
     useEffect(() => {
         setCurrMessage(context.infoBarMessage)
     }, [context.infoBarMessage])
-
+    
     const handleSubmit = event => {
         event.preventDefault()
         const body = {
             "message": context.infoBarMessage
         }
-
-        PutData(`http://localhost:3000/infobar/${context.infoID}`, body)
+        PutData(`/infobar/${context.infoID}`, body)
             .then(data => {
+                
                 if (!data.success) {
-                    console.log(data)
                     alert.error("Something went wrong while updating your data")
                 } else {
                     alert.success("Update successful!", { timeout: 3000 })
