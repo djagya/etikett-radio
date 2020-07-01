@@ -51,6 +51,7 @@ Moreover, students are now able to work on their portfolio on the website withou
 
 - only input needed is show name, start date, end date
 - by using moment.js, applied the logic to automatically detect which month -> week -> day and gets everything in order
+- styling of the dates depends on whether it already happened, is currently happening or is in the future
 - dates older than 2 months get deleted automatically 
 
 #### Archive
@@ -62,10 +63,11 @@ Moreover, students are now able to work on their portfolio on the website withou
 #### Hosts
 
 - only active hosts are shown in the host showcase
+- hosts have the possibility to save all relevant social medias which will be displayed with the corresponding logo
 
 #### Staff Only
 
-- grants access for hosts to edit their personal/log in data, their own host profile and the info bar
+- grants access for hosts to edit their personal/log in data, their own host profile and the info bar, create archive and blog entries and edit them
 - additionally grants access for admins to see and edit all existing user and host profiles and to create new users
 
 #### Chat
@@ -74,6 +76,6 @@ Moreover, students are now able to work on their portfolio on the website withou
 - existing user profiles will have their user names reserved for the chat and automatically log in when logging into their user account
 - autosize (automatically resizing the input field)
 - react-scroll-to-bottom (so the message window automatically scrolls down with every new message)
-- react-emoji (to replace codes like <3 or :) with corresponding emojis>)
+- react-emoji (to replace codes like <3 or :) with corresponding emojis)
 
 
