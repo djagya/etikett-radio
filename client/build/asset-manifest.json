@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a330675e.chunk.css",
+    "main.js": "/static/js/main.8db0f42b.chunk.js",
+    "main.js.map": "/static/js/main.8db0f42b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8c40394c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8c40394c.js.map",
+    "static/css/2.85d21689.chunk.css": "/static/css/2.85d21689.chunk.css",
+    "static/js/2.3721a537.chunk.js": "/static/js/2.3721a537.chunk.js",
+    "static/js/2.3721a537.chunk.js.map": "/static/js/2.3721a537.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.0c0fc4deecc7e87cbb58571908275d38.js": "/precache-manifest.0c0fc4deecc7e87cbb58571908275d38.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.85d21689.chunk.css.map": "/static/css/2.85d21689.chunk.css.map",
+    "static/css/main.a330675e.chunk.css.map": "/static/css/main.a330675e.chunk.css.map",
+    "static/js/2.3721a537.chunk.js.LICENSE.txt": "/static/js/2.3721a537.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/static/media/imageonline-co-noise.bfd24c8f.png",
+    "static/media/audio.png": "/static/media/audio.9986e668.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8c40394c.js",
+    "static/css/2.85d21689.chunk.css",
+    "static/js/2.3721a537.chunk.js",
+    "static/css/main.a330675e.chunk.css",
+    "static/js/main.8db0f42b.chunk.js"
+  ]
+}
