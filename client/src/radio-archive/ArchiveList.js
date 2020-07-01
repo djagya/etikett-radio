@@ -174,7 +174,7 @@ export default function ArchiveList(props) {
 
                     <ul className="all-data archive-list-grid">
                         <li className="img-container"><img src={el.img} alt={`Small version of the artwork of ${el.show}`} width="50" height="50" /></li>
-                        <li><Link className="link-component" to={`archive/${el._id}`}>{el.show}</Link></li>
+                        <li ><Link className="link-component hosts-list-archive" to={`archive/${el._id}`}>{el.show}</Link></li>
                         <li><Link className="link-component" to={`hosts/${el.hostID}`}>{el.host}</Link></li>
                         <li>{el.genre}</li>
                         <li>{el.date.substring(0, 10)}</li>
@@ -192,7 +192,7 @@ export default function ArchiveList(props) {
 
         return listHeader.map((el, i) => (
             <Fragment key={i}>
-                <li><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
+                <li className="sort-list"><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
             </Fragment>
         ))
     }
@@ -241,7 +241,7 @@ export default function ArchiveList(props) {
                             </div>
                         </form>
                         <ul className="list-header archive-list-grid sort-by-box">
-                            <li>sort by:</li>
+                            <li className="sort-list">sort by:</li>
                             {renderLiHeader()}
                         </ul>
                         <ul className="all-details-sorted">
