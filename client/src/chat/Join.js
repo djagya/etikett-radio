@@ -7,6 +7,11 @@ export default function Join({ setName, setCookie }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    
+    // Prevent really long names
+    if (nameInput.length >= 10) {
+      return alert.error("Please pick a nickname that's shorter than 10 characters.");
+    }
 
     // Prevent user from having the same name as host
     fetch('/users')
