@@ -198,7 +198,7 @@
     width: 20%;
   }
 }
-// max-height for Firefox
+// Firefox
 @-moz-document url-prefix() {
   #input-message-textarea {
     max-height: 70px !important;
