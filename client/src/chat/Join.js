@@ -18,7 +18,7 @@ export default function Join({ setName, setCookie }) {
 
         // Compare user's chatName with userName
         const foundUserName = data.users.find(({ userName }) => {
-          userName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase();
+          return userName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase();
         });
 
         // Return result
@@ -34,7 +34,7 @@ export default function Join({ setName, setCookie }) {
 
               // Compare user's chatName with chatUsers
               const foundChatName = data.chatUsers.find(({ name }) => {
-                name === nameInput.trim().toLocaleLowerCase();
+                return name === nameInput.trim().toLocaleLowerCase();
               });
               
               // Return result
