@@ -30,7 +30,6 @@ exports.getUserById = async (req, res, next) => {
 exports.postUser = async (req, res, next) => {
     try {
         const user = new User(req.body);
-        console.log(user)
         // Capitalize
         user.firstName = user.firstName[0].toLocaleUpperCase() + user.firstName.substring(1).toLocaleLowerCase();
         user.lastName = user.lastName[0].toLocaleUpperCase() + user.lastName.substring(1).toLocaleLowerCase();
@@ -47,7 +46,7 @@ exports.postUser = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     const { email, pw } = req.body
     const options = {
-        // secure: true
+        secure: true
     }
     try {
         const user = await User.findOne({ email })
