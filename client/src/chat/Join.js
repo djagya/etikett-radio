@@ -12,50 +12,47 @@ export default function Join({ setName, setCookie }) {
     fetch('/users')
       .then(res => res.json())
       .then(data => {
-        let match = false;
         if (nameInput === "") {
           alert.error("Please enter a nickname to join the chat!")
         }
-        // Compare user's chatName with hostName
-        data.users.map(({ userName }) => {
-          if (userName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase()) {
-            match = true;
-            return match
-          }
-        })
+
+        // Compare user's chatName with userName
+        const foundUserName = data.users.find(({ userName }) => {
+          userName.trim().toLocaleLowerCase() === nameInput.trim().toLocaleLowerCase();
+        });
+
         // Return result
-        return match
+        return foundUserName;
       })
-      .then((match) => {
-        if (!match) {
+      .then((foundUserName) => {
+        if (!foundUserName) {
+
           // Prevent user from having the same name as a chat user
           fetch('/chat')
             .then(res => res.json())
             .then(data => {
 
               // Compare user's chatName with chatUsers
-              data.chatUsers.map(({ name }) => {
-                if (name === nameInput.trim().toLocaleLowerCase()) {
-
-                  match = true;
-                  return match;
-                }
+              const foundChatName = data.chatUsers.find(({ name }) => {
+                name === nameInput.trim().toLocaleLowerCase();
               });
+              
               // Return result
-              return match;
+              return foundChatName;
             })
-            .then((match) => {
-
-              if (!match) {
+            .then((foundChatName) => {
+              if (!foundChatName) {
                 // Add user
                 setName(nameInput);
                 setCookie('name', nameInput, { path: '/' });
+
               } else {
                 alert.error('Username is already taken.');
                 return;
               }
             })
             .catch(err => {
+              console.log(err);
               alert.error('Server is not responding. Please contact the admin.')
             })
 
@@ -65,6 +62,7 @@ export default function Join({ setName, setCookie }) {
         }
       })
       .catch(err => {
+        console.log(err);
         alert.error('Server is not responding. Please contact the admin.')
       })
   }
