@@ -26,7 +26,6 @@ export default function Schedule(props) {
 
     useEffect(() => {
         setLoading(true);
-        throw new Error("Whatever inside")
         fetch("/schedule")
             .then(res => res.json())
             //sorts the incoming data by date
