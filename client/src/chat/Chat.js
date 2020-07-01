@@ -63,7 +63,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
   }, [chatHeight])
 
 
-
+ ///// Resizing the input field
  autosize(chatRef)
  useEffect(() => {
    if (!chatRef) return
@@ -72,13 +72,16 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
 })
 
   const sendMessage = e => {
-    e.preventDefault();
+    e.preventDefault(); 
     if (text) {
       // Emit SENDMESSAGE
       socket.emit('sendMessage', text, () => {
-        setText('');
         autosize.destroy(chatRef)
+      setChatHeight(0)
       })
+      //why is this working outside of the function and autosize.destroy and setChatHeight not?
+      setText('');  //inside of the function is a recognizable delay
+        
     }
     if (messages.length >= 50) {
         removeFirst();

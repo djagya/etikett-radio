@@ -73,7 +73,6 @@ function App(props) {
   if (cookies.user) {
     id = cookies.user._id
   }
-console.log(chatHeight)
   const links = [
     { title: "Skip to main content", to: 'main' },
     { title: 'Skip to footer', to: 'footer' }
