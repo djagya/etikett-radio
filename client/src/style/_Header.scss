@@ -169,7 +169,7 @@ nav {
   z-index: 2;
 
   .chat-app-chat {
-    height: 80vh;
+    height: calc(100vh - 65px);
   }
 
   // Chat window height
@@ -179,7 +179,7 @@ nav {
 
   // .Input { height: 40px }
   .Messages {
-    height: 100%;
+    height: calc(100% - 43px - 33px) // 100% - chat Infobar - chat Input
   }
 
   .button-container {
@@ -193,12 +193,9 @@ nav {
   @extend .chat-routes-without-video;
 
   .chat-app-chat {
-    height: 80vh;
+    height: calc(100vh - 127px) // calc(100vh - navbar height (when it's wraped)
   }
 
-  .Messages {
-    height: 100%;
-  }
 }
 
 ///////////////////////////////////
