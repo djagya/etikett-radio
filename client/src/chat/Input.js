@@ -5,13 +5,13 @@ import { Context } from "../Context";
 export default function Input({ text, setText, sendMessage }) {
   const input = useRef(null)
   const reference = input.current
-  const {setChatHeight} = useContext(Context)
+  const {setChatHeight, setChatRef} = useContext(Context)
   autosize(reference)
 
   useEffect(() => {
-    setChatHeight(reference === null ? 0 : parseInt(reference.style.height.substring(0, 3)))
+    setChatRef(reference)
   })
-  
+
   return (
     <div className="Input">
       <form onSubmit={sendMessage} className="chat-form button-container">

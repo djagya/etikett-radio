@@ -4,12 +4,13 @@ import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
 import { Context } from "../Context";
+import autosize from "autosize";
 import { contextsKey } from 'express-validator/src/base';
 
 export default function Chat({ name, setName, room, chatWindow, setChatWindow, removeCookie }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
-  const { socket, setOnChat, chatHeight } = useContext(Context)
+  const { socket, setOnChat, chatHeight, setChatHeight, chatRef, setChatRef } = useContext(Context)
   const alert = useAlert();
   const [bottomSpace, setBottomSpace] = useState(0);
 
@@ -62,12 +63,21 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
   }, [chatHeight])
 
 
+
+ autosize(chatRef)
+ useEffect(() => {
+   if (!chatRef) return
+  setChatHeight(chatRef === null ? 0 : parseInt(chatRef.style.height.substring(0, 3)))
+
+})
+
   const sendMessage = e => {
     e.preventDefault();
     if (text) {
       // Emit SENDMESSAGE
       socket.emit('sendMessage', text, () => {
         setText('');
+        autosize.destroy(chatRef)
       })
     }
     if (messages.length >= 50) {

@@ -63,6 +63,7 @@ function App(props) {
   const [showAbout, setShowAbout] = useState(false);
   const [onChat, setOnChat] = useState(true);
   const [chatHeight, setChatHeight] = useState(0);
+  const [chatRef, setChatRef] = useState(0)
 
 
   // Media Queries
@@ -72,7 +73,7 @@ function App(props) {
   if (cookies.user) {
     id = cookies.user._id
   }
-
+console.log(chatHeight)
   const links = [
     { title: "Skip to main content", to: 'main' },
     { title: 'Skip to footer', to: 'footer' }
@@ -97,6 +98,7 @@ function App(props) {
             showAbout, setShowAbout,
             onChat, setOnChat,
             chatHeight, setChatHeight,
+            chatRef, setChatRef,
             socket
           }
         }>
