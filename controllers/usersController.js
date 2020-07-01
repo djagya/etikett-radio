@@ -123,7 +123,7 @@ exports.sendEmail = async (req, res, next) => {
     });
     const mailOptions = {
         from: email,
-        to: 'simonsch.tz@gmail.com',
+        to: 'matt.migz@dbsberlin.net',
         subject: subject,
         text: `Name: ${name}\nFrom: ${email}\n \n${message}`
     };

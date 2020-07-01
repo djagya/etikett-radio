@@ -77,7 +77,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
       // Emit SENDMESSAGE
       socket.emit('sendMessage', text, () => {
         autosize.destroy(chatRef)
-      setChatHeight(0)
+        setChatHeight(0)
       })
       //why is this working outside of the function and autosize.destroy and setChatHeight not?
       setText('');  //inside of the function is a recognizable delay

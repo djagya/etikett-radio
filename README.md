@@ -1,18 +1,78 @@
 # etikett radio
 
-Building a new website for Etikett Radio using MERN tech stack and socket.io // final project for DCI
+etikett radio is a radio station for students of Catalyst Music school (former dBs Berlin) in Berlin.
+The web site makes it possible to listen to their live radio shows or watching their twitch stream while browsing through the content or interact with other users in the chat.
+Moreover, students are now able to work on their portfolio on the website without relying on the mentor.
 
-## User Stories
+## Technology & Features worth mentioning
 
-### Visitor
+- MERN tech stack
 
-A visitor is entering the website to listen to the ongoing stream. Because his/her internet is not too good, the visitor decides to not watch the stream but to only listen to the audio feed instead. The host is a friend so the visitor enters a temporary username to join the chat and say hi. Other users in the chat room have a discussion about the ongoing show in which the visitor is entering.
+### Back End
 
-### Host/Operator
+- MongoDB
+- express validator (to validate input when creating new user)
+- mongoose-unique-validator (to make sure every email for any new user is unique)
+- nodemailer (to send the input via contact field to the etikett email address)
 
-A new host is about to start his first show on etikett radio when he reviews his show description and the artwork with his/her logo, which he/she uploaded a few hours prior, one last time. The host is looking at the ongoing chat to get a feeling for the vibes of the current listeners while he/she hears his/her name when the current host announces the next show for the upcoming 2 hours. In a private message, the current host tells the new host that he had to ban somebody from the chat because of his aggressive behavior.
+### Security
 
-### Admin
+- bcrypt (for encrypting passwords)
+- JWT (for creating individual tokens for every db entry)
+- react cookies (to safely validate users)
 
-It's about the end of the month and the admin has to update the database with the schedule of the upcoming month. He/she also added a new host account and while reviewing the artist description, the admin realizes a typo which is quickly fixed. While he was thinking about the blog post he/she still has to write, the admin also thinks about to ask a trustworthy host to help him with all the data they have to implement or to update and after a quick call, the admin gives this host the right to edit the schedule.
+### Accessibility 
+
+- react-document-title (gives each component an individual title)
+-
+
+### Front End
+
+- 99% of the website is built of function components
+- react context
+- react-alert (customized alerts instead of window.alert)
+- react-responsive (to mount chat and twitch stream only on desktop)
+- react-router-restore-scroll (to always start at the very top when switching to another route)
+
+
+#### Header / Stream
+- react player (embedding the twitch stream)
+- embedded radio stream with custom controls and extracted metadata to automatically display the currently playing show on the info bar
+- automatically detects if a twitch stream is happening and provides it with the option to switch between twitch input and radio input (audio only mode)
+
+#### Visuals
+- noise texture (three.js)
+- planetarium (react only)
+- other styling with SCSS
+- custom scroll bars everywhere (for chrome at least)
+
+#### Schedule
+
+- only input needed is show name, start date, end date
+- by using moment.js, applied the logic to automatically detect which month -> week -> day and gets everything in order
+- dates older than 2 months get deleted automatically 
+
+#### Archive
+
+- can be filtered by show, genre and date
+- list header can be used to sort by show, genre and date; by clicking twice in reversed order
+- Only host names from existing host profiles can be chosen when uploading to the archive to ensure all host names are linked properly to a corresponding host profile
+
+#### Hosts
+
+- only active hosts are shown in the host showcase
+
+#### Staff Only
+
+- grants access for hosts to edit their personal/log in data, their own host profile and the info bar
+- additionally grants access for admins to see and edit all existing user and host profiles and to create new users
+
+#### Chat
+
+- any user can join by entering a nick name
+- existing user profiles will have their user names reserved for the chat and automatically log in when logging into their user account
+- autosize (automatically resizing the input field)
+- react-scroll-to-bottom (so the message window automatically scrolls down with every new message)
+- react-emoji (to replace codes like <3 or :) with corresponding emojis>)
+
 
