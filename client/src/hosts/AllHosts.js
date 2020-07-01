@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react'
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import GetData from "../GetData";
 import DocumentTitle from 'react-document-title';
 
@@ -87,6 +87,10 @@ export default function AllHosts(props) {
             <li ><span onClick={() => sortData(i)} className={`sort ${i === isActive ? "active" : ""} `}>{el}</span></li>
             </Fragment>
         ))
+    }
+
+    if (props.cookies.user.role !== 'Admin') {
+        return  <Redirect to={`/user/${context.id}`}/>
     }
 
     return (

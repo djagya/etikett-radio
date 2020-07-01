@@ -16,6 +16,7 @@ export default function EditHostPage(props) {
 
     const id = context.editHostID;
     const role = props.cookies.user.role
+    const [done, setDone] = useState(false)
     const [userID, setUserID] = useState("")
     const [hostName, setHostName] = useState("");
     const [hostImg, setHostImg] = useState("");
@@ -105,9 +106,9 @@ export default function EditHostPage(props) {
                         alert.error("Something went wrong while uploading your data for the first time.")
                     } else {
                         alert.success("You successfully initialized your host profile!", { timeout: 3000 })
+                        setDone(true)
                     }
                 })
-                .then(context.setEditHost(false))
         } else {
             PutData(`/host/${profileID}`, body)
                 .then(data => {
@@ -116,10 +117,9 @@ export default function EditHostPage(props) {
                         alert.error("Something went wrong while updating your data")
                     } else {
                         alert.success("Update successful!", { timeout: 3000 })
+                        setDone(true)
                     }
                 })
-                .then(context.setEditHost(false))
-
         }
     }
     const handleFormInput = event => {
@@ -181,6 +181,16 @@ export default function EditHostPage(props) {
             return null
         }
     }
+
+    if (done) {
+        if (context.id !== userID) {
+        return <Redirect to={`/user/hosts/all`}/>
+        } else {
+        return <Redirect to={`/user/${context.id}`}/>
+        }
+    }
+ 
+    
 
     return (
         <DocumentTitle title="Edit host profile">

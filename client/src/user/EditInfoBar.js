@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from "../Context";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import PutData from "../PutData";
 
@@ -29,7 +29,6 @@ export default function EditInfoBar(props) {
                     alert.success("Update successful!", { timeout: 3000 })
                 }
             })
-            .then(context.setEditInfoBar(false))
     }
 
     const handleFormInput = event => {
@@ -39,7 +38,6 @@ export default function EditInfoBar(props) {
 
     const handleCancel = () => {
         context.setInfoBarMessage(currMessage)
-        context.setEditInfoBar(false)
     }
 
  
