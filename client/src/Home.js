@@ -10,7 +10,7 @@ export default function Home() {
         <div>
 
             <Link className="about-us-button" to={"/about"}>
-                <div className="about-us-cover">about<br/> us</div>
+                <div className="about-us-cover">about</div>
                 <div  className="etikett-black"></div>
             </Link>
                 
