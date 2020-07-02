@@ -352,6 +352,9 @@ nav {
       animation: show-up 300ms ease 250ms forwards;
     }
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 @-moz-document url-prefix() {
