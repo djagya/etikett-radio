@@ -20,12 +20,12 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const videoPlayer = useRef();
 
     // Currently not streaming example
-    // const channelId = '521258416';
-    // const video = 'https://www.twitch.tv/etikett_radio';
+    const channelId = '521258416';
+    const video = 'https://www.twitch.tv/etikett_radio';
 
     // Currently sreaming example
-    const channelId = '274901255';
-    const video = 'https://www.twitch.tv/truthmusic';
+    // const channelId = '274901255';
+    // const video = 'https://www.twitch.tv/truthmusic';
 
     const radio = 'https://s9.myradiostream.com/44782/listen.mp3';
 
