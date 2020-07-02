@@ -30,7 +30,8 @@ Moreover, students are now able to work on their portfolio on the website withou
 ### Front End
 
 - 99% of the website is built of function components
-- react context
+- usage of react context
+- usage of error boundaries
 - react-alert (customized alerts instead of window.alert)
 - react-responsive (to mount chat and twitch stream only on desktop)
 - react-router-restore-scroll (to always start at the very top when switching to another route)
@@ -44,6 +45,7 @@ Moreover, students are now able to work on their portfolio on the website withou
 #### Visuals / Styling
 - noise texture (three.js)
 - planetarium (react only)
+- loading icon while data is downloaded and processed
 - other styling with SCSS only, no frameworks
 - custom scroll bars everywhere (for chrome at least)
 
