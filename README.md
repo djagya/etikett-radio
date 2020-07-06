@@ -1,4 +1,4 @@
-# etikett radio
+# [etikett radio](https://etikett-radio.herokuapp.com/#/)
 
 etikett radio is a radio station for students of dBs Berlin Music School.
 The web site makes it possible to listen to their live radio shows or watching their twitch stream while browsing through the content or interact with other users in the chat.
