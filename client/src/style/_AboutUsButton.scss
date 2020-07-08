@@ -7,11 +7,12 @@
     z-index: 1;
     transition: 0.4s ease-in-out;
     margin: 0;
+
     &:hover {
         opacity: 0;
         transition: 0.4s ease-in-out;
     }
-   
+
 
     .etikett-black {
         cursor: pointer;
@@ -24,12 +25,12 @@
         height: 19vh;
         // align-self: center;
         box-shadow: 0 0 55px rgba(255, 255, 255, 1);
-    
+
         transition: 0.4s ease-in-out;
         animation-name: shine;
         animation-iteration-count: infinite;
         animation-duration: 8s;
-        
+
     }
 
     .about-us-cover {
@@ -39,67 +40,121 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         background-color: $etikett-black;
         border-radius: 100%;
-        font-size: 3rem;
+        font-size: 1.5rem;
         font-weight: lighter;
         letter-spacing: 3px;
         filter: blur(.7px);
         cursor: pointer;
-    
+
         animation-name: about;
         animation-iteration-count: infinite;
         animation-duration: 4s;
         animation-direction: alternate;
     }
-    
+
     @keyframes about {
         0% {
             opacity: 0;
             color: black;
         }
+
         60% {
             opacity: 0;
             color: black;
         }
+
         80% {
             color: black;
         }
+
         90% {
             opacity: 1;
             color: white;
         }
+
         100% {
             opacity: 1;
             color: white;
         }
 
     }
-    
+
     @keyframes shine {
         0% {
             box-shadow: 0 0 70px rgba(255, 255, 255, .8);
-            
+
         }
+
         30% {
             box-shadow: 0 0 100px rgba(255, 255, 255, .5);
         }
+
         40% {
             box-shadow: 0 0 5px rgba(255, 255, 255, 1);
         }
+
         60% {
             box-shadow: 0 0 5px rgba(255, 255, 255, 1);
         }
+
         70% {
             box-shadow: 0 0 35px rgba(255, 255, 255, .9);
         }
+
         100% {
             box-shadow: 0 0 70px rgba(255, 255, 255, .8);
         }
-        
+
     }
 }
 
+@media only screen and (max-width: breakpoints(desktop)) {
+    .about-us-button {
+        .etikett-black {
+            width: 18.5vh;
+            height: 18.5vh;
+        }
 
+        .about-us-cover {
 
+            font-size: 1.4rem;
+
+        }
+    }
+
+}
+
+@media only screen and (max-width: breakpoints(tablet)) {
+    .about-us-button {
+        .etikett-black {
+            width: 13.5vh;
+            height: 13.5vh;
+        }
+
+        .about-us-cover {
+
+            font-size: 1.4rem;
+
+        }
+    }
+
+}
+
+@media only screen and (max-width: breakpoints(phone)) {
+    .about-us-button {
+        .etikett-black {
+            width: 9.5vh;
+            height: 9.5vh;
+        }
+
+        .about-us-cover {
+
+            font-size: 1rem;
+
+        }
+    }
+
+}
