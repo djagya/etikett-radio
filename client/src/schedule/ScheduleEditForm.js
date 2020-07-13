@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useAlert } from 'react-alert';
+import moment from "moment";
 
 export default function ScheduleEdit(props) {
 
     const data = props.data
-    const timeFrom = data.from.toString().substring(0, 10) + "T" + data.from.toString().substring(11, 16)
-    const timeTo = data.to.toString().substring(0, 10) + "T" + data.to.toString().substring(11, 16)
-
+    const dataFrom = moment(data.from).format()
+    const dataTo = moment(data.to).format()
+    const timeFrom = dataFrom.toString().substring(0, 10) + "T" + dataFrom.toString().substring(11, 16)
+    const timeTo = dataTo.toString().substring(0, 10) + "T" + dataTo.toString().substring(11, 16)
 
     const [host, setHost] = useState(data.host);
     const [show, setShow] = useState(data.show);
@@ -14,7 +16,7 @@ export default function ScheduleEdit(props) {
     const [to, setTo] = useState(timeTo);
     const id = data._id;
     const alert = useAlert();
-    console.log(timeFrom)
+
 
     const handleSubmit = event => {
         event.preventDefault()

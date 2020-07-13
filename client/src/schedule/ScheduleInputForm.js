@@ -6,9 +6,10 @@ export default function ScheduleInputForm() {
     const context = useContext(Context)
     // Constructor for initial value/kind of a placeholder
     const newDate = new Date();
-    const currentDate = newDate.toISOString().substring(0, 10)
-    const currentTime = newDate.toString().substring(16, 21)
+    const currentDate = newDate.toISOString().substring(0, 10);
+    const currentTime = newDate.toString().substring(16, 21);
     const time = currentDate + "T" + currentTime;
+
 
     const [host, setHost] = useState("");
     const [show, setShow] = useState("");
@@ -42,6 +43,7 @@ export default function ScheduleInputForm() {
             .then(data => { reload(data) })
 
         const reload = (data) => {
+            console.log(data)
             if (data.success) {
                 context.setScheduleData([...context.scheduleData, body])
                 setHost("")
@@ -55,7 +57,7 @@ export default function ScheduleInputForm() {
             }
         }
     }
-
+    
     const handleFormInput = event => {
         const id = event.target.id;
         const input = event.target.value;
@@ -76,7 +78,6 @@ export default function ScheduleInputForm() {
             default: console.log("Schedule Input ran through without any effect")
         }
     };
-
     return (
         <div className="input-form schedule-input">
             <h2>add to schedule</h2>

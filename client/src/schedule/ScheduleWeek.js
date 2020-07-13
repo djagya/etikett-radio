@@ -13,8 +13,9 @@ export default function ScheduleWeek(data) {
     const sun = week.filter(data => moment(data.from).format("dddd") === "Sunday");
   
     // const days =[mon, tue, wed, thu, fri, sat, sun];
-    
+
     const determineWeek=() => {
+        if (week.length === 0) return
         const dataWeek = moment(week[0].from).format("W");
         const currWeek = moment().format("W");
         return dataWeek === currWeek ? "this week" : `week ${dataWeek}`
@@ -61,7 +62,7 @@ export default function ScheduleWeek(data) {
     // }
     
     return (
-        <ul className={`weekly-schedule ${determineWeek().split(' ')[0]}`}>
+        <ul className={`weekly-schedule`}>
             <li>
                 <h3>{determineWeek()}</h3>
                 {/* { renderWeek(days)}  */}

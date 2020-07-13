@@ -40,7 +40,6 @@ export default function Schedule(props) {
             })
     }, [])
 
-
     const handleDelete = (checkedIDs) => {
         //prevent error when nothing is selected
         if (checkedIDs.length === 0) {
@@ -89,7 +88,6 @@ export default function Schedule(props) {
     weekNum.map(weekNum => {
         //sort again so also new entries get sorted properly
         const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
-
         const week = sortedMonth.filter(data => {
             //To make sundays show as the last day of the week, not as the first of the next
             const num = () => {
@@ -97,6 +95,7 @@ export default function Schedule(props) {
                 if (moment(data.from).format("dddd") === "Sunday") {
                     return (parseInt(number) - 1).toString()
                 } else {
+                    
                     return number
                 }
             }
@@ -105,11 +104,10 @@ export default function Schedule(props) {
         weeklySchedule = [week, ...weeklySchedule]
     })
     ///////////////////////////////
-
     const renderLi = () => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (scheduleData.length === 0) return; //Because first time the code is running, scheduleData will be an empty array
-
+        
         return weeklySchedule.reverse().map((el, i) => (
             <Fragment key={i}>
                 <ScheduleWeek data={el} />
@@ -118,7 +116,6 @@ export default function Schedule(props) {
     };
 
     if (loading) return  <Null /> 
-
     return (
         <DocumentTitle title="Schedule">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>
