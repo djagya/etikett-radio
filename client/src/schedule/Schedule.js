@@ -79,9 +79,18 @@ export default function Schedule(props) {
     ///////////////////////////////
     //Find out Week Numbers of the current month
     scheduleData.map(el => {
-        const num = moment(el.from).format("w")
+        if (scheduleData.length === 0) return
         const month = moment(el.from).format("M")
-        return weekNum.includes(num) || month !== currMonth ? null : setWeekNum([num, ...weekNum])
+        let number = moment(el.from).format("w");
+        const num = () => { 
+            //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+            if (moment(el.from).format("dddd") === "Sunday") {
+                return (parseInt(number) - 1).toString()
+            } else {
+                return number
+            }
+        }
+            return weekNum.includes(num()) || month !== currMonth ? null : setWeekNum([num(), ...weekNum])
     })
 
     //filter inputData by week number and add array to weeklySchedule
