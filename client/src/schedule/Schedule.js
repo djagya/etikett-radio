@@ -23,8 +23,7 @@ export default function Schedule(props) {
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
     let weeklySchedule = [];
-    const currMonth = moment().format("M");
-    const currWeek = parseInt(moment().format("W"));
+    let currMonth = moment().format("M");
     
     useEffect(() => {
         setLoading(true);
@@ -67,7 +66,6 @@ export default function Schedule(props) {
         });
 
     }
-
     ///automatically delete data from 2 month before 
     scheduleData.map(el => {
         const current = moment(el.from, "YYYYMMDD").fromNow();
@@ -80,27 +78,61 @@ export default function Schedule(props) {
     //split up schedule into weeks
     ///////////////////////////////
     //Find out Week Numbers of the current month
+    
     const sortDates = input => {
+        //prevent code from running if input hasen't changed
         if (input === selected) return
-
-        if (input === "month") {
-            scheduleData.map(el => {
-                if (scheduleData.length === 0) return
-                const month = moment(el.from).format("M")
-                let number = moment(el.from).format("w");
-                const num = () => { 
-                    //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
-                    if (moment(el.from).format("dddd") === "Sunday") {
-                        return (parseInt(number) - 1).toString()
-                    } else {
-                        return number
-                    }
-                }
-                    return weekNum.includes(num()) || month !== currMonth ? null : setWeekNum([num(), ...weekNum])
-            })
-        }
+        //Show current week
         if (input === "week") {
             setWeekNum([moment().format("w")])
+        }
+
+        
+        //Show  month
+        if (input === "month" || input === "nextMonth") {
+            if (input === "nextMonth") currMonth = (parseInt(currMonth) + 1).toString();
+            if (currMonth === "13") currMonth = "1";
+            let filteredArray = []
+            
+            for (let i = 0; scheduleData.length > i; i++) {
+
+                
+                const month = moment(scheduleData[i].from).format("M")
+                let weekNumber = moment(scheduleData[i].from).format("w");
+                const num = () => { 
+                    //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+                    if (moment(scheduleData[i].from).format("dddd") === "Sunday") {
+                        return (parseInt(weekNumber) - 1).toString()
+                    } else {
+                        return weekNumber
+                    }
+                }
+                if (!weekNum.includes(num()) && month === currMonth) { 
+                    console.log(num())
+                    setWeekNum([num(), ...weekNum])
+                    filteredArray.push(num())
+                }
+
+            }
+            // console.log(filteredArray)
+            // scheduleData.map(el => {
+            //     if (scheduleData.length === 0) return
+            //     const month = moment(el.from).format("M")
+            //     let weekNumber = moment(el.from).format("w");
+
+            //     const num = () => { 
+            //         //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+            //         if (moment(el.from).format("dddd") === "Sunday") {
+            //             return (parseInt(weekNumber) - 1).toString()
+            //         } else {
+            //             return weekNumber
+            //         }
+            //     }
+            //     if (!(weekNum.includes(num()) || month !== currMonth)) { 
+            //     setWeekNum([num(), ...weekNum])
+            //     filteredArray.push(num())
+            // }
+            // })
         }
     }
     //filter inputData by week number and add array to weeklySchedule
@@ -149,8 +181,9 @@ export default function Schedule(props) {
     if (selected === "initial") {
         sortDates("month")
     }
-    console.log(selected)
+
     if (loading) return  <Null /> 
+
     return (
         <DocumentTitle title="Schedule">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData }}>
@@ -175,7 +208,7 @@ export default function Schedule(props) {
                                 <label htmlFor="show-week" className={`${selected === "week" ? "active" : ""} `} >this week
                                     <input type="radio" id="show-week" name="show-week" onChange={handleSelect} checked={selected === "week"} value="week" />
                                 </label>
-                                <label htmlFor="show-month" className={`${selected === ("initial" || "month") ? "active" : ""} `} >this month
+                                <label htmlFor="show-month" className={`${selected === "initial" || selected === "month" ? "active" : ""} `} >this month
                                     <input type="radio" id="show-month" name="show-month" onChange={handleSelect} checked={selected === "month"} value="month" />
                                 </label>
                                 <label htmlFor="next-month" className={`${selected === "nextMonth" ? "active" : ""} `} >next month
