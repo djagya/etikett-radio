@@ -81,35 +81,28 @@ export default function Schedule(props) {
     ///////////////////////////////
     //Find out Week Numbers of the current month
     const sortDates = input => {
-        console.log(selected)
-        console.log(input)
         if (input === selected) return
 
         if (input === "month") {
-            console.log("month is running")
-                scheduleData.map(el => {
-                    if (scheduleData.length === 0) return
-                    const month = moment(el.from).format("M")
-                    let number = moment(el.from).format("w");
-                    const num = () => { 
-                        //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
-                        if (moment(el.from).format("dddd") === "Sunday") {
-                            return (parseInt(number) - 1).toString()
-                        } else {
-                            return number
-                        }
+            scheduleData.map(el => {
+                if (scheduleData.length === 0) return
+                const month = moment(el.from).format("M")
+                let number = moment(el.from).format("w");
+                const num = () => { 
+                    //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+                    if (moment(el.from).format("dddd") === "Sunday") {
+                        return (parseInt(number) - 1).toString()
+                    } else {
+                        return number
                     }
-                        return weekNum.includes(num()) || month !== currMonth ? null : setWeekNum([num(), ...weekNum])
-                })
-            }
+                }
+                    return weekNum.includes(num()) || month !== currMonth ? null : setWeekNum([num(), ...weekNum])
+            })
+        }
         if (input === "week") {
-            console.log("week is running")
             setWeekNum([moment().format("w")])
         }
-
-
     }
-    
     //filter inputData by week number and add array to weeklySchedule
     weekNum.map(weekNum => {
         //sort again so also new entries get sorted properly
@@ -155,9 +148,8 @@ export default function Schedule(props) {
 
     if (selected === "initial") {
         sortDates("month")
-        console.log("test")
     }
-    
+    console.log(selected)
     if (loading) return  <Null /> 
     return (
         <DocumentTitle title="Schedule">
@@ -183,7 +175,7 @@ export default function Schedule(props) {
                                 <label htmlFor="show-week" className={`${selected === "week" ? "active" : ""} `} >this week
                                     <input type="radio" id="show-week" name="show-week" onChange={handleSelect} checked={selected === "week"} value="week" />
                                 </label>
-                                <label htmlFor="show-month" className={`${selected === "month" || "initial" ? "active" : ""} `} >this month
+                                <label htmlFor="show-month" className={`${selected === ("initial" || "month") ? "active" : ""} `} >this month
                                     <input type="radio" id="show-month" name="show-month" onChange={handleSelect} checked={selected === "month"} value="month" />
                                 </label>
                                 <label htmlFor="next-month" className={`${selected === "nextMonth" ? "active" : ""} `} >next month

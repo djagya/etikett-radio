@@ -57,15 +57,15 @@ export default function MessageControls({ source, radio, icon, volume, handlePla
           // Set title
           if (mounted) {
             if (sanitizedTitle === "") {
-              setSongName("Etikett Radio")
+              setSongName("Etikett Radio Archive")
             } else {
             setSongName(sanitizedTitle);
             }
           }
         })
-        .catch(err => {
+        .catch((err, data) => {
           console.log(err)
-          setSongName('');
+          setSongName("Etikett Radio Archive");
         })
     };
     getSongName();
