@@ -18,12 +18,14 @@ export default function Schedule(props) {
     const [checkedIDs, setCheckedIDs] = useState([]);
     const alert = useAlert();
     const [loading, setLoading] = useState(false);
+    const [selected, setSelected] = useState("initial")
 
     const [scheduleData, setScheduleData] = useState([]);
     const [weekNum, setWeekNum] = useState([])
     let weeklySchedule = [];
     const currMonth = moment().format("M");
-
+    const currWeek = parseInt(moment().format("W"));
+    
     useEffect(() => {
         setLoading(true);
         fetch("/schedule")
@@ -78,21 +80,36 @@ export default function Schedule(props) {
     //split up schedule into weeks
     ///////////////////////////////
     //Find out Week Numbers of the current month
-    scheduleData.map(el => {
-        if (scheduleData.length === 0) return
-        const month = moment(el.from).format("M")
-        let number = moment(el.from).format("w");
-        const num = () => { 
-            //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
-            if (moment(el.from).format("dddd") === "Sunday") {
-                return (parseInt(number) - 1).toString()
-            } else {
-                return number
-            }
-        }
-            return weekNum.includes(num()) || month !== currMonth ? null : setWeekNum([num(), ...weekNum])
-    })
+    const sortDates = input => {
+        console.log(selected)
+        console.log(input)
+        if (input === selected) return
 
+        if (input === "month") {
+            console.log("month is running")
+                scheduleData.map(el => {
+                    if (scheduleData.length === 0) return
+                    const month = moment(el.from).format("M")
+                    let number = moment(el.from).format("w");
+                    const num = () => { 
+                        //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+                        if (moment(el.from).format("dddd") === "Sunday") {
+                            return (parseInt(number) - 1).toString()
+                        } else {
+                            return number
+                        }
+                    }
+                        return weekNum.includes(num()) || month !== currMonth ? null : setWeekNum([num(), ...weekNum])
+                })
+            }
+        if (input === "week") {
+            console.log("week is running")
+            setWeekNum([moment().format("w")])
+        }
+
+
+    }
+    
     //filter inputData by week number and add array to weeklySchedule
     weekNum.map(weekNum => {
         //sort again so also new entries get sorted properly
@@ -113,6 +130,18 @@ export default function Schedule(props) {
         weeklySchedule = [week, ...weeklySchedule]
     })
     ///////////////////////////////
+
+
+    const handleSelect = event => {
+        
+        const input = event.target.value
+        if (input !== selected) {
+            setSelected(input)
+            sortDates(input)
+        } else return
+    }
+
+
     const renderLi = () => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (scheduleData.length === 0) return; //Because first time the code is running, scheduleData will be an empty array
@@ -124,6 +153,11 @@ export default function Schedule(props) {
         ));
     };
 
+    if (selected === "initial") {
+        sortDates("month")
+        console.log("test")
+    }
+    
     if (loading) return  <Null /> 
     return (
         <DocumentTitle title="Schedule">
@@ -141,6 +175,21 @@ export default function Schedule(props) {
                             </div>
                             : null}
                         {showForm ? <ScheduleInputForm /> : null}
+                        <div className="filter-selector-container">
+                                <span className="filter-by-box">show </span>
+                                <label htmlFor="show-relevant" className={`${selected === "relevant" ? "active" : ""} `} >relevant
+                                    <input type="radio" id="show-relevant" name="show-relevant" onChange={handleSelect} checked={selected === "relevant"} value="relevant" />
+                                </label>
+                                <label htmlFor="show-week" className={`${selected === "week" ? "active" : ""} `} >this week
+                                    <input type="radio" id="show-week" name="show-week" onChange={handleSelect} checked={selected === "week"} value="week" />
+                                </label>
+                                <label htmlFor="show-month" className={`${selected === "month" || "initial" ? "active" : ""} `} >this month
+                                    <input type="radio" id="show-month" name="show-month" onChange={handleSelect} checked={selected === "month"} value="month" />
+                                </label>
+                                <label htmlFor="next-month" className={`${selected === "nextMonth" ? "active" : ""} `} >next month
+                                    <input type="radio" id="next-month" name="archive-filter" onChange={handleSelect} checked={selected === "nextMonth"} value="nextMonth" />
+                                </label>
+                            </div>
                         <ul className="monthly-schedule">
                             {renderLi()}
                         </ul>
