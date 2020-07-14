@@ -1,7 +1,7 @@
 ///////////////////////////////////
 //          Schedule Page
 ///////////////////////////////////
-.schedule-page {
+.schedule-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,15 +21,21 @@
     grid-template-columns: 1fr;
     width: 200px;
   }
-
+  .schedule-head {
+        width: 900px;
+      }
   .monthly-schedule {
     display: flex;
-
+    justify-content: center;
+    flex-flow: wrap;
+    width: 100vw;
+    
     .weekly-schedule {
       margin: 0 2rem;
 
       .day-dates {
         text-align: left;
+          box-shadow: inset 0px -.5px .5px 0px rgba(255, 255, 255, 0.2);
 
         .day-head {
           display: flex;
@@ -37,15 +43,19 @@
           margin: 3rem 0 1rem;
           font-size: 1.5rem;
           text-transform: lowercase;
-
           div:nth-child(1) {
+          color: $etikett-hover;
             margin-right: 1rem;
-
+            text-decoration: underline;
+            text-decoration-color: rgba(255, 255, 255, 0.2);
           }
 
           div:nth-child(2) {
+            color: $etikett-hover;
+            font-weight: bold;
             font-size: .8rem;
             letter-spacing: 2px;
+            padding-top: 3px;
           }
         }
 

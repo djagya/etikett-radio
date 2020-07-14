@@ -152,27 +152,29 @@ export default function Schedule(props) {
                 <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
                         <h2 id="main">schedule.</h2>
-                        {props.cookies.user && props.cookies.user.role === 'Admin' ?
-                            <div className="button-container controls">
-                                {showForm ?
-                                    <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
-                                    <button type="button" onClick={() => setShowForm(true)}>add schedule</button>
-                                }
-                                <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                        <div className="schedule-head">
+                            {props.cookies.user && props.cookies.user.role === 'Admin' ?
+                                <div className="button-container controls">
+                                    {showForm ?
+                                        <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
+                                        <button type="button" onClick={() => setShowForm(true)}>add schedule</button>
+                                    }
+                                    <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                                </div>
+                                : null}
+                            {showForm ? <ScheduleInputForm /> : null}
+                            <div className="filter-selector-container">
+                            <span className="filter-by-box">show </span>
+                                <label htmlFor="show-week" className={`${selected === "week" ? "active" : ""} `} >this week
+                                    <input type="radio" id="show-week" name="show-week" onChange={handleSelect} checked={selected === "week"} value="week" />
+                                </label>
+                                <label htmlFor="show-month" className={`${selected === "initial" || selected === "month" ? "active" : ""} `} >this month
+                                    <input type="radio" id="show-month" name="show-month" onChange={handleSelect} checked={selected === "month"} value="month" />
+                                </label>
+                                <label htmlFor="next-month" className={`${selected === "nextMonth" ? "active" : ""} `} >next month
+                                    <input type="radio" id="next-month" name="archive-filter" onChange={handleSelect} checked={selected === "nextMonth"} value="nextMonth" />
+                                </label>
                             </div>
-                            : null}
-                        {showForm ? <ScheduleInputForm /> : null}
-                        <div className="filter-selector-container">
-                        <span className="filter-by-box">show </span>
-                            <label htmlFor="show-week" className={`${selected === "week" ? "active" : ""} `} >this week
-                                <input type="radio" id="show-week" name="show-week" onChange={handleSelect} checked={selected === "week"} value="week" />
-                            </label>
-                            <label htmlFor="show-month" className={`${selected === "initial" || selected === "month" ? "active" : ""} `} >this month
-                                <input type="radio" id="show-month" name="show-month" onChange={handleSelect} checked={selected === "month"} value="month" />
-                            </label>
-                            <label htmlFor="next-month" className={`${selected === "nextMonth" ? "active" : ""} `} >next month
-                                <input type="radio" id="next-month" name="archive-filter" onChange={handleSelect} checked={selected === "nextMonth"} value="nextMonth" />
-                            </label>
                         </div>
                         <ul className="monthly-schedule">
                             {renderLi()}

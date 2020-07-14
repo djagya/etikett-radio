@@ -7,6 +7,7 @@ export default function ScheduleWeek(data) {
     const {selected, currMonth, currWeek} = useContext(Context)
 
     const week  = data.data
+    if (data.data.length === 0) {return null}
     let thisMonth = moment(week[0].from).format("M")
     let thisWeek = moment(week[0].from).format("w")
     if (moment(week[0].from).format("dddd") === "Sunday") {
@@ -61,7 +62,7 @@ export default function ScheduleWeek(data) {
         return (
             <ul className="day-dates">
                 <li className="day-head">
-                    <div className={`${isPast}`}>{moment(day[0].from).format("dddd")}</div> 
+                    <div className={`${isPast} day-header`}>{moment(day[0].from).format("dddd")}</div> 
                     <div className={`${isPast}`}>{moment(day[0].from).format().substring(0, 10)}</div>
                 </li>
                 {dates(day)}
