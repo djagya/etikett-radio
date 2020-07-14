@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 99%; //100% width adds unnecessary space for some reason
   .was-live {
     opacity: .2;
   }
