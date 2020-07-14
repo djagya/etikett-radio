@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { Context } from "../Context";
 import moment from "moment";
 import ScheduleEntry from './ScheduleEntry';
 
 export default function ScheduleWeek(data) {
-    const week = data.data
+    const {selected, currMonth, currWeek} = useContext(Context)
+
+    const week  = data.data
+    let thisMonth = moment(week[0].from).format("M")
+    let thisWeek = moment(week[0].from).format("w")
+    if (moment(week[0].from).format("dddd") === "Sunday") {
+        thisWeek = (parseInt(thisWeek) -1).toString()
+    } 
+    const nextMonth = () => {
+        if (parseInt(currMonth) +1 === 13) {
+            return "1"
+        } else {
+        return (parseInt(currMonth) +1).toString()
+        }
+    }
+    
+
+    if (selected === "week" && thisWeek !== currWeek) {return null} 
+    if (selected === "month" && thisMonth !== currMonth) {return null} 
+    if (selected ==="nextMonth" && thisMonth !== nextMonth()) {return null}
+    
     const mon = week.filter(data => moment(data.from).format("dddd") === "Monday");
     const tue = week.filter(data => moment(data.from).format("dddd") === "Tuesday");
     const wed = week.filter(data => moment(data.from).format("dddd") === "Wednesday");
@@ -11,7 +32,7 @@ export default function ScheduleWeek(data) {
     const fri = week.filter(data => moment(data.from).format("dddd") === "Friday");
     const sat = week.filter(data => moment(data.from).format("dddd") === "Saturday");
     const sun = week.filter(data => moment(data.from).format("dddd") === "Sunday");
-  
+
     // const days =[mon, tue, wed, thu, fri, sat, sun];
 
     const determineWeek=() => {
