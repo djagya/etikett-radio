@@ -56,16 +56,18 @@ export default function Schedule(props) {
         setScheduleData(filteredScheduleData)
 
         //delete from db
-        Delete(checkedIDs, "schedule").then(output => {
-            if (output) {
-                alert.success('Schedule(s) successfully deleted.', {
-                    onClose: () => { window.location.reload() }
-                })
-            } else {
+        Delete(checkedIDs, "schedule")
+            .then(output => {
+                if (output) {
+                    alert.success('Schedule(s) successfully deleted.', {
+                        onClose: () => { window.location.reload() }
+                    })
+                }
+            })
+            .catch(err => {
+                console.log(err);
                 alert.error('Failed to delete schedule, please contact the admin.');
-            }
-        });
-
+            })
     }
     ///automatically delete data from 2 month before 
     scheduleData.map(el => {
