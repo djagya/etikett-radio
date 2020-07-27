@@ -47,7 +47,7 @@ export default function Schedule(props) {
         if (checkedIDs.length === 0) {
             return
         }
-
+        console.log(checkedIDs)
         //filter copy of schedule data based on checkedID and set the new state
         let filteredScheduleData = [...scheduleData];
         for (let i = 0; i < checkedIDs.length; i++) {
@@ -59,9 +59,7 @@ export default function Schedule(props) {
         Delete(checkedIDs, "schedule")
             .then(output => {
                 if (output) {
-                    alert.success('Schedule(s) successfully deleted.', {
-                        onClose: () => { window.location.reload() }
-                    })
+                    alert.success('Schedule(s) successfully deleted.', { timeout: 2000 })
                 }
             })
             .catch(err => {

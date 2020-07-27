@@ -43,7 +43,6 @@ export default function ScheduleInputForm() {
             .then(data => { reload(data) })
 
         const reload = (data) => {
-            console.log(data)
             if (data.success) {
                 context.setScheduleData([...context.scheduleData, body])
                 setHost("")
