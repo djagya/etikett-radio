@@ -48,7 +48,7 @@ export default function Schedule(props) {
         if (checkedIDs.length === 0) {
             return
         }
-        console.log(checkedIDs)
+        // console.log('checkIDs', checkedIDs)
         //filter copy of schedule data based on checkedID and set the new state
         let filteredScheduleData = [...scheduleData];
         for (let i = 0; i < checkedIDs.length; i++) {
@@ -74,6 +74,7 @@ export default function Schedule(props) {
         scheduleData.map(el => {
             const current = moment(el.from, "YYYYMMDD").fromNow();
             if (current === "2 months ago") {
+                // console.log('call handle delete')
                 handleDelete([el._id])
             }
         });
@@ -162,7 +163,9 @@ export default function Schedule(props) {
                 <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
                         <h2 id="main">schedule.</h2>
-                        <div className="schedule-head">
+                        {/* Display message until the site is live */}
+                        <h3>There are currently no shows scheduled.</h3>
+                        {/* <div className="schedule-head">
                             {props.cookies.user && props.cookies.user.role === 'Admin' ?
                                 <div className="button-container controls">
                                     {showForm ?
@@ -188,7 +191,7 @@ export default function Schedule(props) {
                         </div>
                         <ul className="monthly-schedule">
                             {renderLi()}
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </Context.Provider>
