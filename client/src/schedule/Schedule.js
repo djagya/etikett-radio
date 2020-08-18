@@ -68,59 +68,65 @@ export default function Schedule(props) {
                 alert.error('Failed to delete schedule, please contact the admin.');
             })
     }
-    ///automatically delete data from 2 month before 
 
-    // scheduleData.map(el => {
-    //     const current = moment(el.from, "YYYYMMDD").fromNow();
-    //     if (current === "2 months ago") {
-    //         handleDelete([el._id])
-    //     }
-    // })
+    useEffect(() => {
+        ///automatically delete data from 2 month before 
+        scheduleData.map(el => {
+            const current = moment(el.from, "YYYYMMDD").fromNow();
+            if (current === "2 months ago") {
+                handleDelete([el._id])
+            }
+        });
 
-    ///////////////////////////////
-    //split up schedule into weeks
-    ///////////////////////////////
-    //Find out Week Numbers of the current month
+        ///////////////////////////////
+        //split up schedule into weeks
+        ///////////////////////////////
+        //Find out Week Numbers of the current month
+        scheduleData.map(el => {
+            if (scheduleData.length === 0) return
+            const month = moment(el.from).format("M")
+            let weekNumber = moment(el.from).format("w");
+    
+            const num = () => { 
+                //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+                if (moment(el.from).format("dddd") === "Sunday") {
+                    return (parseInt(weekNumber) - 1).toString()
+                } else {
+                    return weekNumber
+                }
+            }
+            if (!(weekNum.includes(num()))) { 
+                setWeekNum([num(), ...weekNum])
+            }
+        })
 
-    // scheduleData.map(el => {
-    //     if (scheduleData.length === 0) return
-    //     const month = moment(el.from).format("M")
-    //     let weekNumber = moment(el.from).format("w");
+    }, [scheduleData]);
 
-    //     const num = () => { 
-    //         //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
-    //         if (moment(el.from).format("dddd") === "Sunday") {
-    //             return (parseInt(weekNumber) - 1).toString()
-    //         } else {
-    //             return weekNumber
-    //         }
-    //     }
-    //     if (!(weekNum.includes(num()))) { 
-    //     setWeekNum([num(), ...weekNum])
-    // }
-    // })
     
     
     //filter inputData by week number and add array to weeklySchedule
 
-    // weekNum.map(weekNum => {
-    //     //sort again so also new entries get sorted properly
-    //     const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
-    //     const week = sortedMonth.filter(data => {
-    //         //To make sundays show as the last day of the week, not as the first of the next
-    //         const num = () => {
-    //             let number = moment(data.from).format("w");
-    //             if (moment(data.from).format("dddd") === "Sunday") {
-    //                 return (parseInt(number) - 1).toString()
-    //             } else {
-                    
-    //                 return number
-    //             }
-    //         }
-    //         return num() === weekNum
-    //     });
-    //     weeklySchedule = [week, ...weeklySchedule]
-    // })
+    useEffect(() => {
+        weekNum.map(weekNum => {
+            //sort again so also new entries get sorted properly
+            const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
+            const week = sortedMonth.filter(data => {
+                //To make sundays show as the last day of the week, not as the first of the next
+                const num = () => {
+                    let number = moment(data.from).format("w");
+                    if (moment(data.from).format("dddd") === "Sunday") {
+                        return (parseInt(number) - 1).toString()
+                    } else {
+                        
+                        return number
+                    }
+                }
+                return num() === weekNum
+            });
+            weeklySchedule = [week, ...weeklySchedule]
+        })
+    }, [weekNum]);
+
     ///////////////////////////////
 
     const handleSelect = event => {
