@@ -41,9 +41,9 @@ export default function Schedule(props) {
                 setLoading(false);
                 alert.error('Failed to fetch schedule from the server. Please contact the admin.');
             })
-    }, [])
+    }, [alert])
 
-    const handleDelete = (checkedIDs) => {
+    const handleDelete = (checkedIDs, automatic) => {
         //prevent error when nothing is selected
         if (checkedIDs.length === 0) {
             return
@@ -59,7 +59,8 @@ export default function Schedule(props) {
         Delete(checkedIDs, "schedule")
             .then(output => {
                 if (output) {
-                    alert.success('Schedule(s) successfully deleted.', { timeout: 2000 })
+                    automatic === "automatic" ? alert.success('Schedule from 2 month ago successfully deleted.', { timeout: 2000 }) :
+                    alert.success('Schedule successfully deleted.', { timeout: 2000 })
                 }
             })
             .catch(err => {
@@ -76,7 +77,7 @@ export default function Schedule(props) {
                 const current = moment(el.from, "YYYYMMDD").fromNow();
                 if (current === "2 months ago") {
                     // console.log('call handle delete')
-                    handleDelete([el._id])
+                    handleDelete([el._id], "automatic")
                 }
             });
         }
@@ -84,28 +85,27 @@ export default function Schedule(props) {
     
         
         
-        ///////////////////////////////
-        //split up schedule into weeks
-        ///////////////////////////////
-        //Find out Week Numbers of the current month
-        scheduleData.map(el => {
+    ///////////////////////////////
+    //split up schedule into weeks
+    ///////////////////////////////
+    //Find out Week Numbers of the current month
+    scheduleData.map(el => {
 
-            if (scheduleData.length === 0) return
-            const month = moment(el.from).format("M")
-            let weekNumber = moment(el.from).format("w");
-    
-            const num = () => { 
-                //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
-                if (moment(el.from).format("dddd") === "Sunday") {
-                    return (parseInt(weekNumber) - 1).toString()
-                } else {
-                    return weekNumber
-                }
+        if (scheduleData.length === 0) return
+        let weekNumber = moment(el.from).format("w");
+
+        const num = () => { 
+            //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+            if (moment(el.from).format("dddd") === "Sunday") {
+                return (parseInt(weekNumber) - 1).toString()
+            } else {
+                return weekNumber
             }
-            if (!(weekNum.includes(num()))) { 
-                setWeekNum([num(), ...weekNum])
-            }
-        })
+        }
+        if (!(weekNum.includes(num()))) { 
+            setWeekNum([num(), ...weekNum])
+        }
+    })
 
     
 
@@ -114,24 +114,24 @@ export default function Schedule(props) {
     //filter inputData by week number and add array to weeklySchedule
 
     
-        weekNum.map(weekNum => {
-            //sort again so also new entries get sorted properly
-            const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
-            const week = sortedMonth.filter(data => {
-                //To make sundays show as the last day of the week, not as the first of the next
-                const num = () => {
-                    let number = moment(data.from).format("w");
-                    if (moment(data.from).format("dddd") === "Sunday") {
-                        return (parseInt(number) - 1).toString()
-                    } else {
-                        
-                        return number
-                    }
+    weekNum.map(weekNum => {
+        //sort again so also new entries get sorted properly
+        const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
+        const week = sortedMonth.filter(data => {
+            //To make sundays show as the last day of the week, not as the first of the next
+            const num = () => {
+                let number = moment(data.from).format("w");
+                if (moment(data.from).format("dddd") === "Sunday") {
+                    return (parseInt(number) - 1).toString()
+                } else {
+                    
+                    return number
                 }
-                return num() === weekNum
-            });
-            weeklySchedule = [week, ...weeklySchedule]
-        })
+            }
+            return num() === weekNum
+        });
+        weeklySchedule = [week, ...weeklySchedule]
+    })
 
     ///////////////////////////////
 
@@ -160,15 +160,12 @@ export default function Schedule(props) {
     if (selected === "initial") {
         setSelected("month")
     }
-
     return (
         <DocumentTitle title="Schedule">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData, selected, currMonth, currWeek }}>
                 <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
                         <h2 id="main">schedule.</h2>
-                        {/* Display message until the site is live */}
-                        {/* <h3>There are currently no shows scheduled.</h3> */}
                         <div className="schedule-head">
                             {props.cookies.user && props.cookies.user.role === 'Admin' ?
                                 <div className="button-container controls">
@@ -193,9 +190,11 @@ export default function Schedule(props) {
                                 </label>
                             </div>
                         </div>
+                        {weekNum.length === 0 ? <h3>Seems like there is nothing here yet.</h3> :
                         <ul className="monthly-schedule">
                             {renderLi()}
                         </ul>
+                        }
                     </div>
                 </div>
             </Context.Provider>

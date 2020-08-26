@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useAlert } from 'react-alert';
 import { Context } from "../Context";
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Delete from "../Delete";
 
 export default function AllUser() {
@@ -33,7 +33,7 @@ export default function AllUser() {
                     return
                 }
             })
-    }, [])
+    }, [alert])
 
     const sortData = i => {
         switch (i) {

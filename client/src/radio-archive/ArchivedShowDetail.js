@@ -29,7 +29,7 @@ export default function ArchiveDetail(props) {
                 alert.error("Failed to fetch data, please contact the admin.");
 
             })
-    }, [param])
+    }, [param, alert])
 
     if (loading) return <Null />
 

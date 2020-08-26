@@ -27,7 +27,7 @@ export default function AllHosts(props) {
                     alert.error("Something went wrong")
                 }
             })
-    }, [])
+    }, [alert])
 
 
     const sortData = i => {

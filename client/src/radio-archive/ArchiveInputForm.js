@@ -45,7 +45,7 @@ export default function ArchiveInputForm(props) {
                     }
             })
             
-    }, [])
+    }, [id, archive.host, archive.show, archive.genre, archive.date, archive.link, archive.img, archive.description])
 
 
 
@@ -206,7 +206,7 @@ export default function ArchiveInputForm(props) {
                         </label>
                     </div>
                     <div className="submit-button describe">
-                        <input type="submit" value="save" role="button" /><span className="required">* required</span>
+                        <input type="submit" value="save" /><span className="required">* required</span>
                     </div>
                 </div>
             </form>

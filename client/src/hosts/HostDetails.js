@@ -29,7 +29,7 @@ export default function Hosts(props) {
                 setLoading(false);
                 alert.error('Failed to fetch host. Please contact the admin.');
             })
-    }, [param])
+    }, [param, alert])
 
 
 
@@ -37,7 +37,7 @@ export default function Hosts(props) {
 
         return (
             <>
-                <img src={host.hostImg} alt={`Artwork or photo of ${host.hostName}`} className="host-image-detail" width="500px" height="500px" />
+                <img src={host.hostImg} alt={`Artwork or portrait of ${host.hostName}`} className="host-image-detail" width="500px" height="500px" />
                 <div className="host-description">
                     <h3>{host.hostName}</h3>
                     <div className="about-host">
