@@ -48,7 +48,6 @@ export default function Schedule(props) {
         if (checkedIDs.length === 0) {
             return
         }
-        // console.log('checkIDs', checkedIDs)
         //filter copy of schedule data based on checkedID and set the new state
         let filteredScheduleData = [...scheduleData];
         for (let i = 0; i < checkedIDs.length; i++) {
@@ -69,8 +68,8 @@ export default function Schedule(props) {
             })
     }
 
-    useEffect(() => {
-        ///automatically delete data from 2 month before 
+    useEffect(() =>{
+        ///automatically delete data from 2 month ago 
         if (props.cookies.user && props.cookies.user.role === 'Admin') {
 
             scheduleData.map(el => {
@@ -81,12 +80,16 @@ export default function Schedule(props) {
                 }
             });
         }
-
+    })
+    
+        
+        
         ///////////////////////////////
         //split up schedule into weeks
         ///////////////////////////////
         //Find out Week Numbers of the current month
         scheduleData.map(el => {
+
             if (scheduleData.length === 0) return
             const month = moment(el.from).format("M")
             let weekNumber = moment(el.from).format("w");
@@ -104,13 +107,13 @@ export default function Schedule(props) {
             }
         })
 
-    }, [scheduleData]);
+    
 
     
     
     //filter inputData by week number and add array to weeklySchedule
 
-    useEffect(() => {
+    
         weekNum.map(weekNum => {
             //sort again so also new entries get sorted properly
             const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
@@ -129,7 +132,6 @@ export default function Schedule(props) {
             });
             weeklySchedule = [week, ...weeklySchedule]
         })
-    }, [weekNum]);
 
     ///////////////////////////////
 
@@ -145,7 +147,6 @@ export default function Schedule(props) {
     const renderLi = () => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (scheduleData.length === 0) return; //Because first time the code is running, scheduleData will be an empty array
-        
         return weeklySchedule.reverse().map((el, i) => (
             <Fragment key={i}>
                 <ScheduleWeek data={el} />

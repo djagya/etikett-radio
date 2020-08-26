@@ -21,7 +21,6 @@ export default function ScheduleWeek(data) {
         }
     }
     
-
     if (selected === "week" && thisWeek !== currWeek) {return null} 
     if (selected === "month" && thisMonth !== currMonth) {return null} 
     if (selected ==="nextMonth" && thisMonth !== nextMonth()) {return null}
