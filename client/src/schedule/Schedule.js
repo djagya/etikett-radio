@@ -71,13 +71,16 @@ export default function Schedule(props) {
 
     useEffect(() => {
         ///automatically delete data from 2 month before 
-        scheduleData.map(el => {
-            const current = moment(el.from, "YYYYMMDD").fromNow();
-            if (current === "2 months ago") {
-                // console.log('call handle delete')
-                handleDelete([el._id])
-            }
-        });
+        if (props.cookies.user && props.cookies.user.role === 'Admin') {
+
+            scheduleData.map(el => {
+                const current = moment(el.from, "YYYYMMDD").fromNow();
+                if (current === "2 months ago") {
+                    // console.log('call handle delete')
+                    handleDelete([el._id])
+                }
+            });
+        }
 
         ///////////////////////////////
         //split up schedule into weeks
@@ -164,8 +167,8 @@ export default function Schedule(props) {
                     <div className="schedule-content">
                         <h2 id="main">schedule.</h2>
                         {/* Display message until the site is live */}
-                        <h3>There are currently no shows scheduled.</h3>
-                        {/* <div className="schedule-head">
+                        {/* <h3>There are currently no shows scheduled.</h3> */}
+                        <div className="schedule-head">
                             {props.cookies.user && props.cookies.user.role === 'Admin' ?
                                 <div className="button-container controls">
                                     {showForm ?
@@ -191,7 +194,7 @@ export default function Schedule(props) {
                         </div>
                         <ul className="monthly-schedule">
                             {renderLi()}
-                        </ul> */}
+                        </ul>
                     </div>
                 </div>
             </Context.Provider>
