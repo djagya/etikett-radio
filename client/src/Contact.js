@@ -60,7 +60,7 @@ export default function Contact() {
             <div className={`${context.gapClass} input-form`}>
 
                 <h2 id="main">contact.</h2>
-                <form onSubmit={handleSubmit} role="contact-form" >
+                <form onSubmit={handleSubmit} >
                     <div className="grid-container">
                         <label htmlFor="name">
                             <span className="required">*</span>name
@@ -80,7 +80,7 @@ export default function Contact() {
                         </label>
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="send" role='button' /><span className="required">* required</span>
+                        <input type="submit" value="send" /><span className="required">* required</span>
                     </div>
                 </form>
             </div>

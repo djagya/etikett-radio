@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { HashRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 import { useMediaQuery } from 'react-responsive';

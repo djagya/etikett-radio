@@ -41,14 +41,13 @@ export default function Schedule(props) {
                 setLoading(false);
                 alert.error('Failed to fetch schedule from the server. Please contact the admin.');
             })
-    }, [])
+    }, [alert])
 
-    const handleDelete = (checkedIDs) => {
+    const handleDelete = (checkedIDs, automatic) => {
         //prevent error when nothing is selected
         if (checkedIDs.length === 0) {
             return
         }
-        // console.log('checkIDs', checkedIDs)
         //filter copy of schedule data based on checkedID and set the new state
         let filteredScheduleData = [...scheduleData];
         for (let i = 0; i < checkedIDs.length; i++) {
@@ -60,7 +59,8 @@ export default function Schedule(props) {
         Delete(checkedIDs, "schedule")
             .then(output => {
                 if (output) {
-                    alert.success('Schedule(s) successfully deleted.', { timeout: 2000 })
+                    automatic === "automatic" ? alert.success('Schedule from 2 month ago successfully deleted.', { timeout: 2000 }) :
+                    alert.success('Schedule successfully deleted.', { timeout: 2000 })
                 }
             })
             .catch(err => {
@@ -69,64 +69,69 @@ export default function Schedule(props) {
             })
     }
 
-    useEffect(() => {
-        ///automatically delete data from 2 month before 
-        scheduleData.map(el => {
-            const current = moment(el.from, "YYYYMMDD").fromNow();
-            if (current === "2 months ago") {
-                // console.log('call handle delete')
-                handleDelete([el._id])
-            }
-        });
+    useEffect(() =>{
+        ///automatically delete data from 2 month ago 
+        if (props.cookies.user && props.cookies.user.role === 'Admin') {
 
-        ///////////////////////////////
-        //split up schedule into weeks
-        ///////////////////////////////
-        //Find out Week Numbers of the current month
-        scheduleData.map(el => {
-            if (scheduleData.length === 0) return
-            const month = moment(el.from).format("M")
-            let weekNumber = moment(el.from).format("w");
-    
-            const num = () => { 
-                //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
-                if (moment(el.from).format("dddd") === "Sunday") {
-                    return (parseInt(weekNumber) - 1).toString()
-                } else {
-                    return weekNumber
+            scheduleData.map(el => {
+                const current = moment(el.from, "YYYYMMDD").fromNow();
+                if (current === "2 months ago") {
+                    // console.log('call handle delete')
+                    handleDelete([el._id], "automatic")
                 }
-            }
-            if (!(weekNum.includes(num()))) { 
-                setWeekNum([num(), ...weekNum])
-            }
-        })
+            });
+        }
+    })
+    
+        
+        
+    ///////////////////////////////
+    //split up schedule into weeks
+    ///////////////////////////////
+    //Find out Week Numbers of the current month
+    scheduleData.map(el => {
 
-    }, [scheduleData]);
+        if (scheduleData.length === 0) return
+        let weekNumber = moment(el.from).format("w");
+
+        const num = () => { 
+            //To fix error where a week only with a sunday date would break the system (because it's recognized as day of the next week)
+            if (moment(el.from).format("dddd") === "Sunday") {
+                return (parseInt(weekNumber) - 1).toString()
+            } else {
+                return weekNumber
+            }
+        }
+        if (!(weekNum.includes(num()))) { 
+            setWeekNum([num(), ...weekNum])
+        }
+    })
+
+    
 
     
     
     //filter inputData by week number and add array to weeklySchedule
 
-    useEffect(() => {
-        weekNum.map(weekNum => {
-            //sort again so also new entries get sorted properly
-            const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
-            const week = sortedMonth.filter(data => {
-                //To make sundays show as the last day of the week, not as the first of the next
-                const num = () => {
-                    let number = moment(data.from).format("w");
-                    if (moment(data.from).format("dddd") === "Sunday") {
-                        return (parseInt(number) - 1).toString()
-                    } else {
-                        
-                        return number
-                    }
+    
+    weekNum.map(weekNum => {
+        //sort again so also new entries get sorted properly
+        const sortedMonth = scheduleData.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))
+        const week = sortedMonth.filter(data => {
+            //To make sundays show as the last day of the week, not as the first of the next
+            const num = () => {
+                let number = moment(data.from).format("w");
+                if (moment(data.from).format("dddd") === "Sunday") {
+                    return (parseInt(number) - 1).toString()
+                } else {
+                    
+                    return number
                 }
-                return num() === weekNum
-            });
-            weeklySchedule = [week, ...weeklySchedule]
-        })
-    }, [weekNum]);
+            }
+            return num() === weekNum
+        });
+        weeklySchedule = [week, ...weeklySchedule]
+    })
 
     ///////////////////////////////
 
@@ -142,7 +147,6 @@ export default function Schedule(props) {
     const renderLi = () => {
         if (scheduleData.status === 404) return (<h2>Error 404, something went wrong</h2>)
         if (scheduleData.length === 0) return; //Because first time the code is running, scheduleData will be an empty array
-        
         return weeklySchedule.reverse().map((el, i) => (
             <Fragment key={i}>
                 <ScheduleWeek data={el} />
@@ -156,16 +160,13 @@ export default function Schedule(props) {
     if (selected === "initial") {
         setSelected("month")
     }
-
     return (
         <DocumentTitle title="Schedule">
             <Context.Provider value={{ checkedIDs, setCheckedIDs, scheduleData, setScheduleData, selected, currMonth, currWeek }}>
                 <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
                         <h2 id="main">schedule.</h2>
-                        {/* Display message until the site is live */}
-                        <h3>There are currently no shows scheduled.</h3>
-                        {/* <div className="schedule-head">
+                        <div className="schedule-head">
                             {props.cookies.user && props.cookies.user.role === 'Admin' ?
                                 <div className="button-container controls">
                                     {showForm ?
@@ -189,9 +190,11 @@ export default function Schedule(props) {
                                 </label>
                             </div>
                         </div>
+                        {weekNum.length === 0 ? <h3>Seems like there is nothing here yet.</h3> :
                         <ul className="monthly-schedule">
                             {renderLi()}
-                        </ul> */}
+                        </ul>
+                        }
                     </div>
                 </div>
             </Context.Provider>

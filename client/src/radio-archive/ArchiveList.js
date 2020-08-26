@@ -35,7 +35,7 @@ export default function ArchiveList(props) {
                 setLoading(false);
                 alert.error('Failed to fetch archive from the server. Please contact the admin.');
             })
-    }, [])
+    }, [alert])
 
     const sortData = i => {
         switch (i) {

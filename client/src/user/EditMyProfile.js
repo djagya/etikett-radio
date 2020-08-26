@@ -43,7 +43,7 @@ export default function MyProfile(props) {
                 }
             })
 
-    }, [context.id])
+    }, [context.id, alert])
 
     const handlePatch = body => {
         if (pw !== pwCheck) {
@@ -143,7 +143,7 @@ export default function MyProfile(props) {
                     }
                     {editProfile ? 
                         
-                        <form onSubmit={handlePersonalSubmit} role="form">
+                        <form onSubmit={handlePersonalSubmit}>
                             <div className="button-container">
                                 <button type="button" onClick={() => setEditProfile(false)}>cancel</button>
                             </div>
@@ -175,7 +175,7 @@ export default function MyProfile(props) {
                                     : null}
                             </div>
                             <div className="submit-button">
-                                <input type="submit" value="save" role="button" /><span className="required">* Required</span>
+                                <input type="submit" value="save" /><span className="required">* Required</span>
                             </div>
                         </form>  :
                         editPW? null :
@@ -186,7 +186,7 @@ export default function MyProfile(props) {
                     }
                     
                     {editPW ?
-                        <form onSubmit={handlePWSubmit} role="form">
+                        <form onSubmit={handlePWSubmit}>
                         <div className="button-container">
                             <button type="button" onClick={() => setEditPW(false)}>cancel</button>
                         </div>
@@ -200,7 +200,7 @@ export default function MyProfile(props) {
                             </label>
                         </div>
                         <div className="submit-button">
-                            <input type="submit" value="save" role="button" /><span className="required">* Required</span>
+                            <input type="submit" value="save" /><span className="required">* Required</span>
                         </div>
                         </form>  :
                         editProfile? null :
