@@ -133,49 +133,6 @@
     }
   }
 
-  ///archive
-  .archive-details-page {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-
-
-    h2 {
-      // margin: 0 0.5rem;
-      padding: 0;
-      font-size: 1.5rem;
-    }
-
-    p {
-      margin-bottom: 2rem;
-      text-align: right;
-      margin: 0 1rem;
-    }
-
-    q {
-      max-width: 300px;
-    }
-
-    a {
-      text-align: right;
-      margin-right: 0.5rem;
-    }
-  }
-
-  .archive-details-card {
-    width: 876px;
-    margin: 2rem 1rem;
-
-    q {
-      max-width: 100%;
-    }
-  }
-
-  img {
-    max-width: 300px;
-    max-height: 300px;
-  }
-
   ///main archive page
   .list-header,
   .all-data {
@@ -384,58 +341,6 @@
     }
   }
 
-  //archive
-  .archive-details-page {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-
-
-    h2 {
-      // margin: 0 0.5rem;
-      font-size: 1.5rem;
-    }
-
-    p {
-      margin-bottom: 2rem;
-      text-align: right;
-      margin: 0 .5rem;
-    }
-
-
-
-    a {
-      text-align: right;
-      margin-right: 0.5rem;
-    }
-  }
-
-  .archive-details-card {
-    width: 90vw;
-    margin: 2rem 1rem;
-
-    img {
-      width: 100%;
-    }
-
-    q {
-      width: 100%;
-      padding: 0.5rem;
-
-    }
-
-    .link-component {
-      margin: 0 .5rem;
-    }
-  }
-
-  img {
-    max-width: 300px;
-    max-height: 300px;
-  }
-
-
-
   ///main archive page
 
   .list-header,
@@ -633,65 +538,6 @@
   .full-header .embeded-video {
     height: 50vh;
   }
-
-  ///archive cards
-  .archive-details-page {
-    display: flex;
-    align-items: center;
-
-
-    h2 {
-      margin-bottom: 0;
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
-
-
-    .archive-details-card {
-      margin: 2rem 1rem;
-      width: 90vw;
-
-      h2 {
-        font-size: 18px;
-        margin: 0.5rem 0.5rem 1rem 0.5rem;
-
-      }
-
-      p,
-      .link-component {
-        text-align: center;
-
-        margin: 0;
-        margin-bottom: .5rem;
-      }
-
-      q {
-        width: 100%;
-        // margin: 1rem 0.5rem;
-      }
-
-      .img-header {
-        display: flex;
-        flex-direction: column;
-
-
-        img {
-          max-width: 250px;
-          max-height: 250px;
-          margin: auto;
-        }
-      }
-    }
-
-    img {
-      max-width: 200px;
-      max-height: 200px;
-    }
-
-
-  }
-
-  ///main archive page
 
   ///main archive page
 

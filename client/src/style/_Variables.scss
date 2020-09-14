@@ -34,6 +34,12 @@ $chat-height-transition: height 400ms ease-in;
   flex-direction: column;
 }
 
+@mixin component-template {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 0 .5rem;
+}
 // responsiveness
 $media-breakpoints: ("big-desktop": 1900px,
   "desktop": 1200px,

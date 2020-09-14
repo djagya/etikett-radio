@@ -34,7 +34,7 @@
 h1 {
   text-align: center;
   margin: 1rem 0;
-  font-family: $font-bold;
+  font-family: $font-normal;
   letter-spacing: 3px;
 }
 
@@ -98,6 +98,11 @@ textarea {
   height: 200vh;
 }
 
+.divider {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  margin: .5rem 0;
+}
 ///////////////////////////////////
 //         Main Page
 ///////////////////////////////////

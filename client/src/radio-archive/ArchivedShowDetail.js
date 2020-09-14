@@ -53,16 +53,22 @@ export default function ArchiveDetail(props) {
                             <div className="archive-details">
                                 <Link className="link-component" to={`/archive`}>back to archive</Link>
                                 <div className="archive-details-card">
-                                    <div className="img-header">
+                                    <div className="archive-header">
                                         <img src={archiveData.img} width="300" height="300" alt={`Artwork of ${archiveData.show}`} />
                                         <div className="header-p-a">
                                             <h1>{archiveData.show} by {archiveData.host}</h1>
-                                            <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
-                                            <p>{archiveData.genre}</p>
+                                            <div class="divider"></div>
                                             <a className="link-component" target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>
                                         </div>
                                     </div>
+                                    <div className="description-container">
+                                        <div className="meta-data">
+                                            <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
+                                            <p>{archiveData.genre}</p>
+                                        </div>
                                     <q>{archiveData.description}</q>
+
+                                    </div>
                                 </div>
                             </div>
                         }
