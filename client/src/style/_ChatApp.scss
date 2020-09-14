@@ -56,6 +56,10 @@
   height: 100%;
 }
 .inner-container {
+  h3 {
+    font-size: 1.5rem;
+    font-family: $font-light;
+  }
   
   width: 100%;  
   display: flex;
