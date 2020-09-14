@@ -208,7 +208,7 @@ export default function ArchiveList(props) {
             }}>
                 <div className={`${context.gapClass} all-list`}>
                     <div>
-                        <h2 id="main">archive.</h2>
+                        <h1 id="main">archive.</h1>
 
                         {props.cookies.user && props.cookies.user.role === 'Admin' && "Host" ?
                             <div className="button-container controls archive-add-delete-buttons">

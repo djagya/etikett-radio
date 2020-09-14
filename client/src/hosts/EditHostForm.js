@@ -196,8 +196,8 @@ export default function EditHostPage(props) {
         <DocumentTitle title="Edit host profile">
             <div className={`${context.gapClass} edit-host-page`}>
                 {context.id !== userID ? 
-                <h2>edit {hostName}s host profile.</h2>:
-                <h2>edit my host profile.</h2>
+                <h1>edit {hostName}s host profile.</h1>:
+                <h1>edit my host profile.</h1>
                 }
                 
                 <form className="input-form" onSubmit={handleSubmit}>

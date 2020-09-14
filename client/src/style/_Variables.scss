@@ -20,8 +20,9 @@ $etikett-hover: rgb(70, 120, 131);
 $etikett-hover-050: rgb(70, 120, 131, .5);
 
 //font
-$etikett-font: "GaramondPro",
-serif;
+$font-light: "Lausanne-300", sans-serif;
+$font-normal: "Lausanne-500", sans-serif;
+$font-bold: "Lausanne-700", sans-serif;
 
 //chat
 $chat-width: 340px;

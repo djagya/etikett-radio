@@ -116,7 +116,7 @@ export default function MyProfile(props) {
     return (
         <div>
             <div className={`${context.gapClass} input-form`}>
-                <h2 id="main">my profile.</h2>
+                <h1 id="main">my profile.</h1>
                 <div>
                     {!editPW && !editProfile ?
 

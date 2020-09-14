@@ -59,7 +59,7 @@ export default function Contact() {
         <DocumentTitle title="Contact">
             <div className={`${context.gapClass} input-form`}>
 
-                <h2 id="main">contact.</h2>
+                <h1 id="main">contact.</h1>
                 <form onSubmit={handleSubmit} >
                     <div className="grid-container">
                         <label htmlFor="name">

@@ -30,7 +30,7 @@ export default function UserProfile(props) {
                 <a href="#maincontent" className="skip-link">Skip to main content</a>
                 <div className={`${context.gapClass} staff-only`}>
                     <div>
-                        <h2 id="main">logged in as {props.cookies.user.firstName}</h2>
+                        <h1 id="main">logged in as {props.cookies.user.firstName}</h1>
                         <Link className="button-container" to={`/user/${context.id}/edit`}>
                             <button type="button">edit my user data</button>
                         </Link>

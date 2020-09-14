@@ -96,7 +96,7 @@ export default function AllHosts(props) {
     return (
         <DocumentTitle title="All Hosts">
             <div className={` all-list ${context.gapClass}`}>
-                <h2 id="main">all hosts.</h2>
+                <h1 id="main">all hosts.</h1>
                 <div className="list-container">
                     <Link className="button-container" test="vong all hosts her" to={`/user/${context.id}`}><button type="button">back</button></Link>
                     <div>

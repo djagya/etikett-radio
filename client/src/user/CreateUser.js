@@ -90,7 +90,7 @@ export default function CreateUser(props) {
     };
     return (
         <div className={`${context.gapClass} create-user-page`}>
-            <h2 id="main">create a new user.</h2>
+            <h1 id="main">create a new user.</h1>
             <form className="input-form" onSubmit={handleSubmit} role="form">
                 <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                 <div className="grid-container">

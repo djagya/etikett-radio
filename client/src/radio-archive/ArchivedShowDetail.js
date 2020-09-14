@@ -56,7 +56,7 @@ export default function ArchiveDetail(props) {
                                     <div className="img-header">
                                         <img src={archiveData.img} width="300" height="300" alt={`Artwork of ${archiveData.show}`} />
                                         <div className="header-p-a">
-                                            <h2>{archiveData.show} by {archiveData.host}</h2>
+                                            <h1>{archiveData.show} by {archiveData.host}</h1>
                                             <p>{archiveData.length === 0 ? null : archiveData.date.substring(0, 10)}</p>
                                             <p>{archiveData.genre}</p>
                                             <a className="link-component" target="_blank" rel="noopener noreferrer" href={archiveData.link}>listen back </a>

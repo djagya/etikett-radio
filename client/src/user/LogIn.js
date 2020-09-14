@@ -69,7 +69,7 @@ export default function LogIn(props) {
     return (
         <DocumentTitle title="Login">
             <div className={`${context.gapClass} input-form`}>
-                <h2 id="main">log in.</h2>
+                <h1 id="main">log in.</h1>
                 <form onSubmit={handleSubmit} role="form">
                     <div className="grid-container">
                         <label htmlFor="email">

@@ -12,7 +12,7 @@ export default function AboutUs() {
         <DocumentTitle title="About Us">
             <div className={`${gapClass} about-us`} >
             
-                <h2>about us.</h2>
+                <h1>about us.</h1>
                 <Link className="link-component" to={"/"}>back</Link>
                 <div className="about-us-content">
                     <div className="about-us-text">

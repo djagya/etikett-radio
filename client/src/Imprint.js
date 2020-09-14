@@ -10,11 +10,11 @@ export default function Imprint() {
     return (
         <DocumentTitle title="Imprint">
             <div className={`${gapClass} imprint`}>
-                <h2>imprint.</h2>
+                <h1>imprint.</h1>
                 <Link className="link-component" to={"/about"}>back</Link>
                 <div className="imprint-content">
                     <section>
-                        <h3>Privacy Notice</h3>
+                        <h2>Privacy Notice</h2>
                         <p>
                             Etikett Radio values the privacy of users, listeners, hosts, members and others who visit and use www.etikett-radio.com. The protection of your data and privacy is very important to us and we want you to be sure of how your personal information and data is used.
                         </p>
@@ -44,13 +44,13 @@ export default function Imprint() {
                         </p>
                     </section>
                     <section>
-                        <h3>Data Security</h3>
+                        <h2>Data Security</h2>
                         <p>
                             Although we do not collect personal information or data, we cannot ensure or warrant the security of any information that you share in the chatroom. We cannot guarantee that such information may not be accessed, disclosed, altered or destroyed by breach of any of our physical, technical, or managerial security measures. Any personal information that is shared by users is done so at their own risk.
                     </p>
                     </section>
                     <section>
-                        <h3>Cookies</h3>
+                        <h2>Cookies</h2>
                         <h4>What are cookies?</h4>
                         <p>
                             An HTTP cookie (also called web cookie, Internet cookie, browser cookie, or simply cookie) is a small piece of data sent from a website and stored on the user's computer by the user's web browser while the user is browsing. Cookies were designed to be a reliable mechanism for websites to remember stateful information (such as items added in the shopping cart in an online store) or to record the user's browsing activity (including clicking particular buttons, logging in, or recording which pages were visited in the past). They can also be used to remember pieces of information that the user previously entered into form fields, such as names, addresses, passwords, and credit-card numbers. <br />
@@ -64,7 +64,7 @@ export default function Imprint() {
                     </p>
                     </section>
                     <section>
-                        <h3>Licencing</h3>
+                        <h2>Licencing</h2>
                         <p>
                             All music broadcast on Etikett Radio is licenced under GEMA’s Web Radio Tarif. For more information on the GEMA Web Radio Tarif please read the product description of our tarif: <br />
                             <a href="https://www.gema.de/fileadmin/user_upload/Musiknutzer/Tarife/Tarife_sonstige/tarif_radio.pdf" target="_blank" rel="noopener noreferrer" className="link-component">Gema Tarife, PDF</a>
@@ -75,7 +75,7 @@ export default function Imprint() {
 
                     </section>
                     <section>
-                        <h3>Address</h3>
+                        <h2>Address</h2>
                         <ul className="address">
                             <li>Catalyst Institute for Creative Arts and Technology GmbH [formerly dBs Berlin GmbH]</li>
                             <li>Funkhaus Berlin</li>

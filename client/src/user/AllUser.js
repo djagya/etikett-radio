@@ -121,7 +121,7 @@ export default function AllUser() {
 
     const renderLi = (userData) => {
 
-        if (userData.status === 403) return (<h2>please log in as admin</h2>)
+        if (userData.status === 403) return (<h1>please log in as admin</h1>)
 
         //Because first time the code is running, userData will be an empty array
         if (userData.length === 0) return null;
@@ -147,7 +147,7 @@ export default function AllUser() {
 
     return (
         <div className={`${context.gapClass} all-list`}>
-            <h2>all users.</h2>
+            <h1>all users.</h1>
             <div className="list-container">
             <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                 <div>

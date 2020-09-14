@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "GaramondPro", serif;
-  src: url("../font/AGaramondPro-Regular.otf")
-}
 
 * {
   padding: 0;
@@ -11,7 +7,8 @@
   color: white;
   background-color: $etikett-black-000;
   letter-spacing: .5px;
-  font-family: $etikett-font;
+  font-family: $font-light;
+  font-weight: lighter;
 
   &:focus {
     border-width: 2px;
@@ -19,35 +16,39 @@
     border-radius: 3px;
   }
 
-  ::placeholder {
+  &::placeholder {
     color: rgba(255, 255, 255, 0.5);
+  }
+  &::selection {
+    background-color: #ffffff;
+    color: $etikett-black;
   }
 }
 
-*::selection {
-  background-color: #ffffff;
-  color: $etikett-black;
-}
-
-///////////////////////////////////
-//         Typography
-///////////////////////////////////
 .App {
   text-align: center;
 }
 
 
 
+h1 {
+  text-align: center;
+  margin: 1rem 0;
+  font-family: $font-bold;
+  letter-spacing: 3px;
+}
+
 h2 {
   text-align: center;
   margin: 1rem 0;
-  font-weight: normal;
+
+  font-family: $font-bold;
   letter-spacing: 3px;
 }
 
 h3 {
   margin-top: 1.5rem;
-  font-weight: normal;
+  font-family: $font-bold;
   letter-spacing: 3px;
 }
 
