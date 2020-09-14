@@ -57,10 +57,10 @@ export default function Contact() {
 
     return (
         <DocumentTitle title="Contact">
-            <div className={`${context.gapClass} input-form`}>
+            <div className={`${context.gapClass} contact-component`}>
 
                 <h1 id="main">contact.</h1>
-                <form onSubmit={handleSubmit} >
+                <form className="input-form" onSubmit={handleSubmit} >
                     <div className="grid-container">
                         <label htmlFor="name">
                             <span className="required">*</span>name

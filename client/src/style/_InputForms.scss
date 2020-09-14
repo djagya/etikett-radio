@@ -2,9 +2,7 @@
 //          Input Forms
 ///////////////////////////////////
 .input-form {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+  @include component-template;
   
     .grid-container {
       display: grid;
