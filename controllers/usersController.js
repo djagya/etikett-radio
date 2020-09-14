@@ -124,11 +124,14 @@ exports.sendEmail = async (req, res, next) => {
     const mailOptions = {
         from: email,
         to: 'matt.migz@dbsberlin.net',
+        // to: 'francisco.chiarino@gmail.com',
         subject: subject,
         text: `Name: ${name}\nFrom: ${email}\n \n${message}`
     };
     await transporter.sendMail(mailOptions, (err, info) => {
-        if (err) { next(err) }
+        if (err) { 
+            console.log(err)
+            next(err) }
         else { res.json({success: true, info}) }
     });
 }
