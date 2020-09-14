@@ -108,27 +108,36 @@ exports.deleteUser = async (req, res, next) => {
         res.json({ success: true, user: user })
     }
     catch (err) {
-        next(err)
+        next(err);
     }
 };
 
 exports.sendEmail = async (req, res, next) => {
     const {name, email, subject, message} = req.body;
-    let transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'etikett.radio.client@gmail.com',
-            pass: process.env.EMAIL_PASSWORD
-        }
-    });
-    const mailOptions = {
-        from: email,
-        to: 'matt.migz@dbsberlin.net',
-        subject: subject,
-        text: `Name: ${name}\nFrom: ${email}\n \n${message}`
-    };
-    await transporter.sendMail(mailOptions, (err, info) => {
-        if (err) { next(err) }
-        else { res.json({success: true, info}) }
-    });
+    try {
+        let transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'etikett.radio.client@gmail.com',
+                pass: process.env.EMAIL_PASSWORD
+            }
+        });
+        const mailOptions = {
+            from: email,
+            to: 'matt.migz@dbsberlin.net',
+            // to: 'francisco.chiarino@gmail.com',
+            subject: subject,
+            text: `Name: ${name}\nFrom: ${email}\n \n${message}`
+        };
+        await transporter.sendMail(mailOptions, (err, info) => {
+            if (err) { 
+                console.log(err);
+                next(err);
+             }
+            else { res.json({success: true, info}) }
+        });
+    }
+    catch (err) {
+        next(err);
+    }
 }
