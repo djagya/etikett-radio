@@ -115,7 +115,7 @@ export default function MyProfile(props) {
     };
     return (
         <div>
-            <div className={`${context.gapClass} input-form`}>
+            <div className={`${context.gapClass} my-profile-component`}>
                 <h1 id="main">my profile.</h1>
                 <div>
                     {!editPW && !editProfile ?
@@ -143,7 +143,7 @@ export default function MyProfile(props) {
                     }
                     {editProfile ? 
                         
-                        <form onSubmit={handlePersonalSubmit}>
+                        <form className="input-form" onSubmit={handlePersonalSubmit}>
                             <div className="button-container">
                                 <button type="button" onClick={() => setEditProfile(false)}>cancel</button>
                             </div>
@@ -186,7 +186,7 @@ export default function MyProfile(props) {
                     }
                     
                     {editPW ?
-                        <form onSubmit={handlePWSubmit}>
+                        <form className="input-form" onSubmit={handlePWSubmit}>
                         <div className="button-container">
                             <button type="button" onClick={() => setEditPW(false)}>cancel</button>
                         </div>

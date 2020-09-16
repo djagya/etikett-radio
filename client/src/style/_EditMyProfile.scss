@@ -1,14 +1,18 @@
-.user-overview {
-    display: grid;
-    width: fit-content;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 2rem;
-    text-align: left;
-}
-.option-button {
-    width: 100%;
-    height: 3rem;
-    button {
-        width: 100%;
-    }
+.my-profile-component {
+    @include component-template;
+    
+        .user-overview {
+            display: grid;
+            width: fit-content;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 2rem;
+            text-align: left;
+        }
+        .option-button {
+            width: 100%;
+            height: 3rem;
+            button {
+                width: 100%;
+            }
+        }
 }

@@ -6,6 +6,10 @@
     .imprint-content {
         width: 868px;
 
+        h2 {
+            font-size: 2.3rem;
+        }
+
         h3 {
             margin: 0;
             font-size: 2.1rem;
@@ -44,11 +48,15 @@
 
         }
         .address-field {
-            h2:first-of-type {
-                margin-top: 1rem;
+            h2 {
+                font-size: 2rem;
+                &:first-of-type {
+                    margin-top: 1rem;
+                }
             }
             li{
                 list-style-type: none;
+                margin-left: 0;
             }
         }
         .website-builder {
