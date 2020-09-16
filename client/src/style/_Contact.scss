@@ -1,0 +1,10 @@
+.contact-component {
+    @include component-template;
+    .input-form {
+        width: 100%;
+        max-width: 700px;
+        .grid-container {
+            width: 100%;
+        }
+    }
+}
