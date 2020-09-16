@@ -1,13 +1,13 @@
 ///////////////////////////////////
 //          Blog Page
 ///////////////////////////////////
-.blog-page {
-  display: flex;
-  justify-content: center;
+.blog-component {
+  @include component-template;
   white-space: pre-wrap;
 
   .blog-content {
-    max-width: 600px;
+    width: 100%;
+    max-width: 700px;
     text-align: left;
   }
 

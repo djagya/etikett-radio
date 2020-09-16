@@ -1,18 +1,11 @@
 //Main Styling comes from _InputForms.scss
 
 .edit-host-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  @include component-template;
     
     .input-form {
-      max-width: 600px;
-
-        .grid-container {
-                margin-bottom: 2rem;
-            }
-
-
+      .grid-container {
+              margin-bottom: 2rem;
+          }
     }
 }

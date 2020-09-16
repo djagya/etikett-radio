@@ -67,12 +67,10 @@ export default function BlogEditForm(param) {
     };
 
     return (
-        <div className="input-form">
+        <div>
             <h2>Edit {data.heading}</h2>
-            <form className="post-blog" onSubmit={handleSubmit}>
+            <form className="post-blog input-form" onSubmit={handleSubmit}>
                 <div className="grid-container">
-
-
                     <label htmlFor="heading">
                         <span className="required">*</span>heading
                 <input type="heading" id="heading" placeholder="Heading" value={heading} onChange={handleFormInput} />

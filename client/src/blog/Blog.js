@@ -49,7 +49,7 @@ export default function Blog(props) {
                 blogData, setBlogData,
                 showForm, setShowForm
                  }}>
-                <div className={`${context.gapClass} blog-page`}>
+                <div className={`${context.gapClass} blog-component`}>
                     <div className="blog-content">
                         <h1 id="main">blog.</h1>
                         {(props.cookies.user && props.cookies.user.role === ('Admin' || "Host")) ?

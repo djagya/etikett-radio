@@ -36,25 +36,21 @@
 
             ul {
                 margin-top: .5rem;
-
                 li {
                     list-style-type: square;
                     margin-left: 3rem;
-
-                }
-            }
-
-            .address {
-                margin: 1rem 0;
-
-                li {
-                    list-style-type: none;
-                    margin: 0;
                 }
             }
 
         }
-
+        .address-field {
+            h2:first-of-type {
+                margin-top: 1rem;
+            }
+            li{
+                list-style-type: none;
+            }
+        }
         .website-builder {
             margin-top: 5rem;
 

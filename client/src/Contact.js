@@ -4,6 +4,7 @@ import { useAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import Loading from './loading/Loading';
+import Address from './Address';
 
 
 export default function Contact() {
@@ -58,7 +59,6 @@ export default function Contact() {
     return (
         <DocumentTitle title="Contact">
             <div className={`${context.gapClass} contact-component`}>
-
                 <h1 id="main">contact.</h1>
                 <form className="input-form" onSubmit={handleSubmit} >
                     <div className="grid-container">
@@ -83,6 +83,7 @@ export default function Contact() {
                         <input type="submit" value="send" /><span className="required">* required</span>
                     </div>
                 </form>
+                <Address />
             </div>
 
         </DocumentTitle>

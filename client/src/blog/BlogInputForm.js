@@ -62,8 +62,7 @@ export default function BlogInput() {
     };
 
     return (
-        <div className="input-form">
-            <form className="post-blog" onSubmit={handleSubmit} title="blog input form">
+            <form className="post-blog input-form" onSubmit={handleSubmit} title="blog input form">
                 <div className="grid-container">
 
 
@@ -84,8 +83,6 @@ export default function BlogInput() {
                     <input type="submit" value="save" role="button" /><span className="required">* required</span>
                 </div>
             </form>
-
-        </div>
     );
 
 }

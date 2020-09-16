@@ -51,7 +51,7 @@ export default function BlogEntry(el, i) {
                 <article>
                     <div className="article-header">
                         <h2>{entry.heading}</h2>
-                        <p className="blog-date" >{entry.date.substring(0, 10)}</p>
+                        <div className="blog-date" >{entry.date.substring(0, 10)}</div>
                     </div>
                     <p className="blog-text" >{entry.text}</p>
                 </article>

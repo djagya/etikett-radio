@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Context } from "./Context";
 import { Link } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
+import Address from './Address';
 
 export default function Imprint() {
     const { gapClass } = useContext(Context);
@@ -75,13 +76,7 @@ export default function Imprint() {
 
                     </section>
                     <section>
-                        <h2>Address</h2>
-                        <ul className="address">
-                            <li>Catalyst Institute for Creative Arts and Technology GmbH [formerly dBs Berlin GmbH]</li>
-                            <li>Funkhaus Berlin</li>
-                            <li>Nalepastraße 18</li>
-                            <li>12459 Berlin</li>
-                        </ul>
+                        <Address />
                     </section>
                     <section className="website-builder">
                         <p>This website was designed and built by:</p>

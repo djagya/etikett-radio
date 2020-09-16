@@ -589,22 +589,7 @@
   }
 
   // Forms
-  .input-form {
-
-    .grid-container {
-      @include flex-column;
-    }
-
-    .grid-container,
-    .submit-button {
-      width: 90%;
-      margin: 1rem auto;
-    }
-  }
-
-  .edit-input-form {
-    width: 90%;
-  }
+  
 
   // All Users
   .all-list .user-list-grid {
@@ -639,9 +624,7 @@
     }
   }
 
-  .button-container {
-    justify-content: end;
-  }
+  
 
   .mobile-menu {
     display: flex;
