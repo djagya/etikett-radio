@@ -77,7 +77,7 @@ export default function EditHostPage(props) {
                     return alert.error("Something went wrong")
                 }
             })
-    }, [])
+    }, [alert, context.id, id, role])
 
     const handleSubmit = event => {
         event.preventDefault()

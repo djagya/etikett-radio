@@ -70,7 +70,7 @@ export default function LogIn(props) {
         <DocumentTitle title="Login">
             <div className={`${context.gapClass} input-form`}>
                 <h1 id="main">log in.</h1>
-                <form onSubmit={handleSubmit} role="form">
+                <form onSubmit={handleSubmit}>
                     <div className="grid-container">
                         <label htmlFor="email">
                             <span className="required">*</span>email
@@ -82,7 +82,7 @@ export default function LogIn(props) {
                         </label>
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="Log In" role="button" /><span className=" required">* required</span>
+                        <input type="submit" value="Log In" /><span className=" required">* required</span>
                     </div>
                 </form>
             </div>

@@ -80,7 +80,7 @@ export default function BlogInput() {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="save" role="button" /><span className="required">* required</span>
+                    <input type="submit" value="save" /><span className="required">* required</span>
                 </div>
             </form>
     );

@@ -4,7 +4,6 @@ import BlogEntry from './BlogEntry';
 import { useAlert } from 'react-alert';
 import DocumentTitle from 'react-document-title';
 import { Context } from "../Context";
-import { contextsKey } from 'express-validator/src/base';
 import Null from '../loading/Null';
 
 export default function Blog(props) {
@@ -29,7 +28,7 @@ export default function Blog(props) {
                 alert.error('Failed to fetch blog entries from the server. Please contact the admin.');
 
             })
-    }, [])
+    }, [alert])
     //list item construction
     const renderLi = () => {
         if (blogData.status === 404) return (<h2>Error 404, something went wrong</h2>)

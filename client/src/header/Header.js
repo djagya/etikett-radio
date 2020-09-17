@@ -4,7 +4,6 @@ import audioIcon from '../icons/audio.png';
 import muteIcon from '../icons/mute.png';
 import { withRouter } from 'react-router-dom';
 import ChatApp from '../chat/ChatApp';
-import GetData from "../GetData";
 import { Context } from "../Context";
 import ResponsiveNavbar from './ResponsiveNavbar';
 import Stream from './Stream';
@@ -16,7 +15,6 @@ import clapperboard from '../icons/clapperboard.png';
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const context = useContext(Context)
-    const alert = useAlert();
     const videoPlayer = useRef();
 
     // Currently not streaming example
@@ -77,7 +75,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 setSource(radio);
             })
 
-    }, [])
+    }, [isMobileDevice])
 
 
     useEffect(() => {
@@ -101,7 +99,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             }
         }
         setHeaderChatGapSize();
-    }, [source, location.pathname])
+    }, [source, location.pathname, context])
 
     useEffect(() => {
         // Set button icon
