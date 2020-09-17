@@ -1,0 +1,13 @@
+.log-in-component {
+    @include component-template;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 120px);
+    min-height: 250px;
+    .input-form{
+        top: -70px;
+        position: relative;
+    }
+}

@@ -68,23 +68,25 @@ export default function LogIn(props) {
     if (props.cookies.user) { return <Redirect to={`/user/${context.id}`} /> }
     return (
         <DocumentTitle title="Login">
-            <div className={`${context.gapClass} input-form`}>
-                <h1 id="main">log in.</h1>
-                <form onSubmit={handleSubmit}>
-                    <div className="grid-container">
-                        <label htmlFor="email">
-                            <span className="required">*</span>email
-                    <input type="text" id="email" placeholder="Email" value={email} onChange={handleFormInput} />
-                        </label>
-                        <label htmlFor="pw">
-                            <span className="required">*</span>password
-                    <input type="password" id="pw" placeholder="Password" value={pw} onChange={handleFormInput} />
-                        </label>
-                    </div>
-                    <div className="submit-button">
-                        <input type="submit" value="Log In" /><span className=" required">* required</span>
-                    </div>
-                </form>
+            <div  className={`${context.gapClass} log-in-component`}>
+                <div className={`input-form`}>
+                    <h1 id="main">log in.</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className="grid-container">
+                            <label htmlFor="email">
+                                <span className="required">*</span>email
+                        <input type="text" id="email" placeholder="Email" value={email} onChange={handleFormInput} />
+                            </label>
+                            <label htmlFor="pw">
+                                <span className="required">*</span>password
+                        <input type="password" id="pw" placeholder="Password" value={pw} onChange={handleFormInput} />
+                            </label>
+                        </div>
+                        <div className="submit-button">
+                            <input type="submit" value="Log In" /><span className=" required">* required</span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </DocumentTitle>
     )
