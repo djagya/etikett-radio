@@ -73,7 +73,6 @@ q {
 li {
   list-style-type: none;
   margin-bottom: 5px;
-  font-size: 1.1rem;
 }
 
 
@@ -81,7 +80,6 @@ li {
   // text-decoration: none;
   text-decoration-color: rgba(255, 255, 255, 0.2);
   transition: 0.1s;
-  font-size: 1.3rem;
 
   &:hover {
     color: $etikett-hover;

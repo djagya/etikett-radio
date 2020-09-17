@@ -47,7 +47,7 @@
     text-decoration-color: rgba(255, 255, 255, 0.2);
   }
   p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 .outer-container {
@@ -187,14 +187,15 @@
   }
 
   #input-message-textarea {
-    font-size: 1rem;
-    padding: 0.2rem 0.5rem;
+    font-size: .9rem;
+    padding: 0.3rem;
     overflow-x: hidden;
     resize: none;
     width: 80%;
     height: 32px;
     max-height: 88px;
     align-self: flex-end;
+    // padding-top: 5px;
   }
   .chat-send {
     // margin-top: 4px;
