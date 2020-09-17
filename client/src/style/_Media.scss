@@ -133,25 +133,6 @@
     }
   }
 
-  ///main archive page
-  .list-header,
-  .all-data {
-
-
-    :nth-child(3) {
-      display: none;
-    }
-
-
-
-    &.archive-list-grid {
-      width: 800px;
-      display: grid;
-      grid-template-columns: 200px 1fr 1fr 1fr 20px;
-    }
-
-  }
-
 
 
   //////////////////////////////////////////////////////////
@@ -341,26 +322,8 @@
     }
   }
 
-  ///main archive page
 
-  .list-header,
-  .all-data {
 
-    :nth-child(3) {
-      display: none;
-    }
-
-    :nth-child(4) {
-      display: none;
-    }
-
-    &.archive-list-grid {
-      width: 90vw;
-      display: grid;
-      grid-template-columns: 100px 2fr 1fr 20px;
-    }
-
-  }
 
   //////////////////////////////////////////////////////////
   // Host Component Tablet
@@ -539,39 +502,7 @@
     height: 50vh;
   }
 
-  ///main archive page
 
-  .list-header,
-  .all-data {
-
-    :nth-child(3) {
-      display: none;
-    }
-
-    :nth-child(4) {
-      display: none;
-    }
-
-    :nth-child(5) {
-      display: none;
-    }
-
-    &.archive-list-grid {
-      width: 90vw;
-      display: grid;
-      grid-template-columns: 50px 1fr;
-    }
-
-    .sort-list {
-      display: none;
-    }
-  }
-
-
-  .archive-add-delete-buttons {
-    margin: 0.5rem;
-    justify-content: space-between;
-  }
 
 
   // Blog

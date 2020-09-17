@@ -2,11 +2,7 @@
 //         All User Page
 ///////////////////////////////////
 .all-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  
+  @include component-template;
 
   .list-container {
   width: fit-content;
@@ -23,9 +19,6 @@
   .list-header {
     margin-bottom: 3rem;
     text-decoration-line: underline;
-    * {
-      
-    }
 
     li {
       letter-spacing: 3px;
@@ -66,11 +59,15 @@
 
 
 .archive-list-grid {
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   margin-left: 20px; //to center because of for users invisible checkbox placeholder 
     grid-template-columns: 80px 3fr 2fr 2fr 1fr 20px;
     li {
+      width: 100%;
       max-width: 250px;
+
+      
     }
     column-gap: 20px;
   }
@@ -89,7 +86,9 @@
   }
 
   li {
-    align-self: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
   }
  
 }
@@ -98,3 +97,51 @@
 
 
 
+@media only screen and (min-width: breakpoints(big-desktop)) {
+  
+}
+@media only screen and (max-width: breakpoints(desktop)) {
+  .list-header,
+  .all-data {
+    :nth-child(3) {
+      display: none;
+    }
+    &.archive-list-grid {
+      grid-template-columns: 80px 1fr 1fr 1fr 20px;
+    }
+
+  }
+}
+@media only screen and (max-width: breakpoints(tablet)) {
+  .list-header,
+  .all-data {
+    :nth-child(4) {
+      display: none;
+    }
+
+    &.archive-list-grid {
+      grid-template-columns: 80px 2fr 1fr 20px;
+    }
+
+  }
+}
+@media only screen and (max-width: breakpoints(phone)) {
+    .list-header,
+    .all-data {
+      :nth-child(5) {
+        display: none;
+      }
+  
+      &.archive-list-grid {
+        grid-template-columns: 50px 1fr;
+      }
+  
+      .sort-list {
+        display: none;
+      }
+    }
+    .archive-add-delete-buttons {
+      margin: 0.5rem;
+      justify-content: space-between;
+    }
+}
