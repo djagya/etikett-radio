@@ -166,7 +166,9 @@ export default function Schedule(props) {
                 <div className={`${context.gapClass} schedule-page`}>
                     <div className="schedule-content">
                         <h1 id="main">schedule.</h1>
-                        <div className="schedule-head">
+                        
+                        <iframe src="https://calendar.google.com/calendar/embed?src=c_vb7bhkebo9nh35l4o20lrmulm0%40group.calendar.google.com&ctz=Europe%2FBerlin" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                        {/* <div className="schedule-head">
                             {props.cookies.user && props.cookies.user.role === 'Admin' ?
                                 <div className="button-container controls">
                                     {showForm ?
@@ -194,7 +196,7 @@ export default function Schedule(props) {
                         <ul className="monthly-schedule">
                             {renderLi()}
                         </ul>
-                        }
+                        } */}
                     </div>
                 </div>
             </Context.Provider>
