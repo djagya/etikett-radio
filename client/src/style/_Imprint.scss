@@ -1,7 +1,5 @@
 .imprint {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include component-template;
 
     .imprint-content {
         width: 868px;

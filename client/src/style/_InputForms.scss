@@ -3,6 +3,7 @@
 ///////////////////////////////////
 .input-form {
   @include component-template;
+      margin-top: 0;
       width: 100%;
       max-width: 700px;
       padding: 0;

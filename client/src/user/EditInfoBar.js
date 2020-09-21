@@ -37,7 +37,7 @@ export default function EditInfoBar(props) {
 
  
     return (
-        <div className={`${context.gapClass} input-form`}>
+        <div className={`${context.gapClass} edit-info-bar-container`}>
             <h1 id="main">info bar</h1>
             <form onSubmit={handleSubmit} className="edit-input-form">
                 <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>

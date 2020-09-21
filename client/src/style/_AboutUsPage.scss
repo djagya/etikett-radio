@@ -1,8 +1,5 @@
 .about-us {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    white-space: pre-wrap;
+    @include component-template;
     width: 100%;
 
 

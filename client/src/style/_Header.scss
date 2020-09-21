@@ -8,18 +8,89 @@
   position: relative;
   z-index: 3;
   box-shadow: 0px 0px 15px 15px $etikett-black;
-}
+  width: 100%;
 
+  
+
+}
+.full-header {
+  flex-direction: column-reverse;
+  nav {
+    height: $full-header-nav-height;
+  }
+  .embeded-video {
+    width: 100%;
+    height: $embeded-video-height;
+  }
+  .controls-container {
+    height: $full-header-message-height;
+  } 
+  .video-or-logo {
+    width: 100%;
+  }
+  .logo-and-nav-container {
+    width: calc(100% - 360px);
+    a {
+      img {
+        width: 60px;
+      }
+    }
+  .nav-and-message-bar {
+    display: block;
+    height: fit-content;
+    .message {
+      position: relative;
+      // width: calc(100% - 360px);
+    }
+  }
+
+  }
+}
+.logo-and-nav-container {
+  display: flex;
+  width: calc(100% - 640px);
+  .nav-and-message-bar {
+    display: flex;
+    height: 190px;
+    width: 100%;
+    
+  }
+
+
+}
+.small-header {
+  position: fixed;
+  top: 0;
+  height: $header-height-small;
+
+}
 nav {
   display: flex;
   flex-flow: wrap;
-  align-items: center;
-  justify-content: center;
-  height: $nav-height;
+  justify-content: space-evenly;
+  a {
+    margin-top: .5rem;
+  }
+}
+.video-or-logo {
+  width: 300px;
+  position: relative;
+  padding: .5rem;
+  .logo-and-controls {
+    height: 100%;
+    position: relative;
+    a {
+      img {
+        width: 100%;
+        position: relative;
+      }
+    }
+  }
 }
 
+
 .nav-link {
-  padding: 0 2vw;
+  padding: 0 .5rem;
   transition: 0.1s;
   letter-spacing: 2px;
   text-decoration-color: rgba(255, 255, 255, 0.2);
@@ -32,110 +103,36 @@ nav {
   }
 
 }
-
 .active-nav {
   color: $etikett-hover;
   text-decoration-color: white;
 }
 
-.full-header {
-  flex-direction: column;
-
-  nav {
-    height: $full-header-nav-height;
-  }
-
-  .embeded-video {
-    width: 100%;
-    height: $embeded-video-height;
-  }
-
-  .message-controls-container {
-    height: $full-header-message-height;
-  }
-}
-
-.small-header-without-video {
-  position: fixed;
-  top: 0;
-
-  height: $header-height-small;
-  width: 100%;
-  display: grid;
-  grid-template: 1fr 1fr / 15% repeat(10, 1fr) 15%;
-
-  nav {
-    grid-column: 1 / 13;
-    grid-row: 1 / 2;
-    height: 100%;
-    justify-content: center;
-  }
-
-  .message-controls-container {
-    grid-column: 1 / 11;
-    grid-row: 2 / 3;
-    display: flex;
-    align-items: center;
-  }
-
-  .chat {
-    grid-row: 2 / 4;
-    grid-column: -1 / -3;
-    justify-self: end;
-    margin-top: 2px;
-
-    .Join {
-      margin: 0;
-    }
-  }
-}
-
-.small-header-with-video {
-  @extend .small-header-without-video;
-  height: $header-height-big;
-
-  nav {
-    grid-column: 2 / 13;
-    height: 100%;
-    justify-content: start;
-  }
-
-  .embeded-video {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-    z-index: 2;
-  }
-
-  .message-controls-container {
-    grid-column: 3 / 11;
-    margin: 0;
-  }
-}
 
 ///////////////////////////////////
 //           Chat
 ///////////////////////////////////
 .chat {
-  background-color: $etikett-black-000;
-}
 
-.chat-homescreen-without-video {
+  background-color: $etikett-black-000;
   position: absolute;
   top: $nav-height;
   right: 0;
+  top: 0;
+  margin-top: .5rem;
   z-index: 3;
 
   // Chat window height
-  .InfoBar {
-    height: 40px
-  }
+  // .InfoBar {
+  //   height: 40px
+  // }
 
   .Input {
     height: 36px
   }
 
   .Messages {
-    height: calc(100% - 36px - 40px)
+    height: calc(100% - 36px - 40px);
   }
 
   .chat-form {
@@ -147,50 +144,22 @@ nav {
   }
 }
 
+
+
 .chat-homescreen-with-video {
-  @extend .chat-homescreen-without-video;
   position: fixed;
-  top: $full-header-nav-height;
+  top: 0;
   z-index: 3;
 
   .chat-app-chat {
     height: calc(100vh - 47px - 47px - 25px);
     // calc(full-screen - $full-header-nav-height - $full-header-message-height - space to see twitch controllers)
   }
-  .outer-container {
-    padding-top: 1rem;
-  }
 }
 
-.chat-routes-without-video {
-  // position: fixed;
-  // top: calc(20vh - 40px); // (header-height - top-chat-bar-height)
-  right: 0;
-  z-index: 2;
 
-  .chat-app-chat {
-    height: calc(100vh - 65px);
-  }
-
-  // Chat window height
-  .InfoBar {
-    height: 6vh
-  }
-
-  // .Input { height: 40px }
-  .Messages {
-    height: calc(100% - 43px - 33px) // 100% - chat Infobar - chat Input
-  }
-
-  .button-container {
-    margin: 0;
-  }
-
-  // calc(100% - InfoBar - bottom-space)
-}
 
 .chat-routes-with-video {
-  @extend .chat-routes-without-video;
 
   .chat-app-chat {
     height: calc(100vh - 127px) // 100vh - navbar height (when it's wraped)
@@ -201,14 +170,19 @@ nav {
 ///////////////////////////////////
 //          Controls
 ///////////////////////////////////
+.controls-container{
+  position: absolute;
+  bottom: 0;
+  margin-bottom: .5rem;
+  width: 100%;
+
 .player-controls {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: $chat-width;
-  height: 100%;
-  padding: 0 1rem;
+  // max-width: $chat-width;
+  // padding: 0 1rem;
   background: $etikett-black;
   z-index: 2;
 }
@@ -277,26 +251,21 @@ nav {
   }
 }
 
+}
+
 ///////////////////////////////////
 //          Message
 ///////////////////////////////////
-.message-controls-container {
-  height: 40px;
-  margin: 0 1.8rem;
-  display: flex;
-  align-items: center;
-  margin: 0; //or margin 0 and then it goes until the end
-  overflow: hidden;
-}
-
-/*animated stream description*/
-//needs adjustment for mobile version
 
 .message {
+  position: absolute;
   font-size: 1.3rem;
   display: flex;
   overflow: hidden;
   width: 100%;
+  max-width: calc(100% - 640px);
+  bottom: 0;
+  margin-bottom: .7rem;
 
   .moving-text {
     white-space: nowrap;
@@ -375,4 +344,54 @@ nav {
 @keyframes show-up {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+// @media only screen and (min-width: breakpoints(big-desktop)) {
+// }
+// @media only screen and (max-width: breakpoints(desktop)) {
+// }
+@media only screen and (max-width: breakpoints(tablet)) {
+  .logo-and-nav-container {
+    display: flex;
+    width: 100%;
+    width: calc(100% - 340px);
+  }
+  .message {
+    
+  max-width: 100%;
+  }
+}
+@media only screen and (max-width: breakpoints(phone)) {
+  .video-or-logo {
+    width: 100%;
+    .logo-and-controls {
+
+      a {
+        display: none;
+      }
+
+    }
+  }
+  .small-header {
+    height: $mobile-header-height;
+    flex-direction: column-reverse;
+    padding-top: .5rem;
+  }
+  .nav-and-message-bar {
+    height: fit-content;
+  }
+  .controls-container {
+    position: relative;
+  }
+  .message {
+    position: relative;
+  }
+
+  .nav-app-header {
+    display: flex;
+    justify-content: space-between;
+    img {
+      width: 40px;
+    }
+  }
 }

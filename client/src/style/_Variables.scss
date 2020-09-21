@@ -1,11 +1,9 @@
 // height
-$header-height-big: 190px;
-
-$header-height-small: 120px;
+$header-height-small: 190px;
 $nav-height: 50px;
 
 $embeded-video-height: 88vh;
-$mobile-header-height: 130px;
+$mobile-header-height: 150px;
 $full-header-nav-height: 47px; //47px is close to 5vh
 $full-header-message-height: 47px;
 $full-header-video-height: calc(100vh - 47px - 47px);
@@ -39,9 +37,13 @@ $chat-height-transition: height 400ms ease-in;
   flex-flow: column;
   align-items: center;
   padding: 0 .5rem;
+  margin-top: $header-height-small;
+  background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
+   
 }
 // responsiveness
-$media-breakpoints: ("big-desktop": 1900px,
+$media-breakpoints: (
+  "big-desktop": 1900px,
   "desktop": 1200px,
   "tablet": 900px,
   "phone": 600px);

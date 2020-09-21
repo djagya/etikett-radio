@@ -1,7 +1,5 @@
 .host-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include component-template;
 
     .host-card {
         width: 1000px;
@@ -66,10 +64,8 @@
 
 }
 
-.host-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.host-list-component {
+    @include component-template;
     width: 100%;
 
     .grid-wrapper {
