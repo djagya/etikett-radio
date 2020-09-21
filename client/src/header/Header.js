@@ -154,6 +154,11 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         loading ? <Loading /> : 
             
             <header className={`App-header ${headerSize}`}>
+                {source === video && location.pathname === "/" ? 
+                    <a className="catalyst-full-header" href="https://catalyst-berlin.com/" title="Catalyst" target="_blank" rel="noopener noreferrer">
+                        <img src={require("../img/Catalyst/Icon_neg@2x.png")} alt="Logo of Catalyst: A big C followed by three slashes." />
+                    </a> 
+                :null}
                 <div className="video-or-logo"> 
 
                     
@@ -178,8 +183,6 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                     <Stream source={source} playing={playing} volume={volume} videoPlayer={videoPlayer} />
                 </div>
                 <div className="nav-and-message-bar">
-                    
-
                     {isMobileWidth ? <ResponsiveNavbar /> : <DesktopNavbar /> }
                     <MessageBar />
                 </div>
@@ -189,7 +192,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                         <img src={buttonIcon} width="24" alt="icon"/>
                         <span>{buttonText}</span>
                     </button>
-                {/* : null} */}
+                 {/* : null}  */}
                     
             </header>
             

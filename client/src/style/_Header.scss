@@ -10,8 +10,6 @@
   box-shadow: 0px 0px 15px 15px $etikett-black;
   width: 100%;
 
-  
-
 }
 .full-header {
   flex-direction: column-reverse;
@@ -25,39 +23,40 @@
   .controls-container {
     height: $full-header-message-height;
   } 
+  .catalyst-full-header {
+    position: absolute;
+    top: 0;
+    margin: .7rem 0;
+    img {
+      width: 150px;
+    }
+  }
   .video-or-logo {
     width: 100%;
   }
-  .logo-and-nav-container {
-    width: calc(100% - 360px);
-    a {
-      img {
-        width: 60px;
-      }
-    }
+  
   .nav-and-message-bar {
     display: block;
+    position: relative;
     height: fit-content;
+    left: 150px;
+    max-width: calc(100% - 510px);
+    nav {
+      font-size: 1.5vw;
+    }
     .message {
       position: relative;
-      // width: calc(100% - 360px);
+      margin: 0 .5rem;
+      // width: 100%;
+      max-width: calc(100% - 16px);
     }
   }
-
-  }
-}
-.logo-and-nav-container {
-  display: flex;
-  width: calc(100% - 640px);
-  .nav-and-message-bar {
-    display: flex;
-    height: 190px;
-    width: 100%;
-    
-  }
-
+  
 
 }
+
+
+
 .small-header {
   position: fixed;
   top: 0;
@@ -67,7 +66,7 @@
 nav {
   display: flex;
   flex-flow: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   a {
     margin-top: .5rem;
   }
@@ -86,8 +85,19 @@ nav {
       }
     }
   }
-}
 
+}
+.nav-and-message-bar {
+  display: flex;
+  flex-flow: wrap;
+  width: 100%;
+  max-width: calc(100% - 640px);
+  nav {
+    width: 100%;
+    font-size: 1.5vw;
+  }
+  
+}
 
 .nav-link {
   padding: 0 .5rem;
@@ -109,149 +119,6 @@ nav {
 }
 
 
-///////////////////////////////////
-//           Chat
-///////////////////////////////////
-.chat {
-
-  background-color: $etikett-black-000;
-  position: absolute;
-  top: $nav-height;
-  right: 0;
-  top: 0;
-  margin-top: .5rem;
-  z-index: 3;
-
-  // Chat window height
-  // .InfoBar {
-  //   height: 40px
-  // }
-
-  .Input {
-    height: 36px
-  }
-
-  .Messages {
-    height: calc(100% - 36px - 40px);
-  }
-
-  .chat-form {
-    background-color: $etikett-black-000;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    
-  }
-}
-
-
-
-.chat-homescreen-with-video {
-  position: fixed;
-  top: 0;
-  z-index: 3;
-
-  .chat-app-chat {
-    height: calc(100vh - 47px - 47px - 25px);
-    // calc(full-screen - $full-header-nav-height - $full-header-message-height - space to see twitch controllers)
-  }
-}
-
-
-
-.chat-routes-with-video {
-
-  .chat-app-chat {
-    height: calc(100vh - 127px) // 100vh - navbar height (when it's wraped)
-  }
-
-}
-
-///////////////////////////////////
-//          Controls
-///////////////////////////////////
-.controls-container{
-  position: absolute;
-  bottom: 0;
-  margin-bottom: .5rem;
-  width: 100%;
-
-.player-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  // max-width: $chat-width;
-  // padding: 0 1rem;
-  background: $etikett-black;
-  z-index: 2;
-}
-
-.playPauseBtn {
-  border: 0;
-  height: 18px;
-  border-color: $etikett-black-000 $etikett-black-000 $etikett-black-000 #fff;
-  transition: 100ms all ease;
-  cursor: pointer;
-
-  /* play state */
-  border-style: solid;
-  border-width: 9px 0 9px 18px;
-
-  &.paused {
-    border-style: double;
-    border-width: 0px 0 0px 18px;
-  }
-
-  &:hover {
-    border-color: transparent transparent transparent #707070;
-  }
-}
-
-.audio-icon {
-  width: 18px;
-  margin-left: 1rem;
-  cursor: pointer;
-}
-
-.volumeControl {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #fff;
-
-  margin-left: 1rem;
-  height: 4px;
-  border-radius: 5px;
-  width: 100px;
-
-  &::-webkit-volumeControl-thumb {
-    width: 9px;
-    height: 9px;
-    background: #fff;
-    border: 5px solid #313131;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  &::-moz-range-thumb {
-    width: 9px;
-    height: 9px;
-    background: #fff;
-    border: 5px solid $etikett-hover;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    background: $etikett-hover;
-    border-radius: 50%;
-  }
-}
-
-}
 
 ///////////////////////////////////
 //          Message
@@ -291,74 +158,23 @@ nav {
   }
 }
 
-///////////////////////////////////
-//        Source Button
-///////////////////////////////////
-.change-source-btn {
-  position: fixed;
-  bottom: 50%;
-  width: 50px;
-  height: 50px;
-  background: black;
-  color: white;
-  border-radius: 50px;
-  transition: width 300ms ease;
-  display: flex;
-  align-items: center;
-
-  span {
-    display: none;
-    opacity: 0;
-  }
-
-  img {
-    margin: 0 0.4rem;
-  }
-
-  &:hover {
-    width: 100px;
-    span {
-      display: block;
-      animation: show-up 300ms ease 250ms forwards;
-    }
-  }
-  &:focus {
-    outline: none;
-  }
-}
-
-@-moz-document url-prefix() {
-  .change-source-btn {
-    transition: none;
-
-    &:hover {
-      width: 50px;
-      span {
-        display: none;
-        animation: none;
-      }
-    }
-  }
-}
-
-@keyframes show-up {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 
 // @media only screen and (min-width: breakpoints(big-desktop)) {
 // }
 // @media only screen and (max-width: breakpoints(desktop)) {
 // }
 @media only screen and (max-width: breakpoints(tablet)) {
-  .logo-and-nav-container {
-    display: flex;
-    width: 100%;
-    width: calc(100% - 340px);
+  .nav-and-message-bar {
+    max-width: calc(100% - 340px);
+    
   }
   .message {
-    
   max-width: 100%;
+  }
+  .full-header {
+    .nav-and-message-bar {
+      max-width: calc(100% - 150px);
+    }
   }
 }
 @media only screen and (max-width: breakpoints(phone)) {
@@ -379,19 +195,40 @@ nav {
   }
   .nav-and-message-bar {
     height: fit-content;
+    width: 100%;
+    max-width: 100%;
+    height: 70px;
   }
   .controls-container {
     position: relative;
   }
   .message {
     position: relative;
+    top: 50;
   }
 
   .nav-app-header {
+    padding: 0 .5rem;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    a {
+      margin: .5rem 0;
+    }
+    nav {
+      width: auto;
+    }
     img {
       width: 40px;
     }
+  }
+  .catalyst-full-header {
+    display: none;
+  }
+
+  .full-header .nav-and-message-bar {
+    left: 0;
   }
 }

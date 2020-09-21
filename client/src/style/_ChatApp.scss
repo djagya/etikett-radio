@@ -241,3 +241,55 @@
   50% {opacity: 0;}
   100% { opacity: 1; }
 }
+
+/////////////////////
+//Styling for header
+/////////////////////
+
+.chat {
+
+  background-color: $etikett-black-000;
+  position: absolute;
+  top: $nav-height;
+  right: 0;
+  top: 0;
+  margin-top: .5rem;
+  z-index: 3;
+
+  // Chat window height
+  // .InfoBar {
+  //   height: 40px
+  // }
+
+  .Input {
+    height: 36px
+  }
+
+  .Messages {
+    height: calc(100% - 36px - 40px);
+  }
+
+  .chat-form {
+    background-color: $etikett-black-000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+  }
+}
+.chat-homescreen-with-video {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  .chat-app-chat {
+    height: calc(100vh - 47px - 47px - 25px);
+    // calc(full-screen - $full-header-nav-height - $full-header-message-height - space to see twitch controllers)
+  }
+}
+
+.chat-routes-with-video {
+  .chat-app-chat {
+    height: calc(100vh - 127px) // 100vh - navbar height (when it's wraped)
+  }
+
+}
