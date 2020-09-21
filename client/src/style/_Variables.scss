@@ -1,8 +1,8 @@
 // height
 $header-height-small: 190px;
-$nav-height: 50px;
+$nav-height: 100px;
 
-$embeded-video-height: 88vh;
+$embeded-video-height: calc(100vh - 100px);
 $mobile-header-height: 150px;
 $full-header-nav-height: 47px; //47px is close to 5vh
 $full-header-message-height: 47px;

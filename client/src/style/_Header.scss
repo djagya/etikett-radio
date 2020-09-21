@@ -13,10 +13,13 @@
 }
 .full-header {
   flex-direction: column-reverse;
+  height: 100vh;
   nav {
     height: $full-header-nav-height;
   }
   .embeded-video {
+    position: relative;
+    // top: 50px;
     width: 100%;
     height: $embeded-video-height;
   }
@@ -38,7 +41,7 @@
   .nav-and-message-bar {
     display: block;
     position: relative;
-    height: fit-content;
+    height: 150px;
     left: 150px;
     max-width: calc(100% - 510px);
     nav {
@@ -47,7 +50,7 @@
     .message {
       position: relative;
       margin: 0 .5rem;
-      // width: 100%;
+      top: 20px;
       max-width: calc(100% - 16px);
     }
   }
@@ -66,9 +69,10 @@
 nav {
   display: flex;
   flex-flow: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+    max-height: 16px;
   a {
-    margin-top: .5rem;
+    margin: .5rem 0;
   }
 }
 .video-or-logo {
@@ -94,7 +98,7 @@ nav {
   max-width: calc(100% - 640px);
   nav {
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 1.5rem;
   }
   
 }
