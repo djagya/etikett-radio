@@ -67,6 +67,13 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                     setShowSourceBtn(true);
                 }
             })
+            .then(()=>{
+                if (isMobileWidth) {
+                    context.setGapClass("small-gap")
+                } else {
+                    context.setGapClass("big-gap")
+                }
+            })
             .then(() => {
                 setLoading(false);
             })

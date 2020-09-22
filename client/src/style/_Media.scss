@@ -1,111 +1,7 @@
 @media only screen and (min-width: breakpoints(big-desktop)) {
-
-  // // Header with video
-  // .full-header {
-  //   .chat-homescreen-with-video {
-  //     position: fixed;
-  //     top: 10px;
-
-  //     .Join {
-  //       margin: 0;
-  //     }
-
-  //     .chat-app-chat {
-  //       height: calc(100vh - 47px - 38px) // 100vh - message bar - space
-  //     }
-
-  //     .outer-container {
-  //       padding: 0;
-  //     }
-
-  //     .chat-send {
-  //       margin-top: 4px;
-  //     }
-  //   }
-  // }
-
-  // .small-header-with-video {
-  //   .chat-routes-with-video {
-  //     position: fixed;
-  //     top: 30px;
-  //   }
-  // }
-
-  // // Header without video
-  // .chat-routes-without-video {
-  //   position: fixed;
-  //   top: 13px;
-  // }
-
-
 }
 
 @media only screen and (max-width: breakpoints(desktop)) {
-  .message {
-    font-size: 1.3rem;
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-
-    .moving-text {
-      white-space: nowrap;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-name: ticker;
-      animation-duration: 15s;
-
-      &:hover {
-        animation-play-state: paused;
-      }
-
-    }
-  }
-
-  @keyframes ticker {
-    0% {
-      transform: translate3d(60%, 0, 0);
-    }
-
-    100% {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-
-  ///navigation bar
-  // nav {
-  //   display: flex;
-  //   // flex-flow: wrap;
-  //   align-items: center;
-  //   justify-content: center;
-  //   height: $nav-height;
-  // }
-
-  // .nav-link {
-  //   padding: 0 1vw;
-  //   transition: 0.1s;
-  //   letter-spacing: 1px;
-  //   text-decoration-color: rgba(255, 255, 255, 0.2);
-
-  //   &:hover {
-  //     color: $etikett-hover;
-  //     text-decoration-color: $etikett-hover;
-  //   }
-
-  // }
-
-  // .active-nav {
-  //   color: $etikett-hover;
-  //   text-decoration-color: white;
-  // }
-
-  // .full-header {
-  //   flex-direction: column;
-
-  //   nav {
-  //     height: $full-header-nav-height;
-  //   }
-  // }
-
 
   //clickable logo
   .etikett-black {
@@ -132,77 +28,6 @@
       transition: 0.4s ease-in-out;
     }
   }
-
-
-
-  //////////////////////////////////////////////////////////
-  // Host PC Small
-  //////////////////////////////////////////////////////////
-
-  .host-list-container {
-    .grid-wrapper {
-      .hosts-list {
-
-        grid-template-columns: repeat(3, 280px);
-
-        .hosts-list-item {
-          .link-component {
-            .host-image-borders {
-              height: 280px;
-              max-width: 280px;
-            }
-          }
-
-          .host-name {
-            letter-spacing: 2px;
-          }
-
-        }
-      }
-    }
-  }
-
-  //host page tablet
-
-  .host-page {
-    .host-card {
-      width: 850px;
-      border-right: 1px solid rgba(190, 190, 195, 0.219);
-      box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
-
-
-      h3 {
-        margin-top: 0;
-      }
-
-      .host-description {
-
-        .about-host {
-          padding: 0.5rem 0;
-        }
-
-        .social-and-pagelink {
-          display: grid;
-          grid-template-rows: 45% 45%;
-          align-content: flex-end;
-
-          .social-media-container {
-            i {
-              margin-left: .5rem;
-            }
-          }
-        }
-
-      }
-
-      .host-image-detail {
-        width: 450px;
-        height: 450px;
-      }
-    }
-  }
-
-
 }
 
 
@@ -213,40 +38,6 @@
     display: none;
   }
 
-  ///navigation bar
-  // nav {
-  //   display: flex;
-  //   // flex-flow: wrap;
-  //   align-items: center;
-  //   justify-content: center;
-  //   height: $nav-height;
-  // }
-
-  // .nav-link {
-  //   padding: 0 0.8vw;
-  //   transition: 0.1s;
-  //   letter-spacing: 1px;
-  //   text-decoration-color: rgba(255, 255, 255, 0.2);
-
-  //   &:hover {
-  //     color: $etikett-hover;
-  //     text-decoration-color: $etikett-hover;
-  //   }
-
-  // }
-
-  // .active-nav {
-  //   color: $etikett-hover;
-  //   text-decoration-color: white;
-  // }
-
-  // .full-header {
-  //   flex-direction: column;
-
-  //   nav {
-  //     height: $full-header-nav-height;
-  //   }
-  // }
 
   .solar-system {
     position: fixed;
@@ -292,90 +83,12 @@
     }
   }
 
-  .message {
-    font-size: 1.3rem;
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-
-    .moving-text {
-      white-space: nowrap;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-name: ticker;
-      animation-duration: 15s;
-
-      &:hover {
-        animation-play-state: paused;
-      }
-
-    }
-  }
-
-  @keyframes ticker {
-    0% {
-      transform: translate3d(50%, 0, 0);
-    }
-
-    100% {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-
-
 
 
   //////////////////////////////////////////////////////////
   // Host Component Tablet
   //////////////////////////////////////////////////////////
-  .host-list-container {
-    .grid-wrapper {
-      .hosts-list {
-        grid-template-columns: repeat(2, 280px);
-      }
-    }
-  }
 
-  //host page tablet
-
-  .host-page {
-    .host-card {
-      @include flex-column;
-      width: 500px;
-      border-right: 1px solid rgba(190, 190, 195, 0.219);
-      box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
-
-
-      h3 {
-        margin-top: 0;
-      }
-
-      .host-description {
-
-        .about-host {
-          padding: 0.5rem 0;
-        }
-
-        .social-and-pagelink {
-          display: grid;
-          grid-template-rows: 45% 45%;
-          align-content: flex-end;
-
-          .social-media-container {
-            i {
-              margin-left: .5rem;
-            }
-          }
-        }
-
-      }
-
-      .host-image-detail {
-        width: 500px;
-        height: 500px;
-      }
-    }
-  }
 
   //About Us and Imprint
   .imprint {
@@ -444,58 +157,42 @@
   }
 
 
-  // Header 
-  // .small-header-without-video,
-  // .message-controls-container {
-  //   @include flex-column;
+  
+
+  // .small-header-without-video {
+
+  //   .page-title-mobile {
+  //     text-align: left;
+  //     padding: 1rem;
+  //   }
+
+
+  //   #page-title-link {
+  //     text-decoration: none;
+  //   }
+
+
+
   // }
 
-  .small-header-without-video {
-
-    .page-title-mobile {
-      text-align: left;
-      padding: 1rem;
-    }
-
-
-    #page-title-link {
-      text-decoration: none;
-    }
-
-
-
-  }
-
+  ///////////////////////////////////////////////////
+  // This one is important, not working in Header.scss yet
   // Main Content
   .small-gap {
     margin-top: $mobile-header-height;
   }
+  ////////////////////////////////////////////////////
 
   // Chat
   .chat {
     display: none;
   }
 
-  // .full-header .embeded-video {
-  //   height: 50vh;
-  // }
+  
 
 
 
 
-  // Blog
-  .blog-content {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .blog-date {
-    font-size: 0.8rem;
-  }
-
-  .blog-text {
-    font-size: 1rem;
-  }
 
   // Forms
   
@@ -668,130 +365,5 @@
     }
   }
 
-  //host page
-
-  .host-page {
-    .host-card {
-      @include flex-column;
-      width: 300px;
-      border-right: 1px solid rgba(190, 190, 195, 0.219);
-      box-shadow: 0 -1px 20px rgba(255, 255, 255, 0.12);
-
-
-      h3 {
-        margin-top: 0;
-      }
-
-      .host-description {
-
-        .about-host {
-          padding: 0.5rem 0;
-        }
-
-        .social-and-pagelink {
-          display: grid;
-          grid-template-rows: 45% 45%;
-          align-content: flex-end;
-
-          .social-media-container {
-            i {
-              margin-left: .5rem;
-            }
-          }
-        }
-
-      }
-
-      .host-image-detail {
-        width: 300px;
-        height: 300px;
-      }
-    }
-  }
-
-
-
-  ///host cards
-  //////////////////////////////////////////////////////////
-  // Host Component Phone
-  //////////////////////////////////////////////////////////
-
-  .host-list-container {
-    .grid-wrapper {
-
-      .hosts-list {
-        display: flex;
-        justify-content: center;
-        flex-flow: wrap;
-        width: 90vw;
-
-        .hosts-list-item {
-          margin: .5rem;
-
-
-          .link-component {
-            .host-image-borders {
-              height: 200px;
-              max-width: 200px;
-            }
-
-            // .host-image-borders {
-            //   height: auto;
-            //   max-width: 95vw;
-            // }
-
-          }
-
-
-        }
-      }
-    }
-  }
-
-  .message {
-    font-size: 1.3rem;
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-
-    .moving-text {
-      white-space: nowrap;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-name: ticker;
-      animation-duration: 15s;
-
-      &:hover {
-        animation-play-state: paused;
-      }
-
-    }
-  }
-
-  @keyframes ticker {
-    0% {
-      transform: translate3d(50%, 0, 0);
-    }
-
-    100% {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-
-
-
-  ///header-gap
-  // .big-gap {
-  //   margin-top: 220px;
-  //   background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
-  // }
-
-  //quotes mobile
-  q {
-    // max-width: 300px;
-    text-align: center;
-    margin: 16px 0;
-    white-space: pre-wrap;
-  }
 
 }

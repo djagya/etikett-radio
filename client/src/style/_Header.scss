@@ -45,7 +45,7 @@
     left: 150px;
     max-width: calc(100% - 510px);
     nav {
-      font-size: 1.5vw;
+      font-size: 1.5rem;
     }
     .message {
       position: relative;
@@ -181,11 +181,16 @@ nav {
     }
   }
 }
-@media only screen and (max-width: breakpoints(phone)) {
+@media only screen and (max-width: breakpoints(phone)) {// Main Content
+  //////////////////////////////////////////////////////
+  ///This can be found in Media.scss at line 360 and is for some reason only working there
+  // .small-gap {
+  //   margin-top: $mobile-header-height;
+  // }
+  //////////////////////////////////////////////////////
   .video-or-logo {
     width: 100%;
     .logo-and-controls {
-
       a {
         display: none;
       }
@@ -208,7 +213,7 @@ nav {
   }
   .message {
     position: relative;
-    top: 50;
+    // bottom: 25px;
   }
 
   .nav-app-header {
@@ -234,5 +239,10 @@ nav {
 
   .full-header .nav-and-message-bar {
     left: 0;
+    .message {
+      position: absolute;
+      max-width: 100%;
+      top: 50px;
+    }
   }
 }

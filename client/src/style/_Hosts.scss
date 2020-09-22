@@ -2,9 +2,9 @@
     @include component-template;
 
     .host-card {
-        width: 1000px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 1000px;
+        display: flex;
 
         &:hover {
             box-shadow: 0 14px 28px rgba(139, 139, 139, 0.25),
@@ -13,6 +13,8 @@
         }
 
         .host-image-detail {
+            height: 100%;
+            width: 100%;
             max-width: 500px;
             max-height: 500px;
         }
@@ -74,14 +76,18 @@
         width: 100%;
 
         .hosts-list {
-            display: grid;
-            grid-template-columns: repeat(3, 300px);
-            gap: 2vw;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 950px;
 
             .hosts-list-item {
                 display: flex;
                 justify-content: center;
-                margin: 0;
+                margin: .5rem;
+                width: 100%;
+                max-width: 300px;
 
             }
 
@@ -97,8 +103,8 @@
                     position: relative;
                     border: 1px solid rgba(255, 255, 255, 0.486);
                     background-color: $etikett-black;
-                    height: 300px;
-                    width: 300px;
+                    height: 100%;
+                    width: 100%;
 
                     .host-images {
                         position: relative;
@@ -109,7 +115,6 @@
                         transition: 0.3s ease-in;
 
                         &:hover {
-                            border: 1px solid rgb(255, 255, 255);
                             opacity: 1;
                         }
                     }
@@ -125,7 +130,6 @@
                 align-items: center;
                 margin: 0;
                 width: 100%;
-                // top:50%;
                 text-transform: lowercase;
                 opacity: 1;
                 z-index: 1;
@@ -134,4 +138,41 @@
         }
 
     }
+}
+// @media only screen and (min-width: breakpoints(big-desktop)) {
+// }
+@media only screen and (max-width: breakpoints(desktop)) {
+    .host-page {
+      .host-card {
+  
+        h3 {
+          margin-top: 0;
+        }
+        .host-image-detail {
+          max-width: 450px;
+          max-height: 450px;
+        }
+      }
+    }
+
+}
+@media only screen and (max-width: breakpoints(tablet)) {
+    .host-page {
+        .host-card {
+            display: flex;
+            flex-direction: column;
+    
+          h3 {
+            margin-top: 0;
+          }
+          .host-image-detail {
+            max-width: 500px;
+            max-height: 500px;
+          }
+        }
+      }
+
+}
+@media only screen and (max-width: breakpoints(phone)) {
+
 }

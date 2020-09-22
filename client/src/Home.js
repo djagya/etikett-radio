@@ -13,11 +13,6 @@ export default function Home() {
                 <div className="about-us-cover">about</div>
                 <div  className="etikett-black"></div>
             </Link>
-                
-            
-
-
-
         </div>
     )
 }
