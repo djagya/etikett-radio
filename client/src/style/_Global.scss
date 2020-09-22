@@ -9,6 +9,7 @@
   letter-spacing: .5px;
   font-family: $font-light;
   font-weight: lighter;
+  overflow-wrap: break-word;
 
   &:focus {
     border-width: 2px;

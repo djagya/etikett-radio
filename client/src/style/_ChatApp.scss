@@ -289,7 +289,7 @@
 
 .chat-routes-with-video {
   .chat-app-chat {
-    height: calc(100vh - 127px) // 100vh - navbar height (when it's wraped)
+    height: calc(100vh - 8px) // 100vh - navbar height (when it's wraped)
   }
 
 }
