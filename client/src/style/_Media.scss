@@ -111,6 +111,10 @@
 
 @media only screen and (max-width: breakpoints(phone)) {
 
+  .list-header.archive-list-grid.sort-by-box {
+    display: none;
+  }
+
   // Solar System
   .solar-system {
     position: fixed;
@@ -157,24 +161,6 @@
   }
 
 
-  
-
-  // .small-header-without-video {
-
-  //   .page-title-mobile {
-  //     text-align: left;
-  //     padding: 1rem;
-  //   }
-
-
-  //   #page-title-link {
-  //     text-decoration: none;
-  //   }
-
-
-
-  // }
-
   ///////////////////////////////////////////////////
   // This one is important, not working in Header.scss yet
   // Main Content
@@ -187,12 +173,6 @@
   .chat {
     display: none;
   }
-
-  
-
-
-
-
 
   // Forms
   
@@ -236,14 +216,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    // width: 100%;
-    padding: 0;
-    top: 0;
     background-color: $etikett-black;
-    left: 0;
-    right: 0;
+    margin-top: 8px;
 
-    padding-right: 0.5rem;
 
 
     &__btn {
@@ -288,14 +263,15 @@
 
     &__container {
       position: fixed;
-      top: 60px;
+      top: 100px;
       left: 0;
       right: 0;
       height: 0;
       transition: .5s;
       transition-delay: .2s;
       overflow: hidden;
-      background-color: $etikett-black;
+      backdrop-filter: blur(3px);
+      background-color: $etikett-black-075;
       font-size: 1.4rem;
 
     }
@@ -364,6 +340,4 @@
       }
     }
   }
-
-
 }

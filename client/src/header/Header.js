@@ -93,12 +93,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 setHeaderSize('full-header');
                 setChatState('chat-homescreen-with-video');
     
-            // If there's no video
             } 
-            // else if (source !== video) {
-            //     setHeaderSize('small-header-without-video');
-            //     setChatState('chat-routes-without-video');
-            // } 
             else {
                 setHeaderSize('small-header');
                 setChatState('chat-routes-with-video');
@@ -194,12 +189,12 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                     <MessageBar />
                 </div>
                 <div className={`chat ${chatState}`}> <ChatApp name={name} setName={setName} /> </div>
-                {/* {showSourceBtn ?  */}
+                {showSourceBtn ? 
                     <button className="change-source-btn" onClick={() => source === video ? setSource(radio) : setSource(video)}>
                         <img src={buttonIcon} width="24" alt="icon"/>
                         <span>{buttonText}</span>
                     </button>
-                 {/* : null}  */}
+                 : null} 
                     
             </header>
             
