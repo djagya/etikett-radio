@@ -3,7 +3,6 @@
 ///////////////////////////////////
 .schedule-component {
   @include component-template;
-  // width: 100%; 
   .schedule-content {
     width: 100%;
     max-width: 1200px;
@@ -23,10 +22,15 @@
     .check-delete {
       margin-left: 1rem;
     }
-
+    .filter-selector-container {
+      justify-content: space-around;
+    }
     .edit-grid-container {
       grid-template-columns: 1fr;
-      width: 200px;
+      width: 100%;
+    }
+    .post-archive {
+      width: 100%;
     }
     .schedule-head {
           width: 100%;
@@ -35,12 +39,12 @@
 
     .monthly-schedule {
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
       flex-flow: wrap;
       width: 100%;
       
       .weekly-schedule {
-        margin: 0 2rem;
+        padding: 0 .5rem;
 
         .day-dates {
           text-align: left;
@@ -70,13 +74,16 @@
 
           .day-details {
             margin: 0.25rem 0;
+            max-width: 250px;
             display: flex;
             justify-content: space-between;
             align-items: left;
 
             li:nth-child(1) {
-              max-width: 150px;
-              margin-right: 1rem;
+              margin-right: .5rem;
+            }
+            li:nth-child(2) {
+              white-space: nowrap;
             }
           }
         }
@@ -84,4 +91,34 @@
     }
   }
 
+}
+// @media only screen and (min-width: breakpoints(big-desktop)) {
+// }
+// @media only screen and (max-width: breakpoints(desktop)) {
+// }
+// @media only screen and (max-width: breakpoints(tablet)) {
+// }
+@media only screen and (max-width: breakpoints(phone)) {
+  .schedule-component {
+    @include component-template;
+    .schedule-content {
+  
+      .monthly-schedule {
+        .weekly-schedule {
+          width: 100%;
+          max-width: 400px;
+          padding: 0;
+          .day-dates {
+            .day-details {
+              max-width: 100%;
+              li:nth-child(1) {
+                max-width: 300px;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+  }
 }

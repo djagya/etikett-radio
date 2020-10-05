@@ -180,7 +180,7 @@ export default function Schedule(props) {
                                 : null}
                             {showForm ? <ScheduleInputForm /> : null}
                             <div className="filter-selector-container">
-                            <span className="filter-by-box">show </span>
+                            <span className="filter-by-box">show me:</span>
                                 <label htmlFor="show-week" className={`${selected === "week" ? "active" : ""} `} >this week
                                     <input type="radio" id="show-week" name="show-week" onChange={handleSelect} checked={selected === "week"} value="week" />
                                 </label>
