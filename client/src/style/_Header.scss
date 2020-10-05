@@ -140,6 +140,15 @@ nav {
     animation-timing-function: linear;
     animation-name: ticker;
     animation-duration: 15s;
+    display: flex;
+
+    
+    .current-time {
+      width: 90px;
+    }
+    div {
+      margin-right: 2rem;
+    }
 
     &:hover {
       animation-play-state: paused;

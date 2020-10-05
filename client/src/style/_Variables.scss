@@ -39,9 +39,12 @@ $chat-height-transition: height 400ms ease-in;
   padding: 0 .5rem;
   margin-top: $header-height-small;
   background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
+  @media only screen and (max-width: breakpoints(phone)) {
+        margin-top: 150px;
+    
+  }
    
 }
-
 
 // responsiveness
 $media-breakpoints: (

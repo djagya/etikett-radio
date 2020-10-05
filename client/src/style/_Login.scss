@@ -4,10 +4,22 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: calc(100% - 120px);
+    height: calc(100% - 190px);
     min-height: 250px;
     .input-form{
         top: -70px;
         position: relative;
+    }
+}
+// @media only screen and (min-width: breakpoints(big-desktop)) {
+// }
+// @media only screen and (max-width: breakpoints(desktop)) {
+// }
+// @media only screen and (max-width: breakpoints(tablet)) {
+// }
+@media only screen and (max-width: breakpoints(phone)) {
+    .log-in-component {
+        height: calc(100% - 150px);
+
     }
 }

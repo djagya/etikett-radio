@@ -70,15 +70,16 @@ export default function InfoBar() {
         };
         getSongName();
         const everyFifteenSeconds = setInterval(getSongName, 1000 * 15);
-      
+        const everySecond = setInterval(timer, 1000)
         return () => {
           clearInterval(everyFifteenSeconds);
+          clearInterval(everySecond);
           mounted = false;
         }
-      }, [])
+    }, [])
     return (
         <div className="message">
-          <span className="moving-text"> {time} -- Now playing: {songName} -- {context.infoBarMessage}</span>
+          <span className="moving-text"> <div className="current-time">{time}</div> <div>Now playing: {songName}</div> <div>{context.infoBarMessage}</div></span>
         </div>
     )
 }
