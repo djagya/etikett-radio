@@ -47,7 +47,7 @@
     text-decoration-color: rgba(255, 255, 255, 0.2);
   }
   p {
-    font-size: 1rem;
+    font-size: .9rem;
   }
 }
 .outer-container {
@@ -102,7 +102,6 @@
 
 // Join
 .Join {
-  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   background-color: $etikett-black;
@@ -134,6 +133,7 @@
   }
   .button-container {
     width: auto;
+    margin: 0;
   }
   .info-inner-container img {
     width: 16px;
@@ -217,16 +217,19 @@
   p { color: $etikett-black }
 }
 .bg-black {
-  background: $etikett-black-025;
+  // background: $etikett-black-025;
   border-radius: 8px 8px 8px 0;
   p { color: rgba(255, 255, 255) }
 }
 .message-text {
   overflow-wrap: break-word;
+  max-width: 100%;
 }
 .sent-text {
+  padding-top: 0.1rem;
   margin: 0 0.4rem;
   color: $etikett-hover;
+  max-width: 100px;
 }
   
 // Animation

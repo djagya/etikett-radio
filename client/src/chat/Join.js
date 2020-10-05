@@ -9,8 +9,8 @@ export default function Join({ setName, setCookie }) {
     e.preventDefault();
     
     // Prevent really long names
-    if (nameInput.length >= 10) {
-      return alert.error("Please pick a nickname that's shorter than 10 characters.");
+    if (nameInput.length >= 25) {
+      return alert.error("Please pick a nickname that's shorter than 25 characters.");
     }
 
     // Prevent user from having the same name as host
@@ -18,7 +18,7 @@ export default function Join({ setName, setCookie }) {
       .then(res => res.json())
       .then(data => {
         if (nameInput === "") {
-          alert.error("Please enter a nickname to join the chat!")
+          alert.error("Please enter a nickname to join the chat!", { timeout: 2000 })
         }
 
         // Compare user's chatName with userName
