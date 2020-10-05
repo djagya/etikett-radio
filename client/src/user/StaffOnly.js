@@ -37,11 +37,11 @@ export default function UserProfile(props) {
                         <Link className="button-container" to={`/user/host/${context.id}`}>
                             <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my host profile</button>
                         </Link>
-                        <Link className="button-container" to={`/infobar`}>
-                            <button type="button">edit info bar</button>
-                        </Link>
                         {props.cookies.user.role === 'Admin' ?
                             <div>
+                                <Link className="button-container" to={`/infobar`}>
+                                    <button type="button">edit info bar</button>
+                                </Link>
                                 <Link className="button-container"  to={`/user/createuser`}>
                                     <button type="button">create new user</button>
                                 </Link>
