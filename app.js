@@ -46,10 +46,10 @@ io.on('connection', (socket) => {
       // socket.join(user.room) 
   
       // Emit MESSAGE
-      socket.emit('message', {user: 'etikett radio', text: `Welcome ${user.name}!`});
+      socket.emit('message', {user: '', text: `Welcome ${user.name}!`});
   
       // Broadcast MESSAGE
-      socket.broadcast.to(user.room).emit('message', {user: 'etikett radio', text: `${user.name} has joined.`});
+      socket.broadcast.to(user.room).emit('message', {user: '', text: `${user.name} has joined.`});
   
       // Join user
       socket.join(user.room);
@@ -74,7 +74,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
       const user = removeUser(socket.id);
       if (user) {
-        io.to(user.room).emit('message', {user: 'etikett radio', text: `${user.name} has left.`})
+        io.to(user.room).emit('message', {user: '', text: `${user.name} has left.`})
       }
     })
 })
