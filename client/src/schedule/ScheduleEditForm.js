@@ -80,7 +80,6 @@ export default function ScheduleEdit(props) {
 
     return (
         <div className="input-form">
-            <h2>edit schedule entry</h2>
             <form className="post-archive" onSubmit={handleSubmit}>
                 <div className="edit-grid-container grid-container">
 

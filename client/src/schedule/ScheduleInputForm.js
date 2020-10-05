@@ -78,9 +78,8 @@ export default function ScheduleInputForm() {
         }
     };
     return (
-        <div className="input-form schedule-input">
-            <h2>add to schedule</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="schedule-input">
+            <form className="input-form" onSubmit={handleSubmit}>
                 <div className="grid-container">
 
                     <label htmlFor="host">
