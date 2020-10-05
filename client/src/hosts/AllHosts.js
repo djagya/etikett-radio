@@ -98,7 +98,7 @@ export default function AllHosts(props) {
             <div className={`all-host-component all-list ${context.gapClass}`}>
                 <h1 id="main">all hosts.</h1>
                 <div className="list-container">
-                    <Link className="button-container" test="vong all hosts her" to={`/user/${context.id}`}><button type="button">back</button></Link>
+                    <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                     <div>
                         <ul className="list-header host-list-grid">
                             {renderLiHeader()}

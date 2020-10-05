@@ -36,7 +36,7 @@ export default function HostList() {
                     
                         <div className="host-image-borders">
                             <h3 className="host-name">{host.hostName}.</h3>
-                            <img src={host.hostImg} alt={`Artwork or portrait of ${host.hostName}`} className="host-images" width="400px" height="400px" />
+                            <img src={host.hostImg} alt={`Artwork or portrait of ${host.hostName}`} className="host-images" width="500px" height="500px" />
                         </div>
                     </Link>
                 </li>

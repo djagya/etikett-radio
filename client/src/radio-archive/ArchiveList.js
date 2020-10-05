@@ -30,6 +30,11 @@ export default function ArchiveList(props) {
                 setLoading(false);
                 setArchiveData(data.archive.sort((showA, showB) => (showA.date > showB.date) ? -1 : 1))
             })
+            .then(
+                console.log(console.log)
+            
+                
+            )
             .catch(err => {
                 console.log(err);
                 setLoading(false);
