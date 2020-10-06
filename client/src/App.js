@@ -115,6 +115,9 @@ function App(props) {
 
               <div className="stream-page">
                 <Header name={name} setName={setName} isMobileWidth={isMobileWidth} isMobileDevice={isMobileDevice} />
+                <div className="header-background">
+                {/* For monitors wider than 1920px */}
+                </div>
               </div>
 
               <Switch>

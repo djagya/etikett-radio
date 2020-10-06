@@ -134,6 +134,15 @@ textarea {
 
 .stream-page {
   position: relative;
+  display: flex;
+  justify-content: center;
+  .header-background {
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    background-color: $etikett-black;
+    box-shadow: 0px 0px 15px 15px $etikett-black;
+  }
 }
 
 
