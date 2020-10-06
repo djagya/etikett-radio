@@ -191,15 +191,18 @@ nav {
 
 // @media only screen and (min-width: breakpoints(big-desktop)) {
 // }
-// @media only screen and (max-width: breakpoints(desktop)) {
-// }
+@media only screen and (max-width: breakpoints(desktop)) {
+  .box-shadow-container-left, .box-shadow-container-right {
+    display: none;
+  }
+}
 @media only screen and (max-width: breakpoints(tablet)) {
   .nav-and-message-bar {
-    max-width: calc(100% - 300px);
+    max-width: calc(100% - 200px);
     
   }
   .message {
-    max-width: calc(100% - 300px - 16px);
+    max-width: calc(100% - 200px - 16px);
   }
   .full-header {
     .nav-and-message-bar {
