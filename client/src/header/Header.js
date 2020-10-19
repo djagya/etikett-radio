@@ -32,7 +32,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [volume, setVolume] = useState("0.5");
     const [muted, setMuted] = useState(false);
     const [icon, setIcon] = useState(audioIcon);
-    const [headerSize, setHeaderSize] = useState('');
+    const [headerSize, setHeaderSize] = useState('small-header');
     const [chatState, setChatState] = useState('chat-homescreen-with-video');
     const [source, setSource] = useState(radio);
     const [loading, setLoading] = useState(false);
@@ -191,12 +191,12 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                             <div>{/* Fades the infobar in */}</div>
                     </div>
                     <div className={`chat ${chatState}`}> <ChatApp name={name} setName={setName} /> </div>
-                    {showSourceBtn ? 
+                    {/* {showSourceBtn ?  */}
                         <button className="change-source-btn" onClick={() => source === video ? setSource(radio) : setSource(video)}>
                             <img src={buttonIcon} width="24" alt="icon"/>
                             <span>{buttonText}</span>
                         </button>
-                    : null}
+                    {/* : null} */}
             </header>
             
     )

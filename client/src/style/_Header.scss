@@ -40,16 +40,35 @@
   
   .nav-and-message-bar {
     display: block;
-    position: relative;
-    height: 150px;
+    position: absolute;
+    min-height: 87px;
+    top: 0;
     left: 150px;
     max-width: calc(100% - 510px);
     nav {
       font-size: 1.5rem;
     }
+    .message {
+      max-width: 100%;
+    }
     
   }
-  
+  .box-shadow-container-left, .box-shadow-container-right {
+    position: relative;
+    left: 150px;
+    height: 87px;
+    display: flex;
+    align-items: flex-end;
+    width: 0;
+    div {
+      height: 35px;
+    }
+  }
+  .box-shadow-container-right {
+    position: absolute;
+    left: calc(100% - 340px);
+    top: 0;
+  }
 
 }
 .small-header {
@@ -87,6 +106,7 @@ nav {
 
 .box-shadow-container-left, .box-shadow-container-right {
   position: relative;
+  pointer-events: none;
   z-index: 3;
   height: 100%;
   display: flex;
