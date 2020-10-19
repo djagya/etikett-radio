@@ -63,7 +63,8 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5000px;
   align-self: center;
-  animation: rotating 200s linear infinite;
+  // transform: rotate(40deg);
+  // animation: rotating 200s linear infinite;
 }
 
 @keyframes rotating {

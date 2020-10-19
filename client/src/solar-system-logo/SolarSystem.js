@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import moment from "moment";
 
 
 export default function App() {
+    const [hundreths, setHundreths] = useState(0);
+    const [sec, setSec] = useState(0);
+    const [currMin, setCurrMin] = useState(0);
+    const [hour12, setHour12] = useState(0);
+    const [hour24, setHour24] = useState(0)
+    const timer = () => {
+        setHundreths(parseInt(moment().format("SS")))
+        setSec(parseInt(moment().format("ss")))
+        setCurrMin(parseInt(moment().format("mm")))
+        setHour12(parseInt(moment().format("h")))
+        setHour24(parseInt(moment().format("H")))
+    };
+    const baseTime = parseFloat((sec + hundreths / 100).toFixed(2));
+    const secIndicator = baseTime * 6;
+    const hourIndicator = (currMin + 100/60*baseTime/100) * 6;
+    // console.log(hour)
+    useEffect (()=> {
+        const setTimer = setInterval(timer, 1000 / 30); // updates time with 30 fps
+        return () => clearInterval(setTimer);
+    })
     return (
 
         <SolarSystem>
             <Sun />
-            <Planet name="mercury" distanceFromSun="30" years="0.23" />
-            <Planet name="venus" distanceFromSun="40" years="0.5" />
-            <Planet name="earth" distanceFromSun="50" years="1" />
-            <Planet name="mars" distanceFromSun="60" years="1.5" />
+            <Planet name="mercury" distanceFromSun="30" time={secIndicator} />
+            <Planet name="venus" distanceFromSun="40" time={hourIndicator} />
+            <Planet name="earth" distanceFromSun="50" time="43200" />
+            <Planet name="mars" distanceFromSun="60" time="86400" />
         </SolarSystem>
 
     );
@@ -26,13 +47,13 @@ const Sun = () => {
     );
 };
 
-const Planet = ({ name, distanceFromSun, years = 1 }) => {
+const Planet = ({ name, distanceFromSun, time }) => {
     const distancePct = distanceFromSun;
-    const duration = 100 * years;
     const orbit = {
         width: `${distancePct}%`,
         height: `${distancePct}%`,
-        animationDuration: `${duration}s`
+        transform: `rotate(${time}deg)`
+        // animationDuration: `${duration}s`
     };
 
     return (
