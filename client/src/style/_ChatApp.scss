@@ -285,14 +285,13 @@
   top: 0;
   z-index: 3;
   .chat-app-chat {
-    height: calc(100vh - 47px - 47px - 25px);
-    // calc(full-screen - $full-header-nav-height - $full-header-message-height - space to see twitch controllers)
+    height: calc(100vh - 60px);
   }
 }
 
 .chat-routes-with-video {
   .chat-app-chat {
-    height: calc(100vh - 8px) // 100vh - navbar height (when it's wraped)
+    height: calc(100vh - 8px) // 100vh - navbar height (when it's wrapped)
   }
 
 }
