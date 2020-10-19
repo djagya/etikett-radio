@@ -17,8 +17,9 @@ export default function App() {
     };
     const baseTime = parseFloat((sec + hundreths / 100).toFixed(2));
     const secIndicator = baseTime * 6;
-    const hourIndicator = (currMin + 100/60*baseTime/100) * 6;
-    // console.log(hour)
+    const hourIndicator = (currMin + 100/360*secIndicator/100) * 6;
+    const hour12Indicator = (hour12 + 100/360*hourIndicator/100) * 30;
+    const hour24Indicator = (hour24 + 100/360*hourIndicator/100) * 15;
     useEffect (()=> {
         const setTimer = setInterval(timer, 1000 / 30); // updates time with 30 fps
         return () => clearInterval(setTimer);
@@ -29,8 +30,8 @@ export default function App() {
             <Sun />
             <Planet name="mercury" distanceFromSun="30" time={secIndicator} />
             <Planet name="venus" distanceFromSun="40" time={hourIndicator} />
-            <Planet name="earth" distanceFromSun="50" time="43200" />
-            <Planet name="mars" distanceFromSun="60" time="86400" />
+            <Planet name="earth" distanceFromSun="50" time={hour12Indicator} />
+            <Planet name="mars" distanceFromSun="60" time={hour24Indicator} />
         </SolarSystem>
 
     );
