@@ -21,7 +21,7 @@
     "googleapis": "^61.0.0",
     "http-errors": "^1.7.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.10",
+    "mongoose": "^5.10.9",
     "mongoose-unique-validator": "^2.0.3",
     "node-forge": "^0.10.0",
     "nodemailer": "^6.4.8",
