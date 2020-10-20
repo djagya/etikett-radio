@@ -78,9 +78,11 @@
             display: flex;
             justify-content: space-between;
             align-items: left;
+            // overflow-wrap: break-word;
 
             li:nth-child(1) {
               margin-right: .5rem;
+              max-width: calc(100% - 100px);
             }
             li:nth-child(2) {
               white-space: nowrap;
@@ -111,9 +113,6 @@
           .day-dates {
             .day-details {
               max-width: 100%;
-              li:nth-child(1) {
-                max-width: 300px;
-              }
             }
           }
         }
