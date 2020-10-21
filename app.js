@@ -106,7 +106,6 @@ app.use((err, req, res, next) => {
         err: err.message
     })
 })
-console.log(port);
 
 
 

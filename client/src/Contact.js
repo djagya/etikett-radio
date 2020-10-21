@@ -46,7 +46,7 @@ export default function Contact() {
                             }
                         });
                 } else {
-                    alert.error('Something went wrong... Please contact the admin');
+                    alert.error('Something went wrong... Please contact the admin', { timeout: 2000 });
                 }
             })
     }
