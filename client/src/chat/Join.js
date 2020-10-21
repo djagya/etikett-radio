@@ -57,7 +57,6 @@ export default function Join({ setName, setCookie }) {
               }
             })
             .catch(err => {
-              console.log(err);
               alert.error('Server is not responding. Please contact the admin.')
             })
 
@@ -67,7 +66,6 @@ export default function Join({ setName, setCookie }) {
         }
       })
       .catch(err => {
-        console.log(err);
         alert.error('Server is not responding. Please contact the admin.')
       })
   }

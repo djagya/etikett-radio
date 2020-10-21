@@ -23,11 +23,8 @@ export default function ArchiveDetail(props) {
                 setArchiveData(data.archive)
             })
             .catch(err => {
-                console.log('Error fetching data: ', err);
-
                 setLoading(false);
                 alert.error("Failed to fetch data, please contact the admin.");
-
             })
     }, [param, alert])
 

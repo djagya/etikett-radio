@@ -36,13 +36,11 @@ export default function CreateUser(props) {
         }
         postData("/users/createuser", body)
             .then(data => {
-                console.log(data)
                 resetForm(data);
             })
 
 
         const resetForm = (data) => {
-            console.log(data.message)
             if (data.success) {
                 setFirstName("");
                 setLastName("");

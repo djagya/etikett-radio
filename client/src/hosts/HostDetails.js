@@ -25,7 +25,6 @@ export default function Hosts(props) {
                 setHost(data.host);
             })
             .catch(err => {
-                console.log(err);
                 setLoading(false);
                 alert.error('Failed to fetch host. Please contact the admin.');
             })

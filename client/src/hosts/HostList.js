@@ -20,7 +20,6 @@ export default function HostList() {
                 setLoading(false);
             })
             .catch(err => {
-                console.log(err);
                 setLoading(false);
                 alert.error('Failed to fetch hosts from the server. Please contact the admin.');
             })

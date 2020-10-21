@@ -46,7 +46,6 @@ export default function LogIn(props) {
                 }
             })
             .catch(err => {
-                console.log(err);
                 alert.error('Failed to fetch user. Please contact the admin');
             })
     }

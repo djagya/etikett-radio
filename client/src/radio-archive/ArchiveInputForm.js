@@ -92,7 +92,6 @@ export default function ArchiveInputForm(props) {
             PutData(`/archive/${id}`, body)
                 .then(data => { 
                     if (!data.success) { 
-                        console.log(data);
                         alert.error('Server is not responding... Please try again later.'); 
                     } else {
                         setArchiveData(data.archive)

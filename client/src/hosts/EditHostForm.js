@@ -102,7 +102,6 @@ export default function EditHostPage(props) {
             PostData("/host/createhost", body)
                 .then(data => {
                     if (!data.success) {
-                        console.log(data)
                         alert.error("Something went wrong while uploading your data for the first time.")
                     } else {
                         alert.success("You successfully initialized your host profile!", { timeout: 3000 })
@@ -113,7 +112,6 @@ export default function EditHostPage(props) {
             PutData(`/host/${profileID}`, body)
                 .then(data => {
                     if (!data.success) {
-                        console.log(data)
                         alert.error("Something went wrong while updating your data")
                     } else {
                         alert.success("Update successful!", { timeout: 3000 })

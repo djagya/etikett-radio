@@ -66,7 +66,6 @@ exports.login = async (req, res, next) => {
 exports.putUser = async (req, res, next) => {
     const { id } = req.params;
     const user = req.body;
-    console.log(id, user)
     try {
         if (user.pw && user.pw.length >= 8) {
             const updatedPW = await encrypt(user.pw);
@@ -82,10 +81,8 @@ exports.putUser = async (req, res, next) => {
 };
 
 exports.patchUser = async (req, res, next) => {
-    console.log("patchUser is running")
     const { id } = req.params;
     const user = req.body;
-    console.log(id, user)
     try {
         if (user.pw && user.pw.length >= 8) {
             const updatedPW = await encrypt(user.pw);
@@ -131,7 +128,6 @@ exports.sendEmail = async (req, res, next) => {
         };
         await transporter.sendMail(mailOptions, (err, info) => {
             if (err) { 
-                console.log(err);
                 next(err);
              }
             else { res.json({success: true, info}) }
