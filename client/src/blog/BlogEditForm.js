@@ -33,8 +33,7 @@ export default function BlogEditForm(param) {
         }
         putData(`/blog/${id}`, body)
             .then(data => {  
-                if (!data.success) { 
-                    console.log(data);
+                if (!data.success) {
                     alert.error('Server is not responding... Please try again later.');
                 } else {
                     alert.success('Your changes have been saved!', {

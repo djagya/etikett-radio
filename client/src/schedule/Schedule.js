@@ -33,11 +33,9 @@ export default function Schedule(props) {
             //sorts the incoming data by date
             .then(data => {
                 setLoading(false)
-                console.log(data)
                 setScheduleData(data.schedule.sort((entryA, entryB) => new Date(entryA.from) - new Date(entryB.from))) //Initial sort, to get all weeks in the right order
             })
             .catch(err => {
-                console.log(err);
                 setLoading(false);
                 alert.error('Failed to fetch schedule from the server. Please contact the admin.');
             })
@@ -64,7 +62,6 @@ export default function Schedule(props) {
                 }
             })
             .catch(err => {
-                console.log(err);
                 alert.error('Failed to delete schedule, please contact the admin.');
             })
     }
@@ -76,7 +73,6 @@ export default function Schedule(props) {
             scheduleData.map(el => {
                 const current = moment(el.from, "YYYYMMDD").fromNow();
                 if (current === "2 months ago") {
-                    // console.log('call handle delete')
                     handleDelete([el._id], "automatic")
                 }
             });

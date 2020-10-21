@@ -43,12 +43,10 @@ export default function Contact() {
                         {
                             onClose: () => {
                                 setRedirect(true);
-
-                            },
-                            onClick: console.log("working")
+                            }
                         });
                 } else {
-                    alert.error('Something went wrong... Please contact the admin', { onClick: console.log("working") });
+                    alert.error('Something went wrong... Please contact the admin', { timeout: 2000 });
                 }
             })
     }

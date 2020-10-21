@@ -29,7 +29,6 @@ export default function InfoBar() {
             context.setInfoID(data.infoBar[0]._id)
           })
           .catch(err => {
-            console.log(err)
             alert.error('Failed to fetch info. Please contact the admin.')
           })
         
@@ -64,7 +63,6 @@ export default function InfoBar() {
               }
             })
             .catch((err, data) => {
-              console.log(err)
               setSongName("Etikett Radio Archive");
             })
         };

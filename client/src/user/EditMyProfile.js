@@ -37,7 +37,6 @@ export default function MyProfile(props) {
                     setRole(data.user.role)
 
                 } else {
-                    console.log(data)
                     alert.error("Something went wrong");
                     return
                 }
@@ -53,7 +52,6 @@ export default function MyProfile(props) {
         PatchData(`/users/${context.id}`, body)
             .then(data => {
                 if (!data.success) {
-                    console.log(data)
                     alert.error('Something went wrong...');
                 } else {
                     props.setCookie('user', data.user, { path: '/' })

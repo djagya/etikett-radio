@@ -33,7 +33,6 @@ exports.validUserInputs = () => {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 const err = errors.errors.map(er => ({ [er.param]: er.msg }));
-                console.log(errors);
                 return res.json({ status: 203, message: err });
             };
 

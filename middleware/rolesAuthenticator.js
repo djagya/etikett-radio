@@ -9,7 +9,6 @@ exports.isAdmin = (req, res, next) => {
 
 exports.isHostAdmin = (req, res, next) => {
     const { role } = req.user;
-    console.log(role)
     if (role !== "Host" && role !=="Admin") next(createError(403));
     next();
 }
