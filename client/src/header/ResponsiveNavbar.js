@@ -27,7 +27,7 @@ export default function ResponsiveNavbar() {
                     <NavLink className="mobile-menu__list" to="/schedule" onClick={() => setIsChecked(!isChecked)}>schedule.</NavLink>
                     <NavLink className="mobile-menu__list" to="/archive" onClick={() => setIsChecked(!isChecked)}>archive.</NavLink>
                     <NavLink className="mobile-menu__list" to="/blog" onClick={() => setIsChecked(!isChecked)}>blog.</NavLink>
-                    <NavLink className="mobile-menu__list" to="/hosts" onClick={() => setIsChecked(!isChecked)}>hosts.</NavLink>
+                    <NavLink className="mobile-menu__list" to="/shows" onClick={() => setIsChecked(!isChecked)}>shows.</NavLink>
                     <NavLink className="mobile-menu__list" to="/contact" onClick={() => setIsChecked(!isChecked)}>contact.</NavLink>
                     <NavLink className="mobile-menu__list" to="/login" onClick={() => setIsChecked(!isChecked)}>staff only.</NavLink>
 

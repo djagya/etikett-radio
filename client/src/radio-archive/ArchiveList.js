@@ -174,7 +174,7 @@ export default function ArchiveList(props) {
                     <ul className="all-data archive-list-grid">
                         <li className="img-container"><img src={el.img} alt={`Small version of the artwork of ${el.show}`} width="50" height="50" /></li>
                         <li ><Link className="link-component hosts-list-archive" to={`archive/${el._id}`}>{el.show}</Link></li>
-                        <li><Link className="link-component" to={`hosts/${el.hostID}`}>{el.host}</Link></li>
+                        <li><Link className="link-component" to={`shows/${el.hostID}`}>{el.host}</Link></li>
                         <li>{el.genre}</li>
                         <li>{el.date.substring(0, 10)}</li>
                         {props.cookies.user && props.cookies.user.role === 'Admin' && "Host" ?
@@ -187,7 +187,7 @@ export default function ArchiveList(props) {
     };
 
     const renderLiHeader = () => {
-        const listHeader = ["show.", "host.", "genre.", "date."]
+        const listHeader = ["episode.", "show.", "genre.", "date."]
 
         return listHeader.map((el, i) => (
             <Fragment key={i}>
@@ -222,10 +222,10 @@ export default function ArchiveList(props) {
                         <form className="archive-filter">
                             <div className="filter-selector-container">
                                 <span className="filter-by-box">filter by:</span>
-                                <label htmlFor="show-filter" className={`${selected === "show" ? "active" : ""} `} >show
+                                <label htmlFor="show-filter" className={`${selected === "show" ? "active" : ""} `} >episode
                                     <input type="radio" id="show-filter" name="archive-filter" onChange={handleSelect} checked={selected === "show"} value="show" />
                                 </label>
-                                <label htmlFor="host-filter" className={`${selected === "host" ? "active" : ""} `} >host
+                                <label htmlFor="host-filter" className={`${selected === "host" ? "active" : ""} `} >show
                                     <input type="radio" id="host-filter" name="archive-filter" onChange={handleSelect} checked={selected === "host"} value="host" />
                                 </label>
                                 <label htmlFor="genre-filter" className={`${selected === "genre" ? "active" : ""} `} >genre

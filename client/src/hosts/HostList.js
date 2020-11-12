@@ -31,7 +31,7 @@ export default function HostList() {
         return hostData.map((host, i) => (
             <Fragment key={i}>
                 <li className="hosts-list-item">
-                    <Link className="link-component" to={`hosts/${host._id}`} param={host._id} >
+                    <Link className="link-component" to={`shows/${host._id}`} param={host._id} >
                     
                         <div className="host-image-borders">
                             <h3 className="host-name">{host.hostName}.</h3>

@@ -137,8 +137,8 @@ function App(props) {
                 <Route exact path="/user/createuser" render={(props) => <CreateUser {...props} setCookie={setCookie} cookies={cookies} />} />
                 <Route exact path="/user/:id" render={(props) => <StaffOnly {...props} removeCookie={removeCookie} cookies={cookies} setName={setName} />} />
                 <Route exact path="/user/:id/edit" render={(props) => <EditMyProfile cookies={cookies} setCookie={setCookie} />} />
-                <Route exact path="/user/hosts/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
-                <Route exact path="/user/host/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
+                <Route exact path="/user/shows/all" render={(props) => <AllHosts {...props} cookies={cookies} />} />
+                <Route exact path="/user/show/:id" render={(props) => <EditHostForm {...props} cookies={cookies} />} />
                 <Route exact path="/infobar" render={(props) => <EditInfoBar {...props} cookies={cookies} />} />
                 <Route exact path="/contact" component={Contact} />
 
@@ -148,8 +148,8 @@ function App(props) {
                 <Route exact path="/:id/edit" component={ArchiveInputForm} />
 
                 {/* Hosts Routes */}
-                <Route exact path="/hosts" render={(props) => <HostList {...props} cookies={cookies} />} />
-                <Route exact path="/hosts/:id" render={(props) => <HostDetails {...props} cookies={cookies} />} />
+                <Route exact path="/shows" render={(props) => <HostList {...props} cookies={cookies} />} />
+                <Route exact path="/shows/:id" render={(props) => <HostDetails {...props} cookies={cookies} />} />
 
                 {/* Blog Routes */}
                 <Route exact path="/blog" render={(props) => <Blog {...props} cookies={cookies} />} />
