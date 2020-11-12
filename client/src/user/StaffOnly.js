@@ -35,7 +35,7 @@ export default function UserProfile(props) {
                         <Link className="button-container" to={`/user/${context.id}/edit`}>
                             <button type="button">edit my user data</button>
                         </Link>
-                        <Link className="button-container" to={`/user/host/${context.id}`}>
+                        <Link className="button-container" to={`/user/show/${context.id}`}>
                             <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my show profile</button>
                         </Link>
                         {props.cookies.user.role === 'Admin' ?
@@ -49,7 +49,7 @@ export default function UserProfile(props) {
                                 <Link className="button-container"  to={`/user/all`}>
                                     <button type="button">all user</button>
                                 </Link>
-                                <Link className="button-container" to={`/user/hosts/all`}>
+                                <Link className="button-container" to={`/user/shows/all`}>
                                     <button type="button">all shows</button>
                                 </Link>
                             </div>

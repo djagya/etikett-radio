@@ -66,7 +66,7 @@ export default function AllHosts(props) {
                     <li>{host.isActive}</li>
                     <li className="button-container">
 
-                        <Link className="link-button" to={`/user/host/${context.id}`}>
+                        <Link className="link-button" to={`/user/show/${context.id}`}>
                             <button type="button" onClick={() => context.setEditHostID(host.userID)}>
                             edit
                             </button>

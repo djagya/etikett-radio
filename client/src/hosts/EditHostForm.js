@@ -201,7 +201,7 @@ export default function EditHostPage(props) {
                 <form className="input-form" onSubmit={handleSubmit}>
                     <div className="button-container">
                     {context.id !== userID ? 
-                        <Link className="link-button" to={`/user/hosts/all`}><button type="button">back</button></Link>
+                        <Link className="link-button" to={`/user/shows/all`}><button type="button">back</button></Link>
                         :<Link className="link-button" to={`/user/${context.id}`}><button type="button">back</button></Link>
                         
                     }
