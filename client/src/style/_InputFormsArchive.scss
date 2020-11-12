@@ -1,6 +1,11 @@
 //Main Styling comes from _InputForms.scss
 
 .post-archive{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .input-form {
+       
     .archive-input-left {
         .archive-select-container {
             select {
@@ -21,10 +26,14 @@
             &:not(:first-child){
                 margin-top: .5rem;
             }
-        }
+      
+
+    }  }
     }
 
 }
+
+
 .archive-add-delete-buttons{
     margin-left: 20px;
     // width: 100%

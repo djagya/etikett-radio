@@ -161,9 +161,9 @@ export default function ArchiveInputForm(props) {
     };
    
     return (
-        <div className="input-form">
+        <div className="post-archive">
             <h2>archive a show.</h2>
-            <form className="post-archive" onSubmit={handleSubmit}>
+            <form className="input-form" onSubmit={handleSubmit}>
                 <div className ="grid-container">
                     <div className="archive-input-left">
                     <label htmlFor="filter">
