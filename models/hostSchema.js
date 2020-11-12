@@ -5,7 +5,7 @@ const HostSchema = new Schema(
     {
         userID: {type: String, required: true}, //for validation if user = host page user
         hostName: { type: String, required: true },
-        hostImg: { type: String, required: true },
+        hostImg: { type: String, default: "https://i.ibb.co/kBxkf4P/etikett-radio-ting.png", required: true },
         description: {type:String, required: true},
         youtube: { type: String},
         soundcloud: { type: String},

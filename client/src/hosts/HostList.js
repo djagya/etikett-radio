@@ -48,7 +48,7 @@ export default function HostList() {
     return (
         <DocumentTitle title="Hosts">
             <div className={`${context.gapClass} host-list-component`}>
-                <h1 id="hosts-title">hosts.</h1>
+                <h1 id="hosts-title">shows.</h1>
                 <div className="grid-wrapper">
                     <div className=" hosts-list">
                         {renderHost()}

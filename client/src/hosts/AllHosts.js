@@ -96,7 +96,7 @@ export default function AllHosts(props) {
     return (
         <DocumentTitle title="All Hosts">
             <div className={`all-host-component all-list ${context.gapClass}`}>
-                <h1 id="main">all hosts.</h1>
+                <h1 id="main">all shows.</h1>
                 <div className="list-container">
                     <Link className="button-container" to={`/user/${context.id}`}><button type="button">back</button></Link>
                     <div>

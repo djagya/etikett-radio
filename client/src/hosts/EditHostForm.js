@@ -191,11 +191,11 @@ export default function EditHostPage(props) {
     
 
     return (
-        <DocumentTitle title="Edit host profile">
+        <DocumentTitle title="Edit show profile">
             <div className={`${context.gapClass} edit-host-page`}>
                 {context.id !== userID ? 
-                <h1>edit {hostName}s host profile.</h1>:
-                <h1>edit my host profile.</h1>
+                <h1>edit {hostName}s show profile.</h1>:
+                <h1>edit my show profile.</h1>
                 }
                 
                 <form className="input-form" onSubmit={handleSubmit}>
@@ -211,7 +211,7 @@ export default function EditHostPage(props) {
                     </div>
                     <div className="grid-container">
                         <label htmlFor="hostName">
-                            <span className="required">*</span>host name
+                            <span className="required">*</span>show name
                             <input type="text" id="hostName" placeholder="host or show name" value={hostName} onChange={handleFormInput} />
                         </label>
                         <label htmlFor="hostImg">
@@ -219,7 +219,7 @@ export default function EditHostPage(props) {
                             <input type="url" id="hostImg" placeholder="artwork link" value={hostImg} onChange={handleFormInput} />
                         </label>
                         <label className="describe" htmlFor="hostDescription">
-                            <span className="required">*</span>host description
+                            <span className="required">*</span>show description
                             <textarea type="text" id="hostDescription" placeholder="about you and the show" onChange={handleFormInput} defaultValue={description} />
                         </label>
                     </div>
@@ -268,7 +268,7 @@ export default function EditHostPage(props) {
                             <input type="url" id="otherLink" placeholder="https://myspace.com/roflcopter/imsuchaboomer" value={otherLink} onChange={handleFormInput} />
                         </label>
                         <label htmlFor="isActive">
-                            <span className="required">*</span>Active Host
+                            <span className="required">*</span>Active Show
                         <select id="isActive" value={isActive} onChange={handleFormInput}>
                                 <option>active</option>
                                 <option>inactive</option>

@@ -24,18 +24,19 @@ export default function UserProfile(props) {
     if (context.allUser) {
         return <Redirect to={`/user/all`} />
     }
+    console.log(props.cookies.user.userName)
     return (
         <DocumentTitle title="Staff">
             <div>
                 <a href="#maincontent" className="skip-link">Skip to main content</a>
                 <div className={`${context.gapClass} staff-only`}>
                     <div>
-                        <h1 id="main">logged in as {props.cookies.user.firstName}</h1>
+                        <h1 id="main">logged in as {props.cookies.user.userName}</h1>
                         <Link className="button-container" to={`/user/${context.id}/edit`}>
                             <button type="button">edit my user data</button>
                         </Link>
                         <Link className="button-container" to={`/user/host/${context.id}`}>
-                            <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my host profile</button>
+                            <button type="button" onClick={() => context.setEditHostID(context.id)}>edit my show profile</button>
                         </Link>
                         {props.cookies.user.role === 'Admin' ?
                             <div>
@@ -49,9 +50,8 @@ export default function UserProfile(props) {
                                     <button type="button">all user</button>
                                 </Link>
                                 <Link className="button-container" to={`/user/hosts/all`}>
-                                    <button type="button">all hosts</button>
+                                    <button type="button">all shows</button>
                                 </Link>
-                                
                             </div>
                         : null}
                         <div className="button-container">
