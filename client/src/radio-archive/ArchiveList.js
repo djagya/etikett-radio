@@ -209,15 +209,17 @@ export default function ArchiveList(props) {
                     <div>
                         <h1 id="main">archive.</h1>
 
-                        {props.cookies.user && props.cookies.user.role === 'Admin' && "Host" ?
                             <div className="button-container controls archive-add-delete-buttons">
-                                {showForm ?
+                                {props.cookies.user && props.cookies.user.role === "Host" || props.cookies.user && props.cookies.user.role === "Admin" ?
+                                    showForm ?
                                     <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
                                     <button type="button" onClick={() => setShowForm(true)}>add to archive</button>
-                                }
+                                : null}
+                            
+                                {props.cookies.user && props.cookies.user.role === "Admin" ?
                                 <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
+                                : null}
                             </div>
-                            : null}
                         {showForm ? <ArchiveInputForm /> : null}
                         <form className="archive-filter">
                             <div className="filter-selector-container">

@@ -1,7 +1,7 @@
 const Route = require("express").Router();
 const { getArchiveById, getArchive, postArchive, putArchive, deleteArchive } = require("../controllers/archiveController");
 const auth = require("../middleware/tokenAuthenticator");
-const {isHostAdmin} = require("../middleware/rolesAuthenticator");
+const {isHostAdmin, isAdmin} = require("../middleware/rolesAuthenticator");
 
 Route.get("/", auth, getArchive);
 Route.post("/post", auth, isHostAdmin, postArchive); 
@@ -9,6 +9,6 @@ Route.post("/post", auth, isHostAdmin, postArchive);
 Route.route("/:id")
     .get(auth, getArchiveById)
     .put(auth, isHostAdmin, putArchive)
-    .delete(auth, isHostAdmin, deleteArchive);
+    .delete(auth, isAdmin, deleteArchive);
 
 module.exports = Route;
