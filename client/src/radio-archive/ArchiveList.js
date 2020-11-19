@@ -209,17 +209,20 @@ export default function ArchiveList(props) {
                     <div>
                         <h1 id="main">archive.</h1>
 
-                            <div className="button-container controls archive-add-delete-buttons">
-                                {props.cookies.user && props.cookies.user.role === "Host" || props.cookies.user && props.cookies.user.role === "Admin" ?
-                                    showForm ?
+                            {props.cookies.user && props.cookies.user.role === "Host" ?
+                                <div className="button-container controls archive-add-delete-buttons">
+                                    {showForm ?
                                     <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
-                                    <button type="button" onClick={() => setShowForm(true)}>add to archive</button>
-                                : null}
+                                    <button type="button" onClick={() => setShowForm(true)}>add to archive</button>}
+                                </div> : null }
+                            {props.cookies.user && props.cookies.user.role === "Admin" ?
+                            <div className="button-container controls archive-add-delete-buttons">
+                                {showForm ?
+                                <button type="button" onClick={() => setShowForm(false)}>cancel</button> :
+                                <button type="button" onClick={() => setShowForm(true)}>add to archive</button>}
                             
-                                {props.cookies.user && props.cookies.user.role === "Admin" ?
                                 <button type="button" onClick={() => handleDelete(checkedIDs)}>delete checked</button>
-                                : null}
-                            </div>
+                            </div> : null}
                         {showForm ? <ArchiveInputForm /> : null}
                         <form className="archive-filter">
                             <div className="filter-selector-container">

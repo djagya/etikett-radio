@@ -74,7 +74,7 @@ export default function InfoBar() {
           clearInterval(everySecond);
           mounted = false;
         }
-    }, [])
+    }, [alert])
     return (
         <div className="message">
           <span className="moving-text"> <div className="current-time">{time}</div> <div>Now playing: {songName}</div> <div>{context.infoBarMessage}</div></span>

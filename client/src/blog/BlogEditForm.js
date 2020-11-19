@@ -13,6 +13,7 @@ export default function BlogEditForm(param) {
    
     const handleSubmit = event => {
         event.preventDefault()
+        setDisabled(true)
 
         //PUT request
         const body = {

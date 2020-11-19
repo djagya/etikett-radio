@@ -5,12 +5,11 @@ import Input from './Input';
 import Messages from './Messages';
 import { Context } from "../Context";
 import autosize from "autosize";
-import { contextsKey } from 'express-validator/src/base';
 
 export default function Chat({ name, setName, room, chatWindow, setChatWindow, removeCookie }) {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
-  const { socket, setOnChat, chatHeight, setChatHeight, chatRef, setChatRef } = useContext(Context)
+  const { socket, setOnChat, chatHeight, setChatHeight, chatRef } = useContext(Context)
   const alert = useAlert();
   const [bottomSpace, setBottomSpace] = useState(0);
 
@@ -49,7 +48,7 @@ export default function Chat({ name, setName, room, chatWindow, setChatWindow, r
       setMessages(messages => [...messages, message]);
     })
     
-  }, []);
+  }, [socket]);
 
 
 
