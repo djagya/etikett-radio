@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { useAlert } from 'react-alert';
 import audioIcon from '../icons/audio.png';
 import muteIcon from '../icons/mute.png';
 import { withRouter } from 'react-router-dom';
@@ -39,6 +38,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     const [showSourceBtn, setShowSourceBtn] = useState(false);
     const [buttonIcon, setButtonIcon] = useState(null);
     const [buttonText, setButtonText] = useState(null);
+    const logoCatalyst = `${process.env.PUBLIC_URL}/assets/images/Icon_neg@2x.png`;
 
     useEffect(() => {
         context.setPathName(location.pathname)
@@ -158,14 +158,14 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
             <header className={`App-header ${headerSize}`}>
                     {source === video && location.pathname === "/" ? 
                         <a className="catalyst-full-header" href="https://catalyst-berlin.com/" title="Catalyst" target="_blank" rel="noopener noreferrer">
-                            <img src={require("../img/Catalyst/Icon_neg@2x.png")} alt="Logo of Catalyst: A big C followed by three slashes." />
+                            <img src={logoCatalyst} alt="Logo of Catalyst: A big C followed by three slashes." />
                         </a> 
                     :null}
                     <div className="video-or-logo"> 
                         {source === radio ?
                             <div className="logo-and-controls"> 
                                 <a href="https://catalyst-berlin.com/" title="Catalyst" target="_blank" rel="noopener noreferrer">
-                                    <img src={require("../img/Catalyst/Icon_neg@2x.png")} alt="Logo of Catalyst: A big C followed by three slashes." />
+                                    <img src={logoCatalyst} alt="Logo of Catalyst: A big C followed by three slashes." />
                                 </a> 
                                     <RadioControls 
                                         source={source} 

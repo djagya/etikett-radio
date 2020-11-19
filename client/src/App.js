@@ -38,7 +38,7 @@ import ArchiveInputForm from './radio-archive/ArchiveInputForm';
 import Noisy from './noise/Noisy'
 import SolarSystem from './solar-system-logo/SolarSystem';
 import DocumentTitle from 'react-document-title';
-import SkipLink from 'skip-links';
+// import SkipLink from 'skip-links';
 import GlobalErrorBoundary from './GlobalErrorBoundary';
 
 //scroll to top
@@ -73,17 +73,17 @@ function App(props) {
   if (cookies.user) {
     id = cookies.user._id
   }
-  const links = [
-    { title: "Skip to main content", to: 'main' },
-    { title: 'Skip to footer', to: 'footer' }
-  ]
+  // const links = [
+  //   { title: "Skip to main content", to: 'main' },
+  //   { title: 'Skip to footer', to: 'footer' }
+  // ]
   //////////////////////
   return (
     <DocumentTitle title="etikett~radio | homepage">
 
       <HashRouter>
         <ScrollMemory />
-        <SkipLink links={links} className="skip-link" />
+        {/* <SkipLink links={links} className="skip-link" /> */}
         <Context.Provider value={
           {
             id,

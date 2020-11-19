@@ -170,22 +170,22 @@ footer {
   background-image: linear-gradient($etikett-black-025, $etikett-black-000);
 }
 
-////skip link aria///
-.skip-link {
-  z-index: 9999;
-  transform: translateY(calc(-100% - 1rem));
-  display: block;
-  position: absolute;
-  left: 1.5rem;
-  top: -1rem;
-  height: 50px;
-  width: 100px;
-}
+// ////skip link aria///
+// .skip-link {
+//   z-index: 9999;
+//   transform: translateY(calc(-100% - 1rem));
+//   display: block;
+//   position: absolute;
+//   left: 1.5rem;
+//   top: -1rem;
+//   height: 50px;
+//   width: 100px;
+// }
 
-.skip-link:focus {
-  transform: translateY(0);
-  transition: all 300ms ease-in-out;
-}
+// .skip-link:focus {
+//   transform: translateY(0);
+//   transition: all 300ms ease-in-out;
+// }
 
 .c-links {
   li {

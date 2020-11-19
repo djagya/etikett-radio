@@ -28,7 +28,7 @@ export default function UserProfile(props) {
     return (
         <DocumentTitle title="Staff">
             <div>
-                <a href="#maincontent" className="skip-link">Skip to main content</a>
+                {/* <a href="#maincontent" className="skip-link">Skip to main content</a> */}
                 <div className={`${context.gapClass} staff-only`}>
                     <div>
                         <h1 id="main">logged in as {props.cookies.user.userName}</h1>
