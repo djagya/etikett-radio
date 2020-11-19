@@ -19,7 +19,7 @@ export default function EditHostPage(props) {
     const [done, setDone] = useState(false)
     const [userID, setUserID] = useState("")
     const [hostName, setHostName] = useState("");
-    const [hostImg, setHostImg] = useState("");
+    const [hostImg, setHostImg] = useState("https://i.ibb.co/kBxkf4P/etikett-radio-ting.png");
     const [description, setDescription] = useState("");
     const [youtube, setYoutube] = useState("");
     const [soundcloud, setSoundcloud] = useState("");

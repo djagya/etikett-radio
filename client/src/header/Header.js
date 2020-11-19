@@ -43,7 +43,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     useEffect(() => {
         context.setPathName(location.pathname)
 
-    }, [context.setPathName, location.pathname])
+    }, [context, context.setPathName, location.pathname])
 
     
     useEffect(() => {
@@ -82,7 +82,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 setSource(radio);
             })
 
-    }, [isMobileDevice])
+    }, [isMobileWidth, isMobileDevice])
 
 
     useEffect(() => {

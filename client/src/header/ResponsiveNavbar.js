@@ -6,12 +6,13 @@ import { NavLink, Link } from 'react-router-dom';
 
 export default function ResponsiveNavbar() {
     const [isChecked, setIsChecked] = useState(false);
+    const logoCatalyst = `${process.env.PUBLIC_URL}/assets/images/Icon_neg@2x.png`;
 
     return (
 
         <header className="nav-app-header"> 
             <a href="https://catalyst-berlin.com/" title="Catalyst" target="_blank" rel="noopener noreferrer">
-                <img src={require("../img/Catalyst/Icon_neg@2x.png")} alt="Logo of Catalyst: A big C followed by three slashes." />
+                <img src={logoCatalyst} alt="Logo of Catalyst: A big C followed by three slashes." />
             </a> 
 
             <Link to="/about" id="page-title-link"> <span className="page-title-mobile">etikett~radio</span></Link>
