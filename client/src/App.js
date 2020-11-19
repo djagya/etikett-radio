@@ -69,6 +69,7 @@ function App(props) {
   // Media Queries
   const isMobileWidth = useMediaQuery({ maxWidth: 600 });
   const isMobileDevice = useMediaQuery({ maxDeviceWidth: 600 });
+  // const isNavBreakPoint = useMediaQuery({ maxWidth: 1345}) // For introducing the mobile nav earlier at some point
 
   if (cookies.user) {
     id = cookies.user._id
