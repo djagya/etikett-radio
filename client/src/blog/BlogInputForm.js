@@ -8,10 +8,12 @@ export default function BlogInput() {
     const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
     const [text, setText] = useState("");
     const alert = useAlert();
+    const [disabled, setDisabled] = useState(false);
     const {blogData, setBlogData, setShowForm} = useContext(Context)
 
     const handleSubmit = event => {
         event.preventDefault()
+        setDisabled(true)
 
         //POST request
         const body = {
@@ -80,7 +82,7 @@ export default function BlogInput() {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="save" /><span className="required">* required</span>
+                    <input type="submit" disabled={disabled} value="save" /><span className="required">* required</span>
                 </div>
             </form>
     );

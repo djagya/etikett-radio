@@ -7,6 +7,7 @@ export default function BlogEditForm(param) {
     const [heading, setHeading] = useState(data.heading);
     const [date, setDate] = useState(data.date);
     const [text, setText] = useState(data.text);
+    const [disabled, setDisabled] = useState(false);
     const id = data._id
     const alert = useAlert();
    
@@ -84,7 +85,7 @@ export default function BlogEditForm(param) {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="save" /><span className="required">* required</span>
+                    <input type="submit" value="save" disabled={disabled} /><span className="required">* required</span>
                 </div>
             </form>
 

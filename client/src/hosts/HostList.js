@@ -21,7 +21,7 @@ export default function HostList() {
             })
             .catch(err => {
                 setLoading(false);
-                alert.error('Failed to fetch hosts from the server. Please contact the admin.');
+                alert.error('Failed to fetch shows from the server. Please contact the admin.');
             })
     }, [alert])
 

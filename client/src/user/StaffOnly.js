@@ -24,7 +24,6 @@ export default function UserProfile(props) {
     if (context.allUser) {
         return <Redirect to={`/user/all`} />
     }
-    console.log(props.cookies.user.userName)
     return (
         <DocumentTitle title="Staff">
             <div>

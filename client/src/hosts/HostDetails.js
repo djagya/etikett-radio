@@ -90,7 +90,7 @@ export default function Hosts(props) {
             <div className="hosts">
                 <div className={`${context.gapClass} host-page`}>
                     <h1>shows.</h1>
-                    <Link className="link-component" to={`/hosts`}>back to hosts</Link>
+                    <Link className="link-component" to={`/shows`}>back to shows</Link>
                     <div className="host-content">
                         <div className="host-card">
                             {renderHost()}

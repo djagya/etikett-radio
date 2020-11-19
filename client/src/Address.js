@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Address() {
     return (
-        <ul class="address-field">
+        <ul className="address-field">
             <li className="li-header"><h2>address</h2></li>
             <li>Catalyst Institute for Creative Arts and Technology GmbH</li>
             <li>Funkhaus Berlin</li>

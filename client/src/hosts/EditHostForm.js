@@ -32,6 +32,7 @@ export default function EditHostPage(props) {
     const [otherLink, setOtherLink] = useState("");
     const [profileID, setProfileID] = useState("");
     const [isActive, setIsActive] = useState("active");
+    const [disabled, setDisabled] = useState(false);
     const alert = useAlert();
     useEffect(() => {
         GetData("/host")
@@ -49,7 +50,7 @@ export default function EditHostPage(props) {
                 const filteredData = (data.host.filter(el => el.userID === id))
                 if (filteredData.length === 0) return
                 if (filteredData.length > 1) {
-                    alert.error("It looks like there are more than 1 host profiles with the same ID, please contact the admin.")
+                    alert.error("It looks like there are more than 1 show profile with the same ID, please contact the admin.")
                     return <Redirect to={`/user/${context.id}`} />
                 }
                 if (filteredData.length !== 1 && role !== "Admin") {
@@ -57,30 +58,31 @@ export default function EditHostPage(props) {
                     return <Redirect to={`/user/${context.id}`} />
                 }
                 if (filteredData.length === 1 || role === "Admin") {
-                    setProfileExists(true)
-                    setUserID(filteredData[0].userID)
-                    setHostName(filteredData[0].hostName)
-                    setHostImg(filteredData[0].hostImg)
-                    setDescription(filteredData[0].description)
-                    setYoutube(filteredData[0].youtube)
-                    setSoundcloud(filteredData[0].soundcloud)
-                    setMixcloud(filteredData[0].mixcloud)
-                    setFacebook(filteredData[0].facebook)
-                    setInstagram(filteredData[0].instagram)
-                    setTwitter(filteredData[0].twitter)
-                    setSnapchat(filteredData[0].snapchat)
-                    setOtherName(filteredData[0].otherName)
-                    setOtherLink(filteredData[0].otherLink)
-                    setProfileID(filteredData[0]._id)
-                    setIsActive(filteredData[0].isActive)
+                    setProfileExists(true);
+                    setUserID(filteredData[0].userID);
+                    setHostName(filteredData[0].hostName);
+                    filteredData[0].hostImg === "" ? setHostImg("https://i.ibb.co/kBxkf4P/etikett-radio-ting.png") : setHostImg(filteredData[0].hostImg);
+                    setDescription(filteredData[0].description);
+                    setYoutube(filteredData[0].youtube);
+                    setSoundcloud(filteredData[0].soundcloud);
+                    setMixcloud(filteredData[0].mixcloud);
+                    setFacebook(filteredData[0].facebook);
+                    setInstagram(filteredData[0].instagram);
+                    setTwitter(filteredData[0].twitter);
+                    setSnapchat(filteredData[0].snapchat);
+                    setOtherName(filteredData[0].otherName);
+                    setOtherLink(filteredData[0].otherLink);
+                    setProfileID(filteredData[0]._id);
+                    setIsActive(filteredData[0].isActive);
                 } else {
-                    return alert.error("Something went wrong")
+                    return alert.error("Something went wrong");
                 }
             })
     }, [alert, context.id, id, role])
 
     const handleSubmit = event => {
         event.preventDefault()
+        setDisabled(true)
         const body = {
             "userID": id,
             "hostImg": hostImg,
@@ -104,8 +106,9 @@ export default function EditHostPage(props) {
                     if (!data.success) {
                         alert.error("Something went wrong while uploading your data for the first time.")
                     } else {
-                        alert.success("You successfully initialized your host profile!", { timeout: 3000 })
-                        setDone(true)
+                        alert.success("You successfully initialized your show profile!", { timeout: 3000 })
+                        setDone(true);
+                        setDisabled(false);
                     }
                 })
         } else {
@@ -115,7 +118,8 @@ export default function EditHostPage(props) {
                         alert.error("Something went wrong while updating your data")
                     } else {
                         alert.success("Update successful!", { timeout: 3000 })
-                        setDone(true)
+                        setDone(true);
+                        setDisabled(false);
                     }
                 })
         }
@@ -174,7 +178,8 @@ export default function EditHostPage(props) {
         if (check) {
             //delete from db
             Delete([id], "host")
-            context.setEditHost(false)
+            alert.success("Show successfully deleted!", { timeout: 3000 })
+            setDone(true);
         } else {
             return null
         }
@@ -182,7 +187,7 @@ export default function EditHostPage(props) {
 
     if (done) {
         if (context.id !== userID) {
-        return <Redirect to={`/user/hosts/all`}/>
+        return <Redirect to={`/user/shows/all`}/>
         } else {
         return <Redirect to={`/user/${context.id}`}/>
         }
@@ -276,7 +281,7 @@ export default function EditHostPage(props) {
                         </label>
                     </div>
                     <div className="submit-button">
-                        <input type="submit" value="save" /><span className="required">* required</span>
+                        <input type="submit" disabled={disabled} value="save" /><span className="required">* required</span>
                     </div>
                 </form>
 

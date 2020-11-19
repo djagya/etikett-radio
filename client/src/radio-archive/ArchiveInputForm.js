@@ -23,6 +23,7 @@ export default function ArchiveInputForm(props) {
     const [link, setLink] = useState("");
     const [img, setImg] = useState("");
     const [description, setDescription] = useState("");
+    const [disabled, setDisabled] = useState(false);
     const alert = useAlert();
 
     const archive= archiveData;
@@ -53,6 +54,7 @@ export default function ArchiveInputForm(props) {
 
     const handleSubmit = event => {
         event.preventDefault()
+        setDisabled(true)
 
         const chosenHost = hostData.filter(host => host.hostName.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))[0];
 
@@ -86,8 +88,6 @@ export default function ArchiveInputForm(props) {
                     }
                 
                 })
-
-
         } else {
             PutData(`/archive/${id}`, body)
                 .then(data => { 
@@ -205,7 +205,7 @@ export default function ArchiveInputForm(props) {
                         </label>
                     </div>
                     <div className="submit-button describe">
-                        <input type="submit" value="save" /><span className="required">* required</span>
+                        <input type="submit" disabled={disabled} value="save" /><span className="required">* required</span>
                     </div>
                 </div>
             </form>

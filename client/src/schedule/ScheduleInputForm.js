@@ -15,10 +15,12 @@ export default function ScheduleInputForm() {
     const [show, setShow] = useState("");
     const [from, setFrom] = useState(time);
     const [to, setTo] = useState(time);
+    const [disabled, setDisabled] = useState(false);
     const alert = useAlert();
 
     const handleSubmit = event => {
         event.preventDefault()
+        setDisabled(true)
 
         //POST request
         const body = {
@@ -100,7 +102,7 @@ export default function ScheduleInputForm() {
                     </label>
                 </div>
                 <div className="submit-button">
-                    <input type="submit" value="save" /><span className="required">* required</span>
+                    <input type="submit" disabled={disabled} value="save" /><span className="required">* required</span>
                 </div>
             </form>
         </div>
