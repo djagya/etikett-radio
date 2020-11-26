@@ -11,8 +11,8 @@ const cookieParser = require('cookie-parser');
 const socketio = require('socket.io');
 const http = require('http');
 const path = require("path");
-import sslRedirect from 'heroku-ssl-redirect';
-// const sslRedirect = require("heroku-ssl-redirect");
+// import sslRedirect from 'heroku-ssl-redirect';
+const sslRedirect = require('heroku-ssl-redirect');
 const indexRoute = require("./routes/indexRoute");
 const archiveRoute = require("./routes/archiveRoute");
 const usersRoute = require("./routes/usersRoute");
@@ -87,7 +87,7 @@ app.use(cookieParser());
 app.use(express.static("client/build"))
 
 ///////////////////////////////////////////////
-app.use(sslRedirect()); //// SSL REDIRECTION
+app.use(sslRedirect); //// SSL REDIRECTION
 ///////////////////////////////////////////////
 
 app.use("/", indexRoute);
@@ -126,6 +126,11 @@ app.use((err, req, res, next) => {
 //       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 //   });
 // }
+
+
+
+
+
 // if (process.env.NODE_ENV === 'production') {
 //   app.use((req, res, next) => {
 //     if (req.header('x-forwarded-proto') !== 'https')
@@ -134,6 +139,8 @@ app.use((err, req, res, next) => {
 //       next()
 //   })
 // }
+
+
 
 
 // app.listen(port, () => console.log(`Server ist am been`));
