@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const socketio = require('socket.io');
 const http = require('http');
 const path = require("path");
-import sslRedirect from 'heroku-ssl-redirect';
+// import sslRedirect from 'heroku-ssl-redirect';
 // const sslRedirect = require("heroku-ssl-redirect");
 const indexRoute = require("./routes/indexRoute");
 const archiveRoute = require("./routes/archiveRoute");
@@ -87,7 +87,7 @@ app.use(cookieParser());
 app.use(express.static("client/build"))
 
 ///////////////////////////////////////////////
-app.use(sslRedirect()); //// SSL REDIRECTION
+// app.use(sslRedirect()); //// SSL REDIRECTION
 ///////////////////////////////////////////////
 
 app.use("/", indexRoute);
@@ -98,7 +98,7 @@ app.use("/schedule", scheduleRoute);
 app.use("/host", hostRoute);
 app.use("/infoBar", infoBarRoute);
 app.use("/chat", chatRoute);
-// app.use("/*", indexRoute) ///CHANGE THE DOMAIN HERE
+app.use("/*", indexRoute) ///CHANGE THE DOMAIN HERE
 
 //Error Handler
 app.use((req, res, next) => {
