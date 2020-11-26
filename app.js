@@ -98,7 +98,7 @@ app.use("/schedule", scheduleRoute);
 app.use("/host", hostRoute);
 app.use("/infoBar", infoBarRoute);
 app.use("/chat", chatRoute);
-app.use("/*", indexRoute) ///CHANGE THE DOMAIN HERE
+// app.use("/*", indexRoute) ///CHANGE THE DOMAIN HERE
 
 //Error Handler
 app.use((req, res, next) => {
@@ -126,7 +126,14 @@ app.use((err, req, res, next) => {
 //       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 //   });
 // }
-
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next()
+  })
+}
 
 
 // app.listen(port, () => console.log(`Server ist am been`));
