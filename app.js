@@ -6,12 +6,13 @@ const { setCors } = require("./middleware/security");
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./controllers/chatController');
 const dot = require("dotenv");
 dot.config();
-const env = require("./config/config")
+const env = require("./config/config");
 const cookieParser = require('cookie-parser');
 const socketio = require('socket.io');
 const http = require('http');
 const path = require("path");
-import sslRedirect from 'heroku-ssl-redirect';
+// import sslRedirect from 'heroku-ssl-redirect';
+const sslRedirect = require("heroku-ssl-redirect");
 const indexRoute = require("./routes/indexRoute");
 const archiveRoute = require("./routes/archiveRoute");
 const usersRoute = require("./routes/usersRoute");
@@ -85,7 +86,9 @@ app.use(cookieParser());
 
 app.use(express.static("client/build"))
 
-app.use(sslRedirect());
+///////////////////////////////////////////////
+app.use(sslRedirect()); //// SSL REDIRECTION
+///////////////////////////////////////////////
 
 app.use("/", indexRoute);
 app.use("/archive", archiveRoute);
