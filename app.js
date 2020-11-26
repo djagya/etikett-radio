@@ -82,6 +82,7 @@ io.on('connection', (socket) => {
 app.use(express.json());
 app.use(setCors); //middleware to use setCors on all routes
 app.use(cookieParser());
+app.use(sslRedirect());
 
 app.use(express.static("client/build"))
 
