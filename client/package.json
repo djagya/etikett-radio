@@ -32,7 +32,7 @@
     "react-use-gesture": "^7.0.15",
     "sass": "^1.26.5",
     "socket.io-client": "^2.3.2",
-    "three": "^0.137.0",
+    "three": "^0.125.0",
     "use-interval": "^1.2.1"
   },
   "scripts": {

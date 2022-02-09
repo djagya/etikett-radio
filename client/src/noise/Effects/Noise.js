@@ -1,38 +1,33 @@
-import {
-    ShaderMaterial,
-    UniformsUtils
-} from 'three';
-import {
-    Pass
-} from 'three/examples/jsm/postprocessing/Pass';
+import { ShaderMaterial, UniformsUtils } from 'three';
+import { Pass } from 'three/examples/jsm/postprocessing/Pass';
 
 var TestShader = {
-    uniforms: {
-        tDiffuse: {
-            type: 't',
-            value: null
-        },
-        time: {
-            type: 'f',
-            value: 0.0
-        },
-        amount: {
-            type: 'f',
-            value: 0.005
-        },
-        color: {
-            value: 0.0
-        },
+  uniforms: {
+    tDiffuse: {
+      type: 't',
+      value: null,
     },
+    time: {
+      type: 'f',
+      value: 0.0,
+    },
+    amount: {
+      type: 'f',
+      value: 0.005,
+    },
+    color: {
+      value: 0.0,
+    },
+  },
 
-    vertexShader: `
+  vertexShader: `
     varying vec2 vUv;
     void main(){  
       vUv = uv; 
       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
     }`,
 
-    fragmentShader: `
+  fragmentShader: `
     #include <common>
     uniform sampler2D tDiffuse;
     uniform float time;
@@ -70,42 +65,40 @@ var TestShader = {
 };
 
 var NoisePass = function (amount, color) {
-    Pass.call(this);
+  Pass.call(this);
 
-    var shader = TestShader;
+  var shader = TestShader;
 
-    this.uniforms = UniformsUtils.clone(shader.uniforms);
+  this.uniforms = UniformsUtils.clone(shader.uniforms);
 
-    this.material = new ShaderMaterial({
-        uniforms: this.uniforms,
-        vertexShader: shader.vertexShader,
-        fragmentShader: shader.fragmentShader,
-    });
+  this.material = new ShaderMaterial({
+    uniforms: this.uniforms,
+    vertexShader: shader.vertexShader,
+    fragmentShader: shader.fragmentShader,
+  });
 
-    if (amount !== undefined) this.uniforms.amount.value = amount;
-    if (color !== undefined) this.uniforms.color.value = color;
+  if (amount !== undefined) this.uniforms.amount.value = amount;
+  if (color !== undefined) this.uniforms.color.value = color;
 
-    this.fsQuad = new Pass.FullScreenQuad(this.material);
+  this.fsQuad = new Pass.FullScreenQuad(this.material);
 };
 
 NoisePass.prototype = Object.assign(Object.create(Pass.prototype), {
-    constructor: NoisePass,
+  constructor: NoisePass,
 
-    render: function (renderer, writeBuffer, readBuffer, deltaTime) {
-        this.uniforms['tDiffuse'].value = readBuffer.texture;
-        this.uniforms['time'].value += deltaTime;
+  render: function (renderer, writeBuffer, readBuffer, deltaTime) {
+    this.uniforms['tDiffuse'].value = readBuffer.texture;
+    this.uniforms['time'].value += deltaTime;
 
-        if (this.renderToScreen) {
-            renderer.setRenderTarget(null);
-            this.fsQuad.render(renderer);
-        } else {
-            renderer.setRenderTarget(writeBuffer);
-            if (this.clear) renderer.clear();
-            this.fsQuad.render(renderer);
-        }
-    },
+    if (this.renderToScreen) {
+      renderer.setRenderTarget(null);
+      this.fsQuad.render(renderer);
+    } else {
+      renderer.setRenderTarget(writeBuffer);
+      if (this.clear) renderer.clear();
+      this.fsQuad.render(renderer);
+    }
+  },
 });
 
-export {
-    NoisePass
-};
+export { NoisePass };
