@@ -5,17 +5,17 @@
     "main.js.map": "/static/js/main.3a92c495.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.120840cb.js",
     "runtime-main.js.map": "/static/js/runtime-main.120840cb.js.map",
-    "static/js/2.0253cd57.chunk.js": "/static/js/2.0253cd57.chunk.js",
-    "static/js/2.0253cd57.chunk.js.map": "/static/js/2.0253cd57.chunk.js.map",
+    "static/js/2.25c820c6.chunk.js": "/static/js/2.25c820c6.chunk.js",
+    "static/js/2.25c820c6.chunk.js.map": "/static/js/2.25c820c6.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.09dc3a42.chunk.css.map": "/static/css/main.09dc3a42.chunk.css.map",
-    "static/js/2.0253cd57.chunk.js.LICENSE.txt": "/static/js/2.0253cd57.chunk.js.LICENSE.txt",
+    "static/js/2.25c820c6.chunk.js.LICENSE.txt": "/static/js/2.25c820c6.chunk.js.LICENSE.txt",
     "static/media/App.scss": "/static/media/imageonline-co-noise.c659a901.png",
     "static/media/audio.f23503d2.png": "/static/media/audio.f23503d2.png"
   },
   "entrypoints": [
     "static/js/runtime-main.120840cb.js",
-    "static/js/2.0253cd57.chunk.js",
+    "static/js/2.25c820c6.chunk.js",
     "static/css/main.09dc3a42.chunk.css",
     "static/js/main.3a92c495.chunk.js"
   ]
