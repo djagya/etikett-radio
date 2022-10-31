@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "autosize": "^4.0.2",
     "glamor": "^2.20.40",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "node-fetch": "^2.6.7",
     "object-path": "^0.11.8",
     "react": "^16.13.1",
