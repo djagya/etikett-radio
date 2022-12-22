@@ -21,7 +21,7 @@
     "googleapis": "^61.0.0",
     "heroku-ssl-redirect": "^0.1.1",
     "http-errors": "^1.7.3",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.10.9",
     "mongoose-unique-validator": "^2.0.3",
     "node": "^15.2.1",
