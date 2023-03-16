@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.09dc3a42.chunk.css",
-    "main.js": "/static/js/main.3a92c495.chunk.js",
-    "main.js.map": "/static/js/main.3a92c495.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.120840cb.js",
-    "runtime-main.js.map": "/static/js/runtime-main.120840cb.js.map",
-    "static/js/2.25c820c6.chunk.js": "/static/js/2.25c820c6.chunk.js",
-    "static/js/2.25c820c6.chunk.js.map": "/static/js/2.25c820c6.chunk.js.map",
+    "main.css": "/static/css/main.b91af2c2.css",
+    "main.js": "/static/js/main.db6fde3a.js",
+    "static/media/footer-img-1920x600.png": "/static/media/footer-img-1920x600.6cb0455074603e6df570.png",
+    "static/media/imageonline-co-noise.png": "/static/media/imageonline-co-noise.c659a9010659a99b83c0.png",
+    "static/media/Lausanne-300.otf": "/static/media/Lausanne-300.7ceabdd185e2d693ec8c.otf",
+    "static/media/Lausanne-700.otf": "/static/media/Lausanne-700.772d4d667a5a7f0b552a.otf",
+    "static/media/Lausanne-500.otf": "/static/media/Lausanne-500.4464de3d9f7c6de1badb.otf",
+    "static/media/etikett-black.jpg": "/static/media/etikett-black.8bdcf576d1f3308a54b6.jpg",
+    "static/media/audio.png": "/static/media/audio.f23503d21d68ea1ffa04.png",
     "index.html": "/index.html",
-    "static/css/main.09dc3a42.chunk.css.map": "/static/css/main.09dc3a42.chunk.css.map",
-    "static/js/2.25c820c6.chunk.js.LICENSE.txt": "/static/js/2.25c820c6.chunk.js.LICENSE.txt",
-    "static/media/App.scss": "/static/media/imageonline-co-noise.c659a901.png",
-    "static/media/audio.f23503d2.png": "/static/media/audio.f23503d2.png"
+    "main.b91af2c2.css.map": "/static/css/main.b91af2c2.css.map",
+    "main.db6fde3a.js.map": "/static/js/main.db6fde3a.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.120840cb.js",
-    "static/js/2.25c820c6.chunk.js",
-    "static/css/main.09dc3a42.chunk.css",
-    "static/js/main.3a92c495.chunk.js"
+    "static/css/main.b91af2c2.css",
+    "static/js/main.db6fde3a.js"
   ]
 }

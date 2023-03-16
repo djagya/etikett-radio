@@ -1,0 +1,9 @@
+{
+  "trailingComma": "all",
+  "jsxBracketSameLine": true,
+  "semi": true,
+  "importOrder": ["^[A-z]", "^~", "^[./]"],
+  "importOrderSeparation": true,
+  "singleQuote": true,
+  "bracketSpacing": true
+}

@@ -92,10 +92,11 @@ export default function InfoBar() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [alert]);
+
   return (
-    <div className='message'>
-      <span className='moving-text'>
-        <div className='current-time'>{time}</div>
+    <div className="message">
+      <span className="moving-text">
+        <div className="current-time">{time}</div>
         {renderCurrentSongName()}
         <div>{context.infoBarMessage}</div>
       </span>
