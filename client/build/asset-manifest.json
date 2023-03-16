@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e1acd9a7.css",
-    "main.js": "/static/js/main.ced35a2c.js",
+    "main.css": "/static/css/main.8337d57e.css",
+    "main.js": "/static/js/main.5284a24c.js",
     "static/media/footer-img-1920x600.png": "/static/media/footer-img-1920x600.6cb0455074603e6df570.png",
     "static/media/imageonline-co-noise.png": "/static/media/imageonline-co-noise.c659a9010659a99b83c0.png",
     "static/media/Lausanne-300.otf": "/static/media/Lausanne-300.7ceabdd185e2d693ec8c.otf",
@@ -10,11 +10,11 @@
     "static/media/etikett-black.jpg": "/static/media/etikett-black.8bdcf576d1f3308a54b6.jpg",
     "static/media/audio.png": "/static/media/audio.f23503d21d68ea1ffa04.png",
     "index.html": "/index.html",
-    "main.e1acd9a7.css.map": "/static/css/main.e1acd9a7.css.map",
-    "main.ced35a2c.js.map": "/static/js/main.ced35a2c.js.map"
+    "main.8337d57e.css.map": "/static/css/main.8337d57e.css.map",
+    "main.5284a24c.js.map": "/static/js/main.5284a24c.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1acd9a7.css",
-    "static/js/main.ced35a2c.js"
+    "static/css/main.8337d57e.css",
+    "static/js/main.5284a24c.js"
   ]
 }

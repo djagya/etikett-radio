@@ -118,13 +118,6 @@ export default function Hosts(props) {
                 </a>
               )}
             </div>
-            <div className="host-pagelink">
-              <NavLink
-                className="link-component"
-                to={`/archive?ep=${host.hostName}`}>
-                Archive
-              </NavLink>
-            </div>
           </div>
         </div>
       </>
@@ -138,9 +131,16 @@ export default function Hosts(props) {
       <div className="hosts">
         <div className={`${context.gapClass} host-page`}>
           <h1>shows.</h1>
-          <Link className="link-component" to={`/shows`}>
-            back to shows
-          </Link>
+          <div className="page-links">
+            <Link className="link-component" to={`/shows`}>
+              back to shows
+            </Link>
+            <Link
+              className="link-component"
+              to={`/archive?ep=${host.hostName}`}>
+              to show archives
+            </Link>
+          </div>
           <div className="host-content">
             <div className="host-card">{renderHost()}</div>
           </div>

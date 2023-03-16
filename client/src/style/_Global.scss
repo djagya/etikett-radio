@@ -77,6 +77,16 @@ li {
   margin-bottom: 5px;
 }
 
+.page-links {
+  display: flex;
+  align-items: center;
+    justify-content: center;
+}
+
+.page-links > * {
+  padding: 0 1rem;
+}
+
 .link-component {
   // text-decoration: none;
   text-decoration-color: rgba(255, 255, 255, 0.2);
