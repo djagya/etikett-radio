@@ -28,6 +28,8 @@
 .App {
   text-align: center;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -146,7 +148,7 @@ footer {
   padding: 2rem 2rem;
   display: flex;
   align-items: flex-end;
-  position: relative;
+  flex-grow: 1;
 
   .footer-img {
     position: absolute;
