@@ -30,6 +30,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 h1 {
@@ -151,6 +152,7 @@ footer {
   flex-grow: 1;
 
   .footer-img {
+    z-index: -1;
     position: absolute;
     bottom: 0;
     left: 0;
