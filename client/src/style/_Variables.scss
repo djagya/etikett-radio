@@ -15,12 +15,12 @@ $etikett-black-050: rgba(1, 5, 8, 0.5);
 $etikett-black-025: rgba(1, 5, 8, 0.25);
 $etikett-black-000: rgba(1, 5, 8, 0);
 $etikett-hover: rgb(70, 120, 131);
-$etikett-hover-050: rgb(70, 120, 131, .5);
+$etikett-hover-050: rgb(70, 120, 131, 0.5);
 
 //font
-$font-light: "Lausanne-300", sans-serif;
-$font-normal: "Lausanne-500", sans-serif;
-$font-bold: "Lausanne-700", sans-serif;
+$font-light: 'Lausanne-300', sans-serif;
+$font-normal: 'Lausanne-500', sans-serif;
+$font-bold: 'Lausanne-700', sans-serif;
 
 //chat
 $chat-width: 340px;
@@ -36,23 +36,26 @@ $chat-height-transition: height 400ms ease-in;
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   margin-top: $header-height-small;
-  background-image: linear-gradient($etikett-black, $etikett-black-050, $etikett-black-025);
+  background-image: linear-gradient(
+    $etikett-black,
+    $etikett-black-050,
+    $etikett-black-025
+  );
   @media only screen and (max-width: breakpoints(phone)) {
-        margin-top: 150px;
-    
+    margin-top: 150px;
   }
-   
 }
 
 // responsiveness
 $media-breakpoints: (
-  "big-desktop": 1900px,
-  "desktop": 1200px,
-  "tablet": 900px,
-  "phone": 600px);
+  'big-desktop': 1900px,
+  'desktop': 1200px,
+  'tablet': 900px,
+  'phone': 600px,
+);
 
 @function breakpoints($breakpoint) {
-  @return map-get($media-breakpoints, $breakpoint)
+  @return map-get($media-breakpoints, $breakpoint);
 }

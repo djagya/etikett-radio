@@ -17,9 +17,11 @@ export default function Stream({ source, playing, volume, videoPlayer }) {
         width="100%"
         height="100%"
         onError={(err) => {
-          alert.error('Player could not load. Try reloading the page, or contact the admin.');
+          alert.error(
+            'Player could not load. Try reloading the page, or contact the admin.',
+          );
         }}
       />
     </section>
-  )
+  );
 }

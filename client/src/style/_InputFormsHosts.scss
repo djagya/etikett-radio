@@ -2,10 +2,10 @@
 
 .edit-host-page {
   @include component-template;
-    
-    .input-form {
-      .grid-container {
-              margin-bottom: 2rem;
-          }
+
+  .input-form {
+    .grid-container {
+      margin-bottom: 2rem;
     }
+  }
 }

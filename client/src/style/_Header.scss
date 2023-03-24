@@ -10,7 +10,6 @@
   box-shadow: 0px 0px 15px 15px $etikett-black;
   width: 100%;
   max-width: 1920px;
-
 }
 .full-header {
   flex-direction: column-reverse;
@@ -25,11 +24,11 @@
   }
   .controls-container {
     height: $full-header-message-height;
-  } 
+  }
   .catalyst-full-header {
     position: absolute;
     top: 0;
-    margin: .7rem 0;
+    margin: 0.7rem 0;
     img {
       width: 150px;
     }
@@ -37,7 +36,7 @@
   .video-or-logo {
     width: 100%;
   }
-  
+
   .nav-and-message-bar {
     display: block;
     position: absolute;
@@ -51,9 +50,9 @@
     .message {
       max-width: 100%;
     }
-    
   }
-  .box-shadow-container-left, .box-shadow-container-right {
+  .box-shadow-container-left,
+  .box-shadow-container-right {
     position: relative;
     left: 150px;
     height: 87px;
@@ -69,7 +68,6 @@
     left: calc(100% - 340px);
     top: 0;
   }
-
 }
 .small-header {
   position: fixed;
@@ -83,20 +81,20 @@ nav {
   justify-content: space-between;
   height: fit-content;
   a {
-    margin: .5rem 0;
+    margin: 0.5rem 0;
   }
 }
 .video-or-logo {
   width: 200px;
   position: relative;
-  padding: .5rem;
+  padding: 0.5rem;
   .logo-and-controls {
     height: 100%;
     position: relative;
     text-align: left;
     a {
       img {
-        margin-top: .5rem;
+        margin-top: 0.5rem;
         width: 50%;
         position: relative;
       }
@@ -104,7 +102,8 @@ nav {
   }
 }
 
-.box-shadow-container-left, .box-shadow-container-right {
+.box-shadow-container-left,
+.box-shadow-container-right {
   position: relative;
   pointer-events: none;
   z-index: 3;
@@ -134,13 +133,12 @@ nav {
     z-index: 4;
     width: 100%;
     font-size: 1.5rem;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
   }
-  
 }
 
 .nav-link {
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   transition: 0.1s;
   letter-spacing: 2px;
   text-decoration-color: rgba(255, 255, 255, 0.2);
@@ -151,14 +149,11 @@ nav {
     text-decoration-color: $etikett-hover;
     transition: 0.1s;
   }
-
 }
 .active-nav {
   color: $etikett-hover;
   text-decoration-color: white;
 }
-
-
 
 ///////////////////////////////////
 //          Message
@@ -172,8 +167,8 @@ nav {
   width: 100%;
   max-width: calc(100% - 540px - 16px);
   bottom: 0;
-  margin: 0 .5rem;
-  margin-bottom: .7rem;
+  margin: 0 0.5rem;
+  margin-bottom: 0.7rem;
 
   .moving-text {
     white-space: nowrap;
@@ -183,7 +178,6 @@ nav {
     animation-duration: 15s;
     display: flex;
 
-    
     .current-time {
       width: 90px;
     }
@@ -194,7 +188,6 @@ nav {
     &:hover {
       animation-play-state: paused;
     }
-
   }
 }
 
@@ -208,18 +201,17 @@ nav {
   }
 }
 
-
 // @media only screen and (min-width: breakpoints(big-desktop)) {
 // }
 @media only screen and (max-width: breakpoints(desktop)) {
-  .box-shadow-container-left, .box-shadow-container-right {
+  .box-shadow-container-left,
+  .box-shadow-container-right {
     display: none;
   }
 }
 @media only screen and (max-width: breakpoints(tablet)) {
   .nav-and-message-bar {
     max-width: calc(100% - 200px);
-    
   }
   .message {
     max-width: calc(100% - 200px - 16px);
@@ -244,13 +236,12 @@ nav {
       a {
         display: none;
       }
-
     }
   }
   .small-header {
     height: $mobile-header-height;
     flex-direction: column-reverse;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
   }
   .nav-and-message-bar {
     height: fit-content;
@@ -268,14 +259,14 @@ nav {
   }
 
   .nav-app-header {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
     position: fixed;
     top: 0;
     a {
-      margin: .5rem 0;
+      margin: 0.5rem 0;
     }
     nav {
       width: auto;

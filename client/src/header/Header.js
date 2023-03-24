@@ -149,30 +149,28 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     <header className={`App-header ${headerSize}`}>
       {source === video && location.pathname === '/' ? (
         <a
-          className='catalyst-full-header'
-          href='https://catalyst-berlin.com/'
-          title='Catalyst'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
+          className="catalyst-full-header"
+          href="https://catalyst-berlin.com/"
+          title="Catalyst"
+          target="_blank"
+          rel="noopener noreferrer">
           <img
             src={logoCatalyst}
-            alt='Broadcasting live 24/7 from Funkhaus, Berlin..'
+            alt="Broadcasting live 24/7 from Funkhaus, Berlin.."
           />
         </a>
       ) : null}
-      <div className='video-or-logo'>
+      <div className="video-or-logo">
         {source === radio ? (
-          <div className='logo-and-controls'>
+          <div className="logo-and-controls">
             <a
-              href='https://catalyst-berlin.com/'
-              title='Catalyst'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+              href="https://catalyst-berlin.com/"
+              title="Catalyst"
+              target="_blank"
+              rel="noopener noreferrer">
               <img
                 src={logoCatalyst}
-                alt='Broadcasting live 24/7 from Funkhaus, Berlin..'
+                alt="Broadcasting live 24/7 from Funkhaus, Berlin.."
               />
             </a>
             <RadioControls
@@ -193,14 +191,14 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
           videoPlayer={videoPlayer}
         />
       </div>
-      <div className='box-shadow-container-left'>
+      <div className="box-shadow-container-left">
         <div>{/* Fades the infobar out */}</div>
       </div>
-      <div className='nav-and-message-bar'>
+      <div className="nav-and-message-bar">
         {isMobileWidth ? <ResponsiveNavbar /> : <DesktopNavbar />}
         <MessageBar />
       </div>
-      <div className='box-shadow-container-right'>
+      <div className="box-shadow-container-right">
         <div>{/* Fades the infobar in */}</div>
       </div>
       <div className={`chat ${chatState}`}>
@@ -209,12 +207,11 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
       </div>
       {showSourceBtn ? (
         <button
-          className='change-source-btn'
+          className="change-source-btn"
           onClick={() =>
             source === video ? setSource(radio) : setSource(video)
-          }
-        >
-          <img src={buttonIcon} width='24' alt='icon' />
+          }>
+          <img src={buttonIcon} width="24" alt="icon" />
           <span>{buttonText}</span>
         </button>
       ) : null}
