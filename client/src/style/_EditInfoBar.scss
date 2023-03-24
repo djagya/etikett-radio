@@ -1,22 +1,20 @@
-
 .edit-info-bar-container {
-    @include component-template;
-    width: 100%;
-    .edit-input-form {
-        width: 800px;
+  @include component-template;
+  width: 100%;
+  .edit-input-form {
+    width: 800px;
 
-        input { 
+    input {
+      width: 100%;
+      padding: 5px;
+      font-size: 1.5rem;
 
-            width: 100%;
-            padding: 5px;
-            font-size: 1.5rem;
-
-            &[type=submit] {
-                width: fit-content;
-                padding: 0 5px;
-                font-size: 1rem;
-            }
-        }
+      &[type='submit'] {
+        width: fit-content;
+        padding: 0 5px;
+        font-size: 1rem;
+      }
     }
+  }
 }
-// 
+//

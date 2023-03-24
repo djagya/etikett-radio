@@ -1,40 +1,36 @@
 //Main Styling comes from _InputForms.scss
 
-.post-archive{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .input-form {
-       
+.post-archive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .input-form {
     .archive-input-left {
-        .archive-select-container {
-            select {
-            height: 364px; //magic number to align it with the right side
-            
-                option {
-                    margin-top: 4px;
-                    color: rgba(255, 255, 255, 0.50);
-                }
-            }
+      .archive-select-container {
+        select {
+          height: 364px; //magic number to align it with the right side
+
+          option {
+            margin-top: 4px;
+            color: rgba(255, 255, 255, 0.5);
+          }
         }
+      }
     }
     .archive-input-right {
-        display: flex;
-        flex-flow: wrap;
-        label {
-            width: 100%;
-            &:not(:first-child){
-                margin-top: .5rem;
-            }
-      
-
-    }  }
+      display: flex;
+      flex-flow: wrap;
+      label {
+        width: 100%;
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
+      }
     }
-
+  }
 }
 
-
-.archive-add-delete-buttons{
-    margin-left: 20px;
-    // width: 100%
+.archive-add-delete-buttons {
+  margin-left: 20px;
+  // width: 100%
 }

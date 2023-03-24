@@ -1,4 +1,3 @@
-
 * {
   padding: 0;
   margin: 0;
@@ -6,7 +5,7 @@
   box-sizing: border-box;
   color: white;
   background-color: $etikett-black-000;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   font-family: $font-light;
   font-weight: lighter;
   overflow-wrap: break-word;
@@ -29,8 +28,6 @@
 .App {
   text-align: center;
 }
-
-
 
 h1 {
   text-align: center;
@@ -76,7 +73,6 @@ li {
   margin-bottom: 5px;
 }
 
-
 .link-component {
   // text-decoration: none;
   text-decoration-color: rgba(255, 255, 255, 0.2);
@@ -100,7 +96,7 @@ textarea {
 .divider {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  margin: .5rem 0;
+  margin: 0.5rem 0;
 }
 ///////////////////////////////////
 //         Main Page
@@ -132,7 +128,6 @@ textarea {
   opacity: 0.8;
 }
 
-
 .stream-page {
   position: relative;
   display: flex;
@@ -146,25 +141,19 @@ textarea {
   }
 }
 
-
-
 footer {
   height: 100vh;
   display: flex;
   align-items: flex-end;
 
-
-
   .footer-img {
     width: 100%;
     height: 100vh;
     background-size: 100%;
-    background-image: url("../img/footer-img-1920x600.png");
+    background-image: url('../img/footer-img-1920x600.png');
     background-position: bottom;
-    background-repeat: no-repeat,
+    background-repeat: no-repeat;
   }
-
-
 }
 
 .gradient {
@@ -206,11 +195,11 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  
+
   img {
     width: 70%;
     height: 70%;
-    animation:spin 3s ease-in-out infinite;
+    animation: spin 3s ease-in-out infinite;
   }
 }
 
@@ -239,23 +228,24 @@ footer {
 .staff-only,
 .etikett-black,
 .about-us,
-.imprint
-.log-in-component,
+.imprint .log-in-component,
 .my-profile-component {
   animation: fadein ease 700ms;
 }
 
 @keyframes fadein {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
 
 //---------------------------------------------//
 //            From the base react              //
 //---------------------------------------------//
 body {
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

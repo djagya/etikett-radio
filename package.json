@@ -33,5 +33,8 @@
     "react-three-fiber": "^4.2.8",
     "socket.io": "^2.5.0",
     "three": "^0.137.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
   }
 }

@@ -1,66 +1,63 @@
 .archive-filter {
-    // width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 3rem 0;
-    .filter-selector-container, .filter-input-container {
-        width: 100%;
-        max-width: 300px;
-        margin: .5rem 0;
-    }
+  // width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0;
+  .filter-selector-container,
+  .filter-input-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5rem 0;
+  }
 }
-
-
 
 .filter-selector-container {
-    .filter-by-box {
-        letter-spacing: 2px;
-        text-decoration-line: underline;
-    }
+  .filter-by-box {
+    letter-spacing: 2px;
+    text-decoration-line: underline;
+  }
 
-    display: flex;
-    justify-content: space-between;
-    input[type="radio"] {
-        display: none;
+  display: flex;
+  justify-content: space-between;
+  input[type='radio'] {
+    display: none;
+  }
+  label {
+    cursor: pointer;
+    letter-spacing: 3px;
+    transition: 0.1s;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
+    &.active {
+      color: $etikett-hover;
     }
-    label {
-        cursor: pointer;
-      letter-spacing: 3px;
+    &:hover {
       transition: 0.1s;
-      text-decoration-color: rgba(255, 255, 255, 0.2);
-      &.active {
-        color: $etikett-hover;
-        
-      }
-      &:hover {
-        transition: 0.1s;
-        color: $etikett-hover;
-        text-decoration-line: underline;
-        text-decoration-color: $etikett-hover;
-      }
+      color: $etikett-hover;
+      text-decoration-line: underline;
+      text-decoration-color: $etikett-hover;
     }
+  }
 }
 .filter-input-container {
-    label {
-        input,
-        select, textarea {
-          margin-top: .25rem;
-          background-color: rgba(255, 255, 255, 0.10);
-          width: 100%;
-          height: 2rem;
-          padding: 0 .2rem 0 .5rem;
-          border: 0px solid;
-          border-bottom: 1px solid rgb(255, 255, 255);;
-          border-radius: 3px;
-          
-          &:focus {
-            background-color: $etikett-black-075;
-            outline: none;
-            border: 1px solid; 
-          }
-          
-        }
+  label {
+    input,
+    select,
+    textarea {
+      margin-top: 0.25rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      width: 100%;
+      height: 2rem;
+      padding: 0 0.2rem 0 0.5rem;
+      border: 0px solid;
+      border-bottom: 1px solid rgb(255, 255, 255);
+      border-radius: 3px;
 
+      &:focus {
+        background-color: $etikett-black-075;
+        outline: none;
+        border: 1px solid;
+      }
     }
+  }
 }

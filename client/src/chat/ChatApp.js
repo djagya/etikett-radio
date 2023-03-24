@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
@@ -15,22 +14,24 @@ function ChatApp({ name, setName }) {
     if (name) {
       setName(name);
     }
-  }, [name])
+  }, [name]);
 
-  return (
-    name
-      ? (
-        <div className={`ChatApp ${chatWindow}`}>
-          <Chat name={name} setName={setName} room={room} chatWindow={chatWindow} setChatWindow={setChatWindow} removeCookie={removeCookie} />
-        </div>
-      )
-      : (
-        <div className="ChatApp chat-app-join">
-          <Join setName={setName} setCookie={setCookie} />
-        </div>
-      ) 
+  return name ? (
+    <div className={`ChatApp ${chatWindow}`}>
+      <Chat
+        name={name}
+        setName={setName}
+        room={room}
+        chatWindow={chatWindow}
+        setChatWindow={setChatWindow}
+        removeCookie={removeCookie}
+      />
+    </div>
+  ) : (
+    <div className="ChatApp chat-app-join">
+      <Join setName={setName} setCookie={setCookie} />
+    </div>
   );
 }
-
 
 export default withRouter(ChatApp);
