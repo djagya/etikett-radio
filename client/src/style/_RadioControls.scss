@@ -1,9 +1,9 @@
-.controls-container{
-    position: absolute;
-    bottom: 0;
-    margin-bottom: .5rem;
-    width: 100%;
-  
+.controls-container {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0.5rem;
+  width: 100%;
+
   .player-controls {
     display: flex;
     align-items: center;
@@ -14,45 +14,45 @@
     background: $etikett-black;
     z-index: 2;
   }
-  
+
   .playPauseBtn {
     border: 0;
     height: 18px;
     border-color: $etikett-black-000 $etikett-black-000 $etikett-black-000 #fff;
     transition: 100ms all ease;
     cursor: pointer;
-  
+
     /* play state */
     border-style: solid;
     border-width: 9px 0 9px 18px;
-  
+
     &.paused {
       border-style: double;
       border-width: 0px 0 0px 18px;
     }
-  
+
     &:hover {
       border-color: transparent transparent transparent #707070;
     }
   }
-  
+
   .audio-icon {
     width: 18px;
     margin-left: 1rem;
     cursor: pointer;
   }
-  
+
   .volumeControl {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
-  
+
     margin-left: 1rem;
     height: 4px;
     border-radius: 5px;
     width: 100px;
-  
-    &::-webkit-volumeControl-thumb {
+
+    &::-webkit-volumecontrol-thumb {
       width: 9px;
       height: 9px;
       background: #fff;
@@ -60,7 +60,7 @@
       border-radius: 50%;
       cursor: pointer;
     }
-  
+
     &::-moz-range-thumb {
       width: 9px;
       height: 9px;
@@ -69,7 +69,7 @@
       border-radius: 50%;
       cursor: pointer;
     }
-  
+
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 16px;
@@ -78,61 +78,63 @@
       border-radius: 50%;
     }
   }
-  
-  }
+}
 
 ///////////////////////////////////
 //        Source Button
 ///////////////////////////////////
 .change-source-btn {
-    position: fixed;
-    bottom: 50%;
-    width: 50px;
-    height: 50px;
-    background: black;
-    color: white;
-    border-radius: 50px;
-    transition: width 300ms ease;
-    display: flex;
-    align-items: center;
-  
+  position: fixed;
+  bottom: 50%;
+  width: 50px;
+  height: 50px;
+  background: black;
+  color: white;
+  border-radius: 50px;
+  transition: width 300ms ease;
+  display: flex;
+  align-items: center;
+
+  span {
+    display: none;
+    opacity: 0;
+  }
+
+  img {
+    margin: 0 0.4rem;
+  }
+
+  &:hover {
+    width: 100px;
     span {
-      display: none;
-      opacity: 0;
+      display: block;
+      animation: show-up 300ms ease 250ms forwards;
     }
-  
-    img {
-      margin: 0 0.4rem;
-    }
-  
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+@-moz-document url-prefix() {
+  .change-source-btn {
+    transition: none;
+
     &:hover {
-      width: 100px;
+      width: 50px;
       span {
-        display: block;
-        animation: show-up 300ms ease 250ms forwards;
-      }
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-  
-  @-moz-document url-prefix() {
-    .change-source-btn {
-      transition: none;
-  
-      &:hover {
-        width: 50px;
-        span {
-          display: none;
-          animation: none;
-        }
+        display: none;
+        animation: none;
       }
     }
   }
-  
-  @keyframes show-up {
-    from { opacity: 0; }
-    to { opacity: 1; }
+}
+
+@keyframes show-up {
+  from {
+    opacity: 0;
   }
-  
+  to {
+    opacity: 1;
+  }
+}

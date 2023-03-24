@@ -5,16 +5,17 @@
   @include component-template;
 
   .list-container {
-  width: fit-content;
+    width: fit-content;
   }
- 
-  .list-header, .all-data {
+
+  .list-header,
+  .all-data {
     text-align: left;
     display: grid;
     gap: 1rem;
   }
- .all-data {
-    margin: .5rem 0 ;
+  .all-data {
+    margin: 0.5rem 0;
   }
   .list-header {
     margin-bottom: 3rem;
@@ -31,7 +32,6 @@
       text-decoration-color: rgba(255, 255, 255, 0.2);
       &.active {
         color: $etikett-hover;
-        
       }
       &:hover {
         transition: 0.1s;
@@ -39,7 +39,6 @@
         text-decoration-line: underline;
         text-decoration-color: $etikett-hover;
       }
-      
     }
   }
 
@@ -57,19 +56,16 @@
     }
   }
 
-
   .archive-list-grid {
     width: 100%;
     max-width: 1000px;
-    margin-left: 20px; //to center because of for users invisible checkbox placeholder 
-      grid-template-columns: 80px 3fr 2fr 2fr 1fr 20px;
-      li {
-        width: 100%;
-        max-width: 250px;
-
-        
-      }
-      column-gap: 20px;
+    margin-left: 20px; //to center because of for users invisible checkbox placeholder
+    grid-template-columns: 80px 3fr 2fr 2fr 1fr 20px;
+    li {
+      width: 100%;
+      max-width: 250px;
+    }
+    column-gap: 20px;
   }
   .post-archive {
     margin-bottom: 2rem;
@@ -90,15 +86,9 @@
     display: flex;
     align-items: center;
   }
- 
 }
 
-
-
-
-
 @media only screen and (min-width: breakpoints(big-desktop)) {
-  
 }
 @media only screen and (max-width: breakpoints(desktop)) {
   .list-header,
@@ -109,7 +99,6 @@
     &.archive-list-grid {
       grid-template-columns: 80px 1fr 1fr 1fr 20px;
     }
-
   }
 }
 @media only screen and (max-width: breakpoints(tablet)) {
@@ -122,23 +111,21 @@
     &.archive-list-grid {
       grid-template-columns: 80px 2fr 1fr 20px;
     }
-
   }
 }
 @media only screen and (max-width: breakpoints(phone)) {
-    .list-header,
-    .all-data {
-      :nth-child(5) {
-        display: none;
-      }
-  
-      &.archive-list-grid {
-        grid-template-columns: 50px 1fr;
-      }
-  
+  .list-header,
+  .all-data {
+    :nth-child(5) {
+      display: none;
     }
-    .archive-add-delete-buttons {
-      margin: 0;
-      justify-content: space-between;
+
+    &.archive-list-grid {
+      grid-template-columns: 50px 1fr;
     }
+  }
+  .archive-add-delete-buttons {
+    margin: 0;
+    justify-content: space-between;
+  }
 }

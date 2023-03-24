@@ -3,49 +3,50 @@
 ///////////////////////////////////
 .input-form {
   @include component-template;
-      margin-top: 0;
-      width: 100%;
-      max-width: 700px;
-      padding: 0;
-      background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
-  
-    .grid-container {
-      display: grid;
-      text-align: left;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 2rem;
-      row-gap: 1rem;
-      width: 100%;
-  
-      label {
-        input,
-        select, textarea {
-          margin-top: .25rem;
-          background-color: rgba(255, 255, 255, 0.10);
-          width: 100%;
-          height: 2rem;
-          padding: 0 .2rem 0 .5rem;
-          border: 0px solid;
-          border-bottom: 1px solid rgb(255, 255, 255);;
-          border-radius: 3px;
-          
-          &:focus {
-            background-color: $etikett-black-075;
-            outline: none;
-            border: 1px solid; 
-          }
-          option {
-            color: black;
-            font-size: 1rem;
-          }
+  margin-top: 0;
+  width: 100%;
+  max-width: 700px;
+  padding: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
+
+  .grid-container {
+    display: grid;
+    text-align: left;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    width: 100%;
+
+    label {
+      input,
+      select,
+      textarea {
+        margin-top: 0.25rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 100%;
+        height: 2rem;
+        padding: 0 0.2rem 0 0.5rem;
+        border: 0px solid;
+        border-bottom: 1px solid rgb(255, 255, 255);
+        border-radius: 3px;
+
+        &:focus {
+          background-color: $etikett-black-075;
+          outline: none;
+          border: 1px solid;
         }
-        textarea {
-          padding: .5rem;
+        option {
+          color: black;
           font-size: 1rem;
-          line-height: 1.3;
         }
-     }
+      }
+      textarea {
+        padding: 0.5rem;
+        font-size: 1rem;
+        line-height: 1.3;
+      }
     }
+  }
 
   .describe {
     grid-column-start: 1;
@@ -56,7 +57,6 @@
       min-height: 5rem;
     }
   }
-
 }
 
 .submit-button {
@@ -67,17 +67,15 @@
   margin-top: 1rem;
   height: 2rem;
   margin: 2rem 0;
- 
-
 }
 
-button, input[type=submit] {
+button,
+input[type='submit'] {
   height: 100%;
   padding: 0 5px;
   font-size: 1rem;
   letter-spacing: 1px;
 
-  
   ///////
   //Hardcoding styling from chrome to make it look the same everywhere
   ///////
@@ -93,14 +91,13 @@ button, input[type=submit] {
   cursor: default;
   border-width: 2px;
   border-style: outset;
-  border-color: (rgb(195, 195, 195),rgb(118, 118, 118)  );
+  border-color: (rgb(195, 195, 195), rgb(118, 118, 118));
   border-image: initial;
   &:active {
     border-style: inset;
   }
 
   ///////
-  
 }
 
 .link-button {
@@ -125,7 +122,6 @@ button, input[type=submit] {
   color: red;
 }
 
-
 ///////////////////////////////////
 //           Buttons
 ///////////////////////////////////
@@ -139,24 +135,24 @@ button, input[type=submit] {
 }
 
 //checkbox
-input[type="checkbox"] {
+input[type='checkbox'] {
   -webkit-appearance: none;
   /* Hides the default checkbox style */
   height: 20px;
   width: 20px;
   cursor: pointer;
   position: relative;
-  transition: .15s;
+  transition: 0.15s;
   // border-radius: 2em;
   background-color: rgb(240, 240, 240);
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
   background-color: $etikett-hover;
 }
 
-input[type="checkbox"]:before,
-input[type="checkbox"]:checked:before {
+input[type='checkbox']:before,
+input[type='checkbox']:checked:before {
   position: absolute;
   top: 0;
   left: 0;
@@ -168,10 +164,9 @@ input[type="checkbox"]:checked:before {
   // border: 1px solid $etikett-black;?
 }
 
-input[type="checkbox"]:checked:before {
+input[type='checkbox']:checked:before {
   content: '\2713';
 }
-
 
 .controls {
   justify-content: space-between;
@@ -186,7 +181,6 @@ input[type="checkbox"]:checked:before {
 // }
 @media only screen and (max-width: breakpoints(phone)) {
   .input-form {
-
     .grid-container {
       @include flex-column;
     }
