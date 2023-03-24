@@ -8,7 +8,13 @@ import Delete from '../Delete';
 import DocumentTitle from 'react-document-title';
 import Null from '../loading/Null';
 
-  function ArchiveList(props) {
+const matchEntry = (entry, search) => {
+  if (!search) return true;
+  const check = [entry.show, entry.host, entry.genre];
+  return check.some((item) => item.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
+}
+
+function ArchiveList(props) {
   const context = useContext(Context);
 
   const [checkedIDs, setCheckedIDs] = useState([]);
@@ -121,54 +127,20 @@ import Null from '../loading/Null';
   ////////////////////////////
   //  Filter Section Start
   ////////////////////////////
-  const [selected, setSelected] = useState('genre');
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    const epName =  new URLSearchParams(props.location.search).get('ep');
+    const epName = new URLSearchParams(props.location.search).get('ep');
     if (epName) {
       setFilter(epName);
-      setSelected('show');
     }
-  }, [
-    props.location.search,
-  ]);
+  }, [props.location.search]);
 
-  const handleSelect = (event) => {
-    const input = event.target.value;
-    if (input !== selected) {
-      setSelected(input);
-      setFilter('');
-    }
-  };
   const handleFilterInput = (event) => {
     setFilter(event.target.value);
   };
-  const filtered = (category) => {
-    if (archiveData.length !== 0 && filter !== '') {
-      switch (category) {
-        case 'show':
-          return archiveData.filter((entry) =>
-            entry.show.toLocaleLowerCase().includes(filter.toLocaleLowerCase()),
-          );
-        case 'host':
-          return archiveData.filter((entry) =>
-            entry.host.toLocaleLowerCase().includes(filter.toLocaleLowerCase()),
-          );
-        case 'genre':
-          return archiveData.filter((entry) =>
-            entry.genre
-              .toLocaleLowerCase()
-              .includes(filter.toLocaleLowerCase()),
-          );
-        default:
-          console.log('Archive Filter Input ran through without any effect');
-          return archiveData;
-      }
-    } else {
-      return archiveData;
-    }
-  };
+  const filtered = archiveData.filter((entry) => matchEntry(entry, filter));
+
   ////////////////////////////
   //   Filter Section End
   ////////////////////////////
@@ -213,7 +185,7 @@ import Null from '../loading/Null';
     if (archiveData.status === 404)
       return <h2>Error 404, something went wrong</h2>;
     if (archiveData.length === 0) return null; //Because first time the code is running, archiveData will be an empty array
-    return filtered(selected).map((el, i) => (
+    return filtered.map((el, i) => (
       <Fragment key={i}>
         <li>
           <ul className="all-data archive-list-grid">
@@ -319,48 +291,6 @@ import Null from '../loading/Null';
             ) : null}
             {showForm ? <ArchiveInputForm /> : null}
             <form className="archive-filter">
-              <div className="filter-selector-container">
-                <span className="filter-by-box">filter by:</span>
-                <label
-                  htmlFor="show-filter"
-                  className={`${selected === 'show' ? 'active' : ''} `}>
-                  episode
-                  <input
-                    type="radio"
-                    id="show-filter"
-                    name="archive-filter"
-                    onChange={handleSelect}
-                    checked={selected === 'show'}
-                    value="show"
-                  />
-                </label>
-                <label
-                  htmlFor="host-filter"
-                  className={`${selected === 'host' ? 'active' : ''} `}>
-                  show
-                  <input
-                    type="radio"
-                    id="host-filter"
-                    name="archive-filter"
-                    onChange={handleSelect}
-                    checked={selected === 'host'}
-                    value="host"
-                  />
-                </label>
-                <label
-                  htmlFor="genre-filter"
-                  className={`${selected === 'genre' ? 'active' : ''} `}>
-                  genre
-                  <input
-                    type="radio"
-                    id="genre-filter"
-                    name="archive-filter"
-                    onChange={handleSelect}
-                    checked={selected === 'genre'}
-                    value="genre"
-                  />
-                </label>
-              </div>
               <div className="filter-input-container">
                 <label htmlFor="filter-input">
                   <input

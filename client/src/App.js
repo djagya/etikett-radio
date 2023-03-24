@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 import { useMediaQuery } from 'react-responsive';
@@ -41,6 +41,7 @@ import GlobalErrorBoundary from './GlobalErrorBoundary';
 
 //scroll to top
 import ScrollMemory from 'react-router-scroll-memory';
+import { Socials } from "./components/CatalystSocials";
 
 const socket = io();
 
@@ -280,35 +281,6 @@ function App(props) {
       </HashRouter>
     </DocumentTitle>
   );
-}
-
-export function Socials() {
-  return <div className="social-links">
-    <a
-      href="https://www.instagram.com/etikettradio/"
-      target="_blank"
-      rel="nofollow noreferrer">
-      <span className="fa fa-instagram"/>
-    </a>
-    <a
-      href="https://www.facebook.com/etikettradio"
-      target="_blank"
-      rel="nofollow noreferrer">
-      <span className="fa fa-facebook"/>
-    </a>
-    <a
-      href="https://soundcloud.com/etikettradio"
-      target="_blank"
-      rel="nofollow noreferrer">
-      <span className="fa fa-soundcloud"/>
-    </a>
-    <a
-      href="https://www.twitch.tv/etikett_radio"
-      target="_blank"
-      rel="nofollow noreferrer">
-      <span className="fa fa-twitch"/>
-    </a>
-  </div>
 }
 
 export default App;
