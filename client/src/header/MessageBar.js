@@ -79,7 +79,7 @@ export default function InfoBar() {
           }
         })
         .catch((err, data) => {
-          setSongName('Etikett Radio Archive');
+          setSongName('');
         });
     };
     getSongName();
