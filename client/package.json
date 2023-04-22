@@ -20,6 +20,7 @@
     "react-document-title": "^2.0.3",
     "react-dom": "^16.13.1",
     "react-emoji": "^0.5.0",
+    "react-ga": "^3.3.1",
     "react-player": "^2.1.0",
     "react-responsive": "^8.1.0",
     "react-router-restore-scroll": "0.0.1",
