@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Context } from './Context';
 import { Link } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
-import Address from './Address';
+import ContactInfo from './ContactInfo';
 
 export default function Imprint() {
   const { gapClass } = useContext(Context);
@@ -144,7 +144,7 @@ export default function Imprint() {
           </section>
           <section>
             <h2>contact</h2>
-            <Address />
+            <ContactInfo />
           </section>
           <section className="website-builder">
             <p>This website was designed and built by:</p>

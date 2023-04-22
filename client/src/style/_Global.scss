@@ -27,6 +27,10 @@
 
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 h1 {
@@ -71,6 +75,16 @@ q {
 li {
   list-style-type: none;
   margin-bottom: 5px;
+}
+
+.page-links {
+  display: flex;
+  align-items: center;
+    justify-content: center;
+}
+
+.page-links > * {
+  padding: 0 1rem;
 }
 
 .link-component {
@@ -142,18 +156,40 @@ textarea {
 }
 
 footer {
-  height: 100vh;
+  padding: 2rem 2rem;
   display: flex;
   align-items: flex-end;
+  flex-grow: 1;
 
   .footer-img {
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
     width: 100%;
-    height: 100vh;
     background-size: 100%;
     background-image: url('../img/footer-img-1920x600.png');
     background-position: bottom;
     background-repeat: no-repeat;
   }
+
+  .footer__socials {
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+}
+
+.social-links {
+  text-align: left;
+}
+
+.social-links > a {
+  padding: 1rem;
+  font-size: 2rem;
 }
 
 .gradient {

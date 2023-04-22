@@ -92,6 +92,7 @@ export default function InfoBar() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [alert]);
+
   return (
     <div className="message">
       <span className="moving-text">

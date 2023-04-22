@@ -4,7 +4,11 @@ const Archive = require('../models/archiveSchema');
 exports.getArchive = async (req, res, next) => {
   try {
     const archive = await Archive.find();
-    res.json({ success: true, archive: archive });
+    res.json({
+      success: true,
+      archive: archive,
+      totalItems: await Archive.count(),
+    });
   } catch (err) {
     next(err);
   }

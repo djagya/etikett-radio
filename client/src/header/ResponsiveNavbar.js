@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { NAVBAR_MENU_ITEMS } from "../config";
 
 export default function ResponsiveNavbar() {
   const [isChecked, setIsChecked] = useState(false);
@@ -19,7 +20,6 @@ export default function ResponsiveNavbar() {
       </a>
 
       <Link to="/about" id="page-title-link">
-        {' '}
         <span className="page-title-mobile">etikett~radio</span>
       </Link>
 
@@ -36,42 +36,14 @@ export default function ResponsiveNavbar() {
         </label>
 
         <div className="mobile-menu__container">
-          <NavLink
-            className="mobile-menu__list"
-            to="/schedule"
-            onClick={() => setIsChecked(!isChecked)}>
-            schedule.
-          </NavLink>
-          <NavLink
-            className="mobile-menu__list"
-            to="/archive"
-            onClick={() => setIsChecked(!isChecked)}>
-            archive.
-          </NavLink>
-          <NavLink
-            className="mobile-menu__list"
-            to="/blog"
-            onClick={() => setIsChecked(!isChecked)}>
-            blog.
-          </NavLink>
-          <NavLink
-            className="mobile-menu__list"
-            to="/shows"
-            onClick={() => setIsChecked(!isChecked)}>
-            shows.
-          </NavLink>
-          <NavLink
-            className="mobile-menu__list"
-            to="/contact"
-            onClick={() => setIsChecked(!isChecked)}>
-            contact.
-          </NavLink>
-          <NavLink
-            className="mobile-menu__list"
-            to="/login"
-            onClick={() => setIsChecked(!isChecked)}>
-            staff only.
-          </NavLink>
+          {NAVBAR_MENU_ITEMS.map((item) => (
+            <NavLink
+              className="mobile-menu__list"
+              to={item.href}
+              onClick={() => setIsChecked(!isChecked)}>
+              {item.name}
+            </NavLink>
+          ))}
         </div>
       </nav>
     </header>

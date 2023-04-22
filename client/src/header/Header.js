@@ -12,6 +12,7 @@ import Loading from '../loading/Loading';
 import microphone from '../icons/microphone.png';
 import clapperboard from '../icons/clapperboard.png';
 import MessageBar from './MessageBar';
+import { Socials } from "../components/CatalystSocials";
 
 function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
   const context = useContext(Context);
@@ -202,7 +203,6 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         <div>{/* Fades the infobar in */}</div>
       </div>
       <div className={`chat ${chatState}`}>
-        {' '}
         <ChatApp name={name} setName={setName} />{' '}
       </div>
       {showSourceBtn ? (

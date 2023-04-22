@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 import { useMediaQuery } from 'react-responsive';
@@ -41,6 +41,7 @@ import GlobalErrorBoundary from './GlobalErrorBoundary';
 
 //scroll to top
 import ScrollMemory from 'react-router-scroll-memory';
+import { Socials } from "./components/CatalystSocials";
 
 const socket = io();
 
@@ -269,6 +270,9 @@ function App(props) {
               <footer
                 id="footer"
                 className={pathName !== '/' ? 'gradient' : ''}>
+                <div className="footer__socials">
+                  <Socials />
+                </div>
                 <div className="footer-img"></div>
               </footer>
             </GlobalErrorBoundary>

@@ -30,6 +30,8 @@ export default function ArchiveDetail(props) {
 
   if (loading) return <Null />;
 
+  console.log(archiveData);
+
   return (
     <DocumentTitle title={`Archive | ${archiveData.show}`}>
       <Context.Provider
@@ -59,9 +61,17 @@ export default function ArchiveDetail(props) {
               <ArchiveInputForm id={param} data={archiveData} />
             ) : (
               <div className="archive-details">
-                <Link className="link-component" to={`/archive`}>
-                  back to archive
-                </Link>
+                <div className="page-links">
+                  <Link className="link-component" to={`/archive`}>
+                    back to archive
+                  </Link>
+                  <span style={{ padding: '0 1rem' }}> </span>
+                  <Link
+                    className="link-component"
+                    to={`/shows/${archiveData.hostID}`}>
+                    to show page
+                  </Link>
+                </div>
                 <div className="archive-details-card">
                   <div className="archive-header">
                     <img

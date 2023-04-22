@@ -4,7 +4,7 @@ import { useAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import Loading from './loading/Loading';
-import Address from './Address';
+import ContactInfo from './ContactInfo';
 
 export default function Contact() {
   const context = useContext(Context);
@@ -109,7 +109,7 @@ export default function Contact() {
             <span className="required">* required</span>
           </div>
         </form>
-        <Address />
+        <ContactInfo />
       </div>
     </DocumentTitle>
   );

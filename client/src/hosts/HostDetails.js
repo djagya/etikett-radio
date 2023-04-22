@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../Context';
 import GetData from '../GetData';
 import DocumentTitle from 'react-document-title';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import Null from '../loading/Null';
 
@@ -49,7 +49,7 @@ export default function Hosts(props) {
                   href={host.youtube}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <i className="fab fa-youtube-square"></i>
+                  <i className="fa fa-youtube-square"></i>
                 </a>
               )}
 
@@ -58,7 +58,7 @@ export default function Hosts(props) {
                   href={host.soundcloud}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <i className="fab fa-soundcloud"></i>
+                  <i className="fa fa-soundcloud"></i>
                 </a>
               )}
 
@@ -67,7 +67,7 @@ export default function Hosts(props) {
                   href={host.mixcloud}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <i className="fab fa-mixcloud"></i>
+                  <i className="fa fa-mixcloud"></i>
                 </a>
               )}
 
@@ -76,7 +76,7 @@ export default function Hosts(props) {
                   href={host.facebook}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fa fa-facebook-square"></i>
                 </a>
               )}
 
@@ -85,7 +85,7 @@ export default function Hosts(props) {
                   href={host.instagram}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fa fa-instagram"></i>
                 </a>
               )}
 
@@ -94,7 +94,7 @@ export default function Hosts(props) {
                   href={host.twitter}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <i className="fab fa-twitter-square"></i>
+                  <i className="fa fa-twitter-square"></i>
                 </a>
               )}
 
@@ -103,7 +103,7 @@ export default function Hosts(props) {
                   href={host.snapchat}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <i className="fab fa-snapchat-square"></i>
+                  <i className="fa fa-snapchat-square"></i>
                 </a>
               )}
             </div>
@@ -131,9 +131,16 @@ export default function Hosts(props) {
       <div className="hosts">
         <div className={`${context.gapClass} host-page`}>
           <h1>shows.</h1>
-          <Link className="link-component" to={`/shows`}>
-            back to shows
-          </Link>
+          <div className="page-links">
+            <Link className="link-component" to={`/shows`}>
+              back to shows
+            </Link>
+            <Link
+              className="link-component"
+              to={`/archive?ep=${host.hostName}`}>
+              to show archives
+            </Link>
+          </div>
           <div className="host-content">
             <div className="host-card">{renderHost()}</div>
           </div>

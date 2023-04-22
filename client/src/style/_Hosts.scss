@@ -35,13 +35,12 @@
 
       .social-and-pagelink {
         .social-media-container {
-          display: flex;
-          justify-content: flex-end;
-          padding-top: 1rem;
-
-          i {
-            margin-left: 0.5rem;
-          }
+          text-align: right;
+          margin-top: 1rem;
+        }
+        .social-media-container > a {
+          padding: 1rem 0.75rem;
+          font-size: 1.5rem;
         }
 
         .host-pagelink {
