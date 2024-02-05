@@ -144,6 +144,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
     }
   };
 
+
   return loading ? (
     <Loading />
   ) : (
@@ -161,6 +162,7 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
           />
         </a>
       ) : null}
+
       <div className="video-or-logo">
         {source === radio ? (
           <div className="logo-and-controls">
@@ -174,23 +176,14 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
                 alt="Broadcasting live 24/7 from Funkhaus, Berlin.."
               />
             </a>
-            <RadioControls
-              source={source}
-              radio={radio}
-              icon={icon}
-              volume={volume}
-              handlePlayBtn={handlePlayBtn}
-              handleAudio={handleAudio}
-              handleVolume={handleVolume}
-            />
           </div>
         ) : null}
-        <Stream
-          source={source}
-          playing={playing}
-          volume={volume}
-          videoPlayer={videoPlayer}
-        />
+
+        <div className="airtime-container">
+          <iframe id="embed_player" frameBorder="0" width="350" height="396"
+                  src="https://etikettradio.airtime.pro/embed/player?stream=auto&skin=2"></iframe>
+        </div>
+
       </div>
       <div className="box-shadow-container-left">
         <div>{/* Fades the infobar out */}</div>
