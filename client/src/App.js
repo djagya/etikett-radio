@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Context } from './Context';
 import { useMediaQuery } from 'react-responsive';
 import io from 'socket.io-client';
+import ReactGA from 'react-ga';
+
 
 import './App.scss';
 
@@ -44,6 +46,9 @@ import ScrollMemory from 'react-router-scroll-memory';
 import { Socials } from "./components/CatalystSocials";
 
 const socket = io();
+const TRACKING_ID = process.env.GOOGLE_ANALYTICS;
+
+ReactGA.initialize(TRACKING_ID);
 
 function App(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['user', 'name']);
@@ -71,6 +76,12 @@ function App(props) {
   if (cookies.user) {
     id = cookies.user._id;
   }
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
+
   // const links = [
   //   { title: "Skip to main content", to: 'main' },
   //   { title: 'Skip to footer', to: 'footer' }
