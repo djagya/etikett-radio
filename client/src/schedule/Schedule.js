@@ -158,96 +158,19 @@ export default function Schedule(props) {
   }
   return (
     <DocumentTitle title="Schedule">
-      <Context.Provider
-        value={{
-          checkedIDs,
-          setCheckedIDs,
-          scheduleData,
-          setScheduleData,
-          selected,
-          currMonth,
-          currWeek,
-        }}>
-        <div className={`${context.gapClass} schedule-component`}>
-          <div className="schedule-content">
-            <h1 id="main">schedule.</h1>
+      <div className={`${context.gapClass} schedule-component`}>
+        <div className="schedule-content">
+          <h1 id="main">schedule.</h1>
 
-            {/* <iframe src="https://calendar.google.com/calendar/embed?src=c_vb7bhkebo9nh35l4o20lrmulm0%40group.calendar.google.com&ctz=Europe%2FBerlin" frameborder="0" scrolling="no"></iframe> */}
-            <div className="schedule-head">
-              {props.cookies.user && props.cookies.user.role === 'Admin' ? (
-                <div className="button-container controls">
-                  {showForm ? (
-                    <button type="button" onClick={() => setShowForm(false)}>
-                      cancel
-                    </button>
-                  ) : (
-                    <button type="button" onClick={() => setShowForm(true)}>
-                      add schedule
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => handleDelete(checkedIDs)}>
-                    delete checked
-                  </button>
-                </div>
-              ) : null}
-              {showForm ? <ScheduleInputForm /> : null}
-              <div className="filter-selector-container">
-                <span className="filter-by-box">show me:</span>
-                <label
-                  htmlFor="show-week"
-                  className={`${selected === 'week' ? 'active' : ''} `}>
-                  this week
-                  <input
-                    type="radio"
-                    id="show-week"
-                    name="show-week"
-                    onChange={handleSelect}
-                    checked={selected === 'week'}
-                    value="week"
-                  />
-                </label>
-                <label
-                  htmlFor="show-month"
-                  className={`${
-                    selected === 'initial' || selected === 'month'
-                      ? 'active'
-                      : ''
-                  } `}>
-                  this month
-                  <input
-                    type="radio"
-                    id="show-month"
-                    name="show-month"
-                    onChange={handleSelect}
-                    checked={selected === 'month'}
-                    value="month"
-                  />
-                </label>
-                <label
-                  htmlFor="next-month"
-                  className={`${selected === 'nextMonth' ? 'active' : ''} `}>
-                  next month
-                  <input
-                    type="radio"
-                    id="next-month"
-                    name="archive-filter"
-                    onChange={handleSelect}
-                    checked={selected === 'nextMonth'}
-                    value="nextMonth"
-                  />
-                </label>
-              </div>
-            </div>
-            {weekNum.length === 0 ? (
-              <h3>Seems like there is nothing here yet.</h3>
-            ) : (
-              <ul className="monthly-schedule">{renderLi()}</ul>
-            )}
-          </div>
+          <iframe
+            height="400px"
+            width="550px"
+            scrolling="yes"
+            frameBorder="0"
+            src="https://etikettradio.airtime.pro/embed/weekly-program"
+          />
         </div>
-      </Context.Provider>
+      </div>
     </DocumentTitle>
   );
 }

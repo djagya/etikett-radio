@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { Context } from '../Context';
 import PostData from '../PostData';
@@ -230,16 +230,8 @@ export default function ArchiveInputForm(props) {
                 onChange={handleFormInput}
               />
             </label>
-            <label htmlFor="img">
-              <span className="required">*</span>artwork
-              <input
-                type="url"
-                id="img"
-                placeholder="link"
-                value={img}
-                onChange={handleFormInput}
-              />
-            </label>
+
+            <FileInput value={img} onChange={(url) => setImg(url)} />
             <label className="describe" htmlFor="description">
               description
               <textarea
@@ -257,6 +249,62 @@ export default function ArchiveInputForm(props) {
           </div>
         </div>
       </form>
+    </div>
+  );
+}
+
+const IMGB_KEY = 'c869b60d65ffda8a8ebf73cd55d759a6';
+
+function FileInput({ value, onChange }) {
+  const [file, setFile] = useState();
+  const [error, setError] = useState();
+
+  function handleUpload() {
+    if (!file) {
+      setError('Please select a file');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('api_key', IMGB_KEY);
+
+    fetch(`https://api.imgbb.com/1/upload?name=&key=${IMGB_KEY}`, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then(({ data }) => {
+        onChange(data.url);
+      })
+      .catch((error) => {
+        setError('Failed to upload image');
+        console.error('Error:', error);
+      });
+  }
+
+  return (
+    <div>
+      <label htmlFor="img">
+        <span className="required">*</span>artwork
+        <div style={{ display: "flex" }}>
+          <input
+            type="file"
+            id="img"
+            accept="image/*"
+            onChange={(e) => {
+              setFile(e.target.files[0]);
+            }}
+          />
+          <button onClick={handleUpload} type="button">Upload</button>
+        </div>
+      </label>
+      <span style={{ fontSize: '0.5rem' }}>
+        {value ? value : 'Upload an image'}
+      </span>
+      {error && (
+        <span style={{ fontSize: '0.5rem', color: 'red' }}>{error}</span>
+      )}
     </div>
   );
 }

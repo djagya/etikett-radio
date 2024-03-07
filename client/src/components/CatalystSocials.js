@@ -21,12 +21,6 @@ export function Socials() {
         rel="nofollow noreferrer">
         <span className="fa fa-soundcloud" />
       </a>
-      <a
-        href="https://www.twitch.tv/etikett_radio"
-        target="_blank"
-        rel="nofollow noreferrer">
-        <span className="fa fa-twitch" />
-      </a>
     </div>
   );
 }
