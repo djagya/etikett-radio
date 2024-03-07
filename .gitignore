@@ -4,5 +4,4 @@ node_modules
 /client/node_modules
 /client/.env
 /certificate
-build
 .idea
