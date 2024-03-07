@@ -120,7 +120,7 @@ exports.sendEmail = async (req, res, next) => {
     });
     const mailOptions = {
       from: email,
-      to: 'matt.migz@dbsberlin.net',
+      to: 'info@etikettradio.com',
       // to: 'francisco.chiarino@gmail.com',
       subject: subject,
       text: `Name: ${name}\nFrom: ${email}\n \n${message}`,

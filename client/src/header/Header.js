@@ -180,8 +180,8 @@ function Header({ location, name, setName, isMobileWidth, isMobileDevice }) {
         ) : null}
 
         <div className="airtime-container">
-          <iframe id="embed_player" frameBorder="0" width="350" height="396"
-                  src="https://etikettradio.airtime.pro/embed/player?stream=auto&skin=2"></iframe>
+          <iframe id="embed_player" frameBorder="0" width="280" height="216"
+                  src="https://etikettradio.airtime.pro/embed/player?stream=auto&skin=1"></iframe>
         </div>
 
       </div>

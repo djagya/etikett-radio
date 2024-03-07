@@ -10,21 +10,16 @@ export default function ContactInfo() {
         </li>
         <li>Catalyst Institute for Creative Arts and Technology GmbH</li>
         <li>Funkhaus Berlin</li>
-        <li>Nalepastraße 18-50</li>
+        <li>Nalepastraße 18</li>
         <li>12459 Berlin</li>
         <li className="li-header">
           <h2>telephone</h2>
         </li>
         <li>+49 30 2900 9052</li>
         <li className="li-header">
-          <h2>email</h2>
+          <h2>website</h2>
         </li>
-        <li>Admissions - admissions@catalyst-berlin.com</li>
-        <li>Marketing & editorial - storytelling@catalyst-berlin.com</li>
-        <li>
-          Student experience & volunteering opportunities -
-          Hannah@catalyst-berlin.com
-        </li>
+        <li><a href="https://catalyst-berlin.com/">catalyst-berlin.com</a></li>
         <li className="li-header">
           <h2>socials</h2>
         </li>
